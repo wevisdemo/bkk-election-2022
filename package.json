@@ -4,6 +4,7 @@
   "private": true,
   "workspaces": [
     "apps/*",
+    "packages/*",
     "moderator"
   ],
   "scripts": {
