@@ -43,4 +43,8 @@ export default {
   router: {
     base: '/socialtrend/',
   },
+
+  server: {
+    port: 3002,
+  },
 }

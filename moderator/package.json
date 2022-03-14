@@ -1,0 +1,19 @@
+{
+  "name": "moderator",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "tsnd --respawn index.ts"
+  },
+  "dependencies": {
+    "fastify": "^3.27.4",
+    "fastify-http-proxy": "^6.2.2",
+    "landing": "*",
+    "socialtrend": "*"
+  },
+  "devDependencies": {
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.6.2"
+  }
+}
