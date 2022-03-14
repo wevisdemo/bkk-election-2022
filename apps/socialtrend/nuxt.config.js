@@ -6,7 +6,7 @@ export default {
   head: {
     title: 'socialtrend',
     htmlAttrs: {
-      lang: 'en',
+      lang: 'th',
     },
     meta: [
       { charset: 'utf-8' },
@@ -14,7 +14,10 @@ export default {
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/static/favicon.png' },
+      { rel: 'stylesheet', href: '/static/fonts/typography.css' },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css

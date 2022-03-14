@@ -9,7 +9,8 @@ const config = {
 
 	kit: {
 		prerender: {
-			default: true
+			default: true,
+			onError: 'continue'
 		},
 		adapter: adapter()
 	}
