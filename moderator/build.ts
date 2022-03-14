@@ -7,7 +7,7 @@ const BUILD_DIR = join(ROOT_DIR, 'build');
 const APPS_DIR = join(ROOT_DIR, 'apps');
 
 if (existsSync(BUILD_DIR)) {
-  rmdirSync(BUILD_DIR);
+  rmdirSync(BUILD_DIR, { recursive: true });
 }
 
 mkdirSync(BUILD_DIR);
