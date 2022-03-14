@@ -4,15 +4,19 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "tsnd --respawn index.ts"
+    "dev": "tsnd --respawn index.ts",
+    "build": "ts-node build.ts"
   },
   "dependencies": {
     "fastify": "^3.27.4",
     "fastify-http-proxy": "^6.2.2",
+    "fs-extra": "^10.0.1",
     "landing": "*",
     "socialtrend": "*"
   },
   "devDependencies": {
+    "@types/fs-extra": "^9.0.13",
+    "ts-node": "^10.7.0",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.6.2"
   }
