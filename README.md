@@ -2,7 +2,7 @@
 
 Monorepo for Bangkok Election 2022 projects managed by [Turborepo](https://turborepo.org/) and [Yarn](https://classic.yarnpkg.com/lang/en/)
 
-## 🍱 What's inside?
+## 🍱 Project structure
 
 - **`/apps`** Framework independent subprojects
   - `/landing` Landing page (SvelteKit)
@@ -63,3 +63,11 @@ yarn run build
 ```
 
 Each project will be built and combined in root `/build` folder
+
+## ⚽ Working style
+
+- We use Trunk-based development.
+  - No braches, we all push to main branch.
+  - Pull rebase `git pull --rebase` often. Before you start coding and pushing.
+  - Continuous integration: try not to leave your code without pushing overnight.
+- **[TODO]** Each time the code is pushed to main branch, Github Action will build and deploy to the staging environment.
