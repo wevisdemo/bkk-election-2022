@@ -4,6 +4,10 @@
       "dependsOn": ["^dev"],
       "cache": false
     },
+    "dev:candidate": {
+      "dependsOn": ["candidate#dev", "moderator#dev"],
+      "cache": false
+    },
     "dev:landing": {
       "dependsOn": ["landing#dev", "moderator#dev"],
       "cache": false

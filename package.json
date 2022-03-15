@@ -10,6 +10,7 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
+    "dev:candidate": "turbo run dev:candidate --parallel",
     "dev:landing": "turbo run dev:landing --parallel",
     "dev:socialtrend": "turbo run dev:socialtrend --parallel",
     "lint": "turbo run lint"
