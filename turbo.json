@@ -4,9 +4,17 @@
       "dependsOn": ["^dev"],
       "cache": false
     },
+    "dev:landing": {
+      "dependsOn": ["landing#dev", "moderator#dev"],
+      "cache": false
+    },
+    "dev:socialtrend": {
+      "dependsOn": ["socialtrend#dev", "moderator#dev"],
+      "cache": false
+    },
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**"]
+      "outputs": ["dist/**", "build/**"]
     },
     "lint": {
       "outputs": []
