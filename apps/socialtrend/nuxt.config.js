@@ -50,4 +50,9 @@ export default {
   server: {
     port: 3002,
   },
+
+  tailwindcss: {
+    cssPath: '../../packages/tailwind/style.css',
+    viewer: false,
+  },
 }

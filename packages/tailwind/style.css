@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .typo-h1 {
+    @apply font-heading font-semibold text-[36pt] md:text-[64pt] leading-[1.25];
+  }
+  .typo-h2 {
+    @apply font-heading font-semibold text-[32pt] md:text-[48pt] leading-[1.25];
+  }
+  .typo-h3 {
+    @apply font-heading font-semibold text-[28pt] md:text-[36pt] leading-[1.25];
+  }
+  .typo-h4 {
+    @apply font-heading font-semibold text-[24pt] md:text-[32pt] leading-[1.25];
+  }
+  .typo-h5 {
+    @apply font-heading font-semibold text-[21pt] md:text-[28pt] leading-[1.25];
+  }
+  .typo-h6 {
+    @apply font-heading font-semibold text-[18pt] md:text-[24pt] leading-[1.25];
+  }
+  .typo-h7 {
+    @apply font-heading font-semibold text-[16pt] md:text-[21pt] leading-[1.25];
+  }
+  .typo-h8 {
+    @apply font-heading font-semibold text-[15pt] md:text-[18pt] leading-[1.25];
+  }
+  .typo-h9 {
+    @apply font-heading font-semibold text-[14pt] md:text-[16pt] leading-[1.25];
+  }
+
+  .typo-b1 {
+    @apply font-body text-[24pt] md:text-[32pt] leading-[1.5];
+  }
+  .typo-b2 {
+    @apply font-body text-[21pt] md:text-[24pt] leading-[1.5];
+  }
+  .typo-b3 {
+    @apply font-body text-[18pt] md:text-[21pt] leading-[1.5];
+  }
+  .typo-b4 {
+    @apply font-body text-[16pt] md:text-[18pt] leading-[1.5];
+  }
+  .typo-b5 {
+    @apply font-body text-[14pt] md:text-[16pt] leading-[1.5];
+  }
+  .typo-b6 {
+    @apply font-body text-[13pt] md:text-[14pt] leading-[1.5];
+  }
+  .typo-b7 {
+    @apply font-body text-[12pt] leading-[1.5];
+  }
+
+  .typo-u1 {
+    @apply font-body text-[20pt] leading-[1.25];
+  }
+  .typo-u2 {
+    @apply font-body text-[18pt] leading-[1.25];
+  }
+  .typo-u3 {
+    @apply font-body text-[16pt] leading-[1.25];
+  }
+  .typo-u4 {
+    @apply font-body text-[14pt] leading-[1.25];
+  }
+  .typo-u5 {
+    @apply font-body text-[12pt] leading-[1.25];
+  }
+}
