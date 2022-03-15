@@ -1,40 +1,28 @@
-# Turborepo starter
+# 🗳️ Bangkok Election 2022
 
-This is an official Yarn v1 starter turborepo.
+Monorepo for Bangkok Election 2022 projects managed by [Turborepo](https://turborepo.org/) and [Yarn](https://classic.yarnpkg.com/lang/en/)
 
-## What's inside?
+## 🍱 What's inside?
 
-This turborepo uses [Yarn](https://classic.yarnpkg.com/lang/en/) as a package manager. It includes the following packages/apps:
+- **`/apps`** Framework independent subprojects
+  - `/landing` Landing page (SvelteKit)
+  - `/socialtrend` Social trend analysis (NuxtJS)
+  - `/candidate` Candidates information (NextJS)
+- **`/moderator`**
+  - Development server with [Fastify](https://www.fastify.io/) reverse proxy and `/static` folder serving.
+  - Build script to combine every apps build file in the root `/build`
+- **`/packages`** Shared packages used by apps
+  - `/tailwind` Tailwind config and base stylesheet with shared design guideline
+- **`/static`** Static directory serving at `/static` eg. favicon and fonts
 
-### Apps and Packages
+## ⚙️ Setup
 
-- `docs`: a [Next.js](https://nextjs.org) app
-- `web`: another [Next.js](https://nextjs.org) app
-- `ui`: a stub React component library shared by both `web` and `docs` applications
-- `config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
+[Yarn 1](https://classic.yarnpkg.com/lang/en/) is required
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-## Setup
-
-This repository is used in the `npx create-turbo` command, and selected when choosing which package manager you wish to use with your monorepo (Yarn).
-
-### Build
-
-To build all apps and packages, run the following command:
+Install the dependencies
 
 ```
-cd my-turborepo
-yarn run build
+yarn
 ```
 
 ### Develop
@@ -42,36 +30,36 @@ yarn run build
 To develop all apps and packages, run the following command:
 
 ```
-cd my-turborepo
 yarn run dev
 ```
 
-### Remote Caching
+Each app will be started in development server in difference port
 
-Turborepo can use a technique known as [Remote Caching (Beta)](https://turborepo.org/docs/features/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+- **Landing**: http://localhost:3001
+- **Social trend**: http://localhost:3002/socialtrend
+- **Candidate**: http://localhost:3003/candidate
 
-By default, Turborepo will cache locally. To enable Remote Caching (Beta) you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
+While **moderator** will run at http://localhost:3000 and
+
+- Forward http://localhost:3000 request to **Landing** dev server
+- Forward http://localhost:3000/socialtrend request to **Social trend** dev server
+- Forward http://localhost:3000/candidate request to **Candidate** dev server
+- Serve files in `/static` at http://localhost:3000/static/
+
+Each project can also be run individually with moderator proxy
 
 ```
-cd my-turborepo
-npx turbo login
+yarn run dev:candidate
+yarn run dev:landing
+yarn run dev:socialtrend
 ```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+### Build
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your turborepo:
+To build all apps and packages, run the following command:
 
 ```
-npx turbo link
+yarn run build
 ```
 
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Pipelines](https://turborepo.org/docs/features/pipelines)
-- [Caching](https://turborepo.org/docs/features/caching)
-- [Remote Caching (Beta)](https://turborepo.org/docs/features/remote-caching)
-- [Scoped Tasks](https://turborepo.org/docs/features/scopes)
-- [Configuration Options](https://turborepo.org/docs/reference/configuration)
-- [CLI Usage](https://turborepo.org/docs/reference/command-line-reference)
+Each project will be built and combined in root `/build` folder
