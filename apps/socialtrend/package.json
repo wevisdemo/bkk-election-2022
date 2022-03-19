@@ -12,8 +12,13 @@
     "lintfix": "prettier --write --list-different . && yarn lint:js --fix"
   },
   "dependencies": {
+    "@nuxtjs/axios": "^5.13.6",
     "core-js": "^3.19.3",
+    "d3": "^7.3.0",
+    "moment": "^2.29.1",
+    "numeral": "^2.0.6",
     "nuxt": "^2.15.8",
+    "nuxt-mq": "^2.0.2",
     "tailwind": "*",
     "vue": "^2.6.14",
     "vue-server-renderer": "^2.6.14",

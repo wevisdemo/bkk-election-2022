@@ -20,6 +20,17 @@ export default {
     ],
   },
 
+  mq: {
+    defaultBreakpoint: "desktop",
+    breakpoints: {
+      mobile: 768,
+      tablet: 1100,
+      desktop: 1400,
+      // desktopWide: 2000,
+      // desktopUltraWide: Infinity,
+    },
+  },
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [],
 
@@ -38,7 +49,7 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [],
+  modules: ["@nuxtjs/axios", "nuxt-mq"],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
