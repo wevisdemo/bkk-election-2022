@@ -1,5 +1,5 @@
-import moment from 'moment'
+import moment from "moment"
 
 export default function () {
-  moment.locale('th')
+  moment.locale("th")
 }

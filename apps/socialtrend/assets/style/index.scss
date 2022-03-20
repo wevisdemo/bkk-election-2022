@@ -1,0 +1,22 @@
+html {
+  // scroll-behavior: smooth;
+  // height: -webkit-fill-available;
+}
+
+body {
+  margin: 0;
+  font-family: 'Anuphan', 'Kanit', sans-serif;
+  background-color: black;
+  // word-break: keep-all;
+  -webkit-overflow-scrolling: touch;
+  // min-height: -webkit-fill-available;
+}
+
+*,
+*:before,
+*:after {
+  word-break: break-word;
+  box-sizing: border-box;
+  margin: 0;
+  // word-break: keep-all;
+}

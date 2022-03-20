@@ -21,7 +21,7 @@ export default {
   },
 
   mq: {
-    defaultBreakpoint: "desktop",
+    defaultBreakpoint: 'desktop',
     breakpoints: {
       mobile: 768,
       tablet: 1100,
@@ -32,10 +32,14 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: [
+    'element-ui/lib/theme-chalk/index.css',
+    '~/assets/style/index.scss',
+    '../../static/fonts/typography.css',
+  ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: ['~/plugins/element-ui', '~/plugins/axios', '~/plugins/moment'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -49,10 +53,12 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ["@nuxtjs/axios", "nuxt-mq"],
+  modules: ['@nuxtjs/axios', 'nuxt-mq'],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    transpile: [/^element-ui/],
+  },
 
   router: {
     base: '/socialtrend/',
