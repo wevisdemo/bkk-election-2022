@@ -8,6 +8,7 @@
     "build": "ts-node build.ts"
   },
   "dependencies": {
+    "candidate": "*",
     "express": "^4.17.3",
     "fs-extra": "^10.0.1",
     "http-proxy": "^1.18.1",
