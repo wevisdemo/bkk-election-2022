@@ -9,7 +9,8 @@
     "name": "candidate",
     "path": "/candidate",
     "port": 3003,
-    "output": "/dist"
+    "output": "/dist",
+    "websocket": "/candidate/_next/webpack-hmr"
   },
   { "name": "landing", "path": "/", "port": 3001, "output": "/build" }
 ]

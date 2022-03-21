@@ -5,11 +5,11 @@ Monorepo for Bangkok Election 2022 projects managed by [Turborepo](https://turbo
 ## 🍱 Project structure
 
 - **`/apps`** Framework independent subprojects
-  - `/landing` Landing page (SvelteKit)
-  - `/socialtrend` Social trend analysis (NuxtJS)
-  - `/candidate` Candidates information (NextJS)
+  - `/landing` Landing page ([SvelteKit](https://kit.svelte.dev/))
+  - `/socialtrend` Social trend analysis ([NuxtJS](https://nuxtjs.org/))
+  - `/candidate` Candidates information ([NextJS](https://nextjs.org/))
 - **`/moderator`**
-  - Development server with [Fastify](https://www.fastify.io/) reverse proxy and `/static` folder serving.
+  - Development server using [Express](https://expressjs.com/) with reverse proxy and `/static` folder serving.
   - Build script to combine every apps build file in the root `/build`
 - **`/packages`** Shared packages used by apps
   - `/tailwind` Tailwind config and base stylesheet with shared design guideline

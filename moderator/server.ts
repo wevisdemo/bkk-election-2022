@@ -1,41 +1,42 @@
-import fastify from 'fastify';
-import fastifyHttpProxy from 'fastify-http-proxy';
-import fastifyStatic from 'fastify-static';
+import express from 'express';
+import http from 'http';
+import httpProxy from 'http-proxy';
 import { join } from 'path';
 import apps from './apps.config.json';
 
 const PORT = 3000;
 export const STATIC_PATH = '/static/';
 
-const server = fastify();
+const app = express();
+var server = http.createServer(app);
 
-server.register(fastifyStatic, {
-  root: join(__dirname, '..', STATIC_PATH),
-  prefix: STATIC_PATH,
-});
+app.use(STATIC_PATH, express.static(join(__dirname, '..', STATIC_PATH)));
 
-apps.forEach(({ path, port }) => {
-  server.register(fastifyHttpProxy, {
-    upstream: `http://localhost:${port}${path}`,
-    prefix: path,
+apps.forEach(({ path, port, websocket }) => {
+  if (websocket) {
+    const wsPropxy = httpProxy.createProxyServer({
+      target: `ws://localhost:${port}`,
+    });
+
+    app.get(`${websocket}*`, (req, res) => wsPropxy.ws(req, res, {}));
+    server.on('upgrade', (req, socket, head) => wsPropxy.ws(req, socket, head));
+  }
+
+  const webProxy = httpProxy.createProxyServer({
+    target: `http://localhost:${port}`,
+  });
+
+  app.get(`${path}*`, (req, res) => {
+    webProxy.web(req, res, {});
   });
 });
 
-const start = async () => {
-  try {
-    await server.listen(PORT);
+server.listen(PORT);
 
-    console.log(`Moderator gateway is running`);
+console.log(`Moderator gateway is running`);
 
-    apps.forEach(({ name, path }) => {
-      console.log(`> [${name}] http://localhost:${PORT}${path}`);
-    });
+apps.forEach(({ name, path }) => {
+  console.log(`> [${name}] http://localhost:${PORT}${path}`);
+});
 
-    console.log(`> [static assets] http://localhost:${PORT}${STATIC_PATH}`);
-  } catch (err) {
-    server.log.error(err);
-    process.exit(1);
-  }
-};
-
-start();
+console.log(`> [static assets] http://localhost:${PORT}${STATIC_PATH}`);
