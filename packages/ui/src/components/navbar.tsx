@@ -15,18 +15,18 @@ const Navbar: Component = () => {
   const [isMenuOpen, setIsMenuOpen] = createSignal(false);
 
   return (
-    <div class="relative p-3 flex flex-col md:flex-row bg-white">
-      <div className="flex-1 flex flex-row justify-between">
+    <div class="ui-relative ui-p-3 ui-flex ui-flex-col md:ui-flex-row ui-bg-white">
+      <div className="ui-flex-1 ui-flex ui-flex-row ui-justify-between">
         <a href="/">
           <img
             src="/static/bkkelection-logo.png"
             alt="BKK Election 2022"
-            class="h-6 md:h-8"
+            class="ui-h-6 md:ui-h-8"
           />
         </a>
 
         <button
-          class="md:hidden p-2"
+          class="md:ui-hidden ui-p-2"
           onClick={() => setIsMenuOpen(!isMenuOpen())}
         >
           <Show
@@ -60,14 +60,14 @@ const Navbar: Component = () => {
       </div>
 
       <div
-        class="absolute top-full md:relative inset-x-0 md:flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6 bg-white p-3 md:p-0"
-        classList={{ hidden: !isMenuOpen() }}
+        class="ui-absolute ui-top-full md:ui-relative ui-inset-x-0 md:ui-flex ui-flex-col md:ui-flex-row ui-space-y-2 md:ui-space-y-0 md:ui-space-x-6 ui-bg-white ui-p-3 md:ui-p-0"
+        classList={{ 'ui-hidden': !isMenuOpen() }}
       >
         <For each={pages} fallback={<div>Loading...</div>}>
           {({ label, href }) => (
             <a
               href={href}
-              class="h-full py-1 px-2 typo-u4 hover:underline flex items-center justify-end"
+              class="ui-h-full ui-py-1 ui-px-2 typo-u4 hover:ui-underline ui-flex ui-items-center ui-justify-end"
             >
               {label}
             </a>
