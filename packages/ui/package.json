@@ -3,20 +3,25 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite build --watch",
+    "dev:preview": "vite",
     "build": "vite build",
     "serve": "vite preview"
   },
+  "main": "dist/ui.es.js",
   "license": "MIT",
   "devDependencies": {
     "autoprefixer": "^10.4.2",
     "postcss": "^8.4.8",
+    "tailwind": "*",
     "tailwindcss": "^3.0.23",
     "typescript": "^4.6.2",
     "vite": "^2.8.6",
     "vite-plugin-solid": "^2.2.6"
   },
   "dependencies": {
+    "component-register": "^0.8.3",
+    "solid-element": "^1.3.13",
     "solid-js": "^1.3.12"
   }
 }

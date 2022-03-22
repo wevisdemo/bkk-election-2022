@@ -1,11 +1,4 @@
 module.exports = {
-  content: [
-    './index.html',
-    './src/**/*.{js,ts,jsx,tsx,css,md,mdx,html,json,scss}',
-  ],
-  darkMode: 'class',
-  theme: {
-    extend: {},
-  },
-  plugins: [],
+  presets: [require('../tailwind/tailwind.config.js')],
+  content: ['./src/**/*.tsx'],
 };
