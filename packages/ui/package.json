@@ -8,7 +8,7 @@
     "build": "vite build",
     "serve": "vite preview"
   },
-  "main": "dist/ui.es.js",
+  "main": "dist/ui.umd.js",
   "license": "MIT",
   "devDependencies": {
     "autoprefixer": "^10.4.2",

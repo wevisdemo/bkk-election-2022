@@ -11,7 +11,7 @@ export default defineConfig({
     polyfillDynamicImport: false,
     lib: {
       entry: resolve(__dirname, 'src/components/index.ts'),
-      formats: ['es'],
+      formats: ['umd'],
       name: 'ui',
     },
   },
