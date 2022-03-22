@@ -4,7 +4,8 @@ import { resolve, join } from 'path';
 
 export default defineConfig({
   plugins: [solidPlugin()],
-  publicDir: join(__dirname, '../../'),
+  publicDir:
+    process.env.NODE_ENV === 'development' ? join(__dirname, '../../') : '',
   build: {
     target: 'esnext',
     polyfillDynamicImport: false,
