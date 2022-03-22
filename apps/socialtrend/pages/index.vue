@@ -241,6 +241,9 @@ export default {
       return d3.format(',')
     },
   },
+  mounted() {
+    window.registerUICustomElements()
+  },
   methods: {},
 }
 </script>
