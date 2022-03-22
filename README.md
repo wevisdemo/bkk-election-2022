@@ -20,6 +20,7 @@ Monorepo for Bangkok Election 2022 projects managed by [Turborepo](https://turbo
   - Build script to combine every apps build file in the root `/build`
 - **`/packages`** Shared packages used by apps
   - `/tailwind` Tailwind config and base stylesheet with shared design guideline
+  - `/ui` Shared web component written by [SolidJS](https://www.solidjs.com/) and typography stylesheet from design system
 - **`/static`** Static directory serving at `/static` eg. favicon and fonts
 
 ## ⚙️ Setup
