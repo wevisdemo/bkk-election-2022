@@ -2,7 +2,7 @@ import { Component, createSignal, For, Show } from 'solid-js';
 import { noShadowDOM } from 'component-register';
 
 const pages = [
-  { label: 'ข้อมูลผู้สมัคร', href: '/candidates' },
+  { label: 'ข้อมูลผู้สมัคร', href: '/candidate' },
   { label: 'ประวัติการลงคะแนน', href: '#' },
   { label: 'เลือกอย่างไร?', href: '#' },
   { label: 'Facts', href: '#' },
