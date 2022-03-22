@@ -1,2 +1,5 @@
+import { customElement } from 'solid-element';
+import Navbar from './navbar';
 import '../style.css';
-import './navbar';
+
+customElement('ui-navbar', Navbar);

@@ -1,9 +1,10 @@
 import { defineConfig } from 'vite';
 import solidPlugin from 'vite-plugin-solid';
-import { resolve } from 'path';
+import { resolve, join } from 'path';
 
 export default defineConfig({
   plugins: [solidPlugin()],
+  publicDir: join(__dirname, '../../'),
   build: {
     target: 'esnext',
     polyfillDynamicImport: false,

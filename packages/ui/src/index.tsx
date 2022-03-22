@@ -7,7 +7,7 @@ import './components/index';
 const App: Component = () => {
   return (
     <div>
-      <h1 className="typo-h1">iuygi</h1>
+      <h1 className="typo-h1">UI Library</h1>
       <ui-navbar></ui-navbar>
     </div>
   );
