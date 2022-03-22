@@ -6,6 +6,7 @@ export default function Document() {
       <Head>
         <link rel="icon" href="/static/favicon.png" />
         <link rel="stylesheet" href="/static/fonts/typography.css" />
+        <link rel="stylesheet" href="/ui/style.css" />
       </Head>
       <body>
         <Main />

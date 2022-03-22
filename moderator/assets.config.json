@@ -1,0 +1,4 @@
+[
+  { "name": "Static", "source": "/static", "serve": "/static" },
+  { "name": "UI Package", "source": "/packages/ui/dist", "serve": "/ui" }
+]

@@ -3,6 +3,7 @@ import http from 'http';
 import httpProxy from 'http-proxy';
 import { join } from 'path';
 import apps from './apps.config.json';
+import assets from './assets.config.json';
 
 const PORT = 3000;
 export const STATIC_PATH = '/static/';
@@ -10,7 +11,9 @@ export const STATIC_PATH = '/static/';
 const app = express();
 var server = http.createServer(app);
 
-app.use(STATIC_PATH, express.static(join(__dirname, '..', STATIC_PATH)));
+assets.forEach(({ source, serve }) => {
+  app.use(serve, express.static(join(__dirname, '..', source)));
+});
 
 apps.forEach(({ path, port, websocket }) => {
   if (websocket) {
@@ -35,8 +38,10 @@ server.listen(PORT);
 
 console.log(`Moderator gateway is running`);
 
-apps.forEach(({ name, path }) => {
-  console.log(`> [${name}] http://localhost:${PORT}${path}`);
+assets.forEach(({ name, serve }) => {
+  console.log(`> [Asset] ${name} - http://localhost:${PORT}${serve}`);
 });
 
-console.log(`> [static assets] http://localhost:${PORT}${STATIC_PATH}`);
+apps.forEach(({ name, path }) => {
+  console.log(`> [App] ${name} - http://localhost:${PORT}${path}`);
+});

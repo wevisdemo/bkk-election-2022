@@ -1,2 +1,2 @@
-import '../../../tailwind/style.css';
+import '../style.css';
 import './navbar';
