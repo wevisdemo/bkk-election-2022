@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="fixed top-0 left-0 right-0 bottom-0 bg-black z-0"></div>
+    <ui-navbar></ui-navbar>
 
     <div class="relative z-50">
       <div class="hero w-full h-screen px-10">

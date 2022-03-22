@@ -19,6 +19,9 @@ export default {
       { rel: 'stylesheet', href: '/static/fonts/typography.css' },
       { rel: 'stylesheet', href: '/ui/style.css' },
     ],
+    script: [
+      { src: '/ui/ui.es.js', type: 'module', async: 'true', body: true },
+    ],
   },
 
   mq: {
