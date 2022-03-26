@@ -24,16 +24,16 @@
     </transition>
     <svg ref="container">
       <g
-        v-for="(item, index) in date_group"
+        v-for="(item, index) in yAxis_group"
         :key="index"
         class="checks"
-        :transform="`translate(${xScale(item.date) - check_width / 2}, 0)`"
+        :transform="`translate(${xScale(item) - check_width / 2}, 0)`"
       >
         <g
           :style="{
             opacity:
-              hover == item.date_display ||
-              (active == item.date_display && !hover)
+              dateFormat(hover) === dateFormat(item) ||
+              (dateFormat(active) === dateFormat(item) && !hover)
                 ? 1
                 : 0,
           }"
@@ -51,10 +51,14 @@
 
       <g class="x-tick">
         <g
-          v-for="(d, index) in date_group"
-          v-show="index == 0 || index == date_group.length - 1"
+          v-for="(d, index) in yAxis_group"
+          v-show="
+            type === 'engagement'
+              ? index == 0 || index == yAxis_group.length - 1
+              : true
+          "
           :key="index"
-          :transform="`translate(${xScale(d.date)}, 0)`"
+          :transform="`translate(${xScale(d)}, 0)`"
           :font-size="$mq === 'mobile' ? 10 : 13"
           fill="#5a5033"
         >
@@ -63,12 +67,12 @@
             :text-anchor="
               index === 0
                 ? 'start'
-                : index === date_group.length - 1
+                : index === yAxis_group.length - 1
                 ? 'end'
                 : 'middle'
             "
           >
-            {{ d.date_display }}
+            {{ dateDisplay(d) }}
           </text>
         </g>
       </g>
@@ -130,8 +134,8 @@
               :cy="yScale(d.value)"
               r="4"
               :style="`opacity: ${
-                hover == d.date_display ||
-                (index == item.data.length - 1 && animate_start)
+                dateFormat(hover) === dateFormat(d.date) ||
+                (index === item.data.length - 1 && animate_start)
                   ? '1'
                   : '0'
               }`"
@@ -190,12 +194,16 @@
 
       <g class="checks-group" @mouseleave="hover = ''">
         <g
-          v-for="(item, index) in date_group"
+          v-for="(item, index) in yAxis_group"
           :key="index"
           class="checks"
-          :transform="`translate(${xScale(item.date) - check_width / 2}, 0)`"
-          @click="animate_finish ? onClickChecks(item.date_display) : false"
-          @mouseover="checksEvent(item.date_display)"
+          :transform="`translate(${xScale(item) - check_width / 2}, 0)`"
+          @click="
+            animate_finish && type === 'engagement'
+              ? onClickChecks(item)
+              : false
+          "
+          @mouseover="checksEvent(item)"
         >
           <rect
             class="check-rect"
@@ -209,34 +217,6 @@
         </g>
       </g>
     </svg>
-    <!-- <div class="legend-wrapper">
-      <div class="legend">
-        <div
-          v-for="(item, index) in candidates"
-          :key="index"
-          :class="[
-            'legend-group',
-            {
-              'not-active':
-                $mq === 'mobile' && active.menu && active.menu !== item.menu,
-            },
-          ]"
-          :style="
-            item.menu === 'เครื่องดื่มแอลกอฮอล์' && $mq === 'mobile'
-              ? 'transform: translateX(8%);'
-              : ''
-          "
-        >
-          <span @mouseover="handleActiveLegend(item)" @mouseleave="active = {}">
-            <div class="circle" :style="`background: ${item.color}`"></div>
-            <div class="label text-1 bold" :style="`color: ${item.color}`">
-              <span class="name">{{ item.menu }}</span>
-              <span class="rank">{{ item.max }}</span>
-            </div>
-          </span>
-        </div>
-      </div>
-    </div> -->
   </div>
 </template>
 
@@ -255,8 +235,12 @@ export default {
       default: false,
     },
     active_chart: {
-      type: String,
+      type: null,
       default: '',
+    },
+    type: {
+      type: String,
+      default: 'engagement',
     },
   },
   data() {
@@ -314,15 +298,20 @@ export default {
           '#999999',
         ])
     },
-    date_group() {
-      const group = _.groupBy(this.data_set, 'date_display')
-      return Object.keys(group).map((d) => ({
-        date: new Date(d),
-        date_display: d,
-      }))
+    yAxis_group() {
+      // let data
+
+      // if (this.type === 'engagement') {
+      const group = _.groupBy(this.data_set, 'date')
+      const data = Object.keys(group).map((d) => new Date(d))
+      // } else {
+      //   const group = _.groupBy(this.data_set, 'value')
+      //   data = Object.keys(group)
+      // }
+      return data
     },
     check_width() {
-      const { length } = this.date_group
+      const { length } = this.yAxis_group
       const contentWidth = this.width - this.margin.left - this.margin.right
       return contentWidth / (length - 1)
     },
@@ -333,9 +322,12 @@ export default {
         .y((d) => this.yScale(d.value))
     },
     yScale() {
+      const domain =
+        this.type === 'engagement' ? [0, this.maximum] : [this.maximum, 1]
+
       return d3
         .scaleLinear()
-        .domain([0, this.maximum])
+        .domain(domain)
         .range([this.height - this.margin.bottom, this.margin.top])
     },
     xScale() {
@@ -353,17 +345,12 @@ export default {
       return max > valueMax ? max : valueMax
     },
     yAxisTick() {
-      // const scale = this.maximum / this.step
-      // const axis = []
-      // for (let index = 0; index <= this.step - 1; index++) {
-      //   axis.push((scale * (index + 1)) | 0)
-      // }
-      // return axis
+      const ticks = this.type === 'engagement' ? 6 : this.yAxis_group.length
       const res = d3
         .scaleLinear()
         .domain([0, d3.max(this.data_set, (d) => d.value)])
         .nice()
-        .ticks(6)
+        .ticks(ticks)
       return res
     },
     ready() {
@@ -372,11 +359,10 @@ export default {
     active_data() {
       const value = this.hover || this.active
       const tooltipData = []
+      const order = this.type === 'engagement' ? 'desc' : 'asc'
       this.candidates.forEach((d) => {
         const arrData = _.get(d, 'data', [])
-        const find = arrData.find((d) => {
-          return d.date_display === value
-        })
+        const find = arrData.find((d) => this.isDateSame(d.date, value))
         if (!find) return
         const pick = _.pick(find, ['candidate', 'value'])
         tooltipData.push({
@@ -386,8 +372,8 @@ export default {
         })
       })
       return {
-        date: this.dateFormat(value),
-        candidates: _.orderBy(tooltipData, 'value', 'desc'),
+        date: this.dateDisplay(value),
+        candidates: _.orderBy(tooltipData, 'value', order),
       }
     },
   },
@@ -458,8 +444,11 @@ export default {
       this.setAnimatePathLabel()
       this.setAnimatePathLine()
     },
-    dateFormat(date) {
+    dateDisplay(date) {
       return moment(date).add(543, 'years').format('DD MMM YY')
+    },
+    dateFormat(date) {
+      return moment(date).format('yyyy-MM-DD')
     },
     handleActiveLegend(item) {
       if (_.isEqual(this.active, item)) {
@@ -471,7 +460,9 @@ export default {
     async leftTooltip() {
       const margin = 30 + this.margin.left
       const value = this.hover || this.active
-      let left = this.xScale(new Date(value)) - margin
+      let left =
+        this.xScale(this.type === 'engagement' ? new Date(value) : value) -
+        margin
       await this.$nextTick()
       const elTooltip = this.$refs.tooltip
       if (!elTooltip) return
@@ -498,6 +489,9 @@ export default {
           .delay(100)
           .attr('stroke-dashoffset', 0)
       })
+    },
+    isDateSame(date, val) {
+      return moment(date).isSame(new Date(val))
     },
     setAnimatePathLabel() {
       const _self = this
@@ -609,7 +603,11 @@ export default {
       console.log(candidates)
     },
     checksEvent: _.throttle(function (val) {
-      this.hover = val
+      if (this.type === 'engagement') {
+        this.hover = this.dateFormat(val)
+      } else {
+        this.hover = val
+      }
     }, 150),
     sumRangeTimeData(data = []) {
       return data
@@ -662,7 +660,10 @@ export default {
         .transition()
         .duration(600)
         .attr('transform', (group) => {
-          const d = group.data.find((d) => d.date_display === date) || {}
+          const d =
+            group.data.find(
+              (d) => this.dateFormat(d.date) === this.dateFormat(date)
+            ) || {}
           return `translate(${this.xScale(d.date)},${this.yScale(d.value)})`
         })
     },

@@ -66,7 +66,7 @@
               <el-date-picker
                 v-model="daterange"
                 type="daterange"
-                value-format="yyyy-MM-dd"
+                :editable="false"
                 placeholder="Pick a day"
                 :picker-options="pickerOptions"
               >
@@ -132,6 +132,7 @@
                 v-if="render_chart && line_chart_data != 0"
                 :data_set="line_chart_data"
                 :active_chart.sync="active_date"
+                :type="data_type"
                 @change="onChangeActive"
               />
             </client-only>
@@ -152,7 +153,6 @@
                   v-model="active_date"
                   type="date"
                   :editable="false"
-                  value-format="yyyy-MM-dd"
                   placeholder="Pick a day"
                   :picker-options="pickerDateActiveOptions"
                 >
@@ -258,6 +258,7 @@ export default {
   },
   data() {
     return {
+      line_chart_data: [],
       render_chart: true,
       current_chart_data: {},
       posts: [
@@ -328,7 +329,7 @@ export default {
     format() {
       return d3.format(',')
     },
-    line_chart_data() {
+    engagement() {
       const data = [
         {
           date: '2022-01-01',
@@ -400,6 +401,61 @@ export default {
         }))
         .value()
     },
+    rank() {
+      const data = [
+        {
+          date: '2022-01-01',
+          candidate: 'ชัชชาติ',
+          value: 2,
+        },
+        {
+          date: '2022-01-01',
+          candidate: 'รสนา',
+          value: 1,
+        },
+        {
+          date: '2022-01-01',
+          candidate: 'สุชัชวีร์',
+          value: 3,
+        },
+        {
+          date: '2022-01-02',
+          candidate: 'ชัชชาติ',
+          value: 2,
+        },
+        {
+          date: '2022-01-02',
+          candidate: 'รสนา',
+          value: 1,
+        },
+        {
+          date: '2022-01-02',
+          candidate: 'สุชัชวีร์',
+          value: 3,
+        },
+        {
+          date: '2022-01-03',
+          candidate: 'ชัชชาติ',
+          value: 1,
+        },
+        {
+          date: '2022-01-03',
+          candidate: 'รสนา',
+          value: 3,
+        },
+        {
+          date: '2022-01-03',
+          candidate: 'สุชัชวีร์',
+          value: 2,
+        },
+      ]
+
+      return data.map((d) => ({
+        ...d,
+        date: new Date(d.date),
+        date_display: d.date,
+      }))
+    },
     pickerOptions() {
       return {
         disabledDate: (date) => {
@@ -408,7 +464,7 @@ export default {
           const end = _.get(extent, '[1]')
           const isBetween =
             moment(date).isSameOrBefore(end) &&
-            moment(date).isSameOrAfter(start)
+            moment(date).isSameOrAfter(moment(start).subtract(1, 'd'))
           return !isBetween
         },
       }
@@ -439,6 +495,14 @@ export default {
     },
   },
   watch: {
+    data_type: {
+      immediate: true,
+      handler(val) {
+        this.reRenderChart()
+        this.line_chart_data =
+          val === 'engagement' ? this.engagement : this.rank
+      },
+    },
     // end_input_date() {
     //   const isAfter = moment(this.active_date).isAfter(this.end_input_date)
     //   if (!isAfter) return
@@ -452,8 +516,8 @@ export default {
   },
   methods: {
     setDaterange() {
-      const start = d3.min(this.line_chart_data, (d) => d.date_display)
-      const end = d3.max(this.line_chart_data, (d) => d.date_display)
+      const start = d3.min(this.line_chart_data, (d) => d.date)
+      const end = d3.max(this.line_chart_data, (d) => d.date)
       this.daterange = [start, end]
     },
     reRenderChart() {
