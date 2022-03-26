@@ -409,7 +409,7 @@ export default {
       if (val && !this.animate_start) this.animate_start = true
     },
     active_chart(val) {
-      this.activc = val
+      this.onClickChecks(val)
     },
   },
   beforeMount() {
@@ -659,7 +659,7 @@ export default {
       d3.selectAll('.labels-group')
         .data(this.candidates)
         .transition()
-        .duration(500)
+        .duration(600)
         .attr('transform', (group) => {
           const d = group.data.find((d) => d.date_display === date) || {}
           return `translate(${this.xScale(d.date)},${this.yScale(d.value)})`

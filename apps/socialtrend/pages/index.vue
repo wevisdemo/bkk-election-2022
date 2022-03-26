@@ -100,11 +100,7 @@
               </el-select>
             </div>
             <div class="mt-7">
-              <el-checkbox-group
-                v-model="candidate_filter"
-                size="small"
-                @change="handleCandidateFilter"
-              >
+              <el-checkbox-group v-model="candidate_filter" size="small">
                 <el-checkbox
                   v-for="item in candidate_options"
                   :key="item.value"
@@ -129,7 +125,7 @@
           <div class="chart">
             <client-only>
               <LineChartRace
-                v-if="render_chart"
+                v-if="render_chart && line_chart_data != 0"
                 :data_set="line_chart_data"
                 :active_chart.sync="active_date"
               />
@@ -150,6 +146,8 @@
                 <el-date-picker
                   v-model="active_date"
                   type="date"
+                  :editable="false"
+                  value-format="yyyy-MM-dd"
                   placeholder="Pick a day"
                 >
                 </el-date-picker>
@@ -275,26 +273,22 @@ export default {
           value: '1',
         },
       ],
-      candidate: '1',
+      candidate: 'ชัชชาติ',
       candidate_options: [
         {
           label: 'ชัชชาติ',
-          value: '1',
+          value: 'ชัชชาติ',
         },
         {
-          label: 'ชัชชาติ',
-          value: '2',
+          label: 'รสนา',
+          value: 'รสนา',
         },
         {
-          label: 'ชัชชาติ',
-          value: '3',
-        },
-        {
-          label: 'ชัชชาติ',
-          value: '4',
+          label: 'สุชัชวีร์',
+          value: 'สุชัชวีร์',
         },
       ],
-      candidate_filter: ['1', '2', '3', '4'],
+      candidate_filter: ['ชัชชาติ', 'รสนา', 'สุชัชวีร์'],
     }
   },
   computed: {
@@ -364,11 +358,14 @@ export default {
           value: 4563445,
         },
       ]
-      return data.map((d) => ({
-        ...d,
-        date: new Date(d.date),
-        date_display: d.date,
-      }))
+      return _.chain(data)
+        .filter((d) => this.candidate_filter.includes(d.candidate))
+        .map((d) => ({
+          ...d,
+          date: new Date(d.date),
+          date_display: d.date,
+        }))
+        .value()
     },
     current_chart_active() {
       return _.get(this.posts, `candidates[${this.carousel_index}]`, {})
@@ -378,7 +375,7 @@ export default {
     // window.registerUICustomElements()
   },
   methods: {
-    handleCandidateFilter() {
+    reRenderChart() {
       this.render_chart = false
       setTimeout(() => {
         this.render_chart = true
