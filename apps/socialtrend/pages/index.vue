@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="fixed top-0 left-0 right-0 bottom-0 bg-black z-0"></div>
-    <ui-navbar></ui-navbar>
+    <!-- <ui-navbar></ui-navbar> -->
 
     <div class="relative z-50">
       <div class="hero w-full h-screen px-10">
@@ -100,7 +100,11 @@
               </el-select>
             </div>
             <div class="mt-7">
-              <el-checkbox-group v-model="candidate_filter" size="small">
+              <el-checkbox-group
+                v-model="candidate_filter"
+                size="small"
+                @change="handleCandidateFilter"
+              >
                 <el-checkbox
                   v-for="item in candidate_options"
                   :key="item.value"
@@ -122,15 +126,27 @@
         </el-radio-group>
 
         <div class="chart-wrapper mt-4">
-          <div class="chart bg-slate-400"></div>
+          <div class="chart">
+            <client-only>
+              <LineChartRace
+                v-if="render_chart"
+                :data_set="line_chart_data"
+                :active_chart.sync="active_date"
+              />
+            </client-only>
+          </div>
           <div class="mt-3">
             <div
               class="typo-b5 text-white text-center flex flex-col items-center justify-center"
             >
-              กดที่ชาร์ทเพื่อดูโพสต์ที่ได้รับความสนใจสูงที่สุดของแต่ละคน
-
-              <div class="flex items-center">
-                โพสต์ที่ได้รับความสนใจสูงที่สุดเกี่ยวกับวิโรจน์ ในวันที่
+              <div v-if="active_date" class="flex items-center">
+                โพสต์ที่ได้รับความสนใจสูงที่สุดเกี่ยวกับ
+                <span
+                  class="font-bold"
+                  :style="`color: ${current_chart_active.color}`"
+                  >{{ current_chart_active.menu }}
+                </span>
+                ในวันที่
                 <el-date-picker
                   v-model="active_date"
                   type="date"
@@ -138,11 +154,48 @@
                 >
                 </el-date-picker>
               </div>
+
+              <template v-else>
+                กดที่ชาร์ทเพื่อดูโพสต์ที่ได้รับความสนใจสูงที่สุดของแต่ละคน
+              </template>
             </div>
 
-            <el-carousel height="150px" class="mt-8">
-              <el-carousel-item v-for="item in 4" :key="item">
-                <h3 class="small">{{ item }}</h3>
+            <el-carousel
+              v-if="posts != 0"
+              :autoplay="false"
+              :loop="false"
+              class="mt-8"
+              @change="(index) => (carousel_index = index)"
+            >
+              <el-carousel-item
+                v-for="(item, index) in posts.candidates"
+                :key="index"
+                :name="item.date"
+                class="text-black"
+              >
+                <div class="bg-white rounded-md p-5">
+                  <div class="flex justify-between">
+                    <div class="">
+                      <div class="font-bold typo-b5">Voice TV</div>
+                      <div class="typo-b7 opacity-50">21 ม.ค. 2564</div>
+                    </div>
+                  </div>
+
+                  <p class="typo-b5 mt-2 pb-5 border-b">
+                    'พิธา' ขออย่าคาดเดา 'ผู้สมัครผู้ว่าฯ กทม.' ก้าวไกล ให้รอ 23
+                    ม.ค. เชื่อสร้างความเปลี่ยนแปลงได้ ส่วนความขัดแย้งใน พปชร.
+                    เชื่อกระทบเสถียรภาพรัฐบาล
+                    ระบุฝ่ายค้านจะเป็นเสาหลักช่วงรัฐบาลไม่มีสมาธิ ที่รัฐสภา พิธา
+                    ลิ้มเจริญรัตน์ ส.ส.บัญชีรายชื่อ และหัวหน้าพรรคก้าวไกล
+                    ให้สัมภาษณ์ถึงการเปิดตัวผู้สมัครผู้ว่าฯกทม.
+                    ว่าขณะนี้เป็นการคาดเดากันไปต่างๆนาน ให้รอดูวันที่ 23 ม.ค.นี้
+                    ทั้งนี้ ....
+                  </p>
+
+                  <div class="typo-b6 mt-5">
+                    <span class="font-bold">19,361 </span> Engagement
+                  </div>
+                </div>
               </el-carousel-item>
             </el-carousel>
           </div>
@@ -191,11 +244,19 @@
 
 <script>
 import * as d3 from 'd3'
+import _ from 'lodash'
+import LineChartRace from '~/components/LineChartRace'
 
 export default {
   name: 'IndexPage',
+  components: {
+    LineChartRace,
+  },
   data() {
     return {
+      render_chart: true,
+      posts: [],
+      carousel_index: 0,
       data_type: 'engagement',
       start_date_input: '',
       end_date_input: '',
@@ -240,11 +301,90 @@ export default {
     format() {
       return d3.format(',')
     },
+    line_chart_data() {
+      const data = [
+        {
+          date: '2022-01-01',
+          candidate: 'ชัชชาติ',
+          value: 240000,
+        },
+        {
+          date: '2022-01-01',
+          candidate: 'รสนา',
+          value: 4235234,
+        },
+        {
+          date: '2022-01-01',
+          candidate: 'สุชัชวีร์',
+          value: 5685457,
+        },
+        {
+          date: '2022-01-02',
+          candidate: 'ชัชชาติ',
+          value: 5677878,
+        },
+        {
+          date: '2022-01-02',
+          candidate: 'รสนา',
+          value: 5464356,
+        },
+        {
+          date: '2022-01-02',
+          candidate: 'สุชัชวีร์',
+          value: 4564545,
+        },
+        {
+          date: '2022-01-03',
+          candidate: 'ชัชชาติ',
+          value: 6677848,
+        },
+        {
+          date: '2022-01-03',
+          candidate: 'รสนา',
+          value: 455456,
+        },
+        {
+          date: '2022-01-03',
+          candidate: 'สุชัชวีร์',
+          value: 3432645,
+        },
+        {
+          date: '2022-01-04',
+          candidate: 'ชัชชาติ',
+          value: 5567878,
+        },
+        {
+          date: '2022-01-04',
+          candidate: 'รสนา',
+          value: 456342,
+        },
+        {
+          date: '2022-01-04',
+          candidate: 'สุชัชวีร์',
+          value: 4563445,
+        },
+      ]
+      return data.map((d) => ({
+        ...d,
+        date: new Date(d.date),
+        date_display: d.date,
+      }))
+    },
+    current_chart_active() {
+      return _.get(this.posts, `candidates[${this.carousel_index}]`, {})
+    },
   },
   mounted() {
-    window.registerUICustomElements()
+    // window.registerUICustomElements()
   },
-  methods: {},
+  methods: {
+    handleCandidateFilter() {
+      this.render_chart = false
+      setTimeout(() => {
+        this.render_chart = true
+      }, 0)
+    },
+  },
 }
 </script>
 
