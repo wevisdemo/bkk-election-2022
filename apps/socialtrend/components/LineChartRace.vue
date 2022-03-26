@@ -633,6 +633,7 @@ export default {
       this.active = date
       // this.old_active_date = _.clone(this.active_date) || 2020
       // this.active_date = item
+      this.$emit('change', this.active_data)
       this.$emit('update:active_chart', date)
       // if (this.old_active_date === this.active_date) return
       // animate path line

@@ -62,20 +62,24 @@
 
           <div class="flex flex-col items-center py-7">
             <div class="flex items-center text-center text-white">
-              <span class="mr-3">วันที่</span>
+              <!-- <span class="mr-3">วันที่</span> -->
               <el-date-picker
-                v-model="start_date_input"
-                type="date"
+                v-model="daterange"
+                type="daterange"
+                value-format="yyyy-MM-dd"
                 placeholder="Pick a day"
+                :picker-options="pickerOptions"
               >
               </el-date-picker>
-              <span class="ml-3 mr-3">ถึง</span>
-              <el-date-picker
-                v-model="end_date_input"
+              <!-- <span class="ml-3 mr-3">ถึง</span> -->
+              <!-- <el-date-picker
+                v-model="end_input_date"
                 type="date"
+                value-format="yyyy-MM-dd"
                 placeholder="Pick a day"
+                :picker-options="pickerOptions"
               >
-              </el-date-picker>
+              </el-date-picker> -->
             </div>
             <div class="flex items-center text-center text-white mt-6">
               <span class="mr-3">ดู</span>
@@ -128,6 +132,7 @@
                 v-if="render_chart && line_chart_data != 0"
                 :data_set="line_chart_data"
                 :active_chart.sync="active_date"
+                @change="onChangeActive"
               />
             </client-only>
           </div>
@@ -140,7 +145,7 @@
                 <span
                   class="font-bold"
                   :style="`color: ${current_chart_active.color}`"
-                  >{{ current_chart_active.menu }}
+                  >{{ current_chart_active.candidate }}
                 </span>
                 ในวันที่
                 <el-date-picker
@@ -149,6 +154,7 @@
                   :editable="false"
                   value-format="yyyy-MM-dd"
                   placeholder="Pick a day"
+                  :picker-options="pickerDateActiveOptions"
                 >
                 </el-date-picker>
               </div>
@@ -159,14 +165,14 @@
             </div>
 
             <el-carousel
-              v-if="posts != 0"
+              v-if="posts != 0 && active_date"
               :autoplay="false"
               :loop="false"
               class="mt-8"
               @change="(index) => (carousel_index = index)"
             >
               <el-carousel-item
-                v-for="(item, index) in posts.candidates"
+                v-for="(item, index) in posts"
                 :key="index"
                 :name="item.date"
                 class="text-black"
@@ -174,24 +180,23 @@
                 <div class="bg-white rounded-md p-5">
                   <div class="flex justify-between">
                     <div class="">
-                      <div class="font-bold typo-b5">Voice TV</div>
-                      <div class="typo-b7 opacity-50">21 ม.ค. 2564</div>
+                      <div class="font-bold typo-b5">{{ item.author }}</div>
+                      <div class="typo-b7 opacity-50">
+                        {{ dateFormat(item.created_time) }}
+                      </div>
                     </div>
                   </div>
 
-                  <p class="typo-b5 mt-2 pb-5 border-b">
-                    'พิธา' ขออย่าคาดเดา 'ผู้สมัครผู้ว่าฯ กทม.' ก้าวไกล ให้รอ 23
-                    ม.ค. เชื่อสร้างความเปลี่ยนแปลงได้ ส่วนความขัดแย้งใน พปชร.
-                    เชื่อกระทบเสถียรภาพรัฐบาล
-                    ระบุฝ่ายค้านจะเป็นเสาหลักช่วงรัฐบาลไม่มีสมาธิ ที่รัฐสภา พิธา
-                    ลิ้มเจริญรัตน์ ส.ส.บัญชีรายชื่อ และหัวหน้าพรรคก้าวไกล
-                    ให้สัมภาษณ์ถึงการเปิดตัวผู้สมัครผู้ว่าฯกทม.
-                    ว่าขณะนี้เป็นการคาดเดากันไปต่างๆนาน ให้รอดูวันที่ 23 ม.ค.นี้
-                    ทั้งนี้ ....
-                  </p>
+                  <p
+                    v-html="truncate(item.text)"
+                    class="typo-b5 mt-2 pb-5 border-b"
+                  ></p>
 
                   <div class="typo-b6 mt-5">
-                    <span class="font-bold">19,361 </span> Engagement
+                    <span class="font-bold"
+                      >{{ format(item.engagement_count) }}
+                    </span>
+                    Engagement
                   </div>
                 </div>
               </el-carousel-item>
@@ -243,6 +248,7 @@
 <script>
 import * as d3 from 'd3'
 import _ from 'lodash'
+import moment from 'moment'
 import LineChartRace from '~/components/LineChartRace'
 
 export default {
@@ -253,11 +259,38 @@ export default {
   data() {
     return {
       render_chart: true,
-      posts: [],
+      current_chart_data: {},
+      posts: [
+        {
+          channel: 'Facebook',
+          author: 'abc',
+          candidate: 'ชัชชาติ',
+          created_time: '2022-03-22T16:45:09.641Z',
+          text: 'ปาร์ตี้เคลียร์ครัวซองต์สเตชั่นมาร์ก ซิตี้ คาปูชิโนติวเตอร์ฟรุตสต๊อก เตี๊ยมชัวร์สัมนาตัวตนโอเปอเรเตอร์ แคมเปญดีลเลอร์ ไฮกุ เซ็นเซอร์ อุด้งโยโย่ โต๊ะจีนรวมมิตร ทาวน์เฮาส์รีโมทเทวาเฝอ ศิลปากรเจไดรีสอร์ทอาว์ กู๋โปรโมชั่นเพนกวิน ม้าหินอ่อน วิดีโอเอ็นเตอร์เทนรามาธิบดีจิตพิสัยแชมพู ตู้เซฟสต็อกซัมเมอร์ศิลปากร เทปวีไอพีโปรเจกเตอร์เบญจมบพิตรช็อค',
+          engagement_count: 123,
+        },
+        {
+          channel: 'Facebook',
+          author: 'abc',
+          candidate: 'รสนา',
+          created_time: '2022-03-22T16:45:09.641Z',
+          text: 'ปาร์ตี้เคลียร์ครัวซองต์สเตชั่นมาร์ก ซิตี้ คาปูชิโนติวเตอร์ฟรุตสต๊อก เตี๊ยมชัวร์สัมนาตัวตนโอเปอเรเตอร์ แคมเปญดีลเลอร์ ไฮกุ เซ็นเซอร์ อุด้งโยโย่ โต๊ะจีนรวมมิตร ทาวน์เฮาส์รีโมทเทวาเฝอ ศิลปากรเจไดรีสอร์ทอาว์ กู๋โปรโมชั่นเพนกวิน ม้าหินอ่อน วิดีโอเอ็นเตอร์เทนรามาธิบดีจิตพิสัยแชมพู ตู้เซฟสต็อกซัมเมอร์ศิลปากร เทปวีไอพีโปรเจกเตอร์เบญจมบพิตรช็อค',
+          engagement_count: 123,
+        },
+        {
+          channel: 'Facebook',
+          author: 'abc',
+          candidate: 'สุชัชวีร์',
+          created_time: '2022-03-22T16:45:09.641Z',
+          text: 'ปาร์ตี้เคลียร์ครัวซองต์สเตชั่นมาร์ก ซิตี้ คาปูชิโนติวเตอร์ฟรุตสต๊อก เตี๊ยมชัวร์สัมนาตัวตนโอเปอเรเตอร์ แคมเปญดีลเลอร์ ไฮกุ เซ็นเซอร์ อุด้งโยโย่ โต๊ะจีนรวมมิตร ทาวน์เฮาส์รีโมทเทวาเฝอ ศิลปากรเจไดรีสอร์ทอาว์ กู๋โปรโมชั่นเพนกวิน ม้าหินอ่อน วิดีโอเอ็นเตอร์เทนรามาธิบดีจิตพิสัยแชมพู ตู้เซฟสต็อกซัมเมอร์ศิลปากร เทปวีไอพีโปรเจกเตอร์เบญจมบพิตรช็อค',
+          engagement_count: 123,
+        },
+      ],
       carousel_index: 0,
       data_type: 'engagement',
-      start_date_input: '',
-      end_date_input: '',
+      daterange: [],
+      start_input_date: '2022-01-01',
+      // end_input_date: '',
       active_date: '',
       keyword: '1',
       keyword_options: [
@@ -367,19 +400,81 @@ export default {
         }))
         .value()
     },
-    current_chart_active() {
-      return _.get(this.posts, `candidates[${this.carousel_index}]`, {})
+    pickerOptions() {
+      return {
+        disabledDate: (date) => {
+          const extent = d3.extent(this.line_chart_data, (d) => d.date)
+          const start = _.get(extent, '[0]')
+          const end = _.get(extent, '[1]')
+          const isBetween =
+            moment(date).isSameOrBefore(end) &&
+            moment(date).isSameOrAfter(start)
+          return !isBetween
+        },
+      }
     },
+    pickerDateActiveOptions() {
+      return {
+        disabledDate: (date) => {
+          const start = _.get(this.daterange, '[0]')
+          const end = _.get(this.daterange, '[1]')
+          const isBetween =
+            moment(date).isSameOrBefore(end) &&
+            moment(date).isSameOrAfter(start)
+          return !isBetween
+        },
+      }
+    },
+    // current_chart_active() {
+    //   // const data = _.orderBy(this.posts, 'engagement_count', 'desc')
+    //   console.log(_.get(this.posts, `[${this.carousel_index}]`, {}))
+    //   return _.get(this.posts, `[${this.carousel_index}]`, {})
+    // },
+    current_chart_active() {
+      return _.get(
+        this.current_chart_data,
+        `candidates[${this.carousel_index}]`,
+        {}
+      )
+    },
+  },
+  watch: {
+    // end_input_date() {
+    //   const isAfter = moment(this.active_date).isAfter(this.end_input_date)
+    //   if (!isAfter) return
+    //   this.active_date = this.end_input_date
+    // },
   },
   mounted() {
     // window.registerUICustomElements()
+
+    this.setDaterange()
   },
   methods: {
+    setDaterange() {
+      const start = d3.min(this.line_chart_data, (d) => d.date_display)
+      const end = d3.max(this.line_chart_data, (d) => d.date_display)
+      this.daterange = [start, end]
+    },
     reRenderChart() {
       this.render_chart = false
       setTimeout(() => {
         this.render_chart = true
       }, 0)
+    },
+    truncate(str = '') {
+      const maximum = 350
+
+      return str.length > maximum
+        ? str.substr(0, maximum - 1) + '&hellip;'
+        : str
+    },
+    dateFormat(date) {
+      return moment(date).add(543, 'years').format('DD MMM YYYY')
+    },
+    onChangeActive(val) {
+      this.carousel_index = 0
+      this.current_chart_data = val
     },
   },
 }
