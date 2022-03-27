@@ -23,6 +23,7 @@
       </div>
     </transition>
     <svg ref="container">
+      <g class="axis-group"></g>
       <g
         v-for="(item, index) in yAxis_group"
         :key="index"
@@ -31,11 +32,7 @@
       >
         <g
           :style="{
-            opacity:
-              dateFormat(hover) === dateFormat(item) ||
-              (dateFormat(active) === dateFormat(item) && !hover)
-                ? 1
-                : 0,
+            opacity: hover === item || (active === item && !hover) ? 1 : 0,
           }"
         >
           <line
@@ -49,7 +46,7 @@
         </g>
       </g>
 
-      <g class="x-tick">
+      <!-- <g class="x-tick">
         <g
           v-for="(d, index) in yAxis_group"
           v-show="
@@ -75,9 +72,9 @@
             {{ dateDisplay(d) }}
           </text>
         </g>
-      </g>
+      </g> -->
 
-      <g class="y-tick">
+      <!-- <g class="y-tick">
         <text
           v-for="(item, index) in yAxisTick"
           :key="`${item}${index}`"
@@ -92,10 +89,10 @@
             {{ formatThousands(item) }}
           </tspan>
         </text>
-      </g>
+      </g> -->
 
       <g class="y-axis-line">
-        <line
+        <!-- <line
           v-for="(item, index) in yAxisTick"
           :key="`${item}${index}`"
           :x1="margin.left"
@@ -103,22 +100,11 @@
           :x2="width - margin.right"
           :y2="yScale(item)"
           stroke="#DADCE0"
-        />
+        /> -->
       </g>
 
       <g class="g-lines">
-        <g
-          v-for="item in candidates"
-          :key="item.menu"
-          :class="[
-            'line-group',
-            {
-              'not-active': active.menu && active.menu !== item.menu,
-            },
-          ]"
-          @click="handleActiveLegend(item)"
-          @mouseleave="active = ''"
-        >
+        <g v-for="item in candidates" :key="item.menu" class="line-group">
           <g>
             <circle
               :fill="item.color"
@@ -134,7 +120,7 @@
               :cy="yScale(d.value)"
               r="4"
               :style="`opacity: ${
-                dateFormat(hover) === dateFormat(d.date) ||
+                hover === d.date ||
                 (index === item.data.length - 1 && animate_start)
                   ? '1'
                   : '0'
@@ -154,41 +140,25 @@
           </g>
 
           <g :id="item.menu" class="labels-group">
-            <g class="end-circle-container">
-              <!-- <circle class="circle bg" r="13" fill="#ffffff"></circle> -->
-              <circle class="circle bg" :fill="item.color" r="4" />
+            <!-- <g class="end-circle-container"> -->
+            <!-- <circle class="circle bg" r="13" fill="#ffffff"></circle> -->
+            <!-- <circle class="circle bg" :fill="item.color" r="4" /> -->
 
-              <circle
-                class="circle bg"
-                :r="circleSize(item.max)"
-                :fill="item.color"
-              ></circle>
-              <image
-                :href="require(`~/assets/images/Vector.png`)"
-                :height="circleSize(item.max) * 2 - 4"
-                :width="circleSize(item.max) * 2 - 4"
-                :x="circleSize(item.max) * -1 + 2"
-                :y="circleSize(item.max) * -1 + 2"
-              ></image>
-            </g>
-            <!-- <g v-if="$mq !== 'mobile'" class="name">
-            <text
-              class="name-bg"
-              alignment-baseline="central"
-              dominant-baseline="central"
-              stroke-width="0.25em"
+            <circle
+              class="circle"
+              :r="circleSize(item.max)"
               :fill="item.color"
-              font-size="14"
-              x="22"
-              y="0"
-              font-weight="bold"
-              opacity="1"
-            >
-              <tspan class="name-label">{{ item.menu }}</tspan>
-              <tspan class="rank">{{ item.max }}</tspan>
-            </text>
-          </g> -->
+            ></circle>
+            <image
+              class="image"
+              :href="require(`~/assets/images/Vector.png`)"
+              :height="circleSize(item.max) * 2 - 4"
+              :width="circleSize(item.max) * 2 - 4"
+              :x="circleSize(item.max) * -1 + 2"
+              :y="circleSize(item.max) * -1 + 2"
+            ></image>
           </g>
+          <!-- </g> -->
         </g>
       </g>
 
@@ -224,6 +194,7 @@
 import _ from 'lodash'
 import * as d3 from 'd3'
 import moment from 'moment'
+import numeral from 'numeral'
 export default {
   props: {
     data_set: {
@@ -252,28 +223,21 @@ export default {
       // duration: 8000,
       hover: '',
       active: '',
-      active_date: '',
-      old_active_date: 2020,
       candidates: [],
       animate_finish: false,
       animate_start: false,
-      // margin: { top: 40, left: 70, right: 150, bottom: 40 },
+      margin: { top: 30, left: 30, right: 30, bottom: 30 },
     }
   },
   computed: {
     duration() {
       return this.$mq !== 'desktop' ? 7500 : 12500
     },
-    margin() {
-      return {
-        top: 30,
-        left: 24,
-        right: 24,
-        bottom: 30,
-      }
+    innerWidth() {
+      return this.width - this.margin.left - this.margin.right
     },
-    formatkilo() {
-      return d3.format('~s')
+    innerHeight() {
+      return this.height - this.margin.top - this.margin.bottom
     },
     formatThousands() {
       return d3.format(',')
@@ -303,12 +267,11 @@ export default {
 
       // if (this.type === 'engagement') {
       const group = _.groupBy(this.data_set, 'date')
-      const data = Object.keys(group).map((d) => new Date(d))
+      return Object.keys(group)
       // } else {
       //   const group = _.groupBy(this.data_set, 'value')
       //   data = Object.keys(group)
       // }
-      return data
     },
     check_width() {
       const { length } = this.yAxis_group
@@ -320,39 +283,83 @@ export default {
         .line()
         .x((d) => this.xScale(d.date))
         .y((d) => this.yScale(d.value))
-    },
-    yScale() {
-      const domain =
-        this.type === 'engagement' ? [0, this.maximum] : [this.maximum, 1]
 
-      return d3
-        .scaleLinear()
-        .domain(domain)
-        .range([this.height - this.margin.bottom, this.margin.top])
+      // let fnLine = d3
+      //   .line()
+      //   .x((d) => this.xScale(d.date))
+      //   .y((d) => this.yScale(d.value))
+
+      // if (this.type === 'rank') {
+      //   fnLine = fnLine.curve(d3.curveMonotoneX)
+      // }
+
+      // return fnLine
     },
     xScale() {
       return d3
-        .scaleTime()
-        .domain(d3.extent(this.data_set, (d) => d.date))
+        .scalePoint()
+        .domain(this.yAxis_group)
         .range([this.margin.left, this.width - this.margin.right])
+    },
+    xAxis() {
+      const { length } = this.yAxis_group
+      let axis = d3
+        .axisBottom(this.xScale)
+        .tickFormat((d) => moment(d).add(543, 'years').format('DD/MM/YY'))
+        .ticks(length)
+        .tickSize(1)
+        .tickPadding(12)
+
+      if (this.type === 'engagement') {
+        axis = axis.tickValues(d3.extent(this.data_set, (d) => d.date))
+      }
+
+      return axis
+    },
+    // yAxisTick() {
+    //   return d3
+    //     .scaleLinear()
+    //     .domain([0, d3.max(this.data_set, (d) => d.value)])
+    // },
+    yScale() {
+      const maximum = d3.max(this.data_set, (d) => d.value)
+      // const domain = this.type === 'engagement' ? [0, maximum] : [maximum, 0]
+      // console.log(domain)
+
+      return d3
+        .scaleLinear()
+        .domain([0, maximum])
+        .range([this.height - this.margin.bottom, this.margin.top])
+        .nice()
+    },
+    yAxis() {
+      let ticks = 9
+      let tickFormat = (d) => this.formatkilo(d)
+      if (this.type === 'rank') {
+        const group = _.groupBy(this.data_set, 'candidate')
+        const keys = Object.keys(group)
+        ticks = keys.length
+        tickFormat = (d) => {
+          if (d === 0) return d
+          else return keys.length + 1 - d
+        }
+      }
+
+      return d3
+        .axisLeft(this.yScale)
+        .tickFormat(tickFormat)
+        .ticks(ticks)
+        .tickSize(-this.innerWidth)
+        .tickPadding(6)
     },
     transitionPath() {
       return d3.transition().ease(d3.easeLinear).duration(this.duration)
     },
-    maximum() {
-      const max = d3.max(this.yAxisTick)
-      const valueMax = d3.max(this.data_set, (d) => d.value)
-      return max > valueMax ? max : valueMax
-    },
-    yAxisTick() {
-      const ticks = this.type === 'engagement' ? 6 : this.yAxis_group.length
-      const res = d3
-        .scaleLinear()
-        .domain([0, d3.max(this.data_set, (d) => d.value)])
-        .nice()
-        .ticks(ticks)
-      return res
-    },
+    // maximum() {
+    //   const max = d3.max(this.yAxisTick)
+    //   const valueMax = d3.max(this.data_set, (d) => d.value)
+    //   return max > valueMax ? max : valueMax
+    // },
     ready() {
       return this.animate && this.candidates !== 0
     },
@@ -362,7 +369,7 @@ export default {
       const order = this.type === 'engagement' ? 'desc' : 'asc'
       this.candidates.forEach((d) => {
         const arrData = _.get(d, 'data', [])
-        const find = arrData.find((d) => this.isDateSame(d.date, value))
+        const find = arrData.find((d) => d.date === value)
         if (!find) return
         const pick = _.pick(find, ['candidate', 'value'])
         tooltipData.push({
@@ -407,13 +414,33 @@ export default {
   async mounted() {
     this.resizeHandler()
     await this.setDataGroupMenu()
+    const svg = d3.select('svg')
+
+    svg
+      .select('.axis-group')
+      .append('g')
+      .attr('class', 'y-axis')
+      .attr('transform', `translate(${this.margin.left}, 0)`)
+      .call(this.yAxis)
+      .call((d) => {
+        d.selectAll('.tick')
+          .append('line')
+          .attr('class', 'line-tick')
+          .attr('x2', 7)
+      })
+      .call((d) => {
+        d.selectAll('.tick text').style('text-anchor', 'start').attr('x', -26)
+      })
+
+    svg
+      .select('.axis-group')
+      .append('g')
+      .attr('class', 'x-axis')
+      .attr('transform', `translate(0, ${this.height - this.margin.top})`)
+      .call(this.xAxis)
+
     const linePath = d3.selectAll('.line-path').data(this.candidates)
-    const lineGroup = d3.selectAll('.line-group').data(this.candidates)
-    const labelsGroup = d3.selectAll('.labels-group').data(this.candidates)
-    d3.selectAll('.legend-group').data(this.candidates)
-    lineGroup.on('mouseover', function (d) {
-      d3.select(this).raise()
-    })
+    d3.selectAll('.labels-group').data(this.candidates)
     const line = linePath.selectAll('.line')
     line.each(function () {
       const select = d3.select(this)
@@ -422,16 +449,16 @@ export default {
         .attr('stroke-dashoffset', pathLength)
         .attr('stroke-dasharray', pathLength)
     })
-    const xScale = this.xScale
-    const yScale = this.yScale
-    labelsGroup.each(function (d) {
-      d3.select(this).attr(
-        'transform',
-        `translate(${xScale(_.get(d, 'data[0].date'))},${yScale(
-          _.get(d, 'data[0].value')
-        )})`
-      )
-    })
+    // const xScale = this.xScale
+    // const yScale = this.yScale
+    // labelsGroup.each(function (d) {
+    //   d3.select(this).attr(
+    //     'transform',
+    //     `translate(${xScale(_.get(d, 'data[0].date'))},${yScale(
+    //       _.get(d, 'data[0].value')
+    //     )})`
+    //   )
+    // })
 
     this.animateStart()
   },
@@ -443,6 +470,9 @@ export default {
     animateStart() {
       this.setAnimatePathLabel()
       this.setAnimatePathLine()
+    },
+    formatkilo(num) {
+      return numeral(num).format('0 a')
     },
     dateDisplay(date) {
       return moment(date).add(543, 'years').format('DD MMM YY')
@@ -460,9 +490,7 @@ export default {
     async leftTooltip() {
       const margin = 30 + this.margin.left
       const value = this.hover || this.active
-      let left =
-        this.xScale(this.type === 'engagement' ? new Date(value) : value) -
-        margin
+      let left = this.xScale(value) - margin
       await this.$nextTick()
       const elTooltip = this.$refs.tooltip
       if (!elTooltip) return
@@ -501,23 +529,11 @@ export default {
         labels.each(function (g, i) {
           d3.select(this).call(() => {
             let index = 0
-            let data = g.data
-            data = _.chain(g.data)
-              .filter((d) => _self.handleCondition(d))
-              .orderBy(
-                'date',
-                _self.old_active_date > _self.active_date && _self.active_date
-                  ? 'desc'
-                  : 'asc'
-              )
-              .value()
+            const data = g.data
             const { length } = data
             const animate = () => {
               const d = _.get(data, `[${index}]`, {})
-              const time =
-                _self.active_date && _self.old_active_date > _self.active_date
-                  ? d.timeBk
-                  : d.time
+              const time = d.time
               d3.select(this)
                 .transition()
                 .duration(time)
@@ -603,67 +619,30 @@ export default {
       console.log(candidates)
     },
     checksEvent: _.throttle(function (val) {
-      if (this.type === 'engagement') {
-        this.hover = this.dateFormat(val)
-      } else {
-        this.hover = val
-      }
+      // if (this.type === 'engagement') {
+      //   this.hover = this.dateFormat(val)
+      // } else {
+      this.hover = val
+      // }
     }, 150),
     sumRangeTimeData(data = []) {
       return data
         .filter((d) => this.handleCondition(d))
         .reduce((acc, curr) => {
-          const currTime =
-            this.old_active_date > this.active_date ? curr.timeBk : curr.time
-          return (acc += currTime)
+          return (acc += curr.time)
         }, 0)
     },
-    handleCondition(d) {
-      let cond = true
-      if (this.active_date && this.old_active_date < this.active_date)
-        cond = this.active_date >= d.date && d.date > this.old_active_date
-      if (this.active_date && this.old_active_date > this.active_date)
-        cond = this.active_date <= d.date && d.date < this.old_active_date
-      return cond
-    },
     onClickChecks(date) {
-      // const _self = this
       this.active = date
-      // this.old_active_date = _.clone(this.active_date) || 2020
-      // this.active_date = item
       this.$emit('change', this.active_data)
       this.$emit('update:active_chart', date)
-      // if (this.old_active_date === this.active_date) return
-      // animate path line
-      // const path = d3.selectAll('.line-path')
-      // path.each(function (d, i) {
-      //   const rangedate = d.data.filter((d) => d.date > _self.active_date)
-      //   const dashoffset = rangedate.reduce(
-      //     (acc, curr) => acc + curr.distance,
-      //     0
-      //   )
-      //   const time = _self.sumRangeTimeData(d.data)
-
-      //   d3.select(this)
-      //     .selectAll('.line')
-      //     .transition()
-      //     .ease(d3.easeLinear)
-      //     .duration(time)
-      //     .attr('stroke-dashoffset', dashoffset)
-      // })
-
-      // animate position labels
-      // this.setAnimatePathLabel()
 
       d3.selectAll('.labels-group')
         .data(this.candidates)
         .transition()
         .duration(600)
         .attr('transform', (group) => {
-          const d =
-            group.data.find(
-              (d) => this.dateFormat(d.date) === this.dateFormat(date)
-            ) || {}
+          const d = group.data.find((d) => d.date === date) || {}
           return `translate(${this.xScale(d.date)},${this.yScale(d.value)})`
         })
     },
@@ -714,6 +693,48 @@ svg {
   //   height: auto;
   //   min-height: 420px;
   // }
+  ::v-deep {
+    .x-axis,
+    .y-axis {
+      .tick text {
+        font-family: 'Anuphan';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        fill: #ffffff;
+      }
+    }
+    .x-axis {
+      .domain {
+        stroke: #ffffff;
+      }
+      .tick line {
+        display: none;
+      }
+      .tick:first-of-type text {
+        text-anchor: start;
+      }
+      .tick:last-of-type text {
+        text-anchor: end;
+      }
+    }
+    .y-axis {
+      .domain {
+        display: none;
+      }
+      .tick {
+        text {
+          text-anchor: start;
+        }
+        line {
+          stroke: #373746;
+        }
+        .line-tick {
+          stroke: #ffffff;
+        }
+      }
+    }
+  }
 }
 text {
   font-family: Prompt;

@@ -67,6 +67,7 @@
                 v-model="daterange"
                 type="daterange"
                 :editable="false"
+                value-format="yyyy-MM-DD"
                 placeholder="Pick a day"
                 :picker-options="pickerOptions"
               >
@@ -153,6 +154,7 @@
                   v-model="active_date"
                   type="date"
                   :editable="false"
+                  value-format="yyyy-MM-DD"
                   placeholder="Pick a day"
                   :picker-options="pickerDateActiveOptions"
                 >
@@ -330,7 +332,7 @@ export default {
       return d3.format(',')
     },
     engagement() {
-      const data = [
+      return [
         {
           date: '2022-01-01',
           candidate: 'ชัชชาติ',
@@ -392,14 +394,6 @@ export default {
           value: 4563445,
         },
       ]
-      return _.chain(data)
-        .filter((d) => this.candidate_filter.includes(d.candidate))
-        .map((d) => ({
-          ...d,
-          date: new Date(d.date),
-          date_display: d.date,
-        }))
-        .value()
     },
     rank() {
       const data = [
@@ -426,12 +420,12 @@ export default {
         {
           date: '2022-01-02',
           candidate: 'รสนา',
-          value: 1,
+          value: 3,
         },
         {
           date: '2022-01-02',
           candidate: 'สุชัชวีร์',
-          value: 3,
+          value: 1,
         },
         {
           date: '2022-01-03',
@@ -450,11 +444,10 @@ export default {
         },
       ]
 
-      return data.map((d) => ({
-        ...d,
-        date: new Date(d.date),
-        date_display: d.date,
-      }))
+      return data.map((d) => {
+        const { length } = this.candidate_options
+        return { ...d, value: length + 1 - d.value }
+      })
     },
     pickerOptions() {
       return {
@@ -498,9 +491,9 @@ export default {
     data_type: {
       immediate: true,
       handler(val) {
-        this.reRenderChart()
         this.line_chart_data =
           val === 'engagement' ? this.engagement : this.rank
+        this.reRenderChart()
       },
     },
     // end_input_date() {
