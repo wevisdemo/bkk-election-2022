@@ -1,12 +1,14 @@
 import type { NextPage } from 'next';
 import Image from 'next/image';
-import arrow from '../static/icon/arrow.svg';
-import arrowW from '../static/icon/arrow-white.svg';
+import arrow from '../static/icons/arrow.svg';
+import arrowW from '../static/icons/arrow-white.svg';
 import { CandidateBadge } from '../components/badge/candidate';
 import { HighLightCandidate } from '../components/wrapper/highlightCandidate';
 import { QuestionOverview } from '../components/card/questionOverview';
+import { CandidateList } from '../components/wrapper/candidateList';
 import { AppContext } from '../store';
 import { useContext } from 'react';
+import { CouncilList } from '../components/wrapper/councilList';
 
 const Home: NextPage = () => {
   const { store } = useContext(AppContext);
@@ -32,14 +34,28 @@ const Home: NextPage = () => {
           <span className="typo-h9 ml-5">ผู้สมัครสมาชิกสภากทม.</span>
         </div>
       </div>
-      <div className="bg-black flex flex-col">
-        <div className="text-center">
-          <p className="typo-h3 text-white mt-[66px]">ผู้สมัครผู้ว่าฯ กทม.</p>
-          <p className="typo-h6 mt-4 text-white">ผู้สมัครในกระแส</p>
+      {/* break */}
+      <div className="bg-black">
+        <div className=" m-auto flex flex-col pb-[126px]">
+          <div className="text-center">
+            <p className="typo-h3 text-white mt-[66px]">ผู้สมัครผู้ว่าฯ กทม.</p>
+            <p className="typo-h6 mt-4 text-white">ผู้สมัครในกระแส</p>
+          </div>
+          <HighLightCandidate candidateList={candidateList} />
+          <QuestionOverview />
         </div>
-        <HighLightCandidate candidateList={candidateList} />
-        <QuestionOverview />
       </div>
+      <div className="bg-[#333333]">
+        <div className="max-w-[1160px] m-auto flex flex-col pt-[12px] pb-[156px]">
+          <CandidateList candidateList={store.candidateList} />
+        </div>
+      </div>
+      {/* break */}
+      <CouncilList
+        districts={store.districtList}
+        councils={store.councilList}
+      />
+      <div></div>
     </div>
   );
 };

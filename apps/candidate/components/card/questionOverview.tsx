@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import playButtonBw from '../../static/icon/play-wb.svg';
-import playButtonGray from '../../static/icon/play-gray.svg';
+import playButtonBw from '../../static/icons/play-wb.svg';
+import playButtonGray from '../../static/icons/play-gray.svg';
 import { AppContext } from '../../store';
 import { useContext } from 'react';
 
@@ -8,9 +8,19 @@ export function QuestionOverview() {
   const { store } = useContext(AppContext);
   const questionCategory = store.questionCategory;
 
-  const questionRow = (question: string) => {
+  const onClickQuestion = () => {
+    console.log('question');
+
+    // TODO: redirect to question
+  };
+
+  const questionRow = (question: string, colname: string, index: number) => {
     return (
-      <div className="flex">
+      <div
+        className="flex hover:cursor-pointer hover:underline hover:decoration-1"
+        onClick={onClickQuestion}
+        key={`question-${colname}-${index}`}
+      >
         <div>
           <Image
             src={playButtonGray}
@@ -19,7 +29,7 @@ export function QuestionOverview() {
             height="25px"
           />
         </div>
-        <div className="flex-1 ml-[10px]">{question}</div>
+        <div className="typo-b6 flex-1 ml-[10px]">{question}</div>
       </div>
     );
   };
@@ -28,7 +38,7 @@ export function QuestionOverview() {
       <div className="flex flex-col text-left">
         <p className="typo-h9">{colName}:</p>
         <div className="flex flex-col space-y-[25px] mt-5">
-          {questionList.map((q) => questionRow(q))}
+          {questionList.map((q, index) => questionRow(q, colName, index))}
         </div>
       </div>
     );
@@ -51,16 +61,16 @@ export function QuestionOverview() {
             height={25}
           />
           <p className="typo-b6 ml-[10px]">
-            <span className="text-bold">Exclusive Speech :</span>
+            <span className="font-bold">Exclusive Speech :</span>
             ทำไมต้องเลือกคุณเป็นผู้ว่าฯ กทม.
           </p>
         </div>
-        <div className="grid grid-cols-3 gap-[30px] my-10">
+        <div className="grid grid-cols md:grid-cols-3 gap-[30px] my-10">
           {questionColumn('Policy', questionCategory.policy)}
           {questionColumn('Opinion', questionCategory.opinion)}
           {questionColumn('Lifestyle', questionCategory.lifestyle)}
         </div>
-        <div className="border-t border-[#9d9d9d80] pt-10 pt-[30px]">
+        <div className="font-body text-[12pt] md:text-[14pt] border-t border-[#9d9d9d80] pt-10 pt-[30px] font-bold">
           + อีก 5 คำถามเคลียร์ใจเฉพาะตัวผู้สมัคร
         </div>
       </div>

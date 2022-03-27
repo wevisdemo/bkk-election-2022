@@ -5,7 +5,19 @@ import {
   useContext,
   useReducer,
 } from 'react';
-import { ActionEnum, ICandidate, IQuestionCategory } from '../types';
+import {
+  ActionEnum,
+  ICandidate,
+  IDistrict,
+  IQuestionCategory,
+  ICouncil,
+} from '../types/business';
+interface IStore {
+  candidateList: ICandidate[];
+  questionCategory: IQuestionCategory;
+  districtList: IDistrict[];
+  councilList: ICouncil[];
+}
 
 interface PropType {
   children: ReactElement;
@@ -19,12 +31,80 @@ interface IAppContext {
   storeDispatch: Dispatch<StoreAction>;
 }
 
-interface IStore {
-  candidateList: ICandidate[];
-  questionCategory: IQuestionCategory;
-}
+const inititalCouncilList: ICouncil[] = [
+  {
+    name: 'ชาติดี มีชัย',
+    number: 1,
+    district: 'คลองเตย',
+    party: 'ประชาธิปัติย์',
+    age: 20,
+    sex: 'ชาย',
+    education: 'ปริญญาตรี',
+    career: 'ธุรกิจส่วนตัว',
+  },
+  {
+    name: 'ชาติดี มีชัย',
+    number: 2,
+    district: 'คลองเตย',
+    party: 'ประชาธิปัติย์',
+    age: 20,
+    sex: 'ชาย',
+    education: 'ปริญญาตรี',
+    career: 'ธุรกิจส่วนตัว',
+  },
+  {
+    name: 'ชาติดี มีชัย',
+    number: 3,
+    district: 'คลองเตย',
+    party: 'ประชาธิปัติย์',
+    age: 20,
+    sex: 'ชาย',
+    education: 'ปริญญาตรี',
+    career: 'ธุรกิจส่วนตัว',
+  },
+];
 
 const inititalCandidateList: ICandidate[] = [
+  {
+    id: 1,
+    name: 'ชัชชาติ สิทธิพันธุ์',
+    team: 'อิสระ',
+    video_url: '',
+    image_url: '../../static/images/candidate.png',
+    is_highlight: false,
+  },
+  {
+    id: 1,
+    name: 'ชัชชาติ สิทธิพันธุ์',
+    team: 'อิสระ',
+    video_url: '',
+    image_url: '../../static/images/candidate.png',
+    is_highlight: false,
+  },
+  {
+    id: 1,
+    name: 'ชัชชาติ สิทธิพันธุ์',
+    team: 'อิสระ',
+    video_url: '',
+    image_url: '../../static/images/candidate.png',
+    is_highlight: false,
+  },
+  {
+    id: 1,
+    name: 'ชัชชาติ สิทธิพันธุ์',
+    team: 'อิสระ',
+    video_url: '',
+    image_url: '../../static/images/candidate.png',
+    is_highlight: false,
+  },
+  {
+    id: 1,
+    name: 'ชัชชาติ สิทธิพันธุ์',
+    team: 'อิสระ',
+    video_url: '',
+    image_url: '../../static/images/candidate.png',
+    is_highlight: false,
+  },
   {
     id: 1,
     name: 'ชัชชาติ สิทธิพันธุ์',
@@ -64,9 +144,38 @@ const inititalQuestionCategory: IQuestionCategory = {
   ],
 };
 
+const inititalDistrictList: IDistrict[] = [
+  {
+    display: 'คลองเตย',
+    value: 'krong_toei',
+  },
+  {
+    display: 'คลองเตย',
+    value: 'krong_toei',
+  },
+  {
+    display: 'คลองเตย',
+    value: 'krong_toei',
+  },
+  {
+    display: 'คลองเตย',
+    value: 'krong_toei',
+  },
+  {
+    display: 'คลองเตย',
+    value: 'krong_toei',
+  },
+  {
+    display: 'คลองเตย',
+    value: 'krong_toei',
+  },
+];
+
 const initialStore: IStore = {
   candidateList: inititalCandidateList,
   questionCategory: inititalQuestionCategory,
+  districtList: inititalDistrictList,
+  councilList: inititalCouncilList,
 };
 
 export const AppContext = createContext({} as IAppContext);

@@ -1,15 +1,16 @@
-import { ICandidate } from '../../types';
+import { ICandidate } from '../../types/business';
 import { CandidateBadge } from '../badge/candidate';
+import { HighlightCandidateBadge } from '../badge/highlightCandidate';
 
 interface PropType {
   candidateList: ICandidate[];
 }
 export function HighLightCandidate(props: PropType) {
   const candidateBadgeList = props.candidateList.map((candidate) => {
-    return CandidateBadge({ candidate, section: 'highlight' });
+    return HighlightCandidateBadge({ candidate });
   });
   return (
-    <div className="grid grid-cols-3 gap-[10px] max-w-[1160px] m-auto mt-[46px]">
+    <div className="grid grid-cols md:grid-cols-[repeat(3,auto)] gap-[10px] mt-[46px] m-auto">
       {candidateBadgeList}
     </div>
   );

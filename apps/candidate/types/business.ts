@@ -7,6 +7,11 @@ export interface ICandidate {
   is_highlight: boolean;
 }
 
+export interface IDistrict {
+  display: string;
+  value: string;
+}
+
 export enum ActionEnum {
   FETCH_CANDIDATE = 'FETCH_CANDIDATE',
 }
@@ -15,4 +20,15 @@ export interface IQuestionCategory {
   policy: string[];
   opinion: string[];
   lifestyle: string[];
+}
+
+export interface ICouncil {
+  name: string;
+  number: number;
+  district: string;
+  party: string;
+  age: number;
+  sex: string;
+  education: string;
+  career: string;
 }

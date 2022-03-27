@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { ICandidate } from '../../types';
+import { ICandidate } from '../../types/business';
 import candidataImg from '../../static/images/candidate.png';
 
 interface PropType {
@@ -8,24 +8,28 @@ interface PropType {
 }
 
 export function CandidateBadge(props: PropType) {
-  const isSectionHighlight = props.section == 'highlight';
-  const getWidth = isSectionHighlight ? 380 : 200;
-  const getWidthMb = isSectionHighlight ? 280 : 140;
   const candidate = props.candidate;
   // TODO: event on click
+
   return (
-    <div className={`w-[${getWidth}px]`}>
-      <Image
-        src={candidataImg}
-        alt="candidate-badge"
-        width={getWidth}
-        height={getWidth}
+    <div className={`max-w-[250px] w-[43vw] md:w-[15vw] m-auto`}>
+      {/* eslint-disable */}
+      <img
+        src={candidataImg.src}
+        alt="candidate"
+        className={`w-[43vw] h-[43vw] md:w-[15vw] md:h-[15vw] max-w-[250px] max-h-[250px]`}
       />
-      <div className="flex text-white">
-        <div className="typo-h1">{candidate.id}</div>
-        <div className="flex flex-col">
-          <p className="typo-h7">{candidate.name}</p>
-          <p className="typo-b5">{candidate.team}</p>
+      <div className="flex text-white mt-[10px]">
+        <div className="font-heading font-semibold text-[21pt] md:text-[27pt] mr-[10px]">
+          {candidate.id}
+        </div>
+        <div className="flex flex-col justify-center">
+          <p className="font-heading font-semibold text-[11pt] md:text-[14pt]">
+            {candidate.name}
+          </p>
+          <p className="font-body text-[11pt] md:text-[12pt] text-[#ffffff80]">
+            {candidate.team}
+          </p>
         </div>
       </div>
     </div>
