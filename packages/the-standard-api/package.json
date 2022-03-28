@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "dist/index.js",
   "license": "MIT",
+  "type": "module",
   "types": "dist/index.d.ts",
   "scripts": {
     "start": "ts-node src/run.ts",
