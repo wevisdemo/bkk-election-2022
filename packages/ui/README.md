@@ -1,34 +1,43 @@
-## Usage
+# UI package
 
-Those templates dependencies are maintained via [pnpm](https://pnpm.io) via `pnpm up -Lri`.
+Shared web component written by [SolidJS](https://www.solidjs.com/) and [Tailwind](https://tailwindcss.com/)
 
-This is the reason you see a `pnpm-lock.yaml`. That being said, any package manager will work. This file can be safely be removed once you clone a template.
+## Set up
 
-```bash
-$ npm install # or pnpm install or yarn install
+Include the script and stylesheet
+
+```html
+<script src="/ui/ui.umd.js" async></script>
+<link rel="stylesheet" href="/ui/style.css" />
 ```
 
-### Learn more on the [Solid Website](https://solidjs.com) and come chat with us on our [Discord](https://discord.com/invite/solidjs)
+Call init function when mount
 
-## Available Scripts
+```js
+window.registerUICustomElements();
+```
 
-In the project directory, you can run:
+## Components
 
-### `npm dev` or `npm start`
+### Navbar
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```html
+<ui-navbar></ui-navbar>
+```
 
-The page will reload if you make edits.<br>
+### Footer
 
-### `npm run build`
+```html
+<ui-footer></ui-footer>
+```
 
-Builds the app for production to the `dist` folder.<br>
-It correctly bundles Solid in production mode and optimizes the build for the best performance.
+### PostCard
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-## Deployment
-
-You can deploy the `dist` folder to any static host provider (netlify, surge, now, etc.)
+```html
+<ui-post-card
+  title="มองย้อนการเลือกตั้งผู้ว่าฯ กทม. 9 ปี ศึกชิงเมืองกรุงภายใต้การเมือง 2 พรรคใหญ่ ฝ่ายค้าน vs. รัฐบาล"
+  link="https://thestandard.co/9-years-history-of-bangkok-governor-election/"
+  date="28 มีนาคม 2565"
+  image="https://thestandard.co/wp-content/uploads/2022/03/COVER-WEB-9-33-400x215.jpg"
+></ui-post-card>
+```

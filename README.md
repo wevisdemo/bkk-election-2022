@@ -19,7 +19,8 @@ Monorepo for Bangkok Election 2022 projects managed by [Turborepo](https://turbo
   - Development server using [Express](https://expressjs.com/) with reverse proxy and `/static` folder serving.
   - Build script to combine every apps build file in the root `/build`
 - **`/packages`** Shared packages used by apps
-  - `/tailwind` Tailwind config and base stylesheet with shared design guideline
+  - `/tailwind` [Tailwind](https://tailwindcss.com/) config and base stylesheet with shared design guideline
+  - `/the-standard-api` TypeScript library help fetching data from [The Standard](https://thestandard.co) Wordpress REST API
   - `/ui` Shared web component written by [SolidJS](https://www.solidjs.com/) and typography stylesheet from design system
 - **`/static`** Static directory serving at `/static` eg. favicon and fonts
 
@@ -53,6 +54,7 @@ While **moderator** will run at http://localhost:3000 and
 - Forward http://localhost:3000/socialtrend request to **Social trend** dev server
 - Forward http://localhost:3000/candidate request to **Candidate** dev server
 - Serve files in `/static` at http://localhost:3000/static/
+- Serve UI package built output at http://localhost:3000/ui/
 
 Each project can also be run individually with moderator proxy
 
@@ -78,4 +80,4 @@ Each project will be built and combined in root `/build` folder
   - No braches, we all push to main branch.
   - Pull rebase `git pull --rebase` often. Before you start coding and pushing.
   - Continuous integration: try not to leave your code without pushing overnight.
-- **[TODO]** Each time the code is pushed to main branch, Github Action will build and deploy to the staging environment.
+- Each time the code is pushed to main branch, Github Action will build and deploy to the staging environment.
