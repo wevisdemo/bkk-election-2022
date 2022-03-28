@@ -11,7 +11,7 @@ const MEDIA_TARGET_SIZE = 'newsthumb-small';
 export interface Post {
   id: number;
   title: string;
-  imageUrl: string;
+  image: string;
   date: string;
   link: string;
 }
@@ -82,7 +82,7 @@ export async function fetchElectionPosts({
         date: new Date(date).toLocaleDateString('th-TH', {
           dateStyle: 'long',
         }),
-        imageUrl: (media.media_details.sizes as MediaSizes)[MEDIA_TARGET_SIZE]
+        image: (media.media_details.sizes as MediaSizes)[MEDIA_TARGET_SIZE]
           .source_url,
       };
     });

@@ -2,15 +2,15 @@
 	import { fetchElectionPosts } from 'the-standard-api';
 </script>
 
-<div>
-	<h1 class="typo-h1">BKK Election 2022</h1>
+<div class="px-6 py-12 max-w-screen-xl mx-auto space-y-6">
+	<h1 class="typo-h4">ข่าวล่าสุดเกี่ยวกับการเลือกตั้ง กทม.</h1>
 
 	{#await fetchElectionPosts()}
 		<p>Loading...</p>
 	{:then posts}
-		<div class="space-y-4">
+		<div class="grid grid-cols-3 gap-12">
 			{#each posts as post}
-				<div>{JSON.stringify(post)}</div>
+				<ui-post-card {...post} />
 			{/each}
 		</div>
 	{:catch error}
