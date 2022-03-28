@@ -22,12 +22,34 @@ type MediaSizes = {
   };
 };
 
-export async function fetchElectionPosts(): Promise<Post[]> {
-  const res = await fetch(
-    `${API_ROOT}/posts?tags=${BKK_ELECTION_TAG_ID}&_embed=wp:featuredmedia&_fields=id,title,link,date,_links.wp:featuredmedia,_embedded.wp:featuredmedia`
-  );
+type URLParamaters = {
+  [key: string]: string | number;
+};
 
-  const posts = (await res.json()) as WP_REST_API_Post[];
+function parseParams(params?: URLParamaters): string {
+  return params
+    ? `?${Object.entries(params)
+        .map(([key, value]) => `${key}=${value}`)
+        .join('&')}`
+    : '';
+}
+
+async function fetchApi<T>(
+  endpoint: string,
+  params?: URLParamaters
+): Promise<T> {
+  const res = await fetch(API_ROOT + endpoint + parseParams(params));
+  return await res.json();
+}
+
+export async function fetchElectionPosts(limit = 6): Promise<Post[]> {
+  const posts = await fetchApi<WP_REST_API_Post[]>('/posts', {
+    tags: BKK_ELECTION_TAG_ID,
+    _embed: 'wp:featuredmedia',
+    _fields:
+      'id,title,link,date,_links.wp:featuredmedia,_embedded.wp:featuredmedia',
+    per_page: limit,
+  });
 
   return posts.map<Post>(({ id, title, link, date, _embedded }) => {
     const [media] = _embedded?.['wp:featuredmedia'] as WP_REST_API_Attachment[];
