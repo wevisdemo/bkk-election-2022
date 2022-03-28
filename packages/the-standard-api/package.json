@@ -1,10 +1,13 @@
 {
   "name": "the-standard-api",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/index.js",
   "license": "MIT",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "start": "ts-node src/run.ts"
+    "start": "ts-node src/run.ts",
+    "dev": "tsc --watch",
+    "build": "tsc"
   },
   "devDependencies": {
     "cross-fetch": "^3.1.5",
