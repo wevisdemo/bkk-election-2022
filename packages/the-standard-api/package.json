@@ -1,0 +1,15 @@
+{
+  "name": "the-standard-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "ts-node src/run.ts"
+  },
+  "devDependencies": {
+    "cross-fetch": "^3.1.5",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.3",
+    "wp-types": "^3.59.1"
+  }
+}
