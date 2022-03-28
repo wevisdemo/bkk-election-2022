@@ -1,5 +1,5 @@
 module.exports = {
   presets: [require('../tailwind/tailwind.config.js')],
-  content: ['./src/**/*.tsx'],
+  content: ['./src/components/**/*.tsx'],
   prefix: 'ui-',
 };

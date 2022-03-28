@@ -11,9 +11,15 @@ const App: Component = () => {
   });
 
   return (
-    <div>
+    <div
+      style={{
+        'min-height': '100vh',
+        display: 'flex',
+        'flex-direction': 'column',
+      }}
+    >
       <ui-navbar></ui-navbar>
-      <div>
+      <div style={{ flex: 1, padding: '20px' }}>
         <h1 className="typo-h3">UI Library</h1>
       </div>
       <ui-footer></ui-footer>
