@@ -1,3 +1,4 @@
+/* @refresh reload */
 import { Component, createSignal, For, Show } from 'solid-js';
 import { noShadowDOM } from 'component-register';
 
@@ -63,7 +64,7 @@ const Navbar: Component = () => {
         class="ui-absolute ui-top-full md:ui-relative ui-inset-x-0 md:ui-flex ui-flex-col md:ui-flex-row ui-space-y-2 md:ui-space-y-0 md:ui-space-x-6 ui-bg-white ui-p-3 md:ui-p-0"
         classList={{ 'ui-hidden': !isMenuOpen() }}
       >
-        <For each={pages} fallback={<div>Loading...</div>}>
+        <For each={pages}>
           {({ label, href }) => (
             <a
               href={href}

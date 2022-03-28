@@ -1,10 +1,14 @@
 /* @refresh reload */
-import type { Component } from 'solid-js';
+import { Component, onMount } from 'solid-js';
 import { render } from 'solid-js/web';
 
 import './components/index';
 
 const App: Component = () => {
+  onMount(() => {
+    // @ts-ignore
+    window.registerUICustomElements();
+  });
   return (
     <div>
       <ui-navbar></ui-navbar>
