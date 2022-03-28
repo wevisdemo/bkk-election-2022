@@ -8,5 +8,12 @@ declare global {
         HTMLElement
       >;
     }
+
+    interface IntrinsicElements {
+      'ui-footer': React.DetailedHTMLProps<
+        React.HTMLAttributes<HTMLElement>,
+        HTMLElement
+      >;
+    }
   }
 }

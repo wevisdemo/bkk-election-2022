@@ -9,12 +9,14 @@ const App: Component = () => {
     // @ts-ignore
     window.registerUICustomElements();
   });
+
   return (
     <div>
       <ui-navbar></ui-navbar>
       <div>
         <h1 className="typo-h3">UI Library</h1>
       </div>
+      <ui-footer></ui-footer>
     </div>
   );
 };
