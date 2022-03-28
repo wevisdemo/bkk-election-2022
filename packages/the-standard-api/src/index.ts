@@ -1,4 +1,8 @@
-import type { WP_REST_API_Post, WP_REST_API_Attachment } from 'wp-types';
+import type {
+  WP_REST_API_Post,
+  WP_REST_API_Attachment,
+  WP_REST_API_Tag,
+} from 'wp-types';
 
 const API_ROOT = 'https://thestandard.co/wp-json/wp/v2';
 const BKK_ELECTION_TAG_ID = 47793; // https://thestandard.co/wp-json/wp/v2/tags?slug=bkkelection2022
@@ -42,27 +46,44 @@ async function fetchApi<T>(
   return await res.json();
 }
 
-export async function fetchElectionPosts(limit = 6): Promise<Post[]> {
+export async function fetchElectionPosts({
+  limit = 6,
+  candidateName = '',
+} = {}): Promise<Post[]> {
+  const tags = candidateName
+    ? (
+        await fetchApi<WP_REST_API_Tag[]>('/tags', {
+          search: candidateName,
+          _fields: 'id',
+          per_page: 1,
+        })
+      )[0].id
+    : BKK_ELECTION_TAG_ID;
+
   const posts = await fetchApi<WP_REST_API_Post[]>('/posts', {
-    tags: BKK_ELECTION_TAG_ID,
+    tags,
     _embed: 'wp:featuredmedia',
     _fields:
-      'id,title,link,date,_links.wp:featuredmedia,_embedded.wp:featuredmedia',
+      'id,title,link,date,tags,_links.wp:featuredmedia,_embedded.wp:featuredmedia',
     per_page: limit,
   });
 
-  return posts.map<Post>(({ id, title, link, date, _embedded }) => {
-    const [media] = _embedded?.['wp:featuredmedia'] as WP_REST_API_Attachment[];
+  return posts
+    .filter(({ tags }) => !candidateName || tags?.includes(BKK_ELECTION_TAG_ID))
+    .map<Post>(({ id, title, link, date, _embedded }) => {
+      const [media] = _embedded?.[
+        'wp:featuredmedia'
+      ] as WP_REST_API_Attachment[];
 
-    return {
-      id,
-      title: title.rendered,
-      link,
-      date: new Date(date).toLocaleDateString('th-TH', {
-        dateStyle: 'long',
-      }),
-      imageUrl: (media.media_details.sizes as MediaSizes)[MEDIA_TARGET_SIZE]
-        .source_url,
-    };
-  });
+      return {
+        id,
+        title: title.rendered,
+        link,
+        date: new Date(date).toLocaleDateString('th-TH', {
+          dateStyle: 'long',
+        }),
+        imageUrl: (media.media_details.sizes as MediaSizes)[MEDIA_TARGET_SIZE]
+          .source_url,
+      };
+    });
 }
