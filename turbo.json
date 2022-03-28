@@ -5,11 +5,21 @@
       "cache": false
     },
     "dev:candidate": {
-      "dependsOn": ["candidate#dev", "ui#dev", "moderator#dev"],
+      "dependsOn": [
+        "candidate#dev",
+        "ui#dev",
+        "moderator#dev",
+        "the-standard-api#dev"
+      ],
       "cache": false
     },
     "dev:landing": {
-      "dependsOn": ["landing#dev", "ui#dev", "moderator#dev"],
+      "dependsOn": [
+        "landing#dev",
+        "ui#dev",
+        "moderator#dev",
+        "the-standard-api#dev"
+      ],
       "cache": false
     },
     "dev:socialtrend": {

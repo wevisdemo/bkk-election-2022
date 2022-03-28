@@ -12,4 +12,5 @@
 <div>
 	<ui-navbar />
 	<slot />
+	<ui-footer />
 </div>
