@@ -1,1 +1,0 @@
-.space-y-2>:not([hidden])~:not([hidden]){--tw-space-y-reverse: 0;margin-top:calc(.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.5rem * var(--tw-space-y-reverse))}.font-body{font-family:ui-serif,Anuphan}.font-bold{font-weight:700}.font-semibold{font-weight:600}
