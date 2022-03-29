@@ -1,6 +1,7 @@
 <script lang="ts">
 	import PostGrid from '../components/post-grid.svelte';
 	import { fetchElectionPosts } from 'the-standard-api';
+	import Counter from '../components/counter.svelte';
 
 	const organizations = [
 		{
@@ -23,17 +24,17 @@
 
 <div class="bg-black text-white py-12 md:py-24 flex flex-col space-y-12">
 	<div
-		class="flex flex-col md:flex-row justify-center px-5 w-full max-w-screen-lg mx-auto space-y-8 md:space-y-0 md:space-x-16"
+		class="flex flex-col md:flex-row justify-center px-5 w-full max-w-screen-xl mx-auto space-y-8 md:space-y-0 md:space-x-16"
 	>
 		<div class="flex-1 flex flex-col space-y-8">
 			<img src="/static/images/bkkelection-white-big.png" alt="BKK ELECTION 2022" />
 			<p class="typo-b4 text-center">
 				ติดตามข้อมูลเกี่ยวกับการเลือกตั้งผู้ว่าฯ และสมาชิกสภา กทม. ได้ที่นี่
 			</p>
-			<div>countdown</div>
+			<Counter until={new Date('2022-05-22 8:00 GMT+7')} />
 		</div>
 		<div class="flex-1 flex flex-col space-y-8">
-			<div>video</div>
+			<div class="text-center">video</div>
 			<div class="flex flex-row space-x-5 justify-center">
 				{#each organizations as { name, logo, href }}
 					<a {href} target="_blank">
