@@ -3,67 +3,67 @@
 @tailwind utilities;
 
 .typo-h1 {
-  @apply ui-font-heading ui-font-semibold ui-text-[36pt] md:ui-text-[64pt] ui-leading-[1.25];
+  @apply ui-font-heading ui-font-semibold ui-text-[36px] md:ui-text-[64px] ui-leading-[1.25];
 }
 .typo-h2 {
-  @apply ui-font-heading ui-font-semibold ui-text-[32pt] md:ui-text-[48pt] ui-leading-[1.25];
+  @apply ui-font-heading ui-font-semibold ui-text-[32px] md:ui-text-[48px] ui-leading-[1.25];
 }
 .typo-h3 {
-  @apply ui-font-heading ui-font-semibold ui-text-[28pt] md:ui-text-[36pt] ui-leading-[1.25];
+  @apply ui-font-heading ui-font-semibold ui-text-[28px] md:ui-text-[36px] ui-leading-[1.25];
 }
 .typo-h4 {
-  @apply ui-font-heading ui-font-semibold ui-text-[24pt] md:ui-text-[32pt] ui-leading-[1.25];
+  @apply ui-font-heading ui-font-semibold ui-text-[24px] md:ui-text-[32px] ui-leading-[1.25];
 }
 .typo-h5 {
-  @apply ui-font-heading ui-font-semibold ui-text-[21pt] md:ui-text-[28pt] ui-leading-[1.25];
+  @apply ui-font-heading ui-font-semibold ui-text-[21px] md:ui-text-[28px] ui-leading-[1.25];
 }
 .typo-h6 {
-  @apply ui-font-heading ui-font-semibold ui-text-[18pt] md:ui-text-[24pt] ui-leading-[1.25];
+  @apply ui-font-heading ui-font-semibold ui-text-[18px] md:ui-text-[24px] ui-leading-[1.25];
 }
 .typo-h7 {
-  @apply ui-font-heading ui-font-semibold ui-text-[16pt] md:ui-text-[21pt] ui-leading-[1.25];
+  @apply ui-font-heading ui-font-semibold ui-text-[16px] md:ui-text-[21px] ui-leading-[1.25];
 }
 .typo-h8 {
-  @apply ui-font-heading ui-font-semibold ui-text-[15pt] md:ui-text-[18pt] ui-leading-[1.25];
+  @apply ui-font-heading ui-font-semibold ui-text-[15px] md:ui-text-[18px] ui-leading-[1.25];
 }
 .typo-h9 {
-  @apply ui-font-heading ui-font-semibold ui-text-[14pt] md:ui-text-[16pt] ui-leading-[1.25];
+  @apply ui-font-heading ui-font-semibold ui-text-[14px] md:ui-text-[16px] ui-leading-[1.25];
 }
 
 .typo-b1 {
-  @apply ui-font-body ui-text-[24pt] md:ui-text-[32pt] ui-leading-[1.5];
+  @apply ui-font-body ui-text-[24px] md:ui-text-[32px] ui-leading-[1.5];
 }
 .typo-b2 {
-  @apply ui-font-body ui-text-[21pt] md:ui-text-[24pt] ui-leading-[1.5];
+  @apply ui-font-body ui-text-[21px] md:ui-text-[24px] ui-leading-[1.5];
 }
 .typo-b3 {
-  @apply ui-font-body ui-text-[18pt] md:ui-text-[21pt] ui-leading-[1.5];
+  @apply ui-font-body ui-text-[18px] md:ui-text-[21px] ui-leading-[1.5];
 }
 .typo-b4 {
-  @apply ui-font-body ui-text-[16pt] md:ui-text-[18pt] ui-leading-[1.5];
+  @apply ui-font-body ui-text-[16px] md:ui-text-[18px] ui-leading-[1.5];
 }
 .typo-b5 {
-  @apply ui-font-body ui-text-[14pt] md:ui-text-[16pt] ui-leading-[1.5];
+  @apply ui-font-body ui-text-[14px] md:ui-text-[16px] ui-leading-[1.5];
 }
 .typo-b6 {
-  @apply ui-font-body ui-text-[13pt] md:ui-text-[14pt] ui-leading-[1.5];
+  @apply ui-font-body ui-text-[13px] md:ui-text-[14px] ui-leading-[1.5];
 }
 .typo-b7 {
-  @apply ui-font-body ui-text-[12pt] ui-leading-[1.5];
+  @apply ui-font-body ui-text-[12px] ui-leading-[1.5];
 }
 
 .typo-u1 {
-  @apply ui-font-body ui-text-[20pt] ui-leading-[1.25];
+  @apply ui-font-body ui-text-[20px] ui-leading-[1.25];
 }
 .typo-u2 {
-  @apply ui-font-body ui-text-[18pt] ui-leading-[1.25];
+  @apply ui-font-body ui-text-[18px] ui-leading-[1.25];
 }
 .typo-u3 {
-  @apply ui-font-body ui-text-[16pt] ui-leading-[1.25];
+  @apply ui-font-body ui-text-[16px] ui-leading-[1.25];
 }
 .typo-u4 {
-  @apply ui-font-body ui-text-[14pt] ui-leading-[1.25];
+  @apply ui-font-body ui-text-[14px] ui-leading-[1.25];
 }
 .typo-u5 {
-  @apply ui-font-body ui-text-[12pt] ui-leading-[1.25];
+  @apply ui-font-body ui-text-[12px] ui-leading-[1.25];
 }
