@@ -11,12 +11,14 @@ import {
   IDistrict,
   IQuestionCategory,
   ICouncil,
+  IQA,
 } from '../types/business';
 interface IStore {
   candidateList: ICandidate[];
   questionCategory: IQuestionCategory;
   districtList: IDistrict[];
   councilList: ICouncil[];
+  qaList: IQA[];
 }
 
 interface PropType {
@@ -30,6 +32,37 @@ interface IAppContext {
   store: IStore;
   storeDispatch: Dispatch<StoreAction>;
 }
+
+const initialQAList: IQA[] = [
+  {
+    id: 1,
+    governor: 'ชัชชาติ สิทธิพันฒ์',
+    question: 'ทำไมต้องเลือกคุณเป็นผู้ว่าฯ กทม.',
+    answer: 'ผมจะทำให้กทม.xxxxxxxx',
+    url: 'https://peachpharm.files.wordpress.com/2013/06/mac-4.jpg',
+  },
+  {
+    id: 2,
+    governor: 'ชัชชาติ สิทธิพันฒ์',
+    question: 'ทำไมต้องเลือกคุณเป็นผู้ว่าฯ กทม.',
+    answer: 'ผมจะทำให้กทม.xxxxxxxx',
+    url: 'https://peachpharm.files.wordpress.com/2013/06/mac-4.jpg',
+  },
+  {
+    id: 3,
+    governor: 'ชัชชาติ สิทธิพันฒ์',
+    question: 'ทำไมต้องเลือกคุณเป็นผู้ว่าฯ กทม.',
+    answer: 'ผมจะทำให้กทม.xxxxxxxx',
+    url: 'https://peachpharm.files.wordpress.com/2013/06/mac-4.jpg',
+  },
+  {
+    id: 4,
+    governor: 'ชัชชาติ สิทธิพันฒ์',
+    question: 'ทำไมต้องเลือกคุณเป็นผู้ว่าฯ กทม.',
+    answer: 'ผมจะทำให้กทม.xxxxxxxx',
+    url: 'https://peachpharm.files.wordpress.com/2013/06/mac-4.jpg',
+  },
+];
 
 const inititalCouncilList: ICouncil[] = [
   {
@@ -176,6 +209,7 @@ const initialStore: IStore = {
   questionCategory: inititalQuestionCategory,
   districtList: inititalDistrictList,
   councilList: inititalCouncilList,
+  qaList: initialQAList,
 };
 
 export const AppContext = createContext({} as IAppContext);

@@ -3,7 +3,7 @@ import Image from 'next/image';
 import arrow from '../static/icons/arrow.svg';
 import arrowW from '../static/icons/arrow-white.svg';
 import { CandidateBadge } from '../components/badge/candidate';
-import { HighLightCandidate } from '../components/wrapper/highlightCandidate';
+import { HighLightCandidateList } from '../components/wrapper/highlightCandidateList';
 import { QuestionOverview } from '../components/card/questionOverview';
 import { CandidateList } from '../components/wrapper/candidateList';
 import { AppContext } from '../store';
@@ -41,7 +41,7 @@ const Home: NextPage = () => {
             <p className="typo-h3 text-white mt-[66px]">ผู้สมัครผู้ว่าฯ กทม.</p>
             <p className="typo-h6 mt-4 text-white">ผู้สมัครในกระแส</p>
           </div>
-          <HighLightCandidate candidateList={candidateList} />
+          <HighLightCandidateList candidateList={candidateList} />
           <QuestionOverview />
         </div>
       </div>

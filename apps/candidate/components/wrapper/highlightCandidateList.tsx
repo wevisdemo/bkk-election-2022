@@ -5,7 +5,7 @@ import { HighlightCandidateBadge } from '../badge/highlightCandidate';
 interface PropType {
   candidateList: ICandidate[];
 }
-export function HighLightCandidate(props: PropType) {
+export function HighLightCandidateList(props: PropType) {
   const candidateBadgeList = props.candidateList.map((candidate) => {
     return HighlightCandidateBadge({ candidate });
   });

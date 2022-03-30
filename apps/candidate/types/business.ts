@@ -32,3 +32,11 @@ export interface ICouncil {
   education: string;
   career: string;
 }
+
+export interface IQA {
+  id: number;
+  governor: string;
+  question: string;
+  answer: string;
+  url: string;
+}
