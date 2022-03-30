@@ -40,3 +40,12 @@ export interface IQA {
   answer: string;
   url: string;
 }
+
+export interface IQuestion {
+  id: number;
+  type: string; // TODO: change to enum
+  special_for_governor: string;
+  number: number;
+  question: string;
+  description: string;
+}
