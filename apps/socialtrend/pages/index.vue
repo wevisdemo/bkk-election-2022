@@ -260,6 +260,11 @@
               class="typo-b5 text-white text-center flex flex-col items-center justify-center"
             >
               <div v-if="active_date" class="flex items-center">
+                <img
+                  src="~/assets/images/arrow-down.svg"
+                  alt="arrow-down.svg"
+                  class="mr-3"
+                />
                 โพสต์ที่ได้รับความสนใจสูงที่สุดเกี่ยวกับ
                 <span
                   class="font-bold"
@@ -267,15 +272,34 @@
                   >{{ current_chart_active.candidate }}
                 </span>
                 ในวันที่
-                <el-date-picker
-                  v-model="active_date"
-                  type="date"
-                  :editable="false"
-                  value-format="yyyy-MM-DD"
-                  placeholder="Pick a day"
-                  :picker-options="pickerDateActiveOptions"
-                >
-                </el-date-picker>
+
+                <div class="date-picker" style="width: 130px">
+                  <div class="label-wrapper">
+                    <div class="label">
+                      <div class="date-wrapper">
+                        <div class="date typo-u2">
+                          {{ dateFormat(active_date) }}
+                        </div>
+                        <img
+                          src="~/assets/images/calendar.svg"
+                          alt="calendar.svg"
+                          class="icon"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <el-date-picker
+                    v-model="active_date"
+                    type="date"
+                    :editable="false"
+                    value-format="yyyy-MM-DD"
+                    placeholder="Pick a day"
+                    :picker-options="pickerDateActiveOptions"
+                    class="opacity-0"
+                  >
+                  </el-date-picker>
+                </div>
               </div>
 
               <template v-else>
@@ -283,43 +307,48 @@
               </template>
             </div>
 
-            <el-carousel
-              v-if="posts != 0 && active_date"
-              :autoplay="false"
-              :loop="false"
-              class="mt-8"
-              @change="(index) => (carousel_index = index)"
-            >
-              <el-carousel-item
-                v-for="(item, index) in posts"
-                :key="index"
-                :name="item.date"
-                class="text-black"
+            <!-- v-if="posts != 0 && active_date" -->
+            <div class="container px-5">
+              <el-carousel
+                :autoplay="false"
+                :loop="false"
+                class="mt-8"
+                indicator-position="none"
+                arrow="always"
+                @change="(index) => (carousel_index = index)"
               >
-                <div class="bg-white rounded-md p-5">
-                  <div class="flex justify-between">
-                    <div class="">
-                      <div class="font-bold typo-b5">{{ item.author }}</div>
-                      <div class="typo-b7 opacity-50">
-                        {{ dateFormat(item.created_time) }}
+                <el-carousel-item
+                  v-for="(item, index) in posts"
+                  :key="index"
+                  :name="item.date"
+                  class="text-black"
+                >
+                  <div class="bg-white rounded-md p-5">
+                    <div class="flex justify-between">
+                      <div class="">
+                        <div class="font-bold typo-b5">{{ item.author }}</div>
+                        <div class="typo-b7 opacity-50 mt-2">
+                          {{ dateFormat(item.created_time) }}
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <p
-                    v-html="truncate(item.text)"
-                    class="typo-b5 mt-2 pb-5 border-b"
-                  ></p>
+                    <p
+                      v-html="truncate(item.text)"
+                      class="typo-b5 mt-2 pb-5"
+                      style="border-bottom: 1px solid #cfcfcf"
+                    ></p>
 
-                  <div class="typo-b6 mt-5">
-                    <span class="font-bold"
-                      >{{ format(item.engagement_count) }}
-                    </span>
-                    Engagement
+                    <div class="typo-b6 mt-5">
+                      <span class="font-bold"
+                        >{{ format(item.engagement_count) }}
+                      </span>
+                      Engagement
+                    </div>
                   </div>
-                </div>
-              </el-carousel-item>
-            </el-carousel>
+                </el-carousel-item>
+              </el-carousel>
+            </div>
           </div>
         </div>
       </div>
@@ -395,7 +424,7 @@ export default {
       posts: [
         {
           channel: 'Facebook',
-          author: 'abc',
+          author: 'Voice TV',
           candidate: 'ชัชชาติ',
           created_time: '2022-03-22T16:45:09.641Z',
           text: 'ปาร์ตี้เคลียร์ครัวซองต์สเตชั่นมาร์ก ซิตี้ คาปูชิโนติวเตอร์ฟรุตสต๊อก เตี๊ยมชัวร์สัมนาตัวตนโอเปอเรเตอร์ แคมเปญดีลเลอร์ ไฮกุ เซ็นเซอร์ อุด้งโยโย่ โต๊ะจีนรวมมิตร ทาวน์เฮาส์รีโมทเทวาเฝอ ศิลปากรเจไดรีสอร์ทอาว์ กู๋โปรโมชั่นเพนกวิน ม้าหินอ่อน วิดีโอเอ็นเตอร์เทนรามาธิบดีจิตพิสัยแชมพู ตู้เซฟสต็อกซัมเมอร์ศิลปากร เทปวีไอพีโปรเจกเตอร์เบญจมบพิตรช็อค',
@@ -406,7 +435,7 @@ export default {
           author: 'abc',
           candidate: 'รสนา',
           created_time: '2022-03-22T16:45:09.641Z',
-          text: 'ปาร์ตี้เคลียร์ครัวซองต์สเตชั่นมาร์ก ซิตี้ คาปูชิโนติวเตอร์ฟรุตสต๊อก เตี๊ยมชัวร์สัมนาตัวตนโอเปอเรเตอร์ แคมเปญดีลเลอร์ ไฮกุ เซ็นเซอร์ อุด้งโยโย่ โต๊ะจีนรวมมิตร ทาวน์เฮาส์รีโมทเทวาเฝอ ศิลปากรเจไดรีสอร์ทอาว์ กู๋โปรโมชั่นเพนกวิน ม้าหินอ่อน วิดีโอเอ็นเตอร์เทนรามาธิบดีจิตพิสัยแชมพู ตู้เซฟสต็อกซัมเมอร์ศิลปากร เทปวีไอพีโปรเจกเตอร์เบญจมบพิตรช็อค',
+          text: 'ปาร์ตี้เคลียร์ครัวซองต์สเตชั่นมาร์ก ซิตี้ คาปูชิโนติวเตอร์ฟรุตสต๊อก เตี๊ยมชัวร์สัมนาตัวตนโอเปอเรเตอร์ It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like readableวมมิตร ทาวน์เฮาส์รีโมทเทวาเฝอ ศิลปากรเจไดรีสอร์ทอาว์ กู๋โปรโมชั่นเพนกวิน ม้าหินอ่อน วิดีโอเอ็นเตอร์เทนรามาธิบดีจิตพิสัยแชมพู ตู้เซฟสต็อกซัมเมอร์ศิลปากร เทปวีไอพีโปรเจกเตอร์เบญจมบพิตรช็อค',
           engagement_count: 123,
         },
         {
@@ -414,7 +443,7 @@ export default {
           author: 'abc',
           candidate: 'สุชัชวีร์',
           created_time: '2022-03-22T16:45:09.641Z',
-          text: 'ปาร์ตี้เคลียร์ครัวซองต์สเตชั่นมาร์ก ซิตี้ คาปูชิโนติวเตอร์ฟรุตสต๊อก เตี๊ยมชัวร์สัมนาตัวตนโอเปอเรเตอร์ แคมเปญดีลเลอร์ ไฮกุ เซ็นเซอร์ อุด้งโยโย่ โต๊ะจีนรวมมิตร ทาวน์เฮาส์รีโมทเทวาเฝอ ศิลปากรเจไดรีสอร์ทอาว์ กู๋โปรโมชั่นเพนกวิน ม้าหินอ่อน วิดีโอเอ็นเตอร์เทนรามาธิบดีจิตพิสัยแชมพู ตู้เซฟสต็อกซัมเมอร์ศิลปากร เทปวีไอพีโปรเจกเตอร์เบญจมบพิตรช็อค',
+          text: 'ปาร์ตี้เคลียร์ครัวซองต์สเตชั่นมาร์ก ซิตี้ คาปูชิโนติวเตอร์ฟรุตสต๊อก เตี๊ยมชัวร์สัมนาตัวตนโอเปอเรเตอร์ แคมเปญดีลเลอร์ ไฮกุ เซ็นเซอร์ อุด้งโยโย่ โต๊ะจีนรวมมิตร ทาวน์เฮาส์รีโมทเทวาเฝอ ศิลปากรเจไดรีสอร์ทอาว์ กู๋โปรโมชั่นเIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like readableอกซัมเมอร์ศิลปากร เทปวีไอพีโปรเจกเตอร์เบญจมบพิตรช็อค',
           engagement_count: 123,
         },
       ],
@@ -785,6 +814,7 @@ export default {
       const start = d3.min(this.line_chart_data, (d) => d.date)
       const end = d3.max(this.line_chart_data, (d) => d.date)
       this.daterange = [start, end]
+      console.log(this.daterange)
     },
     reRenderChart() {
       this.render_chart = false
@@ -1141,7 +1171,7 @@ export default {
     z-index: -1;
   }
   .label {
-    width: 50%;
+    flex: 1;
     height: 100%;
     left: 0;
     display: flex;
@@ -1162,6 +1192,9 @@ export default {
         margin-left: 4px;
       }
     }
+  }
+  .label + .label {
+    width: 50%;
   }
 }
 .select-outline {
