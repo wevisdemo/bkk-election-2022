@@ -1,0 +1,43 @@
+=ellipsis
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+
+=overflow-touch
+  -webkit-overflow-scrolling: touch
+
+// Responsiveness
+
+=from($device)
+  @media screen and (min-width: $device)
+    @content
+
+=until($device)
+  @media screen and (max-width: $device - 1px)
+    @content
+
+=mobile
+  @media screen and (max-width: $tablet - 1px)
+    @content
+
+// =tablet
+//   @media screen and (max-width: $desktop - 1px), print
+//     @content
+
+=tablet
+  @media screen and (max-width: $desktop - 1px)
+    @content
+
+=tablet-only
+  @media screen and (min-width: $tablet) and (max-width: $desktop - 1px)
+    @content
+
+=tablet-up
+  @media screen and (min-width: $tablet - 1px), print
+    @content
+
+=desktop
+  @media screen and (min-width: $desktop)
+    @content
+
+

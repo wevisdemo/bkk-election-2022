@@ -37,6 +37,7 @@
                     :value="item.value"
                     class="typo-u2"
                   >
+                    <div class="label typo-u3">{{ item.label }}</div>
                   </el-option>
                 </el-select>
               </div>
@@ -95,46 +96,75 @@
         </div>
       </div>
 
-      <div class="text-center text-white px-10">
+      <div class="text-center text-white px-10 sm:px-5">
         <div class="container mx-auto">
           <div class="typo-h1 pt-16">ส่องกระแสชาวโซเชียล</div>
           <div class="pt-11 pb-16">
             <p class="typo-b4">
-              สนามเลือกตั้งไม่ได้มีอยู่แค่ในโลกภายนอก
-              และการหาเสียงไม่ได้ปรากฎอยู่แค่การเคาะประตูบ้าน หรือปราศรัยบนเวที
-              แต่การแย่งชิงพื้นที่ทางการเมืองยังเกิดขึ้นในโลกโซเชียลมีเดียอย่างเข้มข้นด้วยเช่นกัน
-              พรรคการเมืองที่คุณชื่นชอบ ถูกพูดถึงมากแค่ไหนในแต่ละสัปดาห์?
-              สื่อมวลชนกระแสหลักหยิบประเด็นใดมานำเสนอ?
-              และวาระทางการเมืองแบบไหนที่ได้รับความสนใจมากที่สุด?
-              ผู้สมัครแต่ละคนชอบพูด/ถูกพูดถึงพร้อมกับคำว่าอะไรบ่อยๆ
-              ชวนไปสำรวจได้ผ่านข้อมูลชุดนี้
+              สนามเลือกตั้งบนโลกออนไลน์นั้นเข้มข้นไม่แพ้การเดินสายเคาะประตูบ้านหรือปราศรัยบนเวที
+              ทั้งจากการแย่งชิงพื้นที่ของผู้สมัครรับเลือกตั้ง
+              และจากความเห็นของประชาชน
+            </p>
+            <p class="typo-b4 pt-8">
+              ไปดูกันว่า.. ผู้สมัครผู้ว่าฯ กทม. คนไหน
+              ถูกพูดถึงมากน้อยแค่ไหนในแต่ละสัปดาห์?
+              มีความคิดเห็นต่อประเด็นปัญหาด้านต่างๆ ของ กทม. อย่างไร?
+              และวาระไหนที่ได้รับความสนใจมากที่สุด?
             </p>
             <p class="pt-8 opacity-70">
-              หมายเหตุ: (1)
-              ข้อมูลที่ใช้ในการวิเคราะห์มาจากบัญชีหลักของพรรคการเมือง
-              บัญชีผู้ได้รับการเสนอชื่อให้เป็นนายกรัฐมนตรี
-              และบัญชีของสื่อมวลชนกระแสหลักที่มียอดผู้ติดตามเกินหนึ่งล้านคน (2)
-              ข้อมูลชุดนี้แสดงเฉพาะ 11
-              พรรคที่เริ่มมีความเคลื่อนไหวสูงสุดในช่วงปลายปี 2561 (3)
-              ข้อมูลบนสื่อโซเชียลบางส่วน มีอยู่ก่อน พ.ร.ฎ.
-              เลือกตั้งที่ออกเมื่อวันที่ 23 ก.พ. 62
+              หมายเหตุ: ข้อมูลที่ใช้ในงานชิ้นนี้ เก็บรวบรวมโดยเครื่องมือ Social
+              Monitoring ของ Wisesight จากช่องทาง Facebook, Twitter, Youtube,
+              Instagram, Forum และเว็บไซต์สำนักข่าวต่างๆ
+              ซึ่งข้อมูลที่เก็บรวบรวมเป็นไปตามนโยบายด้านข้อมูลของบริษัท
             </p>
           </div>
+        </div>
+      </div>
 
-          <div class="flex flex-col items-center py-7">
-            <div class="flex items-center text-center text-white">
-              <!-- <span class="mr-3">วันที่</span> -->
-              <el-date-picker
-                v-model="daterange"
-                type="daterange"
-                :editable="false"
-                value-format="yyyy-MM-DD"
-                placeholder="Pick a day"
-                :picker-options="pickerOptions"
-              >
-              </el-date-picker>
-              <!-- <span class="ml-3 mr-3">ถึง</span> -->
-              <!-- <el-date-picker
+      <div class="flex flex-col items-center py-7">
+        <div class="flex items-center text-center text-white">
+          <div class="date-picker">
+            <div class="label-wrapper">
+              <div class="label">
+                <span class="text typo-b4">วันที่</span>
+                <div class="date-wrapper">
+                  <div class="date typo-u2">
+                    {{ dateFormat(daterange[0]) }}
+                  </div>
+                  <img
+                    src="~/assets/images/calendar.svg"
+                    alt="calendar.svg"
+                    class="icon"
+                  />
+                </div>
+              </div>
+              <div class="label">
+                <span class="text typo-b4">ถึง</span>
+                <div class="date-wrapper">
+                  <div class="date typo-u2">
+                    {{ dateFormat(daterange[1]) }}
+                  </div>
+                  <img
+                    src="~/assets/images/calendar.svg"
+                    alt="calendar.svg"
+                    class="icon"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <el-date-picker
+              v-model="daterange"
+              type="daterange"
+              :editable="false"
+              value-format="yyyy-MM-DD"
+              placeholder="Pick a day"
+              :picker-options="pickerOptions"
+              class="opacity-0"
+            >
+            </el-date-picker>
+          </div>
+          <!-- <el-date-picker
                 v-model="end_input_date"
                 type="date"
                 value-format="yyyy-MM-dd"
@@ -142,47 +172,71 @@
                 :picker-options="pickerOptions"
               >
               </el-date-picker> -->
-            </div>
-            <div class="flex items-center text-center text-white mt-6">
-              <span class="mr-3">ดู</span>
-              <el-select v-model="keyword" placeholder="Select">
-                <el-option
-                  v-for="item in keyword_options"
-                  :key="item.value"
-                  :label="item.label"
-                  :value="item.value"
-                >
-                </el-option>
-              </el-select>
-              <span class="ml-5 mr-3">จาก</span>
-              <el-select v-model="platform" placeholder="Select">
-                <el-option
-                  v-for="item in platform_options"
-                  :key="item.value"
-                  :label="item.label"
-                  :value="item.value"
-                >
-                </el-option>
-              </el-select>
-            </div>
-            <div class="mt-7">
-              <el-checkbox-group v-model="candidate_filter" size="small">
-                <el-checkbox
-                  v-for="item in candidate_options"
-                  :key="item.value"
-                  :label="item.value"
-                  border
-                >
-                  {{ item.label }}</el-checkbox
-                >
-              </el-checkbox-group>
-            </div>
+        </div>
+        <div
+          class="flex items-center text-center text-white mt-6 sm:flex-col sm:items-end"
+        >
+          <div>
+            <span class="mr-3">ดู</span>
+            <el-select
+              v-model="keyword"
+              placeholder="Select"
+              class="select-outline"
+            >
+              <el-option
+                v-for="item in keyword_options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              >
+                <div class="label typo-u3">
+                  <div class="title">{{ item.label }}</div>
+                  <div class="description typo-u5">
+                    {{ item.description }}
+                  </div>
+                </div>
+              </el-option>
+            </el-select>
+          </div>
+          <div class="ml-5 sm:ml-0 sm:mt-3">
+            <span class="mr-3">จาก</span>
+            <el-select
+              v-model="platform"
+              placeholder="Select"
+              class="select-outline"
+            >
+              <el-option
+                v-for="item in platform_options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              >
+                <div class="label">{{ item.label }}</div>
+              </el-option>
+            </el-select>
           </div>
         </div>
+        <el-checkbox-group
+          v-model="candidate_filter"
+          size="small"
+          class="candidate-tags mt-6 px-4"
+        >
+          <el-checkbox
+            v-for="item in 12"
+            :key="item.value"
+            label="ชัชชาติ"
+            border
+            class="typo-u3 font-bold"
+          >
+            <!-- {{ item.label }} -->
+            ชัชชาติ
+            <img src="~/assets/images/close.svg" alt="" class="i-close" />
+          </el-checkbox>
+        </el-checkbox-group>
       </div>
 
-      <div class="section-chart">
-        <el-radio-group v-model="data_type">
+      <div class="section-chart mt-5">
+        <el-radio-group v-model="data_type" size="mini" class="radio-group">
           <el-radio-button label="engagement">Engagement</el-radio-button>
           <el-radio-button label="rank">Rank</el-radio-button>
         </el-radio-group>
@@ -274,15 +328,15 @@
         <div class=""></div>
       </div>
 
-      <div class="text-white text-center px-10 pb-32">
+      <div class="text-white text-center px-10 pb-32 sm:px-5">
         <div class="container mx-auto">
           <div class="flex items-center justify-center py-9">
             <span class="typo-b5">Share</span>
           </div>
 
           <div class="mt-16 border-t border-white pt-6">
-            <span class="font-bold typo-b4">Methodology</span>
-            <div class="pt-7 typo-b5">
+            <span class="font-bold typo-b4 opacity-75">Methodology</span>
+            <div class="pt-7 typo-b5 opacity-75">
               Quis mi semper maecenas dictumst ut. Luctus vel tempus in quis
               fames odio ut faucibus libero. Dignissim elit massa orci ornare
               sit orci, condimentum nec vehicula. Bibendum euismod phasellus
@@ -301,7 +355,12 @@
             </div>
 
             <div class="mt-10 flex items-center justify-center typo-b6">
-              Data by
+              <span class="opacity-75"> Data by </span>
+              <img
+                src="~/assets/images/wisesight-logo.svg"
+                alt="wisesight-logo.svg"
+                class="ml-4 sm:w-36"
+              />
             </div>
           </div>
         </div>
@@ -365,18 +424,63 @@ export default {
       start_input_date: '2022-01-01',
       // end_input_date: '',
       active_date: '',
-      keyword: '1',
+      keyword: '',
       keyword_options: [
         {
           label: 'ทุก keyword',
-          value: '1',
+          value: '',
+          description: '',
+        },
+        {
+          label: 'การเดินทาง',
+          value: 'การเดินทาง',
+          description: 'เช่น รถเมล์, BRT, BTS, MRT, รถไฟฟ้า',
+        },
+        {
+          label: 'พื้นที่สาธารณะ',
+          value: 'พื้นที่สาธารณะ',
+          description: 'เช่น รถเมล์, BRT, BTS, MRT, รถไฟฟ้า',
+        },
+        {
+          label: 'สุขภาพ',
+          value: 'สุขภาพ',
+          description: 'เช่น รถเมล์, BRT, BTS, MRT, รถไฟฟ้า',
+        },
+        {
+          label: 'ความเท่าเทียม',
+          value: 'ความเท่าเทียม',
+          description: 'เช่น รถเมล์, BRT, BTS, MRT, รถไฟฟ้า',
         },
       ],
-      platform: '1',
+      platform: '',
       platform_options: [
         {
           label: 'ทุกช่องทาง',
-          value: '1',
+          value: '',
+        },
+        {
+          label: 'Facebook',
+          value: 'Facebook',
+        },
+        {
+          label: 'Twitter',
+          value: 'Twitter',
+        },
+        {
+          label: 'Instagram',
+          value: 'Instagram',
+        },
+        {
+          label: 'News',
+          value: 'News',
+        },
+        {
+          label: 'Youtube',
+          value: 'Youtube',
+        },
+        {
+          label: 'Forum',
+          value: 'Forum',
         },
       ],
       candidate: '',
@@ -946,15 +1050,26 @@ export default {
   }
   ul {
     li {
+      height: auto;
+      line-height: normal;
       padding: 0 15px;
       overflow: unset;
-      color: #000000;
-      > span {
+      color: #000000 !important;
+      .label {
         width: 100%;
-        display: block;
+        min-height: 34px;
+        padding: 6px 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .title {
+        }
+        .description {
+          color: rgba($color: #000000, $alpha: 0.5);
+        }
       }
     }
-    li:not(:last-of-type) > span {
+    li:not(:last-of-type) .label {
       border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
     }
   }
@@ -962,6 +1077,10 @@ export default {
 </style>
 
 <style lang="scss" scoped>
+@import '~/assets/style/custom.scss';
+.container {
+  max-width: 750px;
+}
 .section-chart {
   width: 97vw;
   margin: 0 auto;
@@ -1004,6 +1123,132 @@ export default {
         font-weight: bold;
         line-height: 33px;
       }
+    }
+  }
+}
+.date-picker {
+  width: 300px;
+  display: flex;
+  position: relative;
+  cursor: pointer;
+  .label-wrapper {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    pointer-events: none;
+    z-index: -1;
+  }
+  .label {
+    width: 50%;
+    height: 100%;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .text {
+    }
+    .date-wrapper {
+      margin-left: 8px;
+      border-bottom: 1px solid #ffffff;
+      padding-bottom: 2px;
+      display: flex;
+      align-items: center;
+      .date {
+        font-weight: bold;
+      }
+      .icon {
+        margin-left: 4px;
+      }
+    }
+  }
+}
+.select-outline {
+  width: 150px;
+  ::v-deep {
+    .el-input__inner {
+      font-family: 'Anuphan';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 14px;
+      border: 1px solid #c9c9c9 !important;
+      background: transparent;
+      color: #ffffff;
+      border-radius: 2px;
+      font-weight: bold;
+      font-size: 14px;
+      height: 33px;
+      line-height: 33px;
+    }
+    .el-input__icon {
+      font-weight: bold;
+      line-height: 33px;
+    }
+  }
+}
+.candidate-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 70%;
+  @include mobile() {
+    max-width: 100%;
+  }
+
+  .el-checkbox {
+    min-width: 112px;
+    border-radius: 2px;
+    padding: 0 30px;
+    margin: 3px !important;
+    border: 1px solid #a8ff3d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    ::v-deep {
+      .el-checkbox__input {
+        display: none;
+      }
+      .el-checkbox__label {
+        color: #a8ff3d;
+        font-weight: bold;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .i-close {
+        display: none;
+        margin-left: 8px;
+      }
+    }
+  }
+  .el-checkbox.is-checked {
+    background-color: #a8ff3d;
+    ::v-deep {
+      .el-checkbox__label {
+        color: #000000 !important;
+      }
+      .i-close {
+        display: inline-block;
+      }
+    }
+  }
+}
+.radio-group {
+  ::v-deep {
+    .el-radio-button__inner {
+      border-color: rgba($color: #ffffff, $alpha: 0.4);
+      padding: 10px;
+      background: transparent;
+      font-weight: 600;
+      font-size: 14px;
+      font-family: 'Anuphan';
+      color: #aaaaaa;
+      box-shadow: none !important;
+    }
+    .el-radio-button.is-active .el-radio-button__inner {
+      color: #ffffff;
     }
   }
 }
