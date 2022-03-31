@@ -20,7 +20,7 @@
     "numeral": "^2.0.6",
     "nuxt": "^2.15.8",
     "nuxt-mq": "^2.0.2",
-    "vue": "^2.6.14",
+    "vue-check-view": "^0.3.0",
     "vue-server-renderer": "^2.6.14",
     "vue-template-compiler": "^2.6.14",
     "webpack": "^4.46.0"

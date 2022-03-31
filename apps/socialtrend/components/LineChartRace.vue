@@ -1,5 +1,19 @@
 <template>
   <div class="line-chart-race">
+    <!-- <div
+      class="stacked-bar-chart fixed top-0 left-0 right-0 bottom-0 bg-black flex"
+      style="z-index: -1"
+    >
+      <div
+        v-for="item in candidate"
+        :key="(item || {}).value"
+        :id="(item || {}).value"
+        class="candidate flex-auto px-0.5 opacity-20 transition-all duration-500"
+      >
+        <img :src="item.image" alt="" class="w-full h-full object-cover" />
+      </div>
+    </div> -->
+
     <transition name="fade">
       <div
         v-if="hover || active"
@@ -8,7 +22,7 @@
         :style="`left: ${left_tooltip}px`"
       >
         <div class="tooltip typo-b5">
-          <div class="title">{{ active_data.date }}</div>
+          <div class="title">{{ active_data.date_display }}</div>
           <div
             v-for="(item, index) in active_data.candidates"
             :key="index"
@@ -139,7 +153,13 @@
             </g>
           </g>
 
-          <g :id="item.menu" class="labels-group">
+          <g
+            :id="item.menu"
+            class="labels-group"
+            :transform="`translate(${xScale(
+              (item.data || {})[0].date
+            )},${yScale((item.data || {})[0].value)})`"
+          >
             <!-- <g class="end-circle-container"> -->
             <!-- <circle class="circle bg" r="13" fill="#ffffff"></circle> -->
             <!-- <circle class="circle bg" :fill="item.color" r="4" /> -->
@@ -168,11 +188,7 @@
           :key="index"
           class="checks"
           :transform="`translate(${xScale(item) - check_width / 2}, 0)`"
-          @click="
-            animate_finish && type === 'engagement'
-              ? onClickChecks(item)
-              : false
-          "
+          @click="animate_finish ? onClickChecks(item) : false"
           @mouseover="checksEvent(item)"
         >
           <rect
@@ -209,9 +225,17 @@ export default {
       type: null,
       default: '',
     },
+    stackedBarChart: {
+      type: Array,
+      default: () => [],
+    },
     type: {
       type: String,
       default: 'engagement',
+    },
+    duration: {
+      type: Number,
+      default: 20000,
     },
   },
   data() {
@@ -230,9 +254,6 @@ export default {
     }
   },
   computed: {
-    duration() {
-      return this.$mq !== 'desktop' ? 7500 : 12500
-    },
     innerWidth() {
       return this.width - this.margin.left - this.margin.right
     },
@@ -324,7 +345,6 @@ export default {
     yScale() {
       const maximum = d3.max(this.data_set, (d) => d.value)
       // const domain = this.type === 'engagement' ? [0, maximum] : [maximum, 0]
-      // console.log(domain)
 
       return d3
         .scaleLinear()
@@ -351,6 +371,12 @@ export default {
         .ticks(ticks)
         .tickSize(-this.innerWidth)
         .tickPadding(6)
+    },
+    stackedScale() {
+      const clientWidth = _.get(window, 'clientWidth', 0)
+      const maximum = d3.max(this.data_set, (d) => d.value)
+
+      return d3.scaleLinear().domain([0, maximum]).range([0, clientWidth])
     },
     transitionPath() {
       return d3.transition().ease(d3.easeLinear).duration(this.duration)
@@ -379,7 +405,8 @@ export default {
         })
       })
       return {
-        date: this.dateDisplay(value),
+        date_display: this.dateDisplay(value),
+        date: value,
         candidates: _.orderBy(tooltipData, 'value', order),
       }
     },
@@ -393,8 +420,10 @@ export default {
     },
     ready: {
       handler(val) {
-        // if (!val) return
-        this.animateStart()
+        if (!val) return
+        this.$nextTick(() => {
+          this.animateStart()
+        })
       },
       immediate: true,
     },
@@ -459,8 +488,6 @@ export default {
     //     )})`
     //   )
     // })
-
-    this.animateStart()
   },
   methods: {
     resizeHandler() {
@@ -514,12 +541,9 @@ export default {
       line.each(function () {
         d3.select(this)
           .transition(_self.transitionPath)
-          .delay(100)
+          .delay(1000)
           .attr('stroke-dashoffset', 0)
       })
-    },
-    isDateSame(date, val) {
-      return moment(date).isSame(new Date(val))
     },
     setAnimatePathLabel() {
       const _self = this
@@ -555,7 +579,10 @@ export default {
       }
 
       this.animate_finish = false
-      labels.call(() => animate())
+
+      setTimeout(() => {
+        labels.call(() => animate())
+      }, 1000)
     },
     handleHover(el) {
       d3.select(el).moveToFront()

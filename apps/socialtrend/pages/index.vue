@@ -1,9 +1,19 @@
 <template>
   <div>
-    <div class="fixed top-0 left-0 right-0 bottom-0 bg-black z-0"></div>
-    <!-- <ui-navbar></ui-navbar> -->
+    <div
+      class="stacked-bar-chart fixed top-0 left-0 right-0 bottom-0 bg-black flex"
+      style="z-index: -1"
+    >
+      <div
+        v-for="item in candidates"
+        :key="item.value"
+        class="candidate px-0.5 opacity-20"
+      >
+        <img :src="item.image" alt="" class="w-full h-full object-cover" />
+      </div>
+    </div>
 
-    <div class="relative z-50">
+    <div>
       <div class="hero w-full h-screen px-10">
         <div class="container mx-auto h-full flex items-center justify-center">
           <div class="text-center text-white typo-b3">
@@ -126,7 +136,7 @@
           <el-radio-button label="rank">Rank</el-radio-button>
         </el-radio-group>
 
-        <div class="chart-wrapper mt-4">
+        <div v-view="viewHandlerChart" class="chart-wrapper mt-4">
           <div class="chart">
             <client-only>
               <LineChartRace
@@ -134,6 +144,8 @@
                 :data_set="line_chart_data"
                 :active_chart.sync="active_date"
                 :type="data_type"
+                :duration="duration"
+                :animate="chartAnimate"
                 @change="onChangeActive"
               />
             </client-only>
@@ -251,7 +263,10 @@
 import * as d3 from 'd3'
 import _ from 'lodash'
 import moment from 'moment'
+import Vue from 'vue'
+import checkView from 'vue-check-view'
 import LineChartRace from '~/components/LineChartRace'
+Vue.use(checkView)
 
 export default {
   name: 'IndexPage',
@@ -260,9 +275,11 @@ export default {
   },
   data() {
     return {
+      chartAnimate: false,
       line_chart_data: [],
       render_chart: true,
       current_chart_data: {},
+      avgTime: 0,
       posts: [
         {
           channel: 'Facebook',
@@ -314,14 +331,17 @@ export default {
         {
           label: 'ชัชชาติ',
           value: 'ชัชชาติ',
+          image: require('~/assets/images/Rectangle 67.jpg'),
         },
         {
           label: 'รสนา',
           value: 'รสนา',
+          image: require('~/assets/images/Rectangle 67.jpg'),
         },
         {
           label: 'สุชัชวีร์',
           value: 'สุชัชวีร์',
+          image: require('~/assets/images/Rectangle 67.jpg'),
         },
       ],
       candidate_filter: ['ชัชชาติ', 'รสนา', 'สุชัชวีร์'],
@@ -331,67 +351,82 @@ export default {
     format() {
       return d3.format(',')
     },
+    duration() {
+      return this.$mq !== 'desktop' ? 7500 : 20000
+    },
     engagement() {
       return [
         {
           date: '2022-01-01',
           candidate: 'ชัชชาติ',
           value: 240000,
+          ratio: '2.3620440775140192',
         },
         {
           date: '2022-01-01',
           candidate: 'รสนา',
           value: 4235234,
+          ratio: '41.682539110775046',
         },
         {
           date: '2022-01-01',
           candidate: 'สุชัชวีร์',
           value: 5685457,
+          ratio: '55.95541681171093',
         },
         {
           date: '2022-01-02',
           candidate: 'ชัชชาติ',
           value: 5677878,
+          ratio: '36.14921939119408',
         },
         {
           date: '2022-01-02',
           candidate: 'รสนา',
           value: 5464356,
+          ratio: '34.78979362987153',
         },
         {
           date: '2022-01-02',
           candidate: 'สุชัชวีร์',
           value: 4564545,
+          ratio: '29.060986978934384',
         },
         {
           date: '2022-01-03',
           candidate: 'ชัชชาติ',
           value: 6677848,
+          ratio: '63.201592209086',
         },
         {
           date: '2022-01-03',
           candidate: 'รสนา',
           value: 455456,
+          ratio: '4.310601915644302',
         },
         {
           date: '2022-01-03',
           candidate: 'สุชัชวีร์',
           value: 3432645,
+          ratio: '32.4878058752697',
         },
         {
           date: '2022-01-04',
           candidate: 'ชัชชาติ',
           value: 5567878,
+          ratio: '52.58834691124058',
         },
         {
           date: '2022-01-04',
           candidate: 'รสนา',
           value: 456342,
+          ratio: '4.310128814993675',
         },
         {
           date: '2022-01-04',
           candidate: 'สุชัชวีร์',
           value: 4563445,
+          ratio: '43.10152427376575',
         },
       ]
     },
@@ -401,46 +436,55 @@ export default {
           date: '2022-01-01',
           candidate: 'ชัชชาติ',
           value: 2,
+          ratio: 33.33,
         },
         {
           date: '2022-01-01',
           candidate: 'รสนา',
           value: 1,
+          ratio: 50,
         },
         {
           date: '2022-01-01',
           candidate: 'สุชัชวีร์',
           value: 3,
+          ratio: 16.66,
         },
         {
           date: '2022-01-02',
           candidate: 'ชัชชาติ',
           value: 2,
+          ratio: 33.33,
         },
         {
           date: '2022-01-02',
           candidate: 'รสนา',
           value: 3,
+          ratio: 16.66,
         },
         {
           date: '2022-01-02',
           candidate: 'สุชัชวีร์',
           value: 1,
+          ratio: 50,
         },
         {
           date: '2022-01-03',
           candidate: 'ชัชชาติ',
           value: 1,
+          ratio: 50,
         },
         {
           date: '2022-01-03',
           candidate: 'รสนา',
           value: 3,
+          ratio: 16.66,
         },
         {
           date: '2022-01-03',
           candidate: 'สุชัชวีร์',
           value: 2,
+          ratio: 33.33,
         },
       ]
 
@@ -486,6 +530,47 @@ export default {
         {}
       )
     },
+    date_group() {
+      return _.groupBy(this.line_chart_data, 'date')
+    },
+    candidates() {
+      // const maximumArr = this.candidate_options.map(c => {})
+      // const {length} = this.candidate_options
+      // const res = this.candidate_options.map((c) => {
+
+      const dateArr = _.groupBy(this.line_chart_data, 'date')
+      const dateGroup = []
+      for (const key in dateArr) {
+        const toltal = d3.sum(dateArr[key], (d) => d.value)
+        dateArr[key].forEach((d) => {
+          const data = {
+            ...d,
+            ratio: (d.value / toltal) * 100,
+          }
+
+          dateGroup.push(data)
+        })
+      }
+
+      const candidates = []
+      const group = _.chain(this.line_chart_data)
+        .orderBy('date', 'asc')
+        .groupBy('candidate')
+        .value()
+
+      for (const key in group) {
+        const candidate = this.candidate_options.find((c) => c.value === key)
+        const data = dateGroup.filter((d) => d.candidate === key)
+
+        candidates.push({
+          ...candidate,
+          data,
+          width: _.get(data, '[0].ratio'),
+        })
+      }
+
+      return candidates
+    },
   },
   watch: {
     data_type: {
@@ -494,6 +579,11 @@ export default {
         this.line_chart_data =
           val === 'engagement' ? this.engagement : this.rank
         this.reRenderChart()
+
+        if (!this.chartAnimate) return
+        this.$nextTick(() => {
+          this.setAnimateStackedBarChart()
+        })
       },
     },
     // end_input_date() {
@@ -506,6 +596,23 @@ export default {
     // window.registerUICustomElements()
 
     this.setDaterange()
+    this.setDefaultStackedBarChart()
+
+    // const animateTime = 13
+    // const avgTime = animateTime / Object.keys(date_group).length
+    // let time = 0
+    // const interval = setInterval(() => {
+    //   this.candidate_animate.forEach(c => {
+    //     const  =
+
+    //     this.calRatio(c)
+    //   });
+
+    //   time += 1
+    //   if (animateTime >= time) clearInterval(interval)
+    // }, 1000);
+
+    // const dateGroup = Object.keys(this.date_group)
   },
   methods: {
     setDaterange() {
@@ -529,10 +636,124 @@ export default {
     dateFormat(date) {
       return moment(date).add(543, 'years').format('DD MMM YYYY')
     },
-    onChangeActive(val) {
+    onChangeActive(val = {}) {
       this.carousel_index = 0
       this.current_chart_data = val
+      this.updateStackedBarChart(val.date)
     },
+    viewHandlerChart(e) {
+      if (e.percentInView > 0.8 && !this.chartAnimate) {
+        this.chartAnimate = true
+        this.setAnimateStackedBarChart()
+      }
+    },
+    updateStackedBarChart(date) {
+      d3.selectAll('.stacked-bar-chart .candidate')
+        .data(this.candidates)
+        .call((el) => {
+          el.transition()
+            .duration(600)
+            .ease(d3.easeLinear)
+            .style('width', (curr) => {
+              const data = curr.data.find((d) => d.date === date)
+              return `${_.get(data, 'ratio')}%`
+            })
+        })
+    },
+    setDefaultStackedBarChart() {
+      const { length } = this.candidates
+      d3.selectAll('.stacked-bar-chart .candidate')
+        .data(this.candidates)
+        .call((el) => {
+          el.transition()
+            .duration(300)
+            .ease(d3.easeLinear)
+            .style('width', (d) => {
+              const ratio = 100 / length
+              return `${ratio}%`
+            })
+        })
+    },
+    setAnimateStackedBarChart() {
+      const candidates = d3
+        .selectAll('.stacked-bar-chart .candidate')
+        .data(this.candidates)
+      const { length } = Object.keys(this.date_group)
+      // const time = 15000
+      const time = (this.duration + 500) / length
+      const firstTime = 600
+      const avgTime = time + (time - firstTime) / (length - 1)
+
+      const animate = () => {
+        candidates.each(function (d) {
+          let index = 0
+          const data = d.data
+
+          const animate = () => {
+            const d = _.get(data, `[${index}]`, {})
+            d3.select(this)
+              .transition()
+              .duration(index === 0 ? firstTime : avgTime)
+              .style('width', `${d.ratio}%`)
+              .on('end', () => {
+                if (index < length) animate()
+              })
+            index++
+          }
+
+          animate()
+        })
+      }
+      // setTimeout(() => {
+      candidates.call(() => animate())
+      // }, 300)
+    },
+    // animateStarckBarChart() {
+    //   const { length } = Object.keys(this.date_group)
+    //   let index = 1
+    //   let time = 0
+    //   const animateTime = 13000
+    //   this.avgTime = animateTime / length
+    //   let timePoint = this.avgTime
+    //   console.log('avgTime ', this.avgTime)
+    //   console.log('this.candidate_animate ', this.candidate_animate)
+    //   const animate = (index) => {
+    //     this.candidate_animate.forEach((d) => {
+    //       const data = d.data[index]
+    //       // const data = _.get(this.candidate_animate, `data[${index}]`)
+
+    //       if (!data) return
+    //       d.width = data.ratio
+    //     })
+    //     // console.log('index ', index)
+    //     // console.log('data ', data)
+    //   }
+
+    //   const interval = setInterval(() => {
+    //     if (
+    //       (time === 0 || time >= timePoint || time + 500 >= timePoint) &&
+    //       index <= length
+    //     ) {
+    //       animate(index)
+    //       timePoint += this.avgTime
+    //       index += 1
+    //       console.log('timePoint ', timePoint)
+    //     }
+    //     console.log('time ', time)
+
+    //     if (time >= animateTime) {
+    //       clearInterval(interval)
+    //     } else {
+    //       time += 500
+    //     }
+    //   }, 500)
+    // },
+    // calRatio(data) {
+    //   // const current = this.engagement.filter(d => d.date === data.date)
+    //   // const maximum = d3.max(current, (d) => d.value)
+    //   const toltal = d3.sum(current, (d) => d.value)
+    //   return (data.value / toltal) * 100
+    // },
   },
 }
 </script>
