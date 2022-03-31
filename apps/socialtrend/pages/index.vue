@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="stacked-bar-chart fixed top-0 left-0 right-0 bottom-0 bg-black flex"
+      class="stacked-bar-chart fixed top-0 left-0 right-0 bottom-0 bg-black flex sm:flex-col"
       style="z-index: -1"
     >
       <div
@@ -14,33 +14,84 @@
     </div>
 
     <div>
-      <div class="hero w-full h-screen px-10">
-        <div class="container mx-auto h-full flex items-center justify-center">
+      <div class="hero w-full h-screen px-10 sm:p-5">
+        <div
+          class="container mx-auto h-full flex items-center justify-center relative"
+        >
           <div class="text-center text-white typo-b3">
-            <div class="text-left mx-auto max-w-max">
-              <span> ในช่วง xx วัน ที่ผ่านมา </span>
-              <el-select v-model="candidate" placeholder="Select">
-                <el-option
-                  v-for="item in candidate_options"
-                  :key="item.value"
-                  :label="item.label"
-                  :value="item.value"
-                >
-                </el-option>
-              </el-select>
+            <div class="text-left sm:text-center mx-auto max-w-max">
+              <span>
+                ในช่วง
+                <span class="font-bold">{{ last_day }} วัน</span> ที่ผ่านมา
+              </span>
+              <br v-if="$mq === 'mobile'" />
+              <div class="select-candidate" :style="`background: #A8FF3D`">
+                <span class="label">{{
+                  candidate ? candidate : socialtrend_current.candidate
+                }}</span>
+                <el-select v-model="candidate" placeholder=" ">
+                  <el-option
+                    v-for="item in candidate_options"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value"
+                    class="typo-u2"
+                  >
+                  </el-option>
+                </el-select>
+              </div>
               <span>ถูกพูดถึงในโลกโซเชียล</span>
             </div>
-            <div>
-              {{ format(8888888) }} ข้อความ โดยมีคำว่า keyword<sup>(xx)</sup> ,
+            <div v-if="socialtrend_current.total_mention">
+              <span class="font-bold"
+                >{{ format(socialtrend_current.total_mention) }} ข้อความ
+                โดยมีคำว่า</span
+              >
+
+              <br v-if="$mq === 'mobile'" />
+              <span
+                v-for="(item, index) in socialtrend_current.top_keywords"
+                :key="item.candidate"
+                class="whitespace-nowrap"
+              >
+                <span class="font-bold" style="color: #a8ff3d">
+                  {{ item.keyword }}<sup>{{ `(${item.count})` }}</sup>
+                </span>
+                <template
+                  v-if="index < socialtrend_current.top_keywords.length - 1"
+                >
+                  &nbsp;,&nbsp;
+                </template>
+                <br v-if="$mq === 'mobile' && index % 2 !== 0" />
+              </span>
+              <br v-if="$mq !== 'mobile'" />
+              <!-- ,
               keyword<sup>(xx)</sup> , keyword<sup>(xx)</sup> , keyword<sup
                 >(xx)</sup
               >
               ,<br />
-              keyword<sup>(xx)</sup> ประกบคู่มากที่สุดตามลำดับ
-              สร้างการมีส่วนร่วมได้ทั้งหมด<br />
-              {{ format(8888888) }} ครั้ง เกิดขึ้นบน Facebook มากที่สุด
+              keyword<sup>(xx)</sup>  -->
+              ประกบคู่มากที่สุดตามลำดับ สร้างการมีส่วนร่วมได้ทั้งหมด<br />
+              <span class="font-bold"
+                >{{ format(socialtrend_current.total_engagement) }} ครั้ง</span
+              >
+              เกิดขึ้นบน
+              <span class="font-bold">{{
+                socialtrend_current.top_channel
+              }}</span>
+              มากที่สุด
             </div>
           </div>
+        </div>
+        <div
+          class="absolute bottom-16 sm:bottom-8 left-1/2 transform -translate-x-1/2"
+          style="transform: translateX(-50%)"
+        >
+          <img
+            src="~/assets/images/arrow.svg"
+            alt=""
+            class="animate-bounce sm:w-6"
+          />
         </div>
       </div>
 
@@ -141,8 +192,8 @@
             <client-only>
               <LineChartRace
                 v-if="render_chart && line_chart_data != 0"
-                :data_set="line_chart_data"
-                :active_chart.sync="active_date"
+                :dataSet="line_chart_data"
+                :activeChart.sync="active_date"
                 :type="data_type"
                 :duration="duration"
                 :animate="chartAnimate"
@@ -279,6 +330,8 @@ export default {
       line_chart_data: [],
       render_chart: true,
       current_chart_data: {},
+      socialtrend_current: {},
+      socialtrend: [],
       avgTime: 0,
       posts: [
         {
@@ -326,7 +379,7 @@ export default {
           value: '1',
         },
       ],
-      candidate: 'ชัชชาติ',
+      candidate: '',
       candidate_options: [
         {
           label: 'ชัชชาติ',
@@ -352,7 +405,10 @@ export default {
       return d3.format(',')
     },
     duration() {
-      return this.$mq !== 'desktop' ? 7500 : 20000
+      return this.$mq !== 'desktop' ? 15000 : 20000
+    },
+    last_day() {
+      return moment().diff(this.start_input_date, 'days')
     },
     engagement() {
       return [
@@ -586,6 +642,11 @@ export default {
         })
       },
     },
+    candidate(val) {
+      this.socialtrend_current =
+        this.socialtrend.find((d) => d.candidate === val) || {}
+      this.clearAnimateKeywords()
+    },
     // end_input_date() {
     //   const isAfter = moment(this.active_date).isAfter(this.end_input_date)
     //   if (!isAfter) return
@@ -594,9 +655,10 @@ export default {
   },
   mounted() {
     // window.registerUICustomElements()
-
+    this.getKeywords()
     this.setDaterange()
     this.setDefaultStackedBarChart()
+    this.animateKeywords()
 
     // const animateTime = 13
     // const avgTime = animateTime / Object.keys(date_group).length
@@ -633,6 +695,106 @@ export default {
         ? str.substr(0, maximum - 1) + '&hellip;'
         : str
     },
+    getKeywords() {
+      // try {
+      //   const res = await this.$api.get('candidate-stat', {
+      //     params: {
+      //       period: moment.format('yyyy-mm-dd')
+      //     }
+      //   })
+
+      //   this.socialtrend = res
+      // } catch (error) {
+      //   console.error(error);
+      // }
+
+      this.socialtrend = [
+        {
+          candidate: 'ชัชชาติ',
+          total_mention: 324235,
+          total_engagement: 345435,
+          top_keywords: [
+            {
+              keyword: 'การเดินทาง',
+              count: 23,
+            },
+            {
+              keyword: 'พื้นที่สาธารณะ',
+              count: 655,
+            },
+            {
+              keyword: 'สุขภาพ',
+              count: 435,
+            },
+            {
+              keyword: 'ความเท่าเทียม',
+              count: 34,
+            },
+            {
+              keyword: 'สิ่งแวดล้อม',
+              count: 34,
+            },
+          ],
+          top_channel: 'Facebook',
+        },
+        {
+          candidate: 'รสนา',
+          total_mention: 1212343,
+          total_engagement: 6543234,
+          top_keywords: [
+            {
+              keyword: 'การเดินทาง',
+              count: 45,
+            },
+            {
+              keyword: 'พื้นที่สาธารณะ',
+              count: 34,
+            },
+            {
+              keyword: 'สุขภาพ',
+              count: 53,
+            },
+            {
+              keyword: 'ความเท่าเทียม',
+              count: 34,
+            },
+            {
+              keyword: 'สิ่งแวดล้อม',
+              count: 654,
+            },
+          ],
+          top_channel: 'Facebook',
+        },
+        {
+          candidate: 'สุชัชวีร์',
+          total_mention: 2342345,
+          total_engagement: 43563546,
+          top_keywords: [
+            {
+              keyword: 'การเดินทาง',
+              count: 324,
+            },
+            {
+              keyword: 'พื้นที่สาธารณะ',
+              count: 345,
+            },
+            {
+              keyword: 'สุขภาพ',
+              count: 34,
+            },
+            {
+              keyword: 'ความเท่าเทียม',
+              count: 14,
+            },
+            {
+              keyword: 'สิ่งแวดล้อม',
+              count: 45,
+            },
+          ],
+          top_channel: 'Facebook',
+        },
+      ]
+    },
     dateFormat(date) {
       return moment(date).add(543, 'years').format('DD MMM YYYY')
     },
@@ -654,11 +816,27 @@ export default {
           el.transition()
             .duration(600)
             .ease(d3.easeLinear)
-            .style('width', (curr) => {
+            .style(this.$mq === 'mobile' ? 'height' : 'width', (curr) => {
               const data = curr.data.find((d) => d.date === date)
               return `${_.get(data, 'ratio')}%`
             })
         })
+    },
+    animateKeywords() {
+      let index = 0
+      const { length } = this.socialtrend
+      const update = () => {
+        this.socialtrend_current = this.socialtrend[index]
+
+        if (index < length - 1) index += 1
+        else index = 0
+      }
+
+      this.interval = setInterval(() => update(), 2000)
+    },
+    clearAnimateKeywords() {
+      if (!this.interval) return
+      clearInterval(this.interval)
     },
     setDefaultStackedBarChart() {
       const { length } = this.candidates
@@ -668,13 +846,14 @@ export default {
           el.transition()
             .duration(300)
             .ease(d3.easeLinear)
-            .style('width', (d) => {
+            .style(this.$mq === 'mobile' ? 'height' : 'width', (d) => {
               const ratio = 100 / length
               return `${ratio}%`
             })
         })
     },
     setAnimateStackedBarChart() {
+      const _self = this
       const candidates = d3
         .selectAll('.stacked-bar-chart .candidate')
         .data(this.candidates)
@@ -694,7 +873,7 @@ export default {
             d3.select(this)
               .transition()
               .duration(index === 0 ? firstTime : avgTime)
-              .style('width', `${d.ratio}%`)
+              .style(_self.$mq === 'mobile' ? 'height' : 'width', `${d.ratio}%`)
               .on('end', () => {
                 if (index < length) animate()
               })
@@ -758,6 +937,30 @@ export default {
 }
 </script>
 
+<style lang="scss">
+.el-select-dropdown {
+  margin-top: 8px;
+  border-radius: 2px;
+  .popper__arrow {
+    display: none;
+  }
+  ul {
+    li {
+      padding: 0 15px;
+      overflow: unset;
+      color: #000000;
+      > span {
+        width: 100%;
+        display: block;
+      }
+    }
+    li:not(:last-of-type) > span {
+      border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
+    }
+  }
+}
+</style>
+
 <style lang="scss" scoped>
 .section-chart {
   width: 97vw;
@@ -765,6 +968,42 @@ export default {
   .chart-wrapper {
     .chart {
       height: 52vh;
+    }
+  }
+}
+.select-candidate {
+  width: 150px;
+  height: 33px;
+  position: relative;
+  display: inline-block;
+  border-radius: 2px;
+  transition: all 0.2s;
+  .label {
+    position: absolute;
+    z-index: 10;
+    font-weight: 600;
+    color: #000000;
+    pointer-events: none;
+    top: 50%;
+    left: 12px;
+    right: 30px;
+    text-align: left;
+    transform: translateY(-50%);
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .el-select {
+    ::v-deep {
+      .el-input__inner {
+        height: 33px;
+        line-height: 33px;
+        opacity: 0;
+      }
+      .el-input__icon {
+        color: #000000;
+        font-weight: bold;
+        line-height: 33px;
+      }
     }
   }
 }

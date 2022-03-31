@@ -213,7 +213,7 @@ import moment from 'moment'
 import numeral from 'numeral'
 export default {
   props: {
-    data_set: {
+    dataSet: {
       type: Array,
       default: () => [],
     },
@@ -221,7 +221,7 @@ export default {
       type: Boolean,
       default: false,
     },
-    active_chart: {
+    activeChart: {
       type: null,
       default: '',
     },
@@ -264,7 +264,7 @@ export default {
       return d3.format(',')
     },
     candidate_group() {
-      const group = _.groupBy(this.data_set, 'candidate')
+      const group = _.groupBy(this.dataSet, 'candidate')
       return Object.keys(group)
     },
     color() {
@@ -287,10 +287,10 @@ export default {
       // let data
 
       // if (this.type === 'engagement') {
-      const group = _.groupBy(this.data_set, 'date')
+      const group = _.groupBy(this.dataSet, 'date')
       return Object.keys(group)
       // } else {
-      //   const group = _.groupBy(this.data_set, 'value')
+      //   const group = _.groupBy(this.dataSet, 'value')
       //   data = Object.keys(group)
       // }
     },
@@ -332,7 +332,7 @@ export default {
         .tickPadding(12)
 
       if (this.type === 'engagement') {
-        axis = axis.tickValues(d3.extent(this.data_set, (d) => d.date))
+        axis = axis.tickValues(d3.extent(this.dataSet, (d) => d.date))
       }
 
       return axis
@@ -340,10 +340,10 @@ export default {
     // yAxisTick() {
     //   return d3
     //     .scaleLinear()
-    //     .domain([0, d3.max(this.data_set, (d) => d.value)])
+    //     .domain([0, d3.max(this.dataSet, (d) => d.value)])
     // },
     yScale() {
-      const maximum = d3.max(this.data_set, (d) => d.value)
+      const maximum = d3.max(this.dataSet, (d) => d.value)
       // const domain = this.type === 'engagement' ? [0, maximum] : [maximum, 0]
 
       return d3
@@ -356,7 +356,7 @@ export default {
       let ticks = 9
       let tickFormat = (d) => this.formatkilo(d)
       if (this.type === 'rank') {
-        const group = _.groupBy(this.data_set, 'candidate')
+        const group = _.groupBy(this.dataSet, 'candidate')
         const keys = Object.keys(group)
         ticks = keys.length
         tickFormat = (d) => {
@@ -374,7 +374,7 @@ export default {
     },
     stackedScale() {
       const clientWidth = _.get(window, 'clientWidth', 0)
-      const maximum = d3.max(this.data_set, (d) => d.value)
+      const maximum = d3.max(this.dataSet, (d) => d.value)
 
       return d3.scaleLinear().domain([0, maximum]).range([0, clientWidth])
     },
@@ -383,7 +383,7 @@ export default {
     },
     // maximum() {
     //   const max = d3.max(this.yAxisTick)
-    //   const valueMax = d3.max(this.data_set, (d) => d.value)
+    //   const valueMax = d3.max(this.dataSet, (d) => d.value)
     //   return max > valueMax ? max : valueMax
     // },
     ready() {
@@ -430,7 +430,7 @@ export default {
     animate_finish(val) {
       if (val && !this.animate_start) this.animate_start = true
     },
-    active_chart(val) {
+    activeChart(val) {
       this.onClickChecks(val)
     },
   },
@@ -530,7 +530,7 @@ export default {
       this.left_tooltip = left
     },
     circleSize(val) {
-      const valueMax = d3.max(this.data_set, (d) => d.value)
+      const valueMax = d3.max(this.dataSet, (d) => d.value)
       const maxRadius = this.$mq === 'mobile' ? 26 : 40
       const smallRadius = this.$mq === 'mobile' ? 13 : 20
       return val === valueMax ? maxRadius / 2 : smallRadius / 2
@@ -629,7 +629,7 @@ export default {
       }
 
       const candidates = []
-      const groups = _.groupBy(this.data_set, 'candidate')
+      const groups = _.groupBy(this.dataSet, 'candidate')
 
       for (const key in groups) {
         const arr = _.get(groups, key, [])
@@ -662,7 +662,7 @@ export default {
     onClickChecks(date) {
       this.active = date
       this.$emit('change', this.active_data)
-      this.$emit('update:active_chart', date)
+      this.$emit('update:activeChart', date)
 
       d3.selectAll('.labels-group')
         .data(this.candidates)
