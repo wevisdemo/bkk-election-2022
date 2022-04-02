@@ -25,7 +25,10 @@
                 <span class="font-bold">{{ last_day }} วัน</span> ที่ผ่านมา
               </span>
               <br v-if="$mq === 'mobile'" />
-              <div class="select-candidate" :style="`background: #A8FF3D`">
+              <div
+                class="select-candidate"
+                :style="`background: ${socialtrend_current.color}`"
+              >
                 <span class="label">{{
                   candidate ? candidate : socialtrend_current.candidate
                 }}</span>
@@ -55,7 +58,10 @@
                 :key="item.candidate"
                 class="whitespace-nowrap"
               >
-                <span class="font-bold" style="color: #a8ff3d">
+                <span
+                  class="font-bold transition duration-200"
+                  :style="`color: ${socialtrend_current.color}`"
+                >
                   {{ item.keyword }}<sup>{{ `(${item.count})` }}</sup>
                 </span>
                 <template
@@ -63,9 +69,13 @@
                 >
                   &nbsp;,&nbsp;
                 </template>
-                <br v-if="$mq === 'mobile' && index % 2 !== 0" />
+                <br
+                  v-if="
+                    ($mq === 'mobile' && index % 2 !== 0) ||
+                    ($mq !== 'mobile' && index === 3)
+                  "
+                />
               </span>
-              <br v-if="$mq !== 'mobile'" />
               <!-- ,
               keyword<sup>(xx)</sup> , keyword<sup>(xx)</sup> , keyword<sup
                 >(xx)</sup
@@ -123,7 +133,7 @@
 
       <div class="flex flex-col items-center py-7">
         <div class="flex items-center text-center text-white">
-          <div class="date-picker">
+          <div class="date-picker overflow-hidden">
             <div class="label-wrapper">
               <div class="label">
                 <span class="text typo-b4">วันที่</span>
@@ -211,10 +221,30 @@
                 :label="item.label"
                 :value="item.value"
               >
-                <div class="label">{{ item.label }}</div>
+                <div
+                  class="label typo-u3 items-center"
+                  style="flex-direction: row; justify-content: flex-start"
+                >
+                  <img
+                    v-if="item.icon"
+                    :src="item.icon"
+                    alt=""
+                    class="w-5 mr-3"
+                  />
+                  <div class="title">{{ item.label }}</div>
+                </div>
               </el-option>
             </el-select>
           </div>
+
+          <!-- <el-date-picker
+            v-model="value1"
+            type="week"
+            format="Week WW"
+            placeholder="Pick a week"
+            @change="onPick"
+          >
+          </el-date-picker> -->
         </div>
         <el-checkbox-group
           v-model="candidate_filter"
@@ -222,14 +252,14 @@
           class="candidate-tags mt-6 px-4"
         >
           <el-checkbox
-            v-for="item in 12"
+            v-for="item in candidate_options"
             :key="item.value"
-            label="ชัชชาติ"
+            :label="item.label"
             border
             class="typo-u3 font-bold"
+            :style="`--color: ${color_palettes(item.value)}`"
           >
-            <!-- {{ item.label }} -->
-            ชัชชาติ
+            {{ item.label }}
             <img src="~/assets/images/close.svg" alt="" class="i-close" />
           </el-checkbox>
         </el-checkbox-group>
@@ -242,20 +272,22 @@
         </el-radio-group>
 
         <div v-view="viewHandlerChart" class="chart-wrapper mt-4">
-          <div class="chart">
+          <div class="chart overflow-hidden">
             <client-only>
               <LineChartRace
                 v-if="render_chart && line_chart_data != 0"
                 :dataSet="line_chart_data"
                 :activeChart.sync="active_date"
+                :photo="photo"
                 :type="data_type"
                 :duration="duration"
                 :animate="chartAnimate"
+                :color="color_palettes"
                 @change="onChangeActive"
               />
             </client-only>
           </div>
-          <div class="mt-3">
+          <div v-if="data_type == 'engagement'" class="mt-3">
             <div
               class="typo-b5 text-white text-center flex flex-col items-center justify-center"
             >
@@ -269,7 +301,8 @@
                 <span
                   class="font-bold"
                   :style="`color: ${current_chart_active.color}`"
-                  >{{ current_chart_active.candidate }}
+                >
+                  {{ `${current_chart_active.candidate} ` }}
                 </span>
                 ในวันที่
 
@@ -302,19 +335,49 @@
                 </div>
               </div>
 
-              <template v-else>
+              <span v-else class="font-bold">
                 กดที่ชาร์ทเพื่อดูโพสต์ที่ได้รับความสนใจสูงที่สุดของแต่ละคน
-              </template>
+              </span>
             </div>
 
-            <!-- v-if="posts != 0 && active_date" -->
-            <div class="container px-5">
+            <div
+              v-if="posts != 0 && active_date"
+              class="max-w-2xl sm:px-5 px-8 mx-auto relative"
+            >
+              <div
+                :class="[
+                  'prev-btn absolute top-1/2 left-0 transform -translate-y-1/2 cursor-pointer',
+                  {
+                    'opacity-20': carousel_index === 0,
+                  },
+                ]"
+                @click="onPrev"
+              >
+                <img
+                  src="~/assets/images/arrow-next.svg"
+                  alt=""
+                  style="transform: scale(-1)"
+                />
+              </div>
+              <div
+                :class="[
+                  'next-btn absolute top-1/2 right-0 transform -translate-y-1/2 cursor-pointer',
+                  {
+                    'opacity-20': carousel_index === posts.length - 1,
+                  },
+                ]"
+                @click="onNext"
+              >
+                <img src="~/assets/images/arrow-next.svg" alt="" />
+              </div>
               <el-carousel
+                ref="carousel"
                 :autoplay="false"
                 :loop="false"
+                :height="$mq === 'mobile' ? '260px' : '260px'"
                 class="mt-8"
                 indicator-position="none"
-                arrow="always"
+                arrow="never"
                 @change="(index) => (carousel_index = index)"
               >
                 <el-carousel-item
@@ -323,23 +386,28 @@
                   :name="item.date"
                   class="text-black"
                 >
-                  <div class="bg-white rounded-md p-5">
-                    <div class="flex justify-between">
-                      <div class="">
-                        <div class="font-bold typo-b5">{{ item.author }}</div>
-                        <div class="typo-b7 opacity-50 mt-2">
-                          {{ dateFormat(item.created_time) }}
+                  <div
+                    class="bg-white h-full rounded-md p-5 flex flex-col justify-between"
+                  >
+                    <div>
+                      <div class="flex justify-between items-start">
+                        <div class="">
+                          <div class="font-bold typo-b5">{{ item.author }}</div>
+                          <div class="typo-b7 opacity-50 mt-2">
+                            {{ dateFormat(item.created_time, 'full') }}
+                          </div>
                         </div>
+
+                        <img :src="item.platform_icon" alt="" />
                       </div>
+
+                      <p v-html="truncate(item.text)" class="typo-b5 mt-2"></p>
                     </div>
 
-                    <p
-                      v-html="truncate(item.text)"
-                      class="typo-b5 mt-2 pb-5"
-                      style="border-bottom: 1px solid #cfcfcf"
-                    ></p>
-
-                    <div class="typo-b6 mt-5">
+                    <div
+                      class="typo-b6 mt-5 pt-5"
+                      style="border-top: 1px solid #cfcfcf"
+                    >
                       <span class="font-bold"
                         >{{ format(item.engagement_count) }}
                       </span>
@@ -353,17 +421,35 @@
         </div>
       </div>
 
-      <div class="flex justify-center">
-        <div class=""></div>
-      </div>
-
-      <div class="text-white text-center px-10 pb-32 sm:px-5">
+      <div class="text-white text-center px-10 pb-32 mt-14 sm:px-5">
         <div class="container mx-auto">
           <div class="flex items-center justify-center py-9">
             <span class="typo-b5">Share</span>
+            <div class="flex items-center ml-2">
+              <!-- <img src="~/assets/images/share.svg" alt="share-icon" /> -->
+              <ShareNetwork
+                title=""
+                network="facebook"
+                :url="webUrl"
+                class="mx-1"
+              >
+                <img src="~/assets/images/facebook.svg" alt="facebook-icon" />
+              </ShareNetwork>
+              <ShareNetwork
+                title=""
+                network="twitter"
+                :url="webUrl"
+                class="mx-1"
+              >
+                <img src="~/assets/images/twitter.svg" alt="twitter-icon" />
+              </ShareNetwork>
+              <ShareNetwork title="" network="line" :url="webUrl" class="mx-1">
+                <img src="~/assets/images/line.svg" alt="line-icon" />
+              </ShareNetwork>
+            </div>
           </div>
 
-          <div class="mt-16 border-t border-white pt-6">
+          <div class="mt-16 pt-6" style="border-top: 1px solid #9c9c9c">
             <span class="font-bold typo-b4 opacity-75">Methodology</span>
             <div class="pt-7 typo-b5 opacity-75">
               Quis mi semper maecenas dictumst ut. Luctus vel tempus in quis
@@ -404,8 +490,10 @@ import _ from 'lodash'
 import moment from 'moment'
 import Vue from 'vue'
 import checkView from 'vue-check-view'
+import VueSocialSharing from 'vue-social-sharing'
 import LineChartRace from '~/components/LineChartRace'
 Vue.use(checkView)
+Vue.use(VueSocialSharing)
 
 export default {
   name: 'IndexPage',
@@ -414,43 +502,21 @@ export default {
   },
   data() {
     return {
+      webUrl: '',
+      value1: '',
       chartAnimate: false,
       line_chart_data: [],
       render_chart: true,
       current_chart_data: {},
       socialtrend_current: {},
       socialtrend: [],
+      engagement: [],
       avgTime: 0,
-      posts: [
-        {
-          channel: 'Facebook',
-          author: 'Voice TV',
-          candidate: 'ชัชชาติ',
-          created_time: '2022-03-22T16:45:09.641Z',
-          text: 'ปาร์ตี้เคลียร์ครัวซองต์สเตชั่นมาร์ก ซิตี้ คาปูชิโนติวเตอร์ฟรุตสต๊อก เตี๊ยมชัวร์สัมนาตัวตนโอเปอเรเตอร์ แคมเปญดีลเลอร์ ไฮกุ เซ็นเซอร์ อุด้งโยโย่ โต๊ะจีนรวมมิตร ทาวน์เฮาส์รีโมทเทวาเฝอ ศิลปากรเจไดรีสอร์ทอาว์ กู๋โปรโมชั่นเพนกวิน ม้าหินอ่อน วิดีโอเอ็นเตอร์เทนรามาธิบดีจิตพิสัยแชมพู ตู้เซฟสต็อกซัมเมอร์ศิลปากร เทปวีไอพีโปรเจกเตอร์เบญจมบพิตรช็อค',
-          engagement_count: 123,
-        },
-        {
-          channel: 'Facebook',
-          author: 'abc',
-          candidate: 'รสนา',
-          created_time: '2022-03-22T16:45:09.641Z',
-          text: 'ปาร์ตี้เคลียร์ครัวซองต์สเตชั่นมาร์ก ซิตี้ คาปูชิโนติวเตอร์ฟรุตสต๊อก เตี๊ยมชัวร์สัมนาตัวตนโอเปอเรเตอร์ It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like readableวมมิตร ทาวน์เฮาส์รีโมทเทวาเฝอ ศิลปากรเจไดรีสอร์ทอาว์ กู๋โปรโมชั่นเพนกวิน ม้าหินอ่อน วิดีโอเอ็นเตอร์เทนรามาธิบดีจิตพิสัยแชมพู ตู้เซฟสต็อกซัมเมอร์ศิลปากร เทปวีไอพีโปรเจกเตอร์เบญจมบพิตรช็อค',
-          engagement_count: 123,
-        },
-        {
-          channel: 'Facebook',
-          author: 'abc',
-          candidate: 'สุชัชวีร์',
-          created_time: '2022-03-22T16:45:09.641Z',
-          text: 'ปาร์ตี้เคลียร์ครัวซองต์สเตชั่นมาร์ก ซิตี้ คาปูชิโนติวเตอร์ฟรุตสต๊อก เตี๊ยมชัวร์สัมนาตัวตนโอเปอเรเตอร์ แคมเปญดีลเลอร์ ไฮกุ เซ็นเซอร์ อุด้งโยโย่ โต๊ะจีนรวมมิตร ทาวน์เฮาส์รีโมทเทวาเฝอ ศิลปากรเจไดรีสอร์ทอาว์ กู๋โปรโมชั่นเIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like readableอกซัมเมอร์ศิลปากร เทปวีไอพีโปรเจกเตอร์เบญจมบพิตรช็อค',
-          engagement_count: 123,
-        },
-      ],
+      posts: [],
       carousel_index: 0,
       data_type: 'engagement',
       daterange: [],
-      start_input_date: '2022-01-01',
+      start_input_date: '2021-11-01',
       // end_input_date: '',
       active_date: '',
       keyword: '',
@@ -490,47 +556,111 @@ export default {
         {
           label: 'Facebook',
           value: 'Facebook',
+          icon: require('~/assets/images/i-facebook.svg'),
         },
         {
           label: 'Twitter',
           value: 'Twitter',
+          icon: require('~/assets/images/i-twitter.svg'),
         },
         {
           label: 'Instagram',
           value: 'Instagram',
+          icon: require('~/assets/images/i-instagram.svg'),
         },
         {
           label: 'News',
           value: 'News',
+          icon: require('~/assets/images/i-news.svg'),
         },
         {
           label: 'Youtube',
           value: 'Youtube',
+          icon: require('~/assets/images/i-youtube.svg'),
         },
         {
           label: 'Forum',
           value: 'Forum',
+          icon: require('~/assets/images/i-forum.svg'),
         },
       ],
       candidate: '',
       candidate_options: [
         {
-          label: 'ชัชชาติ',
-          value: 'ชัชชาติ',
-          image: require('~/assets/images/Rectangle 67.jpg'),
-        },
-        {
-          label: 'รสนา',
-          value: 'รสนา',
-          image: require('~/assets/images/Rectangle 67.jpg'),
+          label: 'วิโรจน์',
+          value: 'วิโรจน์',
         },
         {
           label: 'สุชัชวีร์',
           value: 'สุชัชวีร์',
-          image: require('~/assets/images/Rectangle 67.jpg'),
+        },
+        {
+          label: 'รสนา',
+          value: 'รสนา',
+        },
+        {
+          label: 'ชัชชาติ',
+          value: 'ชัชชาติ',
         },
       ],
-      candidate_filter: ['ชัชชาติ', 'รสนา', 'สุชัชวีร์'],
+      candidate_filter: [],
+      candidate_config: [
+        'วิโรจน์',
+        'ฐิฏา',
+        'สกลธี',
+        'สุชัชวีร์',
+        'วีรชัย',
+        'อัศวิน',
+        'รสนา',
+        'ชัชชาติ',
+        'วัชรี',
+        'ศุภชัย',
+        'ศิธา',
+        'ประยูร',
+        'พิศาล',
+        'ธเนตร',
+        'ทูตปรีชา',
+        'ศศิกานต',
+        'อุเทน์',
+      ],
+      color_config: [
+        '#FF6D1B',
+        '#D185FF',
+        '#00B6B6',
+        '#43DDFF',
+        '#6DA7FF',
+        '#FDB604',
+        '#BB7D4B',
+        '#96D74B',
+        '#FF408E',
+        '#39A96A',
+        '#476FFF',
+        '#C6A059',
+        '#588CB1',
+        '#83A74F',
+        '#FFF06C',
+        '#FFA1D7',
+        '#8E7CFF',
+      ],
+      photo_config: [
+        require('~/assets/images/candidate/candidate-01.png'),
+        require('~/assets/images/candidate/candidate-03.png'),
+        require('~/assets/images/candidate/candidate-03.png'),
+        require('~/assets/images/candidate/candidate-04.png'),
+        require('~/assets/images/candidate/candidate-04.png'),
+        require('~/assets/images/candidate/candidate-07.png'),
+        require('~/assets/images/candidate/candidate-07.png'),
+        require('~/assets/images/candidate/candidate-08.png'),
+        require('~/assets/images/candidate/candidate-08.png'),
+        require('~/assets/images/candidate/candidate-08.png'),
+        require('~/assets/images/candidate/candidate-08.png'),
+        require('~/assets/images/candidate/candidate-08.png'),
+        require('~/assets/images/candidate/candidate-08.png'),
+        require('~/assets/images/candidate/candidate-08.png'),
+        require('~/assets/images/candidate/candidate-08.png'),
+        require('~/assets/images/candidate/candidate-08.png'),
+        require('~/assets/images/candidate/candidate-08.png'),
+      ],
     }
   },
   computed: {
@@ -543,144 +673,17 @@ export default {
     last_day() {
       return moment().diff(this.start_input_date, 'days')
     },
-    engagement() {
-      return [
-        {
-          date: '2022-01-01',
-          candidate: 'ชัชชาติ',
-          value: 240000,
-          ratio: '2.3620440775140192',
-        },
-        {
-          date: '2022-01-01',
-          candidate: 'รสนา',
-          value: 4235234,
-          ratio: '41.682539110775046',
-        },
-        {
-          date: '2022-01-01',
-          candidate: 'สุชัชวีร์',
-          value: 5685457,
-          ratio: '55.95541681171093',
-        },
-        {
-          date: '2022-01-02',
-          candidate: 'ชัชชาติ',
-          value: 5677878,
-          ratio: '36.14921939119408',
-        },
-        {
-          date: '2022-01-02',
-          candidate: 'รสนา',
-          value: 5464356,
-          ratio: '34.78979362987153',
-        },
-        {
-          date: '2022-01-02',
-          candidate: 'สุชัชวีร์',
-          value: 4564545,
-          ratio: '29.060986978934384',
-        },
-        {
-          date: '2022-01-03',
-          candidate: 'ชัชชาติ',
-          value: 6677848,
-          ratio: '63.201592209086',
-        },
-        {
-          date: '2022-01-03',
-          candidate: 'รสนา',
-          value: 455456,
-          ratio: '4.310601915644302',
-        },
-        {
-          date: '2022-01-03',
-          candidate: 'สุชัชวีร์',
-          value: 3432645,
-          ratio: '32.4878058752697',
-        },
-        {
-          date: '2022-01-04',
-          candidate: 'ชัชชาติ',
-          value: 5567878,
-          ratio: '52.58834691124058',
-        },
-        {
-          date: '2022-01-04',
-          candidate: 'รสนา',
-          value: 456342,
-          ratio: '4.310128814993675',
-        },
-        {
-          date: '2022-01-04',
-          candidate: 'สุชัชวีร์',
-          value: 4563445,
-          ratio: '43.10152427376575',
-        },
-      ]
+    color_palettes() {
+      return d3
+        .scaleOrdinal()
+        .domain(this.candidate_config)
+        .range(this.color_config)
     },
-    rank() {
-      const data = [
-        {
-          date: '2022-01-01',
-          candidate: 'ชัชชาติ',
-          value: 2,
-          ratio: 33.33,
-        },
-        {
-          date: '2022-01-01',
-          candidate: 'รสนา',
-          value: 1,
-          ratio: 50,
-        },
-        {
-          date: '2022-01-01',
-          candidate: 'สุชัชวีร์',
-          value: 3,
-          ratio: 16.66,
-        },
-        {
-          date: '2022-01-02',
-          candidate: 'ชัชชาติ',
-          value: 2,
-          ratio: 33.33,
-        },
-        {
-          date: '2022-01-02',
-          candidate: 'รสนา',
-          value: 3,
-          ratio: 16.66,
-        },
-        {
-          date: '2022-01-02',
-          candidate: 'สุชัชวีร์',
-          value: 1,
-          ratio: 50,
-        },
-        {
-          date: '2022-01-03',
-          candidate: 'ชัชชาติ',
-          value: 1,
-          ratio: 50,
-        },
-        {
-          date: '2022-01-03',
-          candidate: 'รสนา',
-          value: 3,
-          ratio: 16.66,
-        },
-        {
-          date: '2022-01-03',
-          candidate: 'สุชัชวีร์',
-          value: 2,
-          ratio: 33.33,
-        },
-      ]
-
-      return data.map((d) => {
-        const { length } = this.candidate_options
-        return { ...d, value: length + 1 - d.value }
-      })
+    photo() {
+      return d3
+        .scaleOrdinal()
+        .domain(this.candidate_config)
+        .range(this.photo_config)
     },
     pickerOptions() {
       return {
@@ -707,11 +710,6 @@ export default {
         },
       }
     },
-    // current_chart_active() {
-    //   // const data = _.orderBy(this.posts, 'engagement_count', 'desc')
-    //   console.log(_.get(this.posts, `[${this.carousel_index}]`, {}))
-    //   return _.get(this.posts, `[${this.carousel_index}]`, {})
-    // },
     current_chart_active() {
       return _.get(
         this.current_chart_data,
@@ -723,52 +721,30 @@ export default {
       return _.groupBy(this.line_chart_data, 'date')
     },
     candidates() {
-      // const maximumArr = this.candidate_options.map(c => {})
-      // const {length} = this.candidate_options
-      // const res = this.candidate_options.map((c) => {
-
-      const dateArr = _.groupBy(this.line_chart_data, 'date')
-      const dateGroup = []
-      for (const key in dateArr) {
-        const toltal = d3.sum(dateArr[key], (d) => d.value)
-        dateArr[key].forEach((d) => {
-          const data = {
-            ...d,
-            ratio: (d.value / toltal) * 100,
-          }
-
-          dateGroup.push(data)
-        })
-      }
-
-      const candidates = []
-      const group = _.chain(this.line_chart_data)
-        .orderBy('date', 'asc')
-        .groupBy('candidate')
-        .value()
-
-      for (const key in group) {
-        const candidate = this.candidate_options.find((c) => c.value === key)
-        const data = dateGroup.filter((d) => d.candidate === key)
-
-        candidates.push({
-          ...candidate,
+      return this.candidate_options.map((c) => {
+        const data = _.chain(this.line_chart_data)
+          .filter((d) => d.candidate === c.value)
+          .orderBy('date', 'asc')
+          .value()
+        return {
+          ...c,
           data,
-          width: _.get(data, '[0].ratio'),
-        })
-      }
-
-      return candidates
+          image: this.photo(c.value),
+        }
+      })
     },
   },
   watch: {
     data_type: {
-      immediate: true,
-      handler(val) {
-        this.line_chart_data =
-          val === 'engagement' ? this.engagement : this.rank
+      // immediate: true,
+      async handler(val) {
+        if (val === 'engagement') {
+          this.line_chart_data = await this.getEngagement()
+        } else {
+          this.line_chart_data = await this.getRank()
+        }
+        this.active_date = ''
         this.reRenderChart()
-
         if (!this.chartAnimate) return
         this.$nextTick(() => {
           this.setAnimateStackedBarChart()
@@ -780,18 +756,39 @@ export default {
         this.socialtrend.find((d) => d.candidate === val) || {}
       this.clearAnimateKeywords()
     },
+    $mq(val) {
+      if (val === 'desktop' || val === 'mobile') {
+        this.setDefaultStackedBarChart()
+      }
+    },
     // end_input_date() {
     //   const isAfter = moment(this.active_date).isAfter(this.end_input_date)
     //   if (!isAfter) return
     //   this.active_date = this.end_input_date
     // },
   },
+  created() {
+    // await Promise.all([
+    //   this.getKeywords(),
+    //   this.getEngagement()
+    // ])
+    this.getKeywords()
+    this.line_chart_data = this.getEngagement()
+    this.animateKeywords()
+    this.setDaterange()
+  },
+  beforeMount() {
+    window.scrollTo(0, 0)
+    window.addEventListener('resize', _.debounce(this.reRenderChart, 200))
+  },
+  destroyed() {
+    window.removeEventListener('resize', _.debounce(this.reRenderChart, 200))
+  },
   mounted() {
     // window.registerUICustomElements()
-    this.getKeywords()
-    this.setDaterange()
+    this.candidate_filter = this.candidate_options.map((d) => d.label)
+
     this.setDefaultStackedBarChart()
-    this.animateKeywords()
 
     // const animateTime = 13
     // const avgTime = animateTime / Object.keys(date_group).length
@@ -810,9 +807,14 @@ export default {
     // const dateGroup = Object.keys(this.date_group)
   },
   methods: {
+    onPick(d) {
+      console.log(d)
+    },
     setDaterange() {
-      const start = d3.min(this.line_chart_data, (d) => d.date)
+      // const start = d3.min(this.line_chart_data, (d) => d.date)
+      const start = this.start_input_date
       const end = d3.max(this.line_chart_data, (d) => d.date)
+      if (!start || !end) return
       this.daterange = [start, end]
       console.log(this.daterange)
     },
@@ -826,8 +828,55 @@ export default {
       const maximum = 350
 
       return str.length > maximum
-        ? str.substr(0, maximum - 1) + '&hellip;'
+        ? `${str.substr(0, maximum - 1)} &hellip;`
         : str
+    },
+    getPosts() {
+      //  try {
+      //   const res = await this.$api.get('top-engagement-message', {
+      // params: {
+      //   date: this.active_date,
+      // }
+      //   })
+
+      //   this.engagement = res
+      // } catch (error) {
+      //   console.error(error);
+      // }
+
+      const res = [
+        {
+          channel: 'Facebook',
+          author: 'Voice TV',
+          candidate: 'ชัชชาติ',
+          created_time: '2022-03-22T16:45:09.641Z',
+          text: 'ปาร์ตี้เคลียร์ครัวซองต์สเตชั่นมาร์ก ซิตี้ คาปูชิโนติวเตอร์ฟรุตสต๊อก เตี๊ยมชัวร์สัมนาตัวตนโอเปอเรเตอร์ แคมเปญดีลเลอร์ ไฮกุ เซ็นเซอร์ อุด้งโยโย่ โต๊ะจีนรวมมิตร ทาวน์เฮาส์รีโมทเทวาเฝอ ศิลปากรเจไดรีสอร์ทอาว์ กู๋โปรโมชั่นเพนกวิน ม้าหินอ่อน วิดีโอเอ็นเตอร์เทนรามาธิบดีจิตพิสัยแชมพู ตู้เซฟสต็อกซัมเมอร์ศิลปากร เทปวีไอพีโปรเจกเตอร์เบญจมบพิตรช็อค',
+          engagement_count: 123,
+        },
+        {
+          channel: 'Facebook',
+          author: 'abc',
+          candidate: 'รสนา',
+          created_time: '2022-03-22T16:45:09.641Z',
+          text: 'ปาร์ตี้เคลียร์ครัวซองต์สเตชั่นมาร์ก ซิตี้ คาปูชิโนติวเตอร์ฟรุตสต๊อก เตี๊ยมชัวร์สัมนาตัวตนโอเปอเรเตอร์ It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like readableวมมิตร ทาวน์เฮาส์รีโมทเทวาเฝอ ศิลปากรเจไดรีสอร์ทอาว์ กู๋โปรโมชั่นเพนกวิน ม้าหินอ่อน วิดีโอเอ็นเตอร์เทนรามาธิบดีจิตพิสัยแชมพู ตู้เซฟสต็อกซัมเมอร์ศิลปากร เทปวีไอพีโปรเจกเตอร์เบญจมบพิตรช็อค',
+          engagement_count: 123,
+        },
+        {
+          channel: 'Facebook',
+          author: 'abc',
+          candidate: 'สุชัชวีร์',
+          created_time: '2022-03-22T16:45:09.641Z',
+          text: 'ปาร์ตี้เคลียร์ครัวซองต์สเตชั่นมาร์ก ซิตี้ คาปูชิโนติวเตอร์ฟรุตสต๊อก เตี๊ยมชัวร์สัมนาตัวตนโอเปอเรเตอร์ แคมเปญดีลเลอร์ ไฮกุ เซ็นเซอร์ อุด้งโยโย่ โต๊ะจีนรวมมิตร ทาวน์เฮาส์รีโมทเทวาเฝอ ศิลปากรเจไดรีสอร์ทอาว์ กู๋โปรโมชั่นเIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like readableอกซัมเมอร์ศิลปากร เทปวีไอพีโปรเจกเตอร์เบญจมบพิตรช็อค',
+          engagement_count: 123,
+        },
+      ]
+
+      this.posts = res.map((d) => {
+        const platform = this.platform_options.find(
+          (p) => p.value === d.channel
+        )
+        return { ...d, platform_icon: platform.icon }
+      })
     },
     getKeywords() {
       // try {
@@ -842,7 +891,35 @@ export default {
       //   console.error(error);
       // }
 
-      this.socialtrend = [
+      const res = [
+        {
+          candidate: 'วิโรจน์',
+          total_mention: 3434543,
+          total_engagement: 876323,
+          top_keywords: [
+            {
+              keyword: 'การเดินทาง',
+              count: 42,
+            },
+            {
+              keyword: 'พื้นที่สาธารณะ',
+              count: 65,
+            },
+            {
+              keyword: 'สุขภาพ',
+              count: 345,
+            },
+            {
+              keyword: 'ความเท่าเทียม',
+              count: 3,
+            },
+            {
+              keyword: 'สิ่งแวดล้อม',
+              count: 77,
+            },
+          ],
+          top_channel: 'Facebook',
+        },
         {
           candidate: 'ชัชชาติ',
           total_mention: 324235,
@@ -928,17 +1005,267 @@ export default {
           top_channel: 'Facebook',
         },
       ]
+      const socialtrend = []
+      this.candidate_options.forEach((c) => {
+        const data = res
+          .filter((d) => d.candidate === c.value)
+          .map((d) => ({ ...d, color: this.color_palettes(d.candidate) }))
+        socialtrend.push(...data)
+      })
+
+      this.socialtrend = socialtrend
     },
-    dateFormat(date) {
-      return moment(date).add(543, 'years').format('DD MMM YYYY')
+    getEngagement() {
+      // try {
+      //   const res = await this.$api.get('sum-engagement-per-date', {
+      // params: {
+      //   date_from:_.get(this.daterange, '[0]'),
+      //   date_to: _.get(this.daterange, '[1]'),
+      //   candidates: this.candidate_filter,
+      //   keywords: this.keyword,
+      //   channels: this.platform,
+      // }
+      //   })
+
+      //   this.engagement = res
+      // } catch (error) {
+      //   console.error(error);
+      // }
+      const res = [
+        {
+          date: '2022-01-01',
+          candidate: 'วิโรจน์',
+          value: 734005,
+          ratio: 45.88,
+        },
+        {
+          date: '2022-01-02',
+          candidate: 'วิโรจน์',
+          value: 23455,
+          ratio: 34,
+        },
+        {
+          date: '2022-01-03',
+          candidate: 'วิโรจน์',
+          value: 842343,
+          ratio: 5,
+        },
+        {
+          date: '2022-01-04',
+          candidate: 'วิโรจน์',
+          value: 2345779,
+          ratio: 27,
+        },
+        {
+          date: '2022-01-01',
+          candidate: 'ชัชชาติ',
+          value: 240000,
+          ratio: 23,
+        },
+        {
+          date: '2022-01-01',
+          candidate: 'รสนา',
+          value: 4235234,
+          ratio: '41.682539110775046',
+        },
+        {
+          date: '2022-01-01',
+          candidate: 'สุชัชวีร์',
+          value: 5685457,
+          ratio: '55.95541681171093',
+        },
+        {
+          date: '2022-01-02',
+          candidate: 'ชัชชาติ',
+          value: 5677878,
+          ratio: '36.14921939119408',
+        },
+        {
+          date: '2022-01-02',
+          candidate: 'รสนา',
+          value: 5464356,
+          ratio: '34.78979362987153',
+        },
+        {
+          date: '2022-01-02',
+          candidate: 'สุชัชวีร์',
+          value: 4564545,
+          ratio: '29.060986978934384',
+        },
+        {
+          date: '2022-01-03',
+          candidate: 'ชัชชาติ',
+          value: 6677848,
+          ratio: '63.201592209086',
+        },
+        {
+          date: '2022-01-03',
+          candidate: 'รสนา',
+          value: 455456,
+          ratio: '4.310601915644302',
+        },
+        {
+          date: '2022-01-03',
+          candidate: 'สุชัชวีร์',
+          value: 3432645,
+          ratio: '32.4878058752697',
+        },
+        {
+          date: '2022-01-04',
+          candidate: 'ชัชชาติ',
+          value: 5567878,
+          ratio: '52.58834691124058',
+        },
+        {
+          date: '2022-01-04',
+          candidate: 'รสนา',
+          value: 456342,
+          ratio: '4.310128814993675',
+        },
+        {
+          date: '2022-01-04',
+          candidate: 'สุชัชวีร์',
+          value: 4563445,
+          ratio: '43.10152427376575',
+        },
+      ]
+
+      this.engagement = res.map((d) => {
+        const highest =
+          _.chain(res).groupBy('date').get(d.date, []).maxBy('value').value() ||
+          {}
+
+        return {
+          ...d,
+          highest: _.get(highest, 'value', 0),
+          highest_per_date: highest.candidate === d.candidate,
+          image: this.photo(d.candidate),
+          color: this.color_palettes(d.candidate),
+        }
+      })
+      console.log(this.engagement)
+
+      return _.clone(this.engagement)
+    },
+    getRank() {
+      //  try {
+      //   const res = await this.$api.get('rank-per-date', {
+      // params: {
+      //   date_from:_.get(this.daterange, '[0]'),
+      //   date_to: _.get(this.daterange, '[1]'),
+      //   candidates: this.candidate_filter,
+      //   keywords: this.keyword,
+      //   channels: this.platform,
+      // }
+      //   })
+
+      //   this.engagement = res
+      // } catch (error) {
+      //   console.error(error);
+      // }
+
+      const res = [
+        {
+          date: '2022-01-01',
+          candidate: 'วิโรจน์',
+          value: 4,
+          ratio: 10,
+        },
+        {
+          date: '2022-01-02',
+          candidate: 'วิโรจน์',
+          value: 3,
+          ratio: 20,
+        },
+        {
+          date: '2022-01-03',
+          candidate: 'วิโรจน์',
+          value: 3,
+          ratio: 20,
+        },
+        {
+          date: '2022-01-01',
+          candidate: 'ชัชชาติ',
+          value: 2,
+          ratio: 30,
+        },
+        {
+          date: '2022-01-01',
+          candidate: 'รสนา',
+          value: 1,
+          ratio: 40,
+        },
+        {
+          date: '2022-01-01',
+          candidate: 'สุชัชวีร์',
+          value: 3,
+          ratio: 20,
+        },
+        {
+          date: '2022-01-02',
+          candidate: 'ชัชชาติ',
+          value: 2,
+          ratio: 30,
+        },
+        {
+          date: '2022-01-02',
+          candidate: 'รสนา',
+          value: 4,
+          ratio: 10,
+        },
+        {
+          date: '2022-01-02',
+          candidate: 'สุชัชวีร์',
+          value: 1,
+          ratio: 40,
+        },
+        {
+          date: '2022-01-03',
+          candidate: 'ชัชชาติ',
+          value: 1,
+          ratio: 40,
+        },
+        {
+          date: '2022-01-03',
+          candidate: 'รสนา',
+          value: 4,
+          ratio: 10,
+        },
+        {
+          date: '2022-01-03',
+          candidate: 'สุชัชวีร์',
+          value: 2,
+          ratio: 30,
+        },
+      ]
+
+      return res.map((d) => {
+        const { length } = this.candidate_options
+        const value = length + 1 - d.value
+        const highest =
+          _.chain(res).groupBy('date').get(d.date, []).minBy('value').value() ||
+          {}
+
+        return {
+          ...d,
+          value,
+          highest: _.get(highest, 'value', 0),
+          highest_per_date: highest.candidate === d.candidate,
+        }
+      })
+    },
+    dateFormat(date, full) {
+      const format = full ? 'DD MMM YYYY' : 'DD MMM YY'
+      return moment(date).add(543, 'years').format(format)
     },
     onChangeActive(val = {}) {
       this.carousel_index = 0
       this.current_chart_data = val
       this.updateStackedBarChart(val.date)
+      this.getPosts()
     },
     viewHandlerChart(e) {
-      if (e.percentInView > 0.8 && !this.chartAnimate) {
+      if (e.percentInView > 0.4 && !this.chartAnimate) {
         this.chartAnimate = true
         this.setAnimateStackedBarChart()
       }
@@ -973,17 +1300,30 @@ export default {
       clearInterval(this.interval)
     },
     setDefaultStackedBarChart() {
+      console.log('setDefaultStackedBarChart', this.$mq)
       const { length } = this.candidates
       d3.selectAll('.stacked-bar-chart .candidate')
         .data(this.candidates)
         .call((el) => {
-          el.transition()
-            .duration(300)
-            .ease(d3.easeLinear)
-            .style(this.$mq === 'mobile' ? 'height' : 'width', (d) => {
-              const ratio = 100 / length
-              return `${ratio}%`
-            })
+          if (this.$mq === 'mobile') {
+            el.transition()
+              .duration(300)
+              .ease(d3.easeLinear)
+              .style('height', (d) => {
+                const ratio = 100 / length
+                return `${ratio}%`
+              })
+              .style('width', '100%')
+          } else {
+            el.transition()
+              .duration(300)
+              .ease(d3.easeLinear)
+              .style('width', (d) => {
+                const ratio = 100 / length
+                return `${ratio}%`
+              })
+              .style('height', '100%')
+          }
         })
     },
     setAnimateStackedBarChart() {
@@ -993,7 +1333,7 @@ export default {
         .data(this.candidates)
       const { length } = Object.keys(this.date_group)
       // const time = 15000
-      const time = (this.duration + 500) / length
+      const time = (this.duration + 1000) / length
       const firstTime = 600
       const avgTime = time + (time - firstTime) / (length - 1)
 
@@ -1021,6 +1361,13 @@ export default {
       candidates.call(() => animate())
       // }, 300)
     },
+    onPrev() {
+      this.$refs.carousel.prev()
+    },
+    onNext() {
+      this.$refs.carousel.next()
+    },
+
     // animateStarckBarChart() {
     //   const { length } = Object.keys(this.date_group)
     //   let index = 1
@@ -1075,6 +1422,7 @@ export default {
 .el-select-dropdown {
   margin-top: 8px;
   border-radius: 2px;
+  min-width: 180px !important;
   .popper__arrow {
     display: none;
   }
@@ -1088,7 +1436,7 @@ export default {
       .label {
         width: 100%;
         min-height: 34px;
-        padding: 6px 0;
+        padding: 8px 0;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -1157,44 +1505,45 @@ export default {
   }
 }
 .date-picker {
-  width: 300px;
+  height: 40px;
   display: flex;
   position: relative;
   cursor: pointer;
   .label-wrapper {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 100%;
     display: flex;
     pointer-events: none;
-    z-index: -1;
-  }
-  .label {
-    flex: 1;
-    height: 100%;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    .text {
-    }
-    .date-wrapper {
-      margin-left: 8px;
-      border-bottom: 1px solid #ffffff;
-      padding-bottom: 2px;
+    position: relative;
+    white-space: nowrap;
+    .label {
+      flex: 1;
+      height: 100%;
+      padding: 0 4px;
+      left: 0;
       display: flex;
       align-items: center;
-      .date {
-        font-weight: bold;
+      justify-content: center;
+      .text {
       }
-      .icon {
-        margin-left: 4px;
+      .date-wrapper {
+        margin-left: 8px;
+        border-bottom: 1px solid #ffffff;
+        padding-bottom: 2px;
+        display: flex;
+        align-items: center;
+        .date {
+          font-weight: bold;
+        }
+        .icon {
+          margin-left: 4px;
+        }
       }
     }
+    .label + .label {
+      width: 50%;
+    }
   }
-  .label + .label {
-    width: 50%;
+  .el-date-editor {
+    position: absolute;
   }
 }
 .select-outline {
@@ -1234,7 +1583,7 @@ export default {
     border-radius: 2px;
     padding: 0 30px;
     margin: 3px !important;
-    border: 1px solid #a8ff3d;
+    border: 1px solid var(--color);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1243,7 +1592,7 @@ export default {
         display: none;
       }
       .el-checkbox__label {
-        color: #a8ff3d;
+        color: var(--color);
         font-weight: bold;
         padding: 0;
         display: flex;
@@ -1257,7 +1606,7 @@ export default {
     }
   }
   .el-checkbox.is-checked {
-    background-color: #a8ff3d;
+    background-color: var(--color);
     ::v-deep {
       .el-checkbox__label {
         color: #000000 !important;
@@ -1278,6 +1627,9 @@ export default {
       font-size: 14px;
       font-family: 'Anuphan';
       color: #aaaaaa;
+      box-shadow: none !important;
+    }
+    .el-radio-button {
       box-shadow: none !important;
     }
     .el-radio-button.is-active .el-radio-button__inner {

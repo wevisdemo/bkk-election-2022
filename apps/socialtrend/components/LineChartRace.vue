@@ -118,67 +118,83 @@
       </g>
 
       <g class="g-lines">
-        <g v-for="item in candidates" :key="item.menu" class="line-group">
-          <g>
-            <circle
-              :fill="item.color"
-              :cx="margin.left"
-              :cy="yScale(item.data[0].value)"
-              r="4"
-            />
-            <circle
-              v-for="(d, index) in item.data"
-              :key="index"
-              :fill="item.color"
-              :cx="xScale(d.date)"
-              :cy="yScale(d.value)"
-              r="4"
-              :style="`opacity: ${
-                hover === d.date ||
-                (index === item.data.length - 1 && animate_start)
-                  ? '1'
-                  : '0'
-              }`"
-            />
-            <g class="line-path">
-              <path
-                class="line"
-                :d="line(item.data)"
-                fill="none"
-                :stroke="item.color"
-                stroke-linejoin="round"
-                stroke-linecap="round"
-                stroke-width="4"
-              ></path>
-            </g>
+        <g
+          v-for="item in candidates"
+          :key="`line-${item.candidate}`"
+          class="line-group"
+        >
+          <!-- <g> -->
+          <circle
+            :fill="item.color"
+            :cx="margin.left"
+            :cy="yScale(item.data[0].value)"
+            r="4"
+          />
+          <circle
+            v-for="(d, index) in item.data"
+            :key="index"
+            :fill="item.color"
+            :cx="xScale(d.date)"
+            :cy="yScale(d.value)"
+            r="4"
+            :style="`opacity: ${
+              hover === d.date ||
+              (index === item.data.length - 1 && animate_start)
+                ? '1'
+                : '0'
+            }`"
+          />
+          <g class="line-path">
+            <path
+              class="line"
+              :d="line(item.data)"
+              fill="none"
+              :stroke="item.color"
+              stroke-linejoin="round"
+              stroke-linecap="round"
+              stroke-width="4"
+            ></path>
           </g>
+          <!-- </g> -->
+          <!-- </g> -->
+        </g>
+      </g>
 
+      <g class="g-labels">
+        <g
+          v-for="item in candidates"
+          :key="`labels-${item.candidate}`"
+          :transform="`translate(${xScale((item.data || {})[0].date)},${yScale(
+            (item.data || {})[0].value
+          )})`"
+          class="labels-group"
+        >
           <g
-            :id="item.menu"
-            class="labels-group"
-            :transform="`translate(${xScale(
-              (item.data || {})[0].date
-            )},${yScale((item.data || {})[0].value)})`"
+            class="labels"
+            :transform="`scale(${item.highest_per_date ? 1.7 : 1})`"
           >
-            <!-- <g class="end-circle-container"> -->
-            <!-- <circle class="circle bg" r="13" fill="#ffffff"></circle> -->
-            <!-- <circle class="circle bg" :fill="item.color" r="4" /> -->
+            <clipPath :id="`clip-${item.candidate}`">
+              <use :xlink:href="`#circle-${item.candidate}`" />
+            </clipPath>
 
             <circle
+              :id="`circle-${item.candidate}`"
               class="circle"
-              :r="circleSize(item.max)"
+              :r="$mq === 'mobile' ? 6.5 : 12"
               :fill="item.color"
+              :stroke="item.color"
+              :stroke-width="4"
             ></circle>
             <image
               class="image"
-              :href="require(`~/assets/images/Vector.png`)"
-              :height="circleSize(item.max) * 2 - 4"
-              :width="circleSize(item.max) * 2 - 4"
-              :x="circleSize(item.max) * -1 + 2"
-              :y="circleSize(item.max) * -1 + 2"
+              :href="photo(item.candidate)"
+              :height="$mq === 'mobile' ? 13 : 24"
+              :width="$mq === 'mobile' ? 13 : 24"
+              :x="$mq === 'mobile' ? -6.5 : -12"
+              :y="$mq === 'mobile' ? -6.5 : -12"
+              :clip-path="`url(#clip-${item.candidate})`"
             ></image>
           </g>
-          <!-- </g> -->
         </g>
       </g>
 
@@ -216,6 +232,14 @@ export default {
     dataSet: {
       type: Array,
       default: () => [],
+    },
+    color: {
+      type: Function,
+      default: () => {},
+    },
+    photo: {
+      type: Function,
+      default: () => {},
     },
     animate: {
       type: Boolean,
@@ -267,22 +291,6 @@ export default {
       const group = _.groupBy(this.dataSet, 'candidate')
       return Object.keys(group)
     },
-    color() {
-      return d3
-        .scaleOrdinal()
-        .domain(this.candidate_group)
-        .range([
-          '#e41a1c',
-          '#377eb8',
-          '#4daf4a',
-          '#984ea3',
-          '#ff7f00',
-          '#ffff33',
-          '#a65628',
-          '#f781bf',
-          '#999999',
-        ])
-    },
     yAxis_group() {
       // let data
 
@@ -326,7 +334,7 @@ export default {
       const { length } = this.yAxis_group
       let axis = d3
         .axisBottom(this.xScale)
-        .tickFormat((d) => moment(d).add(543, 'years').format('DD/MM/YY'))
+        .tickFormat((d) => moment(d).add(543, 'years').format('DD MMM YY'))
         .ticks(length)
         .tickSize(1)
         .tickPadding(12)
@@ -442,7 +450,7 @@ export default {
   },
   async mounted() {
     this.resizeHandler()
-    await this.setDataGroupMenu()
+    await this.setDataGroupCandidate()
     const svg = d3.select('svg')
 
     svg
@@ -529,12 +537,12 @@ export default {
       }
       this.left_tooltip = left
     },
-    circleSize(val) {
-      const valueMax = d3.max(this.dataSet, (d) => d.value)
-      const maxRadius = this.$mq === 'mobile' ? 26 : 40
-      const smallRadius = this.$mq === 'mobile' ? 13 : 20
-      return val === valueMax ? maxRadius / 2 : smallRadius / 2
-    },
+    // circleSize(data = {}) {
+    //   // const valueMax = d3.max(this.dataSet, (d) => d.value)
+    //   const maxRadius = this.$mq === 'mobile' ? 26 : 40
+    //   const smallRadius = this.$mq === 'mobile' ? 13 : 20
+    //   return data.highest_per_date ? maxRadius : smallRadius
+    // },
     setAnimatePathLine() {
       const _self = this
       const line = d3.selectAll('.line-path').selectAll('.line')
@@ -553,11 +561,20 @@ export default {
         labels.each(function (g, i) {
           d3.select(this).call(() => {
             let index = 0
-            const data = g.data
+            const data = _.get(g, 'data', [])
             const { length } = data
             const animate = () => {
               const d = _.get(data, `[${index}]`, {})
               const time = d.time
+
+              d3.select(this)
+                .select('.labels')
+                .transition()
+                .delay(time)
+                .duration(400)
+                .ease(d3.easeCircleIn)
+                .attr('transform', `scale(${d.highest_per_date ? 1.7 : 1})`)
+
               d3.select(this)
                 .transition()
                 .duration(time)
@@ -600,7 +617,7 @@ export default {
       const y = this.yScale(d1.value) - this.yScale(d2.value)
       return Math.hypot(x, y) || 0
     },
-    setDataGroupMenu() {
+    setDataGroupCandidate() {
       const setFormatData = (data) => {
         const dataset = data.map((d, index) => {
           const distance = this.calDistance(data, index, 'forward')
@@ -633,14 +650,16 @@ export default {
 
       for (const key in groups) {
         const arr = _.get(groups, key, [])
-        const data = {
+        const data = setFormatData(arr)
+
+        candidates.push({
           candidate: key,
           min: d3.min(arr, (d) => d.value),
           max: d3.max(arr, (d) => d.value),
+          highest_per_date: _.get(data, '[0].highest_per_date'),
           color: this.color(key),
-          data: setFormatData(arr),
-        }
-        candidates.push(data)
+          data,
+        })
       }
       this.candidates = candidates
       console.log(candidates)
@@ -664,13 +683,24 @@ export default {
       this.$emit('change', this.active_data)
       this.$emit('update:activeChart', date)
 
-      d3.selectAll('.labels-group')
-        .data(this.candidates)
+      const labelsGroup = d3.selectAll('.labels-group').data(this.candidates)
+
+      labelsGroup
         .transition()
         .duration(600)
         .attr('transform', (group) => {
           const d = group.data.find((d) => d.date === date) || {}
           return `translate(${this.xScale(d.date)},${this.yScale(d.value)})`
+        })
+
+      labelsGroup
+        .select('.labels')
+        .transition()
+        .duration(400)
+        .ease(d3.easeCircleIn)
+        .attr('transform', (group) => {
+          const d = group.data.find((d) => d.date === date) || {}
+          return `scale(${d.highest_per_date ? 1.7 : 1})`
         })
     },
   },

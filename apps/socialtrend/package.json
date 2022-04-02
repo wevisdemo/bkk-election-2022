@@ -22,6 +22,7 @@
     "nuxt-mq": "^2.0.2",
     "vue-check-view": "^0.3.0",
     "vue-server-renderer": "^2.6.14",
+    "vue-social-sharing": "^3.0.9",
     "vue-template-compiler": "^2.6.14",
     "webpack": "^4.46.0"
   },
