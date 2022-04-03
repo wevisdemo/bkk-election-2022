@@ -1,4 +1,6 @@
 module.exports = {
+  prefix: 'tw-',
+  important: true,
   presets: [require('../../packages/tailwind/tailwind.config.js')],
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',

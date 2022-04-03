@@ -49,3 +49,33 @@ export interface IQuestion {
   question: string;
   description: string;
 }
+
+export interface IGovernor {
+  id: null | number;
+  name: null | string;
+  number: null | number;
+  sex: null | string;
+  birthdate: null | string;
+  property: null | string;
+  higher_education: null | string;
+  career: null | string;
+  political_career: null | string;
+  party: null | string;
+  policy: null | string;
+  contact_web: null | string;
+  contact_facebook: null | string;
+  contact_twitter: null | string;
+  profile_pic: null | string;
+  nickname: null | string;
+  highlight: null | true;
+  policy_url: null | string;
+  age: null | number;
+  basic_education: null | string;
+  slogan: null | string;
+  contact_youtube: null | string;
+  contact_tiktok: null | string;
+  other_data: null | string;
+  contact_email: null | string;
+  contact_instagram: null | string;
+  contact_line: null | string;
+}

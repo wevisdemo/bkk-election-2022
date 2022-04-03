@@ -107,7 +107,7 @@ const inititalCandidateList: ICandidate[] = [
     is_highlight: false,
   },
   {
-    id: 1,
+    id: 2,
     name: 'ชัชชาติ สิทธิพันธุ์',
     team: 'อิสระ',
     video_url: '',
@@ -115,7 +115,7 @@ const inititalCandidateList: ICandidate[] = [
     is_highlight: false,
   },
   {
-    id: 1,
+    id: 3,
     name: 'ชัชชาติ สิทธิพันธุ์',
     team: 'อิสระ',
     video_url: '',
@@ -123,7 +123,7 @@ const inititalCandidateList: ICandidate[] = [
     is_highlight: false,
   },
   {
-    id: 1,
+    id: 4,
     name: 'ชัชชาติ สิทธิพันธุ์',
     team: 'อิสระ',
     video_url: '',
@@ -131,7 +131,7 @@ const inititalCandidateList: ICandidate[] = [
     is_highlight: false,
   },
   {
-    id: 1,
+    id: 5,
     name: 'ชัชชาติ สิทธิพันธุ์',
     team: 'อิสระ',
     video_url: '',
@@ -139,7 +139,7 @@ const inititalCandidateList: ICandidate[] = [
     is_highlight: false,
   },
   {
-    id: 1,
+    id: 6,
     name: 'ชัชชาติ สิทธิพันธุ์',
     team: 'อิสระ',
     video_url: '',
@@ -180,27 +180,27 @@ const inititalQuestionCategory: IQuestionCategory = {
 const inititalDistrictList: IDistrict[] = [
   {
     display: 'คลองเตย',
-    value: 'krong_toei',
+    value: 'คลองเตย',
   },
   {
     display: 'คลองเตย',
-    value: 'krong_toei',
+    value: 'คลองเตย',
   },
   {
     display: 'คลองเตย',
-    value: 'krong_toei',
+    value: 'คลองเตย',
   },
   {
     display: 'คลองเตย',
-    value: 'krong_toei',
+    value: 'คลองเตย',
   },
   {
     display: 'คลองเตย',
-    value: 'krong_toei',
+    value: 'คลองเตย',
   },
   {
     display: 'คลองเตย',
-    value: 'krong_toei',
+    value: 'คลองเตย',
   },
 ];
 

@@ -8,8 +8,13 @@ interface PropsType {
 
 export function Council(props: PropsType) {
   const council = props.council;
+
+  const onClickGoogleSearch = (name: string) => {
+    window.open(`https://www.google.com/search?q=${name}`, '_blank');
+  };
+
   return (
-    <div className="flex border-t border-[#9d9d9d] max-w-[288px] md:max-w-[1024px] mb-[40px]">
+    <div className="flex border-t border-[#9d9d9d] w-full max-w-[288px] md:max-w-[1024px] mb-[40px]">
       <div className="flex flex-col justify-center w-[100px] md:w-[150px] h-[100px] md:h-[150px] bg-[#333333] text-white">
         <p className="font-heading font-semibold text-[27pt] md:text-[48pt] leading-[45px] md:leading-[80px]">
           {council.number}
@@ -45,7 +50,10 @@ export function Council(props: PropsType) {
             <p className="typo-b7 md:text-[14pt] font-bold">{council.career}</p>
           </div>
         </div>
-        <div className="flex font-body text-[9pt] border border-[#dadada] p-[10px] w-fit">
+        <div
+          className="flex font-body text-[9pt] border border-[#dadada] p-[10px] w-fit hover:cursor-pointer"
+          onClick={() => onClickGoogleSearch(council.name)}
+        >
           {/* <img src="" alt="" /> */}
           <Image src={searchIcon} alt="search" width={14} height={14} />
           <span className="ml-[8px]">ค้นประวัติใน Google</span>

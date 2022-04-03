@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { ICandidate } from '../../types/business';
 import candidataImg from '../../static/images/candidate.png';
+import { useRouter } from 'next/router';
 
 interface PropType {
   candidate: ICandidate;
@@ -8,10 +9,16 @@ interface PropType {
 
 export function HighlightCandidateBadge(props: PropType) {
   const candidate = props.candidate;
-  // TODO: event on click
+  const router = useRouter();
+  const onClickCandidate = (id: number) => {
+    router.push(`/governors/${id}`);
+  };
 
   return (
-    <div className={`max-w-[500px] w-[85vw] md:w-[30vw] m-auto`}>
+    <div
+      className={`max-w-[500px] w-[85vw] md:w-[30vw] m-auto hover:cursor-pointer`}
+      onClick={() => onClickCandidate(candidate.id)}
+    >
       {/* eslint-disable */}
       <img
         src={candidataImg.src}

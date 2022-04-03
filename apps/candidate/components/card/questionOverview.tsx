@@ -4,9 +4,15 @@ import playButtonGray from '../../static/icons/play-gray.svg';
 import { AppContext } from '../../store';
 import { useContext } from 'react';
 
-export function QuestionOverview() {
+interface Propstype {
+  isComingSoon?: boolean;
+}
+
+export function QuestionOverview(props: Propstype) {
+  // TODO: get from props
   const { store } = useContext(AppContext);
   const questionCategory = store.questionCategory;
+  const { isComingSoon } = props;
 
   const onClickQuestion = () => {
     console.log('question');
@@ -45,33 +51,43 @@ export function QuestionOverview() {
   };
 
   return (
-    <div className="text-white mt-20 relative">
-      <div className="absolute top-[-30px] w-full text-center">
-        <Image src={playButtonBw} alt="play-bt-bw" width={61} height={61} />
-      </div>
-      <div className="text-center p-10 border border-[#9d9d9d] rounded-[10px] max-w-[1145px] m-auto">
-        <p className="typo-h5 mt-5 mb-10">
-          ฟัง 5 ผู้สมัครในกระแสตอบ 21 คำถามเดียวกัน
-        </p>
-        <div className="border-y p-10 border-[#9d9d9d80] flex items-center m-auto justify-center">
-          <Image
-            src={playButtonGray}
-            alt="play-bt-gray"
-            width={25}
-            height={25}
-          />
-          <p className="typo-b6 ml-[10px]">
-            <span className="font-bold">Exclusive Speech :</span>
-            ทำไมต้องเลือกคุณเป็นผู้ว่าฯ กทม.
+    <div className="text-white mx-[8px] relative">
+      {isComingSoon && (
+        <div className="">
+          <p className="absolute z-[12] text-center w-full typo-h7 top-[65px]">
+            Coming Soon...
           </p>
+          <div className="absolute w-full h-full bg-black z-10 opacity-50"></div>
         </div>
-        <div className="grid grid-cols md:grid-cols-3 gap-[30px] my-10">
-          {questionColumn('Policy', questionCategory.policy)}
-          {questionColumn('Opinion', questionCategory.opinion)}
-          {questionColumn('Lifestyle', questionCategory.lifestyle)}
+      )}
+      <div className="text-white mx-[8px] mt-20 relative">
+        <div className="absolute top-[-30px] w-full text-center">
+          <Image src={playButtonBw} alt="play-bt-bw" width={61} height={61} />
         </div>
-        <div className="font-body text-[12pt] md:text-[14pt] border-t border-[#9d9d9d80] pt-10 pt-[30px] font-bold">
-          + อีก 5 คำถามเคลียร์ใจเฉพาะตัวผู้สมัคร
+        <div className="text-center p-10 border border-[#9d9d9d] rounded-[10px] max-w-[1145px] m-auto">
+          <p className="typo-h5 mt-5 mb-10">
+            ฟัง 5 ผู้สมัครในกระแสตอบ 21 คำถามเดียวกัน
+          </p>
+          <div className="border-y p-10 border-[#9d9d9d80] flex items-center m-auto justify-center">
+            <Image
+              src={playButtonGray}
+              alt="play-bt-gray"
+              width={25}
+              height={25}
+            />
+            <p className="typo-b6 ml-[10px]">
+              <span className="font-bold">Exclusive Speech :</span>
+              ทำไมต้องเลือกคุณเป็นผู้ว่าฯ กทม.
+            </p>
+          </div>
+          <div className="grid grid-cols md:grid-cols-3 gap-[30px] my-10">
+            {questionColumn('Policy', questionCategory.policy)}
+            {questionColumn('Opinion', questionCategory.opinion)}
+            {questionColumn('Lifestyle', questionCategory.lifestyle)}
+          </div>
+          <div className="font-body text-[12pt] md:text-[14pt] border-t border-[#9d9d9d80] pt-10 pt-[30px] font-bold">
+            + อีก 5 คำถามเคลียร์ใจเฉพาะตัวผู้สมัคร
+          </div>
         </div>
       </div>
     </div>

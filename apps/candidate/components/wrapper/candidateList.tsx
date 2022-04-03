@@ -10,8 +10,10 @@ interface PropsType {
 export function CandidateList(props: PropsType) {
   const candidateCount = props.candidateList.length;
 
-  const candidateListComponent = props.candidateList.map((candidate) => {
-    return CandidateBadge({ candidate });
+  const candidateListComponent = props.candidateList.map((candidate, index) => {
+    return (
+      <CandidateBadge key={`candidate-badge-${index}`} candidate={candidate} />
+    );
   });
 
   return (

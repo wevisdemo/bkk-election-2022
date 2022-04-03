@@ -1,6 +1,7 @@
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
-
+import { Fragment, useContext } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { AppContext } from '../../store';
 
 import { ExclusiveQuestion } from '../../components/badge/exclusiveQuestion';
 
@@ -9,8 +10,12 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import { GeneralQuestionList } from '../../components/wrapper/generalQuestionList';
 
 export default function Candidate() {
+  const { store } = useContext(AppContext);
+  const qaList = store.qaList;
+
   const qa = {
     id: 1,
     governor: 'ชัชชาติ สิทธิพันฒ์',
@@ -43,6 +48,12 @@ export default function Candidate() {
             </div>
           </div>
         </div>
+      </div>
+      <div>
+        <GeneralQuestionList qaList={qaList} qaType="policy" />
+        <GeneralQuestionList qaList={qaList} qaType="opiniion" />
+        <GeneralQuestionList qaList={qaList} qaType="lifestyle" />
+        <GeneralQuestionList qaList={qaList} qaType="special" />
       </div>
     </div>
     // <Swiper
