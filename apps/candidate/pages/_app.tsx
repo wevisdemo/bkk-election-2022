@@ -1,5 +1,6 @@
 import 'tailwind/style.css';
 import type { AppProps } from 'next/app';
+import { AppWrapper } from '../store';
 import { useEffect } from 'react';
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -7,8 +8,11 @@ function MyApp({ Component, pageProps }: AppProps) {
     // @ts-ignore
     window.registerUICustomElements();
   });
-
-  return <Component {...pageProps} />;
+  return (
+    <AppWrapper>
+      <Component {...pageProps} />
+    </AppWrapper>
+  );
 }
 
 export default MyApp;
