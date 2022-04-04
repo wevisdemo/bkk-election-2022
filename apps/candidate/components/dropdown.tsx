@@ -80,7 +80,6 @@ export function Dropdown(props: Propstype) {
   };
 
   const onClickDD = () => {
-    console.log('click dd', isShow);
     setIsShow(!isShow);
   };
 

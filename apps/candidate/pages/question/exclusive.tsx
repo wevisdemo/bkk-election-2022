@@ -10,8 +10,6 @@ export default function QuestionExclusive() {
   const questionCategory = store.questionCategory;
 
   const onClickQuestion = () => {
-    console.log('question');
-
     // TODO: redirect to question
   };
 

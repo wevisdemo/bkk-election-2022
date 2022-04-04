@@ -23,8 +23,6 @@ export default function QuestionStandard() {
   };
 
   const onClickQuestion = () => {
-    console.log('question');
-
     // TODO: redirect to question
   };
 

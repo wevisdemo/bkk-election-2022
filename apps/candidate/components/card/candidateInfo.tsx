@@ -22,16 +22,12 @@ export function CandidateInfoCard({ governor }: PropsType) {
     if (list.length > 0) {
       list[0] = list[0].replace('-', '');
     }
-    console.log(list);
     return (
-      // <ul className="">
-
       <ul className="list-outside list-disc ml-[20px]">
         {list.map((li, index) => {
           return <li key={`info-${index}`}>{li}</li>;
         })}
       </ul>
-      // </ul>
     );
   };
 
@@ -102,8 +98,6 @@ export function CandidateInfoCard({ governor }: PropsType) {
       return;
     }
     const onClickContact = (type: contactType) => {
-      console.log('click ===');
-
       if (type) {
         const url = contactDict[type];
         if (!url) return;

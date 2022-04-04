@@ -11,7 +11,6 @@ interface PropsType {
 
 export function CouncilList(props: PropsType) {
   const onSelectDropdown = (option: IDropdownOption) => {
-    console.log('select');
     setCurrDistrict(option.value);
   };
   const [section, setSection] = useState<string>('district');

@@ -1,5 +1,3 @@
-import { IGovernor } from '../../types/business';
-import Image from 'next/image';
 import arrowLong from '../../static/icons/arrow-long.svg';
 import { useRouter } from 'next/router';
 export function BackToHomeCard() {
@@ -13,7 +11,7 @@ export function BackToHomeCard() {
         className="w-fit text-center flex justify-center space-x-[20px] m-auto hover:cursor-pointer"
         onClick={onClickBack}
       >
-        <Image src={arrowLong} alt="arrow" />
+        <img src={arrowLong.src} alt="arrow-home" />
         <p className="typo-h7 text-white">กลับหน้ารวมผู้สมัคร</p>
       </div>
     </div>

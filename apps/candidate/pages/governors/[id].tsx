@@ -43,8 +43,8 @@ const mockGov: IGovernor = {
   contact_line: null,
 };
 
-export default function Governor({ id }: PropsType) {
-  const is_highlight = parseInt(id) % 2 === 0;
+export default function Governor() {
+  const is_highlight = true;
   return (
     <div>
       {is_highlight && <HighLightCandidatePage governor={mockGov} />}
@@ -53,14 +53,14 @@ export default function Governor({ id }: PropsType) {
   );
 }
 
-export const getServerSideProps: GetStaticProps = async (context) => {
-  let id = '1';
-  if (context.params?.id !== undefined) {
-    if (Array.isArray(context.params.id) && context.params.id.length > 0) {
-      id = context.params.id[0];
-    } else {
-      id = context.params.id as string;
-    }
-  }
-  return { props: { id } };
-};
+// export const getServerSideProps: GetStaticProps = async (context) => {
+//   let id = '1';
+//   if (context.params?.id !== undefined) {
+//     if (Array.isArray(context.params.id) && context.params.id.length > 0) {
+//       id = context.params.id[0];
+//     } else {
+//       id = context.params.id as string;
+//     }
+//   }
+//   return { props: { id } };
+// };

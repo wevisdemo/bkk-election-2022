@@ -15,8 +15,6 @@ export function QuestionOverview(props: Propstype) {
   const { isComingSoon } = props;
 
   const onClickQuestion = () => {
-    console.log('question');
-
     // TODO: redirect to question
   };
 
