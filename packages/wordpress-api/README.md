@@ -1,6 +1,6 @@
-# The Standard API Package
+# WordPress API Package
 
-Provide function to get posts from [The Standard](https://thestandard.co) Wordpress
+Provide function to get posts from [The Standard](https://thestandard.co) and [Wevis](https://wevis.info) Wordpress
 
 ## Setup
 
@@ -17,15 +17,19 @@ Add `wordpress-api` in app's package.json dependecies
 Import and call the function
 
 ```ts
-import { fetchElectionPosts } from 'wordpress-api';
+import {
+  fetchTheStandardElectionPosts,
+  fetchWeVisElectionPosts,
+} from 'wordpress-api';
 
-const posts = await fetchElectionPosts();
+const theStandardPosts = await fetchTheStandardElectionPosts();
+const weVisPosts = await fetchWeVisElectionPosts();
 ```
 
-`fetchElectionPosts` function receive optional options object which can specify
+`fetchTheStandardElectionPosts` and `fetchWeVisElectionPosts` functions receive optional options object which can specify
 
 - `limit` amount of latest posts
-- `candidateName` to limit posts to some specifig candidate
+- `tag` additional tag to filter posts
 
 The function return `Promise<Post[]>`
 
@@ -38,8 +42,8 @@ export interface Post {
   link: string;
 }
 
-export async function fetchElectionPosts({
+export async function fetch{TheStandard/WeVis}ElectionPosts({
   limit = 6,
-  candidateName = '',
+  tag = '',
 } = {}): Promise<Post[]>;
 ```

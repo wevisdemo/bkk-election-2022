@@ -42,7 +42,7 @@ function parseParams(params?: URLParamaters): string {
 
 export const createPostsFetcher =
   ({ apiRoot, electionTagId, mediaTargetSize }: SiteConfig) =>
-  async ({ limit = 6, candidateName = '' } = {}): Promise<Post[]> => {
+  async ({ limit = 6, tag = '' } = {}): Promise<Post[]> => {
     const fetchApi = async <T>(
       endpoint: string,
       params?: URLParamaters
@@ -51,10 +51,10 @@ export const createPostsFetcher =
       return await res.json();
     };
 
-    const tags = candidateName
+    const tags = tag
       ? (
           await fetchApi<WP_REST_API_Tag[]>('/tags', {
-            search: candidateName,
+            search: tag,
             _fields: 'id',
             per_page: 1,
           })
@@ -70,7 +70,7 @@ export const createPostsFetcher =
     });
 
     return posts
-      .filter(({ tags }) => !candidateName || tags?.includes(electionTagId))
+      .filter(({ tags }) => !tag || tags?.includes(electionTagId))
       .map<Post>(({ id, title, link, date, _embedded }) => {
         const [media] = _embedded?.[
           'wp:featuredmedia'
