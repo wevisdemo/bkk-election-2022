@@ -3,7 +3,7 @@ import arrow from '../../static/icons/arrow.svg';
 import { useRouter } from 'next/router';
 import { BackToHomeCard } from '../card/backToHome';
 import { CandidateInfoCard } from '../card/candidateInfo';
-import { Post } from 'the-standard-api';
+import { Post } from 'wordpress-api';
 import { NewsList } from '../wrapper/newsList';
 import { ShareList } from '../wrapper/shareList';
 interface PropsType {

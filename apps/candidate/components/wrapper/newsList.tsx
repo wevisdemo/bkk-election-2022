@@ -1,4 +1,4 @@
-import { Post } from 'the-standard-api';
+import { Post } from 'wordpress-api';
 
 import { Navigation, Pagination, Scrollbar, A11y, EffectFade } from 'swiper';
 

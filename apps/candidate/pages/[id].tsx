@@ -3,7 +3,7 @@ import { HighLightCandidatePage } from '../components/subPage/highlightCandidate
 import { CandidatePage } from '../components/subPage/candidatePage';
 import { IGovernor } from '../types/business';
 import { useRouter } from 'next/router';
-import { fetchElectionPosts, Post } from 'the-standard-api';
+import { fetchTheStandardElectionPosts, Post } from 'wordpress-api';
 import { useEffect, useState } from 'react';
 
 interface PropsType {
@@ -57,8 +57,8 @@ export default function Governor() {
   useEffect(() => {
     const getPort = async () => {
       try {
-        const res = await fetchElectionPosts({
-          candidateName: mockGov.name || '',
+        const res = await fetchTheStandardElectionPosts({
+          tag: mockGov.name || '',
         });
         console.log(res);
         setNews(res);

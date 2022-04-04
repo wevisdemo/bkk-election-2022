@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { BackToHomeCard } from '../card/backToHome';
 import { CandidateInfoCard } from '../card/candidateInfo';
 import { NewsList } from '../wrapper/newsList';
-import { Post } from 'the-standard-api';
+import { Post } from 'wordpress-api';
 import { ShareList } from '../wrapper/shareList';
 
 interface PropsType {
