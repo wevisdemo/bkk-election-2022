@@ -48,18 +48,20 @@
 	</div>
 </div>
 
-<PostGrid
-	title="ข่าวล่าสุดเกี่ยวกับการเลือกตั้ง กทม."
-	subtitle="รวมข่าวสารเกี่ยวกับการเลือกตั้ง กทม. จาก The STANDARD"
-	fetchPosts={fetchTheStandardElectionPosts}
-	viewAllText="ดูข่าวทั้งหมด บน thestandard.co"
-	viewAllLink="https://thestandard.co/tag/bkkelection2022/"
-/>
+<div class="flex flex-col max-w-screen-xl mx-auto divide-y divide-black px-5 md:py-8">
+	<PostGrid
+		title="ข่าวล่าสุดเกี่ยวกับการเลือกตั้ง กทม."
+		subtitle="รวมข่าวสารเกี่ยวกับการเลือกตั้ง กทม. จาก The STANDARD"
+		fetchPosts={fetchTheStandardElectionPosts}
+		viewAllText="ดูข่าวทั้งหมด บน thestandard.co"
+		viewAllLink="https://thestandard.co/tag/bkkelection2022/"
+	/>
 
-<PostGrid
-	title="บทความข้อมูลการเลือกตั้ง กทม."
-	subtitle="รวมบทความเน้นข้อมูลการเลือกตั้ง นำเสนอด้วย Data Visualization โดย WeVis"
-	fetchPosts={fetchWeVisElectionPosts}
-	viewAllText="ดูบทความทั้งหมด บน wevis.info"
-	viewAllLink="https://wevis.info/tag/เลือกตั้ง-กทม/"
-/>
+	<PostGrid
+		title="บทความข้อมูลการเลือกตั้ง กทม."
+		subtitle="รวมบทความเน้นข้อมูลการเลือกตั้ง นำเสนอด้วย Data Visualization โดย WeVis"
+		fetchPosts={fetchWeVisElectionPosts}
+		viewAllText="ดูบทความทั้งหมด บน wevis.info"
+		viewAllLink="https://wevis.info/tag/เลือกตั้ง-กทม/"
+	/>
+</div>
