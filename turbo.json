@@ -28,7 +28,7 @@
     },
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", "build/**"]
+      "outputs": ["dist/**", "build/**", "/out/**"]
     },
     "lint": {
       "outputs": []
