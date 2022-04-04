@@ -3,21 +3,34 @@ import Image from 'next/image';
 import arrowLong from '../../static/icons/arrow-long.svg';
 import { useRouter } from 'next/router';
 import { BackToHomeCard } from '../card/backToHome';
+import { CandidateInfoCard } from '../card/candidateInfo';
 interface PropsType {
   governor: IGovernor;
   isComingSoon?: boolean;
 }
 export function HighLightCandidatePage({ governor, isComingSoon }: PropsType) {
+  // TODO: change bgUrl
+  const bgUrl = 'https://peachpharm.files.wordpress.com/2013/06/mac-4.jpg';
+
   return (
     <div>
-      <div className="h-[440px] md:h-[670px] w-full bg-[url('https://peachpharm.files.wordpress.com/2013/06/mac-4.jpg')] bg-cover flex flex-col md:flex-row items-center">
-        <div className="text-white ml-[98px]">
-          <p className="font-heading font-semibold text-[27pt] md:text-[48pt]">
-            {governor.name}
-          </p>
-          <p className="typo-h5">เบอร์ {governor.number}</p>
+      <div className="bg-[#333333]">
+        <div
+          className="h-[780px] md:h-[670px] w-full bg-contain bg-no-repeat md:bg-cover items-center"
+          style={{
+            backgroundImage: 'url(' + `${bgUrl}` + ')',
+          }}
+        >
+          <div className="flex flex-col md:flex-row justify-between items-center m-auto md:mr-[60px] w-full h-full">
+            <div className="text-white text-center md:text-left mt-[40px] md:mx-auto">
+              <p className="font-heading font-semibold text-[27pt] md:text-[48pt] leading-[1.25]">
+                {governor.name}
+              </p>
+              <p className="typo-h5">เบอร์ {governor.number}</p>
+            </div>
+            <CandidateInfoCard governor={governor} />
+          </div>
         </div>
-        <div></div>
       </div>
       <div className="bg-[#f1f1f1] px-[8px] py-[28px] md:py-[80px] text-center">
         <p className="typo-b5 mb-[20px]">Coming Soon..</p>
@@ -33,3 +46,5 @@ export function HighLightCandidatePage({ governor, isComingSoon }: PropsType) {
     </div>
   );
 }
+
+<style>.imageCover{}</style>;

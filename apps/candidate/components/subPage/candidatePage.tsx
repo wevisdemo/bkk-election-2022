@@ -3,23 +3,35 @@ import Image from 'next/image';
 import arrow from '../../static/icons/arrow.svg';
 import { useRouter } from 'next/router';
 import { BackToHomeCard } from '../card/backToHome';
+import { CandidateInfoCard } from '../card/candidateInfo';
 interface PropsType {
   governor: IGovernor;
 }
 export function CandidatePage({ governor }: PropsType) {
+  const bgUrl = 'https://peachpharm.files.wordpress.com/2013/06/mac-4.jpg';
+
   const onClickPolicyLink = (link: string) => {
     window.open(link, '_blank');
   };
   return (
     <div>
-      <div className="h-[440px] md:h-[670px] w-full bg-[url('https://peachpharm.files.wordpress.com/2013/06/mac-4.jpg')] bg-cover flex flex-col md:flex-row items-center">
-        <div className="text-white ml-[98px]">
-          <p className="font-heading font-semibold text-[27pt] md:text-[48pt]">
-            {governor.name}
-          </p>
-          <p className="typo-h5">เบอร์ {governor.number}</p>
+      <div className="bg-[#333333]">
+        <div
+          className="h-[780px] md:h-[670px] w-full bg-contain bg-no-repeat md:bg-cover items-center"
+          style={{
+            backgroundImage: 'url(' + `${bgUrl}` + ')',
+          }}
+        >
+          <div className="flex flex-col md:flex-row justify-between items-center m-auto md:mr-[60px] w-full h-full">
+            <div className="text-white text-center md:text-left mt-[40px] md:mx-auto">
+              <p className="font-heading font-semibold text-[27pt] md:text-[48pt] leading-[1.25]">
+                {governor.name}
+              </p>
+              <p className="typo-h5">เบอร์ {governor.number}</p>
+            </div>
+            <CandidateInfoCard governor={governor} />
+          </div>
         </div>
-        <div></div>
       </div>
       <div className="px-[8px] py-[28px] md:py-[80px]">
         <p className="typo-h6 mb-[30px] md:mb-[42px] ml-[10%]">นโยบายเด่น</p>
