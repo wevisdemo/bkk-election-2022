@@ -17,12 +17,12 @@ export function CandidatePage({ governor }: PropsType) {
           <p className="font-heading font-semibold text-[27pt] md:text-[48pt]">
             {governor.name}
           </p>
-          <p className="typo-h6">เบอร์ {governor.number}</p>
+          <p className="typo-h5">เบอร์ {governor.number}</p>
         </div>
         <div></div>
       </div>
       <div className="px-[8px] py-[28px] md:py-[80px]">
-        <p className="typo-h7 mb-[30px] md:mb-[42px] ml-[10%]">นโยบายเด่น</p>
+        <p className="typo-h6 mb-[30px] md:mb-[42px] ml-[10%]">นโยบายเด่น</p>
         <p className="font-body text-[12pt] md:text-[14pt] leading-[1.5] max-w-[280px] md:max-w-[750px] m-auto">
           {governor.policy}
           {governor.policy_url !== null && (

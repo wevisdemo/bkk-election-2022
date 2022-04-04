@@ -1,7 +1,7 @@
 import 'tailwind/style.css';
 import type { AppProps } from 'next/app';
 import { AppWrapper } from '../store';
-import { useEffect } from 'react';
+import { Fragment, useEffect } from 'react';
 
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -10,7 +10,10 @@ function MyApp({ Component, pageProps }: AppProps) {
   });
   return (
     <AppWrapper>
-      <Component {...pageProps} />
+      <Fragment>
+        <ui-navbar />
+        <Component {...pageProps} />
+      </Fragment>
     </AppWrapper>
   );
 }

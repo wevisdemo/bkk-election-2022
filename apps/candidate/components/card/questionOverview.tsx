@@ -51,10 +51,10 @@ export function QuestionOverview(props: Propstype) {
   };
 
   return (
-    <div className="text-white mx-[8px] relative">
+    <div className="text-white mx-[8px] mt-[20px] md:mt-[40px] relative">
       {isComingSoon && (
         <div className="">
-          <p className="absolute z-[12] text-center w-full typo-h7 top-[65px]">
+          <p className="absolute z-[12] text-center w-full typo-h6 top-[65px]">
             Coming Soon...
           </p>
           <div className="absolute w-full h-full bg-black z-10 opacity-50"></div>
@@ -65,7 +65,7 @@ export function QuestionOverview(props: Propstype) {
           <Image src={playButtonBw} alt="play-bt-bw" width={61} height={61} />
         </div>
         <div className="text-center p-10 border border-[#9d9d9d] rounded-[10px] max-w-[1145px] m-auto">
-          <p className="typo-h5 mt-5 mb-10">
+          <p className="typo-h4 mt-5 mb-10">
             ฟัง 5 ผู้สมัครในกระแสตอบ 21 คำถามเดียวกัน
           </p>
           <div className="border-y p-10 border-[#9d9d9d80] flex items-center m-auto justify-center">
@@ -75,7 +75,7 @@ export function QuestionOverview(props: Propstype) {
               width={25}
               height={25}
             />
-            <p className="typo-b6 ml-[10px]">
+            <p className="typo-b5 ml-[10px]">
               <span className="font-bold">Exclusive Speech :</span>
               ทำไมต้องเลือกคุณเป็นผู้ว่าฯ กทม.
             </p>

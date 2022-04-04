@@ -24,8 +24,6 @@ const Home: NextPage = () => {
 
   useEffect(() => {
     const navHeight = navRef.current?.offsetHeight || 0;
-    console.log('navHeight => ', navHeight);
-    console.log('navHeight 2=> ', candidateRef.current?.offsetTop);
 
     const candidateTop = (candidateRef.current?.offsetTop || 0) - navHeight;
     const candidateBot =
@@ -35,20 +33,7 @@ const Home: NextPage = () => {
       (councilRef.current?.offsetTop || 0) -
       (navRef.current?.offsetHeight || 0);
     const councilBot = councilTop + (councilRef.current?.offsetHeight || 0);
-
-    console.log(
-      'height => ',
-      candidateTop,
-      candidateBot,
-      councilTop,
-      councilBot
-    );
-
     document.addEventListener('scroll', (e) => {
-      console.log(
-        'document.documentElement.scrollHeight => ',
-        document.documentElement.scrollTop
-      );
       const srcollTop = document.documentElement.scrollTop;
       if (srcollTop >= candidateTop && srcollTop < candidateBot) {
         setGovArrow(false);
@@ -75,8 +60,6 @@ const Home: NextPage = () => {
   }, []);
 
   const jumpToGovSection = () => {
-    const navHeight = navRef.current?.offsetHeight || 0;
-
     window.scrollTo({
       top:
         (candidateRef.current?.offsetTop || 0) -
@@ -96,10 +79,10 @@ const Home: NextPage = () => {
 
   return (
     <div>
-      <ui-navbar></ui-navbar>
-      <div className="flex flex-col items-center text-center px-[20px]">
-        <p className="typo-h2 mt-12">ข้อมูลผู้สมัคร</p>
-        <div className="typo-u4 mt-4 mb-12 max-w-[280px] md:max-w-[47rem]">
+      <div className="flex flex-col items-center text-center px-[20px] mt-12">
+        <p className="typo-h6">Meet the Candidates</p>
+        <p className="typo-h1">ข้อมูลผู้สมัคร</p>
+        <div className="typo-u3 mt-[10px] mb-[70px] max-w-[280px] md:max-w-[47rem]">
           ทำความรู้จักผู้สมัครผู้ว่าฯ กทม. และค้นหาสมาชิกสภา กทม. ในเขตของคุณ
         </div>
       </div>
@@ -117,7 +100,7 @@ const Home: NextPage = () => {
               height="17"
             />
           )}
-          <span className="typo-h9 ml-[10px] md:ml-[20px]">
+          <span className="typo-h8 ml-[10px] md:ml-[20px]">
             ผู้สมัครผู้ว่าฯ กทม.
           </span>
         </div>
@@ -134,7 +117,7 @@ const Home: NextPage = () => {
               height="17"
             />
           )}
-          <span className="typo-h9 ml-[10px] md:ml-[20px]">
+          <span className="typo-h8 ml-[10px] md:ml-[20px]">
             ผู้สมัครสมาชิกสภากทม.
           </span>
         </div>
@@ -144,10 +127,10 @@ const Home: NextPage = () => {
         <div className="bg-black">
           <div className=" m-auto flex flex-col pb-[126px]">
             <div className="text-center">
-              <p className="typo-h3 text-white pt-[66px]">
+              <p className="typo-h2 text-white pt-[66px]">
                 ผู้สมัครผู้ว่าฯ กทม.
               </p>
-              <p className="typo-h6 mt-4 text-white">ผู้สมัครในกระแส</p>
+              <p className="typo-h5 mt-4 text-white">ผู้สมัครในกระแส</p>
             </div>
             <HighLightCandidateList candidateList={candidateList} />
             <QuestionOverview isComingSoon />
@@ -166,7 +149,7 @@ const Home: NextPage = () => {
           councils={store.councilList}
         />
       </div>
-      <div></div>
+      <ui-footer />
     </div>
   );
 };

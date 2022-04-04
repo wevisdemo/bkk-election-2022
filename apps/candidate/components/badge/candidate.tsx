@@ -23,7 +23,7 @@ export function CandidateBadge(props: PropType) {
       <img
         src={candidataImg.src}
         alt="candidate"
-        className={`w-[43vw] h-[43vw] md:w-[15vw] md:h-[15vw] max-w-[250px] max-h-[250px]`}
+        className={`w-[43vw] h-[43vw] md:w-[15vw] md:h-[15vw] max-w-[250px] max-h-[250px] hover:border border-white`}
       />
       <div className="flex text-white mt-[10px]">
         <div className="font-heading font-semibold text-[21pt] md:text-[27pt] mr-[10px]">

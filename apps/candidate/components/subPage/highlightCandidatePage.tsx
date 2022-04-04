@@ -15,19 +15,19 @@ export function HighLightCandidatePage({ governor, isComingSoon }: PropsType) {
           <p className="font-heading font-semibold text-[27pt] md:text-[48pt]">
             {governor.name}
           </p>
-          <p className="typo-h6">เบอร์ {governor.number}</p>
+          <p className="typo-h5">เบอร์ {governor.number}</p>
         </div>
         <div></div>
       </div>
       <div className="bg-[#f1f1f1] px-[8px] py-[28px] md:py-[80px] text-center">
         <p className="typo-b5 mb-[20px]">Coming Soon..</p>
-        <p className="typo-h6 mb-[5px]">
+        <p className="typo-h5 mb-[5px]">
           1 Exclusive Speech : ทำไมต้องเลือกคุณเป็นผู้ว่าฯ กทม.
         </p>
-        <p className="typo-h6 mb-[5px]">
+        <p className="typo-h5 mb-[5px]">
           20 คำตอบด้านนโยบาย วิสัยทัศน์ และ ไลฟ์สไตล์
         </p>
-        <p className="typo-h6">+ อีก 5 คำตอบเคลียร์ใจเฉพาะตัว</p>
+        <p className="typo-h5">+ อีก 5 คำตอบเคลียร์ใจเฉพาะตัว</p>
       </div>
       <BackToHomeCard />
     </div>
