@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import searchIcon from '../../static/icons/search.svg';
 import { ICouncil } from '../../types/business';
 
@@ -54,8 +53,11 @@ export function Council(props: PropsType) {
           className="flex font-body text-[9pt] border border-[#dadada] p-[10px] w-fit hover:cursor-pointer"
           onClick={() => onClickGoogleSearch(council.name)}
         >
-          {/* <img src="" alt="" /> */}
-          <Image src={searchIcon} alt="search" width={14} height={14} />
+          <img
+            src={searchIcon.src}
+            alt="search"
+            className="w-[14px] h-[14px]"
+          />
           <span className="ml-[8px]">ค้นประวัติใน Google</span>
         </div>
       </div>

@@ -1,7 +1,6 @@
 import { Fragment, useEffect, useRef, useState } from 'react';
 import { IDropdownOption } from '../types/components';
 import polygonIcon from '../static/icons/polygon.svg';
-import Image from 'next/image';
 
 interface Propstype {
   title: string;
@@ -94,7 +93,11 @@ export function Dropdown(props: Propstype) {
           {placeHolder()}
         </span>
         <div className={isShow ? 'rotate-180 flex' : 'flex'}>
-          <Image src={polygonIcon} alt="polygon-icon" width={12} height={12} />
+          <img
+            src={polygonIcon.src}
+            alt="polygon-icon"
+            className="w-[12px] h-[12px]"
+          />
         </div>
       </div>
       <OptionListComponent

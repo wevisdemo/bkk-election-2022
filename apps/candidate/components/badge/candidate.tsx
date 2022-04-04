@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { ICandidate } from '../../types/business';
 import candidataImg from '../../static/images/candidate.png';
 import { useRouter } from 'next/router';

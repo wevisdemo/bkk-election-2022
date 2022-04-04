@@ -1,5 +1,4 @@
 import type { NextPage } from 'next';
-import Image from 'next/image';
 import arrow from '../static/icons/arrow.svg';
 import arrowW from '../static/icons/arrow-white.svg';
 import { CandidateBadge } from '../components/badge/candidate';
@@ -92,12 +91,12 @@ const Home: NextPage = () => {
           onClick={jumpToGovSection}
         >
           {govArrow && (
-            <Image
-              className={govRotate ? 'rotate-180' : ''}
-              src={arrowW}
+            <img
+              className={
+                govRotate ? 'rotate-180 w-[16px] h-[17px]' : 'w-[16px] h-[17px]'
+              }
+              src={arrowW.src}
               alt="arrow"
-              width="16"
-              height="17"
             />
           )}
           <span className="typo-h8 ml-[10px] md:ml-[20px]">
@@ -109,12 +108,14 @@ const Home: NextPage = () => {
           onClick={jumpToCounSection}
         >
           {counArrow && (
-            <Image
-              className={counRotate ? 'rotate-180' : ''}
-              src={arrow}
+            <img
+              className={
+                counRotate
+                  ? 'rotate-180 w-[16px] h-[17px]'
+                  : 'w-[16px] h-[17px]'
+              }
+              src={arrow.src}
               alt="arrow"
-              width="16"
-              height="17"
             />
           )}
           <span className="typo-h8 ml-[10px] md:ml-[20px]">

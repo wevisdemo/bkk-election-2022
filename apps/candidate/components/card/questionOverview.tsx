@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import playButtonBw from '../../static/icons/play-wb.svg';
 import playButtonGray from '../../static/icons/play-gray.svg';
 import { AppContext } from '../../store';
@@ -26,11 +25,10 @@ export function QuestionOverview(props: Propstype) {
         key={`question-${colname}-${index}`}
       >
         <div>
-          <Image
-            src={playButtonGray}
+          <img
+            src={playButtonGray.src}
             alt="play-bt-gray"
-            width="25px"
-            height="25px"
+            className="w-[25px] h-[25px]"
           />
         </div>
         <div className="typo-b6 flex-1 ml-[10px]">{question}</div>
@@ -60,18 +58,21 @@ export function QuestionOverview(props: Propstype) {
       )}
       <div className="text-white mx-[8px] mt-20 relative">
         <div className="absolute top-[-30px] w-full text-center">
-          <Image src={playButtonBw} alt="play-bt-bw" width={61} height={61} />
+          <img
+            src={playButtonBw.src}
+            alt="play-bt-bw"
+            className="w-[61px] h-[61px] mx-auto"
+          />
         </div>
         <div className="text-center p-10 border border-[#9d9d9d] rounded-[10px] max-w-[1145px] m-auto">
           <p className="typo-h4 mt-5 mb-10">
             ฟัง 5 ผู้สมัครในกระแสตอบ 21 คำถามเดียวกัน
           </p>
           <div className="border-y p-10 border-[#9d9d9d80] flex items-center m-auto justify-center">
-            <Image
-              src={playButtonGray}
+            <img
+              src={playButtonGray.src}
               alt="play-bt-gray"
-              width={25}
-              height={25}
+              className="w-[25px] h-[25px]"
             />
             <p className="typo-b5 ml-[10px]">
               <span className="font-bold">Exclusive Speech :</span>

@@ -1,5 +1,4 @@
 import { IGovernor } from '../../types/business';
-import Image from 'next/image';
 import arrow from '../../static/icons/arrow.svg';
 import { useRouter } from 'next/router';
 import { BackToHomeCard } from '../card/backToHome';
@@ -46,12 +45,10 @@ export function CandidatePage({ governor }: PropsType) {
               <p className="text-[#333333] font-body text-[11pt] leading-[1.5] mr-[12px]">
                 ดูนโยบายเพิ่มเติม
               </p>
-              <Image
-                src={arrow}
+              <img
+                src={arrow.src}
                 alt="arrow"
-                width={12}
-                height={12}
-                className="fill-[#333333] rotate-[270deg]"
+                className="fill-[#333333] rotate-[270deg] w-[12px] h-[12px]"
               />
             </button>
           )}

@@ -2,7 +2,6 @@ import { useContext } from 'react';
 import { ExclusiveQuestion } from '../../components/badge/exclusiveQuestion';
 import { AppContext } from '../../store';
 import playButtonGray from '../../static/icons/play-gray.svg';
-import Image from 'next/image';
 
 export default function QuestionExclusive() {
   const { store } = useContext(AppContext);
@@ -21,11 +20,10 @@ export default function QuestionExclusive() {
         key={`question-${colname}-${index}`}
       >
         <div>
-          <Image
+          <img
             src={playButtonGray}
             alt="play-bt-gray"
-            width="25px"
-            height="25px"
+            className="w-[25px] h-[25px]"
           />
         </div>
         <div className="typo-b6 flex-1 ml-[10px]">{question}</div>
@@ -64,11 +62,10 @@ export default function QuestionExclusive() {
       <div className="text-white max-w-[1065px] m-auto px-[18px]">
         <p className="typo-h7 text-center">ดูคำถามอื่นๆ</p>
         <div className="border-b p-10 border-[#9d9d9d80] flex items-center m-auto justify-center">
-          <Image
+          <img
             src={playButtonGray}
             alt="play-bt-gray"
-            width={25}
-            height={25}
+            className="w-[25px] h-[25px]"
           />
           <p className="typo-b6 ml-[10px] flex flex-wrap">
             <span className="font-bold">Exclusive Speech :</span>

@@ -1,7 +1,8 @@
-import { GetStaticProps } from 'next/types';
+import { GetServerSideProps, GetStaticProps } from 'next/types';
 import { HighLightCandidatePage } from '../../components/subPage/highlightCandidatePage';
 import { CandidatePage } from '../../components/subPage/candidatePage';
 import { IGovernor } from '../../types/business';
+import { useRouter } from 'next/router';
 
 interface PropsType {
   id: string;
@@ -44,7 +45,9 @@ const mockGov: IGovernor = {
 };
 
 export default function Governor() {
-  const is_highlight = true;
+  const router = useRouter();
+  const id = router.query?.id as string;
+  const is_highlight = parseInt(id) % 2 === 0 ? true : false;
   return (
     <div>
       {is_highlight && <HighLightCandidatePage governor={mockGov} />}
@@ -53,7 +56,7 @@ export default function Governor() {
   );
 }
 
-// export const getServerSideProps: GetStaticProps = async (context) => {
+// export const getStaticProps: GetStaticProps = async (context) => {
 //   let id = '1';
 //   if (context.params?.id !== undefined) {
 //     if (Array.isArray(context.params.id) && context.params.id.length > 0) {

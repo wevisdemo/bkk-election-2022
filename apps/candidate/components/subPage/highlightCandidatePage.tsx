@@ -1,5 +1,4 @@
 import { IGovernor } from '../../types/business';
-import Image from 'next/image';
 import arrowLong from '../../static/icons/arrow-long.svg';
 import { useRouter } from 'next/router';
 import { BackToHomeCard } from '../card/backToHome';

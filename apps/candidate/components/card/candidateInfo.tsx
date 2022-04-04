@@ -7,7 +7,6 @@ import iTiktok from '../../static/icons/socials/tiktok.svg';
 import iTwitter from '../../static/icons/socials/twitter.svg';
 import iWebsite from '../../static/icons/socials/website.svg';
 import iYoutube from '../../static/icons/socials/youtube.svg';
-import Image from 'next/image';
 
 interface PropsType {
   governor: IGovernor;
@@ -58,14 +57,14 @@ export function CandidateInfoCard({ governor }: PropsType) {
   };
 
   const imgDict = {
-    instagram: iInstagram,
-    email: iEmail,
-    facebook: iFacebook,
-    line: iLine,
-    tiktok: iTiktok,
-    twitter: iTwitter,
-    website: iWebsite,
-    youtube: iYoutube,
+    instagram: iInstagram.src,
+    email: iEmail.src,
+    facebook: iFacebook.src,
+    line: iLine.src,
+    tiktok: iTiktok.src,
+    twitter: iTwitter.src,
+    website: iWebsite.src,
+    youtube: iYoutube.src,
   };
 
   const contactDict = {
@@ -105,12 +104,11 @@ export function CandidateInfoCard({ governor }: PropsType) {
       }
     };
     return (
-      <Image
-        className="hover:cursor-pointer"
+      <img
         src={imgDict[type]}
-        width={30}
-        height={30}
+        alt={`contact-${type}`}
         onClick={() => onClickContact(type)}
+        className="w-[30px] h-[30px]"
       />
     );
   };
@@ -203,7 +201,7 @@ export function CandidateInfoCard({ governor }: PropsType) {
           <p className="font-bold font-body mt-[10px] text-[18px]">
             Official Contact
           </p>
-          <div className="space-x-[10px] mt-[5px]">
+          <div className="space-x-[10px] mt-[5px] flex">
             {contactButton('website')}
             {contactButton('email')}
             {contactButton('facebook')}
