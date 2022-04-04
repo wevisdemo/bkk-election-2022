@@ -4,11 +4,11 @@ Provide function to get posts from [The Standard](https://thestandard.co) Wordpr
 
 ## Setup
 
-Add `the-standard-api` in app's package.json dependecies
+Add `wordpress-api` in app's package.json dependecies
 
 ```json
 "dependencies": {
-  "the-standard-api": "*",
+  "wordpress-api": "*",
 },
 ```
 
@@ -17,7 +17,7 @@ Add `the-standard-api` in app's package.json dependecies
 Import and call the function
 
 ```ts
-import { fetchElectionPosts } from 'the-standard-api';
+import { fetchElectionPosts } from 'wordpress-api';
 
 const posts = await fetchElectionPosts();
 ```

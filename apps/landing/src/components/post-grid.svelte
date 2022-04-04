@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Post } from 'the-standard-api';
+	import type { Post } from 'wordpress-api';
 
 	export let title: string;
 	export let subtitle: string;

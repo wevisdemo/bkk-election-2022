@@ -20,8 +20,8 @@ Monorepo for Bangkok Election 2022 projects managed by [Turborepo](https://turbo
   - Build script to combine every apps build file in the root `/build`
 - **`/packages`** Shared packages used by apps
   - `/tailwind` [Tailwind](https://tailwindcss.com/) config and base stylesheet with shared design guideline
-  - `/the-standard-api` TypeScript library help fetching data from [The Standard](https://thestandard.co) Wordpress REST API
   - `/ui` Shared web component written by [SolidJS](https://www.solidjs.com/) and typography stylesheet from design system
+  - `/wordpress-api` TypeScript library help fetching data from [The Standard](https://thestandard.co) and [WeVis](https://wevis.info) Wordpress REST API
 - **`/static`** Static directory serving at `/static` eg. favicon and fonts
 
 ## ⚙️ Setup

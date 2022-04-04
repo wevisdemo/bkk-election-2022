@@ -1,6 +1,6 @@
 <script lang="ts">
 	import PostGrid from '../components/post-grid.svelte';
-	import { fetchTheStandardElectionPosts, fetchWeVisElectionPosts } from 'the-standard-api';
+	import { fetchTheStandardElectionPosts, fetchWeVisElectionPosts } from 'wordpress-api';
 	import Counter from '../components/counter.svelte';
 
 	const organizations = [
