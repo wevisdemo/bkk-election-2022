@@ -63,7 +63,7 @@
 	<div class="flex flex-row space-x-3">
 		<div class="line" />
 		<p class="typo-u5 text-center">
-			นับถอยหลังเปิดหีบเลือกตั้ง<br />วันอาทิตย์ ที่ 22 พ.ค. 2565 8:00-15:00 น.
+			<slot />
 		</p>
 		<div class="line" />
 	</div>

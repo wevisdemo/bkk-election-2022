@@ -31,7 +31,9 @@
 			<p class="typo-b4 text-center">
 				ติดตามข้อมูลเกี่ยวกับการเลือกตั้งผู้ว่าฯ และสมาชิกสภา กทม. ได้ที่นี่
 			</p>
-			<Counter until={new Date('2022-05-22 8:00 GMT+7')} />
+			<Counter until={new Date('2022-05-22 8:00 GMT+7')}>
+				นับถอยหลังเปิดหีบเลือกตั้ง<br />วันอาทิตย์ ที่ 22 พ.ค. 2565 8:00-17:00 น.
+			</Counter>
 		</div>
 		<div class="flex-1 flex flex-col space-y-8">
 			<div class="text-center">video</div>
