@@ -21,7 +21,7 @@ export default function QuestionExclusive() {
       >
         <div>
           <img
-            src={playButtonGray}
+            src={playButtonGray.src}
             alt="play-bt-gray"
             className="w-[25px] h-[25px]"
           />
@@ -63,7 +63,7 @@ export default function QuestionExclusive() {
         <p className="typo-h7 text-center">ดูคำถามอื่นๆ</p>
         <div className="border-b p-10 border-[#9d9d9d80] flex items-center m-auto justify-center">
           <img
-            src={playButtonGray}
+            src={playButtonGray.src}
             alt="play-bt-gray"
             className="w-[25px] h-[25px]"
           />

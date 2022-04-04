@@ -8,6 +8,7 @@ import { CandidateList } from '../components/wrapper/candidateList';
 import { AppContext } from '../store';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { CouncilList } from '../components/wrapper/councilList';
+import { ShareList } from '../components/wrapper/shareList';
 
 const Home: NextPage = () => {
   const { store } = useContext(AppContext);
@@ -16,6 +17,7 @@ const Home: NextPage = () => {
   const [counArrow, setCounArrow] = useState<boolean>(true);
   const [govRotate, setGovRotate] = useState<boolean>(false);
   const [counRotate, setCounRotate] = useState<boolean>(false);
+  const [pageUrl, setPageUrl] = useState<string>('');
   const candidateList = store.candidateList;
   const candidateRef = useRef<HTMLDivElement>(null);
   const councilRef = useRef<HTMLDivElement>(null);
@@ -55,7 +57,7 @@ const Home: NextPage = () => {
         setCounRotate(false);
       }
     });
-    console.log(candidateRef.current?.offsetTop);
+    setPageUrl(window.location.href);
   }, []);
 
   const jumpToGovSection = () => {
@@ -149,6 +151,9 @@ const Home: NextPage = () => {
           districts={store.districtList}
           councils={store.councilList}
         />
+      </div>
+      <div className="m-auto mb-[20px] text-center">
+        <ShareList url={pageUrl} />
       </div>
       <ui-footer />
     </div>

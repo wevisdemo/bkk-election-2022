@@ -3,11 +3,22 @@ import arrowLong from '../../static/icons/arrow-long.svg';
 import { useRouter } from 'next/router';
 import { BackToHomeCard } from '../card/backToHome';
 import { CandidateInfoCard } from '../card/candidateInfo';
+import { NewsList } from '../wrapper/newsList';
+import { Post } from 'the-standard-api';
+import { ShareList } from '../wrapper/shareList';
+
 interface PropsType {
   governor: IGovernor;
   isComingSoon?: boolean;
+  newsList: Post[];
+  pageUrl: string;
 }
-export function HighLightCandidatePage({ governor, isComingSoon }: PropsType) {
+export function HighLightCandidatePage({
+  governor,
+  isComingSoon,
+  newsList,
+  pageUrl,
+}: PropsType) {
   // TODO: change bgUrl
   const bgUrl = 'https://peachpharm.files.wordpress.com/2013/06/mac-4.jpg';
 
@@ -41,9 +52,13 @@ export function HighLightCandidatePage({ governor, isComingSoon }: PropsType) {
         </p>
         <p className="typo-h5">+ อีก 5 คำตอบเคลียร์ใจเฉพาะตัว</p>
       </div>
+      <div>
+        <NewsList newsList={newsList} />
+        <div className="m-auto mb-[20px] mt-[70px] text-center">
+          <ShareList url={pageUrl} />
+        </div>
+      </div>
       <BackToHomeCard />
     </div>
   );
 }
-
-<style>.imageCover{}</style>;

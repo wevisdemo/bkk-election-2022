@@ -3,10 +3,15 @@ import arrow from '../../static/icons/arrow.svg';
 import { useRouter } from 'next/router';
 import { BackToHomeCard } from '../card/backToHome';
 import { CandidateInfoCard } from '../card/candidateInfo';
+import { Post } from 'the-standard-api';
+import { NewsList } from '../wrapper/newsList';
+import { ShareList } from '../wrapper/shareList';
 interface PropsType {
   governor: IGovernor;
+  newsList: Post[];
+  pageUrl: string;
 }
-export function CandidatePage({ governor }: PropsType) {
+export function CandidatePage({ governor, newsList, pageUrl }: PropsType) {
   const bgUrl = 'https://peachpharm.files.wordpress.com/2013/06/mac-4.jpg';
 
   const onClickPolicyLink = (link: string) => {
@@ -53,6 +58,12 @@ export function CandidatePage({ governor }: PropsType) {
             </button>
           )}
         </p>
+      </div>
+      <div>
+        <NewsList newsList={newsList} />
+        <div className="m-auto mb-[20px] mt-[70px] text-center">
+          <ShareList url={pageUrl} />
+        </div>
       </div>
       <BackToHomeCard />
     </div>

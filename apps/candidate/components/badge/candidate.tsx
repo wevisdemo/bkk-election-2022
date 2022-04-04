@@ -10,7 +10,7 @@ export function CandidateBadge(props: PropType) {
   const candidate = props.candidate;
   const router = useRouter();
   const onClickCandidate = (id: number) => {
-    router.push(`/governors/${id}`);
+    router.push(`/${id}`);
   };
 
   return (

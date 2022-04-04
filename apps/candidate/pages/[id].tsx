@@ -1,11 +1,14 @@
-import { GetServerSideProps, GetStaticProps } from 'next/types';
-import { HighLightCandidatePage } from '../../components/subPage/highlightCandidatePage';
-import { CandidatePage } from '../../components/subPage/candidatePage';
-import { IGovernor } from '../../types/business';
+import { GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next/types';
+import { HighLightCandidatePage } from '../components/subPage/highlightCandidatePage';
+import { CandidatePage } from '../components/subPage/candidatePage';
+import { IGovernor } from '../types/business';
 import { useRouter } from 'next/router';
+import { fetchElectionPosts, Post } from 'the-standard-api';
+import { useEffect, useState } from 'react';
 
 interface PropsType {
-  id: string;
+  // id: string;
+  news: Post[];
 }
 
 const mockGov: IGovernor = {
@@ -46,24 +49,50 @@ const mockGov: IGovernor = {
 
 export default function Governor() {
   const router = useRouter();
-  const id = router.query?.id as string;
-  const is_highlight = parseInt(id) % 2 === 0 ? true : false;
+  const [news, setNews] = useState<Post[]>([]);
+  const [pageUrl, setPageUrl] = useState<string>('');
+  const { id } = router.query;
+  const is_highlight = parseInt(id as string) % 2 === 0 ? true : false;
+
+  useEffect(() => {
+    const getPort = async () => {
+      try {
+        const res = await fetchElectionPosts({
+          candidateName: mockGov.name || '',
+        });
+        console.log(res);
+        setNews(res);
+      } catch (error: any) {}
+    };
+    getPort();
+    setPageUrl(window.location.href);
+  }, []);
+
   return (
     <div>
-      {is_highlight && <HighLightCandidatePage governor={mockGov} />}
-      {!is_highlight && <CandidatePage governor={mockGov} />}
+      {is_highlight && (
+        <HighLightCandidatePage
+          governor={mockGov}
+          newsList={news}
+          pageUrl={pageUrl}
+        />
+      )}
+      {!is_highlight && (
+        <CandidatePage governor={mockGov} newsList={news} pageUrl={pageUrl} />
+      )}
     </div>
   );
 }
 
-// export const getStaticProps: GetStaticProps = async (context) => {
-//   let id = '1';
-//   if (context.params?.id !== undefined) {
-//     if (Array.isArray(context.params.id) && context.params.id.length > 0) {
-//       id = context.params.id[0];
-//     } else {
-//       id = context.params.id as string;
-//     }
-//   }
-//   return { props: { id } };
-// };
+export const getStaticPaths: GetStaticPaths = async () => {
+  const params = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+  const paths = params.map((param) => ({
+    params: { id: param.toString() },
+  }));
+  return { paths, fallback: 'blocking' };
+};
+
+export const getStaticProps: GetStaticProps = (context) => {
+  const id = context.params?.id;
+  return { props: { id } };
+};

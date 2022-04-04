@@ -1,4 +1,5 @@
 export {};
+import React from 'react';
 
 declare global {
   namespace JSX {
@@ -14,6 +15,17 @@ declare global {
         React.HTMLAttributes<HTMLElement>,
         HTMLElement
       >;
+    }
+
+    interface Props {
+      title: string;
+      link: string;
+      date: string;
+      image: string;
+    }
+
+    interface IntrinsicElements {
+      'ui-post-card': React.DetailedHTMLProps<Props, HTMLElement>;
     }
   }
 }
