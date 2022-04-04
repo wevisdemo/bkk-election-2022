@@ -23,10 +23,7 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           server-token: ${{ secrets.TURBO_SERVER_TOKEN }}
       - name: Build packages and apps
-        run: yarn build
-        env:
-          api: http://127.0.0.1:9080
-          token: ${{ secrets.TURBO_SERVER_TOKEN }}
+        run: yarn build --api="http://127.0.0.1:9080" --token="${{ secrets.TURBO_SERVER_TOKEN }}" --team="foo"
       - name: Deploy to Github page
         uses: peaceiris/actions-gh-pages@v3
         with:

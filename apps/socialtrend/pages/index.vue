@@ -136,10 +136,15 @@
           <div class="date-picker overflow-hidden">
             <div class="label-wrapper">
               <div class="label">
-                <span class="text typo-b4">วันที่</span>
+                <span class="text typo-b4">
+                  <template v-if="data_type === 'engagement'">
+                    วันที่
+                  </template>
+                  <template v-else>สัปดาห์ที่</template>
+                </span>
                 <div class="date-wrapper">
                   <div class="date typo-u2">
-                    {{ dateFormat(daterange[0]) }}
+                    {{ daterangeDisplay(daterange[0]) }}
                   </div>
                   <img
                     src="~/assets/images/calendar.svg"
@@ -152,7 +157,7 @@
                 <span class="text typo-b4">ถึง</span>
                 <div class="date-wrapper">
                   <div class="date typo-u2">
-                    {{ dateFormat(daterange[1]) }}
+                    {{ daterangeDisplay(daterange[1]) }}
                   </div>
                   <img
                     src="~/assets/images/calendar.svg"
@@ -165,23 +170,72 @@
 
             <el-date-picker
               v-model="daterange"
-              type="daterange"
               :editable="false"
-              value-format="yyyy-MM-DD"
-              placeholder="Pick a day"
               :picker-options="pickerOptions"
+              type="daterange"
+              value-format="yyyy-MM-dd"
+              align="center"
               class="opacity-0"
             >
             </el-date-picker>
           </div>
-          <!-- <el-date-picker
-                v-model="end_input_date"
-                type="date"
-                value-format="yyyy-MM-dd"
-                placeholder="Pick a day"
-                :picker-options="pickerOptions"
+          <!-- <template v-else>
+            <div class="date-picker overflow-hidden">
+              <div class="label-wrapper">
+                <div class="label">
+                  <span class="text typo-b4">สัปดาห์ที่</span>
+                  <div class="date-wrapper">
+                    <div class="date typo-u2">
+                      {{ startWeek }}
+                    </div>
+                    <img
+                      src="~/assets/images/calendar.svg"
+                      alt="calendar.svg"
+                      class="icon"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              :picker-options="pickerWeekOptions"
+              {{ weekNum }}
+              <el-date-picker
+                v-model="startWeek"
+                :editable="false"
+                type="week"
+                align="center"
+                class="opacity-0"
               >
-              </el-date-picker> -->
+              </el-date-picker>
+            </div>
+
+            <div class="date-picker overflow-hidden">
+              <div class="label-wrapper">
+                <div class="label">
+                  <span class="text typo-b4">ถึง</span>
+                  <div class="date-wrapper">
+                    <div class="date typo-u2">
+                      {{ endWeek }}
+                    </div>
+                    <img
+                      src="~/assets/images/calendar.svg"
+                      alt="calendar.svg"
+                      class="icon"
+                    />
+                  </div>
+                </div>
+              </div>
+              :picker-options="pickerOptions"
+              <el-date-picker
+                v-model="endWeek"
+                :editable="false"
+                type="week"
+                align="center"
+                class="opacity-0"
+              >
+              </el-date-picker>
+            </div>
+          </template> -->
         </div>
         <div
           class="flex items-center text-center text-white mt-6 sm:flex-col sm:items-end"
@@ -273,31 +327,34 @@
 
         <div v-view="viewHandlerChart" class="chart-wrapper mt-4">
           <div class="chart overflow-hidden">
-            <client-only>
-              <LineChartRace
-                v-if="render_chart && line_chart_data != 0"
-                :dataSet="line_chart_data"
-                :activeChart.sync="active_date"
-                :photo="photo"
-                :type="data_type"
-                :duration="duration"
-                :animate="chartAnimate"
-                :color="color_palettes"
-                @change="onChangeActive"
-              />
-            </client-only>
+            <LineChartRace
+              v-if="render_chart && line_chart_data != 0"
+              :dataSet="line_chart_data"
+              :activeChart.sync="active_date"
+              :photo="photo"
+              :type="data_type"
+              :duration="duration"
+              :animate="chartAnimate"
+              :color="color_palettes"
+              @change="onChangeActive"
+            />
           </div>
           <div v-if="data_type == 'engagement'" class="mt-3">
             <div
-              class="typo-b5 text-white text-center flex flex-col items-center justify-center"
+              class="typo-b5 text-white text-center flex flex-col items-center justify-center px-5"
             >
-              <div v-if="active_date" class="flex items-center">
+              <div
+                v-if="active_date"
+                class="flex flex-wrap items-center sm:block"
+              >
                 <img
                   src="~/assets/images/arrow-down.svg"
                   alt="arrow-down.svg"
                   class="mr-3"
-                />
-                โพสต์ที่ได้รับความสนใจสูงที่สุดเกี่ยวกับ
+                /><br v-if="$mq === 'mobile'" />
+                โพสต์ที่ได้รับความสนใจสูงที่สุด<br
+                  v-if="$mq === 'mobile'"
+                />เกี่ยวกับ
                 <span
                   class="font-bold"
                   :style="`color: ${current_chart_active.color}`"
@@ -306,7 +363,7 @@
                 </span>
                 ในวันที่
 
-                <div class="date-picker" style="width: 130px">
+                <div class="date-picker">
                   <div class="label-wrapper">
                     <div class="label">
                       <div class="date-wrapper">
@@ -326,7 +383,7 @@
                     v-model="active_date"
                     type="date"
                     :editable="false"
-                    value-format="yyyy-MM-DD"
+                    value-format="yyyy-MM-dd"
                     placeholder="Pick a day"
                     :picker-options="pickerDateActiveOptions"
                     class="opacity-0"
@@ -342,7 +399,7 @@
 
             <div
               v-if="posts != 0 && active_date"
-              class="max-w-2xl sm:px-5 px-8 mx-auto relative"
+              class="max-w-2xl px-8 mx-auto relative"
             >
               <div
                 :class="[
@@ -374,7 +431,7 @@
                 ref="carousel"
                 :autoplay="false"
                 :loop="false"
-                :height="$mq === 'mobile' ? '260px' : '260px'"
+                :height="$mq === 'mobile' ? '370px' : '260px'"
                 class="mt-8"
                 indicator-position="none"
                 arrow="never"
@@ -516,8 +573,9 @@ export default {
       carousel_index: 0,
       data_type: 'engagement',
       daterange: [],
+      startWeek: '',
+      endWeek: '',
       start_input_date: '2021-11-01',
-      // end_input_date: '',
       active_date: '',
       keyword: '',
       keyword_options: [
@@ -685,21 +743,58 @@ export default {
         .domain(this.candidate_config)
         .range(this.photo_config)
     },
+    end_input_date() {
+      return d3.max(this.line_chart_data, (d) => d.date) || 0
+    },
+    daterangeDisplay() {
+      const display = (value) => {
+        let text = this.dateFormat(value)
+        if (this.data_type === 'rank') {
+          const week = moment(value).diff(this.start_input_date, 'week')
+          text = `${week + 1} (${text})`
+        }
+        return text
+      }
+
+      return display
+    },
     pickerOptions() {
+      let currDateActive = ''
+      const disabledDate = (date) => {
+        const start = this.start_input_date
+        const end = this.end_input_date
+        const isBetween =
+          moment(date).isSameOrBefore(end) && moment(date).isSameOrAfter(start)
+        const crrrDate = currDateActive
+          ? moment(currDateActive).isSame(date)
+          : false
+        let inWeek = false
+
+        if (this.data_type === 'rank') {
+          const diff = moment(date).diff(currDateActive, 'days')
+          inWeek = diff >= -7 && diff <= 7
+        }
+
+        return !isBetween || crrrDate || inWeek
+      }
+
+      const onPick = ({ minDate, maxDate }) => {
+        if (maxDate) {
+          currDateActive = ''
+        } else {
+          currDateActive = minDate
+        }
+      }
+
       return {
-        disabledDate: (date) => {
-          const extent = d3.extent(this.line_chart_data, (d) => d.date)
-          const start = _.get(extent, '[0]')
-          const end = _.get(extent, '[1]')
-          const isBetween =
-            moment(date).isSameOrBefore(end) &&
-            moment(date).isSameOrAfter(moment(start).subtract(1, 'd'))
-          return !isBetween
-        },
+        firstDayOfWeek: 1,
+        disabledDate,
+        onPick,
       }
     },
     pickerDateActiveOptions() {
       return {
+        firstDayOfWeek: 1,
         disabledDate: (date) => {
           const start = _.get(this.daterange, '[0]')
           const end = _.get(this.daterange, '[1]')
@@ -741,6 +836,7 @@ export default {
         if (val === 'engagement') {
           this.line_chart_data = await this.getEngagement()
         } else {
+          this.validateCalendarOnWeek()
           this.line_chart_data = await this.getRank()
         }
         this.active_date = ''
@@ -813,10 +909,9 @@ export default {
     setDaterange() {
       // const start = d3.min(this.line_chart_data, (d) => d.date)
       const start = this.start_input_date
-      const end = d3.max(this.line_chart_data, (d) => d.date)
+      const end = this.end_input_date
       if (!start || !end) return
       this.daterange = [start, end]
-      console.log(this.daterange)
     },
     reRenderChart() {
       this.render_chart = false
@@ -830,6 +925,29 @@ export default {
       return str.length > maximum
         ? `${str.substr(0, maximum - 1)} &hellip;`
         : str
+    },
+    validateCalendarOnWeek() {
+      let startAt = _.get(this.daterange, '[0]')
+      const diffDaterange = moment(this.daterange[1]).diff(
+        this.daterange[0],
+        'days'
+      )
+      if (diffDaterange > 8) return
+
+      let endAt = moment(startAt).add(8, 'days').format('yyyy-MM-DD')
+      const diffOfDataEnddate = moment(this.end_input_date).diff(
+        startAt,
+        'days'
+      )
+      if (diffOfDataEnddate < 8) {
+        endAt = _.clone(startAt)
+        startAt = moment(startAt).subtract(8, 'days').format('yyyy-MM-DD')
+      }
+      this.daterange = [startAt, endAt]
+
+      // const isWeek = moment(startAt).add(8, 'day')
+      // end_input_date
+      // inWeek = diff >= -7 && diff <= 7
     },
     getPosts() {
       //  try {
@@ -1506,14 +1624,14 @@ export default {
 }
 .date-picker {
   height: 40px;
-  display: flex;
+  display: inline-flex;
   position: relative;
   cursor: pointer;
   .label-wrapper {
     display: flex;
-    pointer-events: none;
     position: relative;
     white-space: nowrap;
+    pointer-events: none;
     .label {
       flex: 1;
       height: 100%;
@@ -1531,7 +1649,7 @@ export default {
         display: flex;
         align-items: center;
         .date {
-          font-weight: bold;
+          font-weight: 600;
         }
         .icon {
           margin-left: 4px;
@@ -1544,6 +1662,12 @@ export default {
   }
   .el-date-editor {
     position: absolute;
+    width: 100%;
+    ::v-deep {
+      input {
+        cursor: pointer;
+      }
+    }
   }
 }
 .select-outline {

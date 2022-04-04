@@ -1,6 +1,6 @@
 <script lang="ts">
 	import PostGrid from '../components/post-grid.svelte';
-	import { fetchElectionPosts } from 'the-standard-api';
+	import { fetchTheStandardElectionPosts, fetchWeVisElectionPosts } from 'wordpress-api';
 	import Counter from '../components/counter.svelte';
 
 	const organizations = [
@@ -31,7 +31,9 @@
 			<p class="typo-b4 text-center">
 				ติดตามข้อมูลเกี่ยวกับการเลือกตั้งผู้ว่าฯ และสมาชิกสภา กทม. ได้ที่นี่
 			</p>
-			<Counter until={new Date('2022-05-22 8:00 GMT+7')} />
+			<Counter until={new Date('2022-05-22 8:00 GMT+7')}>
+				นับถอยหลังเปิดหีบเลือกตั้ง<br />วันอาทิตย์ ที่ 22 พ.ค. 2565 8:00-17:00 น.
+			</Counter>
 		</div>
 		<div class="flex-1 flex flex-col space-y-8">
 			<div class="text-center">video</div>
@@ -46,10 +48,20 @@
 	</div>
 </div>
 
-<PostGrid
-	title="ข่าวล่าสุดเกี่ยวกับการเลือกตั้ง กทม."
-	subtitle="รวมข่าวสารเกี่ยวกับการเลือกตั้ง กทม. จาก The STANDARD"
-	fetchPosts={fetchElectionPosts}
-	viewAllText="ดูข่าวทั้งหมด บน thestandard.co"
-	viewAllLink="https://thestandard.co/tag/bkkelection2022/"
-/>
+<div class="flex flex-col max-w-screen-xl mx-auto divide-y divide-black px-5 md:py-8">
+	<PostGrid
+		title="ข่าวล่าสุดเกี่ยวกับการเลือกตั้ง กทม."
+		subtitle="รวมข่าวสารเกี่ยวกับการเลือกตั้ง กทม. จาก The STANDARD"
+		fetchPosts={fetchTheStandardElectionPosts}
+		viewAllText="ดูข่าวทั้งหมด บน thestandard.co"
+		viewAllLink="https://thestandard.co/tag/bkkelection2022/"
+	/>
+
+	<PostGrid
+		title="บทความข้อมูลการเลือกตั้ง กทม."
+		subtitle="รวมบทความเน้นข้อมูลการเลือกตั้ง นำเสนอด้วย Data Visualization โดย WeVis"
+		fetchPosts={fetchWeVisElectionPosts}
+		viewAllText="ดูบทความทั้งหมด บน wevis.info"
+		viewAllLink="https://wevis.info/tag/เลือกตั้ง-กทม/"
+	/>
+</div>

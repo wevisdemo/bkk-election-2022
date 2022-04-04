@@ -9,7 +9,7 @@
         "candidate#dev",
         "ui#dev",
         "moderator#dev",
-        "the-standard-api#dev"
+        "wordpress-api#dev"
       ],
       "cache": false
     },
@@ -18,7 +18,7 @@
         "landing#dev",
         "ui#dev",
         "moderator#dev",
-        "the-standard-api#dev"
+        "wordpress-api#dev"
       ],
       "cache": false
     },
@@ -28,7 +28,7 @@
     },
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", "build/**"]
+      "outputs": ["dist/**", "build/**", "/out/**"]
     },
     "lint": {
       "outputs": []

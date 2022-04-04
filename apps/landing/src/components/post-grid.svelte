@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Post } from 'the-standard-api';
+	import type { Post } from 'wordpress-api';
 
 	export let title: string;
 	export let subtitle: string;
@@ -8,7 +8,7 @@
 	export let fetchPosts: () => Promise<Post[]>;
 </script>
 
-<div class="px-5 py-12 max-w-screen-xl mx-auto space-y-8">
+<div class="py-10 md:py-20 space-y-8">
 	<div class="flex flex-col md:flex-row space-y-4 md:space-y-0">
 		<div class="flex-1">
 			<h1 class="typo-h4">{title}</h1>
