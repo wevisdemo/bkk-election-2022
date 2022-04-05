@@ -71,7 +71,7 @@
 
 <div class="bg-black text-white flex flex-col items-center">
 	<div
-		class="flex flex-col md:flex-row justify-center px-5 py-12 md:py-32 w-full max-w-screen-xl space-y-8 md:space-y-0 md:space-x-16"
+		class="flex flex-col md:flex-row justify-center items-center px-5 py-12 md:py-32 w-full max-w-screen-xl space-y-8 md:space-y-0 md:space-x-16"
 	>
 		<div class="flex-1 flex flex-col space-y-8">
 			<img src="/static/images/bkkelection-white-big.png" alt="BKK ELECTION 2022" />
@@ -83,11 +83,15 @@
 			</Counter>
 		</div>
 		<div class="flex-1 flex flex-col space-y-8">
-			<div class="text-center">video</div>
-			<div class="flex flex-row space-x-5 justify-center">
+			<img
+				src="https://via.placeholder.com/480x270"
+				alt="Video"
+				class="w-full h-auto hidden md:block"
+			/>
+			<div class="flex flex-row space-x-8 justify-end">
 				{#each organizations as { name, logo, href }}
 					<a {href} target="_blank">
-						<img src={logo} alt={name} class="h-6" />
+						<img src={logo} alt={name} class="h-6 md:h-8" />
 					</a>
 				{/each}
 			</div>
