@@ -69,39 +69,47 @@
 	];
 </script>
 
-<div class="bg-black text-white flex flex-col items-center">
+<div class="bg-black text-white">
 	<div
-		class="flex flex-col md:flex-row justify-center items-center px-5 py-12 md:py-32 w-full max-w-screen-xl space-y-8 md:space-y-0 md:space-x-16"
+		class=" flex flex-col items-center bg-cover bg-center"
+		style="background-image: url('/static/images/landing-bg.png');"
 	>
-		<div class="flex-1 flex flex-col space-y-8">
-			<img src="/static/images/bkkelection-white-big.png" alt="BKK ELECTION 2022" />
-			<p class="typo-b4 text-center">
-				ติดตามข้อมูลเกี่ยวกับการเลือกตั้งผู้ว่าฯ และสมาชิกสภา กทม. ได้ที่นี่
-			</p>
-			<Counter until={new Date('2022-05-22 8:00 GMT+7')}>
-				นับถอยหลังเปิดหีบเลือกตั้ง<br />วันอาทิตย์ ที่ 22 พ.ค. 2565 8:00-17:00 น.
-			</Counter>
-		</div>
-		<div class="flex-1 flex flex-col space-y-8">
-			<img
-				src="https://via.placeholder.com/480x270"
-				alt="Video"
-				class="w-full h-auto hidden md:block"
-			/>
-			<div class="flex flex-row space-x-8 justify-end">
-				{#each organizations as { name, logo, href }}
-					<a {href} target="_blank">
-						<img src={logo} alt={name} class="h-6 md:h-8" />
-					</a>
-				{/each}
+		<div
+			class="flex flex-col md:flex-row justify-center items-center px-5 py-12 md:py-32 w-full max-w-screen-xl space-y-8 md:space-y-0 md:space-x-16"
+		>
+			<div class="flex-1 flex flex-col space-y-8">
+				<img src="/static/images/bkkelection-white-big.png" alt="BKK ELECTION 2022" />
+				<p class="typo-b4 text-center">
+					ติดตามข้อมูลเกี่ยวกับการเลือกตั้งผู้ว่าฯ และสมาชิกสภา กทม. ได้ที่นี่
+				</p>
+				<Counter until={new Date('2022-05-22 8:00 GMT+7')}>
+					นับถอยหลังเปิดหีบเลือกตั้ง<br />วันอาทิตย์ ที่ 22 พ.ค. 2565 8:00-17:00 น.
+				</Counter>
+			</div>
+			<div class="flex-1 flex flex-col space-y-8">
+				<img
+					src="https://via.placeholder.com/480x270"
+					alt="Video"
+					class="w-full h-auto hidden md:block"
+				/>
+				<div class="flex flex-row space-x-8 justify-end">
+					{#each organizations as { name, logo, href }}
+						<a {href} target="_blank">
+							<img src={logo} alt={name} class="h-6 md:h-8" />
+						</a>
+					{/each}
+				</div>
 			</div>
 		</div>
 	</div>
+	<div class="-mt-12 h-12 to-black from-transparent bg-gradient-to-b " />
 
-	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full max-w-screen-2xl p-5 gap-5">
-		{#each projects as project}
-			<ProjectCard {...project} />
-		{/each}
+	<div class="flex flex-col items-center">
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full max-w-screen-2xl p-5 gap-5">
+			{#each projects as project}
+				<ProjectCard {...project} />
+			{/each}
+		</div>
 	</div>
 </div>
 
