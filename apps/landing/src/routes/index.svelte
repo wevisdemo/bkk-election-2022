@@ -1,7 +1,12 @@
 <script lang="ts">
-	import PostGrid from '../components/post-grid.svelte';
 	import { fetchTheStandardElectionPosts, fetchWeVisElectionPosts } from 'wordpress-api';
+	import PostGrid from '../components/post-grid.svelte';
 	import Counter from '../components/counter.svelte';
+
+	const THE_STANDARD_GUIDE_TAG = 'bkk-election-101';
+
+	const fetchTheStandardElectionGuides = () =>
+		fetchTheStandardElectionPosts({ tag: THE_STANDARD_GUIDE_TAG });
 
 	const organizations = [
 		{
@@ -63,5 +68,13 @@
 		fetchPosts={fetchWeVisElectionPosts}
 		viewAllText="ดูบทความทั้งหมด บน wevis.info"
 		viewAllLink="https://wevis.info/tag/เลือกตั้ง-กทม/"
+	/>
+
+	<PostGrid
+		title="คู่มือเลือกตั้งผู้ว่าฯ กทม."
+		subtitle="เกร็ดความรู้เกี่ยวกับการเลือกตั้ง กทม.'65 จาก The STANDARD"
+		fetchPosts={fetchTheStandardElectionGuides}
+		viewAllText="ดูทั้งหมด บน thestandard.co"
+		viewAllLink="https://thestandard.co/tag/bkk-election-101//"
 	/>
 </div>
