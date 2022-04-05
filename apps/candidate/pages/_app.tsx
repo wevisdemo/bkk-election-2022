@@ -6,7 +6,7 @@ import { Fragment, useEffect } from 'react';
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
     // @ts-ignore
-    window.registerUICustomElements();
+    window.registerUICustomElements(); // TODO: should in server side ?
   });
   return (
     <AppWrapper>

@@ -108,7 +108,7 @@ export function CandidateInfoCard({ governor }: PropsType) {
         src={imgDict[type]}
         alt={`contact-${type}`}
         onClick={() => onClickContact(type)}
-        className="w-[30px] h-[30px]"
+        className="w-[30px] h-[30px] hover:cursor-pointer"
       />
     );
   };

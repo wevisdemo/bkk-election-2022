@@ -92,7 +92,11 @@ export function Dropdown(props: Propstype) {
         <span className="font-body font-semibold text-[15pt] flex-1 text-left">
           {placeHolder()}
         </span>
-        <div className={isShow ? 'rotate-180 flex' : 'flex'}>
+        <div
+          className={
+            isShow ? 'rotate-180 flex items-center' : 'flex items-center'
+          }
+        >
           <img
             src={polygonIcon.src}
             alt="polygon-icon"
