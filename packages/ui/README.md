@@ -41,3 +41,9 @@ window.registerUICustomElements();
   image="https://thestandard.co/wp-content/uploads/2022/03/COVER-WEB-9-33-400x215.jpg"
 ></ui-post-card>
 ```
+
+can set `loading` to be true to render skeleton animation while the data is not ready
+
+```html
+<ui-post-card loading="true"></ui-post-card>
+```
