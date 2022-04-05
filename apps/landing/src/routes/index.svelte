@@ -2,6 +2,7 @@
 	import { fetchTheStandardElectionPosts, fetchWeVisElectionPosts } from 'wordpress-api';
 	import PostGrid from '../components/post-grid.svelte';
 	import Counter from '../components/counter.svelte';
+	import ProjectCard from '../components/project-card.svelte';
 
 	const THE_STANDARD_GUIDE_TAG = 'bkk-election-101';
 
@@ -25,11 +26,52 @@
 			href: 'https://wisesight.com/'
 		}
 	];
+
+	const projects = [
+		{
+			th: 'ข้อมูลผู้สมัครผู้ว่าฯ + ส.ก.',
+			en: 'Meet the Candidates',
+			href: '/candidate',
+			image: 'https://via.placeholder.com/406x213'
+		},
+		{
+			th: 'ผลการเลือกตั้ง กทม.',
+			en: 'Voting Map',
+			href: '#',
+			image: 'https://via.placeholder.com/406x213'
+		},
+		{
+			th: 'ตรวจสอบกติกาการเลือกตั้ง',
+			en: 'How to Vote?',
+			href: '',
+			image: 'https://via.placeholder.com/406x213'
+		},
+		{
+			th: 'ศึกเลือกตั้ง กทม. บนโลกโซเชียล',
+			en: 'Social Trend',
+			href: '/socialtrend',
+			image: 'https://via.placeholder.com/406x213'
+		},
+		{
+			th: 'ข้อมูลปัญหากวนใจชาว กทม.',
+			en: 'Open Bangkok',
+			href: 'https://openbangkok.wevis.info',
+			external: true,
+			image: 'https://via.placeholder.com/406x213'
+		},
+		{
+			th: 'ร่วมออกแบบงบประมาณ กทม.',
+			en: 'Bangkok Budgeting',
+			href: 'https://bangkokbudgeting.wevis.info',
+			external: true,
+			image: 'https://via.placeholder.com/406x213'
+		}
+	];
 </script>
 
-<div class="bg-black text-white py-12 md:py-24 flex flex-col space-y-12">
+<div class="bg-black text-white flex flex-col items-center">
 	<div
-		class="flex flex-col md:flex-row justify-center px-5 w-full max-w-screen-xl mx-auto space-y-8 md:space-y-0 md:space-x-16"
+		class="flex flex-col md:flex-row justify-center px-5 py-12 md:py-32 w-full max-w-screen-xl space-y-8 md:space-y-0 md:space-x-16"
 	>
 		<div class="flex-1 flex flex-col space-y-8">
 			<img src="/static/images/bkkelection-white-big.png" alt="BKK ELECTION 2022" />
@@ -50,6 +92,12 @@
 				{/each}
 			</div>
 		</div>
+	</div>
+
+	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full max-w-screen-2xl p-5 gap-5">
+		{#each projects as project}
+			<ProjectCard {...project} />
+		{/each}
 	</div>
 </div>
 
