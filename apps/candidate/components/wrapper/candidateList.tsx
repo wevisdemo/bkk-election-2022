@@ -1,10 +1,10 @@
 import { Fragment, useContext } from 'react';
 import { AppContext } from '../../store';
-import { ICandidate } from '../../types/business';
+import { IGovernor } from '../../types/business';
 import { CandidateBadge } from '../badge/candidate';
 
 interface PropsType {
-  candidateList: ICandidate[];
+  candidateList: IGovernor[];
 }
 
 export function CandidateList(props: PropsType) {

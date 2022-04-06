@@ -18,7 +18,7 @@ export function CandidatePage({ governor, newsList, pageUrl }: PropsType) {
     window.open(link, '_blank');
   };
   return (
-    <div>
+    <div className="h-[calc(100vh-46px)]">
       <div className="bg-[#333333]">
         <div
           className="h-[780px] md:h-[670px] w-full bg-contain bg-no-repeat md:bg-cover items-center"
@@ -37,34 +37,38 @@ export function CandidatePage({ governor, newsList, pageUrl }: PropsType) {
           </div>
         </div>
       </div>
-      <div className="px-[8px] py-[28px] md:py-[80px]">
-        <p className="typo-h6 mb-[30px] md:mb-[42px] ml-[10%]">นโยบายเด่น</p>
-        <p className="font-body text-[12pt] md:text-[14pt] leading-[1.5] max-w-[280px] md:max-w-[750px] m-auto">
-          {governor.policy}
-          {governor.policy_url !== null && (
-            <button
-              onClick={() => onClickPolicyLink(governor.policy_url || '')}
-              disabled={governor.policy_url === null}
-              className="py-[10px] px-[15px] flex items-center border border-[#9d9d9d] rounded-[2px] w-fit mt-[30px] "
-            >
-              <p className="text-[#333333] font-body text-[11pt] leading-[1.5] mr-[12px]">
-                ดูนโยบายเพิ่มเติม
-              </p>
-              <img
-                src={arrow.src}
-                alt="arrow"
-                className="fill-[#333333] rotate-[270deg] w-[12px] h-[12px]"
-              />
-            </button>
-          )}
-        </p>
-      </div>
-      <div>
-        <NewsList newsList={newsList} />
-        <div className="m-auto mb-[20px] mt-[70px] text-center">
-          <ShareList url={pageUrl} />
+      {governor.policy && (
+        <div className="px-[8px] py-[28px] md:py-[80px]">
+          <p className="typo-h6 mb-[30px] md:mb-[42px] ml-[10%]">นโยบายเด่น</p>
+          <p className="font-body text-[12pt] md:text-[14pt] leading-[1.5] max-w-[280px] md:max-w-[750px] m-auto">
+            {governor.policy}
+            {governor.policy_url !== null && (
+              <button
+                onClick={() => onClickPolicyLink(governor.policy_url || '')}
+                disabled={governor.policy_url === null}
+                className="py-[10px] px-[15px] flex items-center border border-[#9d9d9d] rounded-[2px] w-fit mt-[30px] "
+              >
+                <p className="text-[#333333] font-body text-[11pt] leading-[1.5] mr-[12px]">
+                  ดูนโยบายเพิ่มเติม
+                </p>
+                <img
+                  src={arrow.src}
+                  alt="arrow"
+                  className="fill-[#333333] rotate-[270deg] w-[12px] h-[12px]"
+                />
+              </button>
+            )}
+          </p>
         </div>
-      </div>
+      )}
+      {newsList.length > 0 && (
+        <div>
+          <NewsList newsList={newsList} />
+          <div className="m-auto mb-[20px] mt-[70px] text-center">
+            <ShareList url={pageUrl} />
+          </div>
+        </div>
+      )}
       <BackToHomeCard />
     </div>
   );

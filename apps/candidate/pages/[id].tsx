@@ -5,13 +5,9 @@ import { IGovernor } from '../types/business';
 import { useRouter } from 'next/router';
 import { fetchTheStandardElectionPosts, Post } from 'wordpress-api';
 import { useEffect, useState } from 'react';
+import { getNocoApi } from '../utils/nocoHandler';
 
-interface PropsType {
-  // id: string;
-  news: Post[];
-}
-
-const mockGov: IGovernor = {
+const mocGov: IGovernor = {
   id: 1,
   name: 'วิโรจน์ ลักขณาอดิศร',
   number: 1,
@@ -47,20 +43,23 @@ const mockGov: IGovernor = {
   contact_line: null,
 };
 
-export default function Governor() {
+interface PropsType {
+  candidate: IGovernor;
+}
+
+export default function Governor({ candidate }: PropsType) {
   const router = useRouter();
   const [news, setNews] = useState<Post[]>([]);
   const [pageUrl, setPageUrl] = useState<string>('');
   const { id } = router.query;
-  const is_highlight = parseInt(id as string) % 2 === 0 ? true : false;
+  const is_highlight = candidate.highlight || false;
 
   useEffect(() => {
     const getPort = async () => {
       try {
         const res = await fetchTheStandardElectionPosts({
-          tag: mockGov.name || '',
+          tag: candidate.name || '',
         });
-        console.log(res);
         setNews(res);
       } catch (error: any) {}
     };
@@ -72,27 +71,37 @@ export default function Governor() {
     <div>
       {is_highlight && (
         <HighLightCandidatePage
-          governor={mockGov}
+          governor={candidate}
           newsList={news}
           pageUrl={pageUrl}
         />
       )}
       {!is_highlight && (
-        <CandidatePage governor={mockGov} newsList={news} pageUrl={pageUrl} />
+        <CandidatePage governor={candidate} newsList={news} pageUrl={pageUrl} />
       )}
     </div>
   );
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const params = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
-  const paths = params.map((param) => ({
-    params: { id: param.toString() },
-  }));
+  const [res, errMsg] = await getNocoApi('governors');
+  if (!errMsg) {
+  }
+  const data = res.data as IGovernor[];
+
+  const paths = data.map((gov) => {
+    return {
+      params: { id: gov.id?.toString() || '' },
+    };
+  });
   return { paths, fallback: 'blocking' };
 };
 
-export const getStaticProps: GetStaticProps = (context) => {
+export const getStaticProps: GetStaticProps<PropsType> = async (context) => {
   const id = context.params?.id;
-  return { props: { id } };
+  const [res, errMsg] = await getNocoApi(`governors/${id}`);
+  if (errMsg) {
+    return { props: { candidate: res.data as IGovernor } };
+  }
+  return { props: { candidate: res.data as IGovernor } };
 };

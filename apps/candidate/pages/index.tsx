@@ -1,4 +1,4 @@
-import type { NextPage } from 'next';
+import type { GetStaticProps, NextPage } from 'next';
 import arrow from '../static/icons/arrow.svg';
 import arrowW from '../static/icons/arrow-white.svg';
 import { CandidateBadge } from '../components/badge/candidate';
@@ -9,8 +9,16 @@ import { AppContext } from '../store';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { CouncilList } from '../components/wrapper/councilList';
 import { ShareList } from '../components/wrapper/shareList';
+import { getNocoApi } from '../utils/nocoHandler';
+import axios from 'axios';
+import { ICouncil, IGovernor } from '../types/business';
 
-const Home: NextPage = () => {
+interface PropsType {
+  candidateList: IGovernor[];
+  councilList: ICouncil[];
+  errMsg: string;
+}
+const Home = ({ candidateList, councilList, errMsg }: PropsType) => {
   const { store } = useContext(AppContext);
 
   const [govArrow, setGovArrow] = useState<boolean>(true);
@@ -18,21 +26,16 @@ const Home: NextPage = () => {
   const [govRotate, setGovRotate] = useState<boolean>(false);
   const [counRotate, setCounRotate] = useState<boolean>(false);
   const [pageUrl, setPageUrl] = useState<string>('');
-  const candidateList = store.candidateList;
   const candidateRef = useRef<HTMLDivElement>(null);
   const councilRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const navHeight = navRef.current?.offsetHeight || 0;
-
     const candidateTop = (candidateRef.current?.offsetTop || 0) - navHeight;
     const candidateBot =
       candidateTop + (candidateRef.current?.offsetHeight || 0);
-
-    const councilTop =
-      (councilRef.current?.offsetTop || 0) -
-      (navRef.current?.offsetHeight || 0);
+    const councilTop = (councilRef.current?.offsetTop || 0) - navHeight;
     const councilBot = councilTop + (councilRef.current?.offsetHeight || 0);
     document.addEventListener('scroll', (e) => {
       const srcollTop = document.documentElement.scrollTop;
@@ -58,7 +61,7 @@ const Home: NextPage = () => {
       }
     });
     setPageUrl(window.location.href);
-  }, []);
+  }, [councilRef.current?.offsetHeight]);
 
   const jumpToGovSection = () => {
     window.scrollTo({
@@ -78,6 +81,10 @@ const Home: NextPage = () => {
     });
   };
 
+  const getCandidateHighlight = () => {
+    return candidateList.filter((candidate) => candidate.highlight);
+  };
+
   return (
     <div>
       <div className="flex flex-col items-center text-center px-[20px] mt-12">
@@ -89,7 +96,7 @@ const Home: NextPage = () => {
       </div>
       <div ref={navRef} className="w-full grid grid-cols-2 sticky top-0 z-20">
         <div
-          className="text-center bg-black text-white py-5 hover:cursor-pointer flex items-center justify-center"
+          className="text-center bg-black text-white py-5 px-[10px] hover:cursor-pointer flex items-center justify-center"
           onClick={jumpToGovSection}
         >
           {govArrow && (
@@ -106,7 +113,7 @@ const Home: NextPage = () => {
           </span>
         </div>
         <div
-          className="text-center bg-white py-5 hover:cursor-pointer flex items-center justify-center"
+          className="text-center bg-white py-5 px-[10px] hover:cursor-pointer flex items-center justify-center"
           onClick={jumpToCounSection}
         >
           {counArrow && (
@@ -135,22 +142,19 @@ const Home: NextPage = () => {
               </p>
               <p className="typo-h5 mt-4 text-white">ผู้สมัครในกระแส</p>
             </div>
-            <HighLightCandidateList candidateList={candidateList} />
+            <HighLightCandidateList candidateList={getCandidateHighlight()} />
             <QuestionOverview isComingSoon />
           </div>
         </div>
         <div className="bg-[#333333]">
           <div className=" m-auto flex flex-col pt-[12px] pb-[50px] md:pb-[156px]">
-            <CandidateList candidateList={store.candidateList} />
+            <CandidateList candidateList={candidateList} />
           </div>
         </div>
       </div>
       {/* break */}
       <div ref={councilRef}>
-        <CouncilList
-          districts={store.districtList}
-          councils={store.councilList}
-        />
+        <CouncilList districts={store.districtList} councils={councilList} />
       </div>
       <div className="m-auto mb-[20px] text-center">
         <ShareList url={pageUrl} />
@@ -158,6 +162,26 @@ const Home: NextPage = () => {
       <ui-footer />
     </div>
   );
+};
+
+export const getStaticProps: GetStaticProps<PropsType> = async (context) => {
+  let candidateList = [] as IGovernor[];
+  let councilList = [] as ICouncil[];
+  const [candidateRes, errMsg1] = await getNocoApi('governors');
+  if (errMsg1) {
+    // TODO: redirect
+    return { props: { candidateList, councilList, errMsg: errMsg1 } };
+  }
+  candidateList = candidateRes.data as IGovernor[];
+
+  const [councilRes, errMsg2] = await getNocoApi('councils');
+  if (errMsg2) {
+    // TODO: redirect
+    return { props: { candidateList, councilList, errMsg: errMsg1 } };
+  }
+  councilList = councilRes.data as ICouncil[];
+
+  return { props: { candidateList, councilList, errMsg: '' } };
 };
 
 export default Home;

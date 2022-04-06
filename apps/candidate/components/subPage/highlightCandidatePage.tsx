@@ -52,12 +52,14 @@ export function HighLightCandidatePage({
         </p>
         <p className="typo-h5">+ อีก 5 คำตอบเคลียร์ใจเฉพาะตัว</p>
       </div>
-      <div>
-        <NewsList newsList={newsList} />
-        <div className="m-auto mb-[20px] mt-[70px] text-center">
-          <ShareList url={pageUrl} />
+      {newsList.length > 0 && (
+        <div>
+          <NewsList newsList={newsList} />
+          <div className="m-auto mb-[20px] mt-[70px] text-center">
+            <ShareList url={pageUrl} />
+          </div>
         </div>
-      </div>
+      )}
       <BackToHomeCard />
     </div>
   );

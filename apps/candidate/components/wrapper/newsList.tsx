@@ -20,7 +20,6 @@ export function NewsList({ newsList }: PropsType) {
   const [slide, setSlide] = useState<number>(3);
 
   useEffect(() => {
-    console.log(document.documentElement.offsetWidth);
     if (document.documentElement.offsetWidth < 786) {
       setSlide(1);
     }
@@ -28,6 +27,7 @@ export function NewsList({ newsList }: PropsType) {
   return (
     <div className="m-auto py-[16px]">
       <p className="typo-h5 my-[25px] text-center">Related News</p>
+      {/* TODO: refactor slide */}
       <Swiper
         className=" md:max-w-[1140px] max-w-[250px]"
         modules={[Navigation, Pagination, Scrollbar, A11y, EffectFade]}

@@ -13,6 +13,7 @@ export function CouncilList(props: PropsType) {
   const onSelectDropdown = (option: IDropdownOption) => {
     setCurrDistrict(option.value);
   };
+  const [districtList, setDistrictList] = useState<string[]>([]);
   const [section, setSection] = useState<string>('district');
   const [currDistrict, setCurrDistrict] = useState<string>('เขต');
   const [displayCouncils, setDisplayCouncils] = useState<ICouncil[]>(
@@ -20,8 +21,8 @@ export function CouncilList(props: PropsType) {
   );
   const [dropdownOptions, setDropdownOptions] = useState<IDropdownOption[]>([]);
 
-  const onClickSelectDistrict = (district: IDistrict) => {
-    setCurrDistrict(district.value);
+  const onClickSelectDistrict = (district: string) => {
+    setCurrDistrict(district);
     setSection('council');
   };
 
@@ -34,10 +35,10 @@ export function CouncilList(props: PropsType) {
 
   useEffect(() => {
     let totalList: IDropdownOption[] = [];
-    const ddOptions: IDropdownOption[] = props.districts.map((district) => {
+    const ddOptions: IDropdownOption[] = props.councils.map((council) => {
       return {
-        display: district.display,
-        value: district.value,
+        display: council.district,
+        value: council.district,
       };
     });
 
@@ -47,18 +48,19 @@ export function CouncilList(props: PropsType) {
       }
       totalList.push(dd);
     }
-
+    const districtStrList = totalList.map((district) => district.value);
+    setDistrictList(districtStrList);
     setDropdownOptions(totalList);
   }, []);
 
-  const districtListComponent = props.districts.map((district, index) => {
+  const districtListComponent = districtList.map((district, index) => {
     return (
       <button
         onClick={() => onClickSelectDistrict(district)}
         key={`district-${index}`}
         className="typo-b5 font-[600] mx-auto w-full max-w-[280px] md:max-w-[400px] py-[16px] px-[20px] border border-[#dadada]"
       >
-        {district.display}
+        {district}
       </button>
     );
   });
