@@ -24,6 +24,10 @@ jobs:
           server-token: ${{ secrets.TURBO_SERVER_TOKEN }}
       - name: Build packages and apps
         run: yarn build --api="http://127.0.0.1:9080" --token="${{ secrets.TURBO_SERVER_TOKEN }}" --team="foo"
+        env:
+          NOCO_API_URL: ${{ secrets.NOCO_API_URL }}
+          NOCO_AUTH_TOKEN: ${{ secrets.NOCO_AUTH_TOKEN }}
+          COMING_SOON: ${{ secrets.COMING_SOON }}
       - name: Deploy to Github page
         uses: peaceiris/actions-gh-pages@v3
         with:
