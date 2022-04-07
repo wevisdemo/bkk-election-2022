@@ -22,7 +22,11 @@
         :style="`left: ${left_tooltip}px`"
       >
         <div class="tooltip typo-b5">
-          <div class="title">{{ active_data.date_display }}</div>
+          <div class="title">{{ active_data.title }}</div>
+          <div v-if="active_data.description" class="description mt-1 typo-b6">
+            {{ active_data.description }}
+          </div>
+
           <div
             v-for="(item, index) in active_data.candidates"
             :key="index"
@@ -152,7 +156,7 @@
               :stroke="item.color"
               stroke-linejoin="round"
               stroke-linecap="round"
-              stroke-width="4"
+              :stroke-width="$mq === 'mobile' ? 2 : 4"
             ></path>
           </g>
           <!-- </g> -->
@@ -274,7 +278,7 @@ export default {
       candidates: [],
       animate_finish: false,
       animate_start: false,
-      margin: { top: 30, left: 30, right: 30, bottom: 30 },
+      margin: { top: 30, left: 30, right: 22, bottom: 30 },
     }
   },
   computed: {
@@ -332,9 +336,16 @@ export default {
     },
     xAxis() {
       const { length } = this.yAxis_group
+
       let axis = d3
         .axisBottom(this.xScale)
-        .tickFormat((d) => moment(d).add(543, 'years').format('DD MMM YY'))
+        .tickFormat((d) => {
+          let format = d
+          if (this.type === 'engagement')
+            format = moment(d).add(543, 'years').format('DD MMM YY')
+
+          return format
+        })
         .ticks(length)
         .tickSize(1)
         .tickPadding(12)
@@ -400,22 +411,34 @@ export default {
     active_data() {
       const value = this.hover || this.active
       const tooltipData = []
-      const order = this.type === 'engagement' ? 'desc' : 'asc'
+      let title = this.dateDisplay(value)
+      let description = ''
+
       this.candidates.forEach((d) => {
         const arrData = _.get(d, 'data', [])
-        const find = arrData.find((d) => d.date === value)
+        const find = arrData.find((d) => `${d.date}` === `${value}`)
         if (!find) return
-        const pick = _.pick(find, ['candidate', 'value'])
+        if (this.type === 'rank') {
+          title = `สัปดาห์ที่ ${find.date}`
+          description = `${this.dateDisplay(
+            find.date_from
+          )} - ${this.dateDisplay(find.date_to)}`
+        }
+
+        const pick = _.pick(find, ['candidate', 'value', 'rank'])
         tooltipData.push({
           ...pick,
           color: d.color,
-          value_str: this.formatkilo(pick.value),
+          value_str:
+            this.type === 'rank' ? pick.rank : this.formatkilo(pick.value),
         })
       })
+
       return {
-        date_display: this.dateDisplay(value),
+        title,
+        description,
         date: value,
-        candidates: _.orderBy(tooltipData, 'value', order),
+        candidates: _.orderBy(tooltipData, 'value', 'desc'),
       }
     },
   },
@@ -439,7 +462,7 @@ export default {
       if (val && !this.animate_start) this.animate_start = true
     },
     activeChart(val) {
-      this.onClickChecks(val)
+      this.handleSetActiveChart(val)
     },
   },
   beforeMount() {
@@ -599,7 +622,7 @@ export default {
 
       setTimeout(() => {
         labels.call(() => animate())
-      }, 1000)
+      }, 600)
     },
     handleHover(el) {
       d3.select(el).moveToFront()
@@ -678,10 +701,8 @@ export default {
           return (acc += curr.time)
         }, 0)
     },
-    onClickChecks(date) {
+    handleSetActiveChart(date) {
       this.active = date
-      this.$emit('change', this.active_data)
-      this.$emit('update:activeChart', date)
 
       const labelsGroup = d3.selectAll('.labels-group').data(this.candidates)
 
@@ -702,6 +723,12 @@ export default {
           const d = group.data.find((d) => d.date === date) || {}
           return `scale(${d.highest_per_date ? 1.7 : 1})`
         })
+    },
+    onClickChecks(date) {
+      if (date === this.active) return
+      this.handleSetActiveChart(date)
+      this.$emit('change', date)
+      // this.$emit('update:activeChart', date)
     },
   },
 }
@@ -729,6 +756,9 @@ export default {
     min-width: 170px;
     .title {
       font-weight: bold;
+    }
+    .description {
+      font-weight: 400;
     }
     .data-list {
       width: 100%;
