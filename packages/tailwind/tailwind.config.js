@@ -5,5 +5,11 @@ module.exports = {
       heading: ["ui-sans-serif", "Kanit"],
       body: ["ui-serif", "Anuphan"],
     },
+    colors: {
+      black: "black",
+      white: "white",
+      gray: "#333333",
+      transparent: "transparent",
+    },
   },
 };

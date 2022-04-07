@@ -1,7 +1,13 @@
 <script lang="ts">
-	import PostGrid from '../components/post-grid.svelte';
 	import { fetchTheStandardElectionPosts, fetchWeVisElectionPosts } from 'wordpress-api';
+	import PostGrid from '../components/post-grid.svelte';
 	import Counter from '../components/counter.svelte';
+	import ProjectCard from '../components/project-card.svelte';
+
+	const THE_STANDARD_GUIDE_TAG = 'bkk-election-101';
+
+	const fetchTheStandardElectionGuides = () =>
+		fetchTheStandardElectionPosts({ tag: THE_STANDARD_GUIDE_TAG });
 
 	const organizations = [
 		{
@@ -20,30 +26,89 @@
 			href: 'https://wisesight.com/'
 		}
 	];
+
+	const projects = [
+		{
+			th: 'ข้อมูลผู้สมัครผู้ว่าฯ + ส.ก.',
+			en: 'Meet the Candidates',
+			href: '/candidate',
+			image: 'https://via.placeholder.com/406x213'
+		},
+		{
+			th: 'ผลการเลือกตั้ง กทม.',
+			en: 'Voting Map',
+			href: '#',
+			image: 'https://via.placeholder.com/406x213'
+		},
+		{
+			th: 'ตรวจสอบกติกาการเลือกตั้ง',
+			en: 'How to Vote?',
+			href: '',
+			image: 'https://via.placeholder.com/406x213'
+		},
+		{
+			th: 'ศึกเลือกตั้ง กทม. บนโลกโซเชียล',
+			en: 'Social Trend',
+			href: '/socialtrend',
+			image: 'https://via.placeholder.com/406x213'
+		},
+		{
+			th: 'ข้อมูลปัญหากวนใจชาว กทม.',
+			en: 'Open Bangkok',
+			href: 'https://openbangkok.wevis.info',
+			external: true,
+			image: 'https://via.placeholder.com/406x213'
+		},
+		{
+			th: 'ร่วมออกแบบงบประมาณ กทม.',
+			en: 'Bangkok Budgeting',
+			href: 'https://bangkokbudgeting.wevis.info',
+			external: true,
+			image: 'https://via.placeholder.com/406x213'
+		}
+	];
 </script>
 
-<div class="bg-black text-white py-12 md:py-24 flex flex-col space-y-12">
+<div class="bg-black text-white">
 	<div
-		class="flex flex-col md:flex-row justify-center px-5 w-full max-w-screen-xl mx-auto space-y-8 md:space-y-0 md:space-x-16"
+		class=" flex flex-col items-center bg-cover bg-center"
+		style="background-image: url('/static/images/landing-bg.png');"
 	>
-		<div class="flex-1 flex flex-col space-y-8">
-			<img src="/static/images/bkkelection-white-big.png" alt="BKK ELECTION 2022" />
-			<p class="typo-b4 text-center">
-				ติดตามข้อมูลเกี่ยวกับการเลือกตั้งผู้ว่าฯ และสมาชิกสภา กทม. ได้ที่นี่
-			</p>
-			<Counter until={new Date('2022-05-22 8:00 GMT+7')}>
-				นับถอยหลังเปิดหีบเลือกตั้ง<br />วันอาทิตย์ ที่ 22 พ.ค. 2565 8:00-17:00 น.
-			</Counter>
-		</div>
-		<div class="flex-1 flex flex-col space-y-8">
-			<div class="text-center">video</div>
-			<div class="flex flex-row space-x-5 justify-center">
-				{#each organizations as { name, logo, href }}
-					<a {href} target="_blank">
-						<img src={logo} alt={name} class="h-6" />
-					</a>
-				{/each}
+		<div
+			class="flex flex-col md:flex-row justify-center items-center px-5 py-12 md:py-32 w-full max-w-screen-xl space-y-8 md:space-y-0 md:space-x-16"
+		>
+			<div class="flex-1 flex flex-col space-y-8">
+				<img src="/static/images/bkkelection-white-big.png" alt="BKK ELECTION 2022" />
+				<p class="typo-b4 text-center">
+					ติดตามข้อมูลเกี่ยวกับการเลือกตั้งผู้ว่าฯ และสมาชิกสภา กทม. ได้ที่นี่
+				</p>
+				<Counter until={new Date('2022-05-22 8:00 GMT+7')}>
+					นับถอยหลังเปิดหีบเลือกตั้ง<br />วันอาทิตย์ ที่ 22 พ.ค. 2565 8:00-17:00 น.
+				</Counter>
 			</div>
+			<div class="flex-1 flex flex-col space-y-8">
+				<img
+					src="https://via.placeholder.com/480x270"
+					alt="Video"
+					class="w-full h-auto hidden md:block"
+				/>
+				<div class="flex flex-row space-x-8 justify-end">
+					{#each organizations as { name, logo, href }}
+						<a {href} target="_blank">
+							<img src={logo} alt={name} class="h-6 md:h-8" />
+						</a>
+					{/each}
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="-mt-12 h-12 to-black from-transparent bg-gradient-to-b " />
+
+	<div class="flex flex-col items-center">
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full max-w-screen-2xl p-5 gap-5">
+			{#each projects as project}
+				<ProjectCard {...project} />
+			{/each}
 		</div>
 	</div>
 </div>
@@ -63,5 +128,13 @@
 		fetchPosts={fetchWeVisElectionPosts}
 		viewAllText="ดูบทความทั้งหมด บน wevis.info"
 		viewAllLink="https://wevis.info/tag/เลือกตั้ง-กทม/"
+	/>
+
+	<PostGrid
+		title="คู่มือเลือกตั้งผู้ว่าฯ กทม."
+		subtitle="เกร็ดความรู้เกี่ยวกับการเลือกตั้ง กทม.'65 จาก The STANDARD"
+		fetchPosts={fetchTheStandardElectionGuides}
+		viewAllText="ดูทั้งหมด บน thestandard.co"
+		viewAllLink="https://thestandard.co/tag/bkk-election-101//"
 	/>
 </div>

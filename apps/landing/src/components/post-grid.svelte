@@ -1,6 +1,8 @@
 <script lang="ts">
 	import type { Post } from 'wordpress-api';
 
+	const POST_COUNT = 6;
+
 	export let title: string;
 	export let subtitle: string;
 	export let viewAllText: string;
@@ -8,7 +10,7 @@
 	export let fetchPosts: () => Promise<Post[]>;
 </script>
 
-<div class="py-10 md:py-20 space-y-8">
+<div class="py-20 space-y-8">
 	<div class="flex flex-col md:flex-row space-y-4 md:space-y-0">
 		<div class="flex-1">
 			<h1 class="typo-h4">{title}</h1>
@@ -36,19 +38,23 @@
 		</div>
 	</div>
 
-	{#await fetchPosts()}
-		<p>กำลังโหลด...</p>
-	{:then posts}
-		<div
-			class="flex md:grid md:grid-cols-3 gap-6 md:gap-12 overflow-x-auto -mx-5 px-5 md:mx-0 md:px-0"
-		>
+	<div
+		class="flex md:grid md:grid-cols-3 gap-6 md:gap-12 overflow-y-hidden overflow-x-auto -mx-5 px-5 md:mx-0 md:px-0"
+	>
+		{#await fetchPosts()}
+			{#each new Array(POST_COUNT).fill(null) as _}
+				<div class="flex-shrink-0 w-64 md:w-auto">
+					<ui-post-card loading="true" />
+				</div>
+			{/each}
+		{:then posts}
 			{#each posts as post}
 				<div class="flex-shrink-0 w-64 md:w-auto">
 					<ui-post-card {...post} />
 				</div>
 			{/each}
-		</div>
-	{:catch error}
-		<p>พบข้อผิดพลาด: {error.message}</p>
-	{/await}
+		{:catch error}
+			<p>พบข้อผิดพลาด: {error.message}</p>
+		{/await}
+	</div>
 </div>
