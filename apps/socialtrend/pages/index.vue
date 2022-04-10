@@ -250,6 +250,7 @@
               v-model="keyword"
               placeholder="Select"
               class="select-outline"
+              @change="onChangeTypeChart"
             >
               <el-option
                 v-for="(item, index) in keyword_options"
@@ -274,6 +275,7 @@
               v-model="platform"
               placeholder="Select"
               class="select-outline"
+              @change="onChangeTypeChart"
             >
               <el-option
                 v-for="item in platform_options"
@@ -339,6 +341,8 @@
               :duration="duration"
               :animate="chartAnimate"
               :color="color_palettes"
+              :xAxisStart="daterange[0]"
+              :xAxisEnd="daterange[1]"
               @change="
                 (date) => {
                   active_date = date
@@ -1004,8 +1008,6 @@ export default {
           },
         })
         data = _.get(res, 'data.data', [])
-
-        this.socialtrend = res
       } catch (error) {
         console.error(error)
       }

@@ -109,45 +109,34 @@
         </text>
       </g> -->
 
-      <g class="y-axis-line">
-        <!-- <line
-          v-for="(item, index) in yAxisTick"
-          :key="`${item}${index}`"
-          :x1="margin.left"
-          :y1="yScale(item)"
-          :x2="width - margin.right"
-          :y2="yScale(item)"
-          stroke="#DADCE0"
-        /> -->
-      </g>
-
       <g class="g-lines">
         <g
           v-for="item in candidates"
           :key="`line-${item.candidate}`"
           class="line-group"
         >
-          <!-- <g> -->
-          <circle
-            :fill="item.color"
-            :cx="margin.left"
-            :cy="yScale(item.data[0].value)"
-            r="4"
-          />
-          <circle
-            v-for="(d, index) in item.data"
-            :key="index"
-            :fill="item.color"
-            :cx="xScale(d.date)"
-            :cy="yScale(d.value)"
-            r="4"
-            :style="`opacity: ${
-              hover === d.date ||
-              (index === item.data.length - 1 && animate_start)
-                ? '1'
-                : '0'
-            }`"
-          />
+          <g class="circle">
+            <circle
+              :fill="item.color"
+              :cx="margin.left"
+              :cy="yScale(item.data[0].value)"
+              r="4"
+            />
+            <circle
+              v-for="(d, index) in item.data"
+              :key="index"
+              :fill="item.color"
+              :cx="xScale(d.date)"
+              :cy="yScale(d.value)"
+              r="4"
+              :style="`opacity: ${
+                hover === d.date ||
+                (index === item.data.length - 1 && animate_start)
+                  ? '1'
+                  : '0'
+              }`"
+            />
+          </g>
           <g class="line-path">
             <path
               class="line"
@@ -158,25 +147,32 @@
               stroke-linecap="round"
               :stroke-width="$mq === 'mobile' ? 2 : 4"
             ></path>
+
+            <!-- <path
+              class="line-seg"
+              :d="line(item.data)"
+              fill="none"
+              stroke="#ffffff"
+              stroke-width="2"
+            ></path> -->
           </g>
           <!-- </g> -->
           <!-- </g> -->
         </g>
       </g>
 
-      <g class="g-labels">
+      <g class="g-marker">
         <g
           v-for="item in candidates"
-          :key="`labels-${item.candidate}`"
+          :key="`marker-${item.candidate}`"
           :transform="`translate(${xScale((item.data || {})[0].date)},${yScale(
             (item.data || {})[0].value
           )})`"
-          class="labels-group"
+          class="marker-group"
         >
-          <g
-            class="labels"
-            :transform="`scale(${item.highest_per_date ? 1.7 : 1})`"
-          >
+          <g class="marker" :transform="`scale(1)`">
+            <!-- :transform="`scale(${item.highest_per_date ? 1.7 : 1})`" -->
+
             <clipPath :id="`clip-${item.candidate}`">
               <use :xlink:href="`#circle-${item.candidate}`" />
             </clipPath>
@@ -265,6 +261,14 @@ export default {
       type: Number,
       default: 20000,
     },
+    xAxisStart: {
+      type: String,
+      default: '',
+    },
+    xAxisEnd: {
+      type: String,
+      default: '',
+    },
   },
   data() {
     return {
@@ -272,6 +276,7 @@ export default {
       height: 520,
       step: 8,
       left_tooltip: 0,
+      point: 0,
       // duration: 8000,
       hover: '',
       active: '',
@@ -453,7 +458,7 @@ export default {
       handler(val) {
         if (!val) return
         this.$nextTick(() => {
-          this.animateStart()
+          this.handleStartAnimation()
         })
       },
       immediate: true,
@@ -464,6 +469,10 @@ export default {
     activeChart(val) {
       this.handleSetActiveChart(val)
     },
+    // xAxisEnd(val) {
+    //   if (!val) return
+    //   this.handleStartAnimation()
+    // },
   },
   beforeMount() {
     window.addEventListener('resize', this.resizeHandler)
@@ -500,7 +509,7 @@ export default {
       .call(this.xAxis)
 
     const linePath = d3.selectAll('.line-path').data(this.candidates)
-    d3.selectAll('.labels-group').data(this.candidates)
+    d3.selectAll('.marker-group').data(this.candidates)
     const line = linePath.selectAll('.line')
     line.each(function () {
       const select = d3.select(this)
@@ -511,7 +520,7 @@ export default {
     })
     // const xScale = this.xScale
     // const yScale = this.yScale
-    // labelsGroup.each(function (d) {
+    // markerGroup.each(function (d) {
     //   d3.select(this).attr(
     //     'transform',
     //     `translate(${xScale(_.get(d, 'data[0].date'))},${yScale(
@@ -525,9 +534,10 @@ export default {
       this.width = this.$refs.container.clientWidth
       this.height = this.$refs.container.clientHeight
     },
-    animateStart() {
-      this.setAnimatePathLabel()
+    handleStartAnimation() {
       this.setAnimatePathLine()
+      this.setAnimatePathLabel()
+      // this.updateAnimatePathLabel(this.xAxisEnd, this.duration)
     },
     formatkilo(num) {
       return numeral(num).format('0 a')
@@ -568,7 +578,7 @@ export default {
     // },
     setAnimatePathLine() {
       const _self = this
-      const line = d3.selectAll('.line-path').selectAll('.line')
+      const line = d3.selectAll('.line')
       line.each(function () {
         d3.select(this)
           .transition(_self.transitionPath)
@@ -578,10 +588,10 @@ export default {
     },
     setAnimatePathLabel() {
       const _self = this
-      const labels = d3.selectAll('.labels-group')
+      const marker = d3.selectAll('.marker-group')
 
       const animate = () => {
-        labels.each(function (g, i) {
+        marker.each(function (g, i) {
           d3.select(this).call(() => {
             let index = 0
             const data = _.get(g, 'data', [])
@@ -591,12 +601,17 @@ export default {
               const time = d.time
 
               d3.select(this)
-                .select('.labels')
+                .select('.marker')
                 .transition()
                 .delay(time)
                 .duration(400)
                 .ease(d3.easeCircleIn)
-                .attr('transform', `scale(${d.highest_per_date ? 1.7 : 1})`)
+                .attr(
+                  'transform',
+                  `scale(${
+                    d.highest_per_date && index === length - 1 ? 1.7 : 1
+                  })`
+                )
 
               d3.select(this)
                 .transition()
@@ -621,8 +636,67 @@ export default {
       this.animate_finish = false
 
       setTimeout(() => {
-        labels.call(() => animate())
+        marker.call(() => animate())
       }, 600)
+    },
+    updateAnimatePathLabel(val, duration) {
+      const diff = moment(val).diff(this.xAxisStart, 'days')
+      const nextPoint = diff + 1
+      console.log('val ', val)
+      console.log('nextPoint ', nextPoint)
+
+      // Only include points between existing and new point.
+      const line = this.line.defined(
+        (d, i) =>
+          (i <= nextPoint && i >= this.point) ||
+          (i <= this.point && i >= nextPoint)
+      )
+      // Update path.
+      const lineSeg = d3
+        .selectAll('.line-path .line-seg')
+        .data(this.candidates)
+        .each(function (d) {
+          d3.select(this).attr('d', line(d.data))
+        })
+
+      // Transition marker from point to nextPoint.
+      const marker = d3.selectAll('marker-group')
+      console.log(marker)
+      marker
+        .transition()
+        .duration(duration)
+        .attrTween(
+          'transform',
+          nextPoint > this.point
+            ? this.translateRight(lineSeg.node())
+            : this.translateLeft(lineSeg.node())
+        )
+        .on('end', () => {
+          this.point = nextPoint
+        })
+    },
+
+    translateRight(node) {
+      console.log('translateRight')
+      // Tween function for moving to right.
+      const l = node.getTotalLength()
+      console.log('l ', l)
+      return () => {
+        return (t) => {
+          const p = node.getPointAtLength(t * l)
+          return 'translate(' + p.x + ',' + p.y + ')'
+        }
+      }
+    },
+    translateLeft(node) {
+      // Tween function for moving to left.
+      const l = node.getTotalLength()
+      return () => {
+        return (t) => {
+          const p = node.getPointAtLength((1 - t) * l)
+          return 'translate(' + p.x + ',' + p.y + ')'
+        }
+      }
     },
     handleHover(el) {
       d3.select(el).moveToFront()
@@ -704,9 +778,9 @@ export default {
     handleSetActiveChart(date) {
       this.active = date
 
-      const labelsGroup = d3.selectAll('.labels-group').data(this.candidates)
+      const markerGroup = d3.selectAll('.marker-group').data(this.candidates)
 
-      labelsGroup
+      markerGroup
         .transition()
         .duration(600)
         .attr('transform', (group) => {
@@ -714,8 +788,8 @@ export default {
           return `translate(${this.xScale(d.date)},${this.yScale(d.value)})`
         })
 
-      labelsGroup
-        .select('.labels')
+      markerGroup
+        .select('.marker')
         .transition()
         .duration(400)
         .ease(d3.easeCircleIn)
