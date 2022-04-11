@@ -204,7 +204,11 @@
           :key="index"
           class="checks"
           :transform="`translate(${xScale(item) - check_width / 2}, 0)`"
-          @click="animate_finish ? onClickChecks(item) : false"
+          @click="
+            animate_finish && type === 'engagement'
+              ? onClickChecks(item)
+              : false
+          "
           @mouseover="checksEvent(item)"
         >
           <rect
@@ -637,7 +641,7 @@ export default {
 
       setTimeout(() => {
         marker.call(() => animate())
-      }, 600)
+      }, 1000)
     },
     updateAnimatePathLabel(val, duration) {
       const diff = moment(val).diff(this.xAxisStart, 'days')

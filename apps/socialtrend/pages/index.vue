@@ -1107,7 +1107,7 @@ export default {
           ...d,
           ratio: _.get(d, 'ratio', 0) * 100,
           value,
-          date: date + 1,
+          date: `${date + 1}`,
           rank: d.value,
           highest: _.get(highest, 'value', 0),
           highest_per_date: highest.candidate === d.candidate,
@@ -1121,8 +1121,8 @@ export default {
       if (this.data_type === 'engagement') {
         this.line_chart_data = await this.getEngagement()
       } else {
-        this.validateCalendarOnWeek()
         this.line_chart_data = await this.getRank()
+        this.validateCalendarOnWeek()
       }
 
       this.reRenderChart()
