@@ -35,12 +35,12 @@
                 <el-select v-model="candidate" placeholder=" ">
                   <el-option
                     v-for="item in candidate_options"
-                    :key="item.value"
-                    :label="item.label"
-                    :value="item.value"
+                    :key="item"
+                    :label="item"
+                    :value="item"
                     class="typo-u2"
                   >
-                    <div class="label typo-u3">{{ item.label }}</div>
+                    <div class="label typo-u3">{{ item }}</div>
                   </el-option>
                 </el-select>
               </div>
@@ -307,13 +307,13 @@
         >
           <el-checkbox
             v-for="item in candidate_options"
-            :key="item.value"
-            :label="item.label"
+            :key="item"
+            :label="item"
             border
             class="typo-u3 font-bold"
-            :style="`--color: ${color_palettes(item.value)}`"
+            :style="`--color: ${color_palettes(item)}`"
           >
-            {{ item.label }}
+            {{ item }}
             <img src="~/assets/images/close.svg" alt="" class="i-close" />
           </el-checkbox>
         </el-checkbox-group>
@@ -587,6 +587,7 @@ export default {
       endWeek: '',
       current_chart_active: {},
       start_input_date: '2021-11-01',
+      start_calendar_date: '2021-10-31',
       end_input_date: '',
       active_date: '',
       keyword: '',
@@ -631,22 +632,14 @@ export default {
       ],
       candidate: '',
       candidate_options: [
-        {
-          label: 'วิโรจน์',
-          value: 'วิโรจน์',
-        },
-        {
-          label: 'สุชัชวีร์',
-          value: 'สุชัชวีร์',
-        },
-        {
-          label: 'รสนา',
-          value: 'รสนา',
-        },
-        {
-          label: 'ชัชชาติ',
-          value: 'ชัชชาติ',
-        },
+        'วิโรจน์',
+        'สกลธี',
+        'สุชัชวีร์',
+        'อัศวิน',
+        'รสนา',
+        'ชัชชาติ',
+        'ศิธา',
+        'ประยูร',
       ],
       candidate_filter: [],
       candidate_config: [
@@ -698,8 +691,8 @@ export default {
         require('~/assets/images/candidate/candidate-08.png'),
         require('~/assets/images/candidate/candidate-08.png'),
         require('~/assets/images/candidate/candidate-08.png'),
-        require('~/assets/images/candidate/candidate-08.png'),
-        require('~/assets/images/candidate/candidate-08.png'),
+        require('~/assets/images/candidate/candidate-11.png'),
+        require('~/assets/images/candidate/candidate-12.png'),
         require('~/assets/images/candidate/candidate-08.png'),
         require('~/assets/images/candidate/candidate-08.png'),
         require('~/assets/images/candidate/candidate-08.png'),
@@ -745,7 +738,7 @@ export default {
       let endAt = this.dateFormat(end)
       if (this.data_type === 'rank') {
         const week = (value) =>
-          moment(value).diff(this.start_input_date, 'week') + 1
+          moment(value).diff(this.start_calendar_date, 'week') + 1
 
         const daterange = (date, type) => {
           let start = ''
@@ -801,7 +794,7 @@ export default {
       }
 
       return {
-        firstDayOfWeek: 1,
+        // firstDayOfWeek: 1,
         disabledDate,
         onPick,
       }
@@ -824,16 +817,16 @@ export default {
     },
     candidates() {
       return this.candidate_options
-        .filter((c) => this.candidate_filter.includes(c.label))
+        .filter((c) => this.candidate_filter.includes(c))
         .map((c) => {
           const data = _.chain(this.line_chart_data)
-            .filter((d) => d.candidate === c.value)
+            .filter((d) => d.candidate === c)
             .orderBy('date', 'asc')
             .value()
           return {
             ...c,
             data,
-            image: this.photo(c.value),
+            image: this.photo(c),
           }
         })
     },
@@ -865,7 +858,7 @@ export default {
     //   this.getEngagement()
     // ])
     this.getKeywords()
-    this.candidate_filter = this.candidate_options.map((d) => d.label)
+    this.candidate_filter = _.clone(this.candidate_options)
     this.line_chart_data = await this.getEngagement()
     this.end_input_date = d3.max(this.line_chart_data, (d) => d.date) || 0
     await this.getCandidateStat()
@@ -880,7 +873,7 @@ export default {
     window.addEventListener('resize', _.debounce(this.reRenderChart, 200))
   },
   mounted() {
-    window.registerUICustomElements()
+    // window.registerUICustomElements()
 
     this.setDefaultStackedBarChart()
 
@@ -1014,13 +1007,11 @@ export default {
 
       const socialtrend = []
       this.candidate_options.forEach((c) => {
-        const arrData = data
-          .filter((d) => d.candidate === c.value)
-          .map((d) => {
-            const topKeywords = d.top_keywords.slice(0, 5)
-            const color = this.color_palettes(d.candidate)
-            return { ...d, top_keywords: topKeywords, color }
-          })
+        const arrData = data.map((d) => {
+          const topKeywords = _.get(d, 'top_keywords', []).slice(0, 5)
+          const color = this.color_palettes(d.candidate)
+          return { ...d, top_keywords: topKeywords, color }
+        })
         socialtrend.push(...arrData)
       })
 
@@ -1101,7 +1092,7 @@ export default {
             .get(d.date, [])
             .minBy('value')
             .value() || {}
-        const date = moment(d.date_from).diff(this.start_input_date, 'week')
+        const date = moment(d.date_from).diff(this.start_calendar_date, 'week')
 
         return {
           ...d,
