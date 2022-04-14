@@ -28,6 +28,7 @@ const mocGov: IGovernor = {
   contact_facebook: 'https://www.facebook.com/wirojlak',
   contact_twitter: 'https://twitter.com/wirojlak',
   profile_pic: null,
+  cover_pic: null,
   nickname: 'โรจน์',
   highlight: true,
   policy_url:
