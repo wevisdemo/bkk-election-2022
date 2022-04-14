@@ -3,6 +3,13 @@ name: Deploy to Staging
 on:
   push:
     branches: [main]
+  workflow_dispatch:
+    inputs:
+      build_params:
+        description: "Build parameters"
+        required: false
+        type: string
+        default: ""
 
 jobs:
   build:
@@ -23,7 +30,7 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           server-token: ${{ secrets.TURBO_SERVER_TOKEN }}
       - name: Build packages and apps
-        run: yarn build --api="http://127.0.0.1:9080" --token="${{ secrets.TURBO_SERVER_TOKEN }}" --team="foo"
+        run: yarn build --api="http://127.0.0.1:9080" --token="${{ secrets.TURBO_SERVER_TOKEN }}" --team="foo" ${{ github.event.inputs.build_params }}
         env:
           NOCO_API_URL: ${{ secrets.NOCO_API_URL }}
           NOCO_AUTH_TOKEN: ${{ secrets.NOCO_AUTH_TOKEN }}
