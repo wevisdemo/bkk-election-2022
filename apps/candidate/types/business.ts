@@ -66,6 +66,7 @@ export interface IGovernor {
   contact_facebook: null | string;
   contact_twitter: null | string;
   profile_pic: null | string;
+  cover_pic: null | string;
   nickname: null | string;
   highlight: null | true;
   policy_url: null | string;

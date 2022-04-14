@@ -30,7 +30,7 @@ export function HighLightCandidatePage({
           className="h-[780px] md:h-[670px] w-full bg-contain bg-no-repeat md:bg-cover items-center"
           style={{
             backgroundImage:
-              'url(' + `${governor.profile_pic || CandidateImg.src}` + ')',
+              'url(' + `${governor.cover_pic || CandidateImg.src}` + ')',
           }}
         >
           <div className="flex flex-col md:flex-row justify-between items-center m-auto md:mr-[60px] w-full h-full">
