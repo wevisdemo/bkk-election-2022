@@ -35,12 +35,12 @@
                 <el-select v-model="candidate" placeholder=" ">
                   <el-option
                     v-for="item in candidate_options"
-                    :key="item.value"
-                    :label="item.label"
-                    :value="item.value"
+                    :key="item"
+                    :label="item"
+                    :value="item"
                     class="typo-u2"
                   >
-                    <div class="label typo-u3">{{ item.label }}</div>
+                    <div class="label typo-u3">{{ item }}</div>
                   </el-option>
                 </el-select>
               </div>
@@ -87,7 +87,7 @@
                 >{{ format(socialtrend_current.total_engagement) }} ครั้ง</span
               >
               เกิดขึ้นบน
-              <span class="font-bold">{{
+              <span class="font-bold capitalize">{{
                 socialtrend_current.top_channel
               }}</span>
               มากที่สุด
@@ -133,7 +133,7 @@
 
       <div class="flex flex-col items-center py-7">
         <div class="flex items-center text-center text-white">
-          <div class="date-picker overflow-hidden">
+          <div class="date-picker overflow-hidden" style="height: 44px">
             <div class="label-wrapper">
               <div class="label">
                 <span class="text typo-b4">
@@ -144,7 +144,9 @@
                 </span>
                 <div class="date-wrapper">
                   <div class="date typo-u2">
-                    {{ daterangeDisplay(daterange[0]) }}
+                    <span v-html="daterangeDisplay.startAt"></span> -
+                    <br v-if="$mq === 'mobile' && data_type === 'rank'" />
+                    <span v-html="daterangeDisplay.endAt"></span>
                   </div>
                   <img
                     src="~/assets/images/calendar.svg"
@@ -153,7 +155,7 @@
                   />
                 </div>
               </div>
-              <div class="label">
+              <!-- <div class="label">
                 <span class="text typo-b4">ถึง</span>
                 <div class="date-wrapper">
                   <div class="date typo-u2">
@@ -165,7 +167,7 @@
                     class="icon"
                   />
                 </div>
-              </div>
+              </div> -->
             </div>
 
             <el-date-picker
@@ -176,6 +178,8 @@
               value-format="yyyy-MM-dd"
               align="center"
               class="opacity-0"
+              @blur="curr_date_active = ''"
+              @change="onChangeTypeChart"
             >
             </el-date-picker>
           </div>
@@ -246,16 +250,19 @@
               v-model="keyword"
               placeholder="Select"
               class="select-outline"
+              @change="onChangeTypeChart"
             >
               <el-option
-                v-for="item in keyword_options"
-                :key="item.value"
+                v-for="(item, index) in keyword_options"
+                :key="index"
                 :label="item.label"
                 :value="item.value"
               >
                 <div class="label typo-u3">
                   <div class="title">{{ item.label }}</div>
-                  <div class="description typo-u5">
+                  <div
+                    class="description typo-u5 overflow-ellipsis overflow-hidden"
+                  >
                     {{ item.description }}
                   </div>
                 </div>
@@ -268,6 +275,7 @@
               v-model="platform"
               placeholder="Select"
               class="select-outline"
+              @change="onChangeTypeChart"
             >
               <el-option
                 v-for="item in platform_options"
@@ -290,37 +298,34 @@
               </el-option>
             </el-select>
           </div>
-
-          <!-- <el-date-picker
-            v-model="value1"
-            type="week"
-            format="Week WW"
-            placeholder="Pick a week"
-            @change="onPick"
-          >
-          </el-date-picker> -->
         </div>
         <el-checkbox-group
           v-model="candidate_filter"
           size="small"
           class="candidate-tags mt-6 px-4"
+          @change="onChangeTypeChart"
         >
           <el-checkbox
             v-for="item in candidate_options"
-            :key="item.value"
-            :label="item.label"
+            :key="item"
+            :label="item"
             border
             class="typo-u3 font-bold"
-            :style="`--color: ${color_palettes(item.value)}`"
+            :style="`--color: ${color_palettes(item)}`"
           >
-            {{ item.label }}
+            {{ item }}
             <img src="~/assets/images/close.svg" alt="" class="i-close" />
           </el-checkbox>
         </el-checkbox-group>
       </div>
 
       <div class="section-chart mt-5">
-        <el-radio-group v-model="data_type" size="mini" class="radio-group">
+        <el-radio-group
+          v-model="data_type"
+          size="mini"
+          class="radio-group"
+          @change="onChangeTypeChart"
+        >
           <el-radio-button label="engagement">Engagement</el-radio-button>
           <el-radio-button label="rank">Rank</el-radio-button>
         </el-radio-group>
@@ -330,13 +335,20 @@
             <LineChartRace
               v-if="render_chart && line_chart_data != 0"
               :dataSet="line_chart_data"
-              :activeChart.sync="active_date"
+              :activeChart="active_date"
               :photo="photo"
               :type="data_type"
               :duration="duration"
               :animate="chartAnimate"
               :color="color_palettes"
-              @change="onChangeActive"
+              :xAxisStart="daterange[0]"
+              :xAxisEnd="daterange[1]"
+              @change="
+                (date) => {
+                  active_date = date
+                  onChangeActive()
+                }
+              "
             />
           </div>
           <div v-if="data_type == 'engagement'" class="mt-3">
@@ -387,6 +399,7 @@
                     placeholder="Pick a day"
                     :picker-options="pickerDateActiveOptions"
                     class="opacity-0"
+                    @change="onChangeActive"
                   >
                   </el-date-picker>
                 </div>
@@ -431,7 +444,7 @@
                 ref="carousel"
                 :autoplay="false"
                 :loop="false"
-                :height="$mq === 'mobile' ? '370px' : '260px'"
+                :height="$mq === 'mobile' ? '440px' : '300px'"
                 class="mt-8"
                 indicator-position="none"
                 arrow="never"
@@ -440,8 +453,7 @@
                 <el-carousel-item
                   v-for="(item, index) in posts"
                   :key="index"
-                  :name="item.date"
-                  class="text-black"
+                  class="text-black px-3"
                 >
                   <div
                     class="bg-white h-full rounded-md p-5 flex flex-col justify-between"
@@ -559,12 +571,10 @@ export default {
   },
   data() {
     return {
-      webUrl: '',
-      value1: '',
+      webUrl: 'https://staging.bkkelection2022.wevis.info/socialtrend',
       chartAnimate: false,
       line_chart_data: [],
       render_chart: true,
-      current_chart_data: {},
       socialtrend_current: {},
       socialtrend: [],
       engagement: [],
@@ -575,36 +585,14 @@ export default {
       daterange: [],
       startWeek: '',
       endWeek: '',
+      current_chart_active: {},
       start_input_date: '2021-11-01',
+      start_calendar_date: '2021-10-31',
+      end_input_date: '',
       active_date: '',
       keyword: '',
-      keyword_options: [
-        {
-          label: 'ทุก keyword',
-          value: '',
-          description: '',
-        },
-        {
-          label: 'การเดินทาง',
-          value: 'การเดินทาง',
-          description: 'เช่น รถเมล์, BRT, BTS, MRT, รถไฟฟ้า',
-        },
-        {
-          label: 'พื้นที่สาธารณะ',
-          value: 'พื้นที่สาธารณะ',
-          description: 'เช่น รถเมล์, BRT, BTS, MRT, รถไฟฟ้า',
-        },
-        {
-          label: 'สุขภาพ',
-          value: 'สุขภาพ',
-          description: 'เช่น รถเมล์, BRT, BTS, MRT, รถไฟฟ้า',
-        },
-        {
-          label: 'ความเท่าเทียม',
-          value: 'ความเท่าเทียม',
-          description: 'เช่น รถเมล์, BRT, BTS, MRT, รถไฟฟ้า',
-        },
-      ],
+      curr_date_active: '',
+      keyword_options: [],
       platform: '',
       platform_options: [
         {
@@ -613,53 +601,45 @@ export default {
         },
         {
           label: 'Facebook',
-          value: 'Facebook',
+          value: 'facebook',
           icon: require('~/assets/images/i-facebook.svg'),
         },
         {
           label: 'Twitter',
-          value: 'Twitter',
+          value: 'twitter',
           icon: require('~/assets/images/i-twitter.svg'),
         },
         {
           label: 'Instagram',
-          value: 'Instagram',
+          value: 'instagram',
           icon: require('~/assets/images/i-instagram.svg'),
         },
         {
           label: 'News',
-          value: 'News',
+          value: 'news',
           icon: require('~/assets/images/i-news.svg'),
         },
         {
           label: 'Youtube',
-          value: 'Youtube',
+          value: 'youtube',
           icon: require('~/assets/images/i-youtube.svg'),
         },
         {
           label: 'Forum',
-          value: 'Forum',
+          value: 'forum',
           icon: require('~/assets/images/i-forum.svg'),
         },
       ],
       candidate: '',
       candidate_options: [
-        {
-          label: 'วิโรจน์',
-          value: 'วิโรจน์',
-        },
-        {
-          label: 'สุชัชวีร์',
-          value: 'สุชัชวีร์',
-        },
-        {
-          label: 'รสนา',
-          value: 'รสนา',
-        },
-        {
-          label: 'ชัชชาติ',
-          value: 'ชัชชาติ',
-        },
+        'วิโรจน์',
+        'สกลธี',
+        'สุชัชวีร์',
+        'อัศวิน',
+        'รสนา',
+        'ชัชชาติ',
+        'ศิธา',
+        'ประยูร',
       ],
       candidate_filter: [],
       candidate_config: [
@@ -711,8 +691,8 @@ export default {
         require('~/assets/images/candidate/candidate-08.png'),
         require('~/assets/images/candidate/candidate-08.png'),
         require('~/assets/images/candidate/candidate-08.png'),
-        require('~/assets/images/candidate/candidate-08.png'),
-        require('~/assets/images/candidate/candidate-08.png'),
+        require('~/assets/images/candidate/candidate-11.png'),
+        require('~/assets/images/candidate/candidate-12.png'),
         require('~/assets/images/candidate/candidate-08.png'),
         require('~/assets/images/candidate/candidate-08.png'),
         require('~/assets/images/candidate/candidate-08.png'),
@@ -726,7 +706,11 @@ export default {
       return d3.format(',')
     },
     duration() {
-      return this.$mq !== 'desktop' ? 15000 : 20000
+      const { length } = Object.keys(this.date_group)
+
+      const time = length * 400
+      const duration = this.data_type === 'rank' ? time * 3 : time
+      return duration < 20000 ? 20000 : duration
     },
     last_day() {
       return moment().diff(this.start_input_date, 'days')
@@ -743,51 +727,74 @@ export default {
         .domain(this.candidate_config)
         .range(this.photo_config)
     },
-    end_input_date() {
-      return d3.max(this.line_chart_data, (d) => d.date) || 0
-    },
+    // end_input_date() {
+    //   const key = this.data_type === 'engagement' ? 'date' : 'date_to'
+    //   return d3.max(this.line_chart_data, (d) => d[key]) || 0
+    // },
     daterangeDisplay() {
-      const display = (value) => {
-        let text = this.dateFormat(value)
-        if (this.data_type === 'rank') {
-          const week = moment(value).diff(this.start_input_date, 'week')
-          text = `${week + 1} (${text})`
+      const start = this.daterange[0]
+      const end = this.daterange[1]
+      let startAt = this.dateFormat(start)
+      let endAt = this.dateFormat(end)
+      if (this.data_type === 'rank') {
+        const week = (value) =>
+          moment(value).diff(this.start_calendar_date, 'week') + 1
+
+        const daterange = (date, type) => {
+          let start = ''
+          let end = ''
+          if (type === 'start') {
+            start = this.dateFormat(date)
+            end = this.dateFormat(moment(date).add(7, 'days'))
+          }
+          if (type === 'end') {
+            start = this.dateFormat(moment(date).subtract(7, 'days'))
+            end = this.dateFormat(date)
+          }
+
+          return `${start} - ${end}`
         }
-        return text
+
+        startAt = `${week(start)} <span class="font-normal">(${daterange(
+          start,
+          'start'
+        )})</span>`
+        endAt = `${week(end)} <span class="font-normal">(${daterange(
+          end,
+          'end'
+        )})</span>`
       }
 
-      return display
+      return { startAt, endAt }
     },
     pickerOptions() {
-      let currDateActive = ''
       const disabledDate = (date) => {
         const start = this.start_input_date
         const end = this.end_input_date
         const isBetween =
           moment(date).isSameOrBefore(end) && moment(date).isSameOrAfter(start)
-        const crrrDate = currDateActive
-          ? moment(currDateActive).isSame(date)
+        const crrrDate = this.curr_date_active
+          ? moment(this.curr_date_active).isSame(date)
           : false
         let inWeek = false
 
-        if (this.data_type === 'rank') {
-          const diff = moment(date).diff(currDateActive, 'days')
+        if (this.data_type === 'rank' && this.curr_date_active) {
+          const diff = moment(date).diff(this.curr_date_active, 'days')
           inWeek = diff >= -7 && diff <= 7
         }
-
         return !isBetween || crrrDate || inWeek
       }
 
       const onPick = ({ minDate, maxDate }) => {
         if (maxDate) {
-          currDateActive = ''
+          this.curr_date_active = ''
         } else {
-          currDateActive = minDate
+          this.curr_date_active = minDate
         }
       }
 
       return {
-        firstDayOfWeek: 1,
+        // firstDayOfWeek: 1,
         disabledDate,
         onPick,
       }
@@ -805,48 +812,26 @@ export default {
         },
       }
     },
-    current_chart_active() {
-      return _.get(
-        this.current_chart_data,
-        `candidates[${this.carousel_index}]`,
-        {}
-      )
-    },
     date_group() {
       return _.groupBy(this.line_chart_data, 'date')
     },
     candidates() {
-      return this.candidate_options.map((c) => {
-        const data = _.chain(this.line_chart_data)
-          .filter((d) => d.candidate === c.value)
-          .orderBy('date', 'asc')
-          .value()
-        return {
-          ...c,
-          data,
-          image: this.photo(c.value),
-        }
-      })
+      return this.candidate_options
+        .filter((c) => this.candidate_filter.includes(c))
+        .map((c) => {
+          const data = _.chain(this.line_chart_data)
+            .filter((d) => d.candidate === c)
+            .orderBy('date', 'asc')
+            .value()
+          return {
+            ...c,
+            data,
+            image: this.photo(c),
+          }
+        })
     },
   },
   watch: {
-    data_type: {
-      // immediate: true,
-      async handler(val) {
-        if (val === 'engagement') {
-          this.line_chart_data = await this.getEngagement()
-        } else {
-          this.validateCalendarOnWeek()
-          this.line_chart_data = await this.getRank()
-        }
-        this.active_date = ''
-        this.reRenderChart()
-        if (!this.chartAnimate) return
-        this.$nextTick(() => {
-          this.setAnimateStackedBarChart()
-        })
-      },
-    },
     candidate(val) {
       this.socialtrend_current =
         this.socialtrend.find((d) => d.candidate === val) || {}
@@ -857,32 +842,38 @@ export default {
         this.setDefaultStackedBarChart()
       }
     },
+    carousel_index(val) {
+      this.current_chart_active = _.get(this.posts, `[${val}]`, {})
+    },
+
     // end_input_date() {
     //   const isAfter = moment(this.active_date).isAfter(this.end_input_date)
     //   if (!isAfter) return
     //   this.active_date = this.end_input_date
     // },
   },
-  created() {
+  async created() {
     // await Promise.all([
     //   this.getKeywords(),
     //   this.getEngagement()
     // ])
     this.getKeywords()
-    this.line_chart_data = this.getEngagement()
-    this.animateKeywords()
+    this.candidate_filter = _.clone(this.candidate_options)
+    this.line_chart_data = await this.getEngagement()
+    this.end_input_date = d3.max(this.line_chart_data, (d) => d.date) || 0
+    await this.getCandidateStat()
     this.setDaterange()
+    this.animateKeywords()
+  },
+  destroyed() {
+    window.removeEventListener('resize', _.debounce(this.reRenderChart, 200))
   },
   beforeMount() {
     window.scrollTo(0, 0)
     window.addEventListener('resize', _.debounce(this.reRenderChart, 200))
   },
-  destroyed() {
-    window.removeEventListener('resize', _.debounce(this.reRenderChart, 200))
-  },
   mounted() {
-    // window.registerUICustomElements()
-    this.candidate_filter = this.candidate_options.map((d) => d.label)
+    window.registerUICustomElements()
 
     this.setDefaultStackedBarChart()
 
@@ -903,9 +894,6 @@ export default {
     // const dateGroup = Object.keys(this.date_group)
   },
   methods: {
-    onPick(d) {
-      console.log(d)
-    },
     setDaterange() {
       // const start = d3.min(this.line_chart_data, (d) => d.date)
       const start = this.start_input_date
@@ -933,7 +921,6 @@ export default {
         'days'
       )
       if (diffDaterange > 8) return
-
       let endAt = moment(startAt).add(8, 'days').format('yyyy-MM-DD')
       const diffOfDataEnddate = moment(this.end_input_date).diff(
         startAt,
@@ -949,438 +936,203 @@ export default {
       // end_input_date
       // inWeek = diff >= -7 && diff <= 7
     },
-    getPosts() {
-      //  try {
-      //   const res = await this.$api.get('top-engagement-message', {
-      // params: {
-      //   date: this.active_date,
-      // }
-      //   })
+    async getKeywords() {
+      let data = []
+      try {
+        const res = await this.$api.get('top-keywords')
+        data = _.get(res, 'data.data', [])
+      } catch (error) {
+        console.error(error)
+      }
 
-      //   this.engagement = res
-      // } catch (error) {
-      //   console.error(error);
-      // }
+      const options = data.map((d) => {
+        const description = d.top_keywords.map((k) => k.keyword).join(', ')
 
-      const res = [
-        {
-          channel: 'Facebook',
-          author: 'Voice TV',
-          candidate: 'ชัชชาติ',
-          created_time: '2022-03-22T16:45:09.641Z',
-          text: 'ปาร์ตี้เคลียร์ครัวซองต์สเตชั่นมาร์ก ซิตี้ คาปูชิโนติวเตอร์ฟรุตสต๊อก เตี๊ยมชัวร์สัมนาตัวตนโอเปอเรเตอร์ แคมเปญดีลเลอร์ ไฮกุ เซ็นเซอร์ อุด้งโยโย่ โต๊ะจีนรวมมิตร ทาวน์เฮาส์รีโมทเทวาเฝอ ศิลปากรเจไดรีสอร์ทอาว์ กู๋โปรโมชั่นเพนกวิน ม้าหินอ่อน วิดีโอเอ็นเตอร์เทนรามาธิบดีจิตพิสัยแชมพู ตู้เซฟสต็อกซัมเมอร์ศิลปากร เทปวีไอพีโปรเจกเตอร์เบญจมบพิตรช็อค',
-          engagement_count: 123,
-        },
-        {
-          channel: 'Facebook',
-          author: 'abc',
-          candidate: 'รสนา',
-          created_time: '2022-03-22T16:45:09.641Z',
-          text: 'ปาร์ตี้เคลียร์ครัวซองต์สเตชั่นมาร์ก ซิตี้ คาปูชิโนติวเตอร์ฟรุตสต๊อก เตี๊ยมชัวร์สัมนาตัวตนโอเปอเรเตอร์ It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like readableวมมิตร ทาวน์เฮาส์รีโมทเทวาเฝอ ศิลปากรเจไดรีสอร์ทอาว์ กู๋โปรโมชั่นเพนกวิน ม้าหินอ่อน วิดีโอเอ็นเตอร์เทนรามาธิบดีจิตพิสัยแชมพู ตู้เซฟสต็อกซัมเมอร์ศิลปากร เทปวีไอพีโปรเจกเตอร์เบญจมบพิตรช็อค',
-          engagement_count: 123,
-        },
-        {
-          channel: 'Facebook',
-          author: 'abc',
-          candidate: 'สุชัชวีร์',
-          created_time: '2022-03-22T16:45:09.641Z',
-          text: 'ปาร์ตี้เคลียร์ครัวซองต์สเตชั่นมาร์ก ซิตี้ คาปูชิโนติวเตอร์ฟรุตสต๊อก เตี๊ยมชัวร์สัมนาตัวตนโอเปอเรเตอร์ แคมเปญดีลเลอร์ ไฮกุ เซ็นเซอร์ อุด้งโยโย่ โต๊ะจีนรวมมิตร ทาวน์เฮาส์รีโมทเทวาเฝอ ศิลปากรเจไดรีสอร์ทอาว์ กู๋โปรโมชั่นเIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like readableอกซัมเมอร์ศิลปากร เทปวีไอพีโปรเจกเตอร์เบญจมบพิตรช็อค',
-          engagement_count: 123,
-        },
-      ]
-
-      this.posts = res.map((d) => {
-        const platform = this.platform_options.find(
-          (p) => p.value === d.channel
-        )
-        return { ...d, platform_icon: platform.icon }
+        return {
+          label: d.issue,
+          value: d.issue,
+          description: `เช่น ${description}`,
+        }
       })
-    },
-    getKeywords() {
-      // try {
-      //   const res = await this.$api.get('candidate-stat', {
-      //     params: {
-      //       period: moment.format('yyyy-mm-dd')
-      //     }
-      //   })
-
-      //   this.socialtrend = res
-      // } catch (error) {
-      //   console.error(error);
-      // }
-
-      const res = [
+      this.keyword_options = [
         {
-          candidate: 'วิโรจน์',
-          total_mention: 3434543,
-          total_engagement: 876323,
-          top_keywords: [
-            {
-              keyword: 'การเดินทาง',
-              count: 42,
-            },
-            {
-              keyword: 'พื้นที่สาธารณะ',
-              count: 65,
-            },
-            {
-              keyword: 'สุขภาพ',
-              count: 345,
-            },
-            {
-              keyword: 'ความเท่าเทียม',
-              count: 3,
-            },
-            {
-              keyword: 'สิ่งแวดล้อม',
-              count: 77,
-            },
-          ],
-          top_channel: 'Facebook',
+          label: 'ทุก keyword',
+          value: '',
+          description: '',
         },
-        {
-          candidate: 'ชัชชาติ',
-          total_mention: 324235,
-          total_engagement: 345435,
-          top_keywords: [
-            {
-              keyword: 'การเดินทาง',
-              count: 23,
-            },
-            {
-              keyword: 'พื้นที่สาธารณะ',
-              count: 655,
-            },
-            {
-              keyword: 'สุขภาพ',
-              count: 435,
-            },
-            {
-              keyword: 'ความเท่าเทียม',
-              count: 34,
-            },
-            {
-              keyword: 'สิ่งแวดล้อม',
-              count: 34,
-            },
-          ],
-          top_channel: 'Facebook',
-        },
-        {
-          candidate: 'รสนา',
-          total_mention: 1212343,
-          total_engagement: 6543234,
-          top_keywords: [
-            {
-              keyword: 'การเดินทาง',
-              count: 45,
-            },
-            {
-              keyword: 'พื้นที่สาธารณะ',
-              count: 34,
-            },
-            {
-              keyword: 'สุขภาพ',
-              count: 53,
-            },
-            {
-              keyword: 'ความเท่าเทียม',
-              count: 34,
-            },
-            {
-              keyword: 'สิ่งแวดล้อม',
-              count: 654,
-            },
-          ],
-          top_channel: 'Facebook',
-        },
-        {
-          candidate: 'สุชัชวีร์',
-          total_mention: 2342345,
-          total_engagement: 43563546,
-          top_keywords: [
-            {
-              keyword: 'การเดินทาง',
-              count: 324,
-            },
-            {
-              keyword: 'พื้นที่สาธารณะ',
-              count: 345,
-            },
-            {
-              keyword: 'สุขภาพ',
-              count: 34,
-            },
-            {
-              keyword: 'ความเท่าเทียม',
-              count: 14,
-            },
-            {
-              keyword: 'สิ่งแวดล้อม',
-              count: 45,
-            },
-          ],
-          top_channel: 'Facebook',
-        },
+        ...options,
       ]
+    },
+    async getPosts() {
+      let data = []
+      try {
+        const res = await this.$api.get('top-engagement-message', {
+          params: {
+            date: this.active_date,
+            candidates: this.candidate_filter.toString(),
+          },
+        })
+        data = _.get(res, 'data.data', [])
+      } catch (error) {
+        console.error(error)
+      }
+
+      this.posts = _.chain(data)
+        .orderBy('total_engagement', 'desc')
+        .map((d) => {
+          const platform =
+            this.platform_options.find((p) => p.value === d.channel) || {}
+          const color = this.color_palettes(d.candidate)
+
+          return {
+            ...d,
+            platform_icon: platform.icon,
+            color,
+          }
+        })
+        .value()
+    },
+    async getCandidateStat() {
+      let data = []
+      try {
+        const res = await this.$api.get('candidate-stat', {
+          params: {
+            candidates: this.candidate_filter.toString(),
+          },
+        })
+        data = _.get(res, 'data.data', [])
+      } catch (error) {
+        console.error(error)
+      }
+
       const socialtrend = []
       this.candidate_options.forEach((c) => {
-        const data = res
-          .filter((d) => d.candidate === c.value)
-          .map((d) => ({ ...d, color: this.color_palettes(d.candidate) }))
-        socialtrend.push(...data)
+        const arrData = data.map((d) => {
+          const topKeywords = _.get(d, 'top_keywords', []).slice(0, 5)
+          const color = this.color_palettes(d.candidate)
+          return { ...d, top_keywords: topKeywords, color }
+        })
+        socialtrend.push(...arrData)
       })
 
       this.socialtrend = socialtrend
     },
-    getEngagement() {
-      // try {
-      //   const res = await this.$api.get('sum-engagement-per-date', {
-      // params: {
-      //   date_from:_.get(this.daterange, '[0]'),
-      //   date_to: _.get(this.daterange, '[1]'),
-      //   candidates: this.candidate_filter,
-      //   keywords: this.keyword,
-      //   channels: this.platform,
-      // }
-      //   })
+    async getEngagement() {
+      let data = []
+      const dateTo =
+        _.get(this.daterange, '[1]') || moment().format('yyyy-MM-DD')
+      const dateFrom = _.get(this.daterange, '[0]') || this.start_input_date
+      try {
+        const res = await this.$api.get('sum-engagement-per-date', {
+          params: {
+            date_from: dateFrom,
+            date_to: dateTo,
+            candidates: this.candidate_filter.toString(),
+            keywords: this.keyword ? this.keyword : undefined,
+            channels: this.platform ? this.platform : undefined,
+          },
+        })
 
-      //   this.engagement = res
-      // } catch (error) {
-      //   console.error(error);
-      // }
-      const res = [
-        {
-          date: '2022-01-01',
-          candidate: 'วิโรจน์',
-          value: 734005,
-          ratio: 45.88,
-        },
-        {
-          date: '2022-01-02',
-          candidate: 'วิโรจน์',
-          value: 23455,
-          ratio: 34,
-        },
-        {
-          date: '2022-01-03',
-          candidate: 'วิโรจน์',
-          value: 842343,
-          ratio: 5,
-        },
-        {
-          date: '2022-01-04',
-          candidate: 'วิโรจน์',
-          value: 2345779,
-          ratio: 27,
-        },
-        {
-          date: '2022-01-01',
-          candidate: 'ชัชชาติ',
-          value: 240000,
-          ratio: 23,
-        },
-        {
-          date: '2022-01-01',
-          candidate: 'รสนา',
-          value: 4235234,
-          ratio: '41.682539110775046',
-        },
-        {
-          date: '2022-01-01',
-          candidate: 'สุชัชวีร์',
-          value: 5685457,
-          ratio: '55.95541681171093',
-        },
-        {
-          date: '2022-01-02',
-          candidate: 'ชัชชาติ',
-          value: 5677878,
-          ratio: '36.14921939119408',
-        },
-        {
-          date: '2022-01-02',
-          candidate: 'รสนา',
-          value: 5464356,
-          ratio: '34.78979362987153',
-        },
-        {
-          date: '2022-01-02',
-          candidate: 'สุชัชวีร์',
-          value: 4564545,
-          ratio: '29.060986978934384',
-        },
-        {
-          date: '2022-01-03',
-          candidate: 'ชัชชาติ',
-          value: 6677848,
-          ratio: '63.201592209086',
-        },
-        {
-          date: '2022-01-03',
-          candidate: 'รสนา',
-          value: 455456,
-          ratio: '4.310601915644302',
-        },
-        {
-          date: '2022-01-03',
-          candidate: 'สุชัชวีร์',
-          value: 3432645,
-          ratio: '32.4878058752697',
-        },
-        {
-          date: '2022-01-04',
-          candidate: 'ชัชชาติ',
-          value: 5567878,
-          ratio: '52.58834691124058',
-        },
-        {
-          date: '2022-01-04',
-          candidate: 'รสนา',
-          value: 456342,
-          ratio: '4.310128814993675',
-        },
-        {
-          date: '2022-01-04',
-          candidate: 'สุชัชวีร์',
-          value: 4563445,
-          ratio: '43.10152427376575',
-        },
-      ]
+        data = _.get(res, 'data.data', [])
 
-      this.engagement = res.map((d) => {
+        console.log(data)
+      } catch (error) {
+        console.error(error)
+      }
+
+      this.engagement = _.orderBy(data, 'date', 'asc').map((d) => {
         const highest =
-          _.chain(res).groupBy('date').get(d.date, []).maxBy('value').value() ||
-          {}
+          _.chain(data)
+            .groupBy('date')
+            .get(d.date, [])
+            .maxBy('value')
+            .value() || {}
 
         return {
           ...d,
+          ratio: _.get(d, 'ratio', 0) * 100,
           highest: _.get(highest, 'value', 0),
           highest_per_date: highest.candidate === d.candidate,
           image: this.photo(d.candidate),
           color: this.color_palettes(d.candidate),
         }
       })
-      console.log(this.engagement)
 
       return _.clone(this.engagement)
     },
-    getRank() {
-      //  try {
-      //   const res = await this.$api.get('rank-per-date', {
-      // params: {
-      //   date_from:_.get(this.daterange, '[0]'),
-      //   date_to: _.get(this.daterange, '[1]'),
-      //   candidates: this.candidate_filter,
-      //   keywords: this.keyword,
-      //   channels: this.platform,
-      // }
-      //   })
+    async getRank() {
+      let data = []
+      const dateTo =
+        _.get(this.daterange, '[1]') || moment().format('yyyy-MM-DD')
+      const dateFrom = _.get(this.daterange, '[0]') || this.start_input_date
+      try {
+        const res = await this.$api.get('rank-per-week', {
+          params: {
+            date_from: dateFrom,
+            date_to: dateTo,
+            candidates: this.candidate_filter.toString(),
+            keywords: this.keyword ? this.keyword : undefined,
+            channels: this.platform ? this.platform : undefined,
+          },
+        })
 
-      //   this.engagement = res
-      // } catch (error) {
-      //   console.error(error);
-      // }
+        data = _.get(res, 'data.data', [])
 
-      const res = [
-        {
-          date: '2022-01-01',
-          candidate: 'วิโรจน์',
-          value: 4,
-          ratio: 10,
-        },
-        {
-          date: '2022-01-02',
-          candidate: 'วิโรจน์',
-          value: 3,
-          ratio: 20,
-        },
-        {
-          date: '2022-01-03',
-          candidate: 'วิโรจน์',
-          value: 3,
-          ratio: 20,
-        },
-        {
-          date: '2022-01-01',
-          candidate: 'ชัชชาติ',
-          value: 2,
-          ratio: 30,
-        },
-        {
-          date: '2022-01-01',
-          candidate: 'รสนา',
-          value: 1,
-          ratio: 40,
-        },
-        {
-          date: '2022-01-01',
-          candidate: 'สุชัชวีร์',
-          value: 3,
-          ratio: 20,
-        },
-        {
-          date: '2022-01-02',
-          candidate: 'ชัชชาติ',
-          value: 2,
-          ratio: 30,
-        },
-        {
-          date: '2022-01-02',
-          candidate: 'รสนา',
-          value: 4,
-          ratio: 10,
-        },
-        {
-          date: '2022-01-02',
-          candidate: 'สุชัชวีร์',
-          value: 1,
-          ratio: 40,
-        },
-        {
-          date: '2022-01-03',
-          candidate: 'ชัชชาติ',
-          value: 1,
-          ratio: 40,
-        },
-        {
-          date: '2022-01-03',
-          candidate: 'รสนา',
-          value: 4,
-          ratio: 10,
-        },
-        {
-          date: '2022-01-03',
-          candidate: 'สุชัชวีร์',
-          value: 2,
-          ratio: 30,
-        },
-      ]
+        console.log(data)
+      } catch (error) {
+        console.error(error)
+      }
 
-      return res.map((d) => {
-        const { length } = this.candidate_options
+      return _.orderBy(data, 'date_from', 'asc').map((d) => {
+        const { length } = this.candidate_filter
         const value = length + 1 - d.value
         const highest =
-          _.chain(res).groupBy('date').get(d.date, []).minBy('value').value() ||
-          {}
+          _.chain(data)
+            .groupBy('date')
+            .get(d.date, [])
+            .minBy('value')
+            .value() || {}
+        const date = moment(d.date_from).diff(this.start_calendar_date, 'week')
 
         return {
           ...d,
+          ratio: _.get(d, 'ratio', 0) * 100,
           value,
+          date: `${date + 1}`,
+          rank: d.value,
           highest: _.get(highest, 'value', 0),
           highest_per_date: highest.candidate === d.candidate,
         }
+      })
+    },
+    async onChangeTypeChart() {
+      this.setDefaultStackedBarChart()
+      this.active_date = ''
+
+      if (this.data_type === 'engagement') {
+        this.line_chart_data = await this.getEngagement()
+      } else {
+        this.line_chart_data = await this.getRank()
+        this.validateCalendarOnWeek()
+      }
+
+      this.reRenderChart()
+      if (!this.chartAnimate) return
+      this.$nextTick(() => {
+        this.setAnimateStackedBarChart()
       })
     },
     dateFormat(date, full) {
       const format = full ? 'DD MMM YYYY' : 'DD MMM YY'
       return moment(date).add(543, 'years').format(format)
     },
-    onChangeActive(val = {}) {
+    async onChangeActive() {
+      this.updateStackedBarChart(this.active_date)
+      await this.getPosts()
       this.carousel_index = 0
-      this.current_chart_data = val
-      this.updateStackedBarChart(val.date)
-      this.getPosts()
+      const carousel = this.$refs.carousel
+      if (carousel) carousel.setActiveItem(0)
+      this.current_chart_active = _.get(this.posts, '[0]', {})
     },
     viewHandlerChart(e) {
       if (e.percentInView > 0.4 && !this.chartAnimate) {
@@ -1402,7 +1154,7 @@ export default {
         })
     },
     animateKeywords() {
-      let index = 0
+      let index = 1
       const { length } = this.socialtrend
       const update = () => {
         this.socialtrend_current = this.socialtrend[index]
@@ -1412,13 +1164,13 @@ export default {
       }
 
       this.interval = setInterval(() => update(), 2000)
+      this.socialtrend_current = _.get(this.socialtrend, '[0]', {})
     },
     clearAnimateKeywords() {
       if (!this.interval) return
       clearInterval(this.interval)
     },
     setDefaultStackedBarChart() {
-      console.log('setDefaultStackedBarChart', this.$mq)
       const { length } = this.candidates
       d3.selectAll('.stacked-bar-chart .candidate')
         .data(this.candidates)
@@ -1541,6 +1293,7 @@ export default {
   margin-top: 8px;
   border-radius: 2px;
   min-width: 180px !important;
+  max-width: 300px;
   .popper__arrow {
     display: none;
   }
@@ -1623,7 +1376,7 @@ export default {
   }
 }
 .date-picker {
-  height: 40px;
+  height: auto;
   display: inline-flex;
   position: relative;
   cursor: pointer;
@@ -1638,7 +1391,7 @@ export default {
       padding: 0 4px;
       left: 0;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
       .text {
       }
@@ -1652,7 +1405,7 @@ export default {
           font-weight: 600;
         }
         .icon {
-          margin-left: 4px;
+          margin-left: 5px;
         }
       }
     }
@@ -1663,6 +1416,7 @@ export default {
   .el-date-editor {
     position: absolute;
     width: 100%;
+    height: 100%;
     ::v-deep {
       input {
         cursor: pointer;
