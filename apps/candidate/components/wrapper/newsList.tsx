@@ -35,8 +35,8 @@ export function NewsList({ newsList }: PropsType) {
         slidesPerView={slide}
         navigation
         pagination={{ clickable: true }}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log('slide change')}
+        // onSwiper={(swiper) => console.log(swiper)}
+        // onSlideChange={() => console.log('slide change')}
       >
         {newsList.map((news) => {
           return (

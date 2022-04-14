@@ -39,8 +39,8 @@ export function GeneralQuestionList(props: Propstype) {
           navigation
           pagination={{ clickable: true }}
           // scrollbar={{ draggable: true }}
-          onSwiper={(swiper) => console.log(swiper)}
-          onSlideChange={() => console.log('slide change')}
+          // onSwiper={(swiper) => console.log(swiper)}
+          // onSlideChange={() => console.log('slide change')}
         >
           {qaList.map((qa, index) => {
             return (

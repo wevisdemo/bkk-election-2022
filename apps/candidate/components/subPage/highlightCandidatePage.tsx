@@ -6,6 +6,7 @@ import { CandidateInfoCard } from '../card/candidateInfo';
 import { NewsList } from '../wrapper/newsList';
 import { Post } from 'wordpress-api';
 import { ShareList } from '../wrapper/shareList';
+import CandidateImg from '../../static/images/candidate.png';
 
 interface PropsType {
   governor: IGovernor;
@@ -28,7 +29,8 @@ export function HighLightCandidatePage({
         <div
           className="h-[780px] md:h-[670px] w-full bg-contain bg-no-repeat md:bg-cover items-center"
           style={{
-            backgroundImage: 'url(' + `${bgUrl}` + ')',
+            backgroundImage:
+              'url(' + `${governor.profile_pic || CandidateImg.src}` + ')',
           }}
         >
           <div className="flex flex-col md:flex-row justify-between items-center m-auto md:mr-[60px] w-full h-full">

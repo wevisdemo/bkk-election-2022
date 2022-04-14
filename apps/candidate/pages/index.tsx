@@ -99,7 +99,7 @@ const Home = ({ candidateList, councilList, errMsg }: PropsType) => {
           className="text-center bg-black text-white py-5 px-[10px] hover:cursor-pointer flex items-center justify-center"
           onClick={jumpToGovSection}
         >
-          {govArrow && (
+          {govArrow ? (
             <img
               className={
                 govRotate ? 'rotate-180 w-[16px] h-[17px]' : 'w-[16px] h-[17px]'
@@ -107,6 +107,8 @@ const Home = ({ candidateList, councilList, errMsg }: PropsType) => {
               src={arrowW.src}
               alt="arrow"
             />
+          ) : (
+            <div className="w-[16px] h-[17px]" />
           )}
           <span className="typo-h8 ml-[10px] md:ml-[20px]">
             ผู้สมัครผู้ว่าฯ กทม.
@@ -116,7 +118,7 @@ const Home = ({ candidateList, councilList, errMsg }: PropsType) => {
           className="text-center bg-white py-5 px-[10px] hover:cursor-pointer flex items-center justify-center"
           onClick={jumpToCounSection}
         >
-          {counArrow && (
+          {counArrow ? (
             <img
               className={
                 counRotate
@@ -126,6 +128,8 @@ const Home = ({ candidateList, councilList, errMsg }: PropsType) => {
               src={arrow.src}
               alt="arrow"
             />
+          ) : (
+            <div className="w-[16px] h-[17px]" />
           )}
           <span className="typo-h8 ml-[10px] md:ml-[20px]">
             ผู้สมัครสมาชิกสภากทม.

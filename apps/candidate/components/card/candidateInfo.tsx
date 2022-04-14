@@ -119,83 +119,91 @@ export function CandidateInfoCard({ governor }: PropsType) {
       <div>
         <div className="pb-[10px] border-b border-white/[0.1]">
           <p className="font-bold font-body mt-[10px] text-[14px]">ชื่อเล่น</p>
-          <p className="font-body text-[16px] mt-[10px]">{governor.nickname}</p>
+          <div className="font-body text-[16px] mt-[10px]">
+            {governor.nickname || '-'}
+          </div>
         </div>
         <div className="pb-[10px] border-b border-white/[0.1]">
           <p className="font-bold font-body mt-[10px] text-[14px]">เพศภาพ</p>
-          <p className="font-body text-[16px] mt-[10px]">
+          <div className="font-body text-[16px] mt-[10px]">
             {toGender(governor.sex)}
-          </p>
+          </div>
         </div>
         <div className="pb-[10px] border-b border-white/[0.1]">
           <p className="font-bold font-body mt-[10px] text-[14px]">เกิด</p>
-          <p className="font-body text-[16px] mt-[10px]">
+          <div className="font-body text-[16px] mt-[10px]">
             {toThaiDate(governor.birthdate)} ({governor.age} ปี)
-          </p>
+          </div>
         </div>
         <div className="pb-[10px] border-b border-white/[0.1]">
           <p className="font-bold font-body mt-[10px] text-[14px]">อายุ</p>
-          <p className="font-body text-[16px] mt-[10px]">{governor.age} ปี</p>
+          <div className="font-body text-[16px] mt-[10px]">
+            {governor.age || '-'} ปี
+          </div>
         </div>
         <div className="pb-[10px] border-b border-white/[0.1]">
           <p className="font-bold font-body mt-[10px] text-[14px]">
             บัญชีทรัพย์สิน
           </p>
-          <p className="font-body text-[16px] mt-[10px]">
+          <div className="font-body text-[16px] mt-[10px]">
             {toList(governor.property)}
-          </p>
+          </div>
         </div>
         <div className="pb-[10px] border-b border-white/[0.1]">
           <p className="font-bold font-body mt-[10px] text-[14px]">
             การศึกษาระดับมัธยมศึกษา
           </p>
-          <p className="font-body text-[16px] mt-[10px]">
+          <div className="font-body text-[16px] mt-[10px]">
             {toList(governor.basic_education)}
-          </p>
+          </div>
         </div>
         <div className="pb-[10px] border-b border-white/[0.1]">
           <p className="font-bold font-body mt-[10px] text-[14px]">
             การศึกษาระดับอุดมศึกษา
           </p>
-          <p className="font-body text-[16px] mt-[10px]">
+          <div className="font-body text-[16px] mt-[10px]">
             {toList(governor.higher_education)}
-          </p>
+          </div>
         </div>
         <div className="pb-[10px] border-b border-white/[0.1]">
           <p className="font-bold font-body mt-[10px] text-[14px]">
             ประวัติอาชีพ/การทำงานทั่วไป
           </p>
-          <p className="font-body text-[16px] mt-[10px]">
+          <div className="font-body text-[16px] mt-[10px]">
             {toList(governor.career)}
-          </p>
+          </div>
         </div>
         <div className="pb-[10px] border-b border-white/[0.1]">
           <p className="font-bold font-body mt-[10px] text-[14px]">
             ประวัติการดำรงตำแหน่งทางการเมือง และประวัติการสังกัดพรรคการเมือง
           </p>
-          <p className="font-body text-[16px] mt-[10px]">
+          <div className="font-body text-[16px] mt-[10px]">
             {toList(governor.political_career)}
-          </p>
+          </div>
         </div>
         <div className="pb-[10px] border-b border-white/[0.1]">
           <p className="font-bold font-body mt-[10px] text-[14px]">
             ลงสมัครในนาม
           </p>
-          <p className="font-body text-[16px] mt-[10px]">{governor.party}</p>
+          <div className="font-body text-[16px] mt-[10px]">
+            {governor.party || '-'}
+          </div>
         </div>
         <div className="pb-[10px] border-b border-white/[0.1]">
           <p className="font-bold font-body mt-[10px] text-[14px]">
             แคมเปญสื่อสาร
           </p>
-          <p className="font-body text-[16px] mt-[10px]">{governor.slogan}</p>
+          <div className="font-body text-[16px] mt-[10px]">
+            {governor.slogan || '-'}
+          </div>
         </div>
         <div className="pb-[10px] border-b border-white/[0.1]">
           <p className="font-bold font-body mt-[10px] text-[14px]">
             ข้อมูลอื่นๆ
           </p>
-          <p className="font-body text-[16px] mt-[10px]">
+          <div className="font-body text-[16px] mt-[10px]">
             {toList(governor.other_data)}
-          </p>
+          </div>
         </div>
         <div className="">
           <p className="font-bold font-body mt-[10px] text-[18px]">

@@ -6,6 +6,7 @@ import { CandidateInfoCard } from '../card/candidateInfo';
 import { Post } from 'wordpress-api';
 import { NewsList } from '../wrapper/newsList';
 import { ShareList } from '../wrapper/shareList';
+import CandidateImg from '../../static/images/candidate.png';
 interface PropsType {
   governor: IGovernor;
   newsList: Post[];
@@ -23,7 +24,8 @@ export function CandidatePage({ governor, newsList, pageUrl }: PropsType) {
         <div
           className="h-[780px] md:h-[670px] w-full bg-contain bg-no-repeat md:bg-cover items-center"
           style={{
-            backgroundImage: 'url(' + `${bgUrl}` + ')',
+            backgroundImage:
+              'url(' + `${governor.profile_pic || CandidateImg.src}` + ')',
           }}
         >
           <div className="flex flex-col md:flex-row justify-between items-center m-auto md:mr-[60px] w-full h-full">
@@ -40,7 +42,7 @@ export function CandidatePage({ governor, newsList, pageUrl }: PropsType) {
       {governor.policy && (
         <div className="px-[8px] py-[28px] md:py-[80px]">
           <p className="typo-h6 mb-[30px] md:mb-[42px] ml-[10%]">นโยบายเด่น</p>
-          <p className="font-body text-[12pt] md:text-[14pt] leading-[1.5] max-w-[280px] md:max-w-[750px] m-auto">
+          <p className="font-body text-[12pt] md:text-[14pt] leading-[1.5] max-w-[280px] md:max-w-[750px] m-auto whitespace-pre-line">
             {governor.policy}
             {governor.policy_url !== null && (
               <button
