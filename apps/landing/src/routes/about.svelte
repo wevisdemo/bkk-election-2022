@@ -1,6 +1,9 @@
 <script lang="ts">
+	import Metadata from '../components/metadata.svelte';
 	import ExternalLink from '../components/external-link.svelte';
 </script>
+
+<Metadata title="เกี่ยวกับเว็บไซต์นี้" />
 
 <div class="max-w-screen-md mx-auto px-4 py-12 md:py-24 space-y-16 md:space-y-20 typo-b4">
 	<div class="text-center">

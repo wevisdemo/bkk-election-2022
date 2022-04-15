@@ -3,6 +3,7 @@
 	import PostGrid from '../components/post-grid.svelte';
 	import Counter from '../components/counter.svelte';
 	import ProjectCard from '../components/project-card.svelte';
+	import Metadata from '../components/metadata.svelte';
 
 	const THE_STANDARD_GUIDE_TAG = 'bkk-election-101';
 
@@ -67,6 +68,8 @@
 		}
 	];
 </script>
+
+<Metadata />
 
 <div class="bg-black text-white">
 	<div

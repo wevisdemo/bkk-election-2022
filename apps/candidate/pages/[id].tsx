@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import { fetchTheStandardElectionPosts, Post } from 'wordpress-api';
 import { useEffect, useState } from 'react';
 import { getNocoApi } from '../utils/nocoHandler';
+import Metadata from '../components/metadata';
 
 interface PropsType {
   candidate: IGovernor;
@@ -33,6 +34,8 @@ export default function Governor({ candidate }: PropsType) {
 
   return (
     <div>
+      <Metadata title={candidate.name || 'ข้อมูลผู้สมัคร'} />
+
       {is_highlight && (
         <HighLightCandidatePage
           governor={candidate}
