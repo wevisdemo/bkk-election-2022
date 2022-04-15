@@ -10,6 +10,7 @@ module.exports = {
       white: "white",
       gray: "#333333",
       transparent: "transparent",
+      ultramarine: "#3904E9",
     },
   },
 };
