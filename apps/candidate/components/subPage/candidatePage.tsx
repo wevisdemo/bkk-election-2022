@@ -1,19 +1,23 @@
 import { IGovernor } from '../../types/business';
 import arrow from '../../static/icons/arrow.svg';
-import { useRouter } from 'next/router';
 import { BackToHomeCard } from '../card/backToHome';
 import { CandidateInfoCard } from '../card/candidateInfo';
 import { Post } from 'wordpress-api';
 import { NewsList } from '../wrapper/newsList';
 import { ShareList } from '../wrapper/shareList';
-import CandidateImg from '../../static/images/candidate.png';
 import { useEffect, useState } from 'react';
 interface PropsType {
   governor: IGovernor;
   newsList: Post[];
   pageUrl: string;
+  isComingSoon: boolean;
 }
-export function CandidatePage({ governor, newsList, pageUrl }: PropsType) {
+export function CandidatePage({
+  governor,
+  newsList,
+  pageUrl,
+  isComingSoon,
+}: PropsType) {
   const [matches, setMatches] = useState<boolean>(false);
   useEffect(() => {
     if (window.matchMedia('(min-width: 768px)').matches) {
@@ -76,11 +80,11 @@ export function CandidatePage({ governor, newsList, pageUrl }: PropsType) {
       {newsList.length > 0 && (
         <div>
           <NewsList newsList={newsList} />
-          <div className="m-auto mb-[20px] mt-[70px] text-center">
-            <ShareList url={pageUrl} />
-          </div>
         </div>
       )}
+      <div className="m-auto mb-[20px] mt-[70px] text-center">
+        <ShareList url={pageUrl} />
+      </div>
       <BackToHomeCard />
     </div>
   );

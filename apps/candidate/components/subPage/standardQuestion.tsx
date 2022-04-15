@@ -1,29 +1,8 @@
 import { Fragment, useContext } from 'react';
-import { AppContext } from '../../store';
 import playButtonGray from '../../static/icons/play-gray.svg';
-import { IQuestion } from '../../types/business';
-import { AnswerStandardCard } from '../../components/card/answerStandard';
 import { AnswerStandardList } from '../../components/wrapper/answerStandardList';
 
 export default function StandardQuestion() {
-  const { store } = useContext(AppContext);
-  const qaList = store.qaList;
-  // const questionCategory = store.questionCategory;
-  const question: IQuestion = {
-    id: 1,
-    type: 'policy',
-    number: 1,
-    question:
-      'Bibendum tempor pretium, ut lorem pellentesque ut dictum tortor tincidunt. Facilisis mi eu congue ?',
-    description:
-      '(เผื่ออธิบายcontextคำถามเพิ่ม)Egestas dui dis eget velit faucibus odio sed venenatis. Velit posuere tortor suspendisse non dignissim massa feugiat. Bibendum vitae id mattis interdum scelerisque. Enim, auctor enim euismod ut bibendum vestibulum feugiat.',
-    nc_xeff__candidates_id: 1,
-    governorsRead: {
-      id: 1,
-      name: 'string',
-    },
-  };
-
   const onClickQuestion = () => {
     // TODO: redirect to question
   };
@@ -60,7 +39,7 @@ export default function StandardQuestion() {
   return (
     <Fragment>
       <div className="pt-[110px]  px-[20px]">
-        <div className=" max-w-[930px] m-auto text-center">
+        {/* <div className=" max-w-[930px] m-auto text-center">
           <p className="font-heading font-semibold text-[12pt] md:text-[16pt] leading-[1.25]">
             {question.type} Question {question.number}:
           </p>
@@ -70,9 +49,9 @@ export default function StandardQuestion() {
           <p className="font-body text-[12pt] md:text-[14pt] leading-[1.5] mt-[75px] md:mt-[63px]">
             {question.description}
           </p>
-        </div>
+        </div> */}
         <div className="mt-[90px] md:mt-[165px] mb-[48px] md:mb-[94px]">
-          <AnswerStandardList answerList={qaList} />
+          {/* <AnswerStandardList answerList={qaList} /> */}
         </div>
       </div>
 

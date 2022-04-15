@@ -1,5 +1,4 @@
-import { ICandidate, IGovernor } from '../../types/business';
-import { CandidateBadge } from '../badge/candidate';
+import { IGovernor } from '../../types/business';
 import { HighlightCandidateBadge } from '../badge/highlightCandidate';
 
 interface PropType {

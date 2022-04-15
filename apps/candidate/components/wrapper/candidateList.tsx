@@ -1,5 +1,4 @@
-import { Fragment, useContext } from 'react';
-import { AppContext } from '../../store';
+import { Fragment } from 'react';
 import { IGovernor } from '../../types/business';
 import { CandidateBadge } from '../badge/candidate';
 

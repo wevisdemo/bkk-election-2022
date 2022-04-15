@@ -1,32 +1,29 @@
-import type { GetStaticProps, NextPage } from 'next';
+import type { GetStaticProps } from 'next';
 import arrow from '../static/icons/arrow.svg';
 import arrowW from '../static/icons/arrow-white.svg';
-import { CandidateBadge } from '../components/badge/candidate';
 import { HighLightCandidateList } from '../components/wrapper/highlightCandidateList';
 import { QuestionOverview } from '../components/card/questionOverview';
 import { CandidateList } from '../components/wrapper/candidateList';
-import { AppContext } from '../store';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { CouncilList } from '../components/wrapper/councilList';
 import { ShareList } from '../components/wrapper/shareList';
 import { getNocoApi } from '../utils/nocoHandler';
-import axios from 'axios';
 import { ICouncil, IGovernor, IQuestion } from '../types/business';
 
 interface PropsType {
   candidateList: IGovernor[];
   councilList: ICouncil[];
   questionList: IQuestion[];
+  isComingSoon: boolean;
   errMsg: string;
 }
 const Home = ({
   candidateList,
   councilList,
   questionList,
+  isComingSoon,
   errMsg,
 }: PropsType) => {
-  const { store } = useContext(AppContext);
-
   const [govArrow, setGovArrow] = useState<boolean>(true);
   const [counArrow, setCounArrow] = useState<boolean>(true);
   const [govRotate, setGovRotate] = useState<boolean>(false);
@@ -153,7 +150,10 @@ const Home = ({
               <p className="typo-h5 mt-4 text-white">ผู้สมัครในกระแส</p>
             </div>
             <HighLightCandidateList candidateList={getCandidateHighlight()} />
-            <QuestionOverview isComingSoon questionList={questionList} />
+            <QuestionOverview
+              isComingSoon={isComingSoon}
+              questionList={questionList}
+            />
           </div>
         </div>
         <div className="bg-[#333333]">
@@ -164,7 +164,7 @@ const Home = ({
       </div>
       {/* break */}
       <div ref={councilRef}>
-        <CouncilList districts={store.districtList} councils={councilList} />
+        <CouncilList councils={councilList} />
       </div>
       <div className="m-auto mb-[20px] text-center">
         <ShareList url={pageUrl} />
@@ -175,6 +175,7 @@ const Home = ({
 };
 
 export const getStaticProps: GetStaticProps<PropsType> = async (context) => {
+  const isComingSoon = process.env.COMING_SOON === 'true' ? true : false;
   let candidateList = [] as IGovernor[];
   let councilList = [] as ICouncil[];
   let questionList = [] as IQuestion[];
@@ -182,7 +183,13 @@ export const getStaticProps: GetStaticProps<PropsType> = async (context) => {
   if (errMsg1) {
     // TODO: redirect
     return {
-      props: { candidateList, councilList, questionList, errMsg: errMsg1 },
+      props: {
+        candidateList,
+        councilList,
+        questionList,
+        isComingSoon,
+        errMsg: errMsg1,
+      },
     };
   }
   candidateList = candidateRes.data as IGovernor[];
@@ -191,7 +198,13 @@ export const getStaticProps: GetStaticProps<PropsType> = async (context) => {
   if (errMsg2) {
     // TODO: redirect
     return {
-      props: { candidateList, councilList, questionList, errMsg: errMsg1 },
+      props: {
+        candidateList,
+        councilList,
+        questionList,
+        isComingSoon,
+        errMsg: errMsg1,
+      },
     };
   }
   councilList = councilRes.data as ICouncil[];
@@ -200,12 +213,26 @@ export const getStaticProps: GetStaticProps<PropsType> = async (context) => {
   if (errMsg2) {
     // TODO: redirect
     return {
-      props: { candidateList, councilList, questionList, errMsg: errMsg1 },
+      props: {
+        candidateList,
+        councilList,
+        questionList,
+        isComingSoon,
+        errMsg: errMsg1,
+      },
     };
   }
   questionList = questionRes.data as IQuestion[];
 
-  return { props: { candidateList, councilList, questionList, errMsg: '' } };
+  return {
+    props: {
+      candidateList,
+      councilList,
+      questionList,
+      isComingSoon,
+      errMsg: '',
+    },
+  };
 };
 
 export default Home;

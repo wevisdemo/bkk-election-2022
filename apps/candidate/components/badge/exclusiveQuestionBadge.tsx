@@ -1,27 +1,39 @@
-import { IQA } from '../../types/business';
+import { IAnswer } from '../../types/business';
+import { getYoutubeId } from '../../utils/tranformation';
 
 interface PropsType {
-  qa: IQA;
+  answer: IAnswer;
   ignoreGovernor?: boolean;
 }
-export function ExclusiveQuestionBadge(props: PropsType) {
-  const qa = props.qa;
+export function ExclusiveQuestionBadge({ answer, ignoreGovernor }: PropsType) {
+  const youtubeId = getYoutubeId(answer.url);
+  const youtubeEmbedUrl = youtubeId
+    ? `https://www.youtube.com/embed/${youtubeId}`
+    : '';
+
   return (
     <div className="max-w-[1500px] w-[90vw] mt-[50px] mb-[100px]">
-      <iframe
-        className="max-w-[1500px] max-h-[843.75px] w-[90vw] h-[50.625vw] mb-[40px]"
-        src="https://www.youtube.com/embed/9L2o3X2PkA8"
-        title="YouTube video player"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-      ></iframe>
-      {!props.ignoreGovernor && (
-        <p className="font-heading font-semibold text-[14pt] md:text-[18pt] text-white mb-[20px]">
-          {qa.governor}
+      {youtubeEmbedUrl ? (
+        <iframe
+          className="max-w-[1500px] max-h-[843.75px] w-[90vw] h-[50.625vw] mb-[40px]"
+          src={youtubeEmbedUrl}
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
+      ) : (
+        <div className="max-w-[1500px] max-h-[843.75px] w-[90vw] h-[50.625vw] mb-[40px] bg-[#333333] typo-h3 text-white flex items-center justify-center">
+          No Video
+        </div>
+      )}
+
+      {!ignoreGovernor && (
+        <p className="typo-h6 text-white mb-[20px]">
+          {answer.governorsRead.name}
         </p>
       )}
-      <p className="typo-b5 text-white max-w-[650px] m-auto">{qa.answer}</p>
+      <p className="typo-b3 text-white max-w-[650px] m-auto">{answer.text}</p>
     </div>
   );
 }

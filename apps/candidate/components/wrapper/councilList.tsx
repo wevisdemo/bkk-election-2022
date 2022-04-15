@@ -5,7 +5,6 @@ import { Council } from '../card/council';
 import { Dropdown } from '../dropdown';
 
 interface PropsType {
-  districts: IDistrict[];
   councils: ICouncil[];
 }
 

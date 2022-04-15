@@ -19,7 +19,14 @@ interface PropsType {
 export function ShareList({ url, white }: PropsType) {
   return (
     <div className="flex items-center px-[30px] py-[16px] m-auto justify-center">
-      <p className="font-body text-[16px] mr-[10px]"> Share</p>
+      <p
+        className={`font-body text-[16px] mr-[10px] ${
+          white ? 'text-white' : ''
+        }`}
+      >
+        {' '}
+        Share
+      </p>
       <div className="space-x-[10px] flex">
         <FacebookShareButton url={url}>
           <img src={white ? iFacebookW.src : iFacebookB.src} alt="i-facebook" />

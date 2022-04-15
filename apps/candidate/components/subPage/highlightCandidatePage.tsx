@@ -1,12 +1,9 @@
 import { IGovernor } from '../../types/business';
-import arrowLong from '../../static/icons/arrow-long.svg';
-import { useRouter } from 'next/router';
 import { BackToHomeCard } from '../card/backToHome';
 import { CandidateInfoCard } from '../card/candidateInfo';
 import { NewsList } from '../wrapper/newsList';
 import { Post } from 'wordpress-api';
 import { ShareList } from '../wrapper/shareList';
-import CandidateImg from '../../static/images/candidate.png';
 import { useEffect, useState } from 'react';
 
 interface PropsType {
@@ -66,11 +63,11 @@ export function HighLightCandidatePage({
       {newsList.length > 0 && (
         <div>
           <NewsList newsList={newsList} />
-          <div className="m-auto mb-[20px] mt-[70px] text-center">
-            <ShareList url={pageUrl} />
-          </div>
         </div>
       )}
+      <div className="m-auto mb-[20px] mt-[70px] text-center">
+        <ShareList url={pageUrl} />
+      </div>
       <BackToHomeCard />
     </div>
   );

@@ -1,4 +1,4 @@
-import { ICandidate, IGovernor } from '../../types/business';
+import { IGovernor } from '../../types/business';
 import candidataImg from '../../static/images/candidate.png';
 import { useRouter } from 'next/router';
 interface PropType {

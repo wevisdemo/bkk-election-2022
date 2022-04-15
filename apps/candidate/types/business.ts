@@ -52,6 +52,11 @@ export interface IQA2 {
   url: string;
 }
 
+interface IQuestionAnswerList {
+  id: number;
+  nc_xeff__candidates_id: number;
+  nc_xeff__questions_id: number;
+}
 export interface IQuestion {
   id: number;
   type: string; // TODO: change to enum
@@ -59,9 +64,26 @@ export interface IQuestion {
   question: string;
   description: string;
   nc_xeff__candidates_id: number;
+  answersList: IQuestionAnswerList[];
+  governorsRead?: {
+    id: number;
+    name: string;
+  };
+}
+
+export interface IAnswer {
+  id: number;
+  nc_xeff__candidates_id: number;
+  nc_xeff__questions_id: number;
+  text: string;
+  url: string;
   governorsRead: {
     id: number;
     name: string;
+  };
+  questionsRead: {
+    id: number;
+    question: string;
   };
 }
 

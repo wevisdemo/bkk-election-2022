@@ -1,7 +1,6 @@
 import playButtonBw from '../../static/icons/play-wb.svg';
 import playButtonGray from '../../static/icons/play-gray.svg';
-import { AppContext } from '../../store';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { IQuestion, IQuestionCategory } from '../../types/business';
 
 interface Propstype {
@@ -17,9 +16,6 @@ const initialQuestionCat: IQuestionCategory = {
 };
 
 export function QuestionOverview(props: Propstype) {
-  // TODO: get from props
-  const { store } = useContext(AppContext);
-  // const questionCategory = store.questionCategory;
   const [questionCat, setQuestionCat] =
     useState<IQuestionCategory>(initialQuestionCat);
   const { isComingSoon, questionList } = props;

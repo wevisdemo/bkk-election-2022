@@ -38,10 +38,10 @@ export function GovernorQuestionList() {
               <p className="font-heading font-semibold text-[24pt] md:text-[36pt] text-white mt-[15px] md:mb-[30px]">
                 {qaTypeList.exclusive[0].question}
               </p>
-              <ExclusiveQuestionBadge
-                qa={qaTypeList.exclusive[0]}
+              {/* <ExclusiveQuestionBadge
+                answer={qaTypeList.exclusive[0]}
                 ignoreGovernor
-              />
+              /> */}
             </div>
           </div>
         </div>
