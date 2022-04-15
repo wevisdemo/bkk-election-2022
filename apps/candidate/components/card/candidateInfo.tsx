@@ -123,7 +123,7 @@ export function CandidateInfoCard({ governor }: PropsType) {
   };
 
   return (
-    <div className="w-full max-w-[250px] md:max-w-[400px] md:max-h-[550px] max-h-[400px] bg-black/[0.7] text-white mx-auto mb-[20px] px-[20px] overflow-scroll pb-[50px] rounded-[5px]">
+    <div className="w-full max-w-[250px] md:max-w-[400px] md:max-h-[550px] max-h-[400px] bg-black/[0.7] text-white mx-auto mb-[20px] px-[20px] overflow-y-auto pb-[50px] rounded-[5px]">
       <p className="typo-h7 text-center mt-[20px]">ข้อมูลพื้นฐาน</p>
       <div>
         <div className="pb-[10px] border-b border-white/[0.1]">
