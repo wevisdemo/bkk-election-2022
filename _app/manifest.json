@@ -1,51 +1,72 @@
 {
   ".svelte-kit/runtime/client/start.js": {
-    "file": "start-7f1afcea.js",
+    "file": "start-b6f3d637.js",
     "src": ".svelte-kit/runtime/client/start.js",
     "isEntry": true,
     "imports": [
-      "_vendor-af34bed1.js"
+      "_vendor-130a3e33.js"
     ],
     "dynamicImports": [
       "src/routes/__layout.svelte",
       ".svelte-kit/runtime/components/error.svelte",
-      "src/routes/index.svelte"
+      "src/routes/index.svelte",
+      "src/routes/about.svelte"
     ]
   },
   "src/routes/__layout.svelte": {
-    "file": "pages/__layout.svelte-abc27779.js",
+    "file": "pages/__layout.svelte-d47adca2.js",
     "src": "src/routes/__layout.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_vendor-af34bed1.js"
+      "_vendor-130a3e33.js"
     ],
     "css": [
-      "assets/pages/__layout.svelte-0aaecc6c.css"
+      "assets/pages/__layout.svelte-4ea2ba4f.css"
     ]
   },
   ".svelte-kit/runtime/components/error.svelte": {
-    "file": "error.svelte-b36efa42.js",
+    "file": "error.svelte-5a00914d.js",
     "src": ".svelte-kit/runtime/components/error.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_vendor-af34bed1.js"
+      "_vendor-130a3e33.js"
     ]
   },
   "src/routes/index.svelte": {
-    "file": "pages/index.svelte-27d5a552.js",
+    "file": "pages/index.svelte-876727e0.js",
     "src": "src/routes/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_vendor-af34bed1.js"
+      "_vendor-130a3e33.js",
+      "_metadata-c92f9c48.js"
     ],
     "css": [
-      "assets/pages/index.svelte-cb83a46f.css"
+      "assets/pages/index.svelte-f760298b.css"
     ]
   },
-  "_vendor-af34bed1.js": {
-    "file": "chunks/vendor-af34bed1.js"
+  "src/routes/about.svelte": {
+    "file": "pages/about.svelte-9d642a37.js",
+    "src": "src/routes/about.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor-130a3e33.js",
+      "_metadata-c92f9c48.js"
+    ],
+    "css": [
+      "assets/pages/about.svelte-d9dd4950.css"
+    ]
+  },
+  "_vendor-130a3e33.js": {
+    "file": "chunks/vendor-130a3e33.js"
+  },
+  "_metadata-c92f9c48.js": {
+    "file": "chunks/metadata-c92f9c48.js",
+    "imports": [
+      "_vendor-130a3e33.js"
+    ]
   }
 }
