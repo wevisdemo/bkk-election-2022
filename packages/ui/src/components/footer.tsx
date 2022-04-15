@@ -21,11 +21,10 @@ const organizations = [
 ];
 
 const links = [
-  { label: 'ข้อมูลผู้สมัคร', href: '#' },
-  { label: 'ประวัติการลงคะแนน', href: '#' },
-  { label: 'เลือกอย่างไร?', href: '#' },
-  { label: 'Facts', href: '#' },
-  { label: 'เกี่ยวกับเว็บไซต์นี้', href: '#' },
+  { label: 'ข้อมูลผู้สมัคร', href: '/candidate' },
+  // { label: 'ประวัติการลงคะแนน', href: '#' },
+  // { label: 'เลือกอย่างไร?', href: '#' },
+  { label: 'เกี่ยวกับเว็บไซต์นี้', href: '/about' },
 ];
 
 const Footer: Component = () => {
