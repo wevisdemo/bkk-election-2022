@@ -1,4 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { ExclusiveQuestion } from '../../components/subPage/exclusiveQuestion';
 import { IAnswer, IQuestion } from '../../types/business';
@@ -8,26 +9,39 @@ interface PropsType {
   question: IQuestion;
   questionList: IQuestion[];
   answerList: IAnswer[];
+  isComingSoon: boolean;
 }
 
 export default function QuestionPage({
   question,
   questionList,
   answerList,
+  isComingSoon,
 }: PropsType) {
+  const router = useRouter();
   const [pageUrl, setPageUrl] = useState<string>('');
+  const isExclusive = question.type === 'exclusive';
 
   useEffect(() => {
     setPageUrl(window.location.href);
+    if (isComingSoon) {
+      router.push('/comingSoon');
+    }
   }, []);
   return (
     <div>
-      <ExclusiveQuestion
-        question={question}
-        answerList={answerList}
-        questionList={questionList}
-        pageUrl={pageUrl}
-      />
+      {isComingSoon ? (
+        <div />
+      ) : isExclusive ? (
+        <ExclusiveQuestion
+          question={question}
+          answerList={answerList}
+          questionList={questionList}
+          pageUrl={pageUrl}
+        />
+      ) : (
+        <div />
+      )}
     </div>
   );
 }
@@ -48,15 +62,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps<PropsType> = async (context) => {
   const isComingSoon = process.env.COMING_SOON === 'true' ? true : false;
-  if (isComingSoon) {
-    return {
-      redirect: {
-        permanent: true,
-        destination: '/comingSoon',
-      },
-    };
-  }
   const id = context.params?.id;
+  let question = {} as IQuestion;
+  let questionList = [] as IQuestion[];
+  let answerList = [] as IAnswer[];
   const [questionRes, errMsg] = await getNocoApi(`questions/${id}`);
   if (errMsg) {
     return {
@@ -76,15 +85,15 @@ export const getStaticProps: GetStaticProps<PropsType> = async (context) => {
     };
   }
 
-  const question = questionRes.data as IQuestion;
-  const questionList = questionListRes.data as IQuestion[];
+  question = questionRes.data as IQuestion;
+  questionList = questionListRes.data as IQuestion[];
   const answerIds = question.answersList.map((ans) => ans.id);
-  const answerList: IAnswer[] = await Promise.all(
+  answerList = await Promise.all(
     answerIds.map(async (id) => {
       const [answerRes, errMsg3] = await getNocoApi(`answers/${id}`);
       return answerRes.data as IAnswer;
     })
   );
 
-  return { props: { question, questionList, answerList } };
+  return { props: { question, questionList, isComingSoon, answerList } };
 };

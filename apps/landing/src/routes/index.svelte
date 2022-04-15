@@ -3,6 +3,7 @@
 	import PostGrid from '../components/post-grid.svelte';
 	import Counter from '../components/counter.svelte';
 	import ProjectCard from '../components/project-card.svelte';
+	import Metadata from '../components/metadata.svelte';
 
 	const THE_STANDARD_GUIDE_TAG = 'bkk-election-101';
 
@@ -32,42 +33,43 @@
 			th: 'ข้อมูลผู้สมัครผู้ว่าฯ + ส.ก.',
 			en: 'Meet the Candidates',
 			href: '/candidate',
-			image: 'https://via.placeholder.com/406x213'
+			image: 'https://via.placeholder.com/406x213?text=candidates'
 		},
 		{
 			th: 'ผลการเลือกตั้ง กทม.',
 			en: 'Voting Map',
-			href: '#',
-			image: 'https://via.placeholder.com/406x213'
+			image: '/static/images/cover/tn_result.png'
 		},
 		{
 			th: 'ตรวจสอบกติกาการเลือกตั้ง',
 			en: 'How to Vote?',
 			href: '',
-			image: 'https://via.placeholder.com/406x213'
+			image: '/static/images/cover/tn_howtovote.png'
 		},
 		{
 			th: 'ศึกเลือกตั้ง กทม. บนโลกโซเชียล',
 			en: 'Social Trend',
 			href: '/socialtrend',
-			image: 'https://via.placeholder.com/406x213'
+			image: '/static/images/cover/tn_sociallistening.png'
 		},
 		{
 			th: 'ข้อมูลปัญหากวนใจชาว กทม.',
 			en: 'Open Bangkok',
 			href: 'https://openbangkok.wevis.info',
 			external: true,
-			image: 'https://via.placeholder.com/406x213'
+			image: '/static/images/cover/tn_openbkk.png'
 		},
 		{
 			th: 'ร่วมออกแบบงบประมาณ กทม.',
 			en: 'Bangkok Budgeting',
 			href: 'https://bangkokbudgeting.wevis.info',
 			external: true,
-			image: 'https://via.placeholder.com/406x213'
+			image: '/static/images/cover/tn_bangkokbudget.png'
 		}
 	];
 </script>
+
+<Metadata />
 
 <div class="bg-black text-white">
 	<div
@@ -88,7 +90,7 @@
 			</div>
 			<div class="flex-1 flex flex-col space-y-8">
 				<img
-					src="https://via.placeholder.com/480x270"
+					src="https://via.placeholder.com/480x270?text=video"
 					alt="Video"
 					class="w-full h-auto hidden md:block"
 				/>

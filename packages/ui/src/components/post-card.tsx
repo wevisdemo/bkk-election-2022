@@ -1,7 +1,7 @@
 /* @refresh reload */
-import { Component, For, Show } from 'solid-js';
+import { Component, Show } from 'solid-js';
 import { noShadowDOM } from 'component-register';
-
+import DOMPurify from 'dompurify';
 interface PostCardProps {
   title: string;
   image: string;
@@ -39,12 +39,19 @@ const PostCard: Component<PostCardProps> = ({
       }
     >
       <a
-        class="ui-flex ui-flex-col ui-space-y-4 md:ui-space-y-6"
+        class="ui-group ui-flex ui-flex-col ui-space-y-4 md:ui-space-y-6"
         href={link}
         target="_blank"
       >
-        <img src={image} alt={title} />
-        <p class="typo-h9">{title}</p>
+        <img
+          src={image}
+          alt={title}
+          class="ui-border-2 ui-border-transparent group-hover:ui-border-black"
+        />
+        <p
+          class="typo-h9 group-hover:ui-underline"
+          innerHTML={DOMPurify.sanitize(title)}
+        />
         <div class="ui-flex ui-flex-row typo-u5">
           <p class="ui-opacity-50 ui-flex-1">{date}</p>
           <div class="ui-font-bold ui-flex ui-flex-row ui-space-x-1">

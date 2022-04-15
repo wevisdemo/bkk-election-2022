@@ -4,14 +4,18 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'socialtrend',
+    title: 'Social Trend - Bangkok Election 2022',
     htmlAttrs: {
       lang: 'th',
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'ติดตามข้อมูลเกี่ยวกับการเลือกตั้ง กทม. 2022 ได้ที่นี่',
+      },
       { name: 'format-detection', content: 'telephone=no' },
     ],
     link: [
