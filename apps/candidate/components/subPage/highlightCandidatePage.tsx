@@ -7,6 +7,7 @@ import { NewsList } from '../wrapper/newsList';
 import { Post } from 'wordpress-api';
 import { ShareList } from '../wrapper/shareList';
 import CandidateImg from '../../static/images/candidate.png';
+import { useEffect, useState } from 'react';
 
 interface PropsType {
   governor: IGovernor;
@@ -20,17 +21,25 @@ export function HighLightCandidatePage({
   newsList,
   pageUrl,
 }: PropsType) {
-  // TODO: change bgUrl
-  const bgUrl = 'https://peachpharm.files.wordpress.com/2013/06/mac-4.jpg';
-
+  const [matches, setMatches] = useState<boolean>(false);
+  useEffect(() => {
+    if (window.matchMedia('(min-width: 768px)').matches) {
+      setMatches(true);
+    }
+    window
+      .matchMedia('(min-width: 768px)')
+      .addEventListener('change', (e) => setMatches(e.matches));
+  }, []);
   return (
     <div>
       <div className="bg-[#333333]">
         <div
-          className="h-[780px] md:h-[670px] w-full bg-contain bg-no-repeat md:bg-cover items-center"
+          className={`h-[780px] md:h-[670px] w-full bg-contain bg-no-repeat md:bg-cover items-center`}
           style={{
             backgroundImage:
-              'url(' + `${governor.profile_pic || CandidateImg.src}` + ')',
+              'url(' +
+              `${matches ? governor.cover_pic : governor.profile_pic}` +
+              ')',
           }}
         >
           <div className="flex flex-col md:flex-row justify-between items-center m-auto md:mr-[60px] w-full h-full">

@@ -11,12 +11,12 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 interface Propstype {
   qaList: IQA[];
-  qaType: 'policy' | 'opiniion' | 'lifestyle' | 'special';
+  qaType: 'policy' | 'opinion' | 'lifestyle' | 'special';
 }
 
 const questionTypeDict = {
   policy: 'ด้านนโยบาย',
-  opiniion: 'ด้านวิศัยทัศน์',
+  opinion: 'ด้านวิศัยทัศน์',
   lifestyle: 'ด้าน Lifestyle',
   special: 'เคลียใจ',
 };

@@ -17,9 +17,10 @@ export enum ActionEnum {
 }
 
 export interface IQuestionCategory {
-  policy: string[];
-  opinion: string[];
-  lifestyle: string[];
+  exclusive: IQuestion[];
+  policy: IQuestion[];
+  opinion: IQuestion[];
+  lifestyle: IQuestion[];
 }
 
 export interface ICouncil {
@@ -41,13 +42,27 @@ export interface IQA {
   url: string;
 }
 
+export interface IQA2 {
+  question_id: number;
+  answer_id: number;
+  governor: string;
+  question: string;
+  question_type: string;
+  answer: string;
+  url: string;
+}
+
 export interface IQuestion {
   id: number;
   type: string; // TODO: change to enum
-  special_for_governor: string;
   number: number;
   question: string;
   description: string;
+  nc_xeff__candidates_id: number;
+  governorsRead: {
+    id: number;
+    name: string;
+  };
 }
 
 export interface IGovernor {
@@ -66,6 +81,7 @@ export interface IGovernor {
   contact_facebook: null | string;
   contact_twitter: null | string;
   profile_pic: null | string;
+  cover_pic: null | string;
   nickname: null | string;
   highlight: null | true;
   policy_url: null | string;

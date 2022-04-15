@@ -1,12 +1,13 @@
 import { useContext } from 'react';
-import { ExclusiveQuestion } from '../../components/badge/exclusiveQuestion';
+import { ExclusiveQuestionBadge } from '../badge/exclusiveQuestionBadge';
 import { AppContext } from '../../store';
 import playButtonGray from '../../static/icons/play-gray.svg';
+import { GetStaticProps } from 'next';
 
-export default function QuestionExclusive() {
+export default function ExclusiveQuestion() {
   const { store } = useContext(AppContext);
   const qaList = store.qaList;
-  const questionCategory = store.questionCategory;
+  // const questionCategory = store.questionCategory;
 
   const onClickQuestion = () => {
     // TODO: redirect to question
@@ -54,7 +55,7 @@ export default function QuestionExclusive() {
           </p>
         </div>
         {qaList.map((qa, index) => {
-          return <ExclusiveQuestion key={index} qa={qa} />;
+          return <ExclusiveQuestionBadge key={index} qa={qa} />;
         })}
       </div>
 
@@ -73,9 +74,9 @@ export default function QuestionExclusive() {
           </p>
         </div>
         <div className="grid grid-cols md:grid-cols-3 gap-[30px] my-10">
-          {questionColumn('Policy', questionCategory.policy)}
+          {/* {questionColumn('Policy', questionCategory.policy)}
           {questionColumn('Opinion', questionCategory.opinion)}
-          {questionColumn('Lifestyle', questionCategory.lifestyle)}
+          {questionColumn('Lifestyle', questionCategory.lifestyle)} */}
         </div>
       </div>
     </div>

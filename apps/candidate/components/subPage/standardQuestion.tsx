@@ -1,24 +1,27 @@
 import { Fragment, useContext } from 'react';
-import { ExclusiveQuestion } from '../../components/badge/exclusiveQuestion';
 import { AppContext } from '../../store';
 import playButtonGray from '../../static/icons/play-gray.svg';
 import { IQuestion } from '../../types/business';
 import { AnswerStandardCard } from '../../components/card/answerStandard';
 import { AnswerStandardList } from '../../components/wrapper/answerStandardList';
 
-export default function QuestionStandard() {
+export default function StandardQuestion() {
   const { store } = useContext(AppContext);
   const qaList = store.qaList;
-  const questionCategory = store.questionCategory;
+  // const questionCategory = store.questionCategory;
   const question: IQuestion = {
     id: 1,
     type: 'policy',
-    special_for_governor: '',
     number: 1,
     question:
       'Bibendum tempor pretium, ut lorem pellentesque ut dictum tortor tincidunt. Facilisis mi eu congue ?',
     description:
       '(เผื่ออธิบายcontextคำถามเพิ่ม)Egestas dui dis eget velit faucibus odio sed venenatis. Velit posuere tortor suspendisse non dignissim massa feugiat. Bibendum vitae id mattis interdum scelerisque. Enim, auctor enim euismod ut bibendum vestibulum feugiat.',
+    nc_xeff__candidates_id: 1,
+    governorsRead: {
+      id: 1,
+      name: 'string',
+    },
   };
 
   const onClickQuestion = () => {
@@ -89,9 +92,9 @@ export default function QuestionStandard() {
             </p>
           </div>
           <div className="grid grid-cols md:grid-cols-3 gap-[30px] my-10">
-            {questionColumn('Policy', questionCategory.policy)}
+            {/* {questionColumn('Policy', questionCategory.policy)}
             {questionColumn('Opinion', questionCategory.opinion)}
-            {questionColumn('Lifestyle', questionCategory.lifestyle)}
+            {questionColumn('Lifestyle', questionCategory.lifestyle)} */}
           </div>
         </div>
       </div>

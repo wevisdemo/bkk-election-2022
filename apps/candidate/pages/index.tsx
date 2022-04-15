@@ -11,14 +11,20 @@ import { CouncilList } from '../components/wrapper/councilList';
 import { ShareList } from '../components/wrapper/shareList';
 import { getNocoApi } from '../utils/nocoHandler';
 import axios from 'axios';
-import { ICouncil, IGovernor } from '../types/business';
+import { ICouncil, IGovernor, IQuestion } from '../types/business';
 
 interface PropsType {
   candidateList: IGovernor[];
   councilList: ICouncil[];
+  questionList: IQuestion[];
   errMsg: string;
 }
-const Home = ({ candidateList, councilList, errMsg }: PropsType) => {
+const Home = ({
+  candidateList,
+  councilList,
+  questionList,
+  errMsg,
+}: PropsType) => {
   const { store } = useContext(AppContext);
 
   const [govArrow, setGovArrow] = useState<boolean>(true);
@@ -147,7 +153,7 @@ const Home = ({ candidateList, councilList, errMsg }: PropsType) => {
               <p className="typo-h5 mt-4 text-white">ผู้สมัครในกระแส</p>
             </div>
             <HighLightCandidateList candidateList={getCandidateHighlight()} />
-            <QuestionOverview isComingSoon />
+            <QuestionOverview isComingSoon questionList={questionList} />
           </div>
         </div>
         <div className="bg-[#333333]">
@@ -171,21 +177,35 @@ const Home = ({ candidateList, councilList, errMsg }: PropsType) => {
 export const getStaticProps: GetStaticProps<PropsType> = async (context) => {
   let candidateList = [] as IGovernor[];
   let councilList = [] as ICouncil[];
+  let questionList = [] as IQuestion[];
   const [candidateRes, errMsg1] = await getNocoApi('governors');
   if (errMsg1) {
     // TODO: redirect
-    return { props: { candidateList, councilList, errMsg: errMsg1 } };
+    return {
+      props: { candidateList, councilList, questionList, errMsg: errMsg1 },
+    };
   }
   candidateList = candidateRes.data as IGovernor[];
 
   const [councilRes, errMsg2] = await getNocoApi('councils');
   if (errMsg2) {
     // TODO: redirect
-    return { props: { candidateList, councilList, errMsg: errMsg1 } };
+    return {
+      props: { candidateList, councilList, questionList, errMsg: errMsg1 },
+    };
   }
   councilList = councilRes.data as ICouncil[];
 
-  return { props: { candidateList, councilList, errMsg: '' } };
+  const [questionRes, errMsg3] = await getNocoApi('questions');
+  if (errMsg2) {
+    // TODO: redirect
+    return {
+      props: { candidateList, councilList, questionList, errMsg: errMsg1 },
+    };
+  }
+  questionList = questionRes.data as IQuestion[];
+
+  return { props: { candidateList, councilList, questionList, errMsg: '' } };
 };
 
 export default Home;

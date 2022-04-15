@@ -13,11 +13,20 @@ interface PropsType {
 }
 
 export function CandidateInfoCard({ governor }: PropsType) {
+  const hasContact =
+    governor.contact_instagram &&
+    governor.contact_email &&
+    governor.contact_facebook &&
+    governor.contact_line &&
+    governor.contact_tiktok &&
+    governor.contact_twitter &&
+    governor.contact_web &&
+    governor.contact_youtube;
   const toList = (str: string | null) => {
     if (!str) {
       return '-';
     }
-    const list = str.split('\n-');
+    const list = str.trim().split('\n-');
     if (list.length > 0) {
       list[0] = list[0].replace('-', '');
     }
@@ -34,10 +43,10 @@ export function CandidateInfoCard({ governor }: PropsType) {
     if (!str) {
       return '-';
     }
-    if (str === 'male') {
+    if (str.trim() === 'male') {
       return 'ชาย';
     }
-    if (str === 'female') {
+    if (str.trim() === 'female') {
       return 'หญิง';
     }
     return str;
@@ -205,21 +214,23 @@ export function CandidateInfoCard({ governor }: PropsType) {
             {toList(governor.other_data)}
           </div>
         </div>
-        <div className="">
-          <p className="font-bold font-body mt-[10px] text-[18px]">
-            Official Contact
-          </p>
-          <div className="space-x-[10px] mt-[5px] flex">
-            {contactButton('website')}
-            {contactButton('email')}
-            {contactButton('facebook')}
-            {contactButton('twitter')}
-            {contactButton('instagram')}
-            {contactButton('line')}
-            {contactButton('youtube')}
-            {contactButton('tiktok')}
+        {hasContact && (
+          <div>
+            <p className="font-bold font-body mt-[10px] text-[18px]">
+              Official Contact
+            </p>
+            <div className="space-x-[10px] mt-[5px] flex">
+              {contactButton('website')}
+              {contactButton('email')}
+              {contactButton('facebook')}
+              {contactButton('twitter')}
+              {contactButton('instagram')}
+              {contactButton('line')}
+              {contactButton('youtube')}
+              {contactButton('tiktok')}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
