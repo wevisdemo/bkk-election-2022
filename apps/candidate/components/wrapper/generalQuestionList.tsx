@@ -1,4 +1,4 @@
-import { IQA } from '../../types/business';
+import { IAnswer, IQA } from '../../types/business';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -10,8 +10,8 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 interface Propstype {
-  qaList: IQA[];
-  qaType: 'policy' | 'opinion' | 'lifestyle' | 'special';
+  answerList: IAnswer[];
+  questionType: 'policy' | 'opinion' | 'lifestyle' | 'special';
 }
 
 const questionTypeDict = {
@@ -21,31 +21,29 @@ const questionTypeDict = {
   special: 'เคลียใจ',
 };
 
-export function GeneralQuestionList(props: Propstype) {
-  const { qaList, qaType } = props;
-
+export function GeneralQuestionList({ answerList, questionType }: Propstype) {
   return (
     <div className="block py-[50px]">
       <p className="font-heading font-semibold text-[21pt] md:text-[28pt] leading-[1.25] mb-[60px] text-center">
-        ตอบ {qaList.length} คำถาม{questionTypeDict[qaType]}
+        ตอบ {answerList.length} คำถาม{questionTypeDict[questionType]}
       </p>
       <div className="">
         <Swiper
           className="!w-[95vw] !mr-[0px]"
           // install Swiper modules
           modules={[Navigation, Pagination, Scrollbar, A11y]}
-          spaceBetween={50}
-          slidesPerView={3}
+          spaceBetween={0}
+          slidesPerView={1}
           navigation
           pagination={{ clickable: true }}
           // scrollbar={{ draggable: true }}
           // onSwiper={(swiper) => console.log(swiper)}
           // onSlideChange={() => console.log('slide change')}
         >
-          {qaList.map((qa, index) => {
+          {answerList.map((answer, index) => {
             return (
               <SwiperSlide className="!w-fit" key={`qa-general-${index}`}>
-                <GeneralQuestionCard qa={qa} />
+                <GeneralQuestionCard answer={answer} />
               </SwiperSlide>
             );
           })}

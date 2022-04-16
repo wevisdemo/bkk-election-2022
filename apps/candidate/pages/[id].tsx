@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from 'next/types';
 import { HighLightCandidatePage } from '../components/subPage/highlightCandidatePage';
 import { CandidatePage } from '../components/subPage/candidatePage';
-import { IGovernor } from '../types/business';
+import { IAnswer, IGovernor, IQuestion } from '../types/business';
 import { useRouter } from 'next/router';
 import { fetchTheStandardElectionPosts, Post } from 'wordpress-api';
 import { useEffect, useState } from 'react';
@@ -10,10 +10,17 @@ import Metadata from '../components/metadata';
 
 interface PropsType {
   candidate: IGovernor;
+  answerList: IAnswer[];
+  questionList: IQuestion[];
   isComingSoon: boolean;
 }
 
-export default function Governor({ candidate, isComingSoon }: PropsType) {
+export default function Governor({
+  candidate,
+  answerList,
+  questionList,
+  isComingSoon,
+}: PropsType) {
   const router = useRouter();
   const [news, setNews] = useState<Post[]>([]);
   const [pageUrl, setPageUrl] = useState<string>('');
@@ -30,6 +37,8 @@ export default function Governor({ candidate, isComingSoon }: PropsType) {
     };
     getPort();
     setPageUrl(window.location.href);
+    console.log('answerList =>', answerList);
+    console.log('questionList =>', questionList);
   }, []);
 
   return (
@@ -42,6 +51,8 @@ export default function Governor({ candidate, isComingSoon }: PropsType) {
           governor={candidate}
           newsList={news}
           pageUrl={pageUrl}
+          questionList={questionList}
+          answerList={answerList}
         />
       ) : (
         <CandidatePage
@@ -72,7 +83,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<PropsType> = async (context) => {
   const isComingSoon = process.env.COMING_SOON === 'true' ? true : false;
   const id = context.params?.id;
-  const [res, errMsg] = await getNocoApi(`governors/${id}`);
+  let answerList: IAnswer[] = [];
+  let questionList: IQuestion[] = [];
+  const [candidateRes, errMsg] = await getNocoApi(`governors/${id}`);
   if (errMsg) {
     return {
       redirect: {
@@ -81,5 +94,52 @@ export const getStaticProps: GetStaticProps<PropsType> = async (context) => {
       },
     };
   }
-  return { props: { candidate: res.data as IGovernor, isComingSoon } };
+  const candidate = candidateRes.data as IGovernor;
+
+  if (!isComingSoon) {
+    if (candidate.answersList.length > 0) {
+      const answerIds = candidate.answersList.map((answer) => answer.id);
+      const query = answerIds.reduce((result, id, index) => {
+        if (index === answerIds.length - 1) {
+          return result + id.toString() + ')';
+        }
+        return result + id.toString() + ',';
+      }, '(id,in,');
+      const encodedQuery = encodeURIComponent(query);
+      const [AnswerRes, errMsg2] = await getNocoApi(
+        `answers?where=${encodedQuery}`
+      );
+      if (errMsg2) {
+        return {
+          redirect: {
+            permanent: true,
+            destination: '/',
+          },
+        };
+      }
+      answerList = AnswerRes.data as IAnswer[];
+
+      const questionIds = answerList.map((ans) => ans.questionsRead.id);
+      const questionQuery = questionIds.reduce((result, id, index) => {
+        if (index === answerIds.length - 1) {
+          return result + id.toString() + ')';
+        }
+        return result + id.toString() + ',';
+      }, '(id,in,');
+      const questionEncodedQuery = encodeURIComponent(questionQuery);
+      const [questinoRes, errMsg3] = await getNocoApi(
+        `questions?where=${questionEncodedQuery}`
+      );
+      if (errMsg3) {
+        return {
+          redirect: {
+            permanent: true,
+            destination: '/',
+          },
+        };
+      }
+      questionList = questinoRes.data as IQuestion[];
+    }
+  }
+  return { props: { candidate, answerList, questionList, isComingSoon } };
 };

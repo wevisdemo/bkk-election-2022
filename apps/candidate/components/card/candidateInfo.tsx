@@ -13,15 +13,15 @@ interface PropsType {
 }
 
 export function CandidateInfoCard({ governor }: PropsType) {
-  const hasContact =
-    governor.contact_instagram &&
-    governor.contact_email &&
-    governor.contact_facebook &&
-    governor.contact_line &&
-    governor.contact_tiktok &&
-    governor.contact_twitter &&
-    governor.contact_web &&
-    governor.contact_youtube;
+  const noHasContact =
+    !governor.contact_instagram &&
+    !governor.contact_email &&
+    !governor.contact_facebook &&
+    !governor.contact_line &&
+    !governor.contact_tiktok &&
+    !governor.contact_twitter &&
+    !governor.contact_web &&
+    !governor.contact_youtube;
   const toList = (str: string | null) => {
     if (!str) {
       return '-';
@@ -214,7 +214,7 @@ export function CandidateInfoCard({ governor }: PropsType) {
             {toList(governor.other_data)}
           </div>
         </div>
-        {hasContact && (
+        {!noHasContact && (
           <div>
             <p className="font-bold font-body mt-[10px] text-[18px]">
               Official Contact

@@ -1,22 +1,27 @@
-import { IGovernor } from '../../types/business';
+import { IAnswer, IGovernor, IQuestion } from '../../types/business';
 import { BackToHomeCard } from '../card/backToHome';
 import { CandidateInfoCard } from '../card/candidateInfo';
 import { NewsList } from '../wrapper/newsList';
 import { Post } from 'wordpress-api';
 import { ShareList } from '../wrapper/shareList';
 import { useEffect, useState } from 'react';
+import { CandidateQuestionWrapper } from '../wrapper/candidateQuestionWrapper';
 
 interface PropsType {
   governor: IGovernor;
   isComingSoon?: boolean;
   newsList: Post[];
   pageUrl: string;
+  questionList: IQuestion[];
+  answerList: IAnswer[];
 }
 export function HighLightCandidatePage({
   governor,
   isComingSoon,
   newsList,
   pageUrl,
+  questionList,
+  answerList,
 }: PropsType) {
   const [matches, setMatches] = useState<boolean>(false);
   useEffect(() => {
@@ -50,16 +55,25 @@ export function HighLightCandidatePage({
           </div>
         </div>
       </div>
-      <div className="bg-[#f1f1f1] px-[8px] py-[28px] md:py-[80px] text-center">
-        <p className="typo-b5 mb-[20px]">Coming Soon..</p>
-        <p className="typo-h5 mb-[5px]">
-          1 Exclusive Speech : ทำไมต้องเลือกคุณเป็นผู้ว่าฯ กทม.
-        </p>
-        <p className="typo-h5 mb-[5px]">
-          20 คำตอบด้านนโยบาย วิสัยทัศน์ และ ไลฟ์สไตล์
-        </p>
-        <p className="typo-h5">+ อีก 5 คำตอบเคลียร์ใจเฉพาะตัว</p>
-      </div>
+      {isComingSoon ? (
+        <div className="bg-[#f1f1f1] px-[8px] py-[28px] md:py-[80px] text-center">
+          <p className="typo-b5 mb-[20px]">Coming Soon..</p>
+          <p className="typo-h5 mb-[5px]">
+            1 Exclusive Speech : ทำไมต้องเลือกคุณเป็นผู้ว่าฯ กทม.
+          </p>
+          <p className="typo-h5 mb-[5px]">
+            20 คำตอบด้านนโยบาย วิสัยทัศน์ และ ไลฟ์สไตล์
+          </p>
+          <p className="typo-h5">+ อีก 5 คำตอบเคลียร์ใจเฉพาะตัว</p>
+        </div>
+      ) : (
+        <div>
+          <CandidateQuestionWrapper
+            questionList={questionList}
+            answerList={answerList}
+          />
+        </div>
+      )}
       {newsList.length > 0 && (
         <div>
           <NewsList newsList={newsList} />

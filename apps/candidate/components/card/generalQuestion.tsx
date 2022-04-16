@@ -1,23 +1,35 @@
-import { IQA } from '../../types/business';
+import { IAnswer, IQA } from '../../types/business';
+import { getYoutubeId } from '../../utils/tranformation';
 
 interface PropsType {
-  qa: IQA;
+  answer: IAnswer;
 }
-export function GeneralQuestionCard(props: PropsType) {
-  const { qa } = props;
+export function GeneralQuestionCard({ answer }: PropsType) {
+  const youtubeId = getYoutubeId(answer.url);
+  const youtubeEmbedUrl = youtubeId
+    ? `https://www.youtube.com/embed/${youtubeId}`
+    : '';
 
   return (
-    <div className="md:max-w-[450px] max-w-[250px] flex flex-col">
+    <div className="md:max-w-[450px] max-w-[250px] flex flex-col justify-center">
       <p className="font-heading font-semibold text-[14pt] md:text-[18pt] leading-[1.25]">
-        {qa.question}
+        {answer.questionsRead.question}
       </p>
-      <p className="typo-b5 mt-[20px]">{qa.answer}</p>
-      <video className="w-[250px] h-[250px] md:w-[450px] md:h-[450px]" controls>
-        <source
-          src="https://jsoncompare.org/LearningContainer/SampleFiles/Video/MP4/sample-mp4-file.mp4"
-          type="video/mp4"
+      <p className="typo-b5 mt-[20px]">{answer.text}</p>
+      {youtubeEmbedUrl ? (
+        <iframe
+          className="w-[250px] md:w-[450px] h-[250px] md:h-[450px] mb-[40px] mt-[20px] md:mt-0"
+          src={youtubeEmbedUrl}
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
         />
-      </video>
+      ) : (
+        <div className="w-[250px] md:w-[450px] h-[250px] md:h-[450px] mb-[40px] md:ml-[30px] mt-[20px] md:mt-0 bg-[#333333] typo-h3 text-white flex items-center justify-center">
+          No Video
+        </div>
+      )}
     </div>
   );
 }

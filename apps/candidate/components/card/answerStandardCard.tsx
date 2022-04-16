@@ -28,7 +28,7 @@ export function AnswerStandardCard(props: PropsType) {
           allowFullScreen
         />
       ) : (
-        <div className="w-[250px] md:w-[450px] h-[250px] md:h-[450px] mb-[40px]">
+        <div className="w-[250px] md:w-[450px] h-[250px] md:h-[450px] mb-[40px] typo-h3 text-white flex items-center justify-center">
           No Video
         </div>
       )}

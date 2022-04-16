@@ -3,19 +3,22 @@ import { getYoutubeId } from '../../utils/tranformation';
 
 interface PropsType {
   answer: IAnswer;
-  ignoreGovernor?: boolean;
+  ignoreQuestion?: boolean;
 }
-export function ExclusiveQuestionBadge({ answer, ignoreGovernor }: PropsType) {
+export function ExclusiveQuestionCard({ answer }: PropsType) {
   const youtubeId = getYoutubeId(answer.url);
   const youtubeEmbedUrl = youtubeId
     ? `https://www.youtube.com/embed/${youtubeId}`
     : '';
 
   return (
-    <div className="max-w-[1500px] w-[90vw] pt-[50px] pb-[100px] mx-auto text-center">
+    <div className="md:max-w-[1500px] max-w-[250px] pb-[40px] flex flex-col justify-center text-white">
+      <p className="typo-b5 mt-[20px] md:order-3 md:text-center">
+        {answer.text}
+      </p>
       {youtubeEmbedUrl ? (
         <iframe
-          className="max-w-[1500px] max-h-[843.75px] w-[90vw] h-[50.625vw] mb-[40px]"
+          className="md:max-w-[1500px] md:max-h-[843.75px] md:w-[90vw] md:h-[50.625vw] w-[250px] h-[250px] mt-[20px] md:mt-0 md:order-1"
           src={youtubeEmbedUrl}
           title="YouTube video player"
           frameBorder="0"
@@ -23,17 +26,10 @@ export function ExclusiveQuestionBadge({ answer, ignoreGovernor }: PropsType) {
           allowFullScreen
         />
       ) : (
-        <div className="max-w-[1500px] max-h-[843.75px] w-[90vw] h-[50.625vw] mb-[40px] bg-[#333333] typo-h3 text-white flex items-center justify-center">
+        <div className="w-[250px] md:w-[450px] h-[250px] md:h-[450px md:ml-[30px] mt-[20px] md:mt-0 bg-[#333333] typo-h3 text-white flex items-center justify-center">
           No Video
         </div>
       )}
-
-      {!ignoreGovernor && (
-        <p className="typo-h6 text-white mb-[20px]">
-          {answer.governorsRead.name}
-        </p>
-      )}
-      <p className="typo-b3 text-white max-w-[650px] m-auto">{answer.text}</p>
     </div>
   );
 }

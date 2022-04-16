@@ -116,4 +116,10 @@ export interface IGovernor {
   contact_email: null | string;
   contact_instagram: null | string;
   contact_line: null | string;
+  answersList: IGovernorAnswer[];
+}
+
+interface IGovernorAnswer {
+  id: number;
+  nc_xeff__candidates_id: number;
 }
