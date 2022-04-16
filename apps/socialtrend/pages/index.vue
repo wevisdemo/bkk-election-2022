@@ -1,5 +1,6 @@
 <template>
   <div>
+    <ui-navbar></ui-navbar>
     <div
       class="stacked-bar-chart fixed top-0 left-0 right-0 bottom-0 bg-black flex sm:flex-col"
       style="z-index: -1"
@@ -550,6 +551,7 @@
         </div>
       </div>
     </div>
+    <ui-footer></ui-footer>
   </div>
 </template>
 
