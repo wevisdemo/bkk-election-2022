@@ -1,8 +1,8 @@
-import { IQA } from '../../types/business';
-import { AnswerStandardCard } from '../card/answerStandard';
+import { IAnswer } from '../../types/business';
+import { AnswerStandardCard } from '../card/answerStandardCard';
 
 interface PropsType {
-  answerList: IQA[];
+  answerList: IAnswer[];
 }
 
 export function AnswerStandardList(props: PropsType) {

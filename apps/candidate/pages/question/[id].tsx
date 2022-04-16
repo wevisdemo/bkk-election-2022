@@ -2,6 +2,7 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { ExclusiveQuestion } from '../../components/subPage/exclusiveQuestion';
+import StandardQuestion from '../../components/subPage/standardQuestion';
 import { IAnswer, IQuestion } from '../../types/business';
 import { getNocoApi } from '../../utils/nocoHandler';
 
@@ -40,7 +41,12 @@ export default function QuestionPage({
           pageUrl={pageUrl}
         />
       ) : (
-        <div />
+        <StandardQuestion
+          question={question}
+          answerList={answerList}
+          questionList={questionList}
+          pageUrl={pageUrl}
+        />
       )}
     </div>
   );

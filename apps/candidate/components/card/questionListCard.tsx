@@ -59,14 +59,14 @@ export function QuestionListCard(props: Propstype) {
             className="w-[25px] h-[25px]"
           />
         </div>
-        <div className="typo-b6 flex-1 ml-[10px]">{question.question}</div>
+        <div className="typo-b4 flex-1 ml-[10px]">{question.question}</div>
       </div>
     );
   };
   const questionColumn = (colName: string, questionList: IQuestion[]) => {
     return (
       <div className="flex flex-col text-left">
-        <p className="typo-h9">{colName}:</p>
+        <p className="typo-h6">{colName}:</p>
         <div className="flex flex-col space-y-[25px] mt-5">
           {questionList.map((q, index) => questionRow(q))}
         </div>
@@ -75,7 +75,7 @@ export function QuestionListCard(props: Propstype) {
   };
 
   return (
-    <div className="text-white max-w-[1065px] m-auto px-[18px] mt-[70px] md:mt-[110px]">
+    <div className="text-white max-w-[1065px] m-auto px-[18px] pt-[70px] md:pt-[110px] pb-[64px] md:pb-[88px]">
       <p className="typo-h5 text-center">ดูคำถามอื่นๆ</p>
       <div
         className="border-b p-10 border-[#9d9d9d80] flex items-center m-auto justify-center  hover:cursor-pointer hover:underline hover:decoration-1"
