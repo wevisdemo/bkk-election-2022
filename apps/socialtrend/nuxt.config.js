@@ -1,22 +1,77 @@
+const webTitle = 'Social Trend - Bangkok Election 2022'
+const webDescription = 'ติดตามข้อมูลเกี่ยวกับการเลือกตั้ง กทม. 2022 ได้ที่นี่'
+const ogImage = '/sociallistening_og.png'
+const webUrl = ''
+
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Social Trend - Bangkok Election 2022',
+    title: webTitle,
     htmlAttrs: {
       lang: 'th',
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'format-detection', content: 'telephone=no' },
       {
         hid: 'description',
         name: 'description',
-        content: 'ติดตามข้อมูลเกี่ยวกับการเลือกตั้ง กทม. 2022 ได้ที่นี่',
+        content: webDescription,
       },
-      { name: 'format-detection', content: 'telephone=no' },
+      {
+        hid: 'og:title',
+        property: 'og:title',
+        content: webTitle,
+      },
+      {
+        hid: 'og:description',
+        property: 'og:description',
+        content: webDescription,
+      },
+      {
+        hid: 'og:type',
+        property: 'og:type',
+        content: 'website',
+      },
+      {
+        hid: 'og:image',
+        property: 'og:image',
+        content: ogImage,
+      },
+      {
+        hid: 'og:url',
+        property: 'og:url',
+        content: webUrl,
+      },
+      {
+        hid: 'twitter:title',
+        name: 'twitter:title',
+        content: webTitle,
+      },
+      {
+        hid: 'twitter:description',
+        name: 'twitter:description',
+        content: webDescription,
+      },
+      {
+        hid: 'twitter:card',
+        name: 'twitter:card',
+        content: 'summary_large_image',
+      },
+      {
+        hid: 'twitter:image',
+        name: 'twitter:image',
+        content: ogImage,
+      },
+      {
+        hid: 'twitter:url',
+        property: 'twitter:url',
+        content: webUrl,
+      },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/static/favicon.png' },
