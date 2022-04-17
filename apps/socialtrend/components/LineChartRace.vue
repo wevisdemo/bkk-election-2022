@@ -1,7 +1,22 @@
 <template>
   <div class="line-chart-race">
-    <transition name="fade">
-      <div
+    <!-- <transition name="fade"> -->
+    <div ref="tooltip" class="tooltip-wrapper" style="opacity: 0">
+      <div class="tooltip typo-b5">
+        <div class="title mb-1"></div>
+        <div class="description typo-b6"></div>
+
+        <div
+          v-for="(item, index) in candidates"
+          :key="item.candidate"
+          :class="`data-list content-${index}`"
+        >
+          <div class="name pr-4"></div>
+          <div class="value"></div>
+        </div>
+      </div>
+    </div>
+    <!-- <div
         v-if="hover || active"
         ref="tooltip"
         class="tooltip-wrapper"
@@ -24,12 +39,25 @@
             </div>
           </div>
         </div>
-      </div>
-    </transition>
+      </div> -->
+    <!-- </transition> -->
 
     <svg ref="container">
       <g class="axis-group"></g>
-      <g
+      <g>
+        <rect
+          class="checks"
+          stroke-width="1px"
+          width=".5px"
+          :height="height - margin.top - margin.bottom"
+          :y="margin.top"
+          opacity="0"
+          stroke="#e0e1e1"
+          style="transition: 'all 0.2s'"
+        ></rect>
+      </g>
+
+      <!-- <g
         v-for="(item, index) in group_date.keys_data"
         :key="index"
         class="checks"
@@ -49,7 +77,7 @@
             style="transition: 'all 0.2s'"
           ></line>
         </g>
-      </g>
+      </g> -->
 
       <g class="g-lines">
         <g
@@ -71,12 +99,11 @@
               :cx="xScale(d.date)"
               :cy="yScale(d.value)"
               r="4"
-              :style="`opacity: ${
-                hover === d.date ||
-                (index === item.data.length - 1 && animate_start)
-                  ? '1'
-                  : '0'
-              }`"
+              :class="[
+                `dots-${d.date}`,
+                { 'mark-dots': index !== item.data.length - 1 },
+              ]"
+              style="opacity: 0"
             />
           </g>
           <g class="line-path">
@@ -130,7 +157,7 @@
             ></circle>
             <image
               class="image"
-              :href="photo(item.candidate)"
+              :href="item.image"
               :height="$mq === 'mobile' ? 13 : 24"
               :width="$mq === 'mobile' ? 13 : 24"
               :x="$mq === 'mobile' ? -6.5 : -12"
@@ -141,7 +168,21 @@
         </g>
       </g>
 
-      <g class="checks-group" @mouseleave="hover = ''">
+      <rect
+        :width="innerWidth"
+        :height="innerHeight"
+        :x="margin.left"
+        :y="margin.top"
+        class="listening-rect"
+        fill="transparent"
+        @mouseover="onMouseHover"
+        @mousemove="onMouseMove"
+        @mouseleave="onMouseleave"
+        @click="
+          animate_finish && type === 'engagement' ? onClickChecks(item) : false
+        "
+      ></rect>
+      <!-- <g class="checks-group" @mouseleave="hover = ''">
         <g
           v-for="(item, index) in group_date.keys_data"
           :key="index"
@@ -164,7 +205,7 @@
             style="pointer-events: all"
           ></rect>
         </g>
-      </g>
+      </g> -->
     </svg>
   </div>
 </template>
@@ -184,11 +225,11 @@ export default {
       type: Function,
       default: () => {},
     },
-    photo: {
-      type: Function,
-      default: () => {},
-    },
     animate: {
+      type: Boolean,
+      default: true,
+    },
+    play_animation: {
       type: Boolean,
       default: false,
     },
@@ -290,6 +331,12 @@ export default {
 
       // return fnLine
     },
+    xScaleActiveDate() {
+      return d3
+        .scaleQuantize()
+        .domain([this.margin.left, this.width - this.margin.right])
+        .range(this.group_date.keys_data)
+    },
     xScale() {
       return d3
         .scalePoint()
@@ -365,73 +412,26 @@ export default {
     //   const valueMax = d3.max(this.raw_data, (d) => d.value)
     //   return max > valueMax ? max : valueMax
     // },
-    ready() {
-      return this.animate && this.candidates !== 0
-    },
+    // ready() {
+    //   return this.play_animation && this.candidates !== 0
+    // },
     interaction() {
       return this.hover || this.active
     },
-    active_data() {
-      const value = this.interaction
-      let title = this.dateDisplay(value)
-      let description = ''
-
-      const curr = _.get(this.group_date, `data[${value}]`, [])
-
-      if (this.type === 'rank') {
-        const ob = _.get(curr, '[0]', {})
-        title = `สัปดาห์ที่ ${ob.date}`
-        description = `${this.dateDisplay(ob.date_from)} - ${this.dateDisplay(
-          ob.date_to
-        )}`
-      }
-
-      const candidates = _.chain(curr)
-        .map((d) => ({
-          ...d,
-          value_str: this.type === 'rank' ? d.rank : this.formatkilo(d.value),
-        }))
-        .orderBy('value', 'desc')
-        .value()
-
-      // this.candidates.forEach((d) => {
-      //   const arrData = _.get(d, 'data', [])
-      //   const find = arrData.find((d) => `${d.date}` === `${value}`)
-      //   if (!find) return
-      //   if (this.type === 'rank') {
-      //     title = `สัปดาห์ที่ ${find.date}`
-      //     description = `${this.dateDisplay(
-      //       find.date_from
-      //     )} - ${this.dateDisplay(find.date_to)}`
-      //   }
-
-      //   const pick = _.pick(find, ['candidate', 'value', 'rank'])
-      //   tooltipData.push({
-      //     ...pick,
-      //     color: d.color,
-      //     value_str:
-      //       this.type === 'rank' ? pick.rank : this.formatkilo(pick.value),
-      //   })
-      // })
-
-      return {
-        title,
-        description,
-        date: value,
-        candidates,
-      }
-    },
   },
   watch: {
-    hover: {
-      handler() {
-        this.leftTooltip()
-      },
-      immediate: true,
-    },
-    ready: {
+    // ready: {
+    //   handler(val) {
+    //     if (!val) return
+    //     this.$nextTick(() => {
+    //       this.handleStartAnimation()
+    //     })
+    //   },
+    //   immediate: true,
+    // },
+    play_animation: {
       handler(val) {
-        if (!val) return
+        if (!val || !this.animate) return
         this.$nextTick(() => {
           this.handleStartAnimation()
         })
@@ -439,56 +439,15 @@ export default {
       immediate: true,
     },
     animate_finish(val) {
-      if (val && !this.animate_start) this.animate_start = true
+      if (val && !this.animate_start) {
+        this.setShowDotsEnd()
+      }
     },
     activeChart(val) {
       this.active = val
-      this.leftTooltip()
-      // this.handleSetActiveChart(val)
+      this.onMouseMove()
       this.updateAnimatePathLabel(val, 800)
     },
-    // interaction: {
-    //   handler(val) {
-    //     const update = _.debounce(() => {
-    //       const tooltipData = []
-    //     let title = this.dateDisplay(value)
-    //     let description = ''
-
-    //     this.candidates.forEach((d) => {
-    //       const arrData = _.get(d, 'data', [])
-    //       const find = arrData.find((d) => `${d.date}` === `${value}`)
-    //       if (!find) return
-    //       if (this.type === 'rank') {
-    //         title = `สัปดาห์ที่ ${find.date}`
-    //         description = `${this.dateDisplay(
-    //           find.date_from
-    //         )} - ${this.dateDisplay(find.date_to)}`
-    //       }
-
-    //       const pick = _.pick(find, ['candidate', 'value', 'rank'])
-    //       tooltipData.push({
-    //         ...pick,
-    //         color: d.color,
-    //         value_str:
-    //           this.type === 'rank' ? pick.rank : this.formatkilo(pick.value),
-    //       })
-    //     })
-
-    //     return {
-    //       title,
-    //       description,
-    //       date: value,
-    //       candidates: _.orderBy(tooltipData, 'value', 'desc'),
-    //     }
-    //     }, 150)
-
-    //     update()
-    //   }
-    // },
-    // xAxisEnd(val) {
-    //   if (!val) return
-    //   this.handleStartAnimation()
-    // },
   },
   beforeMount() {
     window.addEventListener('resize', this.resizeHandler)
@@ -498,38 +457,8 @@ export default {
   },
   mounted() {
     this.resizeHandler()
+    this.drawLineChart()
     // await this.setDataGroupCandidate()
-
-    const svg = d3.select('svg')
-    svg
-      .select('.axis-group')
-      .append('g')
-      .attr('class', 'y-axis')
-      .attr('transform', `translate(${this.margin.left}, 0)`)
-      .call(this.yAxis)
-      .call((d) => {
-        d.selectAll('.tick')
-          .append('line')
-          .attr('class', 'line-tick')
-          .attr('x2', 7)
-
-        d.selectAll('.tick text').style('text-anchor', 'start').attr('x', -30)
-      })
-
-    svg
-      .select('.axis-group')
-      .append('g')
-      .attr('class', 'x-axis')
-      .attr('transform', `translate(0, ${this.height - this.margin.top})`)
-      .call(this.xAxis)
-
-    this.$nextTick(() => {
-      d3.selectAll('.line-path .line').each(function () {
-        const select = d3.select(this)
-        const l = select.node().getTotalLength()
-        select.attr('stroke-dashoffset', l).attr('stroke-dasharray', l)
-      })
-    })
 
     // const xScale = this.xScale
     // const yScale = this.yScale
@@ -548,9 +477,9 @@ export default {
       this.height = this.$refs.container.clientHeight
     },
     handleStartAnimation() {
-      this.setAnimatePathLine()
-      // this.setAnimatePathLabel()
       setTimeout(() => {
+        this.setAnimatePathLine()
+        // this.setAnimatePathLabel()
         this.updateAnimatePathLabel(this.xAxisEnd, this.duration)
       }, 1000)
     },
@@ -563,18 +492,116 @@ export default {
     dateFormat(date) {
       return moment(date).format('yyyy-MM-DD')
     },
-    handleActiveLegend(item) {
-      if (_.isEqual(this.active, item)) {
-        this.active = ''
+    async drawLineChart() {
+      await this.$nextTick()
+
+      const svg = d3.select('svg')
+      svg
+        .select('.axis-group')
+        .append('g')
+        .attr('class', 'y-axis')
+        .attr('transform', `translate(${this.margin.left}, 0)`)
+        .call(this.yAxis)
+        .call((d) => {
+          d.selectAll('.tick')
+            .append('line')
+            .attr('class', 'line-tick')
+            .attr('x2', 7)
+
+          d.selectAll('.tick text').style('text-anchor', 'start').attr('x', -30)
+        })
+
+      svg
+        .select('.axis-group')
+        .append('g')
+        .attr('class', 'x-axis')
+        .attr('transform', `translate(0, ${this.height - this.margin.top})`)
+        .call(this.xAxis)
+
+      if (this.animate) {
+        this.resetLinePath()
       } else {
-        this.active = item
+        this.setShowDotsEnd()
+        this.updateAnimatePathLabel(this.xAxisEnd, 0)
       }
     },
-    leftTooltip: _.debounce(async function () {
+    resetLinePath() {
+      d3.selectAll('.line-path .line').each(function () {
+        const select = d3.select(this)
+        const l = select.node().getTotalLength()
+        select.attr('stroke-dashoffset', l).attr('stroke-dasharray', l)
+      })
+    },
+    onClickChecks() {
+      const mousePosition = d3.select('.checks').attr('x')
+      const date = this.xScaleActiveDate(mousePosition)
+      if (date === this.active) return
+      this.active = date
+      // this.handleSetActiveChart(date)
+      // this.updateAnimatePathLabel(date, 600)
+      this.$emit('change', date)
+      // this.$emit('update:activeChart', date)
+    },
+    onMouseHover(e) {
+      d3.select('.checks').style('opacity', 1)
+      d3.select('.tooltip-wrapper').style('opacity', 1)
+    },
+    onMouseleave() {
+      // this.hover = ''
+      if (this.active) {
+        this.onMouseMove()
+        return
+      }
+      d3.select('.checks').style('opacity', 0)
+      d3.selectAll('.mark-dots').style('opacity', 0)
+      d3.select('.tooltip-wrapper').style('opacity', 0)
+    },
+    onMouseMove(e) {
+      let xhoveredDate = this.active
+      if (e) {
+        const mousePosition = _.get(e, 'x', 0)
+        xhoveredDate = this.xScaleActiveDate(mousePosition)
+        this.hover = xhoveredDate
+      }
+      d3.selectAll('.mark-dots').style('opacity', 0)
+      d3.selectAll(`.dots-${xhoveredDate}`).style('opacity', 1)
+      d3.select('.checks').attr('x', this.xScale(xhoveredDate))
+
+      this.handleTooltip(xhoveredDate)
+    },
+    handleTooltip: _.debounce(function (date) {
+      let title = this.dateDisplay(date)
+      let description = ''
+      const curr = _.get(this.group_date, `data[${date}]`, [])
+      if (this.type === 'rank') {
+        const ob = _.get(curr, '[0]', {})
+        title = `สัปดาห์ที่ ${ob.date}`
+        description = `${this.dateDisplay(ob.date_from)} - ${this.dateDisplay(
+          ob.date_to
+        )}`
+      }
+      const candidates = _.chain(curr)
+        .map((d) => ({
+          ...d,
+          value_str: this.type === 'rank' ? d.rank : this.formatkilo(d.value),
+        }))
+        .orderBy('value', 'desc')
+        .value()
+
+      const tooltip = d3.select('.tooltip')
+
+      tooltip.select('.title').html(title)
+      tooltip.select('.description').html(description)
+
+      candidates.forEach((d, i) => {
+        const dataList = d3.select(`.content-${i}`)
+        dataList.select('.name').html(d.candidate)
+        dataList.select('.value').html(d.value_str).style('color', d.color)
+      })
+
+      // Position left
       const margin = 30 + this.margin.left
-      const value = this.interaction
-      let left = this.xScale(value) - margin
-      await this.$nextTick()
+      let left = this.xScale(date) - margin
       const elTooltip = this.$refs.tooltip
       if (!elTooltip) return
       const tooltipW = elTooltip.clientWidth
@@ -583,23 +610,23 @@ export default {
       } else {
         left = left - tooltipW + this.margin.left
       }
-      this.left_tooltip = left
-    }, 100),
-    // circleSize(data = {}) {
-    //   // const valueMax = d3.max(this.raw_data, (d) => d.value)
-    //   const maxRadius = this.$mq === 'mobile' ? 26 : 40
-    //   const smallRadius = this.$mq === 'mobile' ? 13 : 20
-    //   return data.highest_per_date ? maxRadius : smallRadius
-    // },
+
+      d3.select('.tooltip-wrapper').style('left', `${left}px`)
+    }, 50),
     setAnimatePathLine() {
       const _self = this
       const line = d3.selectAll('.line')
       line.each(function () {
         d3.select(this)
           .transition(_self.transitionPath)
-          .delay(1000)
           .attr('stroke-dashoffset', 0)
       })
+    },
+    clearAnimatePathLine() {
+      d3.selectAll('.line').call((d) => d.transition())
+    },
+    setShowDotsEnd() {
+      d3.selectAll(`dots-${this.xAxisEnd}`).style('opacity', 1)
     },
     setAnimatePathLabel() {
       const _self = this
@@ -835,14 +862,14 @@ export default {
           return `scale(${d.highest_per_date ? 1.7 : 1})`
         })
     },
-    onClickChecks(date) {
-      if (date === this.active) return
-      this.active = date
-      // this.handleSetActiveChart(date)
-      // this.updateAnimatePathLabel(date, 600)
-      this.$emit('change', date)
-      // this.$emit('update:activeChart', date)
-    },
+    // onClickChecks(date) {
+    //   if (date === this.active) return
+    //   this.active = date
+    //   // this.handleSetActiveChart(date)
+    //   // this.updateAnimatePathLabel(date, 600)
+    //   this.$emit('change', date)
+    //   // this.$emit('update:activeChart', date)
+    // },
   },
 }
 </script>
@@ -934,6 +961,9 @@ svg {
         }
       }
     }
+  }
+  .listening-rect {
+    cursor: pointer;
   }
 }
 text {

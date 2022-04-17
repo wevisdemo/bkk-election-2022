@@ -1,6 +1,6 @@
 const webTitle = 'Social Trend - Bangkok Election 2022'
 const webDescription = 'ติดตามข้อมูลเกี่ยวกับการเลือกตั้ง กทม. 2022 ได้ที่นี่'
-const ogImage = '/sociallistening_og.png'
+const ogImage = '/socialtrend/sociallistening_og.png'
 const webUrl = ''
 
 export default {

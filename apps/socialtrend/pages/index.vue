@@ -2,13 +2,13 @@
   <div>
     <ui-navbar></ui-navbar>
     <div
-      class="stacked-bar-chart fixed top-0 left-0 right-0 bottom-0 bg-black flex sm:flex-col"
+      class="stacked-bar-chart fixed top-0 left-0 right-0 bottom-0 bg-black flex md:flex-col"
       style="z-index: -1"
     >
       <div
         v-for="item in candidates"
-        :key="item.value"
-        class="candidate px-0.5 opacity-20"
+        :key="item.candidate"
+        class="candidate px-0.5 opacity-20 flex-1"
       >
         <img :src="item.image" alt="" class="w-full h-full object-cover" />
       </div>
@@ -180,7 +180,7 @@
               align="center"
               class="opacity-0"
               @blur="curr_date_active = ''"
-              @change="onChangeTypeChart"
+              @change="handleUpdateChart"
             >
             </el-date-picker>
           </div>
@@ -254,7 +254,7 @@
               v-model="keyword"
               placeholder="Select"
               class="select-outline"
-              @change="onChangeTypeChart"
+              @change="handleUpdateChart"
             >
               <el-option
                 v-for="(item, index) in keyword_options"
@@ -279,7 +279,7 @@
               v-model="platform"
               placeholder="Select"
               class="select-outline"
-              @change="onChangeTypeChart"
+              @change="handleUpdateChart"
             >
               <el-option
                 v-for="item in platform_options"
@@ -307,7 +307,7 @@
           v-model="candidate_filter"
           size="small"
           class="candidate-tags mt-6 px-4"
-          @change="onChangeTypeChart"
+          @change="changeCandidateFilter"
         >
           <el-checkbox
             v-for="item in candidate_options"
@@ -341,10 +341,10 @@
               :dataSet="line_chart_data"
               :activeChart="active_date"
               :start_date="start_calendar_date"
-              :photo="photo"
               :type="data_type"
               :duration="duration"
-              :animate="chartAnimate"
+              :play_animation="play_animation"
+              :animate="animate_chart"
               :color="color_palettes"
               :xAxisStart="daterange[0]"
               :xAxisEnd="daterange[1]"
@@ -582,8 +582,12 @@ export default {
   },
   data() {
     return {
-      webUrl: 'https://staging.bkkelection2022.wevis.info/socialtrend',
-      chartAnimate: false,
+      webUrl: process.client ? window.location.href : '',
+      engagement_animate_finish: true,
+      rank_animate_finish: false,
+      animate_chart: true,
+      play_animation: false,
+      chart_inview: false,
       line_chart_data: {
         raw_data: [],
         group_date: [],
@@ -592,7 +596,8 @@ export default {
       render_chart: true,
       socialtrend_current: {},
       socialtrend: [],
-      engagement: [],
+      engagement: {},
+      rank: {},
       avgTime: 0,
       posts: [],
       carousel_index: 0,
@@ -843,21 +848,26 @@ export default {
         },
       }
     },
+    ready() {
+      return (
+        this.chart_inview &&
+        this.play_animation &&
+        this.line_chart_data.raw_data.length !== 0
+      )
+    },
     // date_group() {
     //   return _.groupBy(this.line_chart_data, 'date')
     // },
     candidates() {
-      return this.candidate_filter.map((c) => {
-        // const data = _.chain(this.line_chart_data)
-        //   .filter((d) => d.candidate === c)
-        //   .orderBy('date', 'asc')
-        //   .value()
-        return {
-          ...c,
-          // data,
-          image: this.photo(c),
-        }
-      })
+      return this.candidate_options
+        .filter((d) => this.candidate_filter.includes(d))
+        .map((d) => {
+          return {
+            candidate: d,
+            // data,
+            image: this.photo(d),
+          }
+        })
     },
   },
   watch: {
@@ -874,7 +884,27 @@ export default {
     carousel_index(val) {
       this.current_chart_active = _.get(this.posts, `[${val}]`, {})
     },
-
+    ready(val) {
+      if (!val) return
+      this.setAnimateStackedBarChart()
+    },
+    // engagement(newVal, oldVal) {
+    //   if (!_.isEmpty(newVal) && !_.isEmpty(oldVal)) {
+    //     this.animate_chart = false
+    //   }
+    //   if (_.isEmpty(newVal)) {
+    //     console.log('2')
+    //     this.animate_chart = true
+    //   }
+    // },
+    // rank(newVal, oldVal) {
+    //   if (!(_.isEmpty(newVal) && _.isEmpty(oldVal))) {
+    //     this.animate_chart = false
+    //   }
+    //   if (_.isEmpty(newVal)) {
+    //     this.animate_chart = true
+    //   }
+    // },
     // end_input_date() {
     //   const isAfter = moment(this.active_date).isAfter(this.end_input_date)
     //   if (!isAfter) return
@@ -930,10 +960,23 @@ export default {
       this.daterange = [start, end]
     },
     reRenderChart() {
+      let animate = false
+      if (this.data_type === 'engagement' && !this.engagement_animate_finish) {
+        animate = true
+        this.engagement_animate_finish = true
+      }
+      if (this.data_type === 'rank' && !this.rank_animate_finish) {
+        animate = true
+        this.rank_animate_finish = true
+      }
+      this.animate_chart = animate
+      this.play_animation = animate
+
       this.render_chart = false
       setTimeout(() => {
         this.render_chart = true
       }, 0)
+      this.setDefaultStackedBarChart()
     },
     truncate(str = '') {
       const maximum = 350
@@ -1109,6 +1152,7 @@ export default {
         candidates.push({
           candidate: key,
           color: this.color_palettes(key),
+          image: this.photo(key),
           data: arrCandidate[key],
         })
       }
@@ -1203,6 +1247,7 @@ export default {
         candidates.push({
           candidate: key,
           color: this.color_palettes(key),
+          image: this.photo(key),
           data: arrCandidate[key],
         })
       }
@@ -1211,7 +1256,7 @@ export default {
         candidates.find((d) => d.candidate === c)
       )
 
-      return {
+      this.rank = {
         raw_data: rawData,
         candidates: orderCandidate,
         group_date: {
@@ -1226,31 +1271,67 @@ export default {
       const end = this.end_input_date
       if (this.daterange[0] === start && this.daterange[1] === end) return
       this.setDaterange()
+      this.handleUpdateChart()
+    },
+    // changeDaterange() {
+    //   this.engagement = {}
+    //   this.rank = {}
+    //   this.animate_chart = true
+    //   this.play_animation = true
+    //   this.onChangeTypeChart()
+    // },
+    handleUpdateChart() {
+      this.engagement = {}
+      this.rank = {}
+      this.animate_chart = false
       this.onChangeTypeChart()
     },
-    async onChangeTypeChart() {
+    async changeCandidateFilter() {
+      await this.$nextTick()
       this.setDefaultStackedBarChart()
+      this.handleUpdateChart()
+    },
+    async onChangeTypeChart() {
       this.active_date = ''
 
-      if (this.data_type === 'engagement') {
-        this.line_chart_data = await this.getEngagement()
-      } else {
+      if (this.data_type === 'engagement' && _.isEmpty(this.engagement)) {
+        await this.getEngagement()
+      } else if (_.isEmpty(this.rank)) {
         this.validateCalendarOnWeek()
-        this.line_chart_data = await this.getRank()
+        await this.getRank()
       }
 
+      if (this.data_type === 'engagement') {
+        this.line_chart_data = this.engagement
+      } else {
+        this.line_chart_data = this.rank
+      }
       this.reRenderChart()
-      if (!this.chartAnimate) return
-      this.$nextTick(() => {
-        this.setAnimateStackedBarChart()
-      })
+      if (!this.play_animation || !this.animate_chart) {
+        // const { length } = _.get(this.line_chart_data, 'candidates[0].data', [])
+        d3.selectAll('.stacked-bar-chart .candidate').transition()
+        this.setDefaultStackedBarChart(_.get(this.daterange, '[1]'))
+      }
     },
+    // checkAnimateChart() {
+    //   let animate = false
+    //   if (this.data_type === 'engagement' && !this.engagement_animate_finish) {
+    //     animate = true
+    //     this.engagement_animate_finish = true
+    //   }
+    //   if (this.data_type === 'rank' && !this.rank_animate_finish) {
+    //     animate = true
+    //     this.rank_animate_finish = true
+    //   }
+    //   this.animate_chart = animate
+    //   this.play_animation = animate
+    // },
     dateFormat(date, full) {
       const format = full ? 'DD MMM YYYY' : 'DD MMM YY'
       return moment(date).add(543, 'years').format(format)
     },
     async onChangeActive() {
-      this.updateStackedBarChart(this.active_date)
+      // this.updateStackedBarChart(this.active_date)
       await this.getPosts()
       this.carousel_index = 0
       const carousel = this.$refs.carousel
@@ -1258,9 +1339,9 @@ export default {
       this.current_chart_active = _.get(this.posts, '[0]', {})
     },
     viewHandlerChart(e) {
-      if (e.percentInView > 0.4 && !this.chartAnimate) {
-        this.chartAnimate = true
-        this.setAnimateStackedBarChart()
+      if (e.percentInView > 0.4 && !this.chart_inview) {
+        this.play_animation = true
+        this.chart_inview = true
       }
     },
     updateStackedBarChart(date) {
@@ -1270,7 +1351,7 @@ export default {
           el.transition()
             .duration(600)
             .ease(d3.easeLinear)
-            .style(this.$mq === 'mobile' ? 'height' : 'width', (curr) => {
+            .style(this.$mq !== 'desktop' ? 'height' : 'width', (curr) => {
               const data = curr.data.find((d) => d.date === date)
               return `${_.get(data, 'ratio')}%`
             })
@@ -1293,17 +1374,25 @@ export default {
       if (!this.interval) return
       clearInterval(this.interval)
     },
-    setDefaultStackedBarChart() {
-      const { length } = this.line_chart_data.candidates
+    setDefaultStackedBarChart(date) {
+      const { length } = this.candidates
       d3.selectAll('.stacked-bar-chart .candidate')
-        .data(this.line_chart_data.candidates)
+        .data(this.candidates)
         .call((el) => {
-          if (this.$mq === 'mobile') {
+          if (this.$mq !== 'desktop') {
             el.transition()
               .duration(300)
               .ease(d3.easeLinear)
               .style('height', (d) => {
-                const ratio = 100 / length
+                let ratio = 100 / length
+
+                if (date) {
+                  ratio = _.chain(this.group_date)
+                    .get(`data[${date}]`, [])
+                    .find((g) => g.candidate === d.candidate)
+                    .get('ratio')
+                }
+
                 return `${ratio}%`
               })
               .style('width', '100%')
@@ -1312,7 +1401,13 @@ export default {
               .duration(300)
               .ease(d3.easeLinear)
               .style('width', (d) => {
-                const ratio = 100 / length
+                let ratio = 100 / length
+                if (date) {
+                  ratio = _.chain(this.group_date)
+                    .get(`data[${date}]`, [])
+                    .find((g) => g.candidate === d.candidate)
+                    .get('ratio')
+                }
                 return `${ratio}%`
               })
               .style('height', '100%')
@@ -1325,9 +1420,8 @@ export default {
         .selectAll('.stacked-bar-chart .candidate')
         .data(this.line_chart_data.candidates)
       const { length } = _.get(this.line_chart_data, 'group_date', {})
-      // const time = 15000
-      const time = (this.duration + 700) / length
-      const firstTime = 600
+      const time = this.duration / length
+      const firstTime = 800
       const avgTime = time + (time - firstTime) / (length - 1)
 
       const animate = () => {
@@ -1339,8 +1433,12 @@ export default {
             const d = _.get(data, `[${index}]`, {})
             d3.select(this)
               .transition()
+              .delay(index === 0 ? 1000 - firstTime : 0)
               .duration(index === 0 ? firstTime : avgTime)
-              .style(_self.$mq === 'mobile' ? 'height' : 'width', `${d.ratio}%`)
+              .style(
+                _self.$mq !== 'desktop' ? 'height' : 'width',
+                `${d.ratio}%`
+              )
               .on('end', () => {
                 if (index < length) animate()
               })
@@ -1412,6 +1510,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '~/assets/style/custom.scss';
+
 .el-select-dropdown {
   margin-top: 8px;
   border-radius: 2px;
@@ -1443,6 +1543,26 @@ export default {
     }
     li:not(:last-of-type) .label {
       border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
+    }
+  }
+}
+.el-picker-panel {
+  @include mobile() {
+    left: 50% !important;
+    transform: translateX(-50%);
+    width: 400px;
+    max-width: 100vw;
+    .el-picker-panel__body-wrapper {
+      width: 100%;
+    }
+    .el-picker-panel__body {
+      width: 100%;
+      min-width: 100%;
+      display: flex;
+      flex-direction: column;
+      .el-picker-panel__content {
+        width: 100%;
+      }
     }
   }
 }
