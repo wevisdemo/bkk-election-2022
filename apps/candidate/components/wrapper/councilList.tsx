@@ -6,6 +6,7 @@ import { Dropdown } from '../dropdown';
 
 interface PropsType {
   councils: ICouncil[];
+  onSelectDistrict: () => void;
 }
 
 export function CouncilList(props: PropsType) {
@@ -23,6 +24,7 @@ export function CouncilList(props: PropsType) {
   const onClickSelectDistrict = (district: string) => {
     setCurrDistrict(district);
     setSection('council');
+    props.onSelectDistrict();
   };
 
   useEffect(() => {

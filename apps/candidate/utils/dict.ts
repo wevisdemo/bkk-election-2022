@@ -8,7 +8,7 @@ export const QuestionTypeDict = {
 export const getCandidateOG = (id: number): string => {
   try {
     const img = require(`../static/images/og/candidates_${id}.png`);
-    return img.src as string;
+    return img.default.src as string;
   } catch {
     return '';
   }
