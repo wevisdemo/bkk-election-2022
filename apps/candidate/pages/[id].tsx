@@ -2,7 +2,6 @@ import { GetStaticPaths, GetStaticProps } from 'next/types';
 import { HighLightCandidatePage } from '../components/subPage/highlightCandidatePage';
 import { CandidatePage } from '../components/subPage/candidatePage';
 import { IAnswer, IGovernor, IQuestion } from '../types/business';
-import { useRouter } from 'next/router';
 import { fetchTheStandardElectionPosts, Post } from 'wordpress-api';
 import { useEffect, useState } from 'react';
 import { getNocoApi } from '../utils/nocoHandler';
@@ -22,7 +21,6 @@ export default function Governor({
   questionList,
   isComingSoon,
 }: PropsType) {
-  const router = useRouter();
   const [news, setNews] = useState<Post[]>([]);
   const [pageUrl, setPageUrl] = useState<string>('');
   const is_highlight = candidate.highlight || false;

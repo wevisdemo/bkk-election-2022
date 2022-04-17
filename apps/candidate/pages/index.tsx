@@ -106,6 +106,10 @@ const Home = ({
     return candidateList.filter((candidate) => candidate.highlight);
   };
 
+  const onSelectDistrict = () => {
+    jumpToCounSection();
+  };
+
   return (
     <>
       <Metadata title="ข้อมูลผู้สมัคร" imageSrc={candidateHome.src} />
@@ -195,7 +199,10 @@ const Home = ({
         </div>
         {/* break */}
         <div ref={councilRef}>
-          <CouncilList councils={councilList} />
+          <CouncilList
+            councils={councilList}
+            onSelectDistrict={onSelectDistrict}
+          />
         </div>
         <div className="m-auto mb-[20px] text-center">
           <ShareList url={pageUrl} />
