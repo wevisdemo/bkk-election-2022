@@ -3,13 +3,18 @@ import { HighlightCandidateBadge } from '../badge/highlightCandidate';
 
 interface PropType {
   candidateList: IGovernor[];
+  isComingSoon?: boolean;
 }
-export function HighLightCandidateList(props: PropType) {
-  const candidateBadgeList = props.candidateList.map((candidate) => {
+export function HighLightCandidateList({
+  candidateList,
+  isComingSoon,
+}: PropType) {
+  const candidateBadgeList = candidateList.map((candidate) => {
     return (
       <HighlightCandidateBadge
         key={`hl-candidate-${candidate.id}`}
         candidate={candidate}
+        isComingSoon={isComingSoon}
       />
     );
   });

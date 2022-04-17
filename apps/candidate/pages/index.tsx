@@ -10,6 +10,9 @@ import { ShareList } from '../components/wrapper/shareList';
 import { getNocoApi } from '../utils/nocoHandler';
 import { ICouncil, IGovernor, IQuestion } from '../types/business';
 import Metadata from '../components/metadata';
+import { useRouter } from 'next/router';
+import Head from 'next/head';
+import candidateHome from '../static/images/og/candidates_home.png';
 
 interface PropsType {
   candidateList: IGovernor[];
@@ -33,7 +36,7 @@ const Home = ({
   const candidateRef = useRef<HTMLDivElement>(null);
   const councilRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLDivElement>(null);
-
+  const router = useRouter();
   useEffect(() => {
     const navHeight = navRef.current?.offsetHeight || 0;
     const candidateTop = (candidateRef.current?.offsetTop || 0) - navHeight;
@@ -67,6 +70,20 @@ const Home = ({
     setPageUrl(window.location.href);
   }, [councilRef.current?.offsetHeight]);
 
+  useEffect(() => {
+    const hashList = window.location.href.split('#');
+    if (hashList.length < 2) {
+      return;
+    }
+    const hash = hashList[1];
+    router.replace('/', undefined, { shallow: true });
+    const element = document.getElementById(hash);
+    if (!element) {
+      return;
+    }
+    element?.scrollIntoView();
+  }, []);
+
   const jumpToGovSection = () => {
     window.scrollTo({
       top:
@@ -91,7 +108,7 @@ const Home = ({
 
   return (
     <>
-      <Metadata title="ข้อมูลผู้สมัคร" />
+      <Metadata title="ข้อมูลผู้สมัคร" imageSrc={candidateHome.src} />
       <div>
         <div className="flex flex-col items-center text-center px-[20px] mt-12">
           <p className="typo-h6">Meet the Candidates</p>
@@ -147,20 +164,32 @@ const Home = ({
         {/* break */}
         <div ref={candidateRef}>
           <div className="bg-black">
-            <div className=" m-auto flex flex-col pb-[126px]">
+            <div
+              id="highlight-candidate-list"
+              className=" m-auto flex flex-col pb-[126px]"
+            >
               <div className="text-center">
                 <p className="typo-h2 text-white pt-[66px]">
                   ผู้สมัครผู้ว่าฯ กทม.
                 </p>
                 <p className="typo-h5 mt-4 text-white">ผู้สมัครในกระแส</p>
               </div>
-              <HighLightCandidateList candidateList={getCandidateHighlight()} />
+              <HighLightCandidateList
+                candidateList={getCandidateHighlight()}
+                isComingSoon={isComingSoon}
+              />
               <QuestionOverview isComingSoon questionList={questionList} />
             </div>
           </div>
           <div className="bg-[#333333]">
-            <div className=" m-auto flex flex-col pt-[12px] pb-[50px] md:pb-[156px]">
-              <CandidateList candidateList={candidateList} />
+            <div
+              id="candidate-list"
+              className=" m-auto flex flex-col pt-[12px] pb-[50px] md:pb-[156px]"
+            >
+              <CandidateList
+                candidateList={candidateList}
+                isComingSoon={isComingSoon}
+              />
             </div>
           </div>
         </div>
@@ -197,7 +226,7 @@ export const getStaticProps: GetStaticProps<PropsType> = async (context) => {
   }
   candidateList = candidateRes.data as IGovernor[];
 
-  const [councilRes, errMsg2] = await getNocoApi('councils');
+  const [councilRes, errMsg2] = await getNocoApi('councils?limit=1000');
   if (errMsg2) {
     // TODO: redirect
     return {

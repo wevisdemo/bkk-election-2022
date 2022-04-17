@@ -32,7 +32,7 @@ export function Council(props: PropsType) {
           </div>
           <div className="flex flex-col border-b md:border-b-0 md:border-r border-[#dadada] md:mr-[15px] pb-[5px] md:pb-0 mb-[5px] md:mb-0">
             <p className="typo-b7 md:text-[14pt] mb-[2px]]">อายุ</p>
-            <p className="typo-b7 md:text-[14pt] font-bold">{council.age}ปี</p>
+            <p className="typo-b7 md:text-[14pt] font-bold">{council.age} ปี</p>
           </div>
           <div className="flex flex-col border-b md:border-b-0 md:border-r border-[#dadada] md:mr-[15px] pb-[5px] md:pb-0 mb-[5px] md:mb-0">
             <p className="typo-b7 md:text-[14pt] mb-[2px]">เพศ</p>

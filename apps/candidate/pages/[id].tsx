@@ -7,6 +7,7 @@ import { fetchTheStandardElectionPosts, Post } from 'wordpress-api';
 import { useEffect, useState } from 'react';
 import { getNocoApi } from '../utils/nocoHandler';
 import Metadata from '../components/metadata';
+import { getCandidateOG } from '../utils/dict';
 
 interface PropsType {
   candidate: IGovernor;
@@ -37,13 +38,14 @@ export default function Governor({
     };
     getPort();
     setPageUrl(window.location.href);
-    console.log('answerList =>', answerList);
-    console.log('questionList =>', questionList);
   }, []);
 
   return (
     <div>
-      <Metadata title={candidate.name || 'ข้อมูลผู้สมัคร'} />
+      <Metadata
+        title={candidate.name || 'ข้อมูลผู้สมัคร'}
+        imageSrc={getCandidateOG(candidate.number || 1)}
+      />
 
       {is_highlight ? (
         <HighLightCandidatePage

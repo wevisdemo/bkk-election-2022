@@ -19,7 +19,7 @@ const OptionListComponent = (props: {
   return (
     <Fragment>
       {props.isShow && (
-        <div className="w-[250px] px-[15px] py-[5px] absolute left-[-25px] mt-[5px] bg-white border rounded-[2px]">
+        <div className="w-[250px] px-[15px] py-[5px] absolute left-[-25px] mt-[5px] bg-white border rounded-[2px] max-h-[300px] overflow-y-scroll">
           {props.options.length <= 0 && (
             <p className="font-body text-left text-[12pt]">ไม่พบข้อมูล</p>
           )}
@@ -45,7 +45,8 @@ const OptionListComponent = (props: {
 
 export function Dropdown(props: Propstype) {
   const [isShow, setIsShow] = useState<boolean>(false);
-  const [value, setValue] = useState<string>('fff');
+  const [value, setValue] = useState<string>('');
+  const [showList, setShowList] = useState<boolean>(true);
   const [displayOptions, setDisplayOptions] = useState<IDropdownOption[]>(
     props.options
   );
@@ -66,6 +67,7 @@ export function Dropdown(props: Propstype) {
       if (concernedElement?.contains((event.target as Node) || null)) {
       } else {
         setIsShow(false);
+        setShowList(true);
       }
     };
 
@@ -76,23 +78,31 @@ export function Dropdown(props: Propstype) {
   }, []);
 
   useEffect(() => {
-    const regex = new RegExp(
-      value.replace(/[|\\{}()[\]^$+*?.]/g, '\\$&'),
-      'igm'
-    );
-    const options = props.options.filter((option) => option.value.match(regex));
-    setDisplayOptions(options);
-  }, [value, props.options]);
+    if (!showList) {
+      const regex = new RegExp(
+        value.replace(/[|\\{}()[\]^$+*?.]/g, '\\$&'),
+        'igm'
+      );
+      const options = props.options.filter((option) =>
+        option.value.match(regex)
+      );
+      setDisplayOptions(options);
+    } else {
+      setDisplayOptions(props.options);
+    }
+  }, [value, props.options, showList]);
 
   const onClickDD = () => {
     if (!isShow) {
       setIsShow(true);
+      setShowList(true);
     }
   };
 
   const onClickArrow = () => {
     if (isShow) {
       setIsShow(false);
+      setShowList(true);
     }
   };
 
@@ -108,6 +118,7 @@ export function Dropdown(props: Propstype) {
           className="font-body font-semibold text-[15pt] flex-1 text-left outline-0 w-full "
           value={value}
           onChange={(e) => {
+            setShowList(false);
             setValue(e.target.value);
           }}
         />

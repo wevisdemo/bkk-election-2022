@@ -4,22 +4,27 @@ import { CandidateBadge } from '../badge/candidate';
 
 interface PropsType {
   candidateList: IGovernor[];
+  isComingSoon?: boolean;
 }
 
-export function CandidateList(props: PropsType) {
-  const candidateCount = props.candidateList.length;
+export function CandidateList({ candidateList, isComingSoon }: PropsType) {
+  const candidateCount = candidateList.length;
 
-  const candidateListComponent = props.candidateList.map((candidate, index) => {
+  const candidateListComponent = candidateList.map((candidate, index) => {
     return (
-      <CandidateBadge key={`candidate-badge-${index}`} candidate={candidate} />
+      <CandidateBadge
+        key={`candidate-badge-${index}`}
+        candidate={candidate}
+        isComingSoon={isComingSoon}
+      />
     );
   });
 
   return (
     <Fragment>
-      <p className="typo-h7 text-white py-[48px] text-center">
+      <p className="typo-h5 text-white py-[48px] text-center">
         ผู้สมัครผู้ว่าฯ กทม.ทั้งหมด
-        <span className="typo-b5"> ({candidateCount}) </span>
+        <span className="typo-b2"> ({candidateCount}) </span>
       </p>
       <div className="grid grid-cols-[repeat(2,auto)] md:grid-cols-[repeat(5,auto)] gap-[15px] md:gap-[30px] m-auto">
         {candidateListComponent}

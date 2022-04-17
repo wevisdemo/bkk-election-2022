@@ -1,4 +1,5 @@
 import 'tailwind/style.css';
+import '../custom.css';
 import type { AppProps } from 'next/app';
 import { Fragment, useEffect } from 'react';
 

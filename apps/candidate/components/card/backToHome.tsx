@@ -1,9 +1,14 @@
 import arrowLong from '../../static/icons/arrow-long.svg';
 import { useRouter } from 'next/router';
-export function BackToHomeCard() {
+
+interface Propstype {
+  hash?: string;
+}
+
+export function BackToHomeCard({ hash }: Propstype) {
   const router = useRouter();
   const onClickBack = () => {
-    router.push('/');
+    router.push('/#' + hash);
   };
   return (
     <div className="bg-black py-[46px] md:py-[76px]">

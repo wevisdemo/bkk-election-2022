@@ -123,97 +123,120 @@ export function CandidateInfoCard({ governor }: PropsType) {
   };
 
   return (
-    <div className="w-full max-w-[250px] md:max-w-[400px] md:max-h-[550px] max-h-[400px] bg-black/[0.7] text-white mx-auto mb-[20px] px-[20px] overflow-y-auto pb-[50px] rounded-[5px]">
+    <div className="w-full max-w-[250px] md:max-w-[400px] md:max-h-[550px] max-h-[400px] bg-black/[0.7] text-white mx-auto mb-[20px] px-[20px] overflow-y-scroll pb-[50px] rounded-[5px] custom-scroll">
       <p className="typo-h7 text-center mt-[20px]">ข้อมูลพื้นฐาน</p>
       <div>
-        <div className="pb-[10px] border-b border-white/[0.1]">
-          <p className="font-bold font-body mt-[10px] text-[14px]">ชื่อเล่น</p>
-          <div className="font-body text-[16px] mt-[10px]">
-            {governor.nickname || '-'}
+        {governor.nickname && (
+          <div className="pb-[10px] border-b border-white/[0.1]">
+            <p className="font-bold font-body mt-[10px] text-[14px]">
+              ชื่อเล่น
+            </p>
+            <div className="font-body text-[16px] mt-[10px]">
+              {governor.nickname || '-'}
+            </div>
           </div>
-        </div>
-        <div className="pb-[10px] border-b border-white/[0.1]">
-          <p className="font-bold font-body mt-[10px] text-[14px]">เพศภาพ</p>
-          <div className="font-body text-[16px] mt-[10px]">
-            {toGender(governor.sex)}
+        )}
+
+        {governor.sex && (
+          <div className="pb-[10px] border-b border-white/[0.1]">
+            <p className="font-bold font-body mt-[10px] text-[14px]">เพศสภาพ</p>
+            <div className="font-body text-[16px] mt-[10px]">
+              {toGender(governor.sex)}
+            </div>
           </div>
-        </div>
-        <div className="pb-[10px] border-b border-white/[0.1]">
-          <p className="font-bold font-body mt-[10px] text-[14px]">เกิด</p>
-          <div className="font-body text-[16px] mt-[10px]">
-            {toThaiDate(governor.birthdate)} ({governor.age} ปี)
+        )}
+
+        {governor.age && (
+          <div className="pb-[10px] border-b border-white/[0.1]">
+            <p className="font-bold font-body mt-[10px] text-[14px]">
+              อายุ (นับถึงวันที่สมัคร)
+            </p>
+            <div className="font-body text-[16px] mt-[10px]">
+              {governor.age || '-'} ปี
+            </div>
           </div>
-        </div>
-        <div className="pb-[10px] border-b border-white/[0.1]">
-          <p className="font-bold font-body mt-[10px] text-[14px]">อายุ</p>
-          <div className="font-body text-[16px] mt-[10px]">
-            {governor.age || '-'} ปี
+        )}
+
+        {governor.property && (
+          <div className="pb-[10px] border-b border-white/[0.1]">
+            <p className="font-bold font-body mt-[10px] text-[14px]">
+              บัญชีทรัพย์สิน
+            </p>
+            <div className="font-body text-[16px] mt-[10px]">
+              {toList(governor.property)}
+            </div>
           </div>
-        </div>
-        <div className="pb-[10px] border-b border-white/[0.1]">
-          <p className="font-bold font-body mt-[10px] text-[14px]">
-            บัญชีทรัพย์สิน
-          </p>
-          <div className="font-body text-[16px] mt-[10px]">
-            {toList(governor.property)}
+        )}
+        {governor.basic_education && (
+          <div className="pb-[10px] border-b border-white/[0.1]">
+            <p className="font-bold font-body mt-[10px] text-[14px]">
+              การศึกษาระดับมัธยมศึกษา
+            </p>
+            <div className="font-body text-[16px] mt-[10px]">
+              {toList(governor.basic_education)}
+            </div>
           </div>
-        </div>
-        <div className="pb-[10px] border-b border-white/[0.1]">
-          <p className="font-bold font-body mt-[10px] text-[14px]">
-            การศึกษาระดับมัธยมศึกษา
-          </p>
-          <div className="font-body text-[16px] mt-[10px]">
-            {toList(governor.basic_education)}
+        )}
+        {governor.higher_education && (
+          <div className="pb-[10px] border-b border-white/[0.1]">
+            <p className="font-bold font-body mt-[10px] text-[14px]">
+              การศึกษาระดับอุดมศึกษา
+            </p>
+            <div className="font-body text-[16px] mt-[10px]">
+              {toList(governor.higher_education)}
+            </div>
           </div>
-        </div>
-        <div className="pb-[10px] border-b border-white/[0.1]">
-          <p className="font-bold font-body mt-[10px] text-[14px]">
-            การศึกษาระดับอุดมศึกษา
-          </p>
-          <div className="font-body text-[16px] mt-[10px]">
-            {toList(governor.higher_education)}
+        )}
+        {governor.career && (
+          <div className="pb-[10px] border-b border-white/[0.1]">
+            <p className="font-bold font-body mt-[10px] text-[14px]">
+              ประวัติอาชีพ/การทำงานทั่วไป
+            </p>
+            <div className="font-body text-[16px] mt-[10px]">
+              {toList(governor.career)}
+            </div>
           </div>
-        </div>
-        <div className="pb-[10px] border-b border-white/[0.1]">
-          <p className="font-bold font-body mt-[10px] text-[14px]">
-            ประวัติอาชีพ/การทำงานทั่วไป
-          </p>
-          <div className="font-body text-[16px] mt-[10px]">
-            {toList(governor.career)}
+        )}
+        {governor.political_career && (
+          <div className="pb-[10px] border-b border-white/[0.1]">
+            <p className="font-bold font-body mt-[10px] text-[14px]">
+              ประวัติการดำรงตำแหน่งทางการเมือง และประวัติการสังกัดพรรคการเมือง
+            </p>
+            <div className="font-body text-[16px] mt-[10px]">
+              {toList(governor.political_career)}
+            </div>
           </div>
-        </div>
-        <div className="pb-[10px] border-b border-white/[0.1]">
-          <p className="font-bold font-body mt-[10px] text-[14px]">
-            ประวัติการดำรงตำแหน่งทางการเมือง และประวัติการสังกัดพรรคการเมือง
-          </p>
-          <div className="font-body text-[16px] mt-[10px]">
-            {toList(governor.political_career)}
+        )}
+        {governor.party && (
+          <div className="pb-[10px] border-b border-white/[0.1]">
+            <p className="font-bold font-body mt-[10px] text-[14px]">
+              ลงสมัครในนาม
+            </p>
+            <div className="font-body text-[16px] mt-[10px]">
+              {governor.party || '-'}
+            </div>
           </div>
-        </div>
-        <div className="pb-[10px] border-b border-white/[0.1]">
-          <p className="font-bold font-body mt-[10px] text-[14px]">
-            ลงสมัครในนาม
-          </p>
-          <div className="font-body text-[16px] mt-[10px]">
-            {governor.party || '-'}
+        )}
+        {governor.slogan && (
+          <div className="pb-[10px] border-b border-white/[0.1]">
+            <p className="font-bold font-body mt-[10px] text-[14px]">
+              แคมเปญสื่อสาร
+            </p>
+            <div className="font-body text-[16px] mt-[10px]">
+              {governor.slogan || '-'}
+            </div>
           </div>
-        </div>
-        <div className="pb-[10px] border-b border-white/[0.1]">
-          <p className="font-bold font-body mt-[10px] text-[14px]">
-            แคมเปญสื่อสาร
-          </p>
-          <div className="font-body text-[16px] mt-[10px]">
-            {governor.slogan || '-'}
+        )}
+        {governor.other_data && (
+          <div className="pb-[10px] border-b border-white/[0.1]">
+            <p className="font-bold font-body mt-[10px] text-[14px]">
+              ข้อมูลอื่นๆ
+            </p>
+            <div className="font-body text-[16px] mt-[10px]">
+              {toList(governor.other_data)}
+            </div>
           </div>
-        </div>
-        <div className="pb-[10px] border-b border-white/[0.1]">
-          <p className="font-bold font-body mt-[10px] text-[14px]">
-            ข้อมูลอื่นๆ
-          </p>
-          <div className="font-body text-[16px] mt-[10px]">
-            {toList(governor.other_data)}
-          </div>
-        </div>
+        )}
         {!noHasContact && (
           <div>
             <p className="font-bold font-body mt-[10px] text-[18px]">
