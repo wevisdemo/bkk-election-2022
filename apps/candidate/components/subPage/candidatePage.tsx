@@ -54,7 +54,7 @@ export function CandidatePage({
               ')',
           }}
         />
-        <div className="flex flex-col md:flex-row justify-between items-center m-auto md:mr-[60px] w-full h-full z-10 relative pr-[20px]">
+        <div className="flex flex-col md:flex-row justify-between items-center m-auto md:mr-[60px] w-full h-full z-10 relative md:pr-[20px]">
           <div className="text-white text-center md:text-left mt-[40px] md:ml-[6vw] md:mb-[6vw] md:mx-auto md:self-end">
             <p className="typo-h2 drop-shadow-[0_4px_30px_rgba(0,0,0,0.6)]">
               {governor.name}

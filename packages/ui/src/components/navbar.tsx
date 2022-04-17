@@ -58,7 +58,7 @@ const Navbar: Component = () => {
       </div>
 
       <div
-        class="ui-absolute ui-top-full md:ui-relative ui-inset-x-0 md:ui-flex ui-flex-col md:ui-flex-row ui-space-y-2 md:ui-space-y-0 md:ui-space-x-6 ui-bg-white ui-p-3 md:ui-p-0"
+        class="ui-absolute ui-top-full md:ui-relative ui-inset-x-0 md:ui-flex ui-flex-col md:ui-flex-row ui-space-y-2 md:ui-space-y-0 md:ui-space-x-6 ui-bg-white ui-p-3 md:ui-p-0 ui-z-50"
         classList={{ 'ui-hidden': !isMenuOpen() }}
       >
         <For each={pages}>
