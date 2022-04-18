@@ -170,14 +170,8 @@ const Home = ({
           <div className="bg-black">
             <div
               id="highlight-candidate-list"
-              className=" m-auto flex flex-col pb-[126px]"
+              className=" m-auto flex flex-col pb-[126px] pt-[20px]"
             >
-              <div className="text-center">
-                <p className="typo-h2 text-white pt-[66px]">
-                  ผู้สมัครผู้ว่าฯ กทม.
-                </p>
-                <p className="typo-h5 mt-4 text-white">ผู้สมัครในกระแส</p>
-              </div>
               <HighLightCandidateList
                 candidateList={getCandidateHighlight()}
                 isComingSoon={isComingSoon}
