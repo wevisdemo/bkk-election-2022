@@ -1,13 +1,14 @@
 <template>
   <div>
+    <ui-navbar></ui-navbar>
     <div
-      class="stacked-bar-chart fixed top-0 left-0 right-0 bottom-0 bg-black flex sm:flex-col"
+      class="stacked-bar-chart fixed top-0 left-0 right-0 bottom-0 bg-black flex md:flex-col"
       style="z-index: -1"
     >
       <div
         v-for="item in candidates"
-        :key="item.value"
-        class="candidate px-0.5 opacity-20"
+        :key="item.candidate"
+        class="candidate px-0.5 opacity-20 flex-1"
       >
         <img :src="item.image" alt="" class="w-full h-full object-cover" />
       </div>
@@ -18,7 +19,7 @@
         <div
           class="container mx-auto h-full flex items-center justify-center relative"
         >
-          <div class="text-center text-white typo-b3">
+          <div class="text-center text-white typo-b3" style="line-height: 1.8">
             <div class="text-left sm:text-center mx-auto max-w-max">
               <span>
                 ในช่วง
@@ -132,7 +133,7 @@
       </div>
 
       <div class="flex flex-col items-center py-7">
-        <div class="flex items-center text-center text-white">
+        <div class="flex text-center text-white">
           <div class="date-picker overflow-hidden" style="height: 44px">
             <div class="label-wrapper">
               <div class="label">
@@ -179,9 +180,12 @@
               align="center"
               class="opacity-0"
               @blur="curr_date_active = ''"
-              @change="onChangeTypeChart"
+              @change="handleUpdateChart"
             >
             </el-date-picker>
+          </div>
+          <div class="ml-2 mt-1 cursor-pointer" @click="resetDateFitler">
+            <img src="~/assets/images/refresh.svg" alt="" />
           </div>
           <!-- <template v-else>
             <div class="date-picker overflow-hidden">
@@ -250,7 +254,7 @@
               v-model="keyword"
               placeholder="Select"
               class="select-outline"
-              @change="onChangeTypeChart"
+              @change="handleUpdateChart"
             >
               <el-option
                 v-for="(item, index) in keyword_options"
@@ -275,7 +279,7 @@
               v-model="platform"
               placeholder="Select"
               class="select-outline"
-              @change="onChangeTypeChart"
+              @change="handleUpdateChart"
             >
               <el-option
                 v-for="item in platform_options"
@@ -303,7 +307,7 @@
           v-model="candidate_filter"
           size="small"
           class="candidate-tags mt-6 px-4"
-          @change="onChangeTypeChart"
+          @change="changeCandidateFilter"
         >
           <el-checkbox
             v-for="item in candidate_options"
@@ -333,13 +337,14 @@
         <div v-view="viewHandlerChart" class="chart-wrapper mt-4">
           <div class="chart overflow-hidden">
             <LineChartRace
-              v-if="render_chart && line_chart_data != 0"
+              v-if="render_chart && line_chart_data.raw_data != 0"
               :dataSet="line_chart_data"
               :activeChart="active_date"
-              :photo="photo"
+              :start_date="start_calendar_date"
               :type="data_type"
               :duration="duration"
-              :animate="chartAnimate"
+              :play_animation="play_animation"
+              :animate="animate_chart"
               :color="color_palettes"
               :xAxisStart="daterange[0]"
               :xAxisEnd="daterange[1]"
@@ -455,34 +460,46 @@
                   :key="index"
                   class="text-black px-3"
                 >
-                  <div
-                    class="bg-white h-full rounded-md p-5 flex flex-col justify-between"
+                  <a
+                    :href="item.permalink"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="no-underline"
                   >
-                    <div>
-                      <div class="flex justify-between items-start">
-                        <div class="">
-                          <div class="font-bold typo-b5">{{ item.author }}</div>
-                          <div class="typo-b7 opacity-50 mt-2">
-                            {{ dateFormat(item.created_time, 'full') }}
+                    <div
+                      class="bg-white text-black h-full rounded-md p-5 flex flex-col justify-between"
+                    >
+                      <div>
+                        <div class="flex justify-between items-start">
+                          <div class="">
+                            <div class="font-bold typo-b5">
+                              {{ item.author }}
+                            </div>
+                            <div class="typo-b7 opacity-50 mt-2">
+                              {{ dateFormat(item.created_time, 'full') }}
+                            </div>
                           </div>
+
+                          <img :src="item.platform_icon" alt="" />
                         </div>
 
-                        <img :src="item.platform_icon" alt="" />
+                        <p
+                          v-html="truncate(item.text)"
+                          class="typo-b5 mt-2"
+                        ></p>
                       </div>
 
-                      <p v-html="truncate(item.text)" class="typo-b5 mt-2"></p>
+                      <div
+                        class="typo-b6 mt-5 pt-5"
+                        style="border-top: 1px solid #cfcfcf"
+                      >
+                        <span class="font-bold"
+                          >{{ format(item.engagement_count) }}
+                        </span>
+                        Engagement
+                      </div>
                     </div>
-
-                    <div
-                      class="typo-b6 mt-5 pt-5"
-                      style="border-top: 1px solid #cfcfcf"
-                    >
-                      <span class="font-bold"
-                        >{{ format(item.engagement_count) }}
-                      </span>
-                      Engagement
-                    </div>
-                  </div>
+                  </a>
                 </el-carousel-item>
               </el-carousel>
             </div>
@@ -519,23 +536,16 @@
           </div>
 
           <div class="mt-16 pt-6" style="border-top: 1px solid #9c9c9c">
-            <span class="font-bold typo-b4 opacity-75">Methodology</span>
+            <span class="font-bold typo-b4 opacity-75">Disclaimer</span>
             <div class="pt-7 typo-b5 opacity-75">
-              Quis mi semper maecenas dictumst ut. Luctus vel tempus in quis
-              fames odio ut faucibus libero. Dignissim elit massa orci ornare
-              sit orci, condimentum nec vehicula. Bibendum euismod phasellus
-              sagittis ultrices egestas diam amet mattis consequat. Proin turpis
-              odio nunc, at nulla. Laoreet viverra nunc libero, at auctor
-              senectus laoreet massa. Suspendisse neque vel pellentesque sed
-              bibendum rutrum nisl. Vel sapien iaculis at eget nulla dignissim
-              in sed nisi.Quis mi semper maecenas dictumst ut. Luctus vel tempus
-              in quis fames odio ut faucibus libero. Dignissim elit massa orci
-              ornare sit orci, condimentum nec vehicula. Bibendum euismod
-              phasellus sagittis ultrices egestas diam amet mattis consequat.
-              Proin turpis odio nunc, at nulla. Laoreet viverra nunc libero, at
-              auctor senectus laoreet massa. Suspendisse neque vel pellentesque
-              sed bibendum rutrum nisl. Vel sapien iaculis at eget nulla
-              dignissim in sed nisi.
+              ข้อมูลนี้ได้มาจากการเก็บข้อมูลที่เป็นสาธารณะจาก Social Media 7
+              ช่องทางคือ Facebook, Instagram, Twitter, YouTube, Blog, News,
+              Forum โดยอ้างอิงจากฐานข้อมูลของ Wisesight
+              และทำการกวาดข้อมูลด้วยคีย์เวิร์ดที่เกี่ยวข้องคือคีย์เวิร์ดที่หมายถึงผู้สมัคร
+              8 คนและคีย์เวิร์ดที่เกี่ยวข้องกับประเด็นต่าง ๆ ทั้งการเดินทาง,
+              ความปลอดภัย, สาธารณภัย, พื้นที่สาธารณะ, สุขภาพ, ความเท่าเทียม,
+              สิ่งแวดล้อม, ศิลปะวัฒนธรรม, การบริหาร/กฏหมาย
+              เพื่อนำมาแสดงผลในชาร์ทนี้
             </div>
 
             <div class="mt-10 flex items-center justify-center typo-b6">
@@ -550,6 +560,7 @@
         </div>
       </div>
     </div>
+    <ui-footer></ui-footer>
   </div>
 </template>
 
@@ -571,13 +582,22 @@ export default {
   },
   data() {
     return {
-      webUrl: 'https://staging.bkkelection2022.wevis.info/socialtrend',
-      chartAnimate: false,
-      line_chart_data: [],
+      webUrl: process.client ? window.location.href : '',
+      engagement_animate_finish: true,
+      rank_animate_finish: false,
+      animate_chart: true,
+      play_animation: false,
+      chart_inview: false,
+      line_chart_data: {
+        raw_data: [],
+        group_date: [],
+        candidates: [],
+      },
       render_chart: true,
       socialtrend_current: {},
       socialtrend: [],
-      engagement: [],
+      engagement: {},
+      rank: {},
       avgTime: 0,
       posts: [],
       carousel_index: 0,
@@ -588,7 +608,7 @@ export default {
       current_chart_active: {},
       start_input_date: '2021-11-01',
       start_calendar_date: '2021-10-31',
-      end_input_date: '',
+      end_input_date: moment().format('yyyy-MM-DD'),
       active_date: '',
       keyword: '',
       curr_date_active: '',
@@ -662,14 +682,14 @@ export default {
         'อุเทน์',
       ],
       color_config: [
-        '#FF6D1B',
+        '#F66C03',
         '#D185FF',
-        '#00B6B6',
-        '#43DDFF',
+        '#009696',
+        '#4BDFFF',
         '#6DA7FF',
-        '#FDB604',
-        '#BB7D4B',
-        '#96D74B',
+        '#EDDF95',
+        '#A66837',
+        '#82E016',
         '#FF408E',
         '#39A96A',
         '#476FFF',
@@ -686,7 +706,7 @@ export default {
         require('~/assets/images/candidate/candidate-03.png'),
         require('~/assets/images/candidate/candidate-04.png'),
         require('~/assets/images/candidate/candidate-04.png'),
-        require('~/assets/images/candidate/candidate-07.png'),
+        require('~/assets/images/candidate/candidate-06.png'),
         require('~/assets/images/candidate/candidate-07.png'),
         require('~/assets/images/candidate/candidate-08.png'),
         require('~/assets/images/candidate/candidate-08.png'),
@@ -706,9 +726,9 @@ export default {
       return d3.format(',')
     },
     duration() {
-      const { length } = Object.keys(this.date_group)
+      const { length } = _.get(this.line_chart_data, 'group_date', {})
 
-      const time = length * 400
+      const time = length * 300
       const duration = this.data_type === 'rank' ? time * 3 : time
       return duration < 20000 ? 20000 : duration
     },
@@ -728,8 +748,9 @@ export default {
         .range(this.photo_config)
     },
     // end_input_date() {
-    //   const key = this.data_type === 'engagement' ? 'date' : 'date_to'
-    //   return d3.max(this.line_chart_data, (d) => d[key]) || 0
+    //   // const key = this.data_type === 'engagement' ? 'date' : 'date_to'
+    //   // return d3.max(this.line_chart_data, (d) => d[key]) || 0
+    //   return moment().format('yyyy-MM-DD')
     // },
     daterangeDisplay() {
       const start = this.daterange[0]
@@ -743,13 +764,30 @@ export default {
         const daterange = (date, type) => {
           let start = ''
           let end = ''
+          let daysInt = 0
+          // let curr = {}
+
           if (type === 'start') {
+            let add = 6
+            daysInt = moment(date).isoWeekday()
+            if (daysInt !== 7) add = 6 - daysInt
             start = this.dateFormat(date)
-            end = this.dateFormat(moment(date).add(7, 'days'))
+            end = this.dateFormat(moment(date).add(add, 'days'))
+            // curr = _.get(date, '[0]', {})
+            // start = this.dateFormat(date)
+            // end = this.dateFormat(moment(date).add(7, 'days'))
           }
           if (type === 'end') {
-            start = this.dateFormat(moment(date).subtract(7, 'days'))
+            let subtract = 0
+            daysInt = moment(date).isoWeekday()
+            if (daysInt !== 7) subtract = daysInt
+            start = this.dateFormat(moment(date).subtract(subtract, 'days'))
             end = this.dateFormat(date)
+
+            // const { length } = date
+            // curr = _.get(date, `[${length - 1}]`, {})
+            // start = this.dateFormat(moment(date).subtract(7, 'days'))
+            // end = this.dateFormat(last.date_to)
           }
 
           return `${start} - ${end}`
@@ -794,14 +832,12 @@ export default {
       }
 
       return {
-        // firstDayOfWeek: 1,
         disabledDate,
         onPick,
       }
     },
     pickerDateActiveOptions() {
       return {
-        firstDayOfWeek: 1,
         disabledDate: (date) => {
           const start = _.get(this.daterange, '[0]')
           const end = _.get(this.daterange, '[1]')
@@ -812,21 +848,24 @@ export default {
         },
       }
     },
-    date_group() {
-      return _.groupBy(this.line_chart_data, 'date')
+    ready() {
+      return (
+        this.chart_inview &&
+        this.play_animation &&
+        this.line_chart_data.raw_data.length !== 0
+      )
     },
+    // date_group() {
+    //   return _.groupBy(this.line_chart_data, 'date')
+    // },
     candidates() {
       return this.candidate_options
-        .filter((c) => this.candidate_filter.includes(c))
-        .map((c) => {
-          const data = _.chain(this.line_chart_data)
-            .filter((d) => d.candidate === c)
-            .orderBy('date', 'asc')
-            .value()
+        .filter((d) => this.candidate_filter.includes(d))
+        .map((d) => {
           return {
-            ...c,
-            data,
-            image: this.photo(c),
+            candidate: d,
+            // data,
+            image: this.photo(d),
           }
         })
     },
@@ -845,7 +884,27 @@ export default {
     carousel_index(val) {
       this.current_chart_active = _.get(this.posts, `[${val}]`, {})
     },
-
+    ready(val) {
+      if (!val) return
+      this.setAnimateStackedBarChart()
+    },
+    // engagement(newVal, oldVal) {
+    //   if (!_.isEmpty(newVal) && !_.isEmpty(oldVal)) {
+    //     this.animate_chart = false
+    //   }
+    //   if (_.isEmpty(newVal)) {
+    //     console.log('2')
+    //     this.animate_chart = true
+    //   }
+    // },
+    // rank(newVal, oldVal) {
+    //   if (!(_.isEmpty(newVal) && _.isEmpty(oldVal))) {
+    //     this.animate_chart = false
+    //   }
+    //   if (_.isEmpty(newVal)) {
+    //     this.animate_chart = true
+    //   }
+    // },
     // end_input_date() {
     //   const isAfter = moment(this.active_date).isAfter(this.end_input_date)
     //   if (!isAfter) return
@@ -857,13 +916,12 @@ export default {
     //   this.getKeywords(),
     //   this.getEngagement()
     // ])
-    this.getKeywords()
+
     this.candidate_filter = _.clone(this.candidate_options)
-    this.line_chart_data = await this.getEngagement()
-    this.end_input_date = d3.max(this.line_chart_data, (d) => d.date) || 0
-    await this.getCandidateStat()
+    this.getKeywords()
     this.setDaterange()
-    this.animateKeywords()
+    this.handleCandidateStat()
+    this.line_chart_data = await this.getEngagement()
   },
   destroyed() {
     window.removeEventListener('resize', _.debounce(this.reRenderChart, 200))
@@ -902,10 +960,23 @@ export default {
       this.daterange = [start, end]
     },
     reRenderChart() {
+      let animate = false
+      if (this.data_type === 'engagement' && !this.engagement_animate_finish) {
+        animate = true
+        this.engagement_animate_finish = true
+      }
+      if (this.data_type === 'rank' && !this.rank_animate_finish) {
+        animate = true
+        this.rank_animate_finish = true
+      }
+      this.animate_chart = animate
+      this.play_animation = animate
+
       this.render_chart = false
       setTimeout(() => {
         this.render_chart = true
       }, 0)
+      this.setDefaultStackedBarChart()
     },
     truncate(str = '') {
       const maximum = 350
@@ -920,21 +991,25 @@ export default {
         this.daterange[0],
         'days'
       )
-      if (diffDaterange > 8) return
-      let endAt = moment(startAt).add(8, 'days').format('yyyy-MM-DD')
+      if (diffDaterange > 6) return
+      let endAt = moment(startAt).add(6, 'days').format('yyyy-MM-DD')
       const diffOfDataEnddate = moment(this.end_input_date).diff(
         startAt,
         'days'
       )
-      if (diffOfDataEnddate < 8) {
+      if (diffOfDataEnddate < 6) {
         endAt = _.clone(startAt)
-        startAt = moment(startAt).subtract(8, 'days').format('yyyy-MM-DD')
+        startAt = moment(startAt).subtract(6, 'days').format('yyyy-MM-DD')
       }
       this.daterange = [startAt, endAt]
 
       // const isWeek = moment(startAt).add(8, 'day')
       // end_input_date
       // inWeek = diff >= -7 && diff <= 7
+    },
+    async handleCandidateStat() {
+      await this.getCandidateStat()
+      this.animateKeywords()
     },
     async getKeywords() {
       let data = []
@@ -978,6 +1053,7 @@ export default {
       }
 
       this.posts = _.chain(data)
+        .filter((d) => d.text)
         .orderBy('total_engagement', 'desc')
         .map((d) => {
           const platform =
@@ -997,7 +1073,7 @@ export default {
       try {
         const res = await this.$api.get('candidate-stat', {
           params: {
-            candidates: this.candidate_filter.toString(),
+            candidates: this.candidate_options.toString(),
           },
         })
         data = _.get(res, 'data.data', [])
@@ -1034,31 +1110,67 @@ export default {
         })
 
         data = _.get(res, 'data.data', [])
-
-        console.log(data)
       } catch (error) {
         console.error(error)
       }
 
-      this.engagement = _.orderBy(data, 'date', 'asc').map((d) => {
-        const highest =
-          _.chain(data)
-            .groupBy('date')
-            .get(d.date, [])
-            .maxBy('value')
-            .value() || {}
+      const groupDate = _.groupBy(data, 'date')
+      const rawData = _.orderBy(data, 'date', 'asc').map((d) => {
+        const isBefore = []
+        for (const key in groupDate) {
+          if (moment(key).isSameOrBefore(d.date)) {
+            isBefore.push(...groupDate[key])
+          }
+        }
+
+        const total = _.sumBy(isBefore, 'value')
+        const increase = _.chain(isBefore)
+          .filter((o) => o.candidate === d.candidate)
+          .sumBy('value')
+          .value()
+        const highest = _.chain(groupDate)
+          .get(d.date, {})
+          .maxBy('value')
+          .value()
 
         return {
           ...d,
-          ratio: _.get(d, 'ratio', 0) * 100,
+          increase,
+          increase_total: total,
+          ratio: (increase / total) * 100,
           highest: _.get(highest, 'value', 0),
           highest_per_date: highest.candidate === d.candidate,
           image: this.photo(d.candidate),
           color: this.color_palettes(d.candidate),
         }
       })
+      const arrDate = _.groupBy(rawData, 'date')
+      const arrCandidate = _.groupBy(rawData, 'candidate')
+      const candidates = []
 
-      return _.clone(this.engagement)
+      for (const key in arrCandidate) {
+        candidates.push({
+          candidate: key,
+          color: this.color_palettes(key),
+          image: this.photo(key),
+          data: arrCandidate[key],
+        })
+      }
+      const orderCandidate = this.candidate_filter.map((c) =>
+        candidates.find((d) => d.candidate === c)
+      )
+
+      this.engagement = {
+        raw_data: rawData,
+        candidates: orderCandidate,
+        group_date: {
+          data: arrDate,
+          keys_data: Object.keys(arrDate),
+          length: Object.keys(arrDate).length,
+        },
+      }
+
+      return await _.clone(this.engagement)
     },
     async getRank() {
       let data = []
@@ -1077,57 +1189,149 @@ export default {
         })
 
         data = _.get(res, 'data.data', [])
-
-        console.log(data)
       } catch (error) {
         console.error(error)
       }
 
-      return _.orderBy(data, 'date_from', 'asc').map((d) => {
+      const groupDate = _.groupBy(data, 'date_from')
+
+      const rawData = _.orderBy(data, 'date_from', 'asc').map((d) => {
         const { length } = this.candidate_filter
-        const value = length + 1 - d.value
-        const highest =
-          _.chain(data)
-            .groupBy('date')
-            .get(d.date, [])
-            .minBy('value')
-            .value() || {}
+        const value = d.value === 0 ? 0 : length + 1 - d.value
+        const isBefore = []
+        for (const key in groupDate) {
+          if (moment(key).isSameOrBefore(d.date_from)) {
+            isBefore.push(...groupDate[key])
+          }
+        }
+
+        const total = _.sumBy(isBefore, 'value')
+        const increase = _.chain(isBefore)
+          .filter((o) => o.candidate === d.candidate)
+          .sumBy((o) => (o.value === 0 ? 0 : length + 1 - o.value))
+          .value()
+        const highest = _.chain(groupDate)
+          .get(d.date_from, {})
+          .filter((d) => d.value)
+          .minBy('value')
+          .value()
+
         const date = moment(d.date_from).diff(this.start_calendar_date, 'week')
+        // const highest =
+        //   _.chain(data)
+        //     .groupBy('date')
+        //     .get(d.date, [])
+        //     .minBy('value')
+        //     .value() || {}
 
         return {
           ...d,
-          ratio: _.get(d, 'ratio', 0) * 100,
           value,
           date: `${date + 1}`,
           rank: d.value,
+          increase,
+          increase_total: total,
+          ratio: (increase / total) * 100,
           highest: _.get(highest, 'value', 0),
           highest_per_date: highest.candidate === d.candidate,
+          image: this.photo(d.candidate),
+          color: this.color_palettes(d.candidate),
         }
       })
-    },
-    async onChangeTypeChart() {
-      this.setDefaultStackedBarChart()
-      this.active_date = ''
 
-      if (this.data_type === 'engagement') {
-        this.line_chart_data = await this.getEngagement()
-      } else {
-        this.line_chart_data = await this.getRank()
-        this.validateCalendarOnWeek()
+      const arrDate = _.groupBy(rawData, 'date')
+      const arrCandidate = _.groupBy(rawData, 'candidate')
+      const candidates = []
+
+      for (const key in arrCandidate) {
+        candidates.push({
+          candidate: key,
+          color: this.color_palettes(key),
+          image: this.photo(key),
+          data: arrCandidate[key],
+        })
       }
 
-      this.reRenderChart()
-      if (!this.chartAnimate) return
-      this.$nextTick(() => {
-        this.setAnimateStackedBarChart()
-      })
+      const orderCandidate = this.candidate_filter.map((c) =>
+        candidates.find((d) => d.candidate === c)
+      )
+
+      this.rank = {
+        raw_data: rawData,
+        candidates: orderCandidate,
+        group_date: {
+          data: arrDate,
+          keys_data: Object.keys(arrDate),
+          length: Object.keys(arrDate).length,
+        },
+      }
     },
+    resetDateFitler() {
+      const start = this.start_input_date
+      const end = this.end_input_date
+      if (this.daterange[0] === start && this.daterange[1] === end) return
+      this.setDaterange()
+      this.handleUpdateChart()
+    },
+    // changeDaterange() {
+    //   this.engagement = {}
+    //   this.rank = {}
+    //   this.animate_chart = true
+    //   this.play_animation = true
+    //   this.onChangeTypeChart()
+    // },
+    handleUpdateChart() {
+      this.engagement = {}
+      this.rank = {}
+      this.animate_chart = false
+      this.onChangeTypeChart()
+    },
+    async changeCandidateFilter() {
+      await this.$nextTick()
+      this.setDefaultStackedBarChart()
+      this.handleUpdateChart()
+    },
+    async onChangeTypeChart() {
+      this.active_date = ''
+
+      if (this.data_type === 'engagement' && _.isEmpty(this.engagement)) {
+        await this.getEngagement()
+      } else if (_.isEmpty(this.rank)) {
+        this.validateCalendarOnWeek()
+        await this.getRank()
+      }
+
+      if (this.data_type === 'engagement') {
+        this.line_chart_data = this.engagement
+      } else {
+        this.line_chart_data = this.rank
+      }
+      this.reRenderChart()
+      if (!this.play_animation || !this.animate_chart) {
+        // const { length } = _.get(this.line_chart_data, 'candidates[0].data', [])
+        d3.selectAll('.stacked-bar-chart .candidate').transition()
+        this.setDefaultStackedBarChart(_.get(this.daterange, '[1]'))
+      }
+    },
+    // checkAnimateChart() {
+    //   let animate = false
+    //   if (this.data_type === 'engagement' && !this.engagement_animate_finish) {
+    //     animate = true
+    //     this.engagement_animate_finish = true
+    //   }
+    //   if (this.data_type === 'rank' && !this.rank_animate_finish) {
+    //     animate = true
+    //     this.rank_animate_finish = true
+    //   }
+    //   this.animate_chart = animate
+    //   this.play_animation = animate
+    // },
     dateFormat(date, full) {
       const format = full ? 'DD MMM YYYY' : 'DD MMM YY'
       return moment(date).add(543, 'years').format(format)
     },
     async onChangeActive() {
-      this.updateStackedBarChart(this.active_date)
+      // this.updateStackedBarChart(this.active_date)
       await this.getPosts()
       this.carousel_index = 0
       const carousel = this.$refs.carousel
@@ -1135,19 +1339,19 @@ export default {
       this.current_chart_active = _.get(this.posts, '[0]', {})
     },
     viewHandlerChart(e) {
-      if (e.percentInView > 0.4 && !this.chartAnimate) {
-        this.chartAnimate = true
-        this.setAnimateStackedBarChart()
+      if (e.percentInView > 0.4 && !this.chart_inview) {
+        this.play_animation = true
+        this.chart_inview = true
       }
     },
     updateStackedBarChart(date) {
       d3.selectAll('.stacked-bar-chart .candidate')
-        .data(this.candidates)
+        .data(this.line_chart_data.candidates)
         .call((el) => {
           el.transition()
             .duration(600)
             .ease(d3.easeLinear)
-            .style(this.$mq === 'mobile' ? 'height' : 'width', (curr) => {
+            .style(this.$mq !== 'desktop' ? 'height' : 'width', (curr) => {
               const data = curr.data.find((d) => d.date === date)
               return `${_.get(data, 'ratio')}%`
             })
@@ -1163,24 +1367,32 @@ export default {
         else index = 0
       }
 
-      this.interval = setInterval(() => update(), 2000)
+      this.interval = setInterval(() => update(), 6000)
       this.socialtrend_current = _.get(this.socialtrend, '[0]', {})
     },
     clearAnimateKeywords() {
       if (!this.interval) return
       clearInterval(this.interval)
     },
-    setDefaultStackedBarChart() {
+    setDefaultStackedBarChart(date) {
       const { length } = this.candidates
       d3.selectAll('.stacked-bar-chart .candidate')
         .data(this.candidates)
         .call((el) => {
-          if (this.$mq === 'mobile') {
+          if (this.$mq !== 'desktop') {
             el.transition()
               .duration(300)
               .ease(d3.easeLinear)
               .style('height', (d) => {
-                const ratio = 100 / length
+                let ratio = 100 / length
+
+                if (date) {
+                  ratio = _.chain(this.group_date)
+                    .get(`data[${date}]`, [])
+                    .find((g) => g.candidate === d.candidate)
+                    .get('ratio')
+                }
+
                 return `${ratio}%`
               })
               .style('width', '100%')
@@ -1189,7 +1401,13 @@ export default {
               .duration(300)
               .ease(d3.easeLinear)
               .style('width', (d) => {
-                const ratio = 100 / length
+                let ratio = 100 / length
+                if (date) {
+                  ratio = _.chain(this.group_date)
+                    .get(`data[${date}]`, [])
+                    .find((g) => g.candidate === d.candidate)
+                    .get('ratio')
+                }
                 return `${ratio}%`
               })
               .style('height', '100%')
@@ -1200,11 +1418,10 @@ export default {
       const _self = this
       const candidates = d3
         .selectAll('.stacked-bar-chart .candidate')
-        .data(this.candidates)
-      const { length } = Object.keys(this.date_group)
-      // const time = 15000
-      const time = (this.duration + 1000) / length
-      const firstTime = 600
+        .data(this.line_chart_data.candidates)
+      const { length } = _.get(this.line_chart_data, 'group_date', {})
+      const time = this.duration / length
+      const firstTime = 800
       const avgTime = time + (time - firstTime) / (length - 1)
 
       const animate = () => {
@@ -1216,8 +1433,12 @@ export default {
             const d = _.get(data, `[${index}]`, {})
             d3.select(this)
               .transition()
+              .delay(index === 0 ? 1000 - firstTime : 0)
               .duration(index === 0 ? firstTime : avgTime)
-              .style(_self.$mq === 'mobile' ? 'height' : 'width', `${d.ratio}%`)
+              .style(
+                _self.$mq !== 'desktop' ? 'height' : 'width',
+                `${d.ratio}%`
+              )
               .on('end', () => {
                 if (index < length) animate()
               })
@@ -1289,6 +1510,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '~/assets/style/custom.scss';
+
 .el-select-dropdown {
   margin-top: 8px;
   border-radius: 2px;
@@ -1320,6 +1543,26 @@ export default {
     }
     li:not(:last-of-type) .label {
       border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
+    }
+  }
+}
+.el-picker-panel {
+  @include mobile() {
+    left: 50% !important;
+    transform: translateX(-50%);
+    width: 400px;
+    max-width: 100vw;
+    .el-picker-panel__body-wrapper {
+      width: 100%;
+    }
+    .el-picker-panel__body {
+      width: 100%;
+      min-width: 100%;
+      display: flex;
+      flex-direction: column;
+      .el-picker-panel__content {
+        width: 100%;
+      }
     }
   }
 }
@@ -1385,6 +1628,10 @@ export default {
     position: relative;
     white-space: nowrap;
     pointer-events: none;
+    .btn-reset {
+      cursor: pointer;
+      margin: 2px 0 0 8px;
+    }
     .label {
       flex: 1;
       height: 100%;
