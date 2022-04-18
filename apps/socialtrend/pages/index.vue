@@ -938,7 +938,7 @@ export default {
     window.addEventListener('resize', _.debounce(this.reRenderChart, 200))
   },
   mounted() {
-    // window.registerUICustomElements()
+    window.registerUICustomElements()
 
     this.setDefaultStackedBarChart()
 
