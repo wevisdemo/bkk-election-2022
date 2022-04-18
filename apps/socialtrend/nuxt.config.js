@@ -78,7 +78,6 @@ export default {
       // { rel: 'stylesheet', href: '/static/fonts/typography.css' },
       { rel: 'stylesheet', href: '/ui/style.css' },
     ],
-    script: [{ src: '/ui/ui.umd.js', async: true }],
   },
 
   mq: {

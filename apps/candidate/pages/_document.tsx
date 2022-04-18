@@ -7,7 +7,6 @@ export default function Document() {
         <link rel="icon" href="/static/favicon.png" />
         <link rel="stylesheet" href="/static/fonts/typography.css" />
         <link rel="stylesheet" href="/ui/style.css" />
-        <script src="/ui/ui.umd.js" async></script>
       </Head>
       <body>
         <Main />

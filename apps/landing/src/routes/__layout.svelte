@@ -1,11 +1,10 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-
+	import { loadUIComponents } from 'ui';
 	import 'tailwind/style.css';
 
 	onMount(() => {
-		// @ts-ignore
-		window.registerUICustomElements();
+		loadUIComponents();
 	});
 </script>
 
