@@ -7,7 +7,7 @@ Monorepo for Bangkok Election 2022 projects managed by [Turborepo](https://turbo
 | Environment | URL                                        |
 | ----------- | ------------------------------------------ |
 | Staging     | https://staging.bkkelection2022.wevis.info |
-| Production  | -                                          |
+| Production  | https://bkkelection2022.wevis.info         |
 
 ## 🍱 Project structure
 
