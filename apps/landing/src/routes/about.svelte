@@ -1,33 +1,40 @@
 <script lang="ts">
 	import Metadata from '../components/metadata.svelte';
 	import ExternalLink from '../components/external-link.svelte';
+	import PartnersLogo from '../components/partners-logo.svelte';
 </script>
 
 <Metadata title="เกี่ยวกับเว็บไซต์นี้" />
 
 <div class="max-w-screen-md mx-auto px-4 py-12 md:py-24 space-y-16 md:space-y-20 typo-b4">
-	<div class="text-center">
-		<h1 class="typo-h2">Bangkok Election 2022</h1>
-		<p class="typo-h6">ข้อมูลเกี่ยวกับการเลือกตั้งผู้ว่าฯ และสมาชิกสภา กทม. ปี 2565</p>
+	<div class="flex flex-col items-center space-y-4">
+		<img
+			src="/static/images/bkkelection-black-big.png"
+			class="w-full max-w-md"
+			alt="Bangkok Election 2022"
+		/>
+		<p class="typo-h6 text-center">ข้อมูลเกี่ยวกับการเลือกตั้งผู้ว่าฯ และสมาชิกสภา กทม. ปี 2565</p>
 	</div>
 
 	<div class="paragraph">
 		<h2 class="typo-h3">เกี่ยวกับโปรเจกต์นี้</h2>
 		<p>
-			29 สิงหาคม 2553 คือครั้งสุดท้ายที่คนกทม. ได้ออกไปใช้สิทธิเลือกสมาชิกสภา กทม. (ส.ก.) และ 3
-			มีนาคม 2556 คือครั้งสุดท้ายที่คนกทม. ได้ออกไปใช้สิทธิเลือกผู้ว่าฯ กทม. ก่อนที่ คสช.
-			จะใช้อำนาจตามมาตรา 44 แต่งตั้งผู้ว่าฯ และสมาชิกสภา กทม. มาบริหารเมือง
-			โดยไม่สนใจเสียงของประชาชนชาว กทม.
+			29 สิงหาคม 2553 คือครั้งสุดท้ายที่คน กทม. ได้ออกไปใช้สิทธิเลือกสมาชิกสภา กทม. (ส.ก.) และ 3
+			มีนาคม 2556 คือครั้งสุดท้ายที่คน กทม. ได้ออกไปใช้สิทธิเลือกผู้ว่าฯ กทม.
 		</p>
 		<p>
-			22 พฤษภาคม 2565 เป็นโอกาสสำคัญอีกครั้งในรอบเกือบสิบปี ที่ประชาชนชาว กทม.
-			จะได้ออกไปใช้สิทธิเลือกผู้แทนของตัวเองและกำหนดอนาคตของเมืองที่อยากอยู่และอยากเห็นในอนาคตไปพร้อมกัน
+			ผ่านมาเกือบ 10 ปีที่คูหาเลือกตั้งใน กทม.
+			ว่างเว้นจากเสียงที่แท้จริงของประชาชนในการกำหนดอนาคตเมืองของตัวเอง วันที่ 22 พฤษภาคม 2565
+			จึงเป็นโอกาสครั้งสำคัญที่คน กทม. จะได้ไปใช้สิทธิเลือกตั้งผู้ว่าฯ กทม. และ ส.ก.
+			เพื่อมาทำหน้าที่แก้ปัญหาที่สั่งสมมาอย่างยาวนาน
+			และร่วมสร้างเมืองที่อยากอยู่และอยากเห็นไปพร้อมกัน
 		</p>
 		<p>
-			<b>WeVis</b> ร่วมกับ <b>Wisesight</b> และ <b>The Standard</b> จึงตั้งใจพัฒนาเว็บไซต์
-			<b>Bangkok Election 2022</b> ขึ้นมา เพื่อรวบรวมข้อมูลที่เกี่ยวข้องและเป็นประโยชน์ต่อประชาชนผู้มีสิทธิและประชาชนที่สนใจ
-			นำมาแสดงผลในรูปแบบที่เข้าถึง เข้าใจ และเข้าใช้ง่าย ด้วยความหวังให้ทุกคนออกไปใช้สิทธิผ่านการเลือกตั้ง
-			ด้วยข้อมูลที่ที่เพียงพอต่อการตัดสินใจกำหนดอนาคตของตนเอง
+			<b>WeVis x THE STANDARD x Wisesight</b> จึงร่วมกันพัฒนาเว็บไซต์ Bangkok Election 2022 เพื่อรวบรวมข้อมูลทุกมิติเกี่ยวกับการเลือกตั้งครั้งสำคัญนี้
+			ครอบคลุมทั้งบทสัมภาษณ์พิเศษของผู้สมัครชิงตำแหน่งผู้ว่าฯ กทม. สถิติที่น่าสนใจของการเลือกตั้งในประวัติศาสตร์
+			คู่มือการเลือกตั้ง และปัญหา กทม. ที่รอการแก้ไขจากผู้ว่าฯ คนใหม่ ในรูปแบบที่เข้าถึง เข้าใจ และเข้าใช้ง่าย
+			ด้วยความมุ่งหวังให้ผู้มีสิทธิออกเสียงทุกคนสามารถนำข้อมูลเหล่านี้ไปเป็นส่วนหนึ่งในการตัดสินใจเพื่อ
+			‘พลิกเมืองด้วยเสียงคุณ’
 		</p>
 	</div>
 
@@ -46,36 +53,8 @@
 
 	<div class="paragraph">
 		<h2 class="typo-h3">ทีมงานร่วมพัฒนา</h2>
-		<div class="sub-paragraph">
-			<h3 class="typo-h6">เขียนโปรแกรม</h3>
-			<p>
-				<ExternalLink href="https://github.com/Th1nkK1D">วิถี ภูษิตาศัย</ExternalLink>,
-				<ExternalLink href="https://github.com/mixth">ณรัฐ สุชาติสุนทร</ExternalLink>,
-				<ExternalLink href="https://github.com/MNutdanai">Max Nutdanai</ExternalLink>,
-				<ExternalLink href="https://github.com/petchill">Petchill</ExternalLink>
-			</p>
-		</div>
-		<div class="sub-paragraph">
-			<h3 class="typo-h6">ออกแบบ</h3>
-			<p>
-				<ExternalLink href="https://linkedin.com/in/taepras">ธนวิชญ์ ประสงค์พงษ์ชัย</ExternalLink>,
-				<ExternalLink href="https://cargocollective.com/namsai">น้ำใส ศุภวงศ์</ExternalLink>
-			</p>
-		</div>
-		<div class="sub-paragraph">
-			<h3 class="typo-h6">สืบค้นและรวบรวมข้อมูล</h3>
-			<p>
-				ทีมงาน <ExternalLink href="https://thestandard.co/">The Standard</ExternalLink>, ทีมงาน <ExternalLink
-					href="https://wisesight.com/">Wisesight</ExternalLink
-				>
-			</p>
-		</div>
-		<div class="sub-paragraph">
-			<h3 class="typo-h6">ผู้จัดการโครงการ</h3>
-			<p>
-				<ExternalLink href="https://www.linkedin.com/in/thanisara-r/">ธนิสรา เรืองเดช</ExternalLink>
-			</p>
-		</div>
+
+		<PartnersLogo black />
 	</div>
 
 	<div class="paragraph">

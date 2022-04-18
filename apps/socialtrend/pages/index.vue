@@ -1,18 +1,25 @@
 <template>
   <div>
     <ui-navbar></ui-navbar>
-    <div
+    <transition-group
+      name="list"
+      tag="div"
       class="stacked-bar-chart fixed top-0 left-0 right-0 bottom-0 bg-black flex md:flex-col"
       style="z-index: -1"
     >
       <div
         v-for="item in candidates"
         :key="item.candidate"
-        class="candidate px-0.5 opacity-20 flex-1"
+        class="candidate px-0.5 opacity-20"
+        :style="
+          $mq === 'desktop'
+            ? `width : ${100 / candidates.length}%; height: 100%;`
+            : `height : ${100 / candidates.length}%; width: 100%;`
+        "
       >
         <img :src="item.image" alt="" class="w-full h-full object-cover" />
       </div>
-    </div>
+    </transition-group>
 
     <div>
       <div class="hero w-full h-screen px-10 sm:p-5">
@@ -180,7 +187,7 @@
               align="center"
               class="opacity-0"
               @blur="curr_date_active = ''"
-              @change="handleUpdateChart"
+              @change="onUpdateChart"
             >
             </el-date-picker>
           </div>
@@ -254,7 +261,7 @@
               v-model="keyword"
               placeholder="Select"
               class="select-outline"
-              @change="handleUpdateChart"
+              @change="onUpdateChart"
             >
               <el-option
                 v-for="(item, index) in keyword_options"
@@ -279,7 +286,7 @@
               v-model="platform"
               placeholder="Select"
               class="select-outline"
-              @change="handleUpdateChart"
+              @change="onUpdateChart"
             >
               <el-option
                 v-for="item in platform_options"
@@ -852,7 +859,7 @@ export default {
       return (
         this.chart_inview &&
         this.play_animation &&
-        this.line_chart_data.raw_data.length !== 0
+        _.get(this.line_chart_data, 'raw_data', []).length !== 0
       )
     },
     // date_group() {
@@ -931,7 +938,15 @@ export default {
     window.addEventListener('resize', _.debounce(this.reRenderChart, 200))
   },
   mounted() {
-    window.registerUICustomElements()
+    if (document.head.querySelector('#ui-webcomponent-script')) {
+      return
+    }
+
+    const externalScript = document.createElement('script')
+    externalScript.setAttribute('id', 'ui-webcomponent-script')
+    externalScript.setAttribute('src', '/ui/ui.umd.js')
+    externalScript.setAttribute('async', true)
+    document.head.appendChild(externalScript)
 
     this.setDefaultStackedBarChart()
 
@@ -976,7 +991,18 @@ export default {
       setTimeout(() => {
         this.render_chart = true
       }, 0)
-      this.setDefaultStackedBarChart()
+
+      if (animate) {
+        this.setAnimateStackedBarChart()
+      } else {
+        d3.selectAll('.stacked-bar-chart .candidate').transition()
+        const { length } = _.get(
+          this.line_chart_data,
+          'group_date.keys_data',
+          []
+        )
+        this.setDefaultStackedBarChart(length - 1)
+      }
     },
     truncate(str = '') {
       const maximum = 350
@@ -1271,27 +1297,32 @@ export default {
       const end = this.end_input_date
       if (this.daterange[0] === start && this.daterange[1] === end) return
       this.setDaterange()
-      this.handleUpdateChart()
+      this.onUpdateChart()
     },
     // changeDaterange() {
     //   this.engagement = {}
     //   this.rank = {}
     //   this.animate_chart = true
     //   this.play_animation = true
-    //   this.onChangeTypeChart()
+    //   this.handleUpdateChart()
     // },
-    handleUpdateChart() {
+    onUpdateChart() {
       this.engagement = {}
       this.rank = {}
       this.animate_chart = false
-      this.onChangeTypeChart()
-    },
-    async changeCandidateFilter() {
-      await this.$nextTick()
-      this.setDefaultStackedBarChart()
       this.handleUpdateChart()
     },
-    async onChangeTypeChart() {
+    changeCandidateFilter() {
+      this.setDefaultStackedBarChart()
+      this.onUpdateChart()
+    },
+    onChangeTypeChart() {
+      if (this.animate_chart) {
+        this.setDefaultStackedBarChart()
+      }
+      this.handleUpdateChart()
+    },
+    async handleUpdateChart() {
       this.active_date = ''
 
       if (this.data_type === 'engagement' && _.isEmpty(this.engagement)) {
@@ -1307,11 +1338,6 @@ export default {
         this.line_chart_data = this.rank
       }
       this.reRenderChart()
-      if (!this.play_animation || !this.animate_chart) {
-        // const { length } = _.get(this.line_chart_data, 'candidates[0].data', [])
-        d3.selectAll('.stacked-bar-chart .candidate').transition()
-        this.setDefaultStackedBarChart(_.get(this.daterange, '[1]'))
-      }
     },
     // checkAnimateChart() {
     //   let animate = false
@@ -1374,51 +1400,43 @@ export default {
       if (!this.interval) return
       clearInterval(this.interval)
     },
-    setDefaultStackedBarChart(date) {
+    setDefaultStackedBarChart(index) {
       const { length } = this.candidates
-      d3.selectAll('.stacked-bar-chart .candidate')
-        .data(this.candidates)
-        .call((el) => {
-          if (this.$mq !== 'desktop') {
-            el.transition()
-              .duration(300)
-              .ease(d3.easeLinear)
-              .style('height', (d) => {
-                let ratio = 100 / length
+      const candidates = d3.selectAll('.stacked-bar-chart .candidate')
 
-                if (date) {
-                  ratio = _.chain(this.group_date)
-                    .get(`data[${date}]`, [])
-                    .find((g) => g.candidate === d.candidate)
-                    .get('ratio')
-                }
+      if (this.$mq !== 'desktop') {
+        candidates.call((el) => el.style('width', '100%'))
+      } else {
+        candidates.call((el) => el.style('height', '100%'))
+      }
 
-                return `${ratio}%`
-              })
-              .style('width', '100%')
-          } else {
-            el.transition()
-              .duration(300)
-              .ease(d3.easeLinear)
-              .style('width', (d) => {
-                let ratio = 100 / length
-                if (date) {
-                  ratio = _.chain(this.group_date)
-                    .get(`data[${date}]`, [])
-                    .find((g) => g.candidate === d.candidate)
-                    .get('ratio')
-                }
-                return `${ratio}%`
-              })
-              .style('height', '100%')
-          }
-        })
+      candidates.data(this.line_chart_data.candidates).call((el) => {
+        el.transition()
+          .duration(300)
+          .ease(d3.easeLinear)
+          .style(this.$mq !== 'desktop' ? 'height' : 'width', (d) => {
+            let ratio = 100 / length
+
+            if (index !== undefined) {
+              ratio = _.get(d, `data[${index}].ratio`)
+            }
+
+            return `${ratio}%`
+          })
+      })
     },
     setAnimateStackedBarChart() {
       const _self = this
       const candidates = d3
         .selectAll('.stacked-bar-chart .candidate')
         .data(this.line_chart_data.candidates)
+
+      if (this.$mq !== 'desktop') {
+        candidates.call((el) => el.style('width', '100%'))
+      } else {
+        candidates.call((el) => el.style('height', '100%'))
+      }
+
       const { length } = _.get(this.line_chart_data, 'group_date', {})
       const time = this.duration / length
       const firstTime = 800
@@ -1761,5 +1779,13 @@ export default {
       color: #ffffff;
     }
   }
+}
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.6s ease;
+}
+.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  transform: translateY(50px);
 }
 </style>

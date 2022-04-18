@@ -8,7 +8,7 @@
 
         <div
           v-for="(item, index) in candidates"
-          :key="item.candidate"
+          :key="`${(item || {}).candidate}-${index}`"
           :class="`data-list content-${index}`"
         >
           <div class="name pr-4"></div>
@@ -79,7 +79,7 @@
         </g>
       </g> -->
 
-      <g class="g-lines">
+      <g v-if="candidates != 0" class="g-lines">
         <g
           v-for="item in candidates"
           :key="`line-${item.candidate}`"
@@ -473,8 +473,8 @@ export default {
   },
   methods: {
     resizeHandler() {
-      this.width = this.$refs.container.clientWidth
-      this.height = this.$refs.container.clientHeight
+      this.width = _.get(this.$refs.container, 'clientWidth', 1000)
+      this.height = _.get(this.$refs.container, 'clientHeight', 520)
     },
     handleStartAnimation() {
       setTimeout(() => {

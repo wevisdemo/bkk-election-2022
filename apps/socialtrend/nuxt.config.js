@@ -78,14 +78,13 @@ export default {
       // { rel: 'stylesheet', href: '/static/fonts/typography.css' },
       { rel: 'stylesheet', href: '/ui/style.css' },
     ],
-    script: [{ src: '/ui/ui.umd.js', async: true }],
   },
 
   mq: {
     defaultBreakpoint: 'desktop',
     breakpoints: {
       mobile: 768,
-      tablet: 1100,
+      tablet: 1024,
       desktop: 1400,
       // desktopWide: 2000,
       // desktopUltraWide: Infinity,
@@ -114,7 +113,7 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@nuxtjs/axios', 'nuxt-mq'],
+  modules: ['@nuxtjs/axios', 'nuxt-mq', 'vue-plausible'],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
@@ -132,5 +131,10 @@ export default {
   tailwindcss: {
     cssPath: '../../packages/tailwind/style.css',
     viewer: false,
+  },
+
+  plausible: {
+    domain: 'bkkelection2022.wevis.info',
+    apiHost: 'https://analytics.punchup.world',
   },
 }

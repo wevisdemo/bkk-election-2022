@@ -8,7 +8,7 @@
 <div class="flex-1 flex flex-col space-y-2">
 	<div class="flex flex-row space-x-1">
 		{#each digits as digit}
-			<div class="box flex-1 text-white h-10 md:h-16 flex justify-center items-center typo-h5">
+			<div class="box flex-1 text-white h-10 md:h-16 flex justify-center items-center typo-h4">
 				{digit}
 			</div>
 		{/each}
@@ -18,7 +18,6 @@
 
 <style>
 	.box {
-		background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 100%),
-			linear-gradient(0deg, #333333, #333333);
+		background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 100%), #b90202;
 	}
 </style>
