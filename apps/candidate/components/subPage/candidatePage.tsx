@@ -7,6 +7,7 @@ import { NewsList } from '../wrapper/newsList';
 import { ShareList } from '../wrapper/shareList';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import md from 'markdown-it';
 interface PropsType {
   governor: IGovernor;
   newsList: Post[];
@@ -71,9 +72,12 @@ export function CandidatePage({
       {governor.policy && (
         <div className="px-[8px] py-[28px] md:py-[80px]">
           <p className="typo-h6 mb-[30px] md:mb-[42px] ml-[10%]">นโยบายเด่น</p>
-          <p className="font-body text-[12pt] md:text-[14pt] leading-[1.5] max-w-[280px] md:max-w-[750px] m-auto whitespace-pre-line">
-            {governor.policy}
-            {governor.policy_url !== null && (
+          <p className="font-body text-[12pt] md:text-[14pt] leading-[1.5] max-w-[280px] md:max-w-[750px] m-auto">
+            <div
+              className="prose"
+              dangerouslySetInnerHTML={{ __html: md().render(governor.policy) }}
+            />
+            {/* {governor.policy_url !== null && (
               <button
                 onClick={() => onClickPolicyLink(governor.policy_url || '')}
                 disabled={governor.policy_url === null}
@@ -88,7 +92,7 @@ export function CandidatePage({
                   className="fill-[#333333] rotate-[270deg] w-[12px] h-[12px]"
                 />
               </button>
-            )}
+            )} */}
           </p>
         </div>
       )}
