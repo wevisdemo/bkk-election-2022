@@ -11,6 +11,9 @@
 	<meta name="description" content={description} />
 	<meta property="og:title" content={fullTitle} />
 	<meta property="og:description" content={description} />
-	<!-- <meta property="og:image" content="https://recon.elect.in.th/sharer/default.png" /> -->
-	<!-- <meta name="twitter:card" content="summary_large_image" /> -->
+	<meta
+		property="og:image"
+		content="https://bkkelection2022.wevis.info/static/images/main_og.png"
+	/>
+	<meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
