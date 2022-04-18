@@ -20,3 +20,8 @@ body {
   margin: 0;
   // word-break: keep-all;
 }
+
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
+}
