@@ -578,7 +578,6 @@ import moment from 'moment'
 import Vue from 'vue'
 import checkView from 'vue-check-view'
 import VueSocialSharing from 'vue-social-sharing'
-import { loadUIComponents } from 'ui'
 import LineChartRace from '~/components/LineChartRace'
 Vue.use(checkView)
 Vue.use(VueSocialSharing)
@@ -939,7 +938,15 @@ export default {
     window.addEventListener('resize', _.debounce(this.reRenderChart, 200))
   },
   mounted() {
-    loadUIComponents()
+    if (document.head.querySelector('#ui-webcomponent-script')) {
+      return
+    }
+
+    const externalScript = document.createElement('script')
+    externalScript.setAttribute('id', 'ui-webcomponent-script')
+    externalScript.setAttribute('src', '/ui/ui.umd.js')
+    externalScript.setAttribute('async', true)
+    document.head.appendChild(externalScript)
 
     this.setDefaultStackedBarChart()
 
