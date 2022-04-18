@@ -6,20 +6,20 @@
 	import Metadata from '../components/metadata.svelte';
 	import partners from 'ui/src/data/partners.json';
 
-	const THE_STANDARD_GUIDE_TAG = 'bkk-election-101';
+	// const THE_STANDARD_GUIDE_TAG = 'bkk-election-101';
 
-	const fetchTheStandardElectionGuides = () =>
-		fetchTheStandardElectionPosts({ tag: THE_STANDARD_GUIDE_TAG });
+	// const fetchTheStandardElectionGuides = () =>
+	// 	fetchTheStandardElectionPosts({ tag: THE_STANDARD_GUIDE_TAG });
 
 	const projects = [
 		{
 			th: 'ข้อมูลผู้สมัครผู้ว่าฯ + ส.ก.',
 			en: 'Meet the Candidates',
 			href: '/candidate',
-			image: 'https://via.placeholder.com/406x213?text=candidates'
+			image: '/static/images/cover/tn_candidate.png'
 		},
 		{
-			th: 'ผลการเลือกตั้ง กทม.',
+			th: 'ข้อมูลการเลือกตั้ง กทม. ย้อนหลัง',
 			en: 'Voting Map',
 			image: '/static/images/cover/tn_result.png'
 		},
@@ -114,20 +114,20 @@
 	/>
 
 	<PostGrid
-		title="บทความข้อมูลการเลือกตั้ง กทม."
-		subtitle="รวมบทความเน้นข้อมูลการเลือกตั้ง นำเสนอด้วย Data Visualization โดย WeVis"
+		title="ชุดข้อมูลเกี่ยวกับการเลือกตั้ง กทม."
+		subtitle="รวมบทความเล่าข้อมูลน่าสนใจเกี่ยวกับการเลือกตั้ง โดย WeVis"
 		fetchPosts={fetchWeVisElectionPosts}
 		viewAllText="ดูบทความทั้งหมด บน wevis.info"
 		viewAllLink="https://wevis.info/tag/เลือกตั้ง-กทม/"
 	/>
 
-	<PostGrid
+	<!-- <PostGrid
 		title="คู่มือเลือกตั้งผู้ว่าฯ กทม."
 		subtitle="เกร็ดความรู้เกี่ยวกับการเลือกตั้ง กทม.'65 จาก The STANDARD"
 		fetchPosts={fetchTheStandardElectionGuides}
 		viewAllText="ดูทั้งหมด บน thestandard.co"
 		viewAllLink="https://thestandard.co/tag/bkk-election-101//"
-	/>
+	/> -->
 </div>
 
 <style>
