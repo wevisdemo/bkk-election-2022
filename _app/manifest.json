@@ -1,6 +1,6 @@
 {
   ".svelte-kit/runtime/client/start.js": {
-    "file": "start-53ea8ffe.js",
+    "file": "start-0d0f673d.js",
     "src": ".svelte-kit/runtime/client/start.js",
     "isEntry": true,
     "imports": [
@@ -35,26 +35,26 @@
     ]
   },
   "src/routes/index.svelte": {
-    "file": "pages/index.svelte-0ac768a2.js",
+    "file": "pages/index.svelte-23a38118.js",
     "src": "src/routes/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-a0100ecf.js",
-      "_partners-logo-557e1463.js"
+      "_partners-logo-7f01194b.js"
     ],
     "css": [
       "assets/pages/index.svelte-182bf78d.css"
     ]
   },
   "src/routes/about.svelte": {
-    "file": "pages/about.svelte-0e543f4d.js",
+    "file": "pages/about.svelte-cbb63c26.js",
     "src": "src/routes/about.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-a0100ecf.js",
-      "_partners-logo-557e1463.js"
+      "_partners-logo-7f01194b.js"
     ],
     "css": [
       "assets/pages/about.svelte-2d006818.css"
@@ -63,8 +63,8 @@
   "_vendor-a0100ecf.js": {
     "file": "chunks/vendor-a0100ecf.js"
   },
-  "_partners-logo-557e1463.js": {
-    "file": "chunks/partners-logo-557e1463.js",
+  "_partners-logo-7f01194b.js": {
+    "file": "chunks/partners-logo-7f01194b.js",
     "imports": [
       "_vendor-a0100ecf.js"
     ]
