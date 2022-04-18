@@ -54,7 +54,7 @@
 	<div class="paragraph">
 		<h2 class="typo-h3">ทีมงานร่วมพัฒนา</h2>
 
-		<PartnersLogo />
+		<PartnersLogo black />
 	</div>
 
 	<div class="paragraph">

@@ -2,16 +2,19 @@
   {
     "name": "WeVis",
     "logo": "/static/images/logo-wevis.png",
+    "logoBlack": "/static/images/logo-wevis-black.png",
     "href": "https://wevis.info"
   },
   {
     "name": "The Standard",
     "logo": "/static/images/logo-tsd.png",
+    "logoBlack": "/static/images/logo-tsd-black.png",
     "href": "https://thestandard.co/"
   },
   {
     "name": "Wisesight",
     "logo": "/static/images/logo-wisesight.png",
+    "logoBlack": "/static/images/logo-wisesight-black.png",
     "href": "https://wisesight.com/"
   }
 ]
