@@ -113,7 +113,7 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@nuxtjs/axios', 'nuxt-mq'],
+  modules: ['@nuxtjs/axios', 'nuxt-mq', 'vue-plausible'],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
@@ -131,5 +131,10 @@ export default {
   tailwindcss: {
     cssPath: '../../packages/tailwind/style.css',
     viewer: false,
+  },
+
+  plausible: {
+    domain: 'bkkelection2022.wevis.info',
+    apiHost: 'https://analytics.punchup.world',
   },
 }
