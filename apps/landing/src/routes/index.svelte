@@ -79,11 +79,17 @@
 				</Counter>
 			</div>
 			<div class="flex-1 flex flex-col space-y-8">
-				<img
-					src="https://via.placeholder.com/480x270?text=video"
-					alt="Video"
-					class="w-full h-auto hidden md:block"
-				/>
+				<div class="youtube-video-container">
+					<iframe
+						width="560"
+						height="315"
+						src="https://www.youtube.com/embed/dQ37Z0_bFms"
+						title="YouTube video player"
+						frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+						allowfullscreen
+					/>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -123,3 +129,25 @@
 		viewAllLink="https://thestandard.co/tag/bkk-election-101//"
 	/>
 </div>
+
+<style>
+	.youtube-video-container {
+		position: relative;
+		overflow: hidden;
+		width: 100%;
+	}
+
+	.youtube-video-container::after {
+		display: block;
+		content: '';
+		padding-top: 56.25%;
+	}
+
+	.youtube-video-container iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+</style>
