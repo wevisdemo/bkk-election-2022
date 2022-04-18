@@ -85,7 +85,7 @@ export default {
     defaultBreakpoint: 'desktop',
     breakpoints: {
       mobile: 768,
-      tablet: 1100,
+      tablet: 1024,
       desktop: 1400,
       // desktopWide: 2000,
       // desktopUltraWide: Infinity,
