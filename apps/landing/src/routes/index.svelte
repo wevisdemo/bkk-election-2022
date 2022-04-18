@@ -4,7 +4,7 @@
 	import Counter from '../components/counter.svelte';
 	import ProjectCard from '../components/project-card.svelte';
 	import Metadata from '../components/metadata.svelte';
-	import partners from 'ui/src/data/partners.json';
+	import PartnersLogo from '../components/partners-logo.svelte';
 
 	// const THE_STANDARD_GUIDE_TAG = 'bkk-election-101';
 
@@ -63,13 +63,7 @@
 			class="flex flex-col md:flex-row justify-center items-center px-5 py-12 md:py-32 w-full max-w-screen-xl space-y-8 md:space-y-0 md:space-x-16"
 		>
 			<div class="flex-1 flex flex-col space-y-8">
-				<div class="flex flex-row space-x-8 justify-center">
-					{#each partners as { name, logo, href }}
-						<a {href} target="_blank">
-							<img src={logo} alt={name} class="h-6 md:h-8" />
-						</a>
-					{/each}
-				</div>
+				<PartnersLogo />
 				<img src="/static/images/bkkelection-white-big.png" alt="BKK ELECTION 2022" />
 				<p class="typo-b4 text-center">
 					ติดตามข้อมูลเกี่ยวกับการเลือกตั้งผู้ว่าฯ และสมาชิกสภา กทม. ได้ที่นี่
