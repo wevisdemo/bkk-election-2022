@@ -4,29 +4,12 @@
 	import Counter from '../components/counter.svelte';
 	import ProjectCard from '../components/project-card.svelte';
 	import Metadata from '../components/metadata.svelte';
+	import partners from 'ui/src/data/partners.json';
 
 	const THE_STANDARD_GUIDE_TAG = 'bkk-election-101';
 
 	const fetchTheStandardElectionGuides = () =>
 		fetchTheStandardElectionPosts({ tag: THE_STANDARD_GUIDE_TAG });
-
-	const organizations = [
-		{
-			name: 'WeVis',
-			logo: '/static/images/logo-wevis.png',
-			href: 'https://wevis.info'
-		},
-		{
-			name: 'The Standard',
-			logo: '/static/images/logo-tsd.png',
-			href: 'https://thestandard.co/'
-		},
-		{
-			name: 'Wisesight',
-			logo: '/static/images/logo-wisesight.png',
-			href: 'https://wisesight.com/'
-		}
-	];
 
 	const projects = [
 		{
@@ -80,12 +63,19 @@
 			class="flex flex-col md:flex-row justify-center items-center px-5 py-12 md:py-32 w-full max-w-screen-xl space-y-8 md:space-y-0 md:space-x-16"
 		>
 			<div class="flex-1 flex flex-col space-y-8">
+				<div class="flex flex-row space-x-8 justify-center">
+					{#each partners as { name, logo, href }}
+						<a {href} target="_blank">
+							<img src={logo} alt={name} class="h-6 md:h-8" />
+						</a>
+					{/each}
+				</div>
 				<img src="/static/images/bkkelection-white-big.png" alt="BKK ELECTION 2022" />
 				<p class="typo-b4 text-center">
 					ติดตามข้อมูลเกี่ยวกับการเลือกตั้งผู้ว่าฯ และสมาชิกสภา กทม. ได้ที่นี่
 				</p>
 				<Counter until={new Date('2022-05-22 8:00 GMT+7')}>
-					นับถอยหลังเปิดหีบเลือกตั้ง<br />วันอาทิตย์ ที่ 22 พ.ค. 2565 8:00-17:00 น.
+					นับถอยหลังเปิดหีบเลือกตั้ง<br />วันอาทิตย์ที่ 22 พฤษภาคม พ.ศ. 2565 เวลา 08.00 - 17.00 น.
 				</Counter>
 			</div>
 			<div class="flex-1 flex flex-col space-y-8">
@@ -94,13 +84,6 @@
 					alt="Video"
 					class="w-full h-auto hidden md:block"
 				/>
-				<div class="flex flex-row space-x-8 justify-end">
-					{#each organizations as { name, logo, href }}
-						<a {href} target="_blank">
-							<img src={logo} alt={name} class="h-6 md:h-8" />
-						</a>
-					{/each}
-				</div>
 			</div>
 		</div>
 	</div>
