@@ -72,8 +72,13 @@ export function CandidatePage({
       {governor.policy && (
         <div className="px-[8px] py-[28px] md:py-[80px]">
           <p className="typo-h6 mb-[30px] md:mb-[42px] ml-[10%]">นโยบายเด่น</p>
-          <p className="font-body text-[12pt] md:text-[14pt] leading-[1.5] max-w-[280px] md:max-w-[750px] m-auto">
+          <p className="typo-b4 max-w-[280px] md:max-w-[750px] m-auto">
             <div
+              style={{
+                fontSize: matches ? '18px' : '16px',
+                color: 'black',
+                lineHeight: '1.5',
+              }}
               className="prose"
               dangerouslySetInnerHTML={{ __html: md().render(governor.policy) }}
             />
