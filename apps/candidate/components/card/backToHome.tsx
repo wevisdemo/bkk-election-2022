@@ -8,7 +8,7 @@ interface Propstype {
 export function BackToHomeCard({ hash }: Propstype) {
   const router = useRouter();
   const onClickBack = () => {
-    router.push('/#' + hash);
+    router.push(hash ? '/#' + hash : '/');
   };
   return (
     <div className="bg-black py-[46px] md:py-[76px]">

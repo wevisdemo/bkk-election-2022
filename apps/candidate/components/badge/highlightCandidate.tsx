@@ -2,6 +2,7 @@ import { IGovernor } from '../../types/business';
 import candidataImg from '../../static/images/candidate.png';
 import playGrayWhite from '../../static/icons/play-gw.svg';
 import { useRouter } from 'next/router';
+import { colorDict, numberListType } from '../../utils/dict';
 
 interface PropType {
   candidate: IGovernor;
@@ -39,7 +40,14 @@ export function HighlightCandidateBadge({ candidate, isComingSoon }: PropType) {
         )}
       </div>
       <div className="flex text-white mt-[5px] md:mt-[12px]">
-        <div className="typo-h2 mr-[10px]">{candidate.number}</div>
+        <div
+          className="typo-h2 mr-[10px]"
+          style={{
+            color: colorDict[(candidate.number as numberListType) || 1],
+          }}
+        >
+          {candidate.number}
+        </div>
         <div className="flex flex-col justify-center">
           <p className="typo-h8">{candidate.name}</p>
           <p className="typo-b5 text-[#ffffff80]">{candidate.party}</p>
