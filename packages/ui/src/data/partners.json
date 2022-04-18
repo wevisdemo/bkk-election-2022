@@ -1,0 +1,17 @@
+[
+  {
+    "name": "WeVis",
+    "logo": "/static/images/logo-wevis.png",
+    "href": "https://wevis.info"
+  },
+  {
+    "name": "The Standard",
+    "logo": "/static/images/logo-tsd.png",
+    "href": "https://thestandard.co/"
+  },
+  {
+    "name": "Wisesight",
+    "logo": "/static/images/logo-wisesight.png",
+    "href": "https://wisesight.com/"
+  }
+]

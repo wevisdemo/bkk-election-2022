@@ -1,11 +1,7 @@
 /* @refresh reload */
 import { Component, createSignal, For, Show } from 'solid-js';
 import { noShadowDOM } from 'component-register';
-
-const pages = [
-  { label: 'หน้าหลัก', href: '/' },
-  { label: 'เกี่ยวกับเว็บไซต์นี้', href: '/about' },
-];
+import pages from '../data/pages.json';
 
 const Navbar: Component = () => {
   noShadowDOM();
