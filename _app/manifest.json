@@ -1,10 +1,10 @@
 {
   ".svelte-kit/runtime/client/start.js": {
-    "file": "start-81c75548.js",
+    "file": "start-59a9fa2a.js",
     "src": ".svelte-kit/runtime/client/start.js",
     "isEntry": true,
     "imports": [
-      "_vendor-130a3e33.js"
+      "_vendor-a0100ecf.js"
     ],
     "dynamicImports": [
       "src/routes/__layout.svelte",
@@ -14,59 +14,59 @@
     ]
   },
   "src/routes/__layout.svelte": {
-    "file": "pages/__layout.svelte-d47adca2.js",
+    "file": "pages/__layout.svelte-3c196636.js",
     "src": "src/routes/__layout.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_vendor-130a3e33.js"
+      "_vendor-a0100ecf.js"
     ],
     "css": [
-      "assets/pages/__layout.svelte-4ea2ba4f.css"
+      "assets/pages/__layout.svelte-3d348a96.css"
     ]
   },
   ".svelte-kit/runtime/components/error.svelte": {
-    "file": "error.svelte-5a00914d.js",
+    "file": "error.svelte-39d68fe4.js",
     "src": ".svelte-kit/runtime/components/error.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_vendor-130a3e33.js"
+      "_vendor-a0100ecf.js"
     ]
   },
   "src/routes/index.svelte": {
-    "file": "pages/index.svelte-876727e0.js",
+    "file": "pages/index.svelte-0ac768a2.js",
     "src": "src/routes/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_vendor-130a3e33.js",
-      "_metadata-c92f9c48.js"
+      "_vendor-a0100ecf.js",
+      "_partners-logo-557e1463.js"
     ],
     "css": [
-      "assets/pages/index.svelte-f760298b.css"
+      "assets/pages/index.svelte-182bf78d.css"
     ]
   },
   "src/routes/about.svelte": {
-    "file": "pages/about.svelte-9d642a37.js",
+    "file": "pages/about.svelte-0e543f4d.js",
     "src": "src/routes/about.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_vendor-130a3e33.js",
-      "_metadata-c92f9c48.js"
+      "_vendor-a0100ecf.js",
+      "_partners-logo-557e1463.js"
     ],
     "css": [
-      "assets/pages/about.svelte-d9dd4950.css"
+      "assets/pages/about.svelte-2d006818.css"
     ]
   },
-  "_vendor-130a3e33.js": {
-    "file": "chunks/vendor-130a3e33.js"
+  "_vendor-a0100ecf.js": {
+    "file": "chunks/vendor-a0100ecf.js"
   },
-  "_metadata-c92f9c48.js": {
-    "file": "chunks/metadata-c92f9c48.js",
+  "_partners-logo-557e1463.js": {
+    "file": "chunks/partners-logo-557e1463.js",
     "imports": [
-      "_vendor-130a3e33.js"
+      "_vendor-a0100ecf.js"
     ]
   }
 }
