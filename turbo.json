@@ -4,18 +4,18 @@
       "dependsOn": ["^dev"],
       "cache": false
     },
-    "dev:candidate": {
+    "dev:landing": {
       "dependsOn": [
-        "candidate#dev",
+        "landing#dev",
         "ui#dev",
         "moderator#dev",
         "wordpress-api#dev"
       ],
       "cache": false
     },
-    "dev:landing": {
+    "dev:candidate": {
       "dependsOn": [
-        "landing#dev",
+        "candidate#dev",
         "ui#dev",
         "moderator#dev",
         "wordpress-api#dev"
@@ -26,9 +26,13 @@
       "dependsOn": ["socialtrend#dev", "ui#dev", "moderator#dev"],
       "cache": false
     },
+    "dev:map": {
+      "dependsOn": ["map#dev", "ui#dev", "moderator#dev"],
+      "cache": false
+    },
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", "build/**", "/out/**"]
+      "outputs": ["dist/**", "build/**", "out/**"]
     },
     "lint": {
       "outputs": []

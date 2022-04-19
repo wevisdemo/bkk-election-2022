@@ -1,6 +1,23 @@
 <template>
   <div>
     <ui-navbar></ui-navbar>
+    <transition name="fade">
+      <div
+        v-if="loading_full"
+        class="loading fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center"
+      >
+        <div class="lottie">
+          <lottie
+            :options="{
+              animationData: loading_lottie,
+              animationSpeed: 1,
+              loop: true,
+            }"
+            class="animate"
+          />
+        </div>
+      </div>
+    </transition>
     <transition-group
       name="list"
       tag="div"
@@ -330,7 +347,25 @@
         </el-checkbox-group>
       </div>
 
-      <div class="section-chart mt-5">
+      <div class="section-chart relative mt-5">
+        <transition name="fade">
+          <div
+            v-if="loading_chart"
+            class="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center z-50"
+          >
+            <div class="lottie">
+              <lottie
+                :options="{
+                  animationData: loading_lottie,
+                  animationSpeed: 1,
+                  loop: true,
+                }"
+                class="animate"
+              />
+            </div>
+          </div>
+        </transition>
+
         <el-radio-group
           v-model="data_type"
           size="mini"
@@ -341,10 +376,16 @@
           <el-radio-button label="rank">Rank</el-radio-button>
         </el-radio-group>
 
-        <div v-view="viewHandlerChart" class="chart-wrapper mt-4">
-          <div class="chart overflow-hidden">
+        <div
+          v-view="viewHandlerChart"
+          class="chart-wrapper mt-4"
+          :style="`opacity: ${loading_chart ? 0 : 1}`"
+        >
+          <div ref="chart" class="chart overflow-hidden">
             <LineChartRace
               v-if="render_chart && line_chart_data.raw_data != 0"
+              :width="chart_width"
+              :height="chart_height"
               :dataSet="line_chart_data"
               :activeChart="active_date"
               :start_date="start_calendar_date"
@@ -578,18 +619,25 @@ import moment from 'moment'
 import Vue from 'vue'
 import checkView from 'vue-check-view'
 import VueSocialSharing from 'vue-social-sharing'
+import Lottie from 'vue-lottie/src/lottie.vue'
+import { loadUIComponents } from 'ui'
 import LineChartRace from '~/components/LineChartRace'
+import loading from '~/assets/images/loading.json'
 Vue.use(checkView)
 Vue.use(VueSocialSharing)
 
 export default {
   name: 'IndexPage',
   components: {
+    Lottie,
     LineChartRace,
   },
   data() {
     return {
       webUrl: process.client ? window.location.href : '',
+      loading_full: true,
+      loading_chart: false,
+      loading_lottie: loading,
       engagement_animate_finish: true,
       rank_animate_finish: false,
       animate_chart: true,
@@ -612,6 +660,8 @@ export default {
       daterange: [],
       startWeek: '',
       endWeek: '',
+      chart_width: 0,
+      chart_height: 0,
       current_chart_active: {},
       start_input_date: '2021-11-01',
       start_calendar_date: '2021-10-31',
@@ -895,6 +945,15 @@ export default {
       if (!val) return
       this.setAnimateStackedBarChart()
     },
+    loading_full(val) {
+      if (val) {
+        // disable scroll
+        document.body.classList.add('stop-scrolling')
+      } else {
+        // endisable scroll
+        document.body.classList.remove('stop-scrolling')
+      }
+    },
     // engagement(newVal, oldVal) {
     //   if (!_.isEmpty(newVal) && !_.isEmpty(oldVal)) {
     //     this.animate_chart = false
@@ -929,25 +988,24 @@ export default {
     this.setDaterange()
     this.handleCandidateStat()
     this.line_chart_data = await this.getEngagement()
+    this.loading_full = false
   },
   destroyed() {
     window.removeEventListener('resize', _.debounce(this.reRenderChart, 200))
   },
   beforeMount() {
+    // disable scroll
+    document.body.classList.add('stop-scrolling')
+
     window.scrollTo(0, 0)
     window.addEventListener('resize', _.debounce(this.reRenderChart, 200))
   },
   mounted() {
-    if (document.head.querySelector('#ui-webcomponent-script')) {
-      return
-    }
+    loadUIComponents()
 
-    const externalScript = document.createElement('script')
-    externalScript.setAttribute('id', 'ui-webcomponent-script')
-    externalScript.setAttribute('src', '/ui/ui.umd.js')
-    externalScript.setAttribute('async', true)
-    document.head.appendChild(externalScript)
-
+    // window.registerUICustomElements()
+    this.chart_width = _.get(this.$refs, 'chart.clientWidth')
+    this.chart_height = _.get(this.$refs, 'chart.clientHeight')
     this.setDefaultStackedBarChart()
 
     // const animateTime = 13
@@ -975,6 +1033,9 @@ export default {
       this.daterange = [start, end]
     },
     reRenderChart() {
+      this.chart_width = _.get(this.$refs, 'chart.clientWidth')
+      this.chart_height = _.get(this.$refs, 'chart.clientHeight')
+
       let animate = false
       if (this.data_type === 'engagement' && !this.engagement_animate_finish) {
         animate = true
@@ -1323,6 +1384,7 @@ export default {
       this.handleUpdateChart()
     },
     async handleUpdateChart() {
+      this.loading_chart = true
       this.active_date = ''
 
       if (this.data_type === 'engagement' && _.isEmpty(this.engagement)) {
@@ -1338,6 +1400,8 @@ export default {
         this.line_chart_data = this.rank
       }
       this.reRenderChart()
+
+      this.loading_chart = false
     },
     // checkAnimateChart() {
     //   let animate = false
@@ -1588,6 +1652,13 @@ export default {
 
 <style lang="scss" scoped>
 @import '~/assets/style/custom.scss';
+.loading {
+  background-color: rgba($color: #000000, $alpha: 0.8);
+  z-index: 999;
+}
+.lottie {
+  width: 197px;
+}
 .container {
   max-width: 750px;
 }
@@ -1595,6 +1666,7 @@ export default {
   width: 97vw;
   margin: 0 auto;
   .chart-wrapper {
+    transition: all 0.2s;
     .chart {
       height: 52vh;
     }
@@ -1787,5 +1859,13 @@ export default {
 .list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
   opacity: 0;
   transform: translateY(50px);
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

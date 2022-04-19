@@ -2,7 +2,7 @@
 import { Component, Show } from 'solid-js';
 import { noShadowDOM } from 'component-register';
 import DOMPurify from 'dompurify';
-interface PostCardProps {
+export interface PostCardProps {
   title: string;
   image: string;
   date: string;

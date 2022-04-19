@@ -11,6 +11,7 @@
   "main": "src/index.js",
   "license": "MIT",
   "devDependencies": {
+    "@types/dompurify": "^2.3.3",
     "autoprefixer": "^10.4.2",
     "postcss": "^8.4.8",
     "tailwind": "*",

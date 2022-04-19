@@ -1,7 +1,7 @@
 import { onMount, createSignal, Component } from 'solid-js';
 import { noShadowDOM } from 'component-register';
 
-interface SharerProps {
+export interface SharerProps {
   url?: string;
 }
 

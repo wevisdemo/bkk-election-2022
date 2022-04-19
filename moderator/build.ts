@@ -13,9 +13,13 @@ if (existsSync(BUILD_DIR)) {
 
 mkdirSync(BUILD_DIR);
 
-apps.forEach(({ name, path, output }) => {
-  console.log(`Copying ${name} output artifacts...`);
-  copySync(join(APPS_DIR, name, output), join(BUILD_DIR, path));
+apps.forEach(({ name, path, output, excludeFromProduction }) => {
+  if (process.env.BUILD_ENV !== 'PRODUCTION' || !excludeFromProduction) {
+    console.log(`Copying ${name} output artifacts...`);
+    copySync(join(APPS_DIR, name, output), join(BUILD_DIR, path));
+  } else {
+    console.log(`Skipping ${name} output artifacts...`);
+  }
 });
 
 assets.forEach(({ name, source, serve }) => {

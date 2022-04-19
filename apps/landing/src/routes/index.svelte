@@ -37,8 +37,8 @@
 		},
 		{
 			th: 'ข้อมูลปัญหากวนใจชาว กทม.',
-			en: 'Open Bangkok',
-			href: 'https://openbangkok.wevis.info',
+			en: 'BKK Followup',
+			href: 'https://bkkfollowup.wevis.info/',
 			external: true,
 			image: '/static/images/cover/tn_openbkk.png'
 		},

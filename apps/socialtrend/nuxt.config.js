@@ -113,11 +113,15 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@nuxtjs/axios', 'nuxt-mq', 'vue-plausible'],
+  modules: [
+    '@nuxtjs/axios',
+    'nuxt-mq',
+    ...(process.env.BUILD_ENV === 'PRODUCTION' ? ['vue-plausible'] : []),
+  ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    transpile: [/^element-ui/],
+    transpile: [/^element-ui/, /^ui/],
   },
 
   router: {

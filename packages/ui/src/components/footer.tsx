@@ -1,7 +1,7 @@
 /* @refresh reload */
 import { Component, For } from 'solid-js';
 import { noShadowDOM } from 'component-register';
-import pages from '../data/pages.json';
+import pages from '../data/pages';
 import partners from '../data/partners.json';
 
 const Footer: Component = () => {

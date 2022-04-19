@@ -6,7 +6,6 @@
   "type": "module",
   "types": "dist/index.d.ts",
   "scripts": {
-    "start": "ts-node src/run.ts",
     "dev": "tsc --watch",
     "build": "tsc"
   },

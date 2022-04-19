@@ -12,5 +12,12 @@
     "output": "/out",
     "websocket": "/candidate/_next/webpack-hmr"
   },
+  {
+    "name": "map",
+    "path": "/map",
+    "port": 3004,
+    "output": "/dist",
+    "excludeFromProduction": true
+  },
   { "name": "landing", "path": "/", "port": 3001, "output": "/build" }
 ]

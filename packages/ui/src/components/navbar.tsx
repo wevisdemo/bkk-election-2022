@@ -1,7 +1,7 @@
 /* @refresh reload */
 import { Component, createSignal, For, Show } from 'solid-js';
 import { noShadowDOM } from 'component-register';
-import pages from '../data/pages.json';
+import pages from '../data/pages';
 
 const Navbar: Component = () => {
   noShadowDOM();
@@ -10,7 +10,7 @@ const Navbar: Component = () => {
 
   return (
     <div class="ui-relative ui-p-3 ui-flex ui-flex-col md:ui-flex-row ui-bg-white">
-      <div className="ui-flex-1 ui-flex ui-flex-row ui-justify-between">
+      <div class="ui-flex-1 ui-flex ui-flex-row ui-justify-between">
         <a href="/">
           <img
             src="/static/images/bkkelection-logo.png"
@@ -62,6 +62,12 @@ const Navbar: Component = () => {
             <a
               href={href}
               class="ui-h-full ui-py-1 ui-px-2 typo-u4 hover:ui-underline ui-flex ui-items-center ui-justify-end"
+              classList={{
+                'ui-font-bold':
+                  href === '/'
+                    ? location.pathname === '/'
+                    : location.pathname.includes(href),
+              }}
             >
               {label}
             </a>

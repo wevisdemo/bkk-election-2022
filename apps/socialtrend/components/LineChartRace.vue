@@ -1,5 +1,5 @@
 <template>
-  <div class="line-chart-race">
+  <div ref="container" class="line-chart-race">
     <!-- <transition name="fade"> -->
     <div ref="tooltip" class="tooltip-wrapper" style="opacity: 0">
       <div class="tooltip typo-b5">
@@ -42,7 +42,7 @@
       </div> -->
     <!-- </transition> -->
 
-    <svg ref="container">
+    <svg>
       <g class="axis-group"></g>
       <g>
         <rect
@@ -179,7 +179,7 @@
         @mousemove="onMouseMove"
         @mouseleave="onMouseleave"
         @click="
-          animate_finish && type === 'engagement' ? onClickChecks(item) : false
+          animate_finish && type === 'engagement' ? onClickChecks() : false
         "
       ></rect>
       <!-- <g class="checks-group" @mouseleave="hover = ''">
@@ -217,6 +217,14 @@ import moment from 'moment'
 import numeral from 'numeral'
 export default {
   props: {
+    width: {
+      type: Number,
+      default: 1000,
+    },
+    height: {
+      type: Number,
+      default: 500,
+    },
     dataSet: {
       type: Object,
       default: () => {},
@@ -264,8 +272,6 @@ export default {
   },
   data() {
     return {
-      width: 1000,
-      height: 520,
       step: 8,
       left_tooltip: 0,
       point: 0,
@@ -449,14 +455,7 @@ export default {
       this.updateAnimatePathLabel(val, 800)
     },
   },
-  beforeMount() {
-    window.addEventListener('resize', this.resizeHandler)
-  },
-  destroyed() {
-    window.removeEventListener('resize', this.resizeHandler)
-  },
   mounted() {
-    this.resizeHandler()
     this.drawLineChart()
     // await this.setDataGroupCandidate()
 
@@ -472,10 +471,6 @@ export default {
     // })
   },
   methods: {
-    resizeHandler() {
-      this.width = _.get(this.$refs.container, 'clientWidth', 1000)
-      this.height = _.get(this.$refs.container, 'clientHeight', 520)
-    },
     handleStartAnimation() {
       setTimeout(() => {
         this.setAnimatePathLine()
@@ -492,10 +487,9 @@ export default {
     dateFormat(date) {
       return moment(date).format('yyyy-MM-DD')
     },
-    async drawLineChart() {
-      await this.$nextTick()
+    drawLineChart() {
+      const svg = d3.selectAll('svg')
 
-      const svg = d3.select('svg')
       svg
         .select('.axis-group')
         .append('g')

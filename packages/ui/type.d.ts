@@ -1,31 +1,21 @@
-export {};
-import React from 'react';
+import type { DetailedHTMLProps } from 'react';
 
+type CustomElement<T = {}> = DetailedHTMLProps<T, HTMLElement>;
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      'ui-navbar': React.DetailedHTMLProps<
-        React.HTMLAttributes<HTMLElement>,
-        HTMLElement
-      >;
-    }
-
-    interface IntrinsicElements {
-      'ui-footer': React.DetailedHTMLProps<
-        React.HTMLAttributes<HTMLElement>,
-        HTMLElement
-      >;
-    }
-
-    interface Props {
-      title: string;
-      link: string;
-      date: string;
-      image: string;
-    }
-
-    interface IntrinsicElements {
-      'ui-post-card': React.DetailedHTMLProps<Props, HTMLElement>;
+      'ui-navbar': CustomElement;
+      'ui-footer': CustomElement;
+      'ui-post-card': CustomElement<{
+        title: string;
+        image: string;
+        date: string;
+        link: string;
+        loading?: string;
+      }>;
+      'ui-sharer': CustomElement<{
+        url?: string;
+      }>;
     }
   }
 }
