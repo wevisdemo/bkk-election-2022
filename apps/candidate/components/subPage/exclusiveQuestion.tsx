@@ -18,10 +18,12 @@ export function ExclusiveQuestion({
 }: PropsType) {
   return (
     <div className="bg-black pt-[40px] md:pt-[110px]">
-      <div className="w-[90vw] max-w-[1500px] m-auto text-center">
+      <div className="w-[90vw] max-w-[1500px] m-auto text-center pb-[42px] md:pb-[20px]">
         <div className="">
           <p className="typo-h7 text-white">Exclusive Speech</p>
-          <p className="typo-h2 text-white mt-[15px]">{question.question}</p>
+          <p className="typo-h2 text-white mt-[15px] mb-[16px] md:mb-[68px]">
+            {question.question}
+          </p>
         </div>
         {answerList.map((answer, index) => {
           return <ExclusiveQuestionBadge key={index} answer={answer} />;

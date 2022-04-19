@@ -1,4 +1,4 @@
-import { IAnswer, IQA } from '../../types/business';
+import { IAnswer } from '../../types/business';
 import { getYoutubeId } from '../../utils/tranformation';
 
 interface PropsType {
@@ -11,14 +11,16 @@ export function GeneralQuestionCard({ answer }: PropsType) {
     : '';
 
   return (
-    <div className="md:max-w-[450px] max-w-[250px] flex flex-col justify-center">
-      <p className="font-heading font-semibold text-[14pt] md:text-[18pt] leading-[1.25]">
-        {answer.questionsRead.question}
-      </p>
-      <p className="typo-b5 mt-[20px]">{answer.text}</p>
+    <div className="md:max-w-[450px] max-w-[250px] flex flex-col justify-between h-full text-left">
+      <div>
+        <p className="font-heading font-semibold text-[14pt] md:text-[18pt] leading-[1.25]">
+          {answer.questionsRead.question}
+        </p>
+        <p className="typo-b5 mt-[20px]">{answer.text}</p>
+      </div>
       {youtubeEmbedUrl ? (
         <iframe
-          className="w-[250px] md:w-[450px] h-[250px] md:h-[450px] mb-[40px] mt-[20px] md:mt-0"
+          className="w-[250px] md:w-[450px] h-[250px] md:h-[450px] mb-[40px] mt-[20px] md:mt-[40px]"
           src={youtubeEmbedUrl}
           title="YouTube video player"
           frameBorder="0"
@@ -26,7 +28,7 @@ export function GeneralQuestionCard({ answer }: PropsType) {
           allowFullScreen
         />
       ) : (
-        <div className="w-[250px] md:w-[450px] h-[250px] md:h-[450px] mb-[40px] md:ml-[30px] mt-[20px] md:mt-0 bg-[#333333] typo-h3 text-white flex items-center justify-center">
+        <div className="w-[250px] md:w-[450px] h-[250px] md:h-[450px] mb-[40px] md:ml-[30px] mt-[20px] md:mt-[40px] bg-[#333333] typo-h3 text-white flex items-center justify-center">
           No Video
         </div>
       )}

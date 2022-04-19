@@ -12,10 +12,6 @@ export interface IDistrict {
   value: string;
 }
 
-export enum ActionEnum {
-  FETCH_CANDIDATE = 'FETCH_CANDIDATE',
-}
-
 export interface IQuestionCategory {
   exclusive: IQuestion[];
   policy: IQuestion[];
@@ -34,24 +30,6 @@ export interface ICouncil {
   career: string;
 }
 
-export interface IQA {
-  id: number;
-  governor: string;
-  question: string;
-  answer: string;
-  url: string;
-}
-
-export interface IQA2 {
-  question_id: number;
-  answer_id: number;
-  governor: string;
-  question: string;
-  question_type: string;
-  answer: string;
-  url: string;
-}
-
 interface IQuestionAnswerList {
   id: number;
   nc_xeff__candidates_id: number;
@@ -59,7 +37,7 @@ interface IQuestionAnswerList {
 }
 export interface IQuestion {
   id: number;
-  type: string; // TODO: change to enum
+  type: string;
   number: number;
   question: string;
   description: string;

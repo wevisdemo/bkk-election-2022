@@ -12,7 +12,7 @@ export function ExclusiveQuestionBadge({ answer, ignoreGovernor }: PropsType) {
     : '';
 
   return (
-    <div className="max-w-[1500px] w-[90vw] pt-[50px] pb-[100px] mx-auto text-center">
+    <div className="max-w-[1500px] w-[90vw] pt-[40px] md:pt-[50px] pb-[28px] md:pb-[100px] mx-auto text-center">
       {youtubeEmbedUrl ? (
         <iframe
           className="max-w-[1500px] max-h-[843.75px] w-[90vw] h-[50.625vw] mb-[40px]"

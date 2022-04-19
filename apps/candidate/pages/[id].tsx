@@ -12,6 +12,7 @@ interface PropsType {
   candidate: IGovernor;
   answerList: IAnswer[];
   questionList: IQuestion[];
+  hlCandidateList: IGovernor[];
   isComingSoon: boolean;
 }
 
@@ -19,6 +20,7 @@ export default function Governor({
   candidate,
   answerList,
   questionList,
+  hlCandidateList,
   isComingSoon,
 }: PropsType) {
   const [news, setNews] = useState<Post[]>([]);
@@ -53,6 +55,7 @@ export default function Governor({
           pageUrl={pageUrl}
           questionList={questionList}
           answerList={answerList}
+          hlCandidateList={hlCandidateList}
         />
       ) : (
         <CandidatePage
@@ -85,6 +88,7 @@ export const getStaticProps: GetStaticProps<PropsType> = async (context) => {
   const id = context.params?.id;
   let answerList: IAnswer[] = [];
   let questionList: IQuestion[] = [];
+  let hlCandidateList: IGovernor[] = [];
   const [candidateRes, errMsg] = await getNocoApi(`governors/${id}`);
   if (errMsg) {
     return {
@@ -97,6 +101,22 @@ export const getStaticProps: GetStaticProps<PropsType> = async (context) => {
   const candidate = candidateRes.data as IGovernor;
 
   if (!isComingSoon) {
+    if (candidate.highlight) {
+      const [hlCandidateRes, hlErrMsg] = await getNocoApi(
+        `governors?where=(highlight,eq,true)`
+      );
+      if (hlErrMsg) {
+        return {
+          redirect: {
+            permanent: true,
+            destination: '/',
+          },
+        };
+      }
+
+      hlCandidateList = hlCandidateRes.data as IGovernor[];
+    }
+
     if (candidate.answersList.length > 0) {
       const answerIds = candidate.answersList.map((answer) => answer.id);
       const query = answerIds.reduce((result, id, index) => {
@@ -141,5 +161,13 @@ export const getStaticProps: GetStaticProps<PropsType> = async (context) => {
       questionList = questinoRes.data as IQuestion[];
     }
   }
-  return { props: { candidate, answerList, questionList, isComingSoon } };
+  return {
+    props: {
+      candidate,
+      answerList,
+      questionList,
+      hlCandidateList,
+      isComingSoon,
+    },
+  };
 };

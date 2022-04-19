@@ -139,10 +139,12 @@ export function CandidateQuestionWrapper({
           />
         )}
         {answerCategory.special.length > 0 && (
-          <GeneralQuestionList
-            answerList={answerCategory.special}
-            questionType="special"
-          />
+          <div className="bg-[#F1F1F1]">
+            <GeneralQuestionList
+              answerList={answerCategory.special}
+              questionType="special"
+            />
+          </div>
         )}
       </div>
     </Fragment>

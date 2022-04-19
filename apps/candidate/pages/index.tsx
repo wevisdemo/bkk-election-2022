@@ -176,7 +176,10 @@ const Home = ({
                 candidateList={getCandidateHighlight()}
                 isComingSoon={isComingSoon}
               />
-              <QuestionOverview isComingSoon questionList={questionList} />
+              <QuestionOverview
+                isComingSoon={isComingSoon}
+                questionList={questionList}
+              />
             </div>
           </div>
           <div className="bg-[#333333]">

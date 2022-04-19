@@ -2,6 +2,7 @@ import playButtonBw from '../../static/icons/play-wb.svg';
 import playButtonGray from '../../static/icons/play-gray.svg';
 import { useEffect, useState } from 'react';
 import { IQuestion, IQuestionCategory } from '../../types/business';
+import { useRouter } from 'next/router';
 
 interface Propstype {
   isComingSoon?: boolean;
@@ -16,6 +17,7 @@ const initialQuestionCat: IQuestionCategory = {
 };
 
 export function QuestionOverview(props: Propstype) {
+  const router = useRouter();
   const [questionCat, setQuestionCat] =
     useState<IQuestionCategory>(initialQuestionCat);
   const { isComingSoon, questionList } = props;
@@ -41,15 +43,15 @@ export function QuestionOverview(props: Propstype) {
     });
   }, [questionList]);
 
-  const onClickQuestion = () => {
-    // TODO: redirect to question
+  const onClickQuestion = (id: number) => {
+    router.push(`/question/${id}`);
   };
 
   const questionRow = (question: IQuestion) => {
     return (
       <div
         className="flex hover:cursor-pointer hover:underline hover:decoration-1"
-        onClick={onClickQuestion}
+        onClick={() => onClickQuestion(question.id)}
         key={`question-${question.type}-${question.number}`}
       >
         <div>
@@ -59,18 +61,26 @@ export function QuestionOverview(props: Propstype) {
             className="w-[25px] h-[25px]"
           />
         </div>
-        <div className="typo-b6 flex-1 ml-[10px]">{question.question}</div>
+        <div className="typo-b4 flex-1 ml-[10px]">{question.question}</div>
       </div>
     );
   };
   const questionColumn = (colName: string, questionList: IQuestion[]) => {
     return (
       <div className="flex flex-col text-left">
-        <p className="typo-h9">{colName}:</p>
+        <p className="typo-h6">{colName}:</p>
         <div className="flex flex-col space-y-[25px] mt-5">
           {questionList.map((q, index) => questionRow(q))}
         </div>
       </div>
+    );
+  };
+
+  const getGeneralQuestionsCount = (): number => {
+    return (
+      questionCat.lifestyle.length +
+      questionCat.policy.length +
+      questionCat.opinion.length
     );
   };
 
@@ -93,17 +103,20 @@ export function QuestionOverview(props: Propstype) {
           />
         </div>
         <div className="text-center p-10 border border-[#9d9d9d] rounded-[10px] max-w-[1145px] m-auto">
-          <p className="typo-h4 mt-5 mb-10">
-            ฟัง 5 ผู้สมัครในกระแสตอบ 21 คำถามเดียวกัน
+          <p className="typo-h5 mt-5 mb-10">
+            ฟัง 5 ผู้สมัครในกระแสตอบ {getGeneralQuestionsCount()} คำถามเดียวกัน
           </p>
           {questionCat.exclusive.length > 0 && (
-            <div className="border-y p-10 border-[#9d9d9d80] flex items-center m-auto justify-center">
+            <div
+              className="border-b p-10 border-[#9d9d9d80] flex items-center m-auto justify-center  hover:cursor-pointer hover:underline hover:decoration-1"
+              onClick={() => onClickQuestion(questionCat.exclusive[0].id)}
+            >
               <img
                 src={playButtonGray.src}
                 alt="play-bt-gray"
                 className="w-[25px] h-[25px]"
               />
-              <p className="typo-b5 ml-[10px]">
+              <p className="typo-b5 ml-[10px] flex flex-wrap">
                 <span className="font-bold">Exclusive Speech :</span>
                 {questionCat.exclusive[0]?.question}
               </p>

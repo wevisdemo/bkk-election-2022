@@ -7,6 +7,7 @@ import { ShareList } from '../wrapper/shareList';
 import { useEffect, useState } from 'react';
 import { CandidateQuestionWrapper } from '../wrapper/candidateQuestionWrapper';
 import { useRouter } from 'next/router';
+import { CandidateBadge } from '../badge/candidate';
 
 interface PropsType {
   governor: IGovernor;
@@ -15,6 +16,7 @@ interface PropsType {
   pageUrl: string;
   questionList: IQuestion[];
   answerList: IAnswer[];
+  hlCandidateList: IGovernor[];
 }
 export function HighLightCandidatePage({
   governor,
@@ -23,10 +25,15 @@ export function HighLightCandidatePage({
   pageUrl,
   questionList,
   answerList,
+  hlCandidateList,
 }: PropsType) {
   const [matches, setMatches] = useState<boolean>(false);
   const [hashFrom, setHashFrom] = useState<string>('');
   const router = useRouter();
+
+  const getOtherCandidate = () => {
+    return hlCandidateList.filter((candidate) => candidate.id !== governor.id);
+  };
 
   useEffect(() => {
     if (window.matchMedia('(min-width: 768px)').matches) {
@@ -97,7 +104,25 @@ export function HighLightCandidatePage({
       <div className="m-auto mb-[20px] mt-[70px] text-center">
         <ShareList url={pageUrl} />
       </div>
-      <BackToHomeCard hash={hashFrom} />
+      <div className="bg-black">
+        <div className="py-[34px] py-[52px]">
+          <p className="typo-h5 text-white text-center px-[20px]">
+            ฟังคำตอบจากผู้สมัครผู้ว่าฯ กทม. ในกระแสคนอื่น
+          </p>
+          <div className="w-fit m-auto grid grid-cols-2 md:grid-cols-4 mb-[20px] gap-[15px] md:gap-[30px] mt-[35px] md:mt-[74px]">
+            {getOtherCandidate().map((candidate) => {
+              return (
+                <CandidateBadge
+                  key={`candidate-${candidate.id}`}
+                  candidate={candidate}
+                  showPlayButton={false}
+                />
+              );
+            })}
+          </div>
+        </div>
+        <BackToHomeCard hash={hashFrom} />
+      </div>
     </div>
   );
 }

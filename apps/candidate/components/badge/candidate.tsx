@@ -5,10 +5,10 @@ import { useRouter } from 'next/router';
 import { colorDict, numberListType } from '../../utils/dict';
 interface PropType {
   candidate: IGovernor;
-  isComingSoon?: boolean;
+  showPlayButton?: boolean;
 }
 
-export function CandidateBadge({ candidate, isComingSoon }: PropType) {
+export function CandidateBadge({ candidate, showPlayButton }: PropType) {
   const router = useRouter();
   const onClickCandidate = (id: number | null) => {
     if (!id) {
@@ -30,7 +30,7 @@ export function CandidateBadge({ candidate, isComingSoon }: PropType) {
           alt="candidate"
           className={`w-[43vw] h-[43vw] md:w-[15vw] md:h-[15vw] max-w-[250px] max-h-[250px] hover:border border-white`}
         />
-        {!isComingSoon && candidate.highlight && (
+        {showPlayButton && candidate.highlight && (
           <img
             src={playGrayWhite.src}
             alt="play"

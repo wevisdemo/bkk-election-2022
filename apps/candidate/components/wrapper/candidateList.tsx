@@ -15,7 +15,7 @@ export function CandidateList({ candidateList, isComingSoon }: PropsType) {
       <CandidateBadge
         key={`candidate-badge-${index}`}
         candidate={candidate}
-        isComingSoon={isComingSoon}
+        showPlayButton={!isComingSoon}
       />
     );
   });
