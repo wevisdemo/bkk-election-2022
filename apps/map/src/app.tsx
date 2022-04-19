@@ -1,22 +1,18 @@
+import { FunctionComponent, useEffect } from 'react';
 import { loadUIComponents } from 'ui';
 
-export function App() {
-	loadUIComponents();
+const App: FunctionComponent = () => {
+	useEffect(() => {
+		loadUIComponents();
+	}, []);
 
 	return (
 		<>
 			<ui-navbar></ui-navbar>
-			<p class="typo-h1">Hello Vite + Preact!</p>
-			<p>
-				<a
-					class="text-ultramarine"
-					href="https://preactjs.com/"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					Learn Preact
-				</a>
-			</p>
+			<p className="typo-h1">Map</p>
+			<p className="text-ultramarine">Write with react, build with preact/compat</p>
 		</>
 	);
-}
+};
+
+export default App;

@@ -4,6 +4,11 @@ import htmlPlugin from 'vite-plugin-html-config';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+	resolve: {
+		alias: {
+			react: 'preact/compat'
+		}
+	},
 	plugins: [
 		preact(),
 		/* @ts-ignore */
@@ -21,5 +26,8 @@ export default defineConfig({
 			]
 		})
 	],
-	base: '/map/'
+	base: '/map/',
+	server: {
+		port: 3004
+	}
 });
