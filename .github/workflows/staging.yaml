@@ -32,6 +32,7 @@ jobs:
       - name: Build packages and apps
         run: yarn build --api="http://127.0.0.1:9080" --token="${{ secrets.TURBO_SERVER_TOKEN }}" --team="foo" ${{ github.event.inputs.build_params }}
         env:
+          BUILD_ENV: STAGING
           NOCO_API_URL: ${{ secrets.NOCO_API_URL }}
           NOCO_AUTH_TOKEN: ${{ secrets.NOCO_AUTH_TOKEN }}
           COMING_SOON: ${{ secrets.COMING_SOON }}

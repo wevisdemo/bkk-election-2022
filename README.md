@@ -2,12 +2,13 @@
 
 Monorepo for Bangkok Election 2022 projects managed by [Turborepo](https://turborepo.org/) and [Yarn](https://classic.yarnpkg.com/lang/en/)
 
-## Deployment
+## 🌳 Environments
 
-| Environment | URL                                        |
-| ----------- | ------------------------------------------ |
-| Staging     | https://staging.bkkelection2022.wevis.info |
-| Production  | https://bkkelection2022.wevis.info         |
+| Name       | URL                                        | `process.env.BUILD_ENV` |
+| ---------- | ------------------------------------------ | ----------------------- |
+| Production | https://bkkelection2022.wevis.info         | `PRODUCTION`            |
+| Staging    | https://staging.bkkelection2022.wevis.info | `STAGING`               |
+| Local      | http://localhost:3000                      | -                       |
 
 ## 🍱 Project structure
 
