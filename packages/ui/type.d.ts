@@ -1,31 +1,15 @@
-export {};
-import React from 'react';
+import { DOMAttributes } from 'react';
+import { PostCardProps } from './src/components/post-card';
+import { SharerProps } from './src/components/sharer';
 
+type CustomElement<T = {}> = Partial<T & DOMAttributes<T> & { children: any }>;
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      'ui-navbar': React.DetailedHTMLProps<
-        React.HTMLAttributes<HTMLElement>,
-        HTMLElement
-      >;
-    }
-
-    interface IntrinsicElements {
-      'ui-footer': React.DetailedHTMLProps<
-        React.HTMLAttributes<HTMLElement>,
-        HTMLElement
-      >;
-    }
-
-    interface Props {
-      title: string;
-      link: string;
-      date: string;
-      image: string;
-    }
-
-    interface IntrinsicElements {
-      'ui-post-card': React.DetailedHTMLProps<Props, HTMLElement>;
+      'ui-navbar': CustomElement;
+      'ui-footer': CustomElement;
+      'ui-post-card': CustomElement<PostCardProps>;
+      'ui-sharer': CustomElement<SharerProps>;
     }
   }
 }
