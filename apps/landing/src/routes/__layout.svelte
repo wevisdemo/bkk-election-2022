@@ -8,6 +8,16 @@
 	});
 </script>
 
+<svelte:head>
+	{#if import.meta.env.VITE_BUILD_ENV === 'PRODUCTION'}
+		<script
+			async
+			defer
+			data-domain="bkkelection2022.wevis.info"
+			src="https://analytics.punchup.world/js/plausible.js"></script>
+	{/if}
+</svelte:head>
+
 <div>
 	<ui-navbar />
 	<slot />
