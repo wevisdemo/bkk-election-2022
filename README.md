@@ -16,7 +16,7 @@ Monorepo for Bangkok Election 2022 projects managed by [Turborepo](https://turbo
   - `/socialtrend` Social trend analysis ([NuxtJS](https://nuxtjs.org/))
   - `/candidate` Candidates information ([NextJS](https://nextjs.org/))
 - **`/moderator`**
-  - Development server using [Express](https://expressjs.com/) with reverse proxy and `/static` folder serving.
+  - Development server using [Express](https://expressjs.com/) with reverse proxy and static assets serving.
   - Build script to combine every apps build file in the root `/build`
 - **`/packages`** Shared packages used by apps
   - `/tailwind` [Tailwind](https://tailwindcss.com/) config and base stylesheet with shared design guideline
@@ -81,3 +81,4 @@ Each project will be built and combined in root `/build` folder
   - Pull rebase `git pull --rebase` often. Before you start coding and pushing.
   - Continuous integration: try not to leave your code without pushing overnight.
 - Each time the code is pushed to main branch, Github Action will build and deploy to the staging environment.
+- Deploy to production is now done manually. Pipeline implementation is in the plan.
