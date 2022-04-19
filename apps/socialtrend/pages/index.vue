@@ -620,6 +620,7 @@ import Vue from 'vue'
 import checkView from 'vue-check-view'
 import VueSocialSharing from 'vue-social-sharing'
 import Lottie from 'vue-lottie/src/lottie.vue'
+import { loadUIComponents } from 'ui'
 import LineChartRace from '~/components/LineChartRace'
 import loading from '~/assets/images/loading.json'
 Vue.use(checkView)
@@ -1000,15 +1001,7 @@ export default {
     window.addEventListener('resize', _.debounce(this.reRenderChart, 200))
   },
   mounted() {
-    if (document.head.querySelector('#ui-webcomponent-script')) {
-      return
-    }
-
-    const externalScript = document.createElement('script')
-    externalScript.setAttribute('id', 'ui-webcomponent-script')
-    externalScript.setAttribute('src', '/ui/ui.umd.js')
-    externalScript.setAttribute('async', true)
-    document.head.appendChild(externalScript)
+    loadUIComponents()
 
     // window.registerUICustomElements()
     this.chart_width = _.get(this.$refs, 'chart.clientWidth')
