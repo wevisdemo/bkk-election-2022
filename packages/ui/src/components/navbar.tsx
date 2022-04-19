@@ -1,7 +1,7 @@
 /* @refresh reload */
 import { Component, createSignal, For, Show } from 'solid-js';
 import { noShadowDOM } from 'component-register';
-import pages from '../data/pages.json';
+import pages from '../data/pages';
 
 const Navbar: Component = () => {
   noShadowDOM();
