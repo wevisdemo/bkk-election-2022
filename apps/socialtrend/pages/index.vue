@@ -597,12 +597,35 @@
             </div>
 
             <div class="mt-10 flex items-center justify-center typo-b6">
-              <span class="opacity-75"> Data by </span>
-              <img
-                src="~/assets/images/wisesight-logo.svg"
-                alt="wisesight-logo.svg"
-                class="ml-4 sm:w-36"
-              />
+              <div class="flex items-center px-4">
+                <span class="opacity-75"> Data by </span>
+                <a
+                  href="https://wisesight.com"
+                  target="_blank"
+                  rel="https://wisesight.com"
+                >
+                  <img
+                    src="~/assets/images/wisesight-logo.svg"
+                    alt="wisesight-logo.svg"
+                    class="ml-4 sm:w-36"
+                  />
+                </a>
+              </div>
+
+              <div class="flex items-center px-4">
+                <span class="opacity-75"> Visualized by </span>
+                <a
+                  href="https://wevis.info"
+                  target="_blank"
+                  rel="https://wevis.info "
+                >
+                  <img
+                    src="~/assets/images/wevis-logo.svg"
+                    alt="wevis-logo.svg"
+                    class="ml-4 sm:w-36"
+                  />
+                </a>
+              </div>
             </div>
           </div>
         </div>
