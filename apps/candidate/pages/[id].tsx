@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { getNocoApi } from '../utils/nocoHandler';
 import Metadata from '../components/metadata';
 import { getCandidateOG } from '../utils/dict';
+import { useRouter } from 'next/router';
 
 interface PropsType {
   candidate: IGovernor;
@@ -26,8 +27,12 @@ export default function Governor({
   const [news, setNews] = useState<Post[]>([]);
   const [pageUrl, setPageUrl] = useState<string>('');
   const is_highlight = candidate.highlight || false;
+  const router = useRouter();
 
   useEffect(() => {
+    if (candidate.disqualified) {
+      router.push('/');
+    }
     const getPort = async () => {
       try {
         const res = await fetchTheStandardElectionPosts({
@@ -75,7 +80,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
   const data = res.data as IGovernor[];
 
-  const paths = data.map((gov) => {
+  const govList = data.filter((gov) => !gov.disqualified);
+
+  const paths = govList.map((gov) => {
     return {
       params: { id: gov.id?.toString() || '' },
     };
@@ -99,6 +106,14 @@ export const getStaticProps: GetStaticProps<PropsType> = async (context) => {
     };
   }
   const candidate = candidateRes.data as IGovernor;
+  if (candidate.disqualified) {
+    return {
+      redirect: {
+        permanent: true,
+        destination: '/',
+      },
+    };
+  }
 
   if (!isComingSoon) {
     if (candidate.highlight) {

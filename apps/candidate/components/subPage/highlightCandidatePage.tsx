@@ -115,7 +115,8 @@ export function HighLightCandidatePage({
                 <CandidateBadge
                   key={`candidate-${candidate.id}`}
                   candidate={candidate}
-                  showPlayButton={false}
+                  showPlayButton={true}
+                  clientSide
                 />
               );
             })}

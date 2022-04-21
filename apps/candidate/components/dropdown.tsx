@@ -19,7 +19,7 @@ const OptionListComponent = (props: {
   return (
     <Fragment>
       {props.isShow && (
-        <div className="w-[250px] px-[15px] py-[5px] absolute left-[-25px] mt-[5px] bg-white border rounded-[2px] max-h-[300px] overflow-y-scroll">
+        <div className="w-[250px] px-[15px] py-[5px] absolute left-[-25px] mt-[5px] bg-white border rounded-[2px] max-h-[300px] overflow-y-scroll z-10">
           {props.options.length <= 0 && (
             <p className="font-body text-left text-[12pt]">ไม่พบข้อมูล</p>
           )}

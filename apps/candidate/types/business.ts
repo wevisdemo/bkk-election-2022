@@ -28,6 +28,7 @@ export interface ICouncil {
   sex: string;
   education: string;
   career: string;
+  disqualified: string;
 }
 
 interface IQuestionAnswerList {
@@ -95,6 +96,7 @@ export interface IGovernor {
   contact_instagram: null | string;
   contact_line: null | string;
   answersList: IGovernorAnswer[];
+  disqualified: string;
 }
 
 interface IGovernorAnswer {
