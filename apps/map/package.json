@@ -3,16 +3,18 @@
 	"private": true,
 	"version": "0.0.0",
 	"scripts": {
-		"dev": "vite --port 3004",
+		"dev": "vite",
 		"build": "tsc && vite build",
 		"preview": "vite preview"
 	},
 	"dependencies": {
 		"preact": "^10.5.15",
+		"react": "^18.0.0",
 		"ui": "*"
 	},
 	"devDependencies": {
 		"@preact/preset-vite": "^2.1.5",
+		"@types/react": "^18.0.5",
 		"autoprefixer": "^10.4.4",
 		"postcss": "^8.4.12",
 		"tailwindcss": "^3.0.24",

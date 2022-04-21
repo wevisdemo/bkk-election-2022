@@ -597,12 +597,35 @@
             </div>
 
             <div class="mt-10 flex items-center justify-center typo-b6">
-              <span class="opacity-75"> Data by </span>
-              <img
-                src="~/assets/images/wisesight-logo.svg"
-                alt="wisesight-logo.svg"
-                class="ml-4 sm:w-36"
-              />
+              <div class="flex items-center px-4">
+                <span class="opacity-75"> Data by </span>
+                <a
+                  href="https://wisesight.com"
+                  target="_blank"
+                  rel="https://wisesight.com"
+                >
+                  <img
+                    src="~/assets/images/wisesight-logo.svg"
+                    alt="wisesight-logo.svg"
+                    class="ml-4 sm:w-36"
+                  />
+                </a>
+              </div>
+
+              <div class="flex items-center px-4">
+                <span class="opacity-75"> Visualized by </span>
+                <a
+                  href="https://wevis.info"
+                  target="_blank"
+                  rel="https://wevis.info "
+                >
+                  <img
+                    src="~/assets/images/wevis-logo.svg"
+                    alt="wevis-logo.svg"
+                    class="ml-4 sm:w-36"
+                  />
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -998,7 +1021,9 @@ export default {
     document.body.classList.add('stop-scrolling')
 
     window.scrollTo(0, 0)
-    window.addEventListener('resize', _.debounce(this.reRenderChart, 200))
+    if (this.deviceDevice() === 'desktop') {
+      window.addEventListener('resize', _.debounce(this.reRenderChart, 200))
+    }
   },
   mounted() {
     loadUIComponents()
@@ -1292,15 +1317,15 @@ export default {
           }
         }
 
-        const total = _.sumBy(isBefore, 'value')
+        const total = _.sumBy(isBefore, 'total_engagement')
         const increase = _.chain(isBefore)
           .filter((o) => o.candidate === d.candidate)
-          .sumBy((o) => (o.value === 0 ? 0 : length + 1 - o.value))
+          .sumBy('total_engagement')
           .value()
         const highest = _.chain(groupDate)
           .get(d.date_from, {})
-          .filter((d) => d.value)
-          .minBy('value')
+          // .filter((d) => d.value)
+          .maxBy('total_engagement')
           .value()
 
         const date = moment(d.date_from).diff(this.start_calendar_date, 'week')
@@ -1319,7 +1344,7 @@ export default {
           increase,
           increase_total: total,
           ratio: (increase / total) * 100,
-          highest: _.get(highest, 'value', 0),
+          highest: _.get(highest, 'total_engagement', 0),
           highest_per_date: highest.candidate === d.candidate,
           image: this.photo(d.candidate),
           color: this.color_palettes(d.candidate),
@@ -1373,10 +1398,10 @@ export default {
       this.animate_chart = false
       this.handleUpdateChart()
     },
-    changeCandidateFilter() {
+    changeCandidateFilter: _.debounce(function () {
       this.setDefaultStackedBarChart()
       this.onUpdateChart()
-    },
+    }, 500),
     onChangeTypeChart() {
       if (this.animate_chart) {
         this.setDefaultStackedBarChart()
@@ -1446,6 +1471,19 @@ export default {
               return `${_.get(data, 'ratio')}%`
             })
         })
+    },
+    deviceDevice() {
+      const ua = navigator.userAgent
+      if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
+        return 'tablet'
+      } else if (
+        /Mobile|Android|iP(hone|od)|IEMobile|BlackBerry|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
+          ua
+        )
+      ) {
+        return 'mobile'
+      }
+      return 'desktop'
     },
     animateKeywords() {
       let index = 1

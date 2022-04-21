@@ -43,7 +43,12 @@
     <!-- </transition> -->
 
     <svg>
-      <g class="axis-group"></g>
+      <g class="axis-group">
+        <text :y="innerHeight" class="text empty">
+          <tspan dy="1.2em" x="0">ไม่มี</tspan>
+          <tspan dy="1.2em" x="0">ข้อมูล</tspan>
+        </text>
+      </g>
       <g>
         <rect
           class="checks"
@@ -82,7 +87,7 @@
       <g v-if="candidates != 0" class="g-lines">
         <g
           v-for="item in candidates"
-          :key="`line-${item.candidate}`"
+          :key="`line-${item.candidate || ''}`"
           class="line-group"
         >
           <g class="circle">
@@ -288,7 +293,7 @@ export default {
     margin() {
       return {
         top: 30,
-        left: 30,
+        left: 32,
         right: this.$mq === 'mobiel' ? 22 : 30,
         bottom: 30,
       }
@@ -393,8 +398,7 @@ export default {
         const { length } = this.candidates
         ticks = length
         tickFormat = (d) => {
-          if (d === 0) return d
-          else return length + 1 - d
+          return d === 0 ? '' : length + 1 - d
         }
       }
 
@@ -502,7 +506,9 @@ export default {
             .attr('class', 'line-tick')
             .attr('x2', 7)
 
-          d.selectAll('.tick text').style('text-anchor', 'start').attr('x', -30)
+          d.selectAll('.tick text')
+            .style('text-anchor', 'start')
+            .attr('x', -this.margin.left)
         })
 
       svg
@@ -511,6 +517,10 @@ export default {
         .attr('class', 'x-axis')
         .attr('transform', `translate(0, ${this.height - this.margin.top})`)
         .call(this.xAxis)
+
+      svg
+        .select('.axis-group .text.empty')
+        .style('opacity', this.type === 'rank' ? 1 : 0)
 
       if (this.animate) {
         this.resetLinePath()
@@ -550,7 +560,7 @@ export default {
       d3.selectAll('.mark-dots').style('opacity', 0)
       d3.select('.tooltip-wrapper').style('opacity', 0)
     },
-    onMouseMove(e) {
+    onMouseMove: _.throttle(function (e) {
       let xhoveredDate = this.active
       if (e) {
         const mousePosition = _.get(e, 'x', 0)
@@ -562,7 +572,7 @@ export default {
       d3.select('.checks').attr('x', this.xScale(xhoveredDate))
 
       this.handleTooltip(xhoveredDate)
-    },
+    }, 100),
     handleTooltip: _.debounce(function (date) {
       let title = this.dateDisplay(date)
       let description = ''
@@ -915,16 +925,23 @@ svg {
   //   min-height: 420px;
   // }
   ::v-deep {
-    .x-axis,
-    .y-axis {
-      .tick text {
+    // .x-axis,
+    // .y-axis {
+    .axis-group {
+      .tick text,
+      .text {
         font-family: 'Anuphan';
         font-style: normal;
         font-weight: 400;
-        font-size: 12px;
+        font-size: 11px;
         fill: #ffffff;
       }
+      .text.disable {
+        opacity: 0;
+        visibility: hidden;
+      }
     }
+
     .x-axis {
       .domain {
         stroke: #ffffff;
