@@ -15,6 +15,7 @@
     "landing": "*",
     "map": "*",
     "socialtrend": "*",
+    "static": "*",
     "ui": "*"
   },
   "devDependencies": {
