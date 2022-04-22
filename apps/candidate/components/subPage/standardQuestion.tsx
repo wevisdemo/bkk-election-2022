@@ -12,6 +12,15 @@ interface PropsType {
   pageUrl: string;
 }
 
+const questionTypeDict = {
+  policy: 'Policy',
+  attitude: 'Opinion',
+  lifestyle: 'Lifestyle',
+  special: 'Special',
+};
+
+type questionType = 'policy' | 'attitude' | 'lifestyle' | 'special';
+
 export default function StandardQuestion({
   question,
   questionList,
@@ -23,7 +32,8 @@ export default function StandardQuestion({
       <div className="pt-[40px] md:pt-[110px]  px-[20px]">
         <div className=" max-w-[930px] m-auto text-center">
           <p className="typo-h7 ">
-            {question.type} Question {question.number}:
+            {questionTypeDict[question.type as questionType]} Question{' '}
+            {question.number}:
           </p>
           <p className="typo-h2 mt-[15px]">{question.question}</p>
           <p className="typo-b4 mt-[75px] md:mt-[60px]">
