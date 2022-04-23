@@ -1,0 +1,2 @@
+export const TOP_CANDIDATE_DISPLAY = 3;
+export const DEFAULT_CANDUDATE_COLOR = '#666666';
