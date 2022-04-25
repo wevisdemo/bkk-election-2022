@@ -10,17 +10,17 @@
 	export let fetchPosts: () => Promise<Post[]>;
 </script>
 
-<div class="py-20 space-y-8">
+<div class="py-24 space-y-16">
 	<div class="flex flex-col md:flex-row space-y-4 md:space-y-0">
-		<div class="flex-1">
-			<h1 class="typo-h4">{title}</h1>
-			<h2 class="typo-u3">{subtitle}</h2>
-		</div>
-		<div>
+		<div class="flex-1 justify-center text-center">
+			<h1 class="typo-h2 mb-1 px-8">{title}</h1>
+			<h2 class="typo-u3 mb-1 px-8">{subtitle}</h2>
+		<!-- </div>
+		<div> -->
 			<a
 				href={viewAllLink}
 				target="_blank"
-				class="flex flex-row space-x-2 items-center typo-b5 hover:underline"
+				class="inline-flex flex-row space-x-2 items-center typo-b5 underline hover:opacity-60"
 			>
 				<span>{viewAllText}</span>
 				<svg
