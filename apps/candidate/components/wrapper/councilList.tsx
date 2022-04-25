@@ -49,7 +49,9 @@ export function CouncilList(props: PropsType) {
       }
       totalList.push(dd);
     }
-    const districtStrList = totalList.map((district) => district.value);
+    const districtStrList = totalList
+      .map((district) => district.value)
+      .sort((a, z) => a.localeCompare(z));
     setDistrictList(districtStrList);
     setDropdownOptions(totalList);
   }, []);
