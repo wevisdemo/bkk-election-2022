@@ -14,6 +14,15 @@ export const getCandidateOG = (id: number): string => {
   }
 };
 
+export const getQuestionOG = (type: string, id: number): string => {
+  try {
+    const img = require(`../static/images/og/question/question_${type}_${id}.png`);
+    return img.default.src as string;
+  } catch {
+    return '';
+  }
+};
+
 export type numberListType =
   | 1
   | 2

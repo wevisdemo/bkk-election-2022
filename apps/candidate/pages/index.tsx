@@ -115,7 +115,7 @@ const Home = ({
       <Metadata title="ข้อมูลผู้สมัคร" imageSrc={candidateHome.src} />
       <div>
         <div className="flex flex-col items-center text-center px-[20px] mt-12">
-          <p className="typo-h6">Meet the Candidates</p>
+          <p className="typo-h6">MEET THE CANDIDATES</p>
           <p className="typo-h1">ข้อมูลผู้สมัคร</p>
           <div className="typo-u3 mt-[10px] mb-[70px] max-w-[280px] md:max-w-[47rem]">
             ทำความรู้จักผู้สมัครผู้ว่าฯ กทม. และค้นหาสมาชิกสภา กทม. ในเขตของคุณ

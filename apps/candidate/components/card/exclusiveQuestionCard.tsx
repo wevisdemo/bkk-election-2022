@@ -12,13 +12,13 @@ export function ExclusiveQuestionCard({ answer }: PropsType) {
     : '';
 
   return (
-    <div className="md:max-w-[1500px] max-w-[250px] pb-[40px] flex flex-col justify-center text-white">
-      <p className="typo-b5 mt-[20px] md:order-3 md:text-center">
+    <div className="max-w-[1500px] w-[90vw] pb-[28px] md:pb-[100px]flex flex-col justify-center text-white">
+      <p className="typo-b5 mt-[20px] md:order-3 md:text-center max-w-[250px] md:max-w-[1500px] m-auto pb-[20px]">
         {answer.text}
       </p>
       {youtubeEmbedUrl ? (
         <iframe
-          className="md:max-w-[1500px] md:max-h-[843.75px] md:w-[90vw] md:h-[50.625vw] w-[250px] h-[250px] mt-[20px] md:mt-0 md:order-1"
+          className="md:max-w-[1500px] md:max-h-[843.75px] w-[90vw] h-[50.625vw] mt-[20px] md:mt-0 md:order-1 m-auto"
           src={youtubeEmbedUrl}
           title="YouTube video player"
           frameBorder="0"

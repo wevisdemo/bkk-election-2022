@@ -20,7 +20,7 @@ const Footer: Component = () => {
           </For>
         </div>
         <div className="ui-flex-1 ui-grid ui-grid-cols-1 md:ui-grid-cols-3 ui-gap-2">
-          <span class="typo-u5 ui-font-bold md:ui-col-span-3">Links</span>
+          <span class="typo-u5 ui-font-bold md:ui-col-span-3">LINKS</span>
           <For each={pages}>
             {({ label, href }) => (
               <a href={href} target="_blank" class="typo-u4 ui-underline">

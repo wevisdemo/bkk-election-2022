@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import { IAnswer } from '../../types/business';
 import { getYoutubeId } from '../../utils/tranformation';
 
@@ -6,10 +7,14 @@ interface PropsType {
   ignoreGovernor?: boolean;
 }
 export function ExclusiveQuestionBadge({ answer, ignoreGovernor }: PropsType) {
+  const router = useRouter();
   const youtubeId = getYoutubeId(answer.url);
   const youtubeEmbedUrl = youtubeId
     ? `https://www.youtube.com/embed/${youtubeId}`
     : '';
+  const onClickCandidate = () => {
+    router.push(`/${answer.nc_xeff__candidates_id}`);
+  };
 
   return (
     <div className="max-w-[1500px] w-[90vw] pt-[40px] md:pt-[50px] pb-[28px] md:pb-[100px] mx-auto text-center">
@@ -29,9 +34,14 @@ export function ExclusiveQuestionBadge({ answer, ignoreGovernor }: PropsType) {
       )}
 
       {!ignoreGovernor && (
-        <p className="typo-h6 text-white mb-[20px]">
-          {answer.governorsRead.name}
-        </p>
+        <a href={`/candidate/${answer.nc_xeff__candidates_id}`}>
+          <p
+            className="typo-h6 text-white mb-[20px] hover:cursor-pointer hover:underline"
+            // onClick={() => onClickCandidate()}
+          >
+            {answer.governorsRead.name}
+          </p>
+        </a>
       )}
       <p className="typo-b3 text-white max-w-[650px] m-auto">{answer.text}</p>
     </div>

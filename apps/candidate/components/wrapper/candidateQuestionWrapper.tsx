@@ -105,13 +105,18 @@ export function CandidateQuestionWrapper({
     <Fragment>
       {answerCategory.exclusive.length > 0 && (
         <div className="bg-black pt-[28px] md:pt-[80px] ">
-          <div className="md:max-w-[1500px] md:w-[90vw] max-w-[250px] m-auto">
-            <p className="typo-h7 text-white md:text-center w-full">
-              Exclusive Speech
+          <div className="max-w-[1500px] w-[90vw] pt-[40px] md:pt-[50px] pb-[28px] md:pb-[100px] m-auto">
+            <p className="typo-h7 text-white md:text-center w-full max-w-[250px] md: m-auto">
+              EXCLUSIVE SPEECH
             </p>
-            <p className="typo-h3 text-white md:text-center w-full mt-[10px] mb-[20px]">
-              {answerCategory.exclusive[0].questionsRead.question}
-            </p>
+            <div className="w-full flex">
+              <a
+                href={`/candidate/question/${answerCategory.exclusive[0].nc_xeff__questions_id}`}
+                className="typo-h3 text-white md:text-center w-full max-w-[250px] md:max-w-[1500px] mt-[10px] m-auto hover:cursor-pointer hover:underline"
+              >
+                {answerCategory.exclusive[0].questionsRead.question}
+              </a>
+            </div>
             <ExclusiveQuestionCard
               answer={answerCategory.exclusive[0]}
               ignoreQuestion
@@ -121,22 +126,30 @@ export function CandidateQuestionWrapper({
       )}
       <div className="">
         {answerCategory.policy.length > 0 && (
-          <GeneralQuestionList
-            answerList={answerCategory.policy}
-            questionType="policy"
-          />
+          <Fragment>
+            <GeneralQuestionList
+              answerList={answerCategory.policy}
+              questionType="policy"
+            />
+            <div className="border-b-[2px] border-[#DADADA] w-[90vw] m-auto" />
+          </Fragment>
         )}
         {answerCategory.opinion.length > 0 && (
-          <GeneralQuestionList
-            answerList={answerCategory.opinion}
-            questionType="opinion"
-          />
+          <Fragment>
+            <GeneralQuestionList
+              answerList={answerCategory.opinion}
+              questionType="opinion"
+            />
+            <div className="border-b-[2px] border-[#DADADA] w-[90vw] m-auto" />
+          </Fragment>
         )}
         {answerCategory.lifestyle.length > 0 && (
-          <GeneralQuestionList
-            answerList={answerCategory.lifestyle}
-            questionType="lifestyle"
-          />
+          <Fragment>
+            <GeneralQuestionList
+              answerList={answerCategory.lifestyle}
+              questionType="lifestyle"
+            />
+          </Fragment>
         )}
         {answerCategory.special.length > 0 && (
           <div className="bg-[#F1F1F1]">
@@ -144,6 +157,7 @@ export function CandidateQuestionWrapper({
               answerList={answerCategory.special}
               questionType="special"
             />
+            {/* <div className="border-b-[2px] border-[#DADADA] w-[90vw] m-auto" /> */}
           </div>
         )}
       </div>

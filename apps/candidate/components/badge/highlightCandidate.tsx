@@ -18,8 +18,13 @@ export function HighlightCandidateBadge({ candidate, isComingSoon }: PropType) {
     router.push(`/${id}#hc-${id}`);
   };
 
+  const getHref = () => {
+    return `/candidate/${candidate.id}#hc-${candidate.id}`;
+  };
+
   return (
-    <div
+    <a
+      href={getHref()}
       id={`hc-${candidate.number}`}
       className={`max-w-[500px] w-[85vw] md:w-[30vw] m-auto hover:cursor-pointer`}
       onClick={() => onClickCandidate(candidate.id)}
@@ -53,6 +58,6 @@ export function HighlightCandidateBadge({ candidate, isComingSoon }: PropType) {
           <p className="typo-b5 text-[#ffffff80]">{candidate.party}</p>
         </div>
       </div>
-    </div>
+    </a>
   );
 }

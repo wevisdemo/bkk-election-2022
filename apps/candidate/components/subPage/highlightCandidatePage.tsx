@@ -107,7 +107,7 @@ export function HighLightCandidatePage({
       <div className="bg-black">
         <div className="py-[34px] py-[52px]">
           <p className="typo-h5 text-white text-center px-[20px]">
-            ฟังคำตอบจากผู้สมัครผู้ว่าฯ กทม. ในกระแสคนอื่น
+            ฟังคำตอบจากผู้สมัครผู้ว่าฯ กทม. คนอื่น
           </p>
           <div className="w-fit m-auto grid grid-cols-2 md:grid-cols-4 mb-[20px] gap-[15px] md:gap-[30px] mt-[35px] md:mt-[74px]">
             {getOtherCandidate().map((candidate) => {

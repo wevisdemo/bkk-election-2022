@@ -13,10 +13,10 @@ interface PropsType {
 }
 
 const questionTypeDict = {
-  policy: 'Policy',
-  attitude: 'Opinion',
-  lifestyle: 'Lifestyle',
-  special: 'Special',
+  policy: 'POLICY',
+  attitude: 'OPINION',
+  lifestyle: 'LIFESTYLE',
+  special: 'SPECIAL',
 };
 
 type questionType = 'policy' | 'attitude' | 'lifestyle' | 'special';
@@ -27,12 +27,16 @@ export default function StandardQuestion({
   answerList,
   pageUrl,
 }: PropsType) {
+  const sortedAnswerList = answerList.sort((a, b) =>
+    a.nc_xeff__candidates_id > b.nc_xeff__candidates_id ? 1 : -1
+  );
+
   return (
     <Fragment>
       <div className="pt-[40px] md:pt-[110px]  px-[20px]">
         <div className=" max-w-[930px] m-auto text-center">
           <p className="typo-h7 ">
-            {questionTypeDict[question.type as questionType]} Question{' '}
+            {questionTypeDict[question.type as questionType]} QUESTION{' '}
             {question.number}:
           </p>
           <p className="typo-h2 mt-[15px]">{question.question}</p>
@@ -41,7 +45,7 @@ export default function StandardQuestion({
           </p>
         </div>
         <div className="mt-[90px] md:mt-[165px] mb-[48px] md:mb-[94px]">
-          <AnswerStandardList answerList={answerList} />
+          <AnswerStandardList answerList={sortedAnswerList} />
         </div>
       </div>
       <ShareList url={pageUrl} />

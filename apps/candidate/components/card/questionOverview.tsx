@@ -58,7 +58,7 @@ export function QuestionOverview(props: Propstype) {
           <img
             src={playButtonGray.src}
             alt="play-bt-gray"
-            className="w-[25px] h-[25px]"
+            className="w-[15px] h-[15px] md:w-[25px] md:h-[25px]"
           />
         </div>
         <div className="typo-b4 flex-1 ml-[10px]">{question.question}</div>
@@ -84,6 +84,27 @@ export function QuestionOverview(props: Propstype) {
     );
   };
 
+  const getSpecialQuestionCandidate = () => {
+    return questionList
+      .filter((question) => question.type === 'special')
+      .reduce((result, curr) => {
+        if (
+          result.find((q) => q.governorsRead?.name === curr.governorsRead?.name)
+        ) {
+          return result;
+        } else {
+          if (curr.governorsRead) {
+            return [...result, curr];
+          }
+        }
+        return result;
+      }, [] as IQuestion[]);
+  };
+
+  const onClickCandidate = (id: number) => {
+    router.push(`/${id}`);
+  };
+
   return (
     <div className="text-white mx-[8px] mt-[20px] md:mt-[40px] relative">
       {isComingSoon && (
@@ -102,33 +123,62 @@ export function QuestionOverview(props: Propstype) {
             className="w-[61px] h-[61px] mx-auto"
           />
         </div>
-        <div className="text-center p-10 border border-[#9d9d9d] rounded-[10px] max-w-[1145px] m-auto">
-          <p className="typo-h5 mt-5 mb-10">
-            ฟัง 5 ผู้สมัครในกระแสตอบ {getGeneralQuestionsCount()} คำถามเดียวกัน
+        <div className="text-center px-[18px] pb-[20px] md:pb-[50px] border border-[#9d9d9d] rounded-[10px] max-w-[1145px] m-auto">
+          <p className="typo-h5 pt-[60px] pb-[20px] border-b border-[#9d9d9d80]">
+            ฟัง 5 ผู้สมัครตอบ {getGeneralQuestionsCount()} คำถามเดียวกัน
           </p>
           {questionCat.exclusive.length > 0 && (
-            <div
-              className="border-b p-10 border-[#9d9d9d80] flex items-center m-auto justify-center  hover:cursor-pointer hover:underline hover:decoration-1"
-              onClick={() => onClickQuestion(questionCat.exclusive[0].id)}
-            >
-              <img
-                src={playButtonGray.src}
-                alt="play-bt-gray"
-                className="w-[25px] h-[25px]"
-              />
-              <p className="typo-b5 ml-[10px] flex flex-wrap">
-                <span className="font-bold">Exclusive Speech :</span>
-                {questionCat.exclusive[0]?.question}
-              </p>
+            <div className="border-b border-[#9d9d9d80] py-[20px] md:py-[40px] flex m-auto justify-center">
+              <div
+                className="flex m-fit hover:cursor-pointer hover:underline hover:decoration-1"
+                onClick={() => onClickQuestion(questionCat.exclusive[0].id)}
+              >
+                <img
+                  src={playButtonGray.src}
+                  alt="play-bt-gray"
+                  className="w-[15px] h-[15px] md:w-[25px] md:h-[25px]"
+                />
+                <p className="typo-b5 ml-[10px] flex flex-wrap text-left">
+                  <span className="font-bold">EXCLUSIVE SPEECH : </span>{' '}
+                  {questionCat.exclusive[0]?.question}
+                </p>
+              </div>
             </div>
           )}
-          <div className="grid grid-cols md:grid-cols-3 gap-[30px] my-10">
-            {questionColumn('Policy', questionCat.policy)}
-            {questionColumn('Opinion', questionCat.opinion)}
-            {questionColumn('Lifestyle', questionCat.lifestyle)}
+          <div className="grid grid-cols md:grid-cols-3 gap-[30px] py-[20px] md:py-[40px] border-b border-[#9d9d9d80]">
+            {questionColumn('POLICY', questionCat.policy)}
+            {questionColumn('OPINION', questionCat.opinion)}
+            {questionColumn('LIFESTYLE', questionCat.lifestyle)}
           </div>
-          <div className="font-body text-[12pt] md:text-[14pt] border-t border-[#9d9d9d80] pt-10 pt-[30px] font-bold">
-            + อีก 5 คำถามเคลียร์ใจเฉพาะตัวผู้สมัคร
+          <div className="pt-[20px] md:pt-[40px] ">
+            <p className="typo-b4 text-center font-bold">
+              + อีก {getSpecialQuestionCandidate().length}{' '}
+              คำถามเคลียร์ใจเฉพาะตัวผู้สมัคร
+            </p>
+            <div className="flex md:flex-row flex-col flex-wrap justify-between md:mt-[15px]">
+              {getSpecialQuestionCandidate().map((question) => {
+                return (
+                  <div
+                    className="flex hover:cursor-pointer hover:underline hover:decoration-1 mt-[25px]"
+                    onClick={() =>
+                      onClickCandidate(question.governorsRead?.id || 1)
+                    }
+                    key={`candidate-${question.governorsRead?.id}`}
+                  >
+                    <div className="flex items-center">
+                      <img
+                        src={playButtonGray.src}
+                        alt="play-bt-gray"
+                        className="w-[15px] h-[15px] md:w-[25px] md:h-[25px]"
+                      />
+                    </div>
+                    <div className="typo-b4 ml-[10px]">
+                      {question.governorsRead?.name}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>

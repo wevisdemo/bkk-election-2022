@@ -28,8 +28,21 @@ export function CandidateBadge({
     }
   };
 
+  const getHref = () => {
+    if (clientSide) {
+      return `/candidate/${candidate.id}`;
+    } else {
+      return `/candidate/${candidate.id}${
+        fromHome ? `#c-${candidate.id}` : ''
+      }`;
+    }
+  };
+
   return (
-    <div className="h-full max-w-[250px] w-[43vw] md:w-[15vw] relative">
+    <a
+      href={getHref()}
+      className="h-full max-w-[250px] w-[43vw] md:w-[15vw] relative"
+    >
       {candidate.disqualified && (
         <div className="absolute bg-[#333333b3] w-full h-full absolute typo-u4 flex justify-center items-center z-[5] text-white p-[10px]">
           {candidate.disqualified}
@@ -38,7 +51,7 @@ export function CandidateBadge({
       <div
         id={`c-${candidate.number}`}
         className={`h-full max-w-[250px] w-[43vw] md:w-[15vw] m-auto hover:cursor-pointer`}
-        onClick={() => onClickCandidate(candidate.id)}
+        // onClick={() => onClickCandidate(candidate.id)}
       >
         {/* eslint-disable */}
         <div className="w-[43vw] h-[43vw] md:w-[15vw] md:h-[15vw] max-w-[250px] max-h-[250px] relative">
@@ -70,6 +83,6 @@ export function CandidateBadge({
           </div>
         </div>
       </div>
-    </div>
+    </a>
   );
 }

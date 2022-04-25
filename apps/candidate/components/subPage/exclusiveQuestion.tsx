@@ -20,7 +20,7 @@ export function ExclusiveQuestion({
     <div className="bg-black pt-[40px] md:pt-[110px]">
       <div className="w-[90vw] max-w-[1500px] m-auto text-center pb-[42px] md:pb-[20px]">
         <div className="">
-          <p className="typo-h7 text-white">Exclusive Speech</p>
+          <p className="typo-h7 text-white">EXCLUSIVE SPEECH</p>
           <p className="typo-h2 text-white mt-[15px] mb-[16px] md:mb-[68px]">
             {question.question}
           </p>

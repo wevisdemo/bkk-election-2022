@@ -1,9 +1,11 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import Metadata from '../../components/metadata';
 import { ExclusiveQuestion } from '../../components/subPage/exclusiveQuestion';
 import StandardQuestion from '../../components/subPage/standardQuestion';
 import { IAnswer, IQuestion } from '../../types/business';
+import { getQuestionOG } from '../../utils/dict';
 import { getNocoApi } from '../../utils/nocoHandler';
 
 interface PropsType {
@@ -31,6 +33,10 @@ export default function QuestionPage({
   }, []);
   return (
     <div>
+      <Metadata
+        title={question.question || 'คำถาม'}
+        imageSrc={getQuestionOG(question.question, question.number || 1)}
+      />
       {isComingSoon ? (
         <div />
       ) : isExclusive ? (

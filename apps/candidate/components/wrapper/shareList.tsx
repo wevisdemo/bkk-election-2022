@@ -24,8 +24,7 @@ export function ShareList({ url, white }: PropsType) {
           white ? 'text-white' : ''
         }`}
       >
-        {' '}
-        Share
+        SHARE
       </p>
       <div className="space-x-[10px] flex">
         <FacebookShareButton url={url}>
