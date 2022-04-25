@@ -61,17 +61,23 @@ export function Council(props: PropsType) {
               </p>
             </div>
           </div>
-          <div
-            className="flex font-body text-[9pt] border border-[#dadada] p-[10px] w-fit hover:cursor-pointer"
-            onClick={() => onClickGoogleSearch(council.name)}
+          <a
+            href={`https://www.google.com/search?q=${council.name}`}
+            rel="noopener noreferrer"
+            target="_blank"
           >
-            <img
-              src={searchIcon.src}
-              alt="search"
-              className="w-[14px] h-[14px]"
-            />
-            <span className="ml-[8px]">ค้นประวัติใน Google</span>
-          </div>
+            <div
+              className="flex font-body text-[9pt] border border-[#dadada] p-[10px] w-fit hover:cursor-pointer"
+              // onClick={() => onClickGoogleSearch(council.name)}
+            >
+              <img
+                src={searchIcon.src}
+                alt="search"
+                className="w-[14px] h-[14px]"
+              />
+              <span className="ml-[8px]">ค้นประวัติใน Google</span>
+            </div>
+          </a>
         </div>
       </div>
     </div>
