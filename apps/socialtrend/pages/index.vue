@@ -605,8 +605,8 @@
                   rel="https://wisesight.com"
                 >
                   <img
-                    src="~/assets/images/wisesight-logo.svg"
-                    alt="wisesight-logo.svg"
+                    src="/static/images/logo-wisesight.png"
+                    alt="Wisesight"
                     class="ml-4 sm:w-36"
                   />
                 </a>
@@ -620,8 +620,8 @@
                   rel="https://wevis.info "
                 >
                   <img
-                    src="~/assets/images/wevis-logo.svg"
-                    alt="wevis-logo.svg"
+                    src="/static/images/logo-wevis.png"
+                    alt="WeVis"
                     class="ml-4 sm:w-36"
                   />
                 </a>
