@@ -1,6 +1,5 @@
 <template>
   <div ref="container" class="line-chart-race">
-    <!-- <transition name="fade"> -->
     <div ref="tooltip" class="tooltip-wrapper" style="opacity: 0">
       <div class="tooltip typo-b5">
         <div class="title mb-1"></div>
@@ -16,31 +15,6 @@
         </div>
       </div>
     </div>
-    <!-- <div
-        v-if="hover || active"
-        ref="tooltip"
-        class="tooltip-wrapper"
-        :style="`left: ${left_tooltip}px`"
-      >
-        <div class="tooltip typo-b5">
-          <div class="title">{{ active_data.title }}</div>
-          <div v-if="active_data.description" class="description mt-1 typo-b6">
-            {{ active_data.description }}
-          </div>
-
-          <div
-            v-for="(item, index) in active_data.candidates"
-            :key="index"
-            class="data-list"
-          >
-            <div class="name pr-4">{{ item.candidate }}</div>
-            <div class="value" :style="`color: ${item.color}`">
-              {{ item.value_str }}
-            </div>
-          </div>
-        </div>
-      </div> -->
-    <!-- </transition> -->
 
     <svg>
       <g class="axis-group">
@@ -61,28 +35,6 @@
           style="transition: 'all 0.2s'"
         ></rect>
       </g>
-
-      <!-- <g
-        v-for="(item, index) in group_date.keys_data"
-        :key="index"
-        class="checks"
-        :transform="`translate(${xScale(item) - check_width / 2}, 0)`"
-      >
-        <g
-          :style="{
-            opacity: hover === item || (active === item && !hover) ? 1 : 0,
-          }"
-        >
-          <line
-            :x1="check_width / 2"
-            :x2="check_width / 2"
-            :y1="margin.top"
-            :y2="height - margin.bottom"
-            stroke="#e0e1e1"
-            style="transition: 'all 0.2s'"
-          ></line>
-        </g>
-      </g> -->
 
       <g v-if="candidates != 0" class="g-lines">
         <g
@@ -146,8 +98,6 @@
           class="marker-group"
         >
           <g class="marker" :transform="`scale(1)`">
-            <!-- :transform="`scale(${item.highest_per_date ? 1.7 : 1})`" -->
-
             <clipPath :id="`clip-${item.candidate}`">
               <use :xlink:href="`#circle-${item.candidate}`" />
             </clipPath>
@@ -187,30 +137,6 @@
           animate_finish && type === 'engagement' ? onClickChecks() : false
         "
       ></rect>
-      <!-- <g class="checks-group" @mouseleave="hover = ''">
-        <g
-          v-for="(item, index) in group_date.keys_data"
-          :key="index"
-          class="checks"
-          :transform="`translate(${xScale(item) - check_width / 2}, 0)`"
-          @click="
-            animate_finish && type === 'engagement'
-              ? onClickChecks(item)
-              : false
-          "
-          @mouseover="checksEvent(item)"
-        >
-          <rect
-            class="check-rect"
-            :x="0"
-            :y="margin.top"
-            :height="height - margin.bottom"
-            fill="none"
-            :width="check_width"
-            style="pointer-events: all"
-          ></rect>
-        </g>
-      </g> -->
     </svg>
   </div>
 </template>
@@ -280,11 +206,8 @@ export default {
       step: 8,
       left_tooltip: 0,
       point: 0,
-      // duration: 8000,
       hover: '',
       active: '',
-      // candidates: [],
-      // active_data: {},
       animate_finish: false,
       animate_start: false,
     }
@@ -307,10 +230,6 @@ export default {
     formatThousands() {
       return d3.format(',')
     },
-    // candidate_group() {
-    //   const group = _.groupBy(this.raw_data, 'candidate')
-    //   return Object.keys(group)
-    // },
     raw_data() {
       return _.get(this.dataSet, 'raw_data', [])
     },
@@ -330,17 +249,6 @@ export default {
         .line()
         .x((d) => this.xScale(d.date))
         .y((d) => this.yScale(d.value))
-
-      // let fnLine = d3
-      //   .line()
-      //   .x((d) => this.xScale(d.date))
-      //   .y((d) => this.yScale(d.value))
-
-      // if (this.type === 'rank') {
-      //   fnLine = fnLine.curve(d3.curveMonotoneX)
-      // }
-
-      // return fnLine
     },
     xScaleActiveDate() {
       return d3
@@ -376,14 +284,8 @@ export default {
 
       return axis
     },
-    // yAxisTick() {
-    //   return d3
-    //     .scaleLinear()
-    //     .domain([0, d3.max(this.raw_data, (d) => d.value)])
-    // },
     yScale() {
       const maximum = d3.max(this.raw_data, (d) => d.value)
-      // const domain = this.type === 'engagement' ? [0, maximum] : [maximum, 0]
 
       return d3
         .scaleLinear()
@@ -408,37 +310,14 @@ export default {
         .ticks(ticks)
         .tickSize(-this.innerWidth)
     },
-    // stackedScale() {
-    //   const clientWidth = _.get(window, 'clientWidth', 0)
-    //   const maximum = d3.max(this.raw_data, (d) => d.value)
-
-    //   return d3.scaleLinear().domain([0, maximum]).range([0, clientWidth])
-    // },
     transitionPath() {
       return d3.transition().ease(d3.easeLinear).duration(this.duration)
     },
-    // maximum() {
-    //   const max = d3.max(this.yAxisTick)
-    //   const valueMax = d3.max(this.raw_data, (d) => d.value)
-    //   return max > valueMax ? max : valueMax
-    // },
-    // ready() {
-    //   return this.play_animation && this.candidates !== 0
-    // },
     interaction() {
       return this.hover || this.active
     },
   },
   watch: {
-    // ready: {
-    //   handler(val) {
-    //     if (!val) return
-    //     this.$nextTick(() => {
-    //       this.handleStartAnimation()
-    //     })
-    //   },
-    //   immediate: true,
-    // },
     play_animation: {
       handler(val) {
         if (!val || !this.animate) return
@@ -461,24 +340,11 @@ export default {
   },
   mounted() {
     this.drawLineChart()
-    // await this.setDataGroupCandidate()
-
-    // const xScale = this.xScale
-    // const yScale = this.yScale
-    // markerGroup.each(function (d) {
-    //   d3.select(this).attr(
-    //     'transform',
-    //     `translate(${xScale(_.get(d, 'data[0].date'))},${yScale(
-    //       _.get(d, 'data[0].value')
-    //     )})`
-    //   )
-    // })
   },
   methods: {
     handleStartAnimation() {
       setTimeout(() => {
         this.setAnimatePathLine()
-        // this.setAnimatePathLabel()
         this.updateAnimatePathLabel(this.xAxisEnd, this.duration)
       }, 1000)
     },
@@ -541,17 +407,13 @@ export default {
       const date = this.xScaleActiveDate(mousePosition)
       if (date === this.active) return
       this.active = date
-      // this.handleSetActiveChart(date)
-      // this.updateAnimatePathLabel(date, 600)
       this.$emit('change', date)
-      // this.$emit('update:activeChart', date)
     },
     onMouseHover(e) {
       d3.select('.checks').style('opacity', 1)
       d3.select('.tooltip-wrapper').style('opacity', 1)
     },
     onMouseleave() {
-      // this.hover = ''
       if (this.active) {
         this.onMouseMove()
         return
@@ -770,9 +632,6 @@ export default {
     handleHover(el) {
       d3.select(el).moveToFront()
     },
-    // min(data) {
-    //   return d3.min(data, (d) => d.value)
-    // },
     calDistance(data, index, direction = 'forward') {
       const start = direction === 'forward' ? -1 : +1
       const d1 = _.get(data, `[${index + start}]`, {})
@@ -830,11 +689,7 @@ export default {
       this.candidates = candidates
     },
     checksEvent: _.throttle(function (val) {
-      // if (this.type === 'engagement') {
-      //   this.hover = this.dateFormat(val)
-      // } else {
       this.hover = val
-      // }
     }, 150),
     sumRangeTimeData(data = []) {
       return data
@@ -866,14 +721,6 @@ export default {
           return `scale(${d.highest_per_date ? 1.7 : 1})`
         })
     },
-    // onClickChecks(date) {
-    //   if (date === this.active) return
-    //   this.active = date
-    //   // this.handleSetActiveChart(date)
-    //   // this.updateAnimatePathLabel(date, 600)
-    //   this.$emit('change', date)
-    //   // this.$emit('update:activeChart', date)
-    // },
   },
 }
 </script>

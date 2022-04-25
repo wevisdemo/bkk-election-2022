@@ -1,13 +1,18 @@
 export interface ElectionIndex {
-	shortName: string;
+	shortname: string;
+	fullname: string;
 	electionDataUrl: string;
 	candidateDataUrl: string;
 }
 
 export interface ElectionData {
-	fullName: string;
 	total: Voting;
 	districts: District[];
+}
+
+export interface District {
+	name: string;
+	voting: Voting;
 }
 
 export interface Voting {
@@ -17,11 +22,6 @@ export interface Voting {
 }
 
 export interface Result {
-	number: number;
+	candidateId: number;
 	count: number;
-}
-
-export interface District {
-	name: string;
-	voting: Voting;
 }

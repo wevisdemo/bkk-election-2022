@@ -101,12 +101,6 @@
                   "
                 />
               </span>
-              <!-- ,
-              keyword<sup>(xx)</sup> , keyword<sup>(xx)</sup> , keyword<sup
-                >(xx)</sup
-              >
-              ,<br />
-              keyword<sup>(xx)</sup>  -->
               ประกบคู่มากที่สุดตามลำดับ สร้างการมีส่วนร่วมได้ทั้งหมด<br />
               <span class="font-bold"
                 >{{ format(socialtrend_current.total_engagement) }} ครั้ง</span
@@ -147,9 +141,9 @@
               และวาระไหนที่ได้รับความสนใจมากที่สุด?
             </p>
             <p class="pt-8 opacity-70">
-              หมายเหตุ: ข้อมูลที่ใช้ในงานชิ้นนี้ เก็บรวบรวมโดยเครื่องมือ Social
-              Monitoring ของ Wisesight จากช่องทาง Facebook, Twitter, Youtube,
-              Instagram, Forum และเว็บไซต์สำนักข่าวต่างๆ
+              ข้อมูลที่ใช้ในงานชิ้นนี้ เก็บรวบรวมโดยเครื่องมือ Social Monitoring
+              ของ Wisesight จากช่องทาง Facebook, Twitter, Youtube, Instagram,
+              Forum และเว็บไซต์สำนักข่าวต่างๆ
               ซึ่งข้อมูลที่เก็บรวบรวมเป็นไปตามนโยบายด้านข้อมูลของบริษัท
             </p>
           </div>
@@ -180,19 +174,6 @@
                   />
                 </div>
               </div>
-              <!-- <div class="label">
-                <span class="text typo-b4">ถึง</span>
-                <div class="date-wrapper">
-                  <div class="date typo-u2">
-                    {{ daterangeDisplay(daterange[1]) }}
-                  </div>
-                  <img
-                    src="~/assets/images/calendar.svg"
-                    alt="calendar.svg"
-                    class="icon"
-                  />
-                </div>
-              </div> -->
             </div>
 
             <el-date-picker
@@ -211,63 +192,6 @@
           <div class="ml-2 mt-1 cursor-pointer" @click="resetDateFitler">
             <img src="~/assets/images/refresh.svg" alt="" />
           </div>
-          <!-- <template v-else>
-            <div class="date-picker overflow-hidden">
-              <div class="label-wrapper">
-                <div class="label">
-                  <span class="text typo-b4">สัปดาห์ที่</span>
-                  <div class="date-wrapper">
-                    <div class="date typo-u2">
-                      {{ startWeek }}
-                    </div>
-                    <img
-                      src="~/assets/images/calendar.svg"
-                      alt="calendar.svg"
-                      class="icon"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              :picker-options="pickerWeekOptions"
-              {{ weekNum }}
-              <el-date-picker
-                v-model="startWeek"
-                :editable="false"
-                type="week"
-                align="center"
-                class="opacity-0"
-              >
-              </el-date-picker>
-            </div>
-
-            <div class="date-picker overflow-hidden">
-              <div class="label-wrapper">
-                <div class="label">
-                  <span class="text typo-b4">ถึง</span>
-                  <div class="date-wrapper">
-                    <div class="date typo-u2">
-                      {{ endWeek }}
-                    </div>
-                    <img
-                      src="~/assets/images/calendar.svg"
-                      alt="calendar.svg"
-                      class="icon"
-                    />
-                  </div>
-                </div>
-              </div>
-              :picker-options="pickerOptions"
-              <el-date-picker
-                v-model="endWeek"
-                :editable="false"
-                type="week"
-                align="center"
-                class="opacity-0"
-              >
-              </el-date-picker>
-            </div>
-          </template> -->
         </div>
         <div
           class="flex items-center text-center text-white mt-6 sm:flex-col sm:items-end"
@@ -587,8 +511,8 @@
             <span class="font-bold typo-b4 opacity-75">Disclaimer</span>
             <div class="pt-7 typo-b5 opacity-75">
               ข้อมูลนี้ได้มาจากการเก็บข้อมูลที่เป็นสาธารณะจาก Social Media 7
-              ช่องทางคือ Facebook, Instagram, Twitter, YouTube, Blog, News,
-              Forum โดยอ้างอิงจากฐานข้อมูลของ Wisesight
+              ช่องทางคือ Facebook, Instagram, Twitter, YouTube, Forum
+              โดยอ้างอิงจากฐานข้อมูลของ Wisesight
               และทำการกวาดข้อมูลด้วยคีย์เวิร์ดที่เกี่ยวข้องคือคีย์เวิร์ดที่หมายถึงผู้สมัคร
               8 คนและคีย์เวิร์ดที่เกี่ยวข้องกับประเด็นต่าง ๆ ทั้งการเดินทาง,
               ความปลอดภัย, สาธารณภัย, พื้นที่สาธารณะ, สุขภาพ, ความเท่าเทียม,
@@ -715,11 +639,6 @@ export default {
           icon: require('~/assets/images/i-instagram.svg'),
         },
         {
-          label: 'News',
-          value: 'news',
-          icon: require('~/assets/images/i-news.svg'),
-        },
-        {
           label: 'Youtube',
           value: 'youtube',
           icon: require('~/assets/images/i-youtube.svg'),
@@ -827,11 +746,6 @@ export default {
         .domain(this.candidate_config)
         .range(this.photo_config)
     },
-    // end_input_date() {
-    //   // const key = this.data_type === 'engagement' ? 'date' : 'date_to'
-    //   // return d3.max(this.line_chart_data, (d) => d[key]) || 0
-    //   return moment().format('yyyy-MM-DD')
-    // },
     daterangeDisplay() {
       const start = this.daterange[0]
       const end = this.daterange[1]
@@ -845,7 +759,6 @@ export default {
           let start = ''
           let end = ''
           let daysInt = 0
-          // let curr = {}
 
           if (type === 'start') {
             let add = 6
@@ -853,9 +766,6 @@ export default {
             if (daysInt !== 7) add = 6 - daysInt
             start = this.dateFormat(date)
             end = this.dateFormat(moment(date).add(add, 'days'))
-            // curr = _.get(date, '[0]', {})
-            // start = this.dateFormat(date)
-            // end = this.dateFormat(moment(date).add(7, 'days'))
           }
           if (type === 'end') {
             let subtract = 0
@@ -863,11 +773,6 @@ export default {
             if (daysInt !== 7) subtract = daysInt
             start = this.dateFormat(moment(date).subtract(subtract, 'days'))
             end = this.dateFormat(date)
-
-            // const { length } = date
-            // curr = _.get(date, `[${length - 1}]`, {})
-            // start = this.dateFormat(moment(date).subtract(7, 'days'))
-            // end = this.dateFormat(last.date_to)
           }
 
           return `${start} - ${end}`
@@ -935,16 +840,12 @@ export default {
         _.get(this.line_chart_data, 'raw_data', []).length !== 0
       )
     },
-    // date_group() {
-    //   return _.groupBy(this.line_chart_data, 'date')
-    // },
     candidates() {
       return this.candidate_options
         .filter((d) => this.candidate_filter.includes(d))
         .map((d) => {
           return {
             candidate: d,
-            // data,
             image: this.photo(d),
           }
         })
@@ -977,35 +878,8 @@ export default {
         document.body.classList.remove('stop-scrolling')
       }
     },
-    // engagement(newVal, oldVal) {
-    //   if (!_.isEmpty(newVal) && !_.isEmpty(oldVal)) {
-    //     this.animate_chart = false
-    //   }
-    //   if (_.isEmpty(newVal)) {
-    //     console.log('2')
-    //     this.animate_chart = true
-    //   }
-    // },
-    // rank(newVal, oldVal) {
-    //   if (!(_.isEmpty(newVal) && _.isEmpty(oldVal))) {
-    //     this.animate_chart = false
-    //   }
-    //   if (_.isEmpty(newVal)) {
-    //     this.animate_chart = true
-    //   }
-    // },
-    // end_input_date() {
-    //   const isAfter = moment(this.active_date).isAfter(this.end_input_date)
-    //   if (!isAfter) return
-    //   this.active_date = this.end_input_date
-    // },
   },
   async created() {
-    // await Promise.all([
-    //   this.getKeywords(),
-    //   this.getEngagement()
-    // ])
-
     this.candidate_filter = _.clone(this.candidate_options)
     this.getKeywords()
     this.setDaterange()
@@ -1014,7 +888,7 @@ export default {
     this.loading_full = false
   },
   destroyed() {
-    window.removeEventListener('resize', _.debounce(this.reRenderChart, 200))
+    window.removeEventListener('resize')
   },
   beforeMount() {
     // disable scroll
@@ -1032,26 +906,9 @@ export default {
     this.chart_width = _.get(this.$refs, 'chart.clientWidth')
     this.chart_height = _.get(this.$refs, 'chart.clientHeight')
     this.setDefaultStackedBarChart()
-
-    // const animateTime = 13
-    // const avgTime = animateTime / Object.keys(date_group).length
-    // let time = 0
-    // const interval = setInterval(() => {
-    //   this.candidate_animate.forEach(c => {
-    //     const  =
-
-    //     this.calRatio(c)
-    //   });
-
-    //   time += 1
-    //   if (animateTime >= time) clearInterval(interval)
-    // }, 1000);
-
-    // const dateGroup = Object.keys(this.date_group)
   },
   methods: {
     setDaterange() {
-      // const start = d3.min(this.line_chart_data, (d) => d.date)
       const start = this.start_input_date
       const end = this.end_input_date
       if (!start || !end) return
@@ -1060,6 +917,10 @@ export default {
     reRenderChart() {
       this.chart_width = _.get(this.$refs, 'chart.clientWidth')
       this.chart_height = _.get(this.$refs, 'chart.clientHeight')
+      if (!this.chart_inview) {
+        this.setDefaultStackedBarChart()
+        return
+      }
 
       let animate = false
       if (this.data_type === 'engagement' && !this.engagement_animate_finish) {
@@ -1087,7 +948,9 @@ export default {
           'group_date.keys_data',
           []
         )
-        this.setDefaultStackedBarChart(length - 1)
+        setTimeout(() => {
+          this.setDefaultStackedBarChart(length - 1)
+        }, 20)
       }
     },
     truncate(str = '') {
@@ -1114,10 +977,6 @@ export default {
         startAt = moment(startAt).subtract(6, 'days').format('yyyy-MM-DD')
       }
       this.daterange = [startAt, endAt]
-
-      // const isWeek = moment(startAt).add(8, 'day')
-      // end_input_date
-      // inWeek = diff >= -7 && diff <= 7
     },
     async handleCandidateStat() {
       await this.getCandidateStat()
@@ -1157,6 +1016,8 @@ export default {
           params: {
             date: this.active_date,
             candidates: this.candidate_filter.toString(),
+            keywords: this.keyword ? this.keyword : undefined,
+            channels: this.platform ? this.platform : undefined,
           },
         })
         data = _.get(res, 'data.data', [])
@@ -1324,17 +1185,10 @@ export default {
           .value()
         const highest = _.chain(groupDate)
           .get(d.date_from, {})
-          // .filter((d) => d.value)
           .maxBy('total_engagement')
           .value()
 
         const date = moment(d.date_from).diff(this.start_calendar_date, 'week')
-        // const highest =
-        //   _.chain(data)
-        //     .groupBy('date')
-        //     .get(d.date, [])
-        //     .minBy('value')
-        //     .value() || {}
 
         return {
           ...d,
@@ -1385,13 +1239,6 @@ export default {
       this.setDaterange()
       this.onUpdateChart()
     },
-    // changeDaterange() {
-    //   this.engagement = {}
-    //   this.rank = {}
-    //   this.animate_chart = true
-    //   this.play_animation = true
-    //   this.handleUpdateChart()
-    // },
     onUpdateChart() {
       this.engagement = {}
       this.rank = {}
@@ -1428,25 +1275,11 @@ export default {
 
       this.loading_chart = false
     },
-    // checkAnimateChart() {
-    //   let animate = false
-    //   if (this.data_type === 'engagement' && !this.engagement_animate_finish) {
-    //     animate = true
-    //     this.engagement_animate_finish = true
-    //   }
-    //   if (this.data_type === 'rank' && !this.rank_animate_finish) {
-    //     animate = true
-    //     this.rank_animate_finish = true
-    //   }
-    //   this.animate_chart = animate
-    //   this.play_animation = animate
-    // },
     dateFormat(date, full) {
       const format = full ? 'DD MMM YYYY' : 'DD MMM YY'
       return moment(date).add(543, 'years').format(format)
     },
     async onChangeActive() {
-      // this.updateStackedBarChart(this.active_date)
       await this.getPosts()
       this.carousel_index = 0
       const carousel = this.$refs.carousel
@@ -1568,9 +1401,7 @@ export default {
           animate()
         })
       }
-      // setTimeout(() => {
       candidates.call(() => animate())
-      // }, 300)
     },
     onPrev() {
       this.$refs.carousel.prev()
@@ -1578,53 +1409,6 @@ export default {
     onNext() {
       this.$refs.carousel.next()
     },
-
-    // animateStarckBarChart() {
-    //   const { length } = Object.keys(this.date_group)
-    //   let index = 1
-    //   let time = 0
-    //   const animateTime = 13000
-    //   this.avgTime = animateTime / length
-    //   let timePoint = this.avgTime
-    //   console.log('avgTime ', this.avgTime)
-    //   console.log('this.candidate_animate ', this.candidate_animate)
-    //   const animate = (index) => {
-    //     this.candidate_animate.forEach((d) => {
-    //       const data = d.data[index]
-    //       // const data = _.get(this.candidate_animate, `data[${index}]`)
-
-    //       if (!data) return
-    //       d.width = data.ratio
-    //     })
-    //     // console.log('index ', index)
-    //     // console.log('data ', data)
-    //   }
-
-    //   const interval = setInterval(() => {
-    //     if (
-    //       (time === 0 || time >= timePoint || time + 500 >= timePoint) &&
-    //       index <= length
-    //     ) {
-    //       animate(index)
-    //       timePoint += this.avgTime
-    //       index += 1
-    //       console.log('timePoint ', timePoint)
-    //     }
-    //     console.log('time ', time)
-
-    //     if (time >= animateTime) {
-    //       clearInterval(interval)
-    //     } else {
-    //       time += 500
-    //     }
-    //   }, 500)
-    // },
-    // calRatio(data) {
-    //   // const current = this.engagement.filter(d => d.date === data.date)
-    //   // const maximum = d3.max(current, (d) => d.value)
-    //   const toltal = d3.sum(current, (d) => d.value)
-    //   return (data.value / toltal) * 100
-    // },
   },
 }
 </script>

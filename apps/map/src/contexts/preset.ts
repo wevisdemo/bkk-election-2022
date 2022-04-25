@@ -2,7 +2,9 @@ import { createContext } from 'react';
 import { CandidateMap } from '../models/candidate';
 import { ElectionData } from '../models/election';
 
-interface Preset {
+export interface Preset {
+	shortname: string;
+	fullname: string;
 	electionData: ElectionData;
 	candidateMap: CandidateMap;
 }
