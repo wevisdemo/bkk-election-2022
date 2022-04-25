@@ -16,6 +16,9 @@ export function ExclusiveQuestion({
   answerList,
   pageUrl,
 }: PropsType) {
+  const sortedAnswerList = answerList.sort((a, b) =>
+    a.nc_xeff__candidates_id > b.nc_xeff__candidates_id ? 1 : -1
+  );
   return (
     <div className="bg-black pt-[40px] md:pt-[110px]">
       <div className="w-[90vw] max-w-[1500px] m-auto text-center pb-[42px] md:pb-[20px]">
@@ -25,7 +28,7 @@ export function ExclusiveQuestion({
             {question.question}
           </p>
         </div>
-        {answerList.map((answer, index) => {
+        {sortedAnswerList.map((answer, index) => {
           return <ExclusiveQuestionBadge key={index} answer={answer} />;
         })}
       </div>

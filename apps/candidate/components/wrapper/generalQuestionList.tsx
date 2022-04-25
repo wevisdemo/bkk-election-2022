@@ -15,6 +15,7 @@ import { SwiperButtonNext, SwiperButtonPrev } from '../button/swipeNextButton';
 interface Propstype {
   answerList: IAnswer[];
   questionType: 'policy' | 'opinion' | 'lifestyle' | 'special';
+  disabledLink?: boolean;
 }
 
 const questionTypeDict = {
@@ -24,7 +25,11 @@ const questionTypeDict = {
   special: 'เคลียร์ใจเฉพาะตัว',
 };
 
-export function GeneralQuestionList({ answerList, questionType }: Propstype) {
+export function GeneralQuestionList({
+  answerList,
+  questionType,
+  disabledLink,
+}: Propstype) {
   const [reachEnd, setReachEnd] = useState<boolean>(false);
   const [reachBeginning, setReachBeginning] = useState<boolean>(true);
   useState<boolean>(true);
@@ -38,14 +43,13 @@ export function GeneralQuestionList({ answerList, questionType }: Propstype) {
         <Swiper
           className="!mr-[0px] custom-swip"
           slidesPerView={'auto'}
-          // spaceBetween={0}
           grabCursor={true}
-          // navigation={true}
           modules={[Mousewheel, Navigation]}
           mousewheel={{
             forceToAxis: true,
           }}
           onSlideChange={() => {
+            console.log('slide');
             if (reachEnd) {
               setReachEnd(false);
             }
@@ -57,6 +61,7 @@ export function GeneralQuestionList({ answerList, questionType }: Propstype) {
             setReachEnd(true);
           }}
           onReachBeginning={() => {
+            console.log('begin');
             setReachBeginning(true);
           }}
         >
@@ -66,7 +71,10 @@ export function GeneralQuestionList({ answerList, questionType }: Propstype) {
           {answerList.map((answer, index) => {
             return (
               <SwiperSlide key={`qa-general-${index}`}>
-                <GeneralQuestionCard answer={answer} />
+                <GeneralQuestionCard
+                  answer={answer}
+                  disabledLink={disabledLink}
+                />
               </SwiperSlide>
             );
           })}

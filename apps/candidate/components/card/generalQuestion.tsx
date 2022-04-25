@@ -4,8 +4,9 @@ import { getYoutubeId } from '../../utils/tranformation';
 
 interface PropsType {
   answer: IAnswer;
+  disabledLink?: boolean;
 }
-export function GeneralQuestionCard({ answer }: PropsType) {
+export function GeneralQuestionCard({ answer, disabledLink }: PropsType) {
   const router = useRouter();
   const youtubeId = getYoutubeId(answer.url);
   const youtubeEmbedUrl = youtubeId
@@ -20,8 +21,14 @@ export function GeneralQuestionCard({ answer }: PropsType) {
     <div className="md:max-w-[450px] max-w-[250px] flex flex-col justify-between h-full text-left mr-[30px] md:mr-[68px]">
       <div>
         <a
+          style={{
+            pointerEvents: disabledLink ? 'none' : 'all',
+            cursor: disabledLink ? 'unset' : 'pointer',
+          }}
           href={`/candidate/question/${answer.nc_xeff__questions_id}`}
-          className="font-heading font-semibold text-[14pt] md:text-[18pt] leading-[1.25] hover:cursor-pointer hover:underline "
+          className={`font-heading font-semibold text-[14pt] md:text-[18pt] leading-[1.25] ${
+            disabledLink ? '' : 'hover:underline'
+          }`}
           // onClick={() => onClickQuestion()}
         >
           {answer.questionsRead.question}

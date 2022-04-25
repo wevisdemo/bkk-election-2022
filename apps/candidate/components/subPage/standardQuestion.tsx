@@ -40,11 +40,13 @@ export default function StandardQuestion({
             {question.number}:
           </p>
           <p className="typo-h2 mt-[15px]">{question.question}</p>
-          <p className="typo-b4 mt-[75px] md:mt-[60px]">
-            {question.description}
-          </p>
+          {question.description && (
+            <p className="typo-b4 mt-[75px] md:mt-[60px]">
+              {question.description}
+            </p>
+          )}
         </div>
-        <div className="mt-[90px] md:mt-[165px] mb-[48px] md:mb-[94px]">
+        <div className="mt-[60px] md:mt-[80px] mb-[48px] md:mb-[94px]">
           <AnswerStandardList answerList={sortedAnswerList} />
         </div>
       </div>

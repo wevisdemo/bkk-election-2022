@@ -154,6 +154,7 @@ export function CandidateQuestionWrapper({
         {answerCategory.special.length > 0 && (
           <div className="bg-[#F1F1F1]">
             <GeneralQuestionList
+              disabledLink={true}
               answerList={answerCategory.special}
               questionType="special"
             />

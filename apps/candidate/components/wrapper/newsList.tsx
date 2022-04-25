@@ -33,13 +33,9 @@ export function NewsList({ newsList }: PropsType) {
       {/* TODO: refactor slide */}
       <Swiper
         className=" md:max-w-[1160px] max-w-[250px] custom-swip"
-        // modules={[Navigation, Pagination, Scrollbar, A11y, EffectFade]}
         modules={[Navigation]}
-        // spaceBetween={30}
+        grabCursor={true}
         slidesPerView={slide}
-        // slidesPerView={'auto'}
-        // navigation
-        // pagination={{ clickable: true }}
         onSlideChange={() => {
           if (reachEnd) {
             setReachEnd(false);
@@ -54,8 +50,6 @@ export function NewsList({ newsList }: PropsType) {
         onReachBeginning={() => {
           setReachBeginning(true);
         }}
-        // onSwiper={(swiper) => console.log(swiper)}
-        // onSlideChange={() => console.log('slide change')}
       >
         <SwiperButtonNext reachEnd={reachEnd} />
         <SwiperButtonPrev reachBeginning={reachBeginning} />

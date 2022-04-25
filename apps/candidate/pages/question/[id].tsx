@@ -35,7 +35,7 @@ export default function QuestionPage({
     <div>
       <Metadata
         title={question.question || 'คำถาม'}
-        imageSrc={getQuestionOG(question.question, question.number || 1)}
+        imageSrc={getQuestionOG(question.type, question.number || 1)}
       />
       {isComingSoon ? (
         <div />
@@ -64,7 +64,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
   const data = res.data as IQuestion[];
 
-  const paths = data.map((question) => {
+  const validData = data.filter((q) => q.type !== 'special');
+  const paths = validData.map((question) => {
     return {
       params: { id: question.id?.toString() || '' },
     };
