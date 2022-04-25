@@ -55,14 +55,14 @@ Each app will be started in development server in difference port
 
 While **moderator** will run at http://localhost:3000 and
 
-- Forward http://localhost:3000 request to **Landing** dev server
-- Forward http://localhost:3000/socialtrend request to **Social trend** dev server
-- Forward http://localhost:3000/candidate request to **Candidate** dev server
-- Forward http://localhost:3000/map request to **Map** dev server
-- Serve files in `/static` at http://localhost:3000/static/
-- Serve UI package built output at http://localhost:3000/ui/
+- Forward `/` request to **Landing** dev server
+- Forward `/socialtrend` request to **Social trend** dev server
+- Forward `/`candidate request to **Candidate** dev server
+- Forward `/map` request to **Map** dev server
+- Serve files in `/static` at `/static`
+- Serve UI package built output at `/ui`
 
-Each project can also be run individually with moderator proxy
+Each project can also be run individually (with moderator proxy and ui package)
 
 ```
 yarn run dev:landing
