@@ -5,6 +5,7 @@
 	import ProjectCard from '../components/project-card.svelte';
 	import Metadata from '../components/metadata.svelte';
 	import PartnersLogo from '../components/partners-logo.svelte';
+	import YoutubeVideo from '../components/youtube-video.svelte';
 
 	// const THE_STANDARD_GUIDE_TAG = 'bkk-election-101';
 
@@ -72,19 +73,10 @@
 					นับถอยหลังเปิดหีบเลือกตั้ง<br />วันอาทิตย์ที่ 22 พฤษภาคม พ.ศ. 2565 เวลา 08.00 - 17.00 น.
 				</Counter>
 			</div>
-			<div class="flex-1 flex flex-col space-y-8">
-				<div class="youtube-video-container">
-					<iframe
-						width="560"
-						height="315"
-						src="https://www.youtube.com/embed/dQ37Z0_bFms"
-						title="YouTube video player"
-						frameborder="0"
-						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-						allowfullscreen
-					/>
-				</div>
+			<div class="-md:hidden flex-1">
+				<YoutubeVideo videoId="KqaFyTtv3PU" />
 			</div>
+			<YoutubeVideo class="md:hidden" videoId="KqaFyTtv3PU" />
 		</div>
 	</div>
 	<div class="-mt-12 h-12 to-black from-transparent bg-gradient-to-b " />
@@ -101,10 +93,10 @@
 <div class="flex flex-col max-w-screen-xl mx-auto divide-y divide-black px-5 md:py-8">
 	<PostGrid
 		title="ข่าวล่าสุดเกี่ยวกับการเลือกตั้ง กทม."
-		subtitle="รวมข่าวสารเกี่ยวกับการเลือกตั้ง กทม. จาก The STANDARD"
+		subtitle="รวมข่าวสารเกี่ยวกับการเลือกตั้ง กทม. จาก THE STANDARD"
 		fetchPosts={fetchTheStandardElectionPosts}
 		viewAllText="ดูข่าวทั้งหมด บน thestandard.co"
-		viewAllLink="https://thestandard.co/tag/bkkelection2022/"
+		viewAllLink="https://thestandard.co/bkkelection2022/"
 	/>
 
 	<PostGrid
@@ -123,25 +115,3 @@
 		viewAllLink="https://thestandard.co/tag/bkk-election-101//"
 	/> -->
 </div>
-
-<style>
-	.youtube-video-container {
-		position: relative;
-		overflow: hidden;
-		width: 100%;
-	}
-
-	.youtube-video-container::after {
-		display: block;
-		content: '';
-		padding-top: 56.25%;
-	}
-
-	.youtube-video-container iframe {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>

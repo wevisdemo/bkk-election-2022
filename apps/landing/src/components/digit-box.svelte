@@ -8,7 +8,7 @@
 <div class="flex-1 flex flex-col space-y-2">
 	<div class="flex flex-row space-x-1">
 		{#each digits as digit}
-			<div class="box flex-1 text-white h-10 md:h-16 flex justify-center items-center typo-h4">
+			<div class="box flex-1 text-white h-10 md:h-16 flex justify-center items-center typo-h3">
 				{digit}
 			</div>
 		{/each}
