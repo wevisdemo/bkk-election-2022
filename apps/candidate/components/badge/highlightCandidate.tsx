@@ -22,6 +22,8 @@ export function HighlightCandidateBadge({ candidate, isComingSoon }: PropType) {
     return `/candidate/${candidate.id}#hc-${candidate.id}`;
   };
 
+  const showVideo = !isComingSoon && candidate.answersList.length > 0;
+
   return (
     <a
       href={getHref()}
@@ -36,7 +38,7 @@ export function HighlightCandidateBadge({ candidate, isComingSoon }: PropType) {
           alt="candidate"
           className={`w-[85vw] h-[85vw] md:w-[30vw] md:h-[30vw] max-w-[500px] max-h-[500px] hover:border border-white`}
         />
-        {!isComingSoon && (
+        {showVideo && (
           <img
             src={playGrayWhite.src}
             alt="play"

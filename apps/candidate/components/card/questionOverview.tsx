@@ -99,7 +99,10 @@ export function QuestionOverview(props: Propstype) {
           }
         }
         return result;
-      }, [] as IQuestion[]);
+      }, [] as IQuestion[])
+      .sort((a, b) =>
+        a.nc_xeff__candidates_id > b.nc_xeff__candidates_id ? 1 : -1
+      );
   };
 
   const onClickCandidate = (id: number) => {
@@ -160,12 +163,13 @@ export function QuestionOverview(props: Propstype) {
             <div className="flex md:flex-row flex-col flex-wrap justify-between md:mt-[15px]">
               {getSpecialQuestionCandidate().map((question) => {
                 return (
-                  <div
-                    className="flex hover:cursor-pointer hover:underline hover:decoration-1 mt-[25px]"
-                    onClick={() =>
-                      onClickCandidate(question.governorsRead?.id || 1)
-                    }
-                    key={`candidate-${question.governorsRead?.id}`}
+                  <a
+                    href={`/candidate/${question.nc_xeff__candidates_id || 1}`}
+                    className="flex hover:cursor-pointer hover:underline hover:decoration-1 mt-[25px] mx-[5px]"
+                    // onClick={() =>
+                    //   onClickCandidate(question.nc_xeff__candidates_id || 1)
+                    // }
+                    key={`candidate-${question.nc_xeff__candidates_id}`}
                   >
                     <div className="flex items-center">
                       <img
@@ -177,7 +181,7 @@ export function QuestionOverview(props: Propstype) {
                     <div className="typo-b4 ml-[10px]">
                       {question.governorsRead?.name}
                     </div>
-                  </div>
+                  </a>
                 );
               })}
             </div>

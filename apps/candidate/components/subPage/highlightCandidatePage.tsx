@@ -35,6 +35,8 @@ export function HighLightCandidatePage({
     return hlCandidateList.filter((candidate) => candidate.id !== governor.id);
   };
 
+  const showContent = !isComingSoon && governor.answersList.length > 0;
+
   useEffect(() => {
     if (window.matchMedia('(min-width: 768px)').matches) {
       setMatches(true);
@@ -77,7 +79,7 @@ export function HighLightCandidatePage({
           </div>
         </div>
       </div>
-      {isComingSoon ? (
+      {!showContent ? (
         <div className="bg-[#f1f1f1] px-[8px] py-[28px] md:py-[80px] text-center">
           <p className="typo-b5 mb-[20px]">Coming Soon..</p>
           <p className="typo-h5 mb-[5px]">

@@ -20,7 +20,7 @@ const Sharer: Component<SharerProps> = (props) => {
 
   return (
     <div class="ui-flex ui-flex-row ui-space-x-2 ui-items-center">
-      <span class="typo-b5 ui-text-white">Share</span>
+      <span class="typo-b5 ui-text-white">SHARE</span>
 
       <button
         onClick={() => window.navigator.clipboard.writeText(encodedURL())}

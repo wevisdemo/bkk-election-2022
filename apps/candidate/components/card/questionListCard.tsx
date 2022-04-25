@@ -55,7 +55,10 @@ export function QuestionListCard(props: Propstype) {
           }
         }
         return result;
-      }, [] as IQuestion[]);
+      }, [] as IQuestion[])
+      .sort((a, b) =>
+        a.nc_xeff__candidates_id > b.nc_xeff__candidates_id ? 1 : -1
+      );
   };
 
   const onClickQuestion = (id: number) => {
@@ -132,12 +135,12 @@ export function QuestionListCard(props: Propstype) {
           {getSpecialQuestionCandidate().map((question) => {
             return (
               <a
-                href={`/candidate/${question.governorsRead?.id || 1}`}
-                className="flex hover:cursor-pointer hover:underline hover:decoration-1 mt-[25px]"
+                href={`/candidate/${question.nc_xeff__candidates_id || 1}`}
+                className="flex hover:cursor-pointer hover:underline hover:decoration-1 mt-[25px] mx-[5px]"
                 // onClick={() =>
                 //   onClickCandidate(question.governorsRead?.id || 1)
                 // }
-                key={`candidate-${question.governorsRead?.id}`}
+                key={`candidate-${question.nc_xeff__candidates_id}`}
               >
                 <div className="flex items-center">
                   <img

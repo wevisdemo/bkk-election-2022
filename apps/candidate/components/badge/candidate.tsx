@@ -38,6 +38,8 @@ export function CandidateBadge({
     }
   };
 
+  const showVideo = showPlayButton && candidate.answersList.length > 0;
+
   return (
     <div className="h-full max-w-[250px] w-[43vw] md:w-[15vw] relative">
       {candidate.disqualified && (
@@ -64,7 +66,7 @@ export function CandidateBadge({
               alt="candidate"
               className={`w-[43vw] h-[43vw] md:w-[15vw] md:h-[15vw] max-w-[250px] max-h-[250px] hover:border border-white`}
             />
-            {showPlayButton && candidate.highlight && (
+            {showVideo && (
               <img
                 src={playGrayWhite.src}
                 alt="play"
