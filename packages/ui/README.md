@@ -11,10 +11,13 @@ Include the script and stylesheet
 <link rel="stylesheet" href="/ui/style.css" />
 ```
 
-Call init function when mount
+Call `loadUIComponents` function when component is mounted
 
-```js
-window.registerUICustomElements();
+```ts
+import { loadUIComponents } from 'ui';
+
+// Call in React's useEffect, Vue's mount or Svelte's onMount
+loadUIComponents();
 ```
 
 ## Components
@@ -47,3 +50,17 @@ can set `loading` to be true to render skeleton animation while the data is not 
 ```html
 <ui-post-card loading="true"></ui-post-card>
 ```
+
+## Utility classes
+
+### Typography
+
+Name is corresponded to the Figma
+
+- **Heading:** `typo-h1` to `typo-h9`
+- **Body:** `typo-b1` to `typo-b7`
+- **UI:** `typo-u1` to `typo-u4`
+
+### Skeleton
+
+Use `ui-skeleton` to add background loading animation to an element. Useful for loading state.
