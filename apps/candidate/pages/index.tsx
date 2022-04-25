@@ -161,7 +161,7 @@ const Home = ({
               <div className="w-[16px] h-[17px]" />
             )}
             <span className="typo-h8 ml-[10px] md:ml-[20px]">
-              ผู้สมัครสมาชิกสภากทม.
+              ผู้สมัครสมาชิกสภา กทม.
             </span>
           </div>
         </div>
@@ -179,6 +179,7 @@ const Home = ({
               <QuestionOverview
                 isComingSoon={isComingSoon}
                 questionList={questionList}
+                candidateList={getCandidateHighlight()}
               />
             </div>
           </div>

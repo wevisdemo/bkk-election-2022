@@ -1,12 +1,13 @@
 import playButtonBw from '../../static/icons/play-wb.svg';
 import playButtonGray from '../../static/icons/play-gray.svg';
 import { useEffect, useState } from 'react';
-import { IQuestion, IQuestionCategory } from '../../types/business';
+import { IGovernor, IQuestion, IQuestionCategory } from '../../types/business';
 import { useRouter } from 'next/router';
 
 interface Propstype {
   isComingSoon?: boolean;
   questionList: IQuestion[];
+  candidateList: IGovernor[];
 }
 
 const initialQuestionCat: IQuestionCategory = {
@@ -125,7 +126,8 @@ export function QuestionOverview(props: Propstype) {
         </div>
         <div className="text-center px-[18px] pb-[20px] md:pb-[50px] border border-[#9d9d9d] rounded-[10px] max-w-[1145px] m-auto">
           <p className="typo-h5 pt-[60px] pb-[20px] border-b border-[#9d9d9d80]">
-            ฟัง 5 ผู้สมัครตอบ {getGeneralQuestionsCount()} คำถามเดียวกัน
+            ฟัง {props.candidateList.length} ผู้สมัครตอบ{' '}
+            {getGeneralQuestionsCount()} คำถามเดียวกัน
           </p>
           {questionCat.exclusive.length > 0 && (
             <div className="border-b border-[#9d9d9d80] py-[20px] md:py-[40px] flex m-auto justify-center">
