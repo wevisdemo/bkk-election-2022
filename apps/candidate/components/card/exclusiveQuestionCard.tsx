@@ -18,7 +18,7 @@ export function ExclusiveQuestionCard({ answer }: PropsType) {
       </p>
       {youtubeEmbedUrl ? (
         <iframe
-          className="md:max-w-[1500px] md:max-h-[843.75px] w-[90vw] h-[50.625vw] mt-[20px] md:mt-0 md:order-1 m-auto"
+          className="md:max-w-[1500px] md:max-h-[843.75px] w-[90vw] h-[50.625vw] md:order-1 m-auto"
           src={youtubeEmbedUrl}
           title="YouTube video player"
           frameBorder="0"
@@ -26,7 +26,7 @@ export function ExclusiveQuestionCard({ answer }: PropsType) {
           allowFullScreen
         />
       ) : (
-        <div className="w-[250px] md:w-[450px] h-[250px] md:h-[450px md:ml-[30px] mt-[20px] md:mt-0 bg-[#333333] typo-h3 text-white flex items-center justify-center">
+        <div className="w-[250px] md:w-[450px] h-[250px] md:h-[450px md:ml-[30px] bg-[#333333] typo-h3 text-white flex items-center justify-center">
           No Video
         </div>
       )}
