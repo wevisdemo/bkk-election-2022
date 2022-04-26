@@ -39,6 +39,7 @@ export function GeneralQuestionCard({ answer, disabledLink }: PropsType) {
         <iframe
           className="w-[250px] md:w-[450px] h-[250px] md:h-[450px] mt-[20px] md:mt-[40px]"
           src={youtubeEmbedUrl}
+          name={`question-${answer.nc_xeff__questions_id}-${Date.now()}`}
           title="YouTube video player"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

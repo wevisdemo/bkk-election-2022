@@ -21,6 +21,7 @@ export function ExclusiveQuestionBadge({ answer, ignoreGovernor }: PropsType) {
       {youtubeEmbedUrl ? (
         <iframe
           className="max-w-[1500px] max-h-[843.75px] w-[90vw] h-[50.625vw] mb-[40px]"
+          name={`question-${answer.nc_xeff__questions_id}-${Date.now()}`}
           src={youtubeEmbedUrl}
           title="YouTube video player"
           frameBorder="0"

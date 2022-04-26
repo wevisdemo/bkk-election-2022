@@ -34,6 +34,7 @@ export function AnswerStandardCard(props: PropsType) {
       {youtubeEmbedUrl ? (
         <iframe
           className="w-[250px] md:w-[450px] h-[250px] md:h-[450px] md:ml-[30px] mt-[20px] md:mt-0"
+          name={`question-${answer.nc_xeff__questions_id}-${Date.now()}`}
           src={youtubeEmbedUrl}
           title="YouTube video player"
           frameBorder="0"

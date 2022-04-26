@@ -20,6 +20,7 @@ export function ExclusiveQuestionCard({ answer }: PropsType) {
         <iframe
           className="md:max-w-[1500px] md:max-h-[843.75px] w-[90vw] h-[50.625vw] md:order-1 m-auto"
           src={youtubeEmbedUrl}
+          name={`question-${answer.nc_xeff__questions_id}-${Date.now()}`}
           title="YouTube video player"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
