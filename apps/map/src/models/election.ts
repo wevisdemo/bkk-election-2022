@@ -6,6 +6,7 @@ export interface ElectionIndex {
 }
 
 export interface ElectionData {
+	type: ElectionDataType;
 	total: Voting;
 	districts: District[];
 }
@@ -24,4 +25,10 @@ export interface Voting {
 export interface Result {
 	candidateId: number;
 	count: number;
+}
+
+enum ElectionDataType {
+	Completed = 'COMPLETED',
+	Live = 'LIVE',
+	Poll = 'POLL'
 }
