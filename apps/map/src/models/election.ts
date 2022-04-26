@@ -27,7 +27,7 @@ export interface Result {
 	count: number;
 }
 
-enum ElectionDataType {
+export enum ElectionDataType {
 	Completed = 'COMPLETED',
 	Live = 'LIVE',
 	Poll = 'POLL'
