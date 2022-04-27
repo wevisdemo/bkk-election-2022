@@ -5,7 +5,8 @@
 		"totalVotes": 2715640,
 		"result": [
 			{ "candidateId": "1", "count": 1256349 },
-			{ "candidateId": "2", "count": 1077899 }
+			{ "candidateId": "2", "count": 1077899 },
+			{ "candidateId": "3", "count": 381392 }
 		]
 	},
 	"districts": [
