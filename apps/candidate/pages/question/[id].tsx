@@ -26,12 +26,6 @@ export default function QuestionPage({
   const isExclusive = question.type === 'exclusive';
 
   useEffect(() => {
-    // window.onpageshow = function (event) {
-    //   if (event.persisted) {
-    //     console.log('cache');
-    //     window.location.reload();
-    //   }
-    // };
     setPageUrl(window.location.href);
     if (isComingSoon) {
       router.push('/comingSoon');

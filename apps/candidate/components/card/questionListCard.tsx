@@ -2,6 +2,7 @@ import playButtonGray from '../../static/icons/play-gray.svg';
 import { useEffect, useState } from 'react';
 import { IQuestion, IQuestionCategory } from '../../types/business';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 interface Propstype {
   questionList: IQuestion[];
@@ -71,21 +72,24 @@ export function QuestionListCard(props: Propstype) {
 
   const questionRow = (question: IQuestion) => {
     return (
-      <a
-        href={`/candidate/question/${question.id}`}
-        className="flex hover:cursor-pointer hover:underline hover:decoration-1"
-        // onClick={() => onClickQuestion(question.id)}
+      <Link
+        href={`/question/${question.id}`}
         key={`question-${question.type}-${question.number}`}
       >
-        <div>
-          <img
-            src={playButtonGray.src}
-            alt="play-bt-gray"
-            className="w-[15px] h-[15px] md:w-[25px] md:h-[25px]"
-          />
-        </div>
-        <div className="typo-b4 flex-1 ml-[10px]">{question.question}</div>
-      </a>
+        <a
+          className="flex hover:cursor-pointer hover:underline hover:decoration-1"
+          // onClick={() => onClickQuestion(question.id)}
+        >
+          <div>
+            <img
+              src={playButtonGray.src}
+              alt="play-bt-gray"
+              className="w-[15px] h-[15px] md:w-[25px] md:h-[25px]"
+            />
+          </div>
+          <div className="typo-b4 flex-1 ml-[10px]">{question.question}</div>
+        </a>
+      </Link>
     );
   };
   const questionColumn = (colName: string, questionList: IQuestion[]) => {
@@ -104,21 +108,22 @@ export function QuestionListCard(props: Propstype) {
       <p className="typo-h5 text-center">ดูคำถามอื่นๆ</p>
       {questionCat.exclusive.length > 0 && (
         <div className="border-b border-[#9d9d9d80] py-[20px] md:py-[40px] flex m-auto justify-center">
-          <a
-            href={`/candidate/question/${questionCat.exclusive[0].id}`}
-            className="flex m-fit hover:cursor-pointer hover:underline hover:decoration-1"
-            // onClick={() => onClickQuestion(questionCat.exclusive[0].id)}
-          >
-            <img
-              src={playButtonGray.src}
-              alt="play-bt-gray"
-              className="w-[15px] h-[15px] md:w-[25px] md:h-[25px]"
-            />
-            <p className="typo-b5 ml-[10px] flex flex-wrap text-left">
-              <span className="font-bold">EXCLUSIVE SPEECH : </span>{' '}
-              {questionCat.exclusive[0]?.question}
-            </p>
-          </a>
+          <Link href={`/question/${questionCat.exclusive[0].id}`}>
+            <a
+              className="flex m-fit hover:cursor-pointer hover:underline hover:decoration-1"
+              // onClick={() => onClickQuestion(questionCat.exclusive[0].id)}
+            >
+              <img
+                src={playButtonGray.src}
+                alt="play-bt-gray"
+                className="w-[15px] h-[15px] md:w-[25px] md:h-[25px]"
+              />
+              <p className="typo-b5 ml-[10px] flex flex-wrap text-left">
+                <span className="font-bold">EXCLUSIVE SPEECH : </span>{' '}
+                {questionCat.exclusive[0]?.question}
+              </p>
+            </a>
+          </Link>
         </div>
       )}
       <div className="grid grid-cols md:grid-cols-3 gap-[30px] py-[20px] md:py-[40px] border-b border-[#9d9d9d80]">
@@ -134,25 +139,28 @@ export function QuestionListCard(props: Propstype) {
         <div className="flex md:flex-row flex-col flex-wrap justify-between md:mt-[15px]">
           {getSpecialQuestionCandidate().map((question) => {
             return (
-              <a
-                href={`/candidate/${question.nc_xeff__candidates_id || 1}`}
-                className="flex hover:cursor-pointer hover:underline hover:decoration-1 mt-[25px] mx-[5px]"
-                // onClick={() =>
-                //   onClickCandidate(question.governorsRead?.id || 1)
-                // }
+              <Link
+                href={`/${question.nc_xeff__candidates_id || 1}`}
                 key={`candidate-${question.nc_xeff__candidates_id}`}
               >
-                <div className="flex items-center">
-                  <img
-                    src={playButtonGray.src}
-                    alt="play-bt-gray"
-                    className="w-[15px] h-[15px] md:w-[25px] md:h-[25px]"
-                  />
-                </div>
-                <div className="typo-b4 ml-[10px]">
-                  {question.governorsRead?.name}
-                </div>
-              </a>
+                <a
+                  className="flex hover:cursor-pointer hover:underline hover:decoration-1 mt-[25px] mx-[5px]"
+                  // onClick={() =>
+                  //   onClickCandidate(question.governorsRead?.id || 1)
+                  // }
+                >
+                  <div className="flex items-center">
+                    <img
+                      src={playButtonGray.src}
+                      alt="play-bt-gray"
+                      className="w-[15px] h-[15px] md:w-[25px] md:h-[25px]"
+                    />
+                  </div>
+                  <div className="typo-b4 ml-[10px]">
+                    {question.governorsRead?.name}
+                  </div>
+                </a>
+              </Link>
             );
           })}
         </div>

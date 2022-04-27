@@ -49,7 +49,6 @@ export function GeneralQuestionList({
             forceToAxis: true,
           }}
           onSlideChange={() => {
-            console.log('slide');
             if (reachEnd) {
               setReachEnd(false);
             }
@@ -61,7 +60,6 @@ export function GeneralQuestionList({
             setReachEnd(true);
           }}
           onReachBeginning={() => {
-            console.log('begin');
             setReachBeginning(true);
           }}
         >

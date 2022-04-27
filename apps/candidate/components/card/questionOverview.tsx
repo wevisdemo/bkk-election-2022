@@ -3,6 +3,7 @@ import playButtonGray from '../../static/icons/play-gray.svg';
 import { useEffect, useState } from 'react';
 import { IGovernor, IQuestion, IQuestionCategory } from '../../types/business';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 interface Propstype {
   isComingSoon?: boolean;
@@ -163,25 +164,28 @@ export function QuestionOverview(props: Propstype) {
             <div className="flex md:flex-row flex-col flex-wrap justify-between md:mt-[15px]">
               {getSpecialQuestionCandidate().map((question) => {
                 return (
-                  <a
-                    href={`/candidate/${question.nc_xeff__candidates_id || 1}`}
-                    className="flex hover:cursor-pointer hover:underline hover:decoration-1 mt-[25px] mx-[5px]"
-                    // onClick={() =>
-                    //   onClickCandidate(question.nc_xeff__candidates_id || 1)
-                    // }
+                  <Link
+                    href={`/${question.nc_xeff__candidates_id || 1}`}
                     key={`candidate-${question.nc_xeff__candidates_id}`}
                   >
-                    <div className="flex items-center">
-                      <img
-                        src={playButtonGray.src}
-                        alt="play-bt-gray"
-                        className="w-[15px] h-[15px] md:w-[25px] md:h-[25px]"
-                      />
-                    </div>
-                    <div className="typo-b4 ml-[10px]">
-                      {question.governorsRead?.name}
-                    </div>
-                  </a>
+                    <a
+                      className="flex hover:cursor-pointer hover:underline hover:decoration-1 mt-[25px] mx-[5px]"
+                      // onClick={() =>
+                      //   onClickCandidate(question.nc_xeff__candidates_id || 1)
+                      // }
+                    >
+                      <div className="flex items-center">
+                        <img
+                          src={playButtonGray.src}
+                          alt="play-bt-gray"
+                          className="w-[15px] h-[15px] md:w-[25px] md:h-[25px]"
+                        />
+                      </div>
+                      <div className="typo-b4 ml-[10px]">
+                        {question.governorsRead?.name}
+                      </div>
+                    </a>
+                  </Link>
                 );
               })}
             </div>

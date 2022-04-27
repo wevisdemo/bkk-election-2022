@@ -30,13 +30,6 @@ export default function Governor({
   const router = useRouter();
 
   useEffect(() => {
-    // window.onpageshow = function (event) {
-    //   if (event.persisted) {
-    //     console.log('cache');
-
-    //     window.location.reload();
-    //   }
-    // };
     if (candidate.disqualified) {
       router.push('/');
     }

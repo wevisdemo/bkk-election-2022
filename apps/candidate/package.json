@@ -9,6 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/react": "^1.8.8",
+    "@chakra-ui/spinner": "^1.2.6",
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
     "@tailwindcss/typography": "^0.5.2",
     "@types/markdown-it": "^12.2.3",
     "axios": "^0.26.1",

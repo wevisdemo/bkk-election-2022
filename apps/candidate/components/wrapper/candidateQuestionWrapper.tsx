@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Fragment, useEffect, useState } from 'react';
 import { IQuestion, IAnswer } from '../../types/business';
 import { ExclusiveQuestionBadge } from '../badge/exclusiveQuestionBadge';
@@ -110,12 +111,13 @@ export function CandidateQuestionWrapper({
               EXCLUSIVE SPEECH
             </p>
             <div className="w-full flex">
-              <a
-                href={`/candidate/question/${answerCategory.exclusive[0].nc_xeff__questions_id}`}
-                className="typo-h3 text-white md:text-center w-full max-w-[250px] md:max-w-[1500px] mt-[10px] m-auto hover:cursor-pointer hover:underline"
+              <Link
+                href={`/question/${answerCategory.exclusive[0].nc_xeff__questions_id}`}
               >
-                {answerCategory.exclusive[0].questionsRead.question}
-              </a>
+                <a className="typo-h3 text-white md:text-center w-full max-w-[250px] md:max-w-[1500px] mt-[10px] m-auto hover:cursor-pointer hover:underline">
+                  {answerCategory.exclusive[0].questionsRead.question}
+                </a>
+              </Link>
             </div>
             <ExclusiveQuestionCard
               answer={answerCategory.exclusive[0]}
