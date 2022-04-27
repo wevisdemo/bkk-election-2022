@@ -14,27 +14,29 @@ export default function CandidateLegen({ children }: Props) {
 
 	if (!preset) return <></>;
 
-	const candidates: Candidate[] = preset.electionData.total.result
+	let candidates: Candidate[] = preset.electionData.total.result
 		.sort((a, b) => b.count - a.count)
-		.map((v: Result) => preset.candidateMap[v.candidateId]).slice(0, 3);
+		.map((v: Result) => preset.candidateMap[v.candidateId]);
 
-  const other: Candidate = {
-		"id": "3",
-		"fullname": "อื่นๆ",
-		"shortname": "อื่นๆ",
-		"color": DEFAULT_CANDIDATE_COLOR
-	}
+	const other: Candidate = {
+		id: '3',
+		fullname: 'อื่นๆ',
+		shortname: 'อื่นๆ',
+		color: DEFAULT_CANDIDATE_COLOR
+	};
 
 	return (
 		<div class="flex flex-row md:flex-col gap-2">
 			<div class="flex flex-row gap-2 md:gap-4">
-				{[...candidates, other].map((c: Candidate) => (
-					<div class="flex gap-1 items-center">
-						<span class="w-2 md:w-3 h-2 md:h-3" style={{ backgroundColor: c.color }}></span>
-						<span class='typo-u4'>{c.shortname}</span>
-					</div>
-				))}
-				<div class='flex flex-row gap-2'>
+				{(candidates.length > 3 ? [...candidates.slice(0, 3), other] : candidates).map(
+					(c: Candidate) => (
+						<div class="flex gap-1 items-center">
+							<span class="w-2 md:w-3 h-2 md:h-3" style={{ backgroundColor: c.color }}></span>
+							<span class="typo-u4">{c.shortname}</span>
+						</div>
+					)
+				)}
+				<div class="flex flex-row gap-2">
 					<div class="border md:hidden opacity-30" />
 					<svg
 						width="16"
