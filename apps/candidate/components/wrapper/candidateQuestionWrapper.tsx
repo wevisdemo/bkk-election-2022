@@ -49,6 +49,37 @@ export function CandidateQuestionWrapper({
   const [answerCategory, setAnswerCategory] = useState<IAnswerCategory>(
     initialAnswerCategory
   );
+  const [ex, setEx] = useState<IAnswer>({} as IAnswer);
+  useEffect(() => {
+    const exclusiveQuestion = questionList.filter(
+      (question) => question.type === 'exclusive'
+    );
+    const policyQuestion = questionList.filter(
+      (question) => question.type === 'policy'
+    );
+    const opinionQuestion = questionList.filter(
+      (question) => question.type === 'attitude'
+    );
+    const lifestyleQuestion = questionList.filter(
+      (question) => question.type === 'lifestyle'
+    );
+    const specialQuestion = questionList.filter(
+      (question) => question.type === 'special'
+    );
+
+    const xQ = questionList.find((question) => question.type === 'exclusive');
+    if (xQ) {
+      const aQ = answerList.find((ans) => ans.nc_xeff__questions_id === xQ.id);
+      if (aQ) {
+        setEx(aQ);
+      }
+    }
+    mapAnswerByType('exclusive', exclusiveQuestion, answerList);
+    mapAnswerByType('policy', policyQuestion, answerList);
+    mapAnswerByType('opinion', opinionQuestion, answerList);
+    mapAnswerByType('lifestyle', lifestyleQuestion, answerList);
+    mapAnswerByType('special', specialQuestion, answerList);
+  }, [answerList]);
 
   const sortQuestionByNumber = (questions: IQuestion[]) => {
     questions.sort((a, b) => {
@@ -79,29 +110,6 @@ export function CandidateQuestionWrapper({
     });
   };
 
-  useEffect(() => {
-    const exclusiveQuestion = questionList.filter(
-      (question) => question.type === 'exclusive'
-    );
-    const policyQuestion = questionList.filter(
-      (question) => question.type === 'policy'
-    );
-    const opinionQuestion = questionList.filter(
-      (question) => question.type === 'attitude'
-    );
-    const lifestyleQuestion = questionList.filter(
-      (question) => question.type === 'lifestyle'
-    );
-    const specialQuestion = questionList.filter(
-      (question) => question.type === 'special'
-    );
-    mapAnswerByType('exclusive', exclusiveQuestion, answerList);
-    mapAnswerByType('policy', policyQuestion, answerList);
-    mapAnswerByType('opinion', opinionQuestion, answerList);
-    mapAnswerByType('lifestyle', lifestyleQuestion, answerList);
-    mapAnswerByType('special', specialQuestion, answerList);
-  }, [questionList, answerList]);
-
   return (
     <Fragment>
       {answerCategory.exclusive.length > 0 && (
@@ -119,10 +127,7 @@ export function CandidateQuestionWrapper({
                 </a>
               </Link>
             </div>
-            <ExclusiveQuestionCard
-              answer={answerCategory.exclusive[0]}
-              ignoreQuestion
-            />
+            <ExclusiveQuestionCard answer={ex} ignoreQuestion />
           </div>
         </div>
       )}
@@ -160,7 +165,6 @@ export function CandidateQuestionWrapper({
               answerList={answerCategory.special}
               questionType="special"
             />
-            {/* <div className="border-b-[2px] border-[#DADADA] w-[90vw] m-auto" /> */}
           </div>
         )}
       </div>

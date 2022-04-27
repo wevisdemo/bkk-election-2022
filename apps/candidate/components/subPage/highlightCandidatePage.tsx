@@ -118,7 +118,6 @@ export function HighLightCandidatePage({
                   key={`candidate-${candidate.id}`}
                   candidate={candidate}
                   showPlayButton={true}
-                  clientSide
                 />
               );
             })}
