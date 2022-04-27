@@ -13,7 +13,7 @@ const Navbar: Component = () => {
       <div class="ui-flex-1 ui-flex ui-flex-row ui-justify-between">
         <a href="/">
           <img
-            src="/static/images/bkkelection-logo.png"
+            src="/static/images/bkkelection-logo.svg"
             alt="BKK Election 2022"
             class="ui-h-6 md:ui-h-8"
           />
