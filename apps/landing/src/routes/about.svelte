@@ -9,7 +9,7 @@
 <div class="max-w-screen-md mx-auto px-4 py-12 md:py-24 space-y-16 md:space-y-20 typo-b4">
 	<div class="flex flex-col items-center space-y-4">
 		<img
-			src="/static/images/bkkelection-black-big.png"
+			src="/static/images/bkkelection-black-big.svg"
 			class="w-full max-w-md"
 			alt="Bangkok Election 2022"
 		/>
