@@ -56,6 +56,7 @@ export function GeneralQuestionCard({ answer, disabledLink }: PropsType) {
             />
           </div>
           <iframe
+            key={`iframe-q${answer.id}`}
             style={{ display: isLoaded ? 'none' : 'unset' }}
             onLoad={() => {
               setIsLoaded(false);

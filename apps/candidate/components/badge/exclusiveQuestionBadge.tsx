@@ -40,6 +40,7 @@ export function ExclusiveQuestionBadge({ answer, ignoreGovernor }: PropsType) {
             />
           </div>
           <iframe
+            key={`iframe-q${answer.id}`}
             style={{ display: isLoaded ? 'none' : 'unset' }}
             onLoad={() => {
               setIsLoaded(false);
