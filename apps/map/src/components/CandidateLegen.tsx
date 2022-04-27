@@ -6,20 +6,17 @@ import { Candidate } from '../models/candidate';
 import { Result } from '../models/election';
 
 interface Props {
+  candidates: Candidate[],
 	children: React.ReactNode;
 }
 
-export default function CandidateLegen({ children }: Props) {
+export default function CandidateLegen({ candidates, children }: Props) {
 	const preset = useContext(presetContext);
 
 	if (!preset) return <></>;
 
-	let candidates: Candidate[] = preset.electionData.total.result
-		.sort((a, b) => b.count - a.count)
-		.map((v: Result) => preset.candidateMap[v.candidateId]);
-
 	const other: Candidate = {
-		id: '3',
+		id: '-1',
 		fullname: 'อื่นๆ',
 		shortname: 'อื่นๆ',
 		color: DEFAULT_CANDIDATE_COLOR
