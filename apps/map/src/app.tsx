@@ -1,25 +1,30 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { FunctionComponent, useEffect } from 'react';
 import { loadUIComponents } from 'ui';
 import Dashboard from './components/dashboard';
 import { Preset, presetContext } from './contexts/preset';
-import { electionPresets } from './data/presets';
+import { electionIndexes } from './data/presets';
 import { fetchPreset } from './utils/fetch';
 
+const DEFAULT_PRESET_INDEX = 3;
+
 const App: FunctionComponent = () => {
+	const [activePresetIndex, setActivePresetIndex] = useState<number>(DEFAULT_PRESET_INDEX);
 	const [preset, setPreset] = useState<Preset | null>(null);
 
 	useEffect(() => {
 		loadUIComponents();
+	}, []);
 
-		fetchPreset(electionPresets[0]).then(setPreset);
-	}, [loadUIComponents, electionPresets, setPreset]);
+	useMemo(() => {
+		fetchPreset(electionIndexes[activePresetIndex]).then(setPreset);
+	}, [activePresetIndex]);
 
 	return (
 		<div class="flex flex-col min-h-screen">
 			<ui-navbar></ui-navbar>
 			<presetContext.Provider value={preset}>
-				<Dashboard />
+				<Dashboard activePresetIndex={activePresetIndex} onPresetChange={setActivePresetIndex} />
 			</presetContext.Provider>
 		</div>
 	);
