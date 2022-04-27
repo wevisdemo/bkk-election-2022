@@ -16,9 +16,6 @@ export function ExclusiveQuestionBadge({ answer, ignoreGovernor }: PropsType) {
   const youtubeEmbedUrl = youtubeId
     ? `https://www.youtube.com/embed/${youtubeId}`
     : '';
-  const onClickCandidate = () => {
-    router.push(`/${answer.nc_xeff__candidates_id}`);
-  };
   const [ytUrl, setYtUrl] = useState<string>('');
 
   useEffect(() => {
@@ -64,10 +61,7 @@ export function ExclusiveQuestionBadge({ answer, ignoreGovernor }: PropsType) {
       {!ignoreGovernor && (
         <Link href={`/${answer.nc_xeff__candidates_id}`}>
           <a>
-            <p
-              className="typo-h6 text-white mb-[20px] hover:cursor-pointer hover:underline"
-              // onClick={() => onClickCandidate()}
-            >
+            <p className="typo-h6 text-white mb-[20px] hover:cursor-pointer hover:underline">
               {answer.governorsRead.name}
             </p>
           </a>

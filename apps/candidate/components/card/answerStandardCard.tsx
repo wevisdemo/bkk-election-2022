@@ -19,10 +19,6 @@ export function AnswerStandardCard(props: PropsType) {
     : '';
   const [ytUrl, setYtUrl] = useState<string>('');
 
-  const onClickName = () => {
-    router.push(`/${answer.nc_xeff__candidates_id}`);
-  };
-
   useEffect(() => {
     setIsLoaded(true);
     setYtUrl(youtubeEmbedUrl);
@@ -33,10 +29,7 @@ export function AnswerStandardCard(props: PropsType) {
       <div className="flex-1">
         <Link href={`/${answer.nc_xeff__candidates_id}`}>
           <a>
-            <p
-              className="typo-h6 hover:cursor-pointer hover:underline"
-              // onClick={() => onClickName()}
-            >
+            <p className="typo-h6 hover:cursor-pointer hover:underline">
               {answer.governorsRead.name}
             </p>
           </a>

@@ -34,24 +34,13 @@ export function QuestionListCard(props: Propstype) {
       );
   };
 
-  const onClickQuestion = (id: number) => {
-    router.push(`/question/${id}`);
-  };
-
-  const onClickCandidate = (id: number) => {
-    router.push(`/${id}`);
-  };
-
   const questionRow = (question: IQuestion) => {
     return (
       <Link
         href={`/question/${question.id}`}
         key={`question-${question.type}-${question.number}`}
       >
-        <a
-          className="flex hover:cursor-pointer hover:underline hover:decoration-1"
-          // onClick={() => onClickQuestion(question.id)}
-        >
+        <a className="flex hover:cursor-pointer hover:underline hover:decoration-1">
           <div>
             <img
               src={playButtonGray.src}
@@ -81,10 +70,7 @@ export function QuestionListCard(props: Propstype) {
       {questionCat.exclusive.length > 0 && (
         <div className="border-b border-[#9d9d9d80] py-[20px] md:py-[40px] flex m-auto justify-center">
           <Link href={`/question/${questionCat.exclusive[0].id}`}>
-            <a
-              className="flex m-fit hover:cursor-pointer hover:underline hover:decoration-1"
-              // onClick={() => onClickQuestion(questionCat.exclusive[0].id)}
-            >
+            <a className="flex m-fit hover:cursor-pointer hover:underline hover:decoration-1">
               <img
                 src={playButtonGray.src}
                 alt="play-bt-gray"
@@ -115,12 +101,7 @@ export function QuestionListCard(props: Propstype) {
                 href={`/${question.nc_xeff__candidates_id || 1}`}
                 key={`candidate-${question.nc_xeff__candidates_id}`}
               >
-                <a
-                  className="flex hover:cursor-pointer hover:underline hover:decoration-1 mt-[25px] mx-[5px]"
-                  // onClick={() =>
-                  //   onClickCandidate(question.governorsRead?.id || 1)
-                  // }
-                >
+                <a className="flex hover:cursor-pointer hover:underline hover:decoration-1 mt-[25px] mx-[5px]">
                   <div className="flex items-center">
                     <img
                       src={playButtonGray.src}

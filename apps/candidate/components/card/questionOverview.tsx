@@ -16,26 +16,23 @@ export function QuestionOverview(props: Propstype) {
   const { isComingSoon, questionList } = props;
   const questionCat = useQuestionCat(questionList);
 
-  const onClickQuestion = (id: number) => {
-    router.push(`/question/${id}`);
-  };
-
   const questionRow = (question: IQuestion) => {
     return (
-      <div
-        className="flex hover:cursor-pointer hover:underline hover:decoration-1"
-        onClick={() => onClickQuestion(question.id)}
+      <Link
+        href={`/question/${question.id}`}
         key={`question-${question.type}-${question.number}`}
       >
-        <div>
-          <img
-            src={playButtonGray.src}
-            alt="play-bt-gray"
-            className="w-[15px] h-[15px] md:w-[25px] md:h-[25px]"
-          />
-        </div>
-        <div className="typo-b4 flex-1 ml-[10px]">{question.question}</div>
-      </div>
+        <a className="flex hover:cursor-pointer hover:underline hover:decoration-1">
+          <div>
+            <img
+              src={playButtonGray.src}
+              alt="play-bt-gray"
+              className="w-[15px] h-[15px] md:w-[25px] md:h-[25px]"
+            />
+          </div>
+          <div className="typo-b4 flex-1 ml-[10px]">{question.question}</div>
+        </a>
+      </Link>
     );
   };
   const questionColumn = (colName: string, questionList: IQuestion[]) => {
@@ -77,10 +74,6 @@ export function QuestionOverview(props: Propstype) {
       );
   };
 
-  const onClickCandidate = (id: number) => {
-    router.push(`/${id}`);
-  };
-
   return (
     <div className="text-white mx-[8px] mt-[20px] md:mt-[40px] relative">
       {isComingSoon && (
@@ -106,20 +99,19 @@ export function QuestionOverview(props: Propstype) {
           </p>
           {questionCat.exclusive.length > 0 && (
             <div className="border-b border-[#9d9d9d80] py-[20px] md:py-[40px] flex m-auto justify-center">
-              <div
-                className="flex m-fit hover:cursor-pointer hover:underline hover:decoration-1"
-                onClick={() => onClickQuestion(questionCat.exclusive[0].id)}
-              >
-                <img
-                  src={playButtonGray.src}
-                  alt="play-bt-gray"
-                  className="w-[15px] h-[15px] md:w-[25px] md:h-[25px]"
-                />
-                <p className="typo-b5 ml-[10px] flex flex-wrap text-left">
-                  <span className="font-bold">EXCLUSIVE SPEECH : </span>{' '}
-                  {questionCat.exclusive[0]?.question}
-                </p>
-              </div>
+              <Link href={`/question/${questionCat.exclusive[0].id}`}>
+                <a className="flex m-fit hover:cursor-pointer hover:underline hover:decoration-1">
+                  <img
+                    src={playButtonGray.src}
+                    alt="play-bt-gray"
+                    className="w-[15px] h-[15px] md:w-[25px] md:h-[25px]"
+                  />
+                  <p className="typo-b5 ml-[10px] flex flex-wrap text-left">
+                    <span className="font-bold">EXCLUSIVE SPEECH : </span>{' '}
+                    {questionCat.exclusive[0]?.question}
+                  </p>
+                </a>
+              </Link>
             </div>
           )}
           <div className="grid grid-cols md:grid-cols-3 gap-[30px] py-[20px] md:py-[40px] border-b border-[#9d9d9d80]">
@@ -140,12 +132,7 @@ export function QuestionOverview(props: Propstype) {
                     href={`/${question.nc_xeff__candidates_id || 1}`}
                     key={`candidate-${question.nc_xeff__candidates_id}`}
                   >
-                    <a
-                      className="flex hover:cursor-pointer hover:underline hover:decoration-1 mt-[25px] mx-[5px]"
-                      // onClick={() =>
-                      //   onClickCandidate(question.nc_xeff__candidates_id || 1)
-                      // }
-                    >
+                    <a className="flex hover:cursor-pointer hover:underline hover:decoration-1 mt-[25px] mx-[5px]">
                       <div className="flex items-center">
                         <img
                           src={playButtonGray.src}

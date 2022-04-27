@@ -18,16 +18,6 @@ export function CandidateBadge({
   clientSide,
 }: PropType) {
   const router = useRouter();
-  const onClickCandidate = (id: number | null) => {
-    if (!id) {
-      return;
-    }
-    if (clientSide) {
-      window.location.href = `/candidate/${id}`;
-    } else {
-      router.push(`/${id}${fromHome ? `#c-${id}` : ''}`);
-    }
-  };
 
   const getHref = () => {
     if (clientSide) {
@@ -56,7 +46,6 @@ export function CandidateBadge({
           <div
             id={`c-${candidate.number}`}
             className={`h-full max-w-[250px] w-[43vw] md:w-[15vw] m-auto hover:cursor-pointer`}
-            // onClick={() => onClickCandidate(candidate.id)}
           >
             {/* eslint-disable */}
             <div className="w-[43vw] h-[43vw] md:w-[15vw] md:h-[15vw] max-w-[250px] max-h-[250px] relative">

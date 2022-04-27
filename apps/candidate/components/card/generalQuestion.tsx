@@ -18,10 +18,6 @@ export function GeneralQuestionCard({ answer, disabledLink }: PropsType) {
     : '';
   const [ytUrl, setYtUrl] = useState<string>('');
 
-  const onClickQuestion = () => {
-    router.push(`/question/${answer.nc_xeff__questions_id}`);
-  };
-
   useEffect(() => {
     setIsLoaded(true);
     setYtUrl(youtubeEmbedUrl);
@@ -39,7 +35,6 @@ export function GeneralQuestionCard({ answer, disabledLink }: PropsType) {
             className={`font-heading font-semibold text-[14pt] md:text-[18pt] leading-[1.25] ${
               disabledLink ? '' : 'hover:underline'
             }`}
-            // onClick={() => onClickQuestion()}
           >
             {answer.questionsRead.question}
           </a>
