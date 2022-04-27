@@ -1,46 +1,18 @@
 import playButtonGray from '../../static/icons/play-gray.svg';
-import { useEffect, useState } from 'react';
-import { IQuestion, IQuestionCategory } from '../../types/business';
+import { IQuestion } from '../../types/business';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { useQuestionCat } from '../../hooks/useQuestionCat';
 
 interface Propstype {
   questionList: IQuestion[];
 }
 
-const initialQuestionCat: IQuestionCategory = {
-  exclusive: [],
-  policy: [],
-  opinion: [],
-  lifestyle: [],
-};
-
 export function QuestionListCard(props: Propstype) {
   const router = useRouter();
-  const [questionCat, setQuestionCat] =
-    useState<IQuestionCategory>(initialQuestionCat);
   const { questionList } = props;
 
-  useEffect(() => {
-    const exclusiveQuestion = questionList.filter(
-      (question) => question.type === 'exclusive'
-    );
-    const policyQuestion = questionList.filter(
-      (question) => question.type === 'policy'
-    );
-    const opinionQuestion = questionList.filter(
-      (question) => question.type === 'attitude'
-    );
-    const lifestyleQuestion = questionList.filter(
-      (question) => question.type === 'lifestyle'
-    );
-    setQuestionCat({
-      exclusive: exclusiveQuestion,
-      policy: policyQuestion,
-      opinion: opinionQuestion,
-      lifestyle: lifestyleQuestion,
-    });
-  }, [questionList]);
+  const questionCat = useQuestionCat(questionList);
 
   const getSpecialQuestionCandidate = () => {
     return questionList
@@ -133,7 +105,7 @@ export function QuestionListCard(props: Propstype) {
       </div>
       <div className="py-[20px] md:py-[40px] border-b border-[#9d9d9d80]">
         <p className="typo-b4 text-center font-bold">
-          + อีก {getSpecialQuestionCandidate().length}{' '}
+          + อีก {Math.max(...questionCat.special.map(({ number }) => number))}{' '}
           คำถามเคลียร์ใจเฉพาะตัวผู้สมัคร
         </p>
         <div className="flex md:flex-row flex-col flex-wrap justify-between md:mt-[15px]">
