@@ -67,7 +67,7 @@
 				<PartnersLogo />
 				<img src="/static/images/bkkelection-white-big.svg" alt="BKK ELECTION 2022" />
 				<p class="typo-b4 text-center">
-					ติดตามข้อมูลเกี่ยวกับการเลือกตั้งผู้ว่าฯ และสมาชิกสภา กทม. ได้ที่นี่
+					ติดตามข้อมูลเกี่ยวกับการเลือกตั้งผู้ว่าฯ <br class="md:hidden" />และสมาชิกสภา กทม. ได้ที่นี่
 				</p>
 				<Counter until={new Date('2022/05/22 8:00 GMT+7')}>
 					นับถอยหลังเปิดหีบเลือกตั้ง<br />วันอาทิตย์ที่ 22 พฤษภาคม พ.ศ. 2565 เวลา 08.00 - 17.00 น.
@@ -90,7 +90,7 @@
 	</div>
 </div>
 
-<div class="flex flex-col max-w-screen-xl mx-auto divide-y divide-black px-5 md:py-8">
+<div class="flex flex-col max-w-screen-xl mx-auto divide-y divide-black px-5">
 	<PostGrid
 		title="ข่าวล่าสุดเกี่ยวกับการเลือกตั้ง กทม."
 		subtitle="รวมข่าวสารเกี่ยวกับการเลือกตั้ง กทม. จาก THE STANDARD"

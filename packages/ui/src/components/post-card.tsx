@@ -49,7 +49,7 @@ const PostCard: Component<PostCardProps> = ({
           class="ui-border-2 ui-border-transparent group-hover:ui-border-black"
         />
         <p
-          class="typo-h9 group-hover:ui-underline"
+          class="typo-news-headline group-hover:ui-underline"
           innerHTML={DOMPurify.sanitize(title)}
         />
         <div class="ui-flex ui-flex-row typo-u5">

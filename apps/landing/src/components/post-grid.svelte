@@ -10,7 +10,7 @@
 	export let fetchPosts: () => Promise<Post[]>;
 </script>
 
-<div class="py-24 space-y-16">
+<div class="pt-12 pb-14 space-y-12 md:py-28 md:space-y-16 md:pb-32">
 	<div class="flex flex-col md:flex-row space-y-4 md:space-y-0">
 		<div class="flex-1 justify-center text-center">
 			<h1 class="typo-h2 mb-1 px-8">{title}</h1>

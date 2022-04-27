@@ -69,6 +69,11 @@
 }
 
 
+.typo-news-headline {
+  @apply ui-font-heading ui-font-semibold ui-text-[16px] md:ui-text-[16px] ui-leading-[1.25];
+}
+
+
 .ui-skeleton {
   opacity: .5;
   animation: skeleton-loading 1s linear infinite alternate;
