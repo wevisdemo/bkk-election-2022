@@ -1,8 +1,8 @@
 import playButtonBw from '../../static/icons/play-wb.svg';
 import playButtonGray from '../../static/icons/play-gray.svg';
-import { useEffect, useState } from 'react';
-import { IGovernor, IQuestion, IQuestionCategory } from '../../types/business';
+import { IGovernor, IQuestion } from '../../types/business';
 import { useRouter } from 'next/router';
+import { useQuestionCat } from '../../hooks/useQuestionCat';
 
 interface Propstype {
   isComingSoon?: boolean;
@@ -10,39 +10,10 @@ interface Propstype {
   candidateList: IGovernor[];
 }
 
-const initialQuestionCat: IQuestionCategory = {
-  exclusive: [],
-  policy: [],
-  opinion: [],
-  lifestyle: [],
-};
-
 export function QuestionOverview(props: Propstype) {
   const router = useRouter();
-  const [questionCat, setQuestionCat] =
-    useState<IQuestionCategory>(initialQuestionCat);
   const { isComingSoon, questionList } = props;
-
-  useEffect(() => {
-    const exclusiveQuestion = questionList.filter(
-      (question) => question.type === 'exclusive'
-    );
-    const policyQuestion = questionList.filter(
-      (question) => question.type === 'policy'
-    );
-    const opinionQuestion = questionList.filter(
-      (question) => question.type === 'attitude'
-    );
-    const lifestyleQuestion = questionList.filter(
-      (question) => question.type === 'lifestyle'
-    );
-    setQuestionCat({
-      exclusive: exclusiveQuestion,
-      policy: policyQuestion,
-      opinion: opinionQuestion,
-      lifestyle: lifestyleQuestion,
-    });
-  }, [questionList]);
+  const questionCat = useQuestionCat(questionList);
 
   const onClickQuestion = (id: number) => {
     router.push(`/question/${id}`);
@@ -157,7 +128,8 @@ export function QuestionOverview(props: Propstype) {
           </div>
           <div className="pt-[20px] md:pt-[40px] ">
             <p className="typo-b4 text-center font-bold">
-              + อีก {getSpecialQuestionCandidate().length}{' '}
+              + อีก{' '}
+              {Math.max(...questionCat.special.map(({ number }) => number))}{' '}
               คำถามเคลียร์ใจเฉพาะตัวผู้สมัคร
             </p>
             <div className="flex md:flex-row flex-col flex-wrap justify-between md:mt-[15px]">

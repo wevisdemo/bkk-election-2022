@@ -17,6 +17,7 @@ export interface IQuestionCategory {
   policy: IQuestion[];
   opinion: IQuestion[];
   lifestyle: IQuestion[];
+  special: IQuestion[];
 }
 
 export interface ICouncil {
