@@ -13,7 +13,7 @@ export function BackToHomeCard({ hash }: Propstype) {
   };
   return (
     <div className="bg-black py-[46px] md:py-[76px]">
-      <Link href={hash ? '/candidate#' + hash : '/candidate'}>
+      <Link href={hash ? '/#' + hash : '/'}>
         <a>
           <div
             className="w-fit text-center flex justify-center space-x-[20px] m-auto hover:cursor-pointer"
