@@ -8,17 +8,11 @@ interface Propstype {
 
 export function BackToHomeCard({ hash }: Propstype) {
   const router = useRouter();
-  const onClickBack = () => {
-    router.push(hash ? '/#' + hash : '/');
-  };
   return (
     <div className="bg-black py-[46px] md:py-[76px]">
       <Link href={hash ? '/#' + hash : '/'}>
         <a>
-          <div
-            className="w-fit text-center flex justify-center space-x-[20px] m-auto hover:cursor-pointer"
-            onClick={onClickBack}
-          >
+          <div className="w-fit text-center flex justify-center space-x-[20px] m-auto hover:cursor-pointer">
             <img src={arrowLong.src} alt="arrow-home" />
             <p className="typo-h7 text-white">กลับหน้ารวมผู้สมัคร</p>
           </div>
