@@ -1,5 +1,3 @@
-import { Children } from "react";
-
 interface SortableListHeaderProps {
 	headerText: string;
   isActive: boolean;

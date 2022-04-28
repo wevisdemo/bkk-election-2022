@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { presetContext } from '../../contexts/preset';
 import { District, ElectionDataType, Result } from '../../models/election';
-import Progress, { ProgressItem } from './Progress';
+import Progress, { ProgressItem } from '../Progress';
 
 interface RatioListRowItemProps {
 	district: District;
@@ -31,9 +31,9 @@ export default function RatioListRowItem({ district }: RatioListRowItemProps) {
 				{district.voting.eligiblePopulation.toLocaleString()} ({
 				(district.voting.eligiblePopulation / preset.electionData.total.eligiblePopulation).toLocaleString(undefined, { style: 'percent', minimumFractionDigits: 1 })})
 			</div>
-			<div class="col-span-3 flex grow order-last md:order-3">
+			<div class="col-span-3 flex grow order-last md:order-3 my-auto">
 				<Progress
-					border="#000"
+					border="1px solid #000000"
 					sClass='h-[10px]'
 					progressItems={district.voting.result
 						// .sort((a: Result, b: Result) => b.count - a.count)
@@ -45,7 +45,7 @@ export default function RatioListRowItem({ district }: RatioListRowItemProps) {
 						})}
 				/>
 			</div>
-			<div class="flex md:basis-2/12 gap-2 order-4">
+			<div class="flex md:basis-2/12 gap-2 order-4 my-auto">
 				{countingProgress.toLocaleString(undefined, { style: 'percent', minimumFractionDigits: 1 })}
 				<Progress progressItems={countingProgressItems} sClass='h-1 md:h-2' />
 			</div>
