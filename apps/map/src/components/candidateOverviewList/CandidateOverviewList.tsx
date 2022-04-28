@@ -1,7 +1,7 @@
 import { useContext, useEffect, useMemo, useState } from 'react';
 import { presetContext } from '../../contexts/preset';
 import { Result } from '../../models/election';
-import CandidateOverviewListHeader from './CandidateOverviewListHeader';
+import SortableListHeader from '../SortableListHeader';
 import RowItem, { PARTY_UNDEFINED_STRING } from './CandidateOverviewListRowItem';
 
 enum SortType {
@@ -44,7 +44,6 @@ export default function CandidateOverviewList() {
 	const topVoteRes: number = Math.max(...results.map((v: Result) => v.count));
 	const headers = [
 		{ text: '#',
-			isActive: false,
 			sClass: 'text-left basis-4'
 		},
 		{
@@ -63,7 +62,6 @@ export default function CandidateOverviewList() {
 			sortType: SortType.COUNT
 		},
 		{ text: '%',
-		  isActive: false,
 			sClass: 'text-right basis-2/12',
 			sortType: SortType.PERCENT
 		}
@@ -72,8 +70,8 @@ export default function CandidateOverviewList() {
 	return (
 		<div class="flex flex-1 flex-col text-white typo-u4">
 			<div class="flex flex-row font-normal border-b-2 border-white/40">
-				{headers.map((v, i, vs) => (
-					<CandidateOverviewListHeader
+				{headers.map((v) => (
+					<SortableListHeader
 						headerText={v.text}
 						isActive={sortType === v.sortType}
 						sClass={v.sClass + (v.sortType ? ' cursor-pointer' : '')}

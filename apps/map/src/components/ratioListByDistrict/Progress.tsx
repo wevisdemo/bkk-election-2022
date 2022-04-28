@@ -1,6 +1,7 @@
 interface ProgressProps {
 	progressItems: ProgressItem[];
 	border?: string;
+	sClass: string;
 }
 
 export interface ProgressItem {
@@ -11,9 +12,9 @@ export interface ProgressItem {
 
 const STRIP_GIF_PATH = '/map/static/images/strip-black.gif';
 
-export default function Progress({ progressItems, border }: ProgressProps) {
+export default function Progress({ progressItems, border, sClass }: ProgressProps) {
 	return (
-		<div class={`inline-flex w-full ${border ? 'h-[10px]':'h-2'} my-auto`}>
+		<div class={`inline-flex w-full ${sClass} my-auto`}>
 			{progressItems.map((pi: ProgressItem) => (
 				<span
 					class={`h-full`}
