@@ -12,9 +12,7 @@ export default function RatioListRowItem({ district }: RatioListRowItemProps) {
 
 	if (!preset) return <></>;
 
-	const countingProgress: number = preset.electionData.type === ElectionDataType.Live
-		? district.voting.totalVotes / district.voting.eligiblePopulation
-		: 1;
+	const countingProgress: number = district.voting.progress || 1;
 	const countingProgressItems: ProgressItem[] = [
 		{
 			percent: countingProgress,
