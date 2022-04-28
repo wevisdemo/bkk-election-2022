@@ -4,9 +4,10 @@ import { FunctionComponent } from 'react';
 import { presetContext } from '../contexts/preset';
 import { Candidate } from '../models/candidate';
 import { Result } from '../models/election';
-import CandidateLegen from './CandidateLegen';
+import CandidateLegend from './CandidateLegend';
 import CandidateOverviewList from './candidateOverviewList/CandidateOverviewList';
 import PresetToggle from './PresetToggle';
+import RatioList from './ratioListByDistrict/RatioList';
 
 interface DashboardProps {
 	activePresetIndex: number;
@@ -35,11 +36,11 @@ const Dashboard: FunctionComponent<DashboardProps> = ({ activePresetIndex, onPre
 				</div>
 				<div className="w-2/3">
 					<h2 className="typo-h4">คะแนนรายเขต</h2>
-
-					<CandidateLegen candidates={candidates}>
+					<RatioList />
+					<CandidateLegend candidates={candidates}>
 						ขนาดกล่อง ตามจำนวนผู้มีสิทธิ์เลือกตั้งในเขตนั้น <br />
 						สัดส่วนสี ในแต่ละกล่องตามสัดส่วนคะแนนของผู้สมัคร
-					</CandidateLegen>
+					</CandidateLegend>
 				</div>
 			</div>
 		</div>
