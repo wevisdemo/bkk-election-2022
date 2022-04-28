@@ -34,7 +34,7 @@ export default function RatioListRowItem({ district }: RatioListRowItemProps) {
 				/>
 			</div>
 			<div class="flex md:basis-2/12 gap-2 order-4">
-				{countingProgress.toLocaleString('en-US', {style: 'percent'})}%
+				{countingProgress.toLocaleString('en-US', {style: 'percent', minimumFractionDigits: 1})}
 				<Progress progressItems={countingProgressItems} />
 			</div>
 		</div>

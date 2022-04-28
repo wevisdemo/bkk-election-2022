@@ -13,7 +13,7 @@ const STRIP_GIF_PATH = '/map/static/images/strip-black.gif';
 
 export default function Progress({ progressItems, border }: ProgressProps) {
 	return (
-		<div class="inline-flex w-full h-2 my-auto">
+		<div class={`inline-flex w-full ${border ? 'h-[10px]':'h-2'} my-auto`}>
 			{progressItems.map((pi: ProgressItem) => (
 				<span
 					class={`h-full`}
