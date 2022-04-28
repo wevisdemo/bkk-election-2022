@@ -13,6 +13,13 @@ export function Council(props: PropsType) {
     window.open(`https://www.google.com/search?q=${name}`, '_blank');
   };
 
+  const specialWord = (district: string) => {
+    if (district === 'ป้อมปราบศัตรูพ่าย') {
+      return `ป้อมปราบ\nศัตรูพ่าย`;
+    }
+    return district;
+  };
+
   return (
     <div className="relative w-full max-w-[288px] md:max-w-[1024px]  mb-[40px]">
       {council.disqualified && (
@@ -21,12 +28,12 @@ export function Council(props: PropsType) {
         </div>
       )}
       <div className="flex border-t border-[#9d9d9d] w-full max-w-[288px] md:max-w-[1024px]">
-        <div className="flex flex-col justify-center w-[100px] md:w-[150px] h-[100px] md:h-[150px] bg-[#333333] text-white">
+        <div className=" justify-center w-[100px] md:w-[150px] h-[100px] md:h-[150px] bg-[#333333] text-white">
           <p className="font-heading font-semibold text-[27pt] md:text-[48pt] leading-[45px] md:leading-[80px]">
             {council.number}
           </p>
-          <p className="font-heading font-semibold text-[14pt] md:text-[18pt]">
-            {council.district}
+          <p className="font-heading font-semibold text-[14pt] md:text-[18pt] whitespace-pre-wrap">
+            {specialWord(council.district)}
           </p>
         </div>
         <div className="flex flex-col flex-1 md:ml-[50px] ml-[20px] text-left">

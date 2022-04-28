@@ -245,6 +245,7 @@ export const getStaticProps: GetStaticProps<PropsType> = async (context) => {
     };
   }
   councilList = councilRes.data as ICouncil[];
+  councilList.sort((a, b) => (a.number > b.number ? 1 : -1));
 
   const [questionRes, errMsg3] = await getNocoApi('questions');
   if (errMsg2) {
