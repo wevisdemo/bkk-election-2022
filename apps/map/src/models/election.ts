@@ -19,6 +19,7 @@ export interface District {
 export interface Voting {
 	eligiblePopulation: number;
 	totalVotes: number;
+	progress?: number;
 	result: Result[];
 }
 

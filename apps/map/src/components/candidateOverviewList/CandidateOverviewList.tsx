@@ -1,7 +1,15 @@
 import { useContext, useEffect, useMemo, useState } from 'react';
 import { presetContext } from '../../contexts/preset';
 import { Result } from '../../models/election';
-import RowItem, { PARTY_UNDEFINED_STRING } from './RowItem';
+import SortableListHeader from '../SortableListHeader';
+import RowItem, { PARTY_UNDEFINED_STRING } from './CandidateOverviewListRowItem';
+
+enum SortType {
+	COUNT = 'count',
+	NAME = 'name',
+	PERCENT = 'percent',
+	PARTY = 'party'
+}
 
 export default function CandidateOverviewList() {
 	const preset = useContext(presetContext);
@@ -10,63 +18,70 @@ export default function CandidateOverviewList() {
 		return <></>;
 	}
 
-	const [sortType, setSortType] = useState<string>('COUNT');
+	const [sortType, setSortType] = useState<SortType>(SortType.COUNT);
 	const results = useMemo(() => {
 		const _res = preset.electionData.total.result;
 		switch (sortType) {
-			case 'PARTY':
+			case SortType.PARTY:
 				return _res.sort((a, b) => {
 					return (preset.candidateMap[a.candidateId].party || PARTY_UNDEFINED_STRING).localeCompare(
 						preset.candidateMap[b.candidateId].party || PARTY_UNDEFINED_STRING
 					);
 				});
-			case 'NAME':
+			case SortType.NAME:
 				return _res.sort((a, b) =>
 					preset.candidateMap[a.candidateId].fullname.localeCompare(
 						preset.candidateMap[b.candidateId].fullname
 					)
 				);
-			case 'PERCENT':
-			case 'COUNT':
+			case SortType.PERCENT:
+			case SortType.COUNT:
 			default:
 				return _res.sort((a, b) => b.count - a.count);
 		}
 	}, [sortType]);
 
 	const topVoteRes: number = Math.max(...results.map((v: Result) => v.count));
+	const headers = [
+		{ text: '#',
+			sClass: 'text-left basis-4'
+		},
+		{
+			text: 'ผู้สมัคร [หมายเลข]',
+			sClass: 'text-left basis-4 flex-1',
+			sortType: SortType.NAME
+		},
+		{
+			text: 'สังกัด',
+			sClass: 'text-right basis-2/12 hidden md:block',
+			sortType: SortType.PARTY
+		},
+		{
+			text: 'คะแนนเสียง',
+			sClass: 'text-right basis-2/12',
+			sortType: SortType.COUNT
+		},
+		{ text: '%',
+			sClass: 'text-right basis-2/12',
+			sortType: SortType.PERCENT
+		}
+	];
 
 	return (
 		<div class="flex flex-1 flex-col text-white typo-u4">
 			<div class="flex flex-row font-normal border-b-2 border-white/40">
-				<span class="text-left basis-4 opacity-50">#</span>
-				<span
-					class="text-left flex-1 opacity-50 cursor-pointer"
-					onClick={() => setSortType('NAME')}
-				>
-					ผู้สมัคร [หมายเลข]
-					{sortType === 'NAME' && '↓'}
-				</span>
-				<span
-					class="text-right basis-2/12 hidden md:block opacity-50 cursor-pointer"
-					onClick={() => setSortType('PARTY')}
-				>
-					สังกัด
-					{sortType === 'PARTY' && '↓'}
-				</span>
-				<span
-					class="text-right basis-2/12 opacity-50 cursor-pointer"
-					onClick={() => setSortType('COUNT')}
-				>
-					คะแนนเสียง
-					{sortType === 'COUNT' && '↓'}
-				</span>
-				<span
-					class="text-right basis-2/12 opacity-50 cursor-pointer"
-					onClick={() => setSortType('PERCENT')}
-				>
-					%
-					{sortType === 'PERCENT' && '↓'}
-				</span>
+				{headers.map((v) => (
+					<SortableListHeader
+						headerText={v.text}
+						isActive={sortType === v.sortType}
+						sClass={v.sClass + (v.sortType ? ' cursor-pointer' : '')}
+						headerOnClick={() => {
+							if (v.sortType) {
+								setSortType(v.sortType);
+							}
+						}}
+					/>
+				))}
 			</div>
 			{results.map((_res: Result, index: number) => {
 				return <RowItem candidateId={_res.candidateId} index={index} topVoteRes={topVoteRes} />;
