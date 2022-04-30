@@ -32,7 +32,7 @@ export default function RatioListTable() {
 		},
 		{
 			text: 'ผู้มีสิทธิ์เลือกตั้ง',
-			sClass: 'cursor-pointer',
+			sClass: 'cursor-pointer' + (preset.electionData.total.progress ? '' : ' text-right md:text-left'),
 			sortType: DistrictRatioSortType.ELIGIBLE
 		},
 		{ text: 'ผลการเลือกตั้ง',
@@ -76,8 +76,8 @@ export default function RatioListTable() {
 	return (
 		<div class="flex flex-col gap-4">
 			<div
-				class={`grid grid-cols-3 ${
-					preset.electionData.total.progress ? 'md:grid-cols-6' : 'md:grid-cols-5'
+				class={`grid ${
+					preset.electionData.total.progress ? 'grid-cols-3 md:grid-cols-6' : 'grid-cols-2 md:grid-cols-5'
 				} typo-u4 gap-4 gap-y-1 md:gap-8 border-b border-white/40 pb-1`}
 			>
 				{headers.map((v) => (
