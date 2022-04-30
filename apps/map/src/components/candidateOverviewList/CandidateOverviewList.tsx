@@ -4,7 +4,7 @@ import { Result } from '../../models/election';
 import SortableListHeader from '../SortableListHeader';
 import RowItem, { PARTY_UNDEFINED_STRING } from './CandidateOverviewListRowItem';
 
-enum SortType {
+enum CandidateOverviewSortType {
 	COUNT = 'count',
 	NAME = 'name',
 	PERCENT = 'percent',
@@ -18,24 +18,25 @@ export default function CandidateOverviewList() {
 		return <></>;
 	}
 
-	const [sortType, setSortType] = useState<SortType>(SortType.COUNT);
+	const [sortType, setSortType] = useState<CandidateOverviewSortType>(CandidateOverviewSortType.COUNT);
+	const [descending, setDescending] = useState<boolean>(true);
 	const results = useMemo(() => {
 		const _res = preset.electionData.total.result;
 		switch (sortType) {
-			case SortType.PARTY:
+			case CandidateOverviewSortType.PARTY:
 				return _res.sort((a, b) => {
 					return (preset.candidateMap[a.candidateId].party || PARTY_UNDEFINED_STRING).localeCompare(
 						preset.candidateMap[b.candidateId].party || PARTY_UNDEFINED_STRING
 					);
 				});
-			case SortType.NAME:
+			case CandidateOverviewSortType.NAME:
 				return _res.sort((a, b) =>
 					preset.candidateMap[a.candidateId].fullname.localeCompare(
 						preset.candidateMap[b.candidateId].fullname
 					)
 				);
-			case SortType.PERCENT:
-			case SortType.COUNT:
+			case CandidateOverviewSortType.PERCENT:
+			case CandidateOverviewSortType.COUNT:
 			default:
 				return _res.sort((a, b) => b.count - a.count);
 		}
@@ -49,23 +50,35 @@ export default function CandidateOverviewList() {
 		{
 			text: 'ผู้สมัคร [หมายเลข]',
 			sClass: 'text-left basis-4 flex-1',
-			sortType: SortType.NAME
+			sortType: CandidateOverviewSortType.NAME
 		},
 		{
 			text: 'สังกัด',
 			sClass: 'text-right basis-2/12 hidden md:block',
-			sortType: SortType.PARTY
+			sortType: CandidateOverviewSortType.PARTY
 		},
 		{
 			text: 'คะแนนเสียง',
 			sClass: 'text-right basis-2/12',
-			sortType: SortType.COUNT
+			sortType: CandidateOverviewSortType.COUNT
 		},
 		{ text: '%',
 			sClass: 'text-right basis-2/12',
-			sortType: SortType.PERCENT
+			sortType: CandidateOverviewSortType.PERCENT
 		}
 	];
+
+	const headerOnClick = (headerSortType?: CandidateOverviewSortType) => {
+		if (headerSortType) {
+			if (headerSortType === sortType) {
+				setDescending(!descending);
+				results.reverse();
+			} else {
+				setSortType(headerSortType);
+				setDescending(true);
+			}
+		}
+	}
 
 	return (
 		<div class="flex flex-1 flex-col text-white typo-u4">
@@ -75,11 +88,8 @@ export default function CandidateOverviewList() {
 						headerText={v.text}
 						isActive={sortType === v.sortType}
 						sClass={v.sClass + (v.sortType ? ' cursor-pointer' : '')}
-						headerOnClick={() => {
-							if (v.sortType) {
-								setSortType(v.sortType);
-							}
-						}}
+						descending={descending}
+						headerOnClick={() => headerOnClick(v.sortType)}
 					/>
 				))}
 			</div>

@@ -9,7 +9,11 @@ interface RatioListRowItemProps {
 	isLive: boolean;
 }
 
-export default function RatioListRowItem({ district, isInProgress, isLive }: RatioListRowItemProps) {
+export default function RatioListRowItem({
+	district,
+	isInProgress,
+	isLive
+}: RatioListRowItemProps) {
 	const preset = useContext(presetContext);
 
 	if (!preset) return <></>;
@@ -19,34 +23,34 @@ export default function RatioListRowItem({ district, isInProgress, isLive }: Rat
 		{
 			percent: countingProgress,
 			color: '#FFFFFF',
-			strip: isLive,
+			strip: isLive
 		},
-		{ percent: 1 - countingProgress, color: 'rgba(255, 255, 255, 0.2)' }
+		{ percent: 1 - countingProgress,
+			color: 'rgba(255, 255, 255, 0.2)'
+		}
 	];
 
+	const progressItems: ProgressItem[] = district.voting.result
+		// .sort((a: Result, b: Result) => b.count - a.count)
+		.map((res: Result) => {
+			return {
+				percent: res.count / district.voting.totalVotes,
+				color: preset.candidateMap[res.candidateId].color
+			};
+		});
+
 	return (
-		<div class={`grid grid-cols-${isInProgress ? 3 : 2} md:grid-cols-${isInProgress ? 6 : 5} typo-u4 gap-4 gap-y-1 md:gap-8 hover:bg-white/20`}>
+		<div class={`grid grid-cols-3 ${isInProgress ? 'md:grid-cols-6' : 'md:grid-cols-5'} typo-u4 gap-x-4 gap-y-1 md:gap-8 hover:bg-white/20`}>
 			<div class="font-semibold">{district.name}</div>
-			<div class={`${isInProgress || 'text-right md:text-left'}`}>
+			<div>
 				{district.voting.eligiblePopulation.toLocaleString()} (
 				{(
 					district.voting.eligiblePopulation / preset.electionData.total.eligiblePopulation
 				).toLocaleString(undefined, { style: 'percent', minimumFractionDigits: 1 })}
 				)
 			</div>
-			<div class={`col-span-${isInProgress ? 3 : 2} md:col-span-3 flex grow order-last md:order-3 my-auto`}>
-				<Progress
-					border="1px solid #000000"
-					sClass="h-[10px]"
-					progressItems={district.voting.result
-						// .sort((a: Result, b: Result) => b.count - a.count)
-						.map((res: Result) => {
-							return {
-								percent: res.count / district.voting.totalVotes,
-								color: preset.candidateMap[res.candidateId].color
-							} as ProgressItem;
-						})}
-				/>
+			<div class="col-span-3 flex grow order-last md:order-3 my-auto">
+				<Progress border="1px solid #000000" sClass="h-[10px]" progressItems={progressItems} />
 			</div>
 			{isInProgress && (
 				<div class="flex md:basis-2/12 gap-2 order-4 my-auto">

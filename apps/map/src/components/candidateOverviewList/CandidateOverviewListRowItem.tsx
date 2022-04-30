@@ -59,7 +59,7 @@ export default function CandidateOverviewListRowItem({ candidateId, topVoteRes, 
 						preset.electionData.type === ElectionDataType.Poll ? '2px dashed' + candidate.color : ''
 					}`}
 				>
-					{isInTop && <img src={candidate.image} class="h-12 absolute right-2 bottom-0" />}
+					{isInTop && candidate.image && <img src={candidate.image} class="h-12 absolute right-2 bottom-0" />}
 				</Progress>
 			</div>
 		</>
