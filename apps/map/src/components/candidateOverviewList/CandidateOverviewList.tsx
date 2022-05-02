@@ -1,8 +1,9 @@
-import { useContext, useEffect, useMemo, useState } from 'react';
+import { useContext, useMemo, useState } from 'react';
+import { PARTY_UNDEFINED_STRING, TOP_CANDIDATE_DISPLAY } from '../../constants/candidate';
 import { presetContext } from '../../contexts/preset';
 import { Result } from '../../models/election';
 import SortableListHeader from '../SortableListHeader';
-import RowItem, { PARTY_UNDEFINED_STRING } from './CandidateOverviewListRowItem';
+import CandidateOverviewListRowItem from './CandidateOverviewListRowItem';
 
 enum CandidateOverviewSortType {
 	COUNT = 'count',
@@ -18,7 +19,9 @@ export default function CandidateOverviewList() {
 		return <></>;
 	}
 
-	const [sortType, setSortType] = useState<CandidateOverviewSortType>(CandidateOverviewSortType.COUNT);
+	const [sortType, setSortType] = useState<CandidateOverviewSortType>(
+		CandidateOverviewSortType.COUNT
+	);
 	const [descending, setDescending] = useState<boolean>(true);
 	const results = useMemo(() => {
 		const _res = preset.electionData.total.result;
@@ -42,7 +45,7 @@ export default function CandidateOverviewList() {
 		}
 	}, [sortType]);
 
-	const topVoteRes: number = Math.max(...results.map((v: Result) => v.count));
+	const topVoteCount: number = Math.max(...results.map((v: Result) => v.count));
 	const headers = [
 		{ text: '#',
 			sClass: 'text-left basis-4'
@@ -78,7 +81,7 @@ export default function CandidateOverviewList() {
 				setDescending(true);
 			}
 		}
-	}
+	};
 
 	return (
 		<div class="flex flex-1 flex-col text-white typo-u4">
@@ -94,7 +97,14 @@ export default function CandidateOverviewList() {
 				))}
 			</div>
 			{results.map((_res: Result, index: number) => {
-				return <RowItem candidateId={_res.candidateId} index={index} topVoteRes={topVoteRes} />;
+				return (
+					<CandidateOverviewListRowItem
+						candidateId={_res.candidateId}
+						index={index}
+						topVoteCount={topVoteCount}
+						isInTop={index < TOP_CANDIDATE_DISPLAY}
+					/>
+				);
 			})}
 		</div>
 	);

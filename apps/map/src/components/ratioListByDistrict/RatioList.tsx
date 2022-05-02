@@ -2,7 +2,7 @@ import { useContext, useMemo, useState } from 'react';
 import { presetContext } from '../../contexts/preset';
 import { District, ElectionDataType } from '../../models/election';
 import SortableListHeader from '../SortableListHeader';
-import RowItem from './RatioListRowItem';
+import RatioListRowItem from './RatioListRowItem';
 
 enum DistrictRatioSortType {
 	NAME = 'name',
@@ -91,7 +91,7 @@ export default function RatioListTable() {
 				))}
 			</div>
 			{sortedDistricts.map((d: District, i: number) => (
-				<RowItem
+				<RatioListRowItem
 					district={d}
 					isInProgress={preset.electionData.total.progress !== undefined}
 					isLive={preset.electionData.type == ElectionDataType.Live}

@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { TOP_CANDIDATE_DISPLAY } from '../../constants/candidate';
+import { PARTY_UNDEFINED_STRING } from '../../constants/candidate';
 import { presetContext } from '../../contexts/preset';
 import { ElectionDataType } from '../../models/election';
 import Progress, { ProgressItem } from '../Progress';
@@ -7,35 +7,39 @@ import Progress, { ProgressItem } from '../Progress';
 interface Props {
 	candidateId: number;
 	index: number;
-	topVoteRes: number;
+	topVoteCount: number;
+	isInTop: boolean;
 }
 
-export const PARTY_UNDEFINED_STRING: string = 'อิสระ';
-
-export default function CandidateOverviewListRowItem({ candidateId, topVoteRes, index }: Props) {
+export default function CandidateOverviewListRowItem({ candidateId, topVoteCount, index, isInTop }: Props) {
 	const preset = useContext(presetContext);
 
 	if (!preset) return <tr></tr>;
 
-	const indexResult = preset.electionData.total.result.find((v) => v.candidateId === candidateId);
-	if (!indexResult) return <tr></tr>;
+	const result = preset.electionData.total.result.find((v) => v.candidateId === candidateId);
+	if (!result) return <tr></tr>;
 
 	const candidate = preset.candidateMap[candidateId];
-	const isInTop: boolean = index < TOP_CANDIDATE_DISPLAY;
 
 	return (
 		<>
 			<div class="flex flex-row mt-4">
-				<span class="basis-4">{index + 1}</span>
+				<span class="basis-4">
+					{index + 1}
+				</span>
 				<span class="text-left font-semibold flex-1">
 					{`${candidate.fullname}` + (candidate.number ? ` [${candidate.number}]` : '')}
 				</span>
 				<span class="text-right basis-2/12 hidden md:block">
 					{candidate.party || PARTY_UNDEFINED_STRING}
 				</span>
-				<span class="text-right basis-2/12">{indexResult?.count.toLocaleString()}</span>
 				<span class="text-right basis-2/12">
-					{((indexResult?.count / preset.electionData.total.totalVotes) * 100).toFixed(1)}%
+					{result.count.toLocaleString()}
+				</span>
+				<span class="text-right basis-2/12">
+					{(result.count / preset.electionData.total.totalVotes).toLocaleString(
+						undefined, {style: 'percent', minimumFractionDigits: 1})
+					}
 				</span>
 			</div>
 			<div
@@ -49,7 +53,7 @@ export default function CandidateOverviewListRowItem({ candidateId, topVoteRes, 
 									preset.electionData.type === ElectionDataType.Poll
 										? candidate.color + '71'
 										: candidate.color,
-								percent: indexResult && indexResult.count / topVoteRes,
+								percent: result.count / topVoteCount,
 								strip: preset.electionData.type === ElectionDataType.Live
 							}
 						] as ProgressItem[]
