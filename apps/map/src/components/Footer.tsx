@@ -1,14 +1,43 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useContext, useState } from 'react';
 import Modal from './Modal';
 import partners from 'ui/src/data/partners.json';
+import { presetContext } from '../contexts/preset';
+import { ElectionDataType } from '../models/election';
 
 const Footer: FunctionComponent = () => {
+	const preset = useContext(presetContext);
 	const [isShareModalOpen, setIsShareModalOpen] = useState(false);
 
 	return (
 		<div className="bg-black text-white px-6 lg:px-12">
-			<div class="flex flex-row border-t border-gray py-6">
-				<div className="flex-1 typo-u4">นับคะแนนแล้ว 32.4%</div>
+			<div class="flex flex-row justify-end border-t border-gray py-6">
+				{preset?.electionData.type === ElectionDataType.Live && (
+					<div className="flex-1 flex flex-row typo-u4 space-x-8">
+						{preset?.electionData.total.progress !== undefined && (
+							<div className="flex flex-col space-y-1">
+								<div>นับคะแนนแล้ว {preset?.electionData.total.progress}%</div>
+								<div className="h-2 w-full md:w-64 bg-white bg-opacity-20">
+									<div
+										className="bg-white h-full"
+										style={{ width: `${preset?.electionData.total.progress}%` }}
+									></div>
+								</div>
+							</div>
+						)}
+						{preset?.electionData.lastUpdatedAt && (
+							<div>
+								<p>อัปเดตล่าสุด</p>
+								<p>
+									{new Date(preset?.electionData.lastUpdatedAt).toLocaleString('th-TH', {
+										dateStyle: 'medium',
+										timeStyle: 'medium'
+									})}
+								</p>
+							</div>
+						)}
+					</div>
+				)}
+
 				<button className="md:hidden" onClick={() => setIsShareModalOpen(true)}>
 					<svg width="29" height="28" viewBox="0 0 29 28" fill="none">
 						<path
@@ -19,6 +48,7 @@ const Footer: FunctionComponent = () => {
 						/>
 					</svg>
 				</button>
+
 				<div className="hidden md:flex flex-row space-x-12">
 					<ui-sharer />
 					<div className="flex flex-row space-x-8">
@@ -30,6 +60,7 @@ const Footer: FunctionComponent = () => {
 					</div>
 				</div>
 			</div>
+
 			{isShareModalOpen && (
 				<Modal title="Share" onClose={() => setIsShareModalOpen(false)}>
 					<div className="flex justify-center py-4">
