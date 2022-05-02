@@ -15,6 +15,7 @@ declare global {
       }>;
       'ui-sharer': CustomElement<{
         url?: string;
+        hideLabel?: boolean;
       }>;
     }
   }

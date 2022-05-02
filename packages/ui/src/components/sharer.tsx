@@ -1,12 +1,14 @@
-import { onMount, createSignal, Component } from 'solid-js';
+import { onMount, createSignal, Component, Show } from 'solid-js';
 import { noShadowDOM } from 'component-register';
 
 export interface SharerProps {
   url?: string;
+  hideLabel?: boolean;
 }
 
 export const sharerDefaultProps = {
   url: null,
+  hideLabel: false,
 };
 
 const Sharer: Component<SharerProps> = (props) => {
@@ -20,7 +22,9 @@ const Sharer: Component<SharerProps> = (props) => {
 
   return (
     <div class="ui-flex ui-flex-row ui-space-x-2 ui-items-center">
-      <span class="typo-b5 ui-text-white">SHARE</span>
+      <Show when={!props.hideLabel}>
+        <span class="typo-b5 ui-text-white">SHARE</span>
+      </Show>
 
       <button
         onClick={() => window.navigator.clipboard.writeText(encodedURL())}
