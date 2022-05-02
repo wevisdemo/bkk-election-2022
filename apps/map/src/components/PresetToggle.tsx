@@ -49,9 +49,10 @@ const PresetToggle: FunctionComponent<PresetToggleProps> = ({ activeIndex, onCha
 								: 'opacity-40'
 						}`}
 					>
-						{preset?.electionData.type === ElectionDataType.Live && (
-							<div class="bg-[#D02525] text-white mr-1 px-1 font-semibold">LIVE</div>
-						)}
+						{preset?.electionData.type === ElectionDataType.Live &&
+							preset?.shortname === shortname && (
+								<div class="bg-[#D02525] text-white mr-1 px-1 font-semibold">LIVE</div>
+							)}
 						{shortname}
 					</button>
 				))}
