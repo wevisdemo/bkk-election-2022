@@ -25,13 +25,14 @@ const Dashboard: FunctionComponent<DashboardProps> = ({ activePresetIndex, onPre
 		.map((v: Result) => preset.candidateMap[v.candidateId]);
 
 	return (
-		<div className="bg-black text-white flex-1 p-6 lg:p-12 space-y-4 lg:space-y-12">
+		<div className="flex-1 flex flex-col bg-black text-white p-6 lg:p-12 space-y-4 lg:space-y-12 overflow-y-hidden">
 			<div className="flex flex-col lg:flex-row gap-4 lg:border-b lg:pb-6 border-gray items-center">
 				<h1 className="flex-1 typo-h2">{preset.fullname}</h1>
 				<PresetToggle activeIndex={activePresetIndex} onChange={onPresetChange} />
 			</div>
-			<div class="hidden lg:flex flex-row space-x-12">
-				<div className="flex-1 space-y-6">
+
+			<div class="flex-1 hidden lg:flex flex-row space-x-12 overflow-y-auto">
+				<div className="flex-1 space-y-6 h-full">
 					<h2 className="typo-h4">คะแนนรวมทั้ง กทม.</h2>
 					<CandidateOverviewList />
 				</div>
@@ -44,6 +45,7 @@ const Dashboard: FunctionComponent<DashboardProps> = ({ activePresetIndex, onPre
 					</CandidateLegend>
 				</div>
 			</div>
+
 			<TabsView
 				className="lg:hidden"
 				tabs={[

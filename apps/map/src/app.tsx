@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { FunctionComponent, useEffect } from 'react';
 import { loadUIComponents } from 'ui';
 import Dashboard from './components/dashboard';
+import Footer from './components/Footer';
 import { Preset, presetContext } from './contexts/preset';
 import { electionIndexes } from './data/presets';
 import { fetchPreset } from './utils/fetch';
@@ -21,10 +22,11 @@ const App: FunctionComponent = () => {
 	}, [activePresetIndex]);
 
 	return (
-		<div class="flex flex-col min-h-screen">
+		<div class="flex flex-col h-screen">
 			<ui-navbar></ui-navbar>
 			<presetContext.Provider value={preset}>
 				<Dashboard activePresetIndex={activePresetIndex} onPresetChange={setActivePresetIndex} />
+				<Footer />
 			</presetContext.Provider>
 		</div>
 	);
