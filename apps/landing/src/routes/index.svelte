@@ -81,7 +81,7 @@
 			<div class="-md:hidden flex-1">
 				<lite-youtube videoid="KqaFyTtv3PU" />
 			</div>
-			<lite-youtube class="md:hidden" videoid="KqaFyTtv3PU" />>
+			<lite-youtube class="md:hidden" videoid="KqaFyTtv3PU" />
 		</div>
 	</div>
 	<div class="-mt-12 h-12 to-black from-transparent bg-gradient-to-b " />
