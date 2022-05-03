@@ -5,12 +5,14 @@
 	import ProjectCard from '../components/project-card.svelte';
 	import Metadata from '../components/metadata.svelte';
 	import PartnersLogo from '../components/partners-logo.svelte';
-	import YoutubeVideo from '../components/youtube-video.svelte';
+	import { onMount } from 'svelte';
 
 	// const THE_STANDARD_GUIDE_TAG = 'bkk-election-101';
 
 	// const fetchTheStandardElectionGuides = () =>
 	// 	fetchTheStandardElectionPosts({ tag: THE_STANDARD_GUIDE_TAG });
+
+	onMount(() => import('@justinribeiro/lite-youtube'));
 
 	const projects = [
 		{
@@ -75,9 +77,9 @@
 				</Counter>
 			</div>
 			<div class="-md:hidden flex-1">
-				<YoutubeVideo videoId="KqaFyTtv3PU" />
+				<lite-youtube videoid="KqaFyTtv3PU" />
 			</div>
-			<YoutubeVideo class="md:hidden" videoId="KqaFyTtv3PU" />
+			<lite-youtube class="md:hidden" videoid="KqaFyTtv3PU" />>
 		</div>
 	</div>
 	<div class="-mt-12 h-12 to-black from-transparent bg-gradient-to-b " />
