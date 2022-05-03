@@ -20,8 +20,8 @@
 	<div bind:this={element} class="pt-12 pb-14 space-y-12 md:py-28 md:space-y-16 md:pb-32">
 		<div class="flex flex-col md:flex-row space-y-4 md:space-y-0">
 			<div class="flex-1 justify-center text-center">
-				<h1 class="typo-h2 mb-1 px-8">{title}</h1>
-				<h2 class="typo-u3 mb-1 px-8">{subtitle}</h2>
+				<h2 class="typo-h2 mb-1 px-8">{title}</h2>
+				<p class="typo-u3 mb-1 px-8">{subtitle}</p>
 
 				<a
 					href={viewAllLink}

@@ -67,7 +67,9 @@
 		>
 			<div class="flex-1 flex flex-col space-y-8">
 				<PartnersLogo />
-				<img src="/static/images/bkkelection-white-big.svg" alt="BKK ELECTION 2022" />
+				<h1 class="mx-auto">
+					<img src="/static/images/bkkelection-white-big.svg" alt="BKK ELECTION 2022" />
+				</h1>
 				<p class="typo-b4 text-center">
 					ติดตามข้อมูลเกี่ยวกับการเลือกตั้งผู้ว่าฯ <br class="md:hidden" />และสมาชิกสภา กทม.
 					ได้ที่นี่
