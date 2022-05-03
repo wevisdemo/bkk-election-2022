@@ -1,22 +1,23 @@
+@import '~react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
+
 .custom-scroll::-webkit-scrollbar {
   width: 7px;
 }
 
 .custom-scroll::-webkit-scrollbar-track {
-  background: black; 
+  background: black;
 }
- 
+
 .custom-scroll::-webkit-scrollbar-thumb {
-  background: #888; 
+  background: #888;
   border-radius: 8px;
 }
 
 .custom-swip {
   width: 100%;
   height: 100%;
-  position: static !important
+  position: static !important;
 }
-
 
 .custom-swip .swiper-slide {
   text-align: center;
@@ -55,22 +56,22 @@
 
 .shadow1 {
   width: 120px;
-  background: linear-gradient(270deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(270deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
   height: 100%;
   z-index: 10;
   position: absolute;
   right: 0px;
-  top:0px;
+  top: 0px;
   pointer-events: none;
 }
 
 @media only screen and (max-width: 600px) {
   .shadow1 {
-  width: 40px;
-
+    width: 40px;
   }
 }
 
 .fill-grey {
-  filter: invert(99%) sepia(0%) saturate(6661%) hue-rotate(207deg) brightness(115%) contrast(73%);
+  filter: invert(99%) sepia(0%) saturate(6661%) hue-rotate(207deg)
+    brightness(115%) contrast(73%);
 }
