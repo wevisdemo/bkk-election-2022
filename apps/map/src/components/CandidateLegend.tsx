@@ -1,40 +1,28 @@
-import React from 'react';
-import { useContext } from 'react';
-import { DEFAULT_CANDIDATE_COLOR } from '../constants/candidate';
-import { presetContext } from '../contexts/preset';
+import React, { useState } from 'react';
 import { Candidate } from '../models/candidate';
+import Modal from './Modal';
 
 interface CandidateLegendProps {
-  candidates: Candidate[],
+	candidates: Candidate[];
 	children: React.ReactNode;
 }
 
-const INSTRUCTION_STRING = 'วิธีอ่าน';
+const INSTRUCTION_SHORT_STRING = 'วิธีอ่าน';
+const INSTRUCTION_STRING = 'วิธีอ่านแผนภาพ';
 
 export default function CandidateLegend({ candidates, children }: CandidateLegendProps) {
-	const preset = useContext(presetContext);
-
-	if (!preset) return <></>;
-
-	const other: Candidate = {
-		id: '-1',
-		fullname: 'อื่นๆ',
-		shortname: 'อื่นๆ',
-		color: DEFAULT_CANDIDATE_COLOR
-	};
+	const [showModal, setShowModal] = useState<boolean>(false);
 
 	return (
-		<div class="flex flex-row md:flex-col gap-2">
+		<div class="flex flex-row md:flex-col gap-2 typo-u4">
 			<div class="flex flex-row gap-2 md:gap-4">
-				{(candidates.length > 3 ? [...candidates.slice(0, 3), other] : candidates).map(
-					(c: Candidate) => (
-						<div class="flex gap-1 items-center">
-							<span class="w-2 md:w-3 h-2 md:h-3" style={{ backgroundColor: c.color }}></span>
-							<span class="typo-u4">{c.shortname}</span>
-						</div>
-					)
-				)}
-				<div class="flex flex-row gap-2 md:hidden">
+				{candidates.map((candidate: Candidate) => (
+					<div class="flex gap-1 items-center">
+						<span class="w-2 md:w-3 h-2 md:h-3" style={{ backgroundColor: candidate.color }}></span>
+						<span>{candidate.shortname}</span>
+					</div>
+				))}
+				<div class="flex flex-row gap-2 md:hidden" onClick={() => setShowModal(true)}>
 					<div class="border opacity-30" />
 					<svg
 						width="16"
@@ -49,10 +37,16 @@ export default function CandidateLegend({ candidates, children }: CandidateLegen
 							fill="white"
 						/>
 					</svg>
-					<p class='typo-u4 underline font-semibold'>{INSTRUCTION_STRING}</p>
+					<p class="underline font-semibold">{INSTRUCTION_SHORT_STRING}</p>
 				</div>
 			</div>
-			<div class="hidden md:flex typo-u4">{children}</div>
+			<div class="hidden md:flex">{children}</div>
+
+			{showModal && (
+				<Modal title={INSTRUCTION_STRING} onClose={() => setShowModal(false)}>
+					{children}
+				</Modal>
+			)}
 		</div>
 	);
 }

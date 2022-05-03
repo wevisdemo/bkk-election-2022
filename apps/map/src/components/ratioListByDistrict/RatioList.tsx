@@ -74,7 +74,7 @@ export default function RatioListTable() {
 	}
 
 	return (
-		<div class="flex flex-col gap-4">
+		<div class="flex flex-col h-full">
 			<div
 				class={`grid ${
 					preset.electionData.total.progress ? 'grid-cols-3 md:grid-cols-6' : 'grid-cols-2 md:grid-cols-5'
@@ -90,6 +90,7 @@ export default function RatioListTable() {
 					>{v.children}</SortableListHeader>
 				))}
 			</div>
+			<div class='flex flex-col pt-4 gap-4 overflow-y-auto'>
 			{sortedDistricts.map((d: District, i: number) => (
 				<RatioListRowItem
 					district={d}
@@ -97,6 +98,7 @@ export default function RatioListTable() {
 					isLive={preset.electionData.type == ElectionDataType.Live}
 				/>
 			))}
+			</div>
 		</div>
 	);
 }

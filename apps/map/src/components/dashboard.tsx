@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useContext } from 'react';
 import { FunctionComponent } from 'react';
+import { TOP_CANDIDATE_PER_DISTRICT } from '../constants/candidate';
 import { presetContext } from '../contexts/preset';
 import { Candidate } from '../models/candidate';
-import { Result } from '../models/election';
 import CandidateLegend from './CandidateLegend';
 import CandidateOverviewList from './candidateOverviewList/CandidateOverviewList';
 import PresetToggle from './PresetToggle';
@@ -20,9 +20,19 @@ const Dashboard: FunctionComponent<DashboardProps> = ({ activePresetIndex, onPre
 
 	if (!preset) return <></>;
 
-	const candidates: Candidate[] = preset.electionData.total.result
-		.sort((a, b) => b.count - a.count)
-		.map((v: Result) => preset.candidateMap[v.candidateId]);
+	const candidateLabels: Candidate[] = useMemo(() => {
+		let tempCandidates: Candidate[] = [];
+		for (const district of preset.electionData.districts){
+			const sorted = district.voting.result.sort((a, b) => b.count - a.count);
+			for (let i = 0; i < TOP_CANDIDATE_PER_DISTRICT; i++){
+				const candidate = preset.candidateMap[sorted[i].candidateId];
+				if (tempCandidates.indexOf(candidate) == -1) {
+					tempCandidates.push(candidate)
+				}
+			}
+		}
+		return tempCandidates;
+	}, [preset])
 
 	return (
 		<div className="flex-1 flex flex-col bg-black text-white p-6 lg:p-12 space-y-4 lg:space-y-12 overflow-y-hidden">
@@ -39,7 +49,7 @@ const Dashboard: FunctionComponent<DashboardProps> = ({ activePresetIndex, onPre
 				<div className="w-2/3 space-y-6">
 					<h2 className="typo-h4">คะแนนรายเขต</h2>
 					<RatioList />
-					<CandidateLegend candidates={candidates}>
+					<CandidateLegend candidates={candidateLabels}>
 						ขนาดกล่อง ตามจำนวนผู้มีสิทธิ์เลือกตั้งในเขตนั้น <br />
 						สัดส่วนสี ในแต่ละกล่องตามสัดส่วนคะแนนของผู้สมัคร
 					</CandidateLegend>

@@ -31,7 +31,7 @@ export default function RatioListRowItem({
 	];
 
 	const progressItems: ProgressItem[] = district.voting.result
-		// .sort((a: Result, b: Result) => b.count - a.count)
+		.sort((a: Result, b: Result) => b.count - a.count)
 		.map((res: Result) => {
 			return {
 				percent: res.count / district.voting.totalVotes,
