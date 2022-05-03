@@ -9,5 +9,5 @@ export interface Candidate {
 }
 
 export type CandidateMap = {
-	[number: number]: Candidate;
+	[id: string]: Candidate;
 };

@@ -5,7 +5,7 @@ import { ElectionDataType } from '../../models/election';
 import Progress, { ProgressItem } from '../Progress';
 
 interface Props {
-	candidateId: number;
+	candidateId: string;
 	index: number;
 	topVoteCount: number;
 	isInTop: boolean;

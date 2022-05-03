@@ -25,7 +25,7 @@ export interface Voting {
 }
 
 export interface Result {
-	candidateId: number;
+	candidateId: string;
 	count: number;
 }
 
