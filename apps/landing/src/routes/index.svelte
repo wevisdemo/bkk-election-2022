@@ -17,38 +17,38 @@
 			th: 'ข้อมูลผู้สมัครผู้ว่าฯ + ส.ก.',
 			en: 'Meet the Candidates',
 			href: '/candidate',
-			image: '/static/images/cover/tn_candidate.png'
+			image: '/static/images/cover/tn_candidate.webp'
 		},
 		{
 			th: 'ข้อมูลการเลือกตั้ง กทม. ย้อนหลัง',
 			en: 'Voting Map',
-			image: '/static/images/cover/tn_result.png'
+			image: '/static/images/cover/tn_result.webp'
 		},
 		{
 			th: 'ตรวจสอบกติกาการเลือกตั้ง',
 			en: 'How to Vote?',
 			href: '',
-			image: '/static/images/cover/tn_howtovote.png'
+			image: '/static/images/cover/tn_howtovote.webp'
 		},
 		{
 			th: 'ศึกเลือกตั้ง กทม. บนโลกโซเชียล',
 			en: 'Social Trend',
 			href: '/socialtrend',
-			image: '/static/images/cover/tn_sociallistening.png'
+			image: '/static/images/cover/tn_sociallistening.webp'
 		},
 		{
 			th: 'ข้อมูลปัญหากวนใจชาว กทม.',
 			en: 'BKK Followup',
 			href: 'https://bkkfollowup.wevis.info/',
 			external: true,
-			image: '/static/images/cover/tn_openbkk.png'
+			image: '/static/images/cover/tn_openbkk.webp'
 		},
 		{
 			th: 'ร่วมออกแบบงบประมาณ กทม.',
 			en: 'Bangkok Budgeting',
 			href: 'https://bangkokbudgeting.wevis.info',
 			external: true,
-			image: '/static/images/cover/tn_bangkokbudget.png'
+			image: '/static/images/cover/tn_bangkokbudget.webp'
 		}
 	];
 </script>
@@ -58,7 +58,7 @@
 <div class="bg-black text-white">
 	<div
 		class=" flex flex-col items-center bg-cover bg-center"
-		style="background-image: url('/static/images/landing-bg.png');"
+		style="background-image: url('/static/images/landing-bg.webp');"
 	>
 		<div
 			class="flex flex-col md:flex-row justify-center items-center px-5 py-12 md:py-32 w-full max-w-screen-xl space-y-8 md:space-y-0 md:space-x-16"
@@ -67,7 +67,8 @@
 				<PartnersLogo />
 				<img src="/static/images/bkkelection-white-big.svg" alt="BKK ELECTION 2022" />
 				<p class="typo-b4 text-center">
-					ติดตามข้อมูลเกี่ยวกับการเลือกตั้งผู้ว่าฯ <br class="md:hidden" />และสมาชิกสภา กทม. ได้ที่นี่
+					ติดตามข้อมูลเกี่ยวกับการเลือกตั้งผู้ว่าฯ <br class="md:hidden" />และสมาชิกสภา กทม.
+					ได้ที่นี่
 				</p>
 				<Counter until={new Date('2022/05/22 8:00 GMT+7')}>
 					นับถอยหลังเปิดหีบเลือกตั้ง<br />วันอาทิตย์ที่ 22 พฤษภาคม พ.ศ. 2565 เวลา 08.00 - 17.00 น.
