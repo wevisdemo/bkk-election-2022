@@ -11624,6 +11624,11 @@ svelte-hmr@^0.14.9:
   resolved "https://registry.npmjs.org/svelte-hmr/-/svelte-hmr-0.14.11.tgz"
   integrity sha512-R9CVfX6DXxW1Kn45Jtmx+yUe+sPhrbYSUp7TkzbW0jI5fVPn6lsNG9NEs5dFg5qRhFNAoVdRw5qQDLALNKhwbQ==
 
+svelte-intersection-observer@^0.10.0:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/svelte-intersection-observer/-/svelte-intersection-observer-0.10.0.tgz#6f9ff6c235ee80b761c169406e389ff15d1e8f3a"
+  integrity sha512-GdOTMSrRpoBciMe+NbocsHOBvqKJ5OiL5H8Jz4mBoDGHba9VOI4oGeXAmMOmh8mi5gq95+0b0DVI+6alcQ7TCA==
+
 svelte-preprocess@^4.0.0, svelte-preprocess@^4.10.1:
   version "4.10.4"
   resolved "https://registry.npmjs.org/svelte-preprocess/-/svelte-preprocess-4.10.4.tgz"
