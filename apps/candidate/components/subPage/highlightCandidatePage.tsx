@@ -67,12 +67,12 @@ export function HighLightCandidatePage({
         />
         <div className="flex flex-col md:flex-row justify-between items-center m-auto md:mr-[60px] w-full h-full z-10 relative md:pr-[20px]">
           <div className="text-white text-center md:text-left mt-[40px] md:ml-[6vw] md:mb-[6vw] md:mx-auto md:self-end">
-            <p className="typo-h2 drop-shadow-[0_4px_30px_rgba(0,0,0,0.6)]">
+            <h1 className="typo-h2 drop-shadow-[0_4px_30px_rgba(0,0,0,0.6)]">
               {governor.name}
-            </p>
-            <p className="typo-h5 drop-shadow-[0_4px_30px_rgba(0,0,0,0.6)]">
+            </h1>
+            <h5 className="typo-h5 drop-shadow-[0_4px_30px_rgba(0,0,0,0.6)]">
               เบอร์ {governor.number}
-            </p>
+            </h5>
           </div>
           <div className="mt-[60vh] md:my-auto">
             <CandidateInfoCard governor={governor} />
@@ -82,13 +82,13 @@ export function HighLightCandidatePage({
       {!showContent ? (
         <div className="bg-[#f1f1f1] px-[8px] py-[28px] md:py-[80px] text-center">
           <p className="typo-b5 mb-[20px]">Coming Soon..</p>
-          <p className="typo-h5 mb-[5px]">
+          <h5 className="typo-h5 mb-[5px]">
             1 Exclusive Speech : ทำไมต้องเลือกคุณเป็นผู้ว่าฯ กทม.
-          </p>
-          <p className="typo-h5 mb-[5px]">
+          </h5>
+          <h5 className="typo-h5 mb-[5px]">
             20 คำตอบด้านนโยบาย วิสัยทัศน์ และ ไลฟ์สไตล์
-          </p>
-          <p className="typo-h5">+ อีก 5 คำตอบเคลียร์ใจเฉพาะตัว</p>
+          </h5>
+          <h5 className="typo-h5">+ อีก 5 คำตอบเคลียร์ใจเฉพาะตัว</h5>
         </div>
       ) : (
         <div>
@@ -108,9 +108,9 @@ export function HighLightCandidatePage({
       </div>
       <div className="bg-black">
         <div className="py-[34px] py-[52px]">
-          <p className="typo-h5 text-white text-center px-[20px]">
+          <h2 className="typo-h5 text-white text-center px-[20px]">
             ฟังคำตอบจากผู้สมัครผู้ว่าฯ กทม. คนอื่น
-          </p>
+          </h2>
           <div className="w-fit m-auto grid grid-cols-2 md:grid-cols-4 mb-[20px] gap-[15px] md:gap-[30px] mt-[35px] md:mt-[74px]">
             {getOtherCandidate().map((candidate) => {
               return (

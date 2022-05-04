@@ -29,8 +29,7 @@ export function NewsList({ newsList }: PropsType) {
   }, []);
   return (
     <div className="m-auto py-[16px] relative">
-      <p className="typo-h5 my-[25px] text-center">RELATED NEWS</p>
-      {/* TODO: refactor slide */}
+      <h2 className="typo-h5 my-[25px] text-center">RELATED NEWS</h2>
       <Swiper
         className=" md:max-w-[1160px] max-w-[250px] custom-swip"
         modules={[Navigation]}

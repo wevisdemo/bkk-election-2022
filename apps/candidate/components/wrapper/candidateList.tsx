@@ -23,10 +23,10 @@ export function CandidateList({ candidateList, isComingSoon }: PropsType) {
 
   return (
     <Fragment>
-      <p className="typo-h5 text-white py-[48px] text-center">
+      <h2 className="typo-h5 text-white py-[48px] text-center">
         ผู้สมัครผู้ว่าฯ กทม.ทั้งหมด
         <span className="typo-b2"> ({candidateCount} คน) </span>
-      </p>
+      </h2>
       <div className="grid grid-cols-[repeat(2,auto)] md:grid-cols-[repeat(5,auto)] gap-[15px] md:gap-[30px] m-auto">
         {candidateListComponent}
       </div>

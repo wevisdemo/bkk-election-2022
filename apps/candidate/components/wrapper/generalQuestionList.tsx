@@ -34,9 +34,9 @@ export function GeneralQuestionList({
   const [reachBeginning, setReachBeginning] = useState<boolean>(true);
   return (
     <div className="block py-[50px] relative pl-[30px] md:pl-[120px]">
-      <p className="font-heading font-semibold text-[21pt] md:text-[28pt] leading-[1.25] mb-[45px] md:mb-[60px] text-center">
+      <h2 className="font-heading font-semibold text-[21pt] md:text-[28pt] leading-[1.25] mb-[45px] md:mb-[60px] text-center">
         ตอบ {answerList.length} คำถาม{questionTypeDict[questionType]}
-      </p>
+      </h2>
 
       <div className="">
         <Swiper

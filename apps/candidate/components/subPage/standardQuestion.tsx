@@ -35,11 +35,11 @@ export default function StandardQuestion({
     <Fragment>
       <div className="pt-[40px] md:pt-[110px]  px-[20px]">
         <div className=" max-w-[930px] m-auto text-center">
-          <p className="typo-h7 ">
+          <h2 className="typo-h7 ">
             {questionTypeDict[question.type as questionType]} QUESTION{' '}
             {question.number}:
-          </p>
-          <p className="typo-h2 mt-[15px]">{question.question}</p>
+          </h2>
+          <h1 className="typo-h2 mt-[15px]">{question.question}</h1>
           {question.description && (
             <p className="typo-b4 mt-[75px] md:mt-[60px]">
               {question.description}

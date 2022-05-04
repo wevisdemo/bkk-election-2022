@@ -8,9 +8,9 @@ interface PropsType {
 export function ExclusiveQuestionCard({ answer }: PropsType) {
   return (
     <div className="max-w-[1500px] w-[90vw] pb-[28px] md:pb-[100px]flex flex-col justify-center text-white">
-      <p className="typo-b5 mt-[20px] md:order-3 md:text-center max-w-[250px] md:max-w-[1500px] m-auto pb-[20px]">
+      <h2 className="typo-b5 mt-[20px] md:order-3 md:text-center max-w-[250px] md:max-w-[1500px] m-auto pb-[20px]">
         {answer.text}
-      </p>
+      </h2>
       <YoutubePlayer
         url={answer.url}
         title="EXCLUSIVE SPEECH: ทำไม คนกรุงเทพฯ ต้องเลือกคุณเป็นผู้ว่าฯ กทม."

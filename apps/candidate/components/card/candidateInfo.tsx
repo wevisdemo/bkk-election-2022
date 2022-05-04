@@ -124,7 +124,7 @@ export function CandidateInfoCard({ governor }: PropsType) {
 
   return (
     <div className="w-full max-w-[250px] md:max-w-[400px] md:max-h-[550px] max-h-[400px] bg-black/[0.7] text-white mx-auto mb-[20px] px-[20px] overflow-y-scroll pb-[50px] rounded-[5px] custom-scroll border border-[#333333]">
-      <p className="typo-h7 text-center mt-[20px]">ข้อมูลพื้นฐาน</p>
+      <h2 className="typo-h7 text-center mt-[20px]">ข้อมูลพื้นฐาน</h2>
       <div>
         {governor.nickname && (
           <div className="pb-[10px] border-b border-white/[0.1]">

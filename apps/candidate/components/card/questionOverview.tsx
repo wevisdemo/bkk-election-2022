@@ -38,7 +38,7 @@ export function QuestionOverview(props: Propstype) {
   const questionColumn = (colName: string, questionList: IQuestion[]) => {
     return (
       <div className="flex flex-col text-left">
-        <p className="typo-h6">{colName}:</p>
+        <h6 className="typo-h6">{colName}:</h6>
         <div className="flex flex-col space-y-[25px] mt-5">
           {questionList.map((q, index) => questionRow(q))}
         </div>
@@ -93,10 +93,10 @@ export function QuestionOverview(props: Propstype) {
           />
         </div>
         <div className="text-center px-[18px] pb-[20px] md:pb-[50px] border border-[#9d9d9d] rounded-[10px] max-w-[1145px] m-auto">
-          <p className="typo-h5 pt-[60px] pb-[20px] border-b border-[#9d9d9d80]">
+          <h5 className="typo-h5 pt-[60px] pb-[20px] border-b border-[#9d9d9d80]">
             ฟัง {props.candidateList.length} ผู้สมัครตอบ{' '}
             {getGeneralQuestionsCount()} คำถามเดียวกัน
-          </p>
+          </h5>
           {questionCat.exclusive.length > 0 && (
             <div className="border-b border-[#9d9d9d80] py-[20px] md:py-[40px] flex m-auto justify-center">
               <Link href={`/question/${questionCat.exclusive[0].id}`}>

@@ -69,7 +69,7 @@ export function CandidateBadge({
                 }}
                 className="typo-h3 mr-[10px]"
               >
-                {candidate.number}
+                <h3>{candidate.number}</h3>
               </div>
               <div className="flex flex-col justify-center">
                 <p className="typo-h8">{candidate.name}</p>

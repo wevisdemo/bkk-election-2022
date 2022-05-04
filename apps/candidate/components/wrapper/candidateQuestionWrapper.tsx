@@ -115,15 +115,15 @@ export function CandidateQuestionWrapper({
       {answerCategory.exclusive.length > 0 && (
         <div className="bg-black pt-[28px] md:pt-[80px] ">
           <div className="max-w-[1500px] w-[90vw] pt-[40px] md:pt-[50px] pb-[28px] md:pb-[100px] m-auto">
-            <p className="typo-h7 text-white md:text-center w-full max-w-[250px] md: m-auto">
+            <h2 className="typo-h7 text-white md:text-center w-full max-w-[250px] md: m-auto">
               EXCLUSIVE SPEECH
-            </p>
+            </h2>
             <div className="w-full flex">
               <Link
                 href={`/question/${answerCategory.exclusive[0].nc_xeff__questions_id}`}
               >
                 <a className="typo-h3 text-white md:text-center w-full max-w-[250px] md:max-w-[1500px] mt-[10px] m-auto hover:cursor-pointer hover:underline">
-                  {answerCategory.exclusive[0].questionsRead.question}
+                  <h2>{answerCategory.exclusive[0].questionsRead.question}</h2>
                 </a>
               </Link>
             </div>

@@ -115,8 +115,8 @@ const Home = ({
       <Metadata title="ข้อมูลผู้สมัคร" imageSrc={candidateHome.src} />
       <div>
         <div className="flex flex-col items-center text-center px-[20px] mt-12">
-          <p className="typo-h6">MEET THE CANDIDATES</p>
-          <p className="typo-h1">ข้อมูลผู้สมัคร</p>
+          <h1 className="typo-h6">MEET THE CANDIDATES</h1>
+          <h1 className="typo-h1">ข้อมูลผู้สมัคร</h1>
           <div className="typo-u3 mt-[10px] mb-[70px] max-w-[280px] md:max-w-[47rem]">
             ทำความรู้จักผู้สมัครผู้ว่าฯ กทม. และค้นหาสมาชิกสภา กทม. ในเขตของคุณ
           </div>
@@ -218,7 +218,6 @@ export const getStaticProps: GetStaticProps<PropsType> = async (context) => {
   let questionList = [] as IQuestion[];
   const [candidateRes, errMsg1] = await getNocoApi('governors');
   if (errMsg1) {
-    // TODO: redirect
     return {
       props: {
         candidateList,
@@ -233,7 +232,6 @@ export const getStaticProps: GetStaticProps<PropsType> = async (context) => {
 
   const [councilRes, errMsg2] = await getNocoApi('councils?limit=1000');
   if (errMsg2) {
-    // TODO: redirect
     return {
       props: {
         candidateList,
@@ -249,7 +247,6 @@ export const getStaticProps: GetStaticProps<PropsType> = async (context) => {
 
   const [questionRes, errMsg3] = await getNocoApi('questions');
   if (errMsg2) {
-    // TODO: redirect
     return {
       props: {
         candidateList,

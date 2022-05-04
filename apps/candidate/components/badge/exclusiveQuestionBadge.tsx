@@ -18,9 +18,9 @@ export function ExclusiveQuestionBadge({ answer, ignoreGovernor }: PropsType) {
       {!ignoreGovernor && (
         <Link href={`/${answer.nc_xeff__candidates_id}`}>
           <a>
-            <p className="typo-h6 text-white mb-[20px] hover:cursor-pointer hover:underline">
+            <h6 className="typo-h6 text-white mb-[20px] hover:cursor-pointer hover:underline">
               {answer.governorsRead.name}
-            </p>
+            </h6>
           </a>
         </Link>
       )}

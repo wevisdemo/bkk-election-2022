@@ -28,13 +28,11 @@ export function Council(props: PropsType) {
         </div>
       )}
       <div className="flex border-t border-[#9d9d9d] w-full max-w-[288px] md:max-w-[1024px]">
-        <div className=" justify-center w-[100px] md:w-[150px] h-[100px] md:h-[150px] bg-[#333333] text-white">
-          <p className="font-heading font-semibold text-[27pt] md:text-[48pt] leading-[45px] md:leading-[80px]">
-            {council.number}
-          </p>
-          <p className="font-heading font-semibold text-[14pt] md:text-[18pt] whitespace-pre-wrap">
+        <div className=" justify-center w-[100px] md:w-[150px] h-[100px] md:h-[150px] bg-[#333333] text-white flex flex-col">
+          <h2 className="typo-h1">{council.number}</h2>
+          <h5 className="typo-h6 whitespace-pre-wrap">
             {specialWord(council.district)}
-          </p>
+          </h5>
         </div>
         <div className="flex flex-col flex-1 md:ml-[50px] ml-[20px] text-left">
           <p className="typo-h7 my-[20px]">{council.name}</p>

@@ -57,12 +57,12 @@ export function CandidatePage({
         />
         <div className="flex flex-col md:flex-row justify-between items-center m-auto md:mr-[60px] w-full h-full z-10 relative md:pr-[20px]">
           <div className="text-white text-center md:text-left mt-[40px] md:ml-[6vw] md:mb-[6vw] md:mx-auto md:self-end">
-            <p className="typo-h2 drop-shadow-[0_4px_30px_rgba(0,0,0,0.6)]">
+            <h1 className="typo-h2 drop-shadow-[0_4px_30px_rgba(0,0,0,0.6)]">
               {governor.name}
-            </p>
-            <p className="typo-h5 drop-shadow-[0_4px_30px_rgba(0,0,0,0.6)]">
+            </h1>
+            <h5 className="typo-h5 drop-shadow-[0_4px_30px_rgba(0,0,0,0.6)]">
               เบอร์ {governor.number}
-            </p>
+            </h5>
           </div>
           <div className="mt-[60vh] md:my-auto">
             <CandidateInfoCard governor={governor} />
@@ -71,7 +71,9 @@ export function CandidatePage({
       </div>
       {governor.policy && (
         <div className="px-[8px] py-[28px] md:py-[80px]">
-          <p className="typo-h6 mb-[30px] md:mb-[42px] ml-[10%]">นโยบายเด่น</p>
+          <h6 className="typo-h6 mb-[30px] md:mb-[42px] ml-[10%]">
+            นโยบายเด่น
+          </h6>
           <p className="typo-b4 max-w-[280px] md:max-w-[750px] m-auto">
             <div
               style={{

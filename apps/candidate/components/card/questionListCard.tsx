@@ -56,7 +56,7 @@ export function QuestionListCard(props: Propstype) {
   const questionColumn = (colName: string, questionList: IQuestion[]) => {
     return (
       <div className="flex flex-col text-left">
-        <p className="typo-h6">{colName}:</p>
+        <h6 className="typo-h6">{colName}:</h6>
         <div className="flex flex-col space-y-[25px] mt-5">
           {questionList.map((q, index) => questionRow(q))}
         </div>
@@ -66,7 +66,7 @@ export function QuestionListCard(props: Propstype) {
 
   return (
     <div className="text-white max-w-[1065px] m-auto px-[18px] pt-[70px] md:pt-[110px] pb-[64px] md:pb-[88px]">
-      <p className="typo-h5 text-center">ดูคำถามอื่นๆ</p>
+      <h5 className="typo-h5 text-center">ดูคำถามอื่นๆ</h5>
       {questionCat.exclusive.length > 0 && (
         <div className="border-b border-[#9d9d9d80] py-[20px] md:py-[40px] flex m-auto justify-center">
           <Link href={`/question/${questionCat.exclusive[0].id}`}>

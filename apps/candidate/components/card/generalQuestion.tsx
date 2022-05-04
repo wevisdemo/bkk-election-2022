@@ -15,11 +15,9 @@ export function GeneralQuestionCard({ answer, disabledLink }: PropsType) {
               pointerEvents: disabledLink ? 'none' : 'all',
               cursor: disabledLink ? 'unset' : 'pointer',
             }}
-            className={`font-heading font-semibold text-[14pt] md:text-[18pt] leading-[1.25] ${
-              disabledLink ? '' : 'hover:underline'
-            }`}
+            className={`typo-h6 ${disabledLink ? '' : 'hover:underline'}`}
           >
-            {answer.questionsRead.question}
+            <h2>{answer.questionsRead.question}</h2>
           </a>
         </Link>
         <p className="typo-b5 mt-[20px]">{answer.text}</p>
