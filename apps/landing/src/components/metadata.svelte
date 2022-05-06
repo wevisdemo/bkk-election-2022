@@ -1,9 +1,11 @@
 <script lang="ts">
 	export let title: string = '';
 
-	const description = 'ติดตามข้อมูลเกี่ยวกับการเลือกตั้ง กทม. 2022 ได้ที่นี่';
+	const description = `สรุปครบ 'เลือกตั้งผู้ว่าฯ กทม. 2565' และ 'เลือกตั้ง ส.ก.' เช็กประวัติ นโยบาย หมายเลขแคนดิเดต พร้อมคู่มือเลือกตั้ง และเช็กผลเลือกตั้ง กทม. แบบเรียลไทม์`;
 
-	$: fullTitle = `${title ? `${title} - ` : ''}Bangkok Election 2022`;
+	$: fullTitle = `${
+		title ? `${title} - ` : ''
+	}Bangkok Election 2022 : เกาะติด 'เลือกตั้งผู้ว่าฯ กทม. 2565'`;
 </script>
 
 <svelte:head>

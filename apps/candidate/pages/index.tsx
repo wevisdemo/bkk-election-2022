@@ -4,14 +4,13 @@ import arrowW from '../static/icons/arrow-white.svg';
 import { HighLightCandidateList } from '../components/wrapper/highlightCandidateList';
 import { QuestionOverview } from '../components/card/questionOverview';
 import { CandidateList } from '../components/wrapper/candidateList';
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { CouncilList } from '../components/wrapper/councilList';
 import { ShareList } from '../components/wrapper/shareList';
 import { getNocoApi } from '../utils/nocoHandler';
 import { ICouncil, IGovernor, IQuestion } from '../types/business';
 import Metadata from '../components/metadata';
 import { useRouter } from 'next/router';
-import Head from 'next/head';
 import candidateHome from '../static/images/og/candidates_home.png';
 
 interface PropsType {
@@ -112,11 +111,21 @@ const Home = ({
 
   return (
     <>
-      <Metadata title="ข้อมูลผู้สมัคร" imageSrc={candidateHome.src} />
+      <Metadata
+        title="ข้อมูลผู้สมัครผู้ว่าฯ กทม. และ ส.ก. 2565"
+        imageSrc={candidateHome.src}
+      />
       <div>
         <div className="flex flex-col items-center text-center px-[20px] mt-12">
-          <h1 className="typo-h6">MEET THE CANDIDATES</h1>
-          <h1 className="typo-h1">ข้อมูลผู้สมัคร</h1>
+          <p className="typo-h6">MEET THE CANDIDATES</p>
+
+          <h1>
+            <p className="typo-h1">ข้อมูลผู้สมัคร</p>
+            <span className="hidden">
+              ผู้ว่าฯ กทม. และผู้สมัครสมาชิกสภา กทม. (ส.ก.) 2565
+            </span>
+          </h1>
+
           <div className="typo-u3 mt-[10px] mb-[70px] max-w-[280px] md:max-w-[47rem]">
             ทำความรู้จักผู้สมัครผู้ว่าฯ กทม. และค้นหาสมาชิกสภา กทม. ในเขตของคุณ
           </div>
@@ -139,9 +148,10 @@ const Home = ({
             ) : (
               <div className="w-[16px] h-[17px]" />
             )}
-            <span className="typo-h8 ml-[10px] md:ml-[20px]">
+            <h2 className="typo-h8 ml-[10px] md:ml-[20px]">
+              <span className="hidden">เช็กหมายเลข (เบอร์) </span>
               ผู้สมัครผู้ว่าฯ กทม.
-            </span>
+            </h2>
           </div>
           <div
             className="text-center bg-white py-5 px-[10px] hover:cursor-pointer flex items-center justify-center"

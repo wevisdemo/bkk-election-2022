@@ -67,12 +67,17 @@ export function HighLightCandidatePage({
         />
         <div className="flex flex-col md:flex-row justify-between items-center m-auto md:mr-[60px] w-full h-full z-10 relative md:pr-[20px]">
           <div className="text-white text-center md:text-left mt-[40px] md:ml-[6vw] md:mb-[6vw] md:mx-auto md:self-end">
-            <h1 className="typo-h2 drop-shadow-[0_4px_30px_rgba(0,0,0,0.6)]">
-              {governor.name}
+            <h1>
+              <p className="typo-h2 drop-shadow-[0_4px_30px_rgba(0,0,0,0.6)]">
+                {governor.name}
+              </p>
+              <span className="hidden">
+                {governor.party} ผู้สมัคร ผู้ว่าฯ กทม.{' '}
+              </span>
+              <p className="typo-h5 drop-shadow-[0_4px_30px_rgba(0,0,0,0.6)]">
+                เบอร์ {governor.number}
+              </p>
             </h1>
-            <h5 className="typo-h5 drop-shadow-[0_4px_30px_rgba(0,0,0,0.6)]">
-              เบอร์ {governor.number}
-            </h5>
           </div>
           <div className="mt-[60vh] md:my-auto">
             <CandidateInfoCard governor={governor} />

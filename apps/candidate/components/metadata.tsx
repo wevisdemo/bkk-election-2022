@@ -4,18 +4,21 @@ import Head from 'next/head';
 interface MetadataProps {
   title?: string;
   imageSrc?: string;
+  description?: string;
 }
 
-const description = 'ติดตามข้อมูลเกี่ยวกับการเลือกตั้ง กทม. 2022 ได้ที่นี่';
+const DEFAULT_DESCRIPTION = `เช็คประวัติผู้สมัครผู้ว่าฯ กทม. และ ส.ก. เบอร์ นโยบาย และวิสัยทัศน์ กับการตอบคำถามว่าทำไม คนกรุงเทพฯ ต้องเลือกคุณเป็นผู้ว่าฯ กทม.`;
 
-const Metadata: FunctionComponent<MetadataProps> = ({ title, imageSrc }) => {
-  const fullTitle = `${title} - Bangkok Election 2022`;
-
+const Metadata: FunctionComponent<MetadataProps> = ({
+  title,
+  imageSrc,
+  description = DEFAULT_DESCRIPTION,
+}) => {
   return (
     <Head>
-      <title>{fullTitle}</title>
+      <title>{title}</title>
       <meta name="description" content={description} />
-      <meta property="og:title" content={fullTitle} />
+      <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={imageSrc || ''} />
       <meta name="twitter:card" content="summary_large_image" />

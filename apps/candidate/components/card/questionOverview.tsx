@@ -93,10 +93,10 @@ export function QuestionOverview(props: Propstype) {
           />
         </div>
         <div className="text-center px-[18px] pb-[20px] md:pb-[50px] border border-[#9d9d9d] rounded-[10px] max-w-[1145px] m-auto">
-          <h5 className="typo-h5 pt-[60px] pb-[20px] border-b border-[#9d9d9d80]">
+          <h2 className="typo-h5 pt-[60px] pb-[20px] border-b border-[#9d9d9d80]">
             ฟัง {props.candidateList.length} ผู้สมัครตอบ{' '}
-            {getGeneralQuestionsCount()} คำถามเดียวกัน
-          </h5>
+            {getGeneralQuestionsCount()} คำถาม แสดงนโยบาย และวิสัยทัศน์
+          </h2>
           {questionCat.exclusive.length > 0 && (
             <div className="border-b border-[#9d9d9d80] py-[20px] md:py-[40px] flex m-auto justify-center">
               <Link href={`/question/${questionCat.exclusive[0].id}`}>

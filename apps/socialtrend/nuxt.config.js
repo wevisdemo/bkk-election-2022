@@ -1,7 +1,6 @@
-const webTitle = 'Social Trend - Bangkok Election 2022'
-const webDescription = 'ติดตามข้อมูลเกี่ยวกับการเลือกตั้ง กทม. 2022 ได้ที่นี่'
+const webTitle = 'Social Listening เลือกตั้งผู้ว่าฯ กทม. บนโลกออนไลน์'
+const webDescription = `สรุปครบ 'เลือกตั้งผู้ว่าฯ กทม. 2565' และ 'เลือกตั้ง ส.ก.' เช็กประวัติ นโยบาย หมายเลขแคนดิเดต พร้อมคู่มือเลือกตั้ง และเช็กผลเลือกตั้ง กทม. แบบเรียลไทม์`
 const ogImage = '/socialtrend/sociallistening_og.png'
-const webUrl = ''
 
 export default {
   // Target: https://go.nuxtjs.dev/config-target
@@ -43,11 +42,6 @@ export default {
         content: ogImage,
       },
       {
-        hid: 'og:url',
-        property: 'og:url',
-        content: webUrl,
-      },
-      {
         hid: 'twitter:title',
         name: 'twitter:title',
         content: webTitle,
@@ -66,11 +60,6 @@ export default {
         hid: 'twitter:image',
         name: 'twitter:image',
         content: ogImage,
-      },
-      {
-        hid: 'twitter:url',
-        property: 'twitter:url',
-        content: webUrl,
       },
     ],
     link: [

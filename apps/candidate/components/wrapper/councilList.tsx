@@ -75,7 +75,8 @@ export function CouncilList(props: PropsType) {
   return (
     <div className="text-center p-[20px] pb-[90px] md:pt-[130px] md:pb-[100px]">
       <h2 className="typo-h2 mb-[28px]">
-        ผู้สมัครสมาชิกสภา กทม. ({props.councils.length})
+        <span className="hidden">เช็กหมายเลข (เบอร์) </span> ผู้สมัครสมาชิกสภา
+        กทม. (ส.ก.) ({props.councils.length})
       </h2>
       {section == 'district' && (
         <p className="typo-b5 mb-[20px] md:mb-[40px]">เลือกเขต</p>

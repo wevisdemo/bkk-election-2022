@@ -16,10 +16,11 @@
 			<img src={image} alt={en} class="object-cover w-full h-full" />
 		</div>
 		<div class="content absolute inset-0 flex flex-row px-8 py-6 bg-black bg-opacity-20">
-			<div class="flex-1">
+			<h2 class="flex-1">
 				<p class="typo-u3">{en}</p>
+				<span>{' '}</span>
 				<p class="typo-h6">{th}</p>
-			</div>
+			</h2>
 			{#if external}
 				<svg width="16" height="17" viewBox="0 0 16 17" fill="none" stroke="white" stroke-width="2">
 					<path d="M6.00037 10.5L14.0004 2.5" />

@@ -16,30 +16,30 @@
 
 	const projects = [
 		{
-			th: 'ข้อมูลผู้สมัครผู้ว่าฯ + ส.ก.',
+			th: 'ข้อมูล ประวัติ ผู้สมัคร ผู้ว่าฯ กทม. และ ส.ก.',
 			en: 'Meet the Candidates',
 			href: '/candidate',
 			image: '/static/images/cover/tn_candidate.webp'
 		},
 		{
-			th: 'ข้อมูลการเลือกตั้ง กทม. ย้อนหลัง',
-			en: 'Voting Map',
+			th: 'เช็กผลเลือกตั้งผู้ว่าฯ กทม. แบบเรียลไทม์',
+			en: 'Bkk Election Real-time Results',
 			image: '/static/images/cover/tn_result.webp'
 		},
 		{
-			th: 'ตรวจสอบกติกาการเลือกตั้ง',
-			en: 'How to Vote?',
+			th: 'กติกาการเลือกตั้งผู้ว่าฯ กทม. บัตร 2 ใบ กาอย่างไร',
+			en: 'How to vote?',
 			href: '',
 			image: '/static/images/cover/tn_howtovote.webp'
 		},
 		{
-			th: 'ศึกเลือกตั้ง กทม. บนโลกโซเชียล',
-			en: 'Social Trend',
+			th: 'เลือกตั้งผู้ว่าฯ กทม. บนโลกออนไลน์',
+			en: 'Social Listening',
 			href: '/socialtrend',
 			image: '/static/images/cover/tn_sociallistening.webp'
 		},
 		{
-			th: 'ข้อมูลปัญหากวนใจชาว กทม.',
+			th: 'ปัญหาสะสมของคน กทม.',
 			en: 'BKK Followup',
 			href: 'https://bkkfollowup.wevis.info/',
 			external: true,
@@ -68,7 +68,10 @@
 			<div class="flex-1 flex flex-col space-y-8">
 				<PartnersLogo />
 				<h1 class="mx-auto">
-					<img src="/static/images/bkkelection-white-big.svg" alt="BKK ELECTION 2022" />
+					<img
+						src="/static/images/bkkelection-white-big.svg"
+						alt="เลือกตั้งผู้ว่าฯ กทม. 2565 - Bangkok Election 2022"
+					/>
 				</h1>
 				<p class="typo-b4 text-center">
 					ติดตามข้อมูลเกี่ยวกับการเลือกตั้งผู้ว่าฯ <br class="md:hidden" />และสมาชิกสภา กทม.

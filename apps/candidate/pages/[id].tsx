@@ -48,7 +48,15 @@ export default function Governor({
   return (
     <div>
       <Metadata
-        title={candidate.name || 'ข้อมูลผู้สมัคร'}
+        title={
+          `${candidate.name} ผู้สมัคร ผู้ว่าฯ กทม. เบอร์ ${candidate.number}` ||
+          'ข้อมูลผู้สมัคร'
+        }
+        description={
+          candidate.name
+            ? `ทำความรู้จัก ประวัติ นโยบาย ${candidate.name} ${candidate.party} ผู้สมัคร ผู้ว่าฯ กทม. เบอร์ ${candidate.number}`
+            : undefined
+        }
         imageSrc={getCandidateOG(candidate.number || 1)}
       />
 
