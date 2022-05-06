@@ -1,5 +1,6 @@
 export enum Visualization {
 	GRID_RATIO = 'GRID_RATIO',
+	GRID_WINNER = 'GRID_WINNER',
 	MAP_WINNER = 'MAP_WINNER',
 	LIST_RATIO = 'LIST_RATIO'
 }

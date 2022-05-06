@@ -8,6 +8,7 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
+		"@types/offscreencanvas": "^2019.6.4",
 		"preact": "^10.5.15",
 		"react": "^18.0.0",
 		"ui": "*"

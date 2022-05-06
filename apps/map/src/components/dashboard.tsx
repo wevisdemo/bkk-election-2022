@@ -6,10 +6,11 @@ import { presetContext } from '../contexts/preset';
 import { Candidate } from '../models/candidate';
 import CandidateLegend from './CandidateLegend';
 import CandidateOverviewList from './candidateOverviewList/CandidateOverviewList';
+import DistrictMap from './district-map/district-map-canvas';
 import PresetToggle from './PresetToggle';
 import RatioList from './ratioListByDistrict/RatioList';
 import TabsView from './TabsView';
-
+import { Visualization } from '../models/visualization'
 interface DashboardProps {
 	activePresetIndex: number;
 	onPresetChange: (i: number) => void;
@@ -22,9 +23,9 @@ const Dashboard: FunctionComponent<DashboardProps> = ({ activePresetIndex, onPre
 
 	const candidateLabels: Candidate[] = useMemo(() => {
 		let tempCandidates: Candidate[] = [];
-		for (const district of preset.electionData.districts){
+		for (const district of preset.electionData.districts) {
 			const sorted = district.voting.result.sort((a, b) => b.count - a.count);
-			for (let i = 0; i < TOP_CANDIDATE_PER_DISTRICT; i++){
+			for (let i = 0; i < TOP_CANDIDATE_PER_DISTRICT; i++) {
 				const candidate = preset.candidateMap[sorted[i].candidateId];
 				if (tempCandidates.indexOf(candidate) == -1) {
 					tempCandidates.push(candidate)
@@ -46,15 +47,53 @@ const Dashboard: FunctionComponent<DashboardProps> = ({ activePresetIndex, onPre
 					<h2 className="typo-h4">คะแนนรวมทั้ง กทม.</h2>
 					<CandidateOverviewList />
 				</div>
-				<div className="flex flex-col w-2/3 space-y-6">
-					<h2 className="typo-h4">คะแนนรายเขต</h2>
-					<RatioList />
-					<CandidateLegend candidates={candidateLabels}>
-						<span>
-							<b>ขนาดกล่อง</b> ตามจำนวนผู้มีสิทธิ์เลือกตั้งในเขตนั้น <br/>
-							<b>สัดส่วนสี</b> ในแต่ละกล่องตามสัดส่วนคะแนนของผู้สมัคร
-						</span>
-					</CandidateLegend>
+				<div className="flex flex-col w-2/3 ">
+					<div>
+						<h2 className="typo-h4">คะแนนรายเขต</h2>
+						<RatioList />
+						<CandidateLegend candidates={candidateLabels}>
+							<span>
+								<b>ขนาดกล่อง</b> ตามจำนวนผู้มีสิทธิ์เลือกตั้งในเขตนั้น <br />
+								<b>สัดส่วนสี</b> ในแต่ละกล่องตามสัดส่วนคะแนนของผู้สมัคร
+							</span>
+						</CandidateLegend>
+					</div>
+					<div>
+						<h2 className="typo-h4">คะแนนรายเขต</h2>
+						<DistrictMap styles={{ minWidth: "1012px", height: "900px" }}
+							type={Visualization.GRID_RATIO}
+							options={{ autoSize: true, debug: true }} />
+						<CandidateLegend candidates={candidateLabels}>
+							<span>
+								<b>ขนาดกล่อง</b> ตามจำนวนผู้มีสิทธิ์เลือกตั้งในเขตนั้น <br />
+								<b>สัดส่วนสี</b> ในแต่ละกล่องตามสัดส่วนคะแนนของผู้สมัคร
+							</span>
+						</CandidateLegend>
+					</div>
+					<div>
+						<h2 className="typo-h4">คะแนนรายเขต</h2>
+						<DistrictMap styles={{ minWidth: "1012px", minHeight: "900px" }}
+							type={Visualization.GRID_WINNER}
+							options={{ autoSize: true, debug: true }} />
+						<CandidateLegend candidates={candidateLabels}>
+							<span>
+								<b>ขนาดกล่อง</b> ตามจำนวนผู้มีสิทธิ์เลือกตั้งในเขตนั้น <br />
+								<b>สัดส่วนสี</b> ในแต่ละกล่องตามสัดส่วนคะแนนของผู้สมัคร
+							</span>
+						</CandidateLegend>
+					</div>
+					<div>
+						<h2 className="typo-h4">คะแนนรายเขต</h2>
+						<DistrictMap styles={{ minWidth: "1012px", minHeight: "900px" }}
+							type={Visualization.MAP_WINNER}
+							options={{ autoSize: true, debug: true }} />
+						<CandidateLegend candidates={candidateLabels}>
+							<span>
+								<b>ขนาดกล่อง</b> ตามจำนวนผู้มีสิทธิ์เลือกตั้งในเขตนั้น <br />
+								<b>สัดส่วนสี</b> ในแต่ละกล่องตามสัดส่วนคะแนนของผู้สมัคร
+							</span>
+						</CandidateLegend>
+					</div>
 				</div>
 			</div>
 
