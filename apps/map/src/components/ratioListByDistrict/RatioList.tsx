@@ -12,12 +12,13 @@ enum DistrictRatioSortType {
 
 const RESULT_ARROW_DOWN = (
 	<svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-		<path d="M1 1L5 5L9 1" stroke="white"/>
+		<path d="M1 1L5 5L9 1" stroke="white" />
 	</svg>
-)
+);
 
 export default function RatioListTable() {
 	const preset = useContext(presetContext);
+	const [isBottom, setIsBottom] = useState<boolean>(false);
 
 	if (!preset) return <></>;
 
@@ -32,11 +33,13 @@ export default function RatioListTable() {
 		},
 		{
 			text: 'ผู้มีสิทธิ์เลือกตั้ง',
-			sClass: 'cursor-pointer' + (preset.electionData.total.progress ? '' : ' text-right md:text-left'),
+			sClass:
+				'cursor-pointer' + (preset.electionData.total.progress ? '' : ' text-right md:text-left'),
 			sortType: DistrictRatioSortType.ELIGIBLE
 		},
-		{ text: 'ผลการเลือกตั้ง',
-		  sClass: 'col-span-3 grow hidden md:flex',
+		{
+			text: 'ผลการเลือกตั้ง',
+			sClass: 'col-span-3 grow hidden md:flex',
 			children: RESULT_ARROW_DOWN
 		},
 		{
@@ -52,14 +55,20 @@ export default function RatioListTable() {
 		const _dist = preset.electionData.districts;
 		switch (sortType) {
 			case DistrictRatioSortType.ELIGIBLE:
-				return _dist.sort((a: District, b: District) => b.voting.eligiblePopulation - a.voting.eligiblePopulation)
+				return _dist.sort(
+					(a: District, b: District) => b.voting.eligiblePopulation - a.voting.eligiblePopulation
+				);
 			case DistrictRatioSortType.PROGRESS:
-				return _dist.sort((a: District, b: District) => (b.voting.totalVotes/b.voting.eligiblePopulation) - a.voting.totalVotes/a.voting.eligiblePopulation)
+				return _dist.sort(
+					(a: District, b: District) =>
+						b.voting.totalVotes / b.voting.eligiblePopulation -
+						a.voting.totalVotes / a.voting.eligiblePopulation
+				);
 			case DistrictRatioSortType.NAME:
 			default:
-				return _dist.sort((a: District, b: District) => b.name.localeCompare(a.name))
+				return _dist.sort((a: District, b: District) => b.name.localeCompare(a.name));
 		}
-	}, [sortType])
+	}, [preset, sortType]);
 
 	const headerOnClick = (headerSortType?: DistrictRatioSortType) => {
 		if (headerSortType) {
@@ -71,13 +80,15 @@ export default function RatioListTable() {
 				setDescending(true);
 			}
 		}
-	}
+	};
 
 	return (
-		<div class="flex flex-col h-full">
+		<div class="flex flex-col h-full overflow-y-auto relative">
 			<div
 				class={`grid ${
-					preset.electionData.total.progress ? 'grid-cols-3 md:grid-cols-6' : 'grid-cols-2 md:grid-cols-5'
+					preset.electionData.total.progress
+						? 'grid-cols-3 md:grid-cols-6'
+						: 'grid-cols-2 md:grid-cols-5'
 				} typo-u4 gap-4 gap-y-1 md:gap-8 border-b border-white/40 pb-1`}
 			>
 				{headers.map((v) => (
@@ -87,17 +98,30 @@ export default function RatioListTable() {
 						isActive={v.sortType === sortType}
 						descending={descending}
 						headerOnClick={() => headerOnClick(v.sortType)}
-					>{v.children}</SortableListHeader>
+					>
+						{v.children}
+					</SortableListHeader>
 				))}
 			</div>
-			<div class='flex flex-col pt-4 gap-4 overflow-y-auto'>
-			{sortedDistricts.map((d: District, i: number) => (
-				<RatioListRowItem
-					district={d}
-					isInProgress={preset.electionData.total.progress !== undefined}
-					isLive={preset.electionData.type == ElectionDataType.Live}
+			<div
+				class="flex flex-col pt-4 gap-4 overflow-y-auto"
+				onScroll={(event) => {
+					const target = event.target as HTMLElement;
+					setIsBottom(target.scrollHeight - target.scrollTop - target.clientHeight <= 0);
+				}}
+			>
+				<div
+					class={`absolute w-full h-11 bg-gradient-to-t from-black to-black/0 bottom-0 pointer-events-none ${
+						isBottom && 'hidden'
+					}`}
 				/>
-			))}
+				{sortedDistricts.map((district: District, i: number) => (
+					<RatioListRowItem
+						district={district}
+						isInProgress={preset.electionData.total.progress !== undefined}
+						isLive={preset.electionData.type == ElectionDataType.Live}
+					/>
+				))}
 			</div>
 		</div>
 	);

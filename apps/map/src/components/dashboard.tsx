@@ -32,7 +32,7 @@ const Dashboard: FunctionComponent<DashboardProps> = ({ activePresetIndex, onPre
 			}
 		}
 		return tempCandidates;
-	}, [preset])
+	}, [preset]);
 
 	return (
 		<div className="flex-1 flex flex-col bg-black text-white p-6 lg:p-12 space-y-4 lg:space-y-12 overflow-y-hidden">
@@ -42,16 +42,18 @@ const Dashboard: FunctionComponent<DashboardProps> = ({ activePresetIndex, onPre
 			</div>
 
 			<div class="flex-1 hidden lg:flex flex-row space-x-12 overflow-y-auto">
-				<div className="flex-1 space-y-6 h-full">
+				<div className="flex flex-col flex-1 space-y-6 h-full">
 					<h2 className="typo-h4">คะแนนรวมทั้ง กทม.</h2>
 					<CandidateOverviewList />
 				</div>
-				<div className="w-2/3 space-y-6">
+				<div className="flex flex-col w-2/3 space-y-6">
 					<h2 className="typo-h4">คะแนนรายเขต</h2>
 					<RatioList />
 					<CandidateLegend candidates={candidateLabels}>
-						ขนาดกล่อง ตามจำนวนผู้มีสิทธิ์เลือกตั้งในเขตนั้น <br />
-						สัดส่วนสี ในแต่ละกล่องตามสัดส่วนคะแนนของผู้สมัคร
+						<span>
+							<b>ขนาดกล่อง</b> ตามจำนวนผู้มีสิทธิ์เลือกตั้งในเขตนั้น <br/>
+							<b>สัดส่วนสี</b> ในแต่ละกล่องตามสัดส่วนคะแนนของผู้สมัคร
+						</span>
 					</CandidateLegend>
 				</div>
 			</div>

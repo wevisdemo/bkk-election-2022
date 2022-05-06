@@ -24,7 +24,7 @@ export default function CandidateOverviewListRowItem({ candidateId, topVoteCount
 	return (
 		<>
 			<div class="flex flex-row mt-4">
-				<span class="basis-4">
+				<span class="basis-6">
 					{index + 1}
 				</span>
 				<span class="text-left font-semibold flex-1">
@@ -43,7 +43,7 @@ export default function CandidateOverviewListRowItem({ candidateId, topVoteCount
 				</span>
 			</div>
 			<div
-				class={`flex flex-row mt-2 border-0 border-b-2 border-white/20 ${isInTop ? 'h-11' : 'h-2'}`}
+				class={`flex flex-row flex-1 mt-2 border-0 border-b-2 border-white/20 ${isInTop ? 'h-11' : 'h-2'}`}
 			>
 				<Progress
 					progressItems={

@@ -14,6 +14,7 @@ enum CandidateOverviewSortType {
 
 export default function CandidateOverviewList() {
 	const preset = useContext(presetContext);
+	const [isBottom, setIsBottom] = useState<boolean>(false);
 
 	if (!preset) {
 		return <></>;
@@ -43,11 +44,12 @@ export default function CandidateOverviewList() {
 			default:
 				return _res.sort((a, b) => b.count - a.count);
 		}
-	}, [sortType]);
+	}, [preset, sortType]);
 
 	const topVoteCount: number = Math.max(...results.map((v: Result) => v.count));
 	const headers = [
-		{ text: '#',
+		{ 
+			text: '#',
 			sClass: 'text-left basis-4'
 		},
 		{
@@ -65,7 +67,8 @@ export default function CandidateOverviewList() {
 			sClass: 'text-right basis-2/12',
 			sortType: CandidateOverviewSortType.COUNT
 		},
-		{ text: '%',
+		{ 
+			text: '%',
 			sClass: 'text-right basis-2/12',
 			sortType: CandidateOverviewSortType.PERCENT
 		}
@@ -84,8 +87,8 @@ export default function CandidateOverviewList() {
 	};
 
 	return (
-		<div class="flex flex-1 flex-col text-white typo-u4">
-			<div class="flex flex-row font-normal border-b-2 border-white/40">
+		<div class="flex flex-col h-full overflow-y-auto relative">
+			<div class="flex flex-row font-normal border-b border-white/40 pb-1">
 				{headers.map((v) => (
 					<SortableListHeader
 						headerText={v.text}
@@ -96,16 +99,26 @@ export default function CandidateOverviewList() {
 					/>
 				))}
 			</div>
-			{results.map((_res: Result, index: number) => {
-				return (
-					<CandidateOverviewListRowItem
-						candidateId={_res.candidateId}
-						index={index}
-						topVoteCount={topVoteCount}
-						isInTop={index < TOP_CANDIDATE_DISPLAY}
-					/>
-				);
-			})}
+			<div class="overflow-y-auto" onScroll={(event) => {
+					const target = event.target as HTMLElement;
+					setIsBottom(target.scrollHeight - target.scrollTop - target.clientHeight <= 0);
+				}}>
+					<div
+					class={`absolute z-10 w-full h-11 bg-gradient-to-t from-black to-black/0 bottom-0 pointer-events-none ${
+						isBottom && 'hidden'
+					}`}
+				/>
+				{results.map((_res: Result, index: number) => {
+					return (
+						<CandidateOverviewListRowItem
+							candidateId={_res.candidateId}
+							index={index}
+							topVoteCount={topVoteCount}
+							isInTop={index < TOP_CANDIDATE_DISPLAY}
+						/>
+					);
+				})}
+			</div>
 		</div>
 	);
 }

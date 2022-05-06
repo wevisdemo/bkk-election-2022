@@ -14,14 +14,19 @@ export default function CandidateLegend({ candidates, children }: CandidateLegen
 	const [showModal, setShowModal] = useState<boolean>(false);
 
 	return (
-		<div class="flex flex-row md:flex-col gap-2 typo-u4">
-			<div class="flex flex-row gap-2 md:gap-4">
-				{candidates.map((candidate: Candidate) => (
-					<div class="flex gap-1 items-center">
-						<span class="w-2 md:w-3 h-2 md:h-3" style={{ backgroundColor: candidate.color }}></span>
-						<span>{candidate.shortname}</span>
-					</div>
-				))}
+		<div class="flex flex-1 md:flex-col gap-2 typo-u4 relative ml-auto">
+			<div class="flex gap-2 md:gap-4 ml-auto">
+				<div class='flex flex-row flex-1 overflow-x-auto gap-2'>
+					{candidates.map((candidate: Candidate) => (
+						<div class="flex shrink-0 gap-1 items-center">
+							<span
+								class="w-2 md:w-3 h-2 md:h-3"
+								style={{ backgroundColor: candidate.color }}
+							></span>
+							{candidate.shortname}
+						</div>
+					))}
+				</div>
 				<div class="flex flex-row gap-2 md:hidden" onClick={() => setShowModal(true)}>
 					<div class="border opacity-30" />
 					<svg
@@ -40,7 +45,7 @@ export default function CandidateLegend({ candidates, children }: CandidateLegen
 					<p class="underline font-semibold">{INSTRUCTION_SHORT_STRING}</p>
 				</div>
 			</div>
-			<div class="hidden md:flex">{children}</div>
+			<div class="hidden md:flex text-right">{children}</div>
 
 			{showModal && (
 				<Modal title={INSTRUCTION_STRING} onClose={() => setShowModal(false)}>

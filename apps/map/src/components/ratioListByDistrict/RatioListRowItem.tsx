@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useMemo } from 'react';
 import { presetContext } from '../../contexts/preset';
 import { District, Result } from '../../models/election';
 import Progress, { ProgressItem } from '../Progress';
@@ -30,14 +30,14 @@ export default function RatioListRowItem({
 		}
 	];
 
-	const progressItems: ProgressItem[] = district.voting.result
+	const progressItems: ProgressItem[] = useMemo(() => district.voting.result
 		.sort((a: Result, b: Result) => b.count - a.count)
 		.map((res: Result) => {
 			return {
 				percent: res.count / district.voting.totalVotes,
 				color: preset.candidateMap[res.candidateId].color
 			};
-		});
+		}), [district]);
 
 	return (
 		<div class={`grid ${isInProgress ? 'grid-cols-3 md:grid-cols-6' : 'grid-cols-2 md:grid-cols-5'} typo-u4 gap-x-4 gap-y-1 md:gap-8 hover:bg-white/20`}>
