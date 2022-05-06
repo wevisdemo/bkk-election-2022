@@ -1,0 +1,2 @@
+export const BKK_GOVERNOR_ELECTION_ID = 1;
+export const BKK_COUNCIL_MEMBER_ELECTION_ID = 2;

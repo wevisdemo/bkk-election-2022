@@ -16,8 +16,15 @@
 		"noEmit": true,
 		"jsx": "preserve",
 		"jsxFactory": "h",
-		"jsxFragmentFactory": "Fragment"
+		"jsxFragmentFactory": "Fragment",
+    "types": ["@types/node-fetch"],
 	},
 	"include": ["src", "../../packages/ui/type.d.ts"],
-	"references": [{ "path": "./tsconfig.node.json" }]
+	"references": [{ "path": "./tsconfig.node.json" }],
+	"ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS",
+			"esModuleInterop": true
+    },
+  }
 }
