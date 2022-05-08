@@ -18,6 +18,7 @@
 		"@preact/preset-vite": "^2.1.5",
 		"@types/node-fetch": "^2.6.1",
 		"autoprefixer": "^10.4.4",
+		"dotenv": "^16.0.0",
 		"node-fetch": "^2.6.7",
 		"postcss": "^8.4.12",
 		"tailwindcss": "^3.0.24",

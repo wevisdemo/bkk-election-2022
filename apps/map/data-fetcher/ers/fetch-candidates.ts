@@ -42,9 +42,18 @@ function mapCandidate(candidate: Candidate): OutputCandidate {
     id: 'UNMAPPED', // ผู้ว่า = number, ส.ก. = district-number
     number: candidate.no,
     fullname: candidate.fullName,
-    shortname: candidate.firstName,
+    shortname: getCandidateShortName(candidate),
     color: 'UNMAPPED',
     party: candidate.party.name,
     image: candidate.avatarURL,
   }
+}
+
+const normalTitles = ['นาย', 'นาง', 'นางสาว'];
+
+function getCandidateShortName(candidate: Candidate): string {
+  if (normalTitles.includes(candidate.title)) {
+    return candidate.firstName;
+  }
+  return `${candidate.title}${candidate.firstName}`
 }
