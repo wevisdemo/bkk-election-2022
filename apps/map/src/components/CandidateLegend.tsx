@@ -45,7 +45,7 @@ export default function CandidateLegend({ candidates, children }: CandidateLegen
 					<p class="underline font-semibold">{INSTRUCTION_SHORT_STRING}</p>
 				</div>
 			</div>
-			<div class="hidden md:flex text-right">{children}</div>
+			<div class="hidden md:flex text-right ml-auto">{children}</div>
 
 			{showModal && (
 				<Modal title={INSTRUCTION_STRING} onClose={() => setShowModal(false)}>

@@ -1,4 +1,4 @@
-import { useContext, useMemo, useState } from 'react';
+import { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { PARTY_UNDEFINED_STRING, TOP_CANDIDATE_DISPLAY } from '../../constants/candidate';
 import { presetContext } from '../../contexts/preset';
 import { Result } from '../../models/election';
@@ -15,15 +15,16 @@ enum CandidateOverviewSortType {
 export default function CandidateOverviewList() {
 	const preset = useContext(presetContext);
 	const [isBottom, setIsBottom] = useState<boolean>(false);
+	const [descending, setDescending] = useState<boolean>(true);
+	const [sortType, setSortType] = useState<CandidateOverviewSortType>(
+		CandidateOverviewSortType.COUNT
+	);
+	const containerRef = useRef<null | HTMLDivElement>(null);
 
 	if (!preset) {
 		return <></>;
 	}
 
-	const [sortType, setSortType] = useState<CandidateOverviewSortType>(
-		CandidateOverviewSortType.COUNT
-	);
-	const [descending, setDescending] = useState<boolean>(true);
 	const results = useMemo(() => {
 		const _res = preset.electionData.total.result;
 		switch (sortType) {
@@ -45,6 +46,12 @@ export default function CandidateOverviewList() {
 				return _res.sort((a, b) => b.count - a.count);
 		}
 	}, [preset, sortType]);
+
+	useEffect(() => {
+		if (containerRef.current) {
+			setIsBottom(containerRef.current.scrollHeight - containerRef.current.scrollTop - containerRef.current.clientHeight < 1)
+		}
+	})
 
 	const topVoteCount: number = Math.max(...results.map((v: Result) => v.count));
 	const headers = [
@@ -87,7 +94,7 @@ export default function CandidateOverviewList() {
 	};
 
 	return (
-		<div class="flex flex-col h-full overflow-y-auto relative">
+		<div class="flex flex-col felx-1 h-full overflow-y-auto relative typo-u4">
 			<div class="flex flex-row font-normal border-b border-white/40 pb-1">
 				{headers.map((v) => (
 					<SortableListHeader
@@ -99,9 +106,9 @@ export default function CandidateOverviewList() {
 					/>
 				))}
 			</div>
-			<div class="overflow-y-auto" onScroll={(event) => {
+			<div class="overflow-y-auto" ref={containerRef} onScroll={(event) => {
 					const target = event.target as HTMLElement;
-					setIsBottom(target.scrollHeight - target.scrollTop - target.clientHeight <= 0);
+					setIsBottom(target.scrollHeight - target.scrollTop - target.clientHeight < 1);
 				}}>
 					<div
 					class={`absolute z-10 w-full h-11 bg-gradient-to-t from-black to-black/0 bottom-0 pointer-events-none ${

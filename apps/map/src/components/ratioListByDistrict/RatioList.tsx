@@ -1,6 +1,9 @@
 import { useContext, useMemo, useState } from 'react';
+import { TOP_CANDIDATE_PER_DISTRICT } from '../../constants/candidate';
 import { presetContext } from '../../contexts/preset';
+import { Candidate } from '../../models/candidate';
 import { District, ElectionDataType } from '../../models/election';
+import CandidateLegend from '../CandidateLegend';
 import SortableListHeader from '../SortableListHeader';
 import RatioListRowItem from './RatioListRowItem';
 
@@ -83,7 +86,7 @@ export default function RatioListTable() {
 	};
 
 	return (
-		<div class="flex flex-col h-full overflow-y-auto relative">
+		<div class="flex flex-col overflow-y-hidden relative">
 			<div
 				class={`grid ${
 					preset.electionData.total.progress
@@ -108,11 +111,10 @@ export default function RatioListTable() {
 				onScroll={(event) => {
 					const target = event.target as HTMLElement;
 					setIsBottom(target.scrollHeight - target.scrollTop - target.clientHeight < 1);
-					console.log(target.scrollHeight - target.scrollTop - target.clientHeight)
 				}}
 			>
 				<div
-					class={`absolute w-full h-11 bg-gradient-to-t from-black to-black/0 bottom-0 pointer-events-none ${
+					class={`absolute w-full h-11 bg-gradient-to-t z-10 from-black to-black/0 bottom-0 pointer-events-none ${
 						isBottom && 'hidden'
 					}`}
 				/>
@@ -124,6 +126,7 @@ export default function RatioListTable() {
 					/>
 				))}
 			</div>
+
 		</div>
 	);
 }
