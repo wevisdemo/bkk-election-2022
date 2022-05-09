@@ -48,7 +48,7 @@ export default function RatioListRowItem({
 		<div
 			class={`grid ${
 				isInProgress ? 'grid-cols-3 md:grid-cols-6' : 'grid-cols-2 md:grid-cols-5'
-			} typo-u4 gap-x-4 gap-y-1 md:gap-8 hover:bg-white/20 items-center`}
+			} typo-u4 gap-x-4 gap-y-1 md:gap-8 hover:bg-white/20 items-center py-1`}
 			onMouseOver={() => setIsTooltipOpen(true)}
 			onMouseLeave={() => setIsTooltipOpen(false)}
 		>
