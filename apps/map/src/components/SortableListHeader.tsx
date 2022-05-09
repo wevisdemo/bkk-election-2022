@@ -21,7 +21,7 @@ export default function SortableListHeader({
 	return (
 		<span class={`opacity-50 ${sClass} items-center gap-1 lg:whitespace-nowrap`} onClick={headerOnClick}>
 			{headerText}
-			{isActive && (descending ? ARROW_DOWN : ARROW_UP)}
+			{isActive && (descending ? ARROW_UP : ARROW_DOWN)}
 			{children}
 		</span>
 	);

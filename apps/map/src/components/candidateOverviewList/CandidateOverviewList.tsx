@@ -26,6 +26,13 @@ export default function CandidateOverviewList() {
 		return <></>;
 	}
 
+	const sortDirection = useMemo(() => descending ? -1 : 1, [descending]);
+
+	const getDefaultSortDescending = (newSortType: CandidateOverviewSortType) => {
+		return newSortType === CandidateOverviewSortType.COUNT ||
+			newSortType === CandidateOverviewSortType.PERCENT;
+	}
+
 	const results = useMemo(() => {
 		const _res = preset.electionData.total.result;
 		switch (sortType) {
@@ -33,26 +40,26 @@ export default function CandidateOverviewList() {
 				return _res.sort((a, b) => {
 					return (preset.candidateMap[a.candidateId].party || PARTY_UNDEFINED_STRING).localeCompare(
 						preset.candidateMap[b.candidateId].party || PARTY_UNDEFINED_STRING
-					);
+					) * sortDirection;
 				});
 			case CandidateOverviewSortType.NAME:
 				return _res.sort((a, b) =>
 					preset.candidateMap[a.candidateId].fullname.localeCompare(
 						preset.candidateMap[b.candidateId].fullname
-					)
+					) * sortDirection // FIXME: sorting by name shouldn't include titles?
 				);
 			case CandidateOverviewSortType.NUMBER:
 				return _res.sort((a, b) => {
-					return (preset.candidateMap[a.candidateId].number || 0) - (
+					return ((preset.candidateMap[a.candidateId].number || 0) - (
 						preset.candidateMap[b.candidateId].number || 0
-					);
+					)) * sortDirection;
 				});
 			case CandidateOverviewSortType.PERCENT:
 			case CandidateOverviewSortType.COUNT:
 			default:
-				return _res.sort((a, b) => b.count - a.count);
+				return _res.sort((a, b) => (a.count - b.count) * sortDirection);
 		}
-	}, [preset, sortType]);
+	}, [preset, sortType, sortDirection]);
 
 	useEffect(() => {
 		if (containerRef.current) {
@@ -93,10 +100,10 @@ export default function CandidateOverviewList() {
 		if (headerSortType) {
 			if (headerSortType === sortType) {
 				setDescending(!descending);
-				results.reverse();
+				// results.reverse();
 			} else {
 				setSortType(headerSortType);
-				setDescending(true);
+				setDescending(getDefaultSortDescending(headerSortType));
 			}
 		}
 	};

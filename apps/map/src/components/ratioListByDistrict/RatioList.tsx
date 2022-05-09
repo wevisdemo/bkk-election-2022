@@ -24,7 +24,7 @@ export default function RatioListTable() {
 	if (!preset) return <></>;
 
 	const [sortType, setSortType] = useState<DistrictRatioSortType>(DistrictRatioSortType.NAME);
-	const [descending, setDescending] = useState<boolean>(true);
+	const [descending, setDescending] = useState<boolean>(false);
 
 	const headers = [
 		{
@@ -52,32 +52,39 @@ export default function RatioListTable() {
 
 	if (!preset.electionData.total.progress) headers.pop();
 
+	const sortDirection = useMemo(() => descending ? -1 : 1, [descending]);
+
+	const getDefaultSortDescending = (newSortType: DistrictRatioSortType) => {
+		return newSortType === DistrictRatioSortType.ELIGIBLE ||
+			newSortType === DistrictRatioSortType.PROGRESS;
+	}
+
 	const sortedDistricts = useMemo(() => {
 		const _dist = preset.electionData.districts;
 		switch (sortType) {
 			case DistrictRatioSortType.ELIGIBLE:
 				return _dist.sort(
-					(a: District, b: District) => b.voting.eligiblePopulation - a.voting.eligiblePopulation
+					(a: District, b: District) => (a.voting.eligiblePopulation - b.voting.eligiblePopulation) * sortDirection
 				);
 			case DistrictRatioSortType.PROGRESS:
 				return _dist.sort(
 					(a: District, b: District) => 
-					(b.voting.progress || 100) - (a.voting.progress || 100)
+						((a.voting.progress || 100) - (b.voting.progress || 100)) * sortDirection
 				);
 			case DistrictRatioSortType.NAME:
 			default:
-				return _dist.sort((a: District, b: District) => b.name.localeCompare(a.name));
+				return _dist.sort((a: District, b: District) => a.name.localeCompare(b.name) * sortDirection);
 		}
-	}, [preset, sortType]);
+	}, [preset, sortType, sortDirection]);
 
 	const headerOnClick = (headerSortType?: DistrictRatioSortType) => {
 		if (headerSortType) {
 			if (headerSortType === sortType) {
 				setDescending(!descending);
-				sortedDistricts.reverse();
+				// sortedDistricts.reverse();
 			} else {
 				setSortType(headerSortType);
-				setDescending(true);
+				setDescending(getDefaultSortDescending(headerSortType));
 			}
 		}
 	};
