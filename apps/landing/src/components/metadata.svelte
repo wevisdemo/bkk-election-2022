@@ -2,16 +2,12 @@
 	export let title: string = '';
 
 	const description = `สรุปครบ 'เลือกตั้งผู้ว่าฯ กทม. 2565' และ 'เลือกตั้ง ส.ก.' เช็กประวัติ นโยบาย หมายเลขแคนดิเดต พร้อมคู่มือเลือกตั้ง และเช็กผลเลือกตั้ง กทม. แบบเรียลไทม์`;
-
-	$: fullTitle = `${
-		title ? `${title} - ` : ''
-	}Bangkok Election 2022 : เกาะติด 'เลือกตั้งผู้ว่าฯ กทม. 2565'`;
 </script>
 
 <svelte:head>
-	<title>{fullTitle}</title>
+	<title>{title}</title>
 	<meta name="description" content={description} />
-	<meta property="og:title" content={fullTitle} />
+	<meta property="og:title" content={title} />
 	<meta property="og:description" content={description} />
 	<meta
 		property="og:image"

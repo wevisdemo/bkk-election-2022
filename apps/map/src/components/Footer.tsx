@@ -9,8 +9,8 @@ const Footer: FunctionComponent = () => {
 	const [isShareModalOpen, setIsShareModalOpen] = useState(false);
 
 	return (
-		<div className="bg-black text-white px-6 lg:px-12">
-			<div class="flex flex-row justify-end border-t border-gray py-6">
+		<div className="bg-black text-white px-4 lg:px-12">
+			<div class="flex flex-row justify-end border-t border-gray py-3 md:py-6">
 				{preset?.electionData.type === ElectionDataType.Live && (
 					<div className="flex-1 flex flex-row typo-u4 space-x-8">
 						{preset?.electionData.total.progress !== undefined && (

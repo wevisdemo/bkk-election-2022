@@ -56,7 +56,7 @@
 	];
 </script>
 
-<Metadata />
+<Metadata title="Bangkok Election 2022 : เกาะติด 'เลือกตั้งผู้ว่าฯ กทม. 2565" />
 
 <div class="bg-black text-white">
 	<div
