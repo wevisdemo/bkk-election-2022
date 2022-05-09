@@ -31,16 +31,16 @@ export default function CandidateOverviewListRowItem({ candidateId, topVoteCount
 				<span class="text-left font-semibold flex-1">
 					{candidate.fullname}
 				</span>
-				<span class="text-right basis-4/12 hidden 2xl:block">
+				<span class="text-right basis-3/12 hidden 2xl:block">
 					{candidate.party || PARTY_UNDEFINED_STRING}
 				</span>
-				<span class="text-right basis-3/12">
+				<span class="text-right basis-3/12 2xl:basis-2/12">
 					{result.count.toLocaleString()}
 				</span>
 				<span class="text-right basis-2/12">
-					({(result.count / preset.electionData.total.totalVotes).toLocaleString(
+					{(result.count / preset.electionData.total.totalVotes).toLocaleString(
 						undefined, {style: 'percent', minimumFractionDigits: 1})
-					})
+					}
 				</span>
 			</div>
 			<div

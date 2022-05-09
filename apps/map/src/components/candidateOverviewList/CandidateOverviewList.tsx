@@ -79,7 +79,7 @@ export default function CandidateOverviewList() {
 		},
 		{
 			text: 'คะแนนเสียง',
-			sClass: 'text-right basis-3/12',
+			sClass: 'text-right basis-3/12 2xl:basis-2/12',
 			sortType: CandidateOverviewSortType.COUNT
 		},
 		{ 
