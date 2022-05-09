@@ -1,7 +1,5 @@
 import { useContext, useMemo, useState } from 'react';
-import { TOP_CANDIDATE_PER_DISTRICT } from '../../constants/candidate';
 import { presetContext } from '../../contexts/preset';
-import { Candidate } from '../../models/candidate';
 import { District, ElectionDataType } from '../../models/election';
 import CandidateLegend from '../CandidateLegend';
 import SortableListHeader from '../SortableListHeader';
@@ -86,47 +84,49 @@ export default function RatioListTable() {
 	};
 
 	return (
-		<div class="flex flex-col overflow-y-hidden relative">
-			<div
-				class={`grid ${
-					preset.electionData.total.progress
-						? 'grid-cols-3 md:grid-cols-6'
-						: 'grid-cols-2 md:grid-cols-5'
-				} typo-u4 gap-4 gap-y-1 md:gap-8 border-b border-white/40 pb-1`}
-			>
-				{headers.map((v) => (
-					<SortableListHeader
-						headerText={v.text}
-						sClass={v.sClass}
-						isActive={v.sortType === sortType}
-						descending={descending}
-						headerOnClick={() => headerOnClick(v.sortType)}
-					>
-						{v.children}
-					</SortableListHeader>
-				))}
-			</div>
-			<div
-				class="flex flex-col pt-4 gap-4 overflow-y-auto"
-				onScroll={(event) => {
-					const target = event.target as HTMLElement;
-					setIsBottom(target.scrollHeight - target.scrollTop - target.clientHeight < 1);
-				}}
-			>
+		<div class='flex flex-col flex-1 overflow-y-hidden gap-1'>
+			<div class="flex flex-col flex-1 relative overflow-y-hidden">
 				<div
-					class={`absolute w-full h-11 bg-gradient-to-t z-10 from-black to-black/0 bottom-0 pointer-events-none ${
-						isBottom && 'hidden'
-					}`}
-				/>
-				{sortedDistricts.map((district: District, i: number) => (
-					<RatioListRowItem
-						district={district}
-						isInProgress={preset.electionData.total.progress !== undefined}
-						isLive={preset.electionData.type == ElectionDataType.Live}
+					class={`grid ${
+						preset.electionData.total.progress
+							? 'grid-cols-3 md:grid-cols-6'
+							: 'grid-cols-2 md:grid-cols-5'
+					} typo-u4 gap-4 gap-y-1 md:gap-8 border-b border-white/40 pb-1`}
+				>
+					{headers.map((v) => (
+						<SortableListHeader
+							headerText={v.text}
+							sClass={v.sClass}
+							isActive={v.sortType === sortType}
+							descending={descending}
+							headerOnClick={() => headerOnClick(v.sortType)}
+						>
+							{v.children}
+						</SortableListHeader>
+					))}
+				</div>
+				<div
+					class="flex flex-col pt-4 gap-4 overflow-y-auto"
+					onScroll={(event) => {
+						const target = event.target as HTMLElement;
+						setIsBottom(target.scrollHeight - target.scrollTop - target.clientHeight < 1);
+					}}
+				>
+					<div
+						class={`absolute w-full h-11 bg-gradient-to-t z-10 from-black to-black/0 bottom-0 pointer-events-none ${
+							isBottom && 'hidden'
+						}`}
 					/>
-				))}
+					{sortedDistricts.map((district: District, i: number) => (
+						<RatioListRowItem
+							district={district}
+							isInProgress={preset.electionData.total.progress !== undefined}
+							isLive={preset.electionData.type == ElectionDataType.Live}
+						/>
+					))}
+				</div>
 			</div>
-
+			<CandidateLegend topCandidatePerDistrict={3} />
 		</div>
 	);
 }

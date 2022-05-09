@@ -1,23 +1,41 @@
-import React, { useState } from 'react';
+import React, { useContext, useMemo, useState } from 'react';
+import { presetContext } from '../contexts/preset';
 import { Candidate } from '../models/candidate';
 import Modal from './Modal';
 
 interface CandidateLegendProps {
-	candidates: Candidate[];
-	children: React.ReactNode;
+	topCandidatePerDistrict: number;
+	children?: React.ReactNode;
 }
 
 const INSTRUCTION_SHORT_STRING = 'วิธีอ่าน';
 const INSTRUCTION_STRING = 'วิธีอ่านแผนภาพ';
 
-export default function CandidateLegend({ candidates, children }: CandidateLegendProps) {
+export default function CandidateLegend({topCandidatePerDistrict, children }: CandidateLegendProps) {
 	const [showModal, setShowModal] = useState<boolean>(false);
+	const preset = useContext(presetContext);
+
+	if (!preset) return <></>;
+
+	const candidateLabels: Candidate[] = useMemo(() => {
+		let tempCandidates: Candidate[] = [];
+		for (const district of preset.electionData.districts) {
+			const sorted = district.voting.result.sort((a, b) => b.count - a.count);
+			for (let i = 0; i < topCandidatePerDistrict && i < sorted.length; i++) {
+				const candidate = preset.candidateMap[sorted[i].candidateId];
+				if (tempCandidates.indexOf(candidate) == -1) {
+					tempCandidates.push(candidate);
+				}
+			}
+		}
+		return tempCandidates;
+	}, [preset]);
 
 	return (
-		<div class="flex flex-1 md:flex-col gap-2 typo-u4 relative ml-auto">
+		<div class="flex md:flex-col gap-2 typo-u4 relative ml-auto">
 			<div class="flex gap-2 md:gap-4 ml-auto">
 				<div class='flex flex-row flex-1 overflow-x-auto gap-2'>
-					{candidates.map((candidate: Candidate) => (
+					{candidateLabels.map((candidate: Candidate) => (
 						<div class="flex shrink-0 gap-1 items-center">
 							<span
 								class="w-2 md:w-3 h-2 md:h-3"

@@ -1,10 +1,7 @@
 import React, { FunctionComponent, useContext, useMemo } from 'react';
 import RatioList from './ratioListByDistrict/RatioList';
 import { Visualization } from '../models/visualization';
-import CandidateLegend from './CandidateLegend';
-import { Candidate } from '../models/candidate';
 import { presetContext } from '../contexts/preset';
-import { TOP_CANDIDATE_PER_DISTRICT } from '../constants/candidate';
 import VisualizationToggle from './VisualizationToggle';
 import DistrictMap from './district-map/district-map-canvas';
 
@@ -23,49 +20,21 @@ const DistrictVisualization: FunctionComponent<DistrictVisualizationProps> = ({
 
 	if (!preset) return <></>;
 
-	const candidateLabels: Candidate[] = useMemo(() => {
-		let tempCandidates: Candidate[] = [];
-		for (const district of preset.electionData.districts) {
-			const sorted = district.voting.result.sort((a, b) => b.count - a.count);
-			for (let i = 0; i < TOP_CANDIDATE_PER_DISTRICT; i++) {
-				const candidate = preset.candidateMap[sorted[i].candidateId];
-				if (tempCandidates.indexOf(candidate) == -1) {
-					tempCandidates.push(candidate);
-				}
-			}
-		}
-		return tempCandidates;
-	}, [preset]);
-
 	return (
-		<div className={`flex flex-col md:flex-row w-full h-full gap-4 md:gap-8 ${className}`}>
-			<div className="flex-1 h-full flex-row">
+		<div
+			className={`flex flex-col md:flex-row w-full h-full gap-4 md:gap-8 overflow-hidden ${className}`}
+		>
+			<div className="flex flex-1 h-full w-full flex-col">
 				<h2 className="typo-h4 mb-4">คะแนนรายเขต</h2>
-				<div className="w-full h-full overflow-y-scrol">
+				<div className="flex flex-auto h-full overflow-y-auto">
 					{activeViz === Visualization.LIST_RATIO ? (
-						<>
-							<RatioList />
-							<CandidateLegend candidates={candidateLabels}>
-								<span>
-									<b>ขนาดกล่อง</b> ตามจำนวนผู้มีสิทธิ์เลือกตั้งในเขตนั้น <br />
-									<b>สัดส่วนสี</b> ในแต่ละกล่องตามสัดส่วนคะแนนของผู้สมัคร
-								</span>
-							</CandidateLegend>
-						</>
+						<RatioList />
 					) : (
-						<>
-							<DistrictMap
-								styles={{ minWidth: '1012px', height: '900px' }}
-								type={activeViz}
-								options={{ autoSize: true, debug: true }}
-							/>
-							<CandidateLegend candidates={candidateLabels}>
-								<span>
-									<b>ขนาดกล่อง</b> ตามจำนวนผู้มีสิทธิ์เลือกตั้งในเขตนั้น <br />
-									<b>สัดส่วนสี</b> ในแต่ละกล่องตามสัดส่วนคะแนนของผู้สมัคร
-								</span>
-							</CandidateLegend>
-						</>
+						<DistrictMap
+							styles={{ minWidth: '1012px', height: '900px' }}
+							type={activeViz}
+							options={{ autoSize: true, debug: true }}
+						/>
 					)}
 				</div>
 			</div>
