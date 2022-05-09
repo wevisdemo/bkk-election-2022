@@ -2,9 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+.hide-scrollbar {
+  overflow: overlay;
+  /* transition: all 0.3s; */
+}
+
 .hide-scrollbar::-webkit-scrollbar {
   width: 0;
-  /* Remove scrollbar space */
   background: transparent;
-  /* Optional: just make scrollbar invisible */
+  opacity: 0;
+}
+
+.hide-scrollbar:hover::-webkit-scrollbar {
+  width: 4px;
+  background: #0000;
+  opacity: 1;
+}
+
+.hide-scrollbar:hover::-webkit-scrollbar-thumb {
+  background: #fff4;
+  border-radius: 4px;
 }
