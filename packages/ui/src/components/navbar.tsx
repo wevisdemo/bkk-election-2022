@@ -9,9 +9,9 @@ const Navbar: Component = () => {
   const [isMenuOpen, setIsMenuOpen] = createSignal(false);
 
   return (
-    <div class="ui-relative ui-p-3 ui-flex ui-flex-col md:ui-flex-row ui-bg-white">
+    <div class="ui-relative ui-p-2 md:ui-p-3 ui-flex ui-flex-col md:ui-flex-row ui-bg-white">
       <div class="ui-flex-1 ui-flex ui-flex-row ui-justify-between">
-        <a href="/">
+        <a href="/" class="ui-my-auto">
           <img
             src="/static/images/bkkelection-logo.svg"
             alt="BKK Election 2022"
