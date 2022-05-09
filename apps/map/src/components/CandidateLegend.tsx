@@ -32,7 +32,7 @@ export default function CandidateLegend({topCandidatePerDistrict, children }: Ca
 	}, [preset]);
 
 	return (
-		<div class="flex md:flex-col gap-2 typo-u4 relative ml-auto">
+		<div class="flex md:flex-col gap-2 typo-u4 relative ml-auto mr-auto lg:mr-0">
 			<div class="flex gap-2 md:gap-4 ml-auto">
 				<div class='flex flex-row flex-1 overflow-x-auto gap-2'>
 					{candidateLabels.map((candidate: Candidate) => (
@@ -45,7 +45,7 @@ export default function CandidateLegend({topCandidatePerDistrict, children }: Ca
 						</div>
 					))}
 				</div>
-				<div class="flex flex-row gap-2 md:hidden" onClick={() => setShowModal(true)}>
+				<div class={`flex flex-row gap-2 md:hidden ${children || 'hidden'}`} onClick={() => setShowModal(true)}>
 					<div class="border opacity-30" />
 					<svg
 						width="16"

@@ -84,7 +84,7 @@ export default function RatioListTable() {
 	};
 
 	return (
-		<div class='flex flex-col flex-1 overflow-y-hidden gap-1'>
+		<div class='flex flex-col flex-1 overflow-y-hidden gap-4'>
 			<div class="flex flex-col flex-1 relative overflow-y-hidden">
 				<div
 					class={`grid ${
