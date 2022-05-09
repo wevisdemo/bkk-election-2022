@@ -28,7 +28,9 @@ const TabsView: FunctionComponent<TabsViewProps> = ({ tabs, className = '' }) =>
 					</button>
 				))}
 			</div>
-			<div className="flex flex-col flex-1 mt-4 overflow-hidden">{tabs[activeTabIndex].component}</div>
+			<div className="flex flex-col flex-1 mt-2 md:mt-4 overflow-hidden">
+				{tabs[activeTabIndex].component}
+			</div>
 		</div>
 	);
 };
