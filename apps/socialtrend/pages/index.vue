@@ -658,7 +658,6 @@ export default {
         'รสนา',
         'ชัชชาติ',
         'ศิธา',
-        'ประยูร',
       ],
       candidate_filter: [],
       candidate_config: [
