@@ -9,7 +9,7 @@ export interface ElectionData {
 	type: ElectionDataType;
 	total: Voting;
 	districts: District[];
-	lastUpdatedAt?: Date;
+	lastUpdatedAt?: string;
 }
 
 export interface District {
