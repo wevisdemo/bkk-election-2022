@@ -22,8 +22,6 @@ async function fetchGovernorElectionData(): Promise<ElectionData> {
     areaIds.map(id => getElectionAreaById(BKK_GOVERNOR_ELECTION_ID, id))
   );
 
-  console.log(areas);
-  
   return {
     type: ElectionDataType.Live,
     total: {
