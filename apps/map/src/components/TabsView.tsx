@@ -19,8 +19,8 @@ const TabsView: FunctionComponent<TabsViewProps> = ({ tabs, className = '' }) =>
 				{tabs.map(({ name }, index) => (
 					<button
 						key={index}
-						class={`flex-1 border-b-4 text-white p-1 typo-u4 ${
-							activeTabIndex === index ? 'border-white font-bold' : 'border-transparent'
+						class={`flex-1 text-white p-1 typo-u4 border-white ${
+							activeTabIndex === index ? 'border-b-4 font-bold' : 'border-b'
 						}`}
 						onClick={() => setActiceTabIndex(index)}
 					>

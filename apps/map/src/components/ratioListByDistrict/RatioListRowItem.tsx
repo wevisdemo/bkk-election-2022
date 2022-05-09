@@ -54,7 +54,7 @@ export default function RatioListRowItem({
 		>
 			<div class="font-semibold">{district.name}</div>
 			<div class={isInProgress ? 'text-left' : 'text-right md:text-left'}>
-				{district.voting.eligiblePopulation.toLocaleString()} (
+				{district.voting.eligiblePopulation.toLocaleString()}&nbsp;(
 				{(
 					district.voting.eligiblePopulation / preset.electionData.total.eligiblePopulation
 				).toLocaleString(undefined, { style: 'percent', minimumFractionDigits: 1 })}

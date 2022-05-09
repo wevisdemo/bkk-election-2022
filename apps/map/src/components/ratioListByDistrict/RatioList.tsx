@@ -105,7 +105,7 @@ export default function RatioListTable() {
 					))}
 				</div>
 				<div
-					class="flex flex-col pt-4 gap-4 overflow-y-auto"
+					class="flex flex-col pt-4 gap-4 overflow-y-auto hide-scrollbar"
 					onScroll={(event) => {
 						const target = event.target as HTMLElement;
 						setIsBottom(target.scrollHeight - target.scrollTop - target.clientHeight < 1);

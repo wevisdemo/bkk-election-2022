@@ -7,6 +7,7 @@ import CandidateOverviewListRowItem from './CandidateOverviewListRowItem';
 
 enum CandidateOverviewSortType {
 	COUNT = 'count',
+	NUMBER = 'number',
 	NAME = 'name',
 	PERCENT = 'percent',
 	PARTY = 'party'
@@ -40,6 +41,12 @@ export default function CandidateOverviewList() {
 						preset.candidateMap[b.candidateId].fullname
 					)
 				);
+			case CandidateOverviewSortType.NUMBER:
+				return _res.sort((a, b) => {
+					return (preset.candidateMap[a.candidateId].number || 0) - (
+						preset.candidateMap[b.candidateId].number || 0
+					);
+				});
 			case CandidateOverviewSortType.PERCENT:
 			case CandidateOverviewSortType.COUNT:
 			default:
@@ -55,23 +62,24 @@ export default function CandidateOverviewList() {
 
 	const topVoteCount: number = Math.max(...results.map((v: Result) => v.count));
 	const headers = [
-		{ 
+		{
 			text: '#',
-			sClass: 'text-left basis-4'
+			sClass: 'text-left basis-6',
+			sortType: CandidateOverviewSortType.NUMBER
 		},
 		{
-			text: 'ผู้สมัคร [หมายเลข]',
+			text: 'ชื่อผู้สมัคร',
 			sClass: 'text-left basis-4 flex-1',
 			sortType: CandidateOverviewSortType.NAME
 		},
 		{
 			text: 'สังกัด',
-			sClass: 'text-right basis-2/12 hidden md:block',
+			sClass: 'text-right basis-4/12 hidden 2xl:block',
 			sortType: CandidateOverviewSortType.PARTY
 		},
 		{
 			text: 'คะแนนเสียง',
-			sClass: 'text-right basis-2/12',
+			sClass: 'text-right basis-3/12',
 			sortType: CandidateOverviewSortType.COUNT
 		},
 		{ 
@@ -106,14 +114,13 @@ export default function CandidateOverviewList() {
 					/>
 				))}
 			</div>
-			<div class="overflow-y-auto" ref={containerRef} onScroll={(event) => {
-					const target = event.target as HTMLElement;
-					setIsBottom(target.scrollHeight - target.scrollTop - target.clientHeight < 1);
-				}}>
-					<div
-					class={`absolute z-10 w-full h-11 bg-gradient-to-t from-black to-black/0 bottom-0 pointer-events-none ${
-						isBottom && 'hidden'
-					}`}
+			<div class="overflow-y-auto hide-scrollbar" ref={containerRef} onScroll={(event) => {
+				const target = event.target as HTMLElement;
+				setIsBottom(target.scrollHeight - target.scrollTop - target.clientHeight < 1);
+			}}>
+				<div
+					class={`absolute z-10 w-full h-11 bg-gradient-to-t from-black to-black/0 bottom-0 pointer-events-none ${isBottom && 'hidden'
+						}`}
 				/>
 				{results.map((_res: Result, index: number) => {
 					return (
@@ -121,7 +128,11 @@ export default function CandidateOverviewList() {
 							candidateId={_res.candidateId}
 							index={index}
 							topVoteCount={topVoteCount}
-							isInTop={index < TOP_CANDIDATE_DISPLAY}
+							isInTop={
+								(sortType === CandidateOverviewSortType.COUNT || sortType === CandidateOverviewSortType.PERCENT) &&
+								descending &&
+								index < TOP_CANDIDATE_DISPLAY
+							}
 						/>
 					);
 				})}
