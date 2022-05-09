@@ -63,7 +63,7 @@ export default function RatioListRowItem({
 			<div
 				class={`${
 					isInProgress ? 'col-span-3' : 'col-span-2 md:col-span-3'
-				} relative flex h-full items-center`}
+				} relative flex h-full items-center order-last md:order-3`}
 			>
 				<div className="flex grow order-last md:order-3">
 					<Progress border="1px solid #000000" sClass="h-[10px]" progressItems={progressItems} />
