@@ -7,10 +7,10 @@
 	import PartnersLogo from '../components/partners-logo.svelte';
 	import { onMount } from 'svelte';
 
-	// const THE_STANDARD_GUIDE_TAG = 'bkk-election-101';
+	const THE_STANDARD_GUIDE_TAG = 'bkk-election-101';
 
-	// const fetchTheStandardElectionGuides = () =>
-	// 	fetchTheStandardElectionPosts({ tag: THE_STANDARD_GUIDE_TAG });
+	const fetchTheStandardElectionGuides = () =>
+		fetchTheStandardElectionPosts({ tag: THE_STANDARD_GUIDE_TAG });
 
 	onMount(() => import('@justinribeiro/lite-youtube'));
 
@@ -29,7 +29,8 @@
 		{
 			th: 'กติกาการเลือกตั้งผู้ว่าฯ กทม. บัตร 2 ใบ กาอย่างไร',
 			en: 'How to vote?',
-			href: '',
+			href: 'https://thestandard.co/bkk-election-2022-handbook/',
+			external: true,
 			image: '/static/images/cover/tn_howtovote.webp'
 		},
 		{
@@ -115,11 +116,11 @@
 		viewAllLink="https://wevis.info/tag/เลือกตั้ง-กทม/"
 	/>
 
-	<!-- <PostGrid
+	<PostGrid
 		title="คู่มือเลือกตั้งผู้ว่าฯ กทม."
 		subtitle="เกร็ดความรู้เกี่ยวกับการเลือกตั้ง กทม.'65 จาก The STANDARD"
 		fetchPosts={fetchTheStandardElectionGuides}
 		viewAllText="ดูทั้งหมด บน thestandard.co"
-		viewAllLink="https://thestandard.co/tag/bkk-election-101//"
-	/> -->
+		viewAllLink="https://thestandard.co/tag/bkk-election-101/"
+	/>
 </div>
