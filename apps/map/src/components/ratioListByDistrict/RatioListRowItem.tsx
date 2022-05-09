@@ -21,11 +21,11 @@ export default function RatioListRowItem({
 	const countingProgress: number = district.voting.progress || 100;
 	const countingProgressItems: ProgressItem[] = [
 		{
-			percent: countingProgress,
+			percent: countingProgress / 100,
 			color: '#FFFFFF',
 			strip: isLive
 		},
-		{ percent: 1 - countingProgress, color: 'rgba(255, 255, 255, 0.2)' }
+		{ percent: 1 - (countingProgress / 100), color: 'rgba(255, 255, 255, 0.2)' }
 	];
 
 	const progressItems: ProgressItem[] = useMemo(

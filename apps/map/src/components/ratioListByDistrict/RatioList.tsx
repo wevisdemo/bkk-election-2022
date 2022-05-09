@@ -61,9 +61,8 @@ export default function RatioListTable() {
 				);
 			case DistrictRatioSortType.PROGRESS:
 				return _dist.sort(
-					(a: District, b: District) =>
-						b.voting.totalVotes / b.voting.eligiblePopulation -
-						a.voting.totalVotes / a.voting.eligiblePopulation
+					(a: District, b: District) => 
+					(b.voting.progress || 100) - (a.voting.progress || 100)
 				);
 			case DistrictRatioSortType.NAME:
 			default:
