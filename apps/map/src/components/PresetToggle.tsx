@@ -13,9 +13,9 @@ const PresetToggle: FunctionComponent<PresetToggleProps> = ({ activeIndex, onCha
 	const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
 
 	return (
-		<div className="w-full md:w-auto flex flex-col relative">
+		<div className="w-full lg:w-auto flex flex-col relative">
 			<button
-				class="flex flex-row items-center md:hidden rounded-sm border border-white py-2 px-4 mb-1 typo-u5 font-bold"
+				class="flex flex-row items-center lg:hidden rounded-sm border border-white py-2 px-4 mb-1 typo-u5 font-bold"
 				onClick={() => setIsDropdownOpen(!isDropdownOpen)}
 			>
 				<span className="flex-1 text-left">{electionIndexes[activeIndex].shortname}</span>
@@ -32,8 +32,8 @@ const PresetToggle: FunctionComponent<PresetToggleProps> = ({ activeIndex, onCha
 				</svg>
 			</button>
 			<div
-				className={`absolute inset-x-0 top-full md:relative flex-col md:flex-row rounded-sm border border-white bg-black z-10 overflow-hidden ${
-					isDropdownOpen ? 'flex' : 'hidden md:flex'
+				className={`absolute inset-x-0 top-full lg:relative flex-col lg:flex-row rounded-sm border border-white bg-black z-10 overflow-hidden ${
+					isDropdownOpen ? 'flex' : 'hidden lg:flex'
 				}`}
 			>
 				{electionIndexes.map(({ shortname, electionDataUrl }, index) => (

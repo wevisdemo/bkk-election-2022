@@ -21,7 +21,7 @@ const Dashboard: FunctionComponent<DashboardProps> = ({ activePresetIndex, onPre
 	return (
 		<div className="flex-1 flex flex-col bg-black text-white px-5 pt-4 pb-2 lg:px-12 lg:py-8 space-y-1 lg:space-y-6 overflow-hidden">
 			<div className="flex flex-col lg:flex-row gap-3 md:gap-4 lg:border-b lg:pb-6 border-gray items-center">
-				<h1 className="flex-1 typo-h2 text-[26px] md:text-[48px]">{preset.fullname}</h1>
+				<h1 className="flex-1 typo-h2 text-[26px] lg:text-[48px]">{preset.fullname}</h1>
 				<PresetToggle activeIndex={activePresetIndex} onChange={onPresetChange} />
 			</div>
 
