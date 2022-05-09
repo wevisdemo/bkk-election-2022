@@ -15,12 +15,21 @@ const Footer: FunctionComponent = () => {
 					<div className="flex-1 flex flex-row typo-u4 space-x-8">
 						{preset?.electionData.total.progress !== undefined && (
 							<div className="flex flex-col space-y-1">
-								<div>นับคะแนนแล้ว {preset?.electionData.total.progress}%</div>
+								<div>นับคะแนนแล้ว {preset?.electionData.total.progress.toFixed(1)}%</div>
 								<div className="h-2 w-full md:w-64 bg-white bg-opacity-20">
 									<div
-										className="bg-white h-full"
-										style={{ width: `${preset?.electionData.total.progress}%` }}
-									></div>
+										className="relative bg-white h-full"
+										style={{
+											width: `${preset?.electionData.total.progress}%`
+										}}
+									>
+										{preset.electionData.type === ElectionDataType.Live && (
+											<div
+												className="absolute inset-0 opacity-20"
+												style={{ backgroundImage: `url(/map/images/strip-black.gif)` }}
+											/>
+										)}
+									</div>
 								</div>
 							</div>
 						)}
