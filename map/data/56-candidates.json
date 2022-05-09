@@ -5,7 +5,7 @@
 		"shortname": "สุขุมพันธ์",
 		"color": "#4BDFFF",
 		"party": "ประชาธิปัตย์",
-		"image": "https://via.placeholder.com/150"
+		"image": "/map/images/56-governor-candidates/sukhumbhand.png"
 	},
 	"2": {
 		"id": "2",
@@ -13,7 +13,7 @@
 		"shortname": "พงศพัศ",
 		"color": "#E32E2E",
 		"party": "เพื่อไทย",
-		"image": "https://via.placeholder.com/150"
+		"image": "/map/images/56-governor-candidates/pongsapat.png"
 	},
 	"3": {
 		"id": "3",
