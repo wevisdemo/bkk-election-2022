@@ -7,7 +7,7 @@ import { Preset, presetContext } from './contexts/preset';
 import { electionIndexes } from './data/presets';
 import { fetchPreset } from './utils/fetch';
 
-const DEFAULT_PRESET_INDEX = 3;
+const DEFAULT_PRESET_INDEX = 0;
 
 const App: FunctionComponent = () => {
 	const [activePresetIndex, setActivePresetIndex] = useState<number>(DEFAULT_PRESET_INDEX);
