@@ -11,7 +11,10 @@ interface CandidateLegendProps {
 const INSTRUCTION_SHORT_STRING = 'วิธีอ่าน';
 const INSTRUCTION_STRING = 'วิธีอ่านแผนภาพ';
 
-export default function CandidateLegend({topCandidatePerDistrict, children }: CandidateLegendProps) {
+export default function CandidateLegend({
+	topCandidatePerDistrict,
+	children
+}: CandidateLegendProps) {
 	const [showModal, setShowModal] = useState<boolean>(false);
 	const preset = useContext(presetContext);
 
@@ -29,12 +32,12 @@ export default function CandidateLegend({topCandidatePerDistrict, children }: Ca
 			}
 		}
 		return tempCandidates;
-	}, [preset]);
+	}, [preset, topCandidatePerDistrict]);
 
 	return (
 		<div class="flex md:flex-col gap-2 typo-u4 relative ml-auto mr-auto lg:mr-0">
 			<div class="flex gap-2 md:gap-4 ml-auto">
-				<div class='flex flex-row flex-1 overflow-x-auto gap-2'>
+				<div class="flex flex-row flex-1 overflow-x-auto gap-2">
 					{candidateLabels.map((candidate: Candidate) => (
 						<div class="flex shrink-0 gap-1 items-center">
 							<span
@@ -45,7 +48,10 @@ export default function CandidateLegend({topCandidatePerDistrict, children }: Ca
 						</div>
 					))}
 				</div>
-				<div class={`flex flex-row gap-2 md:hidden ${children || 'hidden'}`} onClick={() => setShowModal(true)}>
+				<div
+					class={`flex flex-row gap-2 md:hidden ${children || 'hidden'}`}
+					onClick={() => setShowModal(true)}
+				>
 					<div class="border opacity-30" />
 					<svg
 						width="16"
