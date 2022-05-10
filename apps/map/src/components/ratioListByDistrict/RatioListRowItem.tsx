@@ -1,4 +1,4 @@
-import { useContext, useMemo, useState } from 'react';
+import { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { presetContext } from '../../contexts/preset';
 import { District, Result } from '../../models/election';
 import DistrictTooltip from '../DistrictTooltip';
@@ -16,6 +16,8 @@ export default function RatioListRowItem({
 	isLive
 }: RatioListRowItemProps) {
 	const preset = useContext(presetContext);
+	const rowRef = useRef<HTMLDivElement>(null);
+	const [isTooltipOnTop, setIsTooltipOnTop] = useState<boolean>(false);
 
 	if (!preset) return <></>;
 
@@ -44,6 +46,15 @@ export default function RatioListRowItem({
 		[district]
 	);
 
+	useEffect(() => {
+		if (rowRef.current) {
+			setIsTooltipOnTop(
+				rowRef.current.offsetTop - (rowRef.current.parentElement?.scrollTop || 0) <
+					(rowRef.current.parentElement?.clientHeight || 0) / 2
+			);
+		}
+	}, [isTooltipOpen]);
+
 	return (
 		<div
 			class={`grid ${
@@ -51,6 +62,7 @@ export default function RatioListRowItem({
 			} typo-u4 gap-x-4 gap-y-1 md:gap-8 hover:bg-white/20 items-center py-1`}
 			onMouseOver={() => setIsTooltipOpen(true)}
 			onMouseLeave={() => setIsTooltipOpen(false)}
+			ref={rowRef}
 		>
 			<div class="font-semibold">{district.name}</div>
 			<div class={isInProgress ? 'text-left' : 'text-right md:text-left'}>
@@ -68,7 +80,12 @@ export default function RatioListRowItem({
 				<div className="flex grow order-last md:order-3">
 					<Progress border="1px solid #000000" className="h-[10px]" progressItems={progressItems} />
 				</div>
-				<DistrictTooltip show={isTooltipOpen} district={district} className="top-full" />
+				<DistrictTooltip
+					show={isTooltipOpen}
+					district={district}
+					className={`${isTooltipOnTop ? 'top-full' : 'bottom-full'}`}
+					pointUp={isTooltipOnTop}
+				/>
 			</div>
 			{isInProgress && (
 				<div class="flex md:basis-2/12 gap-2 order-4">

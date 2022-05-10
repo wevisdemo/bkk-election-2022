@@ -8,11 +8,13 @@ interface DistrictTooltipProps {
 	district: District;
 	topCandidateDisplay?: number;
 	className?: string;
+	pointUp: boolean;
 	style?: string | JSX.CSSProperties;
 }
 
 const DistrictTooltip: FunctionComponent<DistrictTooltipProps> = ({
 	show,
+	pointUp,
 	district,
 	topCandidateDisplay = TOP_CANDIDATE_DISPLAY,
 	className = '',
@@ -36,11 +38,12 @@ const DistrictTooltip: FunctionComponent<DistrictTooltipProps> = ({
 			className={`absolute z-10 min-w-[10rem] shadow pointer-events-none ${className}`}
 			style={style}
 		>
-			<div>
+
+			{pointUp && <div>
 				<svg width="12" height="6" viewBox="0 0 12 6" fill="none" className="ml-2">
 					<path fill-rule="evenodd" clip-rule="evenodd" d="M6 0L12 6H0L6 0Z" fill="#393939" />
 				</svg>
-			</div>
+			</div>}
 			<div className="bg-[#393939] py-2 px-3 typo-u4 space-y-2 rounded-sm">
 				<div>{district.name}</div>
 				<div className="space-y-1">
@@ -55,6 +58,11 @@ const DistrictTooltip: FunctionComponent<DistrictTooltipProps> = ({
 					))}
 				</div>
 			</div>
+			{!pointUp && <div>
+				<svg width="12" height="6" viewBox="0 0 12 6" fill="none" className="ml-2" transform="scale(1,-1)">
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M6 0L12 6H0L6 0Z" fill="#393939" />
+				</svg>
+			</div>}
 		</div>
 	);
 };
