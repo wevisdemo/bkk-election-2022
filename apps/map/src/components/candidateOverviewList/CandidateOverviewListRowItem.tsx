@@ -59,7 +59,7 @@ export default function CandidateOverviewListRowItem({ candidateId, topVoteCount
 							}
 						] as ProgressItem[]
 					}
-					sClass={`relative p-0 rounded-r-[2px]`}
+					className={`relative p-0 rounded-r-[2px]`}
 					border={`${
 						preset.electionData.type === ElectionDataType.Poll ? '2px dashed' + candidate.color : ''
 					}`}

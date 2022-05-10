@@ -29,23 +29,23 @@ export default function RatioListTable() {
 	const headers = [
 		{
 			text: 'เขต',
-			sClass: 'cursor-pointer',
+			className: 'cursor-pointer',
 			sortType: DistrictRatioSortType.NAME
 		},
 		{
 			text: 'ผู้มีสิทธิ์เลือกตั้ง',
-			sClass:
+			className:
 				'cursor-pointer' + (preset.electionData.total.progress ? '' : ' text-right md:text-left'),
 			sortType: DistrictRatioSortType.ELIGIBLE
 		},
 		{
 			text: 'ผลการเลือกตั้ง',
-			sClass: 'col-span-3 grow hidden md:flex',
+			className: 'col-span-3 grow hidden md:flex',
 			children: RESULT_ARROW_DOWN
 		},
 		{
 			text: 'นับคะแนนแล้ว',
-			sClass: 'cursor-pointer',
+			className: 'cursor-pointer',
 			sortType: DistrictRatioSortType.PROGRESS
 		}
 	];
@@ -102,7 +102,7 @@ export default function RatioListTable() {
 					{headers.map((v) => (
 						<SortableListHeader
 							headerText={v.text}
-							sClass={v.sClass}
+							className={v.className}
 							isActive={v.sortType === sortType}
 							descending={descending}
 							headerOnClick={() => headerOnClick(v.sortType)}

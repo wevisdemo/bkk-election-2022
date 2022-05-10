@@ -71,27 +71,27 @@ export default function CandidateOverviewList() {
 	const headers = [
 		{
 			text: '#',
-			sClass: 'text-left basis-6',
+			className: 'text-left basis-6',
 			sortType: CandidateOverviewSortType.NUMBER
 		},
 		{
 			text: 'ชื่อผู้สมัคร',
-			sClass: 'text-left basis-4 flex-1',
+			className: 'text-left basis-4 flex-1',
 			sortType: CandidateOverviewSortType.NAME
 		},
 		{
 			text: 'สังกัด',
-			sClass: 'text-right basis-4/12 hidden 2xl:block',
+			className: 'text-right basis-4/12 hidden 2xl:block',
 			sortType: CandidateOverviewSortType.PARTY
 		},
 		{
 			text: 'คะแนนเสียง',
-			sClass: 'text-right basis-3/12 2xl:basis-2/12',
+			className: 'text-right basis-3/12 2xl:basis-2/12',
 			sortType: CandidateOverviewSortType.COUNT
 		},
 		{ 
 			text: '%',
-			sClass: 'text-right basis-2/12',
+			className: 'text-right basis-2/12',
 			sortType: CandidateOverviewSortType.PERCENT
 		}
 	];
@@ -115,7 +115,7 @@ export default function CandidateOverviewList() {
 					<SortableListHeader
 						headerText={v.text}
 						isActive={sortType === v.sortType}
-						sClass={v.sClass + (v.sortType ? ' cursor-pointer' : '')}
+						className={v.className + (v.sortType ? ' cursor-pointer' : '')}
 						descending={descending}
 						headerOnClick={() => headerOnClick(v.sortType)}
 					/>
