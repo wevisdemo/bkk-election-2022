@@ -226,7 +226,7 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
       electionDistrictData.forEach((data) => {
         const { coordinate, district, highestScoreCandidate, ratio, districtVoteRatio, } = data
 
-        const rectSizeWithRatio = (rectSize * ratio);
+        const rectSizeWithRatio = Math.sqrt(rectSize * rectSize * ratio);
         const x = coordinate.col * rectSize + rectSize * .5 - rectSizeWithRatio * .5 + coordinate.col * padding * .5;
         let y = coordinate.row * rectSize + rectSize * .5 - rectSizeWithRatio * .5 + coordinate.row * padding * .5;
         y += marginTop;
