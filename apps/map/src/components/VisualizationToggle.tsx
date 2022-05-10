@@ -3,7 +3,7 @@ import { Visualization } from '../models/visualization';
 
 const visualizationButtons = [
 	{ value: Visualization.GRID_RATIO, label: 'สัดส่วนคะแนน' },
-	{ value: Visualization.GRID_WINNER, label: 'ผู้ชนะ (ที่กริด)' },
+	{ value: Visualization.GRID_WINNER, label: 'ผู้ชนะ (กริด)' },
 	{ value: Visualization.MAP_WINNER, label: 'ผู้ชนะ (แผนที่)' },
 	{ value: Visualization.LIST_RATIO, label: 'รายเขต' }
 ];
