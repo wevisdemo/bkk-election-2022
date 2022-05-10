@@ -14,7 +14,7 @@ interface DashboardProps {
 
 const Dashboard: FunctionComponent<DashboardProps> = ({ activePresetIndex, onPresetChange }) => {
 	const preset = useContext(presetContext);
-	const [activeViz, setActiveViz] = useState<Visualization>(Visualization.LIST_RATIO);
+	const [activeViz, setActiveViz] = useState<Visualization>(Visualization.GRID_WINNER);
 
 	if (!preset) return <></>;
 

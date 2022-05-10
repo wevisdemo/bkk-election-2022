@@ -3,7 +3,8 @@ import RatioList from './ratioListByDistrict/RatioList';
 import { Visualization } from '../models/visualization';
 import { presetContext } from '../contexts/preset';
 import VisualizationToggle from './VisualizationToggle';
-import DistrictMap from './district-map/district-map-canvas';
+// import DistrictMap from './district-map/district-map-canvas';
+import Pixi from './district-map/MapPixi';
 
 interface DistrictVisualizationProps {
 	activeViz: Visualization;
@@ -30,11 +31,11 @@ const DistrictVisualization: FunctionComponent<DistrictVisualizationProps> = ({
 					{activeViz === Visualization.LIST_RATIO ? (
 						<RatioList />
 					) : (
-						<DistrictMap
-							styles={{ minWidth: '1012px', height: '900px' }}
-							type={activeViz}
-							options={{ autoSize: true, debug: true }}
-						/>
+						// <DistrictMap
+						// 	type={activeViz}
+						// 	options={{ autoSize: true, debug: true }}
+						// />
+						<Pixi type={activeViz} />
 					)}
 				</div>
 			</div>

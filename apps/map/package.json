@@ -9,7 +9,8 @@
 		"fetch-data": "ts-node data-fetcher/"
 	},
 	"dependencies": {
-		"@types/offscreencanvas": "^2019.6.4",
+		"pixi-viewport": "^4.34.4",
+		"pixi.js": "^6.3.2",
 		"preact": "^10.5.15",
 		"react": "^18.0.0",
 		"ui": "*"
