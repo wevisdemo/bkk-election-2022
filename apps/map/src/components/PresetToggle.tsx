@@ -18,7 +18,12 @@ const PresetToggle: FunctionComponent<PresetToggleProps> = ({ activeIndex, onCha
 				class="flex flex-row items-center lg:hidden rounded-sm border border-white py-2 px-4 mb-1 typo-u5 font-bold"
 				onClick={() => setIsDropdownOpen(!isDropdownOpen)}
 			>
-				<span className="flex-1 text-left">{electionIndexes[activeIndex].shortname}</span>
+				<div className="flex-1 text-left flex flex-row">
+					{preset?.electionData.type === ElectionDataType.Live && (
+						<div class="bg-[#D02525] text-white mr-2 px-1 font-semibold">LIVE</div>
+					)}
+					{electionIndexes[activeIndex].shortname}
+				</div>
 				<svg
 					width="14"
 					height="9"
