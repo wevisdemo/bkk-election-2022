@@ -23,3 +23,8 @@
   background: #fff4;
   border-radius: 4px;
 }
+
+@media screen and (max-height: 730px) and (min-width: 768px) {
+  /* FIXME: does this belong here? */
+  .vis-toggle-shortscreen.md\:w-24 { width: 4rem; }
+}

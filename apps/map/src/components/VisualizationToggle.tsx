@@ -15,10 +15,10 @@ interface VisualizationToggleProps {
 
 const VisualizationToggle: FunctionComponent<VisualizationToggleProps> = ({ onChange, value }) => {
 	return (
-		<div className="flex flex-row md:flex-col items-center gap-4 w-full md:w-auto">
+		<div className="flex flex-row md:flex-col justify-center md:items-center gap-4 w-full md:w-auto">
 			{visualizationButtons.map(({ value: v, label }) => (
 				<button
-					className="group flex-1 md:flex-none flex flex-col space-y-1 items-center"
+					className="group md:flex-1 md:flex-none flex flex-col space-y-1 items-center"
 					onClick={() => v !== value && onChange(v)}
 				>
 					<div
@@ -30,7 +30,7 @@ const VisualizationToggle: FunctionComponent<VisualizationToggleProps> = ({ onCh
 							width="720"
 							height="480"
 							viewBox="0 0 720 480"
-							className={`w-full md:w-24 h-auto ${
+							className={`w-full max-w-[96px] md:w-24 h-auto vis-toggle-shortscreen ${
 								v === value
 									? 'fill-white stroke-white'
 									: 'fill-[#666666] stroke-[#666666] group-hover:fill-white group-hover:stroke-white'
