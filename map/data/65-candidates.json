@@ -4,7 +4,7 @@
 		"number": 1,
 		"fullname": "นายวิโรจน์ ลักขณาอดิศร",
 		"shortname": "วิโรจน์",
-		"color": "#B84D00",
+		"color": "#CA5300",
 		"party": "พรรคก้าวไกล",
 		"image": "/map/images/65-governor-candidates/1.png"
 	},
@@ -22,7 +22,7 @@
 		"number": 3,
 		"fullname": "นายสกลธี ภัททิยกุล",
 		"shortname": "สกลธี",
-		"color": "#245A5A",
+		"color": "#336060",
 		"party": "อิสระ",
 		"image": "/map/images/65-governor-candidates/3.png"
 	},
@@ -31,7 +31,7 @@
 		"number": 4,
 		"fullname": "นายสุชัชวีร์ สุวรรณสวัสดิ์",
 		"shortname": "สุชัชวีร์",
-		"color": "#00A6CA",
+		"color": "#1B80B6",
 		"party": "พรรคประชาธิปัตย์",
 		"image": "/map/images/65-governor-candidates/4.png"
 	},
@@ -58,7 +58,7 @@
 		"number": 7,
 		"fullname": "นางสาวรสนา โตสิตระกูล",
 		"shortname": "รสนา",
-		"color": "#524031",
+		"color": "#543F2D",
 		"party": "อิสระ",
 		"image": "/map/images/65-governor-candidates/7.png"
 	},
@@ -67,7 +67,7 @@
 		"number": 8,
 		"fullname": "นายชัชชาติ สิทธิพันธุ์",
 		"shortname": "ชัชชาติ",
-		"color": "#A5FF3E",
+		"color": "#97FF1F",
 		"party": "อิสระ",
 		"image": "/map/images/65-governor-candidates/8.png"
 	},
@@ -94,7 +94,7 @@
 		"number": 11,
 		"fullname": "น.ต.ศิธา ทิวารี",
 		"shortname": "น.ต.ศิธา",
-		"color": "#476FFF",
+		"color": "#0022FF",
 		"party": "พรรคไทยสร้างไทย",
 		"image": "/map/images/65-governor-candidates/11.png"
 	},
