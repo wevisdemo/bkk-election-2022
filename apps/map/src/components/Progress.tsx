@@ -1,7 +1,7 @@
 interface ProgressProps {
 	progressItems: ProgressItem[];
 	border?: string;
-	sClass: string;
+	className: string;
 	children?: React.ReactNode;
 }
 
@@ -13,12 +13,12 @@ export interface ProgressItem {
 
 const STRIP_GIF_PATH = '/map/images/strip-black.gif';
 
-export default function Progress({ progressItems, border, sClass, children }: ProgressProps) {
+export default function Progress({ progressItems, border, className, children }: ProgressProps) {
 	return (
 		<div class="inline-flex w-full h-full my-auto">
 			{progressItems.map((pi: ProgressItem) => (
 				<span
-					class={`h-full ${sClass}`}
+					class={`h-full ${className}`}
 					style={{
 						width: `${pi.percent * 100}%`,
 						backgroundColor: pi.color,

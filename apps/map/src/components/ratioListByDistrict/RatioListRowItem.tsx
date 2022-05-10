@@ -66,14 +66,14 @@ export default function RatioListRowItem({
 				} relative flex h-full items-center order-last md:order-3`}
 			>
 				<div className="flex grow order-last md:order-3">
-					<Progress border="1px solid #000000" sClass="h-[10px]" progressItems={progressItems} />
+					<Progress border="1px solid #000000" className="h-[10px]" progressItems={progressItems} />
 				</div>
 				<DistrictTooltip show={isTooltipOpen} district={district} className="top-full" />
 			</div>
 			{isInProgress && (
 				<div class="flex md:basis-2/12 gap-2 order-4">
 					{countingProgress.toFixed(1)}%
-					<Progress progressItems={countingProgressItems} sClass="h-1 md:h-2" />
+					<Progress progressItems={countingProgressItems} className="h-1 md:h-2" />
 				</div>
 			)}
 		</div>
