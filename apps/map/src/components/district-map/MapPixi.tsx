@@ -149,10 +149,10 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
 
       graphics.interactive = true;
       graphics.on('pointerover', (event) => {
-        graphics.tint = 0xff0000
+        graphics.tint = 0x666666
       })
       graphics.on('pointerout', (event) => {
-        graphics.tint = highestScoreCandidate ? +highestScoreCandidate.color.replace("#", "0x") : +DEFAULT_CANDIDATE_COLOR.replace("#", "0x")
+        graphics.tint = 0xFFFFFF
       });
 
       viewport.addChild(graphics)
@@ -162,6 +162,7 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
 
   const drawRectMap = (viewport: Viewport) => {
     if (electionDistrictData.length > 0) {
+      drawRiver(viewport)
       // const width = app.screen.width;
       // const height = app.screen.height;
 
@@ -184,11 +185,11 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
         graphics.interactive = true;
         // graphics.buttonMode = true;
         graphics.on('pointerover', (event) => {
-          graphics.tint = 0xff0000
+          graphics.tint = 0x666666
         })
 
         graphics.on('pointerout', (event) => {
-          graphics.tint = highestScoreCandidate ? +highestScoreCandidate.color.replace("#", "0x") : +DEFAULT_CANDIDATE_COLOR.replace("#", "0x")
+          graphics.tint = 0xFFFFFF
         });
 
         viewport.addChild(graphics)
@@ -217,7 +218,7 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
 
   const drawRatioMap = (viewport: Viewport) => {
     if (electionDistrictData.length > 0) {
-
+      drawRiver(viewport)
       // ctx.scale(0.7, 0.7);
       const rectSize = 100
       const padding = 20;
@@ -227,8 +228,8 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
         const { coordinate, district, highestScoreCandidate, ratio, districtVoteRatio, } = data
 
         const rectSizeWithRatio = Math.sqrt(rectSize * rectSize * ratio);
-        const x = coordinate.col * rectSize + rectSize * .5 - rectSizeWithRatio * .5 + coordinate.col * padding * .5;
-        let y = coordinate.row * rectSize + rectSize * .5 - rectSizeWithRatio * .5 + coordinate.row * padding * .5;
+        const x = coordinate.col * rectSize + rectSize * .5 - rectSizeWithRatio * .5 + coordinate.col * padding;
+        let y = coordinate.row * rectSize + rectSize * .5 - rectSizeWithRatio * .5 + coordinate.row * padding;
         y += marginTop;
 
         const graphics = new PIXI.Graphics();
@@ -242,10 +243,10 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
         graphics.hitArea = new PIXI.Rectangle(x, y, rectSizeWithRatio, rectSizeWithRatio);
         graphics.buttonMode = true;
         graphics.on('pointerover', (event) => {
-          graphics.tint = 0xff0000
+          graphics.tint = 0x666666
         })
         graphics.on('pointerout', (event) => {
-          graphics.tint = highestScoreCandidate ? +highestScoreCandidate.color.replace("#", "0x") : +DEFAULT_CANDIDATE_COLOR.replace("#", "0x")
+          graphics.tint = 0xFFFFFF
         });
 
         let offSetY = 0;
@@ -284,18 +285,33 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
     }
   }
 
+  const drawRiver = (viewport: Viewport) => {
+    const graphics = new PIXI.Graphics();
+    graphics.lineStyle(66, 0xFFFFFF, 0.3);
+    graphics.moveTo(530, 0);
+    graphics.lineTo(530, 170);
+    graphics.lineTo(410, 170);
+    graphics.lineTo(410, 530);
+    graphics.lineTo(530, 530);
+    graphics.lineTo(530, 770);
+    graphics.lineTo(770, 770);
+    graphics.lineTo(770, 650);
+    graphics.lineTo(1010, 650);
+    graphics.lineTo(1010, 740);
+    viewport.addChild(graphics);
+
+  }
+
 
   useMemo(() => {
 
     if (!preset) return;
     // process data for map winner
-    const { total, districts } = electionData;
+    const { districts } = electionData;
 
     // find highest eligible vote
     let highestEligible = districts.reduce((maxResult: District, res: District) => maxResult.voting.eligiblePopulation > res.voting.eligiblePopulation ? maxResult : res)
-    // console.log(highestEligiblePopulation);
     if (highestEligible) highestEligiblePopulation = highestEligible.voting.eligiblePopulation;
-
     let electionDistrictDataSet: DistrictRect[] = [];
     districts.forEach((district) => {
       const { voting } = district
@@ -367,7 +383,7 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
     })
 
     switch (type) {
-      case Visualization.GRID_RATIO: drawRatioMap(viewport);; break;
+      case Visualization.GRID_RATIO: drawRatioMap(viewport); break;
       case Visualization.GRID_WINNER: drawRectMap(viewport); break;
       case Visualization.MAP_WINNER: drawPolygonMap(viewport); break;
       default: break;
