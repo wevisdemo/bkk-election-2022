@@ -416,7 +416,7 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
     viewport.on("pointermove", (e) => {
       if (parentRef.current) {
         const clientHeight = parentRef.current?.clientHeight
-        const pointUp: boolean = !(e.data.global.y > 200)
+        const pointUp: boolean = !(e.data.global.y > clientHeight * .25)
         setTooltips((prev) => ({
           ...prev,
           left: e.data.global.x - 15,
