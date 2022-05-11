@@ -240,7 +240,7 @@ const VisualizationToggle: FunctionComponent<VisualizationToggleProps> = ({ onCh
 							)}
 						</svg>
 					</div>
-					<p className={`typo-u5 ${v === value ? 'font-bold' : ''}`}>{label}</p>
+					<p className={`typo-u5 whitespace-nowrap ${v === value ? 'font-bold' : ''}`}>{label}</p>
 				</button>
 			))}
 		</div>

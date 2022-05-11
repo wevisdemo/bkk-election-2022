@@ -22,12 +22,14 @@ const App: FunctionComponent = () => {
 	}, [activePresetIndex]);
 
 	return (
-		<div class="flex flex-col h-screen">
-			<ui-navbar></ui-navbar>
-			<presetContext.Provider value={preset}>
-				<Dashboard activePresetIndex={activePresetIndex} onPresetChange={setActivePresetIndex} />
-				<Footer />
-			</presetContext.Provider>
+		<div class="absolute inset-0">
+			<div class="flex flex-col h-full">
+				<ui-navbar></ui-navbar>
+				<presetContext.Provider value={preset}>
+					<Dashboard activePresetIndex={activePresetIndex} onPresetChange={setActivePresetIndex} />
+					<Footer />
+				</presetContext.Provider>
+			</div>
 		</div>
 	);
 };
