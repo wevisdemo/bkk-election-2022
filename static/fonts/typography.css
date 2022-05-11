@@ -1,0 +1,23 @@
+@font-face {
+  font-family: "Anuphan";
+  src: url(Anuphan-Regular.otf) format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Anuphan";
+  font-weight: 600;
+  src: url(Anuphan-SemiBold.otf) format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Anuphan";
+  font-weight: 700;
+  src: url(Anuphan-Bold.otf) format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Kanit";
+  font-weight: 600;
+  src: url(Kanit-SemiBold.ttf) format("truetype");
+  font-display: swap;
+}
