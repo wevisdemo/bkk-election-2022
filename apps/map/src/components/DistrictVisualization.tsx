@@ -23,7 +23,7 @@ const DistrictVisualization: FunctionComponent<DistrictVisualizationProps> = ({
 
 	if (!preset) return <></>;
 
-	const canleg = useMemo(() => {
+	const candidateLegend = useMemo(() => {
 		return (
 			<CandidateLegend
 				topCandidatePerDistrict={
@@ -52,14 +52,14 @@ const DistrictVisualization: FunctionComponent<DistrictVisualizationProps> = ({
 		<div
 			className={`flex flex-col md:flex-row w-full h-full gap-4 md:gap-8 overflow-hidden ${className}`}
 		>
-			<div className="flex flex-1 h-full w-full flex-col overflow-y-auto">
+			<div className="flex flex-1 h-full w-full flex-col overflow-y-hidden">
 				<h2 className="typo-h4 mb-2 md:mb-6 hidden lg:block">คะแนนรายเขต</h2>
-				<div className="flex flex-col flex-auto h-full gap-2 overflow-y-auto">
+				<div className="flex flex-col flex-auto h-full overflow-y-auto">
 					{activeViz === Visualization.LIST_RATIO ? <RatioList /> : <Pixi type={activeViz} />}
-					<div class="md:flex hidden">{canleg}</div>
 				</div>
+				<div class="md:flex hidden mt-2">{candidateLegend}</div>
 			</div>
-			<div class="flex md:hidden">{canleg}</div>
+			<div class="flex md:hidden">{candidateLegend}</div>
 			<div className="flex justify-center items-center">
 				<VisualizationToggle value={activeViz} onChange={setActiveViz} />
 			</div>
