@@ -113,14 +113,24 @@ class DistrictRect {
 
 const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: DistrictMapProps) => {
   const preset = useContext(presetContext)! as Preset;
+  const parentRef = useRef<HTMLDivElement>(null);
   const ref = useRef<HTMLDivElement>(null);
 
   // tooltip
-  const [showTooltip, setShowTooltip] = useState(false)
-  const [districtTooltip, setDistrictTooltip] = useState<District>()
-  const [tooltipPos, setTooltipPos] = useState({
-    x: -1,
-    y: -1
+  const [tooltips, setTooltips] = useState<{
+    show: boolean,
+    district: District | undefined,
+    left: string | number,
+    top: string | number,
+    bottom: string | number,
+    pointUp: boolean
+  }>({
+    show: false,
+    district: undefined,
+    left: "unset",
+    top: "unset",
+    bottom: "unset",
+    pointUp: true,
   })
 
   if (!preset) return <></>
@@ -161,12 +171,18 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
       graphics.interactive = true;
       graphics.on('pointerover', (event) => {
         graphics.tint = 0x666666
-        setDistrictTooltip(district)
-        setShowTooltip(true)
+        setTooltips((prev) => ({
+          ...prev,
+          district: district,
+          show: true
+        }))
       })
       graphics.on('pointerout', (event) => {
         graphics.tint = 0xFFFFFF
-        setShowTooltip(false)
+        setTooltips((prev) => ({
+          ...prev,
+          show: false
+        }))
       });
 
       viewport.addChild(graphics)
@@ -200,12 +216,18 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
         // graphics.buttonMode = true;
         graphics.on('pointerover', (event) => {
           graphics.tint = 0x666666
-          setDistrictTooltip(district)
-          setShowTooltip(true)
+          setTooltips((prev) => ({
+            ...prev,
+            district: district,
+            show: true
+          }))
         })
         graphics.on('pointerout', (event) => {
           graphics.tint = 0xFFFFFF
-          setShowTooltip(false)
+          setTooltips((prev) => ({
+            ...prev,
+            show: false
+          }))
         });
 
         viewport.addChild(graphics)
@@ -260,12 +282,18 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
         graphics.buttonMode = true;
         graphics.on('pointerover', (event) => {
           graphics.tint = 0x666666
-          setDistrictTooltip(district)
-          setShowTooltip(true);
+          setTooltips((prev) => ({
+            ...prev,
+            district: district,
+            show: true
+          }))
         })
         graphics.on('pointerout', (event) => {
           graphics.tint = 0xFFFFFF
-          setShowTooltip(false);
+          setTooltips((prev) => ({
+            ...prev,
+            show: false
+          }))
         });
 
         let offSetY = 0;
@@ -367,8 +395,6 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
       width: ref.current.parentElement?.clientWidth || window.innerWidth,
       height: ref.current.parentElement?.clientHeight || 500,
       backgroundColor: 0x000000,
-      // backgroundAlpha: 0,
-
       antialias: true
     });
 
@@ -378,10 +404,8 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
     // Start the MapPixiJS app
     app.start();
     const viewport = new Viewport({
-
       worldWidth: WORLD_WIDTH,
       worldHeight: WORLD_HEIGHT,
-
       interaction: app.renderer.plugins.interaction // the interaction module is important for wheel to work properly when renderer.view is placed or scaled
     })
 
@@ -390,7 +414,17 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
     viewport.interactive = true
     // activate plugins
     viewport.on("pointermove", (e) => {
-      setTooltipPos({ x: e.data.global.x, y: e.data.global.y })
+      if (parentRef.current) {
+        const clientHeight = parentRef.current?.clientHeight
+        const pointUp: boolean = !(e.data.global.y > 200)
+        setTooltips((prev) => ({
+          ...prev,
+          left: e.data.global.x - 15,
+          top: pointUp ? e.data.global.y + 20 : "unset",
+          bottom: !pointUp ? clientHeight - e.data.global.y + 10 : "unset",
+          pointUp: pointUp
+        }))
+      }
     })
     viewport
       .drag()
@@ -427,13 +461,13 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
   }, [ref, electionDistrictData, type]);
 
   return (
-    <div className='relative' class='overflow-hidden' >
+    <div className='relative' class='overflow-hidden' ref={parentRef} >
       <div ref={ref} />
       <DistrictTooltip
-        show={showTooltip}
-        district={districtTooltip}
-        style={{ left: tooltipPos.x - 10, top: tooltipPos.y + 20 }}
-        pointUp={true}
+        show={tooltips.show}
+        district={tooltips.district}
+        style={{ left: tooltips.left, top: tooltips.top, bottom: tooltips.bottom }}
+        pointUp={tooltips.pointUp}
       />
     </div>
   );
