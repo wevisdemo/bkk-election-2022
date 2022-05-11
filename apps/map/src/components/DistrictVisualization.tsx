@@ -54,7 +54,7 @@ const DistrictVisualization: FunctionComponent<DistrictVisualizationProps> = ({
 		>
 			<div className="flex flex-1 h-full w-full flex-col overflow-y-hidden">
 				<h2 className="typo-h4 mb-2 md:mb-6 hidden lg:block">คะแนนรายเขต</h2>
-				<div className="flex flex-col flex-auto h-full overflow-y-auto">
+				<div className="flex flex-col flex-auto h-full overflow-y-hidden">
 					{activeViz === Visualization.LIST_RATIO ? <RatioList /> : <Pixi type={activeViz} />}
 				</div>
 				<div class="md:flex hidden mt-2">{candidateLegend}</div>
