@@ -10,6 +10,7 @@ import { Visualization } from '../../models/visualization';
 import DistrictTooltip from '../DistrictTooltip';
 import { BKKMapPolygonData, MapPolygon } from './bkk-district-map-polygon';
 import { getDistrictCoordinate, Table2D, Vector2D } from './helper';
+import { LineStyle } from 'pixi.js';
 
 const WORLD_WIDTH = 1450
 const WORLD_HEIGHT = 1000;
@@ -153,7 +154,7 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
     fontFamily: 'Anuphan',
     fontSize: 20,
     fontStyle: 'normal',
-    fontWeight: '900',
+    fontWeight: '600',
     fill: '#ffffff',
     stroke: '#000000',
     strokeThickness: 6,
@@ -173,7 +174,12 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
       });
 
       const graphics = new Graphics();
-      graphics.lineStyle(1, 0x000000, 1);
+      graphics.lineStyle({
+        width: 1,
+        color: 0x000000,
+        native: true,
+        join: PIXI.LINE_JOIN.ROUND
+      });
       graphics.beginFill(
         highestScoreCandidate ? +highestScoreCandidate.color.replace("#", "0x") : +DEFAULT_CANDIDATE_COLOR.replace("#", "0x"), 1, true);
       graphics.drawPolygon(mapPolygon?.polygon || []);
@@ -223,7 +229,7 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
 
         }
 
-        graphics.drawRoundedRect(x, y, rectSize, rectSize, 16);
+        graphics.drawRoundedRect(x, y, rectSize, rectSize, 2);
         graphics.endFill();
         graphics.interactive = true;
         // graphics.buttonMode = true;
@@ -326,7 +332,7 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
 
   const drawRiver = (viewport: Viewport) => {
     const graphics = new Graphics();
-    graphics.lineStyle(66, 0xFFFFFF, 0.3);
+    graphics.lineStyle(50, 0xFFFFFF, 0.3);
     graphics.moveTo(530, 0);
     graphics.lineTo(530, 170);
     graphics.lineTo(410, 170);
@@ -453,8 +459,8 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
   }, [ref, electionDistrictData, type]);
 
   return (
-    <div className='relative' class='overflow-hidden' ref={parentRef} >
-      <div ref={ref} />
+    <div className='relative h-full' class='overflow-hidden' ref={parentRef} >
+      <div className='w-full h-full' ref={ref} />
       <DistrictTooltip
         show={tooltips.show}
         district={tooltips.district}
