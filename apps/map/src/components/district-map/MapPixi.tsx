@@ -1,11 +1,13 @@
 import { Viewport } from 'pixi-viewport';
 import * as PIXI from "pixi.js";
+import { InteractionEvent } from 'pixi.js';
 import React, { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { DEFAULT_CANDIDATE_COLOR } from '../../constants/candidate';
 import { Preset, presetContext } from '../../contexts/preset';
 import { Candidate, CandidateMap } from '../../models/candidate';
 import { District, Result } from '../../models/election';
 import { Visualization } from '../../models/visualization';
+import DistrictTooltip from '../DistrictTooltip';
 import { BKKMapPolygonData, MapPolygon } from './bkk-district-map-polygon';
 import { getDistrictCoordinate, Table2D, Vector2D } from './helper';
 
@@ -112,6 +114,15 @@ class DistrictRect {
 const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: DistrictMapProps) => {
   const preset = useContext(presetContext)! as Preset;
   const ref = useRef<HTMLDivElement>(null);
+
+  // tooltip
+  const [showTooltip, setShowTooltip] = useState(false)
+  const [districtTooltip, setDistrictTooltip] = useState<District>()
+  const [tooltipPos, setTooltipPos] = useState({
+    x: -1,
+    y: -1
+  })
+
   if (!preset) return <></>
   const { electionData, candidateMap } = preset
 
@@ -150,9 +161,12 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
       graphics.interactive = true;
       graphics.on('pointerover', (event) => {
         graphics.tint = 0x666666
+        setDistrictTooltip(district)
+        setShowTooltip(true)
       })
       graphics.on('pointerout', (event) => {
         graphics.tint = 0xFFFFFF
+        setShowTooltip(false)
       });
 
       viewport.addChild(graphics)
@@ -186,10 +200,12 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
         // graphics.buttonMode = true;
         graphics.on('pointerover', (event) => {
           graphics.tint = 0x666666
+          setDistrictTooltip(district)
+          setShowTooltip(true)
         })
-
         graphics.on('pointerout', (event) => {
           graphics.tint = 0xFFFFFF
+          setShowTooltip(false)
         });
 
         viewport.addChild(graphics)
@@ -244,9 +260,12 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
         graphics.buttonMode = true;
         graphics.on('pointerover', (event) => {
           graphics.tint = 0x666666
+          setDistrictTooltip(district)
+          setShowTooltip(true);
         })
         graphics.on('pointerout', (event) => {
           graphics.tint = 0xFFFFFF
+          setShowTooltip(false);
         });
 
         let offSetY = 0;
@@ -368,7 +387,11 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
 
     // add the viewport to the stage
     app.stage.addChild(viewport)
+    viewport.interactive = true
     // activate plugins
+    viewport.on("pointermove", (e) => {
+      setTooltipPos({ x: e.data.global.x, y: e.data.global.y })
+    })
     viewport
       .drag()
       .pinch()
@@ -403,7 +426,17 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
     };
   }, [ref, electionDistrictData, type]);
 
-  return <div class='overflow-hidden' ref={ref} />;
+  return (
+    <div className='relative' class='overflow-hidden' >
+      <div ref={ref} />
+      <DistrictTooltip
+        show={showTooltip}
+        district={districtTooltip}
+        style={{ left: tooltipPos.x - 10, top: tooltipPos.y + 20 }}
+        pointUp={true}
+      />
+    </div>
+  );
 }
 
 export default MapPixi
