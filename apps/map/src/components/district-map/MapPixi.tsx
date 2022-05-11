@@ -10,7 +10,7 @@ import { Visualization } from '../../models/visualization';
 import DistrictTooltip from '../DistrictTooltip';
 import { BKKMapPolygonData, MapPolygon } from './bkk-district-map-polygon';
 import { getDistrictCoordinate, Table2D, Vector2D } from './helper';
-import { LineStyle } from 'pixi.js';
+// import { LineStyle } from 'pixi.js';
 
 const WORLD_WIDTH = 1450
 const WORLD_HEIGHT = 1000;
@@ -177,7 +177,7 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
       graphics.lineStyle({
         width: 1,
         color: 0x000000,
-        native: true,
+        // native: true,
         join: PIXI.LINE_JOIN.ROUND
       });
       graphics.beginFill(
