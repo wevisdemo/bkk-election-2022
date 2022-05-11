@@ -1908,6 +1908,11 @@
   resolved "https://registry.yarnpkg.com/@pixi/filter-noise/-/filter-noise-6.3.2.tgz#d5e6843a3bf20680c1e28d9a58ca149a6edbf79f"
   integrity sha512-8lZdccDdlKTNktbD+8aeYfceayV6Rzq1P6NLpbvzFZbxH6JoaaNQb2TQgU+Vl/ZcssBB+IJ8MvJZbLuWKC4CmQ==
 
+"@pixi/graphics-smooth@^0.0.27":
+  version "0.0.27"
+  resolved "https://registry.yarnpkg.com/@pixi/graphics-smooth/-/graphics-smooth-0.0.27.tgz#85a42382a7a2ee080ac0d042046fada88dce1f5b"
+  integrity sha512-dmv86xE5KPd9P4C04dFnP6EHYKpHzCKjXtbrBt4wt4pWiFCzLoHu2deB8bE5KnVIIrq5hAn1uQa1SYL3LvRR6w==
+
 "@pixi/graphics@6.3.2":
   version "6.3.2"
   resolved "https://registry.yarnpkg.com/@pixi/graphics/-/graphics-6.3.2.tgz#9c513600c8ec6876b050da4eb2781b843ba519c8"

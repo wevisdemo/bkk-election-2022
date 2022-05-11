@@ -1,6 +1,6 @@
 import { Viewport } from 'pixi-viewport';
 import * as PIXI from "pixi.js";
-import { InteractionEvent } from 'pixi.js';
+import { SmoothGraphics as Graphics } from '@pixi/graphics-smooth';
 import React, { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { DEFAULT_CANDIDATE_COLOR } from '../../constants/candidate';
 import { Preset, presetContext } from '../../contexts/preset';
@@ -160,9 +160,10 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
           return value.name === district.name
       });
 
-      const graphics = new PIXI.Graphics();
+      const graphics = new Graphics();
       graphics.lineStyle(1, 0x000000, 1);
-      graphics.beginFill(highestScoreCandidate ? +highestScoreCandidate.color.replace("#", "0x") : +DEFAULT_CANDIDATE_COLOR.replace("#", "0x"));
+      graphics.beginFill(
+        highestScoreCandidate ? +highestScoreCandidate.color.replace("#", "0x") : +DEFAULT_CANDIDATE_COLOR.replace("#", "0x"), 1, true);
       graphics.drawPolygon(mapPolygon?.polygon || []);
       graphics.scale.x = 7
       graphics.scale.y = 7;
@@ -203,10 +204,10 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
         const x = coordinate.col * rectSize + coordinate.col * padding;
         const y = coordinate.row * rectSize + coordinate.row * padding;
 
-        const graphics = new PIXI.Graphics();
+        const graphics = new Graphics();
 
         if (highestScoreCandidate) {
-          graphics.beginFill(+highestScoreCandidate.color.replace("#", "0x"));
+          graphics.beginFill(+highestScoreCandidate.color.replace("#", "0x"), 1, true);
 
         }
 
@@ -263,18 +264,15 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
       const marginTop = 23;
 
       electionDistrictData.forEach((data) => {
-        const { coordinate, district, highestScoreCandidate, ratio, districtVoteRatio, } = data
+        const { coordinate, district, ratio, districtVoteRatio, } = data
 
         const rectSizeWithRatio = Math.sqrt(rectSize * rectSize * ratio);
         const x = coordinate.col * rectSize + rectSize * .5 - rectSizeWithRatio * .5 + coordinate.col * padding;
         let y = coordinate.row * rectSize + rectSize * .5 - rectSizeWithRatio * .5 + coordinate.row * padding;
         y += marginTop;
 
-        const graphics = new PIXI.Graphics();
+        const graphics = new Graphics();
 
-        if (highestScoreCandidate) {
-          // graphics.beginFill(+highestScoreCandidate.color.replace("#", "0x"), 0.25);
-        }
         graphics.drawRect(x, y, rectSizeWithRatio, rectSizeWithRatio);
         // graphics.endFill();
         graphics.interactive = true;
@@ -300,7 +298,7 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
         districtVoteRatio.forEach(({ percentage, color }) => {
           const voteRectHeight = rectSizeWithRatio * percentage / 100
           graphics.lineStyle(1, 0x000000, 1);
-          graphics.beginFill(+color.replace("#", "0x"));
+          graphics.beginFill(+color.replace("#", "0x"), 1, true);
           graphics.drawRect(x,
             y + offSetY,
             rectSizeWithRatio,
@@ -333,7 +331,7 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
   }
 
   const drawRiver = (viewport: Viewport) => {
-    const graphics = new PIXI.Graphics();
+    const graphics = new Graphics();
     graphics.lineStyle(66, 0xFFFFFF, 0.3);
     graphics.moveTo(530, 0);
     graphics.lineTo(530, 170);
@@ -395,7 +393,7 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
       width: ref.current.parentElement?.clientWidth || window.innerWidth,
       height: ref.current.parentElement?.clientHeight || 500,
       backgroundColor: 0x000000,
-      antialias: true
+      antialias: false
     });
 
     // Add app to DOM
@@ -450,7 +448,7 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
 
     // border(viewport)
     // function border(viewport: Viewport) {
-    //   const line = viewport.addChild(new PIXI.Graphics())
+    //   const line = viewport.addChild(new Graphics())
     //   line.lineStyle(10, 0xff0000).drawRect(0, 0, viewport.worldWidth, viewport.worldHeight)
     // }
 
