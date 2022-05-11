@@ -21,7 +21,7 @@ export async function fetchPreset({
 	};
 }
 
-async function getJson<T>(url: string): Promise<T> {
+export async function getJson<T>(url: string): Promise<T> {
 	const response = await fetch(url);
 	return response.json();
 }

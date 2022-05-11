@@ -3,6 +3,7 @@ export interface ElectionIndex {
 	fullname: string;
 	electionDataUrl: string;
 	candidateDataUrl: string;
+	refreshIntervalMs?: number;
 }
 
 export interface ElectionData {

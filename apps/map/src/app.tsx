@@ -1,24 +1,57 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { FunctionComponent, useEffect } from 'react';
 import { loadUIComponents } from 'ui';
 import Dashboard from './components/dashboard';
 import Footer from './components/Footer';
 import { Preset, presetContext } from './contexts/preset';
 import { electionIndexes } from './data/presets';
-import { fetchPreset } from './utils/fetch';
+import { ElectionData } from './models/election';
+import { fetchPreset, getJson } from './utils/fetch';
 
 const DEFAULT_PRESET_INDEX = 0;
 
 const App: FunctionComponent = () => {
 	const [activePresetIndex, setActivePresetIndex] = useState<number>(DEFAULT_PRESET_INDEX);
 	const [preset, setPreset] = useState<Preset | null>(null);
+	const [refreshInterval, setRefreshInterval] = useState<NodeJS.Timer | null>(null);
 
 	useEffect(() => {
 		loadUIComponents();
 	}, []);
 
-	useMemo(() => {
-		fetchPreset(electionIndexes[activePresetIndex]).then(setPreset);
+	useEffect(() => {
+		if (refreshInterval) {
+			clearInterval(refreshInterval);
+			setRefreshInterval(null);
+		}
+
+		const presetIndex = electionIndexes[activePresetIndex];
+		const { refreshIntervalMs, electionDataUrl, fullname, shortname } = presetIndex;
+
+		fetchPreset(presetIndex).then(setPreset);
+
+		if (refreshIntervalMs) {
+			setRefreshInterval(
+				setInterval(
+					async () =>
+						setPreset(
+							preset
+								? {
+										fullname,
+										shortname,
+										candidateMap: preset.candidateMap,
+										electionData: await getJson<ElectionData>(electionDataUrl)
+								  }
+								: null
+						),
+					refreshIntervalMs
+				)
+			);
+		}
+
+		return () => {
+			if (refreshInterval) clearInterval(refreshInterval);
+		};
 	}, [activePresetIndex]);
 
 	return (

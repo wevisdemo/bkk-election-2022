@@ -19,9 +19,7 @@ const PresetToggle: FunctionComponent<PresetToggleProps> = ({ activeIndex, onCha
 				onClick={() => setIsDropdownOpen(!isDropdownOpen)}
 			>
 				<div className="flex-1 text-left flex flex-row">
-					{preset?.electionData.type === ElectionDataType.Live && (
-						<div class="bg-[#D02525] text-white mr-2 px-1 font-semibold">LIVE</div>
-					)}
+					{preset?.electionData.type === ElectionDataType.Live && <LiveBadge />}
 					{electionIndexes[activeIndex].shortname}
 				</div>
 				<svg
@@ -55,9 +53,7 @@ const PresetToggle: FunctionComponent<PresetToggleProps> = ({ activeIndex, onCha
 						}`}
 					>
 						{preset?.electionData.type === ElectionDataType.Live &&
-							preset?.shortname === shortname && (
-								<div class="bg-[#D02525] text-white mr-1 px-1 font-semibold">LIVE</div>
-							)}
+							preset?.shortname === shortname && <LiveBadge />}
 						{shortname}
 					</button>
 				))}
@@ -65,5 +61,7 @@ const PresetToggle: FunctionComponent<PresetToggleProps> = ({ activeIndex, onCha
 		</div>
 	);
 };
+
+const LiveBadge = () => <div class="bg-[#D02525] text-white mr-1 px-1 font-semibold">LIVE</div>;
 
 export default PresetToggle;
