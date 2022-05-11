@@ -387,7 +387,7 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
     };
   }, [ref, electionDistrictData, type]);
 
-  return <div ref={ref} />;
+  return <div class='overflow-hidden' ref={ref} />;
 }
 
 export default MapPixi

@@ -7,6 +7,7 @@ import VisualizationToggle from './VisualizationToggle';
 import Pixi from './district-map/MapPixi';
 import CandidateLegend from './CandidateLegend';
 import { TOP_CANDIDATE_DISPLAY } from '../constants/candidate';
+
 interface DistrictVisualizationProps {
 	activeViz: Visualization;
 	setActiveViz: (vis: Visualization) => void;
@@ -22,47 +23,43 @@ const DistrictVisualization: FunctionComponent<DistrictVisualizationProps> = ({
 
 	if (!preset) return <></>;
 
+	const canleg = useMemo(() => {
+		return (
+			<CandidateLegend
+				topCandidatePerDistrict={
+					activeViz === Visualization.GRID_WINNER || activeViz === Visualization.MAP_WINNER ? 1 : 2
+				}
+			>
+				{activeViz === Visualization.GRID_RATIO ? (
+					<div>
+						<p>
+							<span className="font-bold">ขนาดกล่อง</span> ตามจำนวนผู้มีสิทธิ์เลือกตั้งในเขตนั้น
+						</p>
+						<p>
+							<span className="font-bold">สัดส่วนสี</span> ในแต่ละกล่องตามสัดส่วนคะแนนของผู้สมัคร
+						</p>
+					</div>
+				) : (activeViz === Visualization.GRID_WINNER || activeViz === Visualization.MAP_WINNER) && (
+					<p>
+						<span className="font-bold">สี</span> ของแต่ละเขตแสดงผู้ได้คะแนนสูงสุดในเขตนั้นๆ
+					</p>
+				)}
+			</CandidateLegend>
+		);
+	}, [preset, activeViz]);
+
 	return (
 		<div
 			className={`flex flex-col md:flex-row w-full h-full gap-4 md:gap-8 overflow-hidden ${className}`}
 		>
-			<div className="flex flex-1 h-full w-full flex-col">
+			<div className="flex flex-1 h-full w-full flex-col overflow-y-auto">
 				<h2 className="typo-h4 mb-2 md:mb-6 hidden lg:block">คะแนนรายเขต</h2>
-				<div className="relative flex flex-col flex-auto h-full overflow-hidden">
-					{activeViz === Visualization.LIST_RATIO ? (
-						<RatioList />
-					) : (
-						<>
-							<Pixi type={activeViz} />
-							<div className="absolute inset-x-0 bottom-0 bg-black">
-								<CandidateLegend
-									topCandidatePerDistrict={
-										activeViz === Visualization.GRID_RATIO ? TOP_CANDIDATE_DISPLAY : 1
-									}
-								>
-									{activeViz === Visualization.GRID_RATIO ? (
-										<div>
-											<p>
-												<span className="font-bold">ขนาดกล่อง</span>{' '}
-												ตามจำนวนผู้มีสิทธิ์เลือกตั้งในเขตนั้น
-											</p>
-											<p>
-												<span className="font-bold">สัดส่วนสี</span>{' '}
-												ในแต่ละกล่องตามสัดส่วนคะแนนของผู้สมัคร
-											</p>
-										</div>
-									) : (
-										<p>
-											<span className="font-bold">สี</span>{' '}
-											ของแต่ละเขตแสดงผู้ได้คะแนนสูงสุดในเขตนั้นๆ
-										</p>
-									)}
-								</CandidateLegend>
-							</div>
-						</>
-					)}
+				<div className="flex flex-col flex-auto h-full gap-2 overflow-y-auto">
+					{activeViz === Visualization.LIST_RATIO ? <RatioList /> : <Pixi type={activeViz} />}
+					<div class="md:flex hidden">{canleg}</div>
 				</div>
 			</div>
+			<div class="flex md:hidden">{canleg}</div>
 			<div className="flex justify-center items-center">
 				<VisualizationToggle value={activeViz} onChange={setActiveViz} />
 			</div>
