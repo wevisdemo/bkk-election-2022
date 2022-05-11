@@ -149,6 +149,18 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
     }
   }
 
+  const textStyle = new PIXI.TextStyle({
+    fontFamily: 'Anuphan',
+    fontSize: 20,
+    fontStyle: 'normal',
+    fontWeight: '900',
+    fill: '#ffffff',
+    stroke: '#000000',
+    strokeThickness: 6,
+    lineJoin: "round",
+    textBaseline: "bottom",
+  })
+
   const drawPolygonMap = (viewport: Viewport) => {
 
     electionDistrictData.forEach((data) => {
@@ -234,17 +246,9 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
         viewport.addChild(graphics)
 
         // // draw rect
-        const style = new PIXI.TextStyle({
-          fontFamily: 'Anuphan, ui-serif',
-          fontSize: 16,
-          fontStyle: 'normal',
-          fontWeight: '900',
-          fill: ['#ffffff'], // gradient
-          stroke: '#000000',
-          strokeThickness: 2
-        })
 
-        const basicText = new PIXI.Text(district.name, style);
+
+        const basicText = new PIXI.Text(district.name, textStyle);
         // basicText.tint = 0xFFFFFF
         basicText.x = x + rectSize * .5;
         basicText.y = y + rectSize * .5;
@@ -309,17 +313,7 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
 
         viewport.addChild(graphics)
 
-        const style = new PIXI.TextStyle({
-          fontFamily: 'Anuphan, ui-serif',
-          fontSize: 16,
-          fontStyle: 'normal',
-          fontWeight: 'bold',
-          fill: ['#ffffff'], // gradient
-          stroke: '#000000',
-          strokeThickness: 4
-        })
-
-        const basicText = new PIXI.Text(district.name, style);
+        const basicText = new PIXI.Text(district.name, textStyle);
         // basicText.tint = 0xFFFFFF
         basicText.x = x + rectSizeWithRatio * .5;
         basicText.y = y - 10;
