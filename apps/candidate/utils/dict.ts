@@ -1,8 +1,19 @@
+const img = require('../public/images/candidates/1/1.webp');
+
 export const QuestionTypeDict = {
   policy: 'ด้านนโยบาย',
   opiniion: 'ด้านวิศัยทัศน์',
   lifestyle: 'ด้าน Lifestyle',
   special: 'ด้านเคลียใจ',
+};
+
+export const getCouncilImage = (districtId: number, councilNumber: number) => {
+  try {
+    const img = require(`../public/images/candidates/${districtId}/${councilNumber}.webp`);
+    return img.default.src as string;
+  } catch {
+    return '';
+  }
 };
 
 export const getCandidateOG = (id: number): string => {
@@ -89,3 +100,56 @@ export const colorDict = {
   30: '#BFF27F',
   31: '#FC4145',
 };
+
+export const districtOrderList = [
+  'พระนคร',
+  'ดุสิต',
+  'หนองจอก',
+  'บางรัก',
+  'บางเขน',
+  'บางกะปิ',
+  'ปทุมวัน',
+  'ป้อมปราบศัตรูพ่าย',
+  'พระโขนง',
+  'มีนบุรี',
+  'ลาดกระบัง',
+  'ยานนาวา',
+  'สัมพันธวงศ์',
+  'พญาไท',
+  'ธนบุรี',
+  'บางกอกใหญ่',
+  'ห้วยขวาง',
+  'คลองสาน',
+  'ตลิ่งชัน',
+  'บางกอกน้อย',
+  'บางขุนเทียน',
+  'ภาษีเจริญ',
+  'หนองแขม',
+  'ราษฎร์บูรณะ',
+  'บางพลัด',
+  'ดินแดง',
+  'บึงกุ่ม',
+  'สาทร',
+  'บางซื่อ',
+  'จตุจักร',
+  'บางคอแหลม',
+  'ประเวศ',
+  'คลองเตย',
+  'สวนหลวง',
+  'จอมทอง',
+  'ดอนเมือง',
+  'ราชเทวี',
+  'ลาดพร้าว',
+  'วัฒนา',
+  'บางแค',
+  'หลักสี่',
+  'สายไหม',
+  'คันนายาว',
+  'สะพานสูง',
+  'วังทองหลาง',
+  'คลองสามวา',
+  'บางนา',
+  'ทวีวัฒนา',
+  'ทุ่งครุ',
+  'บางบอน',
+];
