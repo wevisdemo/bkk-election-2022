@@ -228,7 +228,6 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
           graphics.beginFill(+highestScoreCandidate.color.replace("#", "0x"), 1, true);
 
         }
-
         graphics.drawRoundedRect(x, y, rectSize, rectSize, 2);
         graphics.endFill();
         graphics.interactive = true;
