@@ -13,12 +13,13 @@ const PresetToggle: FunctionComponent<PresetToggleProps> = ({ activeIndex, onCha
 	const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
 
 	return (
-		<div className="w-full lg:w-auto flex flex-col relative">
+		<div className="w-full lg:w-full lg:max-w-[360px] flex flex-col relative">
 			<button
-				class="flex flex-row items-center lg:hidden rounded-sm border border-white py-2 px-4 mb-1 typo-u5 font-bold"
+				class="flex flex-row items-center rounded-sm border border-white py-2 px-4 mb-1 typo-u5 font-bold"
 				onClick={() => setIsDropdownOpen(!isDropdownOpen)}
 			>
 				<div className="flex-1 text-left flex flex-row">
+					{/* <span className='mr-2 inline-block typo-u5 font-[400]'>ชุดข้อมูล:</span> */}
 					{preset?.electionData.type === ElectionDataType.Live && <LiveBadge />}
 					{electionIndexes[activeIndex].shortname}
 				</div>
@@ -35,15 +36,18 @@ const PresetToggle: FunctionComponent<PresetToggleProps> = ({ activeIndex, onCha
 				</svg>
 			</button>
 			<div
-				className={`absolute inset-x-0 top-full lg:relative flex-col lg:flex-row rounded-sm border border-white bg-black z-10 overflow-hidden ${
-					isDropdownOpen ? 'flex' : 'hidden lg:flex'
+				className={`absolute inset-x-0 top-full flex-col rounded-sm border border-white bg-black z-10 overflow-hidden ${
+					isDropdownOpen ? 'flex' : 'hidden'
 				}`}
 			>
 				{electionIndexes.map(({ shortname, electionDataUrl }, index) => (
 					<button
 						key={shortname}
 						disabled={!electionDataUrl}
-						onClick={() => electionDataUrl && onChange(index)}
+						onClick={() => {
+							setIsDropdownOpen(false)
+							if (electionDataUrl) onChange(index)
+						}}
 						className={`typo-u5 px-3 py-2 rounded-sm h-fit m-[2px] flex flex-row ${
 							index === activeIndex
 								? 'bg-white text-black font-semibold'

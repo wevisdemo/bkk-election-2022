@@ -24,7 +24,7 @@ export default function CandidateOverviewListRowItem({ candidateId, topVoteCount
 	return (
 		<>
 			<div class="flex flex-row mt-4">
-				<span class="basis-6">
+				<span class="basis-10">
 					{candidate.number || '-'}
 					{/* {index + 1} */}
 				</span>

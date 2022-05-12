@@ -38,8 +38,8 @@ const Footer: FunctionComponent = () => {
 								<p>อัปเดตล่าสุด</p>
 								<p>
 									{new Date(preset?.electionData.lastUpdatedAt).toLocaleString('th-TH', {
-										dateStyle: 'medium',
-										timeStyle: 'medium'
+										dateStyle: 'short',
+										timeStyle: 'short'
 									})}
 								</p>
 							</div>

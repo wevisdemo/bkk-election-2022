@@ -1,6 +1,7 @@
 export interface ElectionIndex {
 	shortname: string;
 	fullname: string;
+	subtitle?: string;
 	electionDataUrl: string;
 	candidateDataUrl: string;
 	refreshIntervalMs?: number;

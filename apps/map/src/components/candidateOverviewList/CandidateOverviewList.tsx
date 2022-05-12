@@ -70,8 +70,8 @@ export default function CandidateOverviewList() {
 	const topVoteCount: number = Math.max(...results.map((v: Result) => v.count));
 	const headers = [
 		{
-			text: '#',
-			className: 'text-left basis-6',
+			text: 'เบอร์',
+			className: 'text-left basis-10',
 			sortType: CandidateOverviewSortType.NUMBER
 		},
 		{

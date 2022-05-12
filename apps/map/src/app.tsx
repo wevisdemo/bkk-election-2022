@@ -26,7 +26,9 @@ const App: FunctionComponent = () => {
 		}
 
 		const presetIndex = electionIndexes[activePresetIndex];
-		const { refreshIntervalMs, electionDataUrl, fullname, shortname } = presetIndex;
+		const { refreshIntervalMs, electionDataUrl, fullname, shortname, subtitle } = presetIndex;
+
+		console.log('!!!!', presetIndex)
 
 		fetchPreset(presetIndex).then(setPreset);
 
@@ -38,6 +40,7 @@ const App: FunctionComponent = () => {
 							preset
 								? {
 										fullname,
+										subtitle,
 										shortname,
 										candidateMap: preset.candidateMap,
 										electionData: await getJson<ElectionData>(electionDataUrl)

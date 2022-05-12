@@ -5,6 +5,7 @@ import { ElectionData, ElectionIndex } from '../models/election';
 export async function fetchPreset({
 	shortname,
 	fullname,
+	subtitle,
 	electionDataUrl,
 	candidateDataUrl
 }: ElectionIndex): Promise<Preset> {
@@ -16,6 +17,7 @@ export async function fetchPreset({
 	return {
 		shortname,
 		fullname,
+		subtitle,
 		electionData,
 		candidateMap
 	};
