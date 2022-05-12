@@ -27,7 +27,7 @@ const DistrictVisualization: FunctionComponent<DistrictVisualizationProps> = ({
 		return (
 			<CandidateLegend
 				topCandidatePerDistrict={
-					activeViz === Visualization.GRID_WINNER || activeViz === Visualization.MAP_WINNER ? 1 : 2
+					activeViz === Visualization.GRID_WINNER || activeViz === Visualization.MAP_WINNER ? 1 : 3
 				}
 			>
 				{activeViz === Visualization.GRID_RATIO ? (

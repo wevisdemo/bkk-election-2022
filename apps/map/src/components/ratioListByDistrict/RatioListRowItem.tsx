@@ -1,4 +1,5 @@
 import { useContext, useEffect, useMemo, useRef, useState } from 'react';
+import { DEFAULT_CANDIDATE_COLOR } from '../../constants/candidate';
 import { presetContext } from '../../contexts/preset';
 import { District, Result } from '../../models/election';
 import DistrictTooltip from '../DistrictTooltip';
@@ -33,18 +34,33 @@ export default function RatioListRowItem({
 		{ percent: 1 - countingProgress / 100, color: 'rgba(255, 255, 255, 0.2)' }
 	];
 
-	const progressItems: ProgressItem[] = useMemo(
-		() =>
-			district.voting.result
-				.sort((a: Result, b: Result) => b.count - a.count)
-				.map((res: Result) => {
-					return {
-						percent: res.count / district.voting.totalVotes,
-						color: preset.candidateMap[res.candidateId].color
-					};
-				}),
-		[district]
-	);
+	const progressItems: ProgressItem[] = useMemo(() => {
+		let isnan: boolean = true;
+		const prog: ProgressItem[] = district.voting.result
+			.sort((a: Result, b: Result) => b.count - a.count)
+			.map((res: Result) => {
+				const percent = res.count / district.voting.totalVotes;
+				if (percent) {
+					isnan = false;
+				}
+
+				return {
+					percent: percent || 0,
+					color: preset.candidateMap[res.candidateId].color
+				};
+			}).filter((p) => p.percent > 0);
+
+		if (isnan) {
+			return [
+				{
+					percent: 100,
+					color: DEFAULT_CANDIDATE_COLOR,
+					strip: isLive
+				}
+			] as ProgressItem[];
+		}
+		return prog;
+	}, [district]);
 
 	useEffect(() => {
 		if (rowRef.current) {
@@ -87,7 +103,7 @@ export default function RatioListRowItem({
 					pointUp={isTooltipOnTop}
 				/>
 			</div>
-			{isInProgress && (
+			{isInProgress && isLive && (
 				<div class="flex md:basis-2/12 gap-2 order-4">
 					{countingProgress.toFixed(1)}%
 					<Progress progressItems={countingProgressItems} className="h-1 md:h-2" />

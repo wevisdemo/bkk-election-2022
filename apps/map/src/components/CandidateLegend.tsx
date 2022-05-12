@@ -23,12 +23,12 @@ export default function CandidateLegend({topCandidatePerDistrict, children }: Ca
 			const sorted = district.voting.result.sort((a, b) => b.count - a.count);
 			for (let i = 0; i < topCandidatePerDistrict && i < sorted.length; i++) {
 				const candidate = preset.candidateMap[sorted[i].candidateId];
-				if (tempCandidates.indexOf(candidate) == -1) {
+				if (tempCandidates.indexOf(candidate) == -1 && sorted[i].count > 0) {
 					tempCandidates.push(candidate);
 				}
 			}
 		}
-		return tempCandidates;
+		return tempCandidates.filter((candidate) => candidate);
 	}, [preset, topCandidatePerDistrict]);
 
 	return (
