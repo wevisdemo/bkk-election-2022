@@ -9,7 +9,9 @@
 		"fetch-data": "ts-node data-fetcher/"
 	},
 	"dependencies": {
+		"@pixi/gif": "^1.0.2",
 		"@pixi/graphics-smooth": "^0.0.27",
+		"@pixi/loaders": "^6.3.2",
 		"pixi-viewport": "^4.34.4",
 		"pixi.js": "^6.3.2",
 		"preact": "^10.5.15",

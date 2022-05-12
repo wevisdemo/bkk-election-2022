@@ -1,6 +1,8 @@
+
+import { AnimatedGIFLoader } from '@pixi/gif';
+import { SmoothGraphics as Graphics } from '@pixi/graphics-smooth';
 import { Viewport } from 'pixi-viewport';
 import * as PIXI from "pixi.js";
-import { SmoothGraphics as Graphics } from '@pixi/graphics-smooth';
 import React, { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { DEFAULT_CANDIDATE_COLOR } from '../../constants/candidate';
 import { Preset, presetContext } from '../../contexts/preset';
@@ -162,8 +164,8 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
     textBaseline: "bottom",
   })
 
-  const drawPolygonMap = (viewport: Viewport) => {
-
+  const drawPolygonMap = (app: PIXI.Application, viewport: Viewport) => {
+    const anim = app.loader.resources.stripe.animation;
     electionDistrictData.forEach((data) => {
       const { highestScoreCandidate, district } = data
       const mapPolygon: MapPolygon | undefined = BKKMapPolygonData.find((value: MapPolygon) => {
@@ -187,6 +189,13 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
       graphics.scale.y = 7;
       graphics.endFill();
 
+
+      if (typeof district.voting.progress !== "undefined" && district.voting.progress < 100) {
+        graphics.beginTextureFill({ alpha: 0.3, texture: anim?.texture, matrix: new PIXI.Matrix(.25, 0, 0, .25, 0, 0) })
+        graphics.drawPolygon(mapPolygon?.polygon || []);
+        graphics.endFill();
+      }
+
       graphics.interactive = true;
       graphics.on('pointerover', (event) => {
         graphics.tint = 0x666666
@@ -209,9 +218,10 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
 
   }
 
-  const drawRectMap = (viewport: Viewport) => {
+  const drawRectMap = (app: PIXI.Application, viewport: Viewport) => {
     if (electionDistrictData.length > 0) {
       drawRiver(viewport)
+      const anim = app.loader.resources.stripe.animation;
       // const width = app.screen.width;
       // const height = app.screen.height;
 
@@ -248,10 +258,12 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
           }))
         });
 
+        if (typeof district.voting.progress !== "undefined" && district.voting.progress < 100) {
+          graphics.beginTextureFill({ alpha: 0.3, texture: anim?.texture })
+          graphics.drawRect(x, y, rectSize, rectSize,);
+          graphics.endFill();
+        }
         viewport.addChild(graphics)
-
-        // // draw rect
-
 
         const basicText = new PIXI.Text(district.name, textStyle);
         // basicText.tint = 0xFFFFFF
@@ -264,9 +276,12 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
     }
   }
 
-  const drawRatioMap = (viewport: Viewport) => {
+  const drawRatioMap = (app: PIXI.Application, viewport: Viewport) => {
+
     if (electionDistrictData.length > 0) {
       drawRiver(viewport)
+      const anim = app.loader.resources.stripe.animation;
+
       // ctx.scale(0.7, 0.7);
       const rectSize = 100
       const padding = 20;
@@ -287,6 +302,9 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
         graphics.interactive = true;
         graphics.hitArea = new PIXI.Rectangle(x, y, rectSizeWithRatio, rectSizeWithRatio);
         graphics.buttonMode = true;
+
+
+
         graphics.on('pointerover', (event) => {
           graphics.tint = 0x666666
           setTooltips((prev) => ({
@@ -315,6 +333,12 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
           graphics.endFill();
           offSetY += voteRectHeight
         })
+
+        if (typeof district.voting.progress !== "undefined" && district.voting.progress < 100) {
+          graphics.beginTextureFill({ alpha: 0.3, texture: anim?.texture })
+          graphics.drawRect(x, y, rectSizeWithRatio, rectSizeWithRatio);
+          graphics.endFill();
+        }
 
         viewport.addChild(graphics)
 
@@ -353,6 +377,7 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
     // process data for map winner
     const { districts } = electionData;
 
+    console.log(districts)
     // find highest eligible vote
     let highestEligible = districts.reduce((maxResult: District, res: District) => maxResult.voting.eligiblePopulation > res.voting.eligiblePopulation ? maxResult : res)
     if (highestEligible) highestEligiblePopulation = highestEligible.voting.eligiblePopulation;
@@ -395,55 +420,68 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
       antialias: false
     });
 
-    // Add app to DOM
 
+    PIXI.Loader.registerPlugin(AnimatedGIFLoader);
+
+    app.loader.add('stripe', '/map/images/strip-black.gif');
+    app.loader.load((loader, resources) => {
+      // const anim = resources.stripe.animation;
+      const anim = app.loader.resources.stripe.animation;
+      if (anim) {
+        anim.x = -anim.width;
+        anim.y = -anim.height;
+        app.stage.addChild(anim);
+      }
+
+      const viewport = new Viewport({
+        worldWidth: WORLD_WIDTH,
+        worldHeight: WORLD_HEIGHT,
+        interaction: app.renderer.plugins.interaction // the interaction module is important for wheel to work properly when renderer.view is placed or scaled
+      })
+
+      // add the viewport to the stage
+      app.stage.addChild(viewport)
+      viewport.interactive = true
+      // activate plugins
+      viewport.on("pointermove", (e) => {
+        if (parentRef.current) {
+          const clientHeight = parentRef.current?.clientHeight
+          const pointUp: boolean = !(e.data.global.y > clientHeight * .25)
+          setTooltips((prev) => ({
+            ...prev,
+            left: e.data.global.x - 15,
+            top: pointUp ? e.data.global.y + 20 : "unset",
+            bottom: !pointUp ? clientHeight - e.data.global.y + 10 : "unset",
+            pointUp: pointUp
+          }))
+        }
+      })
+      viewport
+        .drag()
+        .pinch()
+        .wheel()
+
+      viewport.clampZoom({
+        minWidth: 600,                 // minimum width
+        minHeight: 600,                // minimum height
+        maxWidth: 4000,                 // maximum width
+        maxHeight: 4000,                // maximum height
+
+      })
+
+      switch (type) {
+        case Visualization.GRID_RATIO: drawRatioMap(app, viewport); break;
+        case Visualization.GRID_WINNER: drawRectMap(app, viewport); break;
+        case Visualization.MAP_WINNER: drawPolygonMap(app, viewport); break;
+        default: break;
+      }
+      viewport.zoom(WORLD_WIDTH)
+    });
+
+    // Add app to DOM
     ref.current?.appendChild(app.view);
     // Start the MapPixiJS app
     app.start();
-    const viewport = new Viewport({
-      worldWidth: WORLD_WIDTH,
-      worldHeight: WORLD_HEIGHT,
-      interaction: app.renderer.plugins.interaction // the interaction module is important for wheel to work properly when renderer.view is placed or scaled
-    })
-
-    // add the viewport to the stage
-    app.stage.addChild(viewport)
-    viewport.interactive = true
-    // activate plugins
-    viewport.on("pointermove", (e) => {
-      if (parentRef.current) {
-        const clientHeight = parentRef.current?.clientHeight
-        const pointUp: boolean = !(e.data.global.y > clientHeight * .25)
-        setTooltips((prev) => ({
-          ...prev,
-          left: e.data.global.x - 15,
-          top: pointUp ? e.data.global.y + 20 : "unset",
-          bottom: !pointUp ? clientHeight - e.data.global.y + 10 : "unset",
-          pointUp: pointUp
-        }))
-      }
-    })
-    viewport
-      .drag()
-      .pinch()
-      .wheel()
-
-    viewport.clampZoom({
-      minWidth: 600,                 // minimum width
-      minHeight: 600,                // minimum height
-      maxWidth: 4000,                 // maximum width
-      maxHeight: 4000,                // maximum height
-
-    })
-
-    switch (type) {
-      case Visualization.GRID_RATIO: drawRatioMap(viewport); break;
-      case Visualization.GRID_WINNER: drawRectMap(viewport); break;
-      case Visualization.MAP_WINNER: drawPolygonMap(viewport); break;
-      default: break;
-    }
-
-    viewport.zoom(WORLD_WIDTH)
 
     // border(viewport)
     // function border(viewport: Viewport) {

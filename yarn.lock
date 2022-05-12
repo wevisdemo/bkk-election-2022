@@ -1908,6 +1908,11 @@
   resolved "https://registry.yarnpkg.com/@pixi/filter-noise/-/filter-noise-6.3.2.tgz#d5e6843a3bf20680c1e28d9a58ca149a6edbf79f"
   integrity sha512-8lZdccDdlKTNktbD+8aeYfceayV6Rzq1P6NLpbvzFZbxH6JoaaNQb2TQgU+Vl/ZcssBB+IJ8MvJZbLuWKC4CmQ==
 
+"@pixi/gif@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@pixi/gif/-/gif-1.0.2.tgz#9916dc06c696211a73a203f6676f9c960fcc74c8"
+  integrity sha512-uMnopxYo2EU9Mw2TaKZ0qk4e1FxL9ZNswOicOCcZd0KlX3X/LpjEIu7iLil4eySMLo6ps/lB3hBP5HRohiQ1tw==
+
 "@pixi/graphics-smooth@^0.0.27":
   version "0.0.27"
   resolved "https://registry.yarnpkg.com/@pixi/graphics-smooth/-/graphics-smooth-0.0.27.tgz#85a42382a7a2ee080ac0d042046fada88dce1f5b"
@@ -1923,7 +1928,7 @@
   resolved "https://registry.yarnpkg.com/@pixi/interaction/-/interaction-6.3.2.tgz#dd5b14fc946acd2d9587fd458cf14ff241d4f5e6"
   integrity sha512-HZyflufAW1B1cQmQBvzv4IxwcHbqQ0zhHiabSVtwPUHW/nCSpw09hL+k4HR/aFyCdRI/99JcvW5QJp1ldA6OBw==
 
-"@pixi/loaders@6.3.2":
+"@pixi/loaders@6.3.2", "@pixi/loaders@^6.3.2":
   version "6.3.2"
   resolved "https://registry.yarnpkg.com/@pixi/loaders/-/loaders-6.3.2.tgz#03093c0a12f6190ca3c0ff81f10db040210aafcf"
   integrity sha512-kkm1pynWTslQsh+h+Tw17MdeRMQ37Ht72xiZetyWbxadRAnzj+x1I9juEKEFK62mw8K/bGBcNPhu7edgmQwkvw==
