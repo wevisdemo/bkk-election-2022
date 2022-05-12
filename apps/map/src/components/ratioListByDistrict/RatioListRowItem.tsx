@@ -11,6 +11,7 @@ interface RatioListRowItemProps {
 	isLive: boolean;
 }
 
+const STACKED_BAR_DISPLAY_MAX = 6;
 export default function RatioListRowItem({
 	district,
 	isInProgress,
@@ -35,31 +36,37 @@ export default function RatioListRowItem({
 	];
 
 	const progressItems: ProgressItem[] = useMemo(() => {
-		let isnan: boolean = true;
 		const prog: ProgressItem[] = district.voting.result
 			.sort((a: Result, b: Result) => b.count - a.count)
-			.map((res: Result) => {
-				const percent = res.count / district.voting.totalVotes;
-				if (percent) {
-					isnan = false;
+			.reduce((prev: ProgressItem[], curr: Result) => {
+				if (!curr.count || !district.voting.totalVotes) return prev
+				const percent = curr.count / district.voting.totalVotes;
+				if (prev.length == STACKED_BAR_DISPLAY_MAX) {
+					prev[prev.length - 1].percent += percent;
+					return prev
 				}
+				return [
+					...prev,
+					{
+						percent: percent,
+						color: preset.candidateMap[curr.candidateId].color
+					}
+				];
+			}, []);
+		
+			
+			if (prog.length == 0) {
+				return [
+					{
+						percent: 100,
+						color: DEFAULT_CANDIDATE_COLOR,
+						strip: isLive
+					}
+				] as ProgressItem[];
+			}
 
-				return {
-					percent: percent || 0,
-					color: preset.candidateMap[res.candidateId].color
-				};
-			}).filter((p) => p.percent > 0);
-
-		if (isnan) {
-			return [
-				{
-					percent: 100,
-					color: DEFAULT_CANDIDATE_COLOR,
-					strip: isLive
-				}
-			] as ProgressItem[];
-		}
-		return prog;
+			prog[prog.length - 1].color = DEFAULT_CANDIDATE_COLOR
+			return prog;
 	}, [district]);
 
 	useEffect(() => {
@@ -101,6 +108,7 @@ export default function RatioListRowItem({
 					district={district}
 					className={`${isTooltipOnTop ? 'top-full' : 'bottom-full'}`}
 					pointUp={isTooltipOnTop}
+					topCandidateDisplay={STACKED_BAR_DISPLAY_MAX - 1}
 				/>
 			</div>
 			{isInProgress && isLive && (

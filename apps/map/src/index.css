@@ -28,3 +28,10 @@
   /* FIXME: does this belong here? */
   .vis-toggle-shortscreen.md\:w-24 { width: 4rem; }
 }
+
+@media screen and (max-width: 375px) {
+  /* FIXME: does this belong here? */
+  .vis-toggle-shortscreen {
+    width: 3rem;
+  }
+}
