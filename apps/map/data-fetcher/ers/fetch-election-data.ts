@@ -34,7 +34,7 @@ async function fetchGovernorElectionData(): Promise<ElectionData> {
       })),
     },
     districts: areas.map(a => ({
-      name: a.name,
+      name: stripDistrictPrefix(a.name),
       voting: {
         eligiblePopulation: a.eligible,
         totalVotes: a.totalVotes,
@@ -65,7 +65,7 @@ async function fetchCouncilMemberElectionData(): Promise<ElectionData> {
       })),
     },
     districts: areas.map(a => ({
-      name: a.name,
+      name: stripDistrictPrefix(a.name),
       voting: {
         eligiblePopulation: a.eligible,
         totalVotes: a.totalVotes,
@@ -77,4 +77,8 @@ async function fetchCouncilMemberElectionData(): Promise<ElectionData> {
       }
     })),
   };
+}
+
+function stripDistrictPrefix(districtName: string): string {
+  return districtName.startsWith('เขต') ? districtName.split('เขต')[1] : districtName;
 }
