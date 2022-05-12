@@ -11,7 +11,7 @@ interface RatioListRowItemProps {
 	isLive: boolean;
 }
 
-const STACKED_BAR_DISPLAY_MAX = 5;
+const STACKED_BAR_DISPLAY_MAX = 6;
 export default function RatioListRowItem({
 	district,
 	isInProgress,
@@ -108,6 +108,7 @@ export default function RatioListRowItem({
 					district={district}
 					className={`${isTooltipOnTop ? 'top-full' : 'bottom-full'}`}
 					pointUp={isTooltipOnTop}
+					topCandidateDisplay={STACKED_BAR_DISPLAY_MAX - 1}
 				/>
 			</div>
 			{isInProgress && isLive && (
