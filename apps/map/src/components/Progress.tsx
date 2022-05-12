@@ -18,7 +18,7 @@ export default function Progress({ progressItems, border, className, children }:
 		<div class="inline-flex w-full h-full my-auto">
 			{progressItems.map((pi: ProgressItem) => (
 				<span
-					class={`h-full ${className}`}
+					class={`h-full duration-300 ${className}`}
 					style={{
 						width: `${pi.percent * 100}%`,
 						backgroundColor: pi.color,
