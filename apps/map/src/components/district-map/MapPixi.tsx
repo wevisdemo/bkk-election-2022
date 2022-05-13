@@ -140,7 +140,7 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
       graphics.endFill();
 
       if (typeof district.voting.progress !== "undefined" && district.voting.progress < 100) {
-        graphics.beginTextureFill({ alpha: 0.12, texture: anim?.texture, matrix: new PIXI.Matrix(.25, 0, 0, .25, 0, 0) })
+        graphics.beginTextureFill({ alpha: 0.2, texture: anim?.texture, matrix: new PIXI.Matrix(.25, 0, 0, .25, 0, 0) })
         graphics.drawPolygon(mapPolygon?.polygon || []);
         graphics.endFill();
       }
@@ -205,7 +205,7 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
         });
 
         if (typeof district.voting.progress !== "undefined" && district.voting.progress < 100) {
-          graphics.beginTextureFill({ alpha: 0.12, texture: anim?.texture })
+          graphics.beginTextureFill({ alpha: 0.2, texture: anim?.texture, matrix: new PIXI.Matrix(1.5, 0, 0, 1.5, 0, 0) })
           graphics.drawRect(x, y, rectSize, rectSize,);
           graphics.endFill();
         }
@@ -273,7 +273,7 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
         })
 
         if (typeof district.voting.progress !== "undefined" && district.voting.progress < 100) {
-          graphics.beginTextureFill({ alpha: 0.12, texture: anim?.texture })
+          graphics.beginTextureFill({ alpha: 0.2, texture: anim?.texture, matrix: new PIXI.Matrix(1.5, 0, 0, 1.5, 0, 0) })
           graphics.drawRect(x, y, rectSizeWithRatio, rectSizeWithRatio);
           graphics.endFill();
         }
