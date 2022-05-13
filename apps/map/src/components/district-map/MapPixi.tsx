@@ -351,7 +351,9 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
       width: ref.current.parentElement?.clientWidth || window.innerWidth,
       height: ref.current.parentElement?.clientHeight || 500,
       backgroundColor: 0x000000,
-      antialias: false
+      antialias: true,
+      resolution: 2,
+      autoDensity: true
     });
 
     app.loader.add('stripe', '/map/images/strip-black.gif');
