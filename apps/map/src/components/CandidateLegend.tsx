@@ -35,8 +35,8 @@ export default function CandidateLegend({
 	}, [preset, topCandidatePerDistrict]);
 
 	return (
-		<div class="flex md:flex-col w-full gap-2 typo-u4 relative ml-auto mr-auto">
-			<div class="flex gap-2 md:gap-4 w-full md:w-1/2 md:ml-auto">
+		<div class="flex md:flex-col gap-2 md:w-full typo-u4 relative ml-auto mr-auto">
+			<div class="flex gap-2 md:gap-4 w-full md:w-1/2 ml-auto mr-auto md:mr-0">
 				<div class="ml-auto overflow-auto">
 					<div class="flex flex-row gap-2">
 						{candidateLabels.map((candidate: Candidate) => (
