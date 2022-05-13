@@ -15,7 +15,7 @@ import { getDistrictCoordinate, Table2D, Vector2D } from './helper';
 // import { LineStyle } from 'pixi.js';
 
 const WORLD_WIDTH = 1450
-const WORLD_HEIGHT = 1000;
+const WORLD_HEIGHT = 960;
 
 interface DistrictMapProps {
   type: Visualization
@@ -366,6 +366,8 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
       }
 
       const viewport = new Viewport({
+        screenWidth: ref.current?.clientWidth,
+        screenHeight: ref.current?.clientHeight,
         worldWidth: WORLD_WIDTH,
         worldHeight: WORLD_HEIGHT,
         interaction: app.renderer.plugins.interaction // the interaction module is important for wheel to work properly when renderer.view is placed or scaled
@@ -399,7 +401,11 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
         maxHeight: 4000,                // maximum height
 
       })
-      viewport.zoom(WORLD_WIDTH)
+      
+      // viewport.zoom(WORLD_WIDTH)
+      viewport.fit()
+      viewport.moveCenter(WORLD_WIDTH / 2, WORLD_HEIGHT / 2)
+      
       setApp(app)
       setViewport(viewport)
       setAppLoaded(true)
