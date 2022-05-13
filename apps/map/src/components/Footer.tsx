@@ -9,14 +9,14 @@ const Footer: FunctionComponent = () => {
 	const [isShareModalOpen, setIsShareModalOpen] = useState(false);
 
 	return (
-		<div className="bg-black text-white px-4 lg:px-12 fixed bottom-0 left-0 right-0 z-10 md:relative">
-			<div class="flex flex-row justify-end border-t border-gray py-3 md:py-6">
+		<div className="bg-black text-white px-4 lg:px-12 fixed bottom-0 left-0 right-0 z-10 lg:relative">
+			<div class="flex flex-row justify-end border-t border-gray py-3 lg:py-6">
 				{preset?.electionData.type === ElectionDataType.Live && (
-					<div className="flex-1 flex flex-row typo-u5 space-x-4 lg:space-x-8">
+					<div className="flex-1 flex flex-row typo-u4 typo-footer-xs space-x-4 lg:space-x-8">
 						{preset?.electionData.total.progress !== undefined && (
 							<div className="flex flex-row lg:flex-col space-y-1">
-								<div>นับคะแนนโดย<br className='lg:hidden'/>อาสาสมัครแล้ว {preset?.electionData.total.progress.toFixed(1)}%</div>
-								<div className="lg:h-2 lg:w-full md:w-64 bg-white bg-opacity-30 w-1 h-6 order-first lg:order-none relative mr-2">
+								<div>นับคะแนนโดย<br className='lg:hidden'/>อาสาฯ แล้ว {preset?.electionData.total.progress.toFixed(1)}%</div>
+								<div className="lg:h-2 lg:w-full lg:w-48 bg-white bg-opacity-30 w-1 h-7 order-first lg:order-none relative mr-2 counting-progress-xs">
 									<div className="absolute bg-white w-full bottom-0 lg:hidden" style={{height: `${preset?.electionData.total.progress}%`}}>
 										{preset.electionData.type === ElectionDataType.Live && (
 											<div className="absolute inset-0 opacity-20" style={{ backgroundImage: `url(/map/images/strip-black.gif)` }}/>
@@ -50,7 +50,7 @@ const Footer: FunctionComponent = () => {
 					</div>
 				)}
 
-				<button className="md:hidden" onClick={() => setIsShareModalOpen(true)}>
+				<button className="lg:hidden" onClick={() => setIsShareModalOpen(true)}>
 					<svg width="29" height="28" viewBox="0 0 29 28" fill="none">
 						<path
 							fill-rule="evenodd"
@@ -61,7 +61,7 @@ const Footer: FunctionComponent = () => {
 					</svg>
 				</button>
 
-				{/* <button className="md:hidden ml-2" onClick={() => alert('TODO: about')}>
+				{/* <button className="lg:hidden ml-2" onClick={() => alert('TODO: about')}>
 					<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<g clip-path="url(#clip0_2108_50683)">
 							<path fill-rule="evenodd" clip-rule="evenodd" d="M4.10049 4.10051C6.726 1.475 10.287 0 14 0C17.713 0 21.274 1.475 23.8995 4.10051C26.525 6.72602 28 10.287 28 14C28 17.713 26.525 21.274 23.8995 23.8995C21.274 26.525 17.713 28 14 28C10.287 28 6.726 26.525 4.10049 23.8995C1.47499 21.274 0 17.713 0 14C0 10.287 1.47499 6.72602 4.10049 4.10051ZM14.68 16.5H12.3V13.38C14.42 13.28 15.58 12.58 15.58 11.04V10.76C15.58 9.62 14.82 8.96 13.7 8.96C12.5 8.96 11.72 9.78 11.46 10.88L9.34 10.02C9.82 8.38 11.14 6.8 13.8 6.8C16.48 6.8 18.24 8.42 18.24 10.8C18.24 13.16 16.52 14.52 14.68 14.82V16.5ZM15.12 19.84C15.12 20.64 14.64 21.24 13.52 21.24C12.4 21.24 11.92 20.64 11.92 19.84V19.44C11.92 18.62 12.4 18.04 13.52 18.04C14.64 18.04 15.12 18.62 15.12 19.44V19.84Z" fill="white" />
@@ -74,12 +74,12 @@ const Footer: FunctionComponent = () => {
 					</svg>
 				</button> */}
 
-				<div className="hidden md:flex flex-row space-x-12">
+				<div className="hidden lg:flex flex-row space-x-8 items-center">
 					<ui-sharer />
 					<div className="flex flex-row space-x-6">
 						{partners.map(({ name, logo, href }) => (
 							<a href={href}>
-								<img src={logo} alt={name} className="h-6" />
+								<img src={logo} alt={name} className="h-5 xl:h-6" />
 							</a>
 						))}
 					</div>

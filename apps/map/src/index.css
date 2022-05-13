@@ -29,9 +29,18 @@
   .vis-toggle-shortscreen.md\:w-24 { width: 4rem; }
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 380px) {
   /* FIXME: does this belong here? */
   .vis-toggle-shortscreen {
     width: 3rem;
+  }
+}
+
+@media screen and (max-width: 410px) {
+  .counting-progress-xs {
+    height: 1.5rem;
+  }
+  .typo-footer-xs {
+    font-size: 12px;
   }
 }
