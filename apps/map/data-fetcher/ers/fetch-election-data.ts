@@ -7,14 +7,14 @@ import { getCandidates as getRealtimeCandidates, getElection as getRealtimeElect
 
 export const fetchElectionData: ElectionDataFetcher = (type: ElectionDataFetcherType): Promise<ElectionData> => {
   if (type === ElectionDataFetcherType.Governor) {
-    return fetchGovernorElectionData();
+    return fetchLiveGovernorElectionData();
   } else if (type === ElectionDataFetcherType.CouncilMember) {
     return fetchCouncilMemberElectionData();
   }
   throw new Error('Not a suitable election data fetcher type!');
 }
 
-async function fetchGovernorElectionData(): Promise<ElectionData> {
+async function fetchLiveGovernorElectionData(): Promise<ElectionData> {
   const election = await getRealtimeElection(BKK_GOVERNOR_ELECTION_ID);
   const candidates = await getRealtimeCandidates(BKK_GOVERNOR_ELECTION_ID);
   const areaIds = (await getRealtimeElectionAreas(BKK_GOVERNOR_ELECTION_ID)).map(a => a.id);

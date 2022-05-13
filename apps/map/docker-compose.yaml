@@ -1,0 +1,28 @@
+version: '3.9'
+
+services:
+  fetcher:
+    build:
+      context: .
+      dockerfile: Dockerfile.data-fetcher
+    volumes:
+      - ./output:/app/output
+    environment:
+      ERS_API_KEY: 
+  
+  caddy:
+    image: caddy:alpine
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./output:/var/www/bkkelection2022live
+    environment:
+      CADDYFILE: |
+        * {
+            root * /var/www/bkkelection2022live
+            file_server
+            try_files {path}
+        }
+    command: /bin/sh -c "echo \"$$CADDYFILE\" > /etc/caddy/Caddyfile; caddy run --config /etc/caddy/Caddyfile --adapter caddyfile;"
+

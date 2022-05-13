@@ -11,7 +11,10 @@ interface CandidateLegendProps {
 const INSTRUCTION_SHORT_STRING = 'วิธีอ่าน';
 const INSTRUCTION_STRING = 'วิธีอ่านแผนภาพ';
 
-export default function CandidateLegend({topCandidatePerDistrict, children }: CandidateLegendProps) {
+export default function CandidateLegend({
+	topCandidatePerDistrict,
+	children
+}: CandidateLegendProps) {
 	const [showModal, setShowModal] = useState<boolean>(false);
 	const preset = useContext(presetContext);
 
@@ -32,20 +35,25 @@ export default function CandidateLegend({topCandidatePerDistrict, children }: Ca
 	}, [preset, topCandidatePerDistrict]);
 
 	return (
-		<div class="flex md:flex-col gap-2 typo-u4 relative ml-auto mr-auto md:mr-0">
-			<div class="flex gap-2 md:gap-4 ml-auto">
-				<div class='flex flex-row flex-1 overflow-x-auto gap-2'>
-					{candidateLabels.map((candidate: Candidate) => (
-						<div class="flex shrink-0 gap-1 items-center">
-							<span
-								class="w-2 md:w-3 h-2 md:h-3"
-								style={{ backgroundColor: candidate.color }}
-							></span>
-							{candidate.shortname}
-						</div>
-					))}
+		<div class="flex md:flex-col gap-2 md:w-full typo-u4 relative ml-auto mr-auto">
+			<div class="flex gap-2 md:gap-4 w-full md:w-1/2 ml-auto mr-auto md:mr-0">
+				<div class="ml-auto overflow-auto">
+					<div class="flex flex-row gap-2">
+						{candidateLabels.map((candidate: Candidate) => (
+							<div class="flex shrink-0 gap-1 items-center">
+								<span
+									class="w-2 md:w-3 h-2 md:h-3"
+									style={{ backgroundColor: candidate.color }}
+								></span>
+								{candidate.shortname}
+							</div>
+						))}
+					</div>
 				</div>
-				<div class={`flex flex-row gap-2 md:hidden ${children || 'hidden'}`} onClick={() => setShowModal(true)}>
+				<div
+					class={`flex flex-row shrink-0 gap-2 md:hidden ${children || 'hidden'}`}
+					onClick={() => setShowModal(true)}
+				>
 					<div class="border opacity-30" />
 					<svg
 						width="16"
