@@ -18,68 +18,13 @@ const WORLD_WIDTH = 1450
 const WORLD_HEIGHT = 1000;
 
 interface DistrictMapProps {
-  styles?: React.CSSProperties,
   type: Visualization
-  options?: MapCanvasOptions
-}
-
-interface MapCanvasOptions {
-  width?: number | string,
-  height?: number | string,
-  autoSize?: boolean
-  debug?: boolean
 }
 
 interface RectColorWithCandidateRatio {
   percentage: number,
   color: string,
 }
-
-class ToolTip {
-
-  ctx: CanvasRenderingContext2D;
-
-  private _isDisplay: boolean
-  private _districtData: District | undefined
-  private _position: Vector2D;
-
-  constructor(c: CanvasRenderingContext2D) {
-    this.ctx = c;
-    this._isDisplay = false
-    this._position = { x: -1, y: -1 }
-  }
-
-  get isDisPlay(): boolean {
-    return this._isDisplay
-  }
-
-  set isDisplay(value: boolean) {
-    this._isDisplay = value
-  }
-
-  set districtData(value: District) {
-    if (!this._districtData)
-      this._districtData = value
-    else if (value.name !== this._districtData.name) {
-      this._districtData = value
-    }
-  }
-
-  set position(value: Vector2D) {
-    this._position = value
-  }
-
-  draw() {
-    // console.log(this._position)
-    if (this._isDisplay) {
-      this.ctx.beginPath();
-      this.ctx.fillStyle = "purple"
-      this.ctx.rect(this._position.x, this._position.y, 200, 200)
-      this.ctx.fill()
-    }
-  }
-}
-
 
 class DistrictRect {
   coordinate: Table2D;
@@ -114,10 +59,15 @@ class DistrictRect {
   }
 }
 
-const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: DistrictMapProps) => {
+PIXI.Loader.registerPlugin(AnimatedGIFLoader);
+
+const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
   const preset = useContext(presetContext)! as Preset;
   const parentRef = useRef<HTMLDivElement>(null);
   const ref = useRef<HTMLDivElement>(null);
+  const [app, setApp] = useState<PIXI.Application | undefined>()
+  const [viewport, setViewport] = useState<Viewport | undefined>()
+  const [appLoaded, setAppLoaded] = useState(false)
 
   // tooltip
   const [tooltips, setTooltips] = useState<{
@@ -189,14 +139,13 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
       graphics.scale.y = 7;
       graphics.endFill();
 
-
       if (typeof district.voting.progress !== "undefined" && district.voting.progress < 100) {
         graphics.beginTextureFill({ alpha: 0.3, texture: anim?.texture, matrix: new PIXI.Matrix(.25, 0, 0, .25, 0, 0) })
         graphics.drawPolygon(mapPolygon?.polygon || []);
         graphics.endFill();
       }
-
       graphics.interactive = true;
+      graphics.buttonMode = true;
       graphics.on('pointerover', (event) => {
         graphics.tint = 0x666666
         setTooltips((prev) => ({
@@ -222,9 +171,6 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
     if (electionDistrictData.length > 0) {
       drawRiver(viewport)
       const anim = app.loader.resources.stripe.animation;
-      // const width = app.screen.width;
-      // const height = app.screen.height;
-
       const rectSize = 100;
       const padding = 20;
       electionDistrictData.forEach((data) => {
@@ -241,7 +187,7 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
         graphics.drawRoundedRect(x, y, rectSize, rectSize, 2);
         graphics.endFill();
         graphics.interactive = true;
-        // graphics.buttonMode = true;
+        graphics.buttonMode = true;
         graphics.on('pointerover', (event) => {
           graphics.tint = 0x666666
           setTooltips((prev) => ({
@@ -266,7 +212,6 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
         viewport.addChild(graphics)
 
         const basicText = new PIXI.Text(district.name, textStyle);
-        // basicText.tint = 0xFFFFFF
         basicText.x = x + rectSize * .5;
         basicText.y = y + rectSize * .5;
         basicText.anchor.set(0.5);
@@ -281,7 +226,6 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
     if (electionDistrictData.length > 0) {
       drawRiver(viewport)
       const anim = app.loader.resources.stripe.animation;
-
       // ctx.scale(0.7, 0.7);
       const rectSize = 100
       const padding = 20;
@@ -289,21 +233,15 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
 
       electionDistrictData.forEach((data) => {
         const { coordinate, district, ratio, districtVoteRatio, } = data
-
         const rectSizeWithRatio = Math.sqrt(rectSize * rectSize * ratio);
         const x = coordinate.col * rectSize + rectSize * .5 - rectSizeWithRatio * .5 + coordinate.col * padding;
         let y = coordinate.row * rectSize + rectSize * .5 - rectSizeWithRatio * .5 + coordinate.row * padding;
         y += marginTop;
 
         const graphics = new Graphics();
-
         graphics.drawRect(x, y, rectSizeWithRatio, rectSizeWithRatio);
-        // graphics.endFill();
         graphics.interactive = true;
-        graphics.hitArea = new PIXI.Rectangle(x, y, rectSizeWithRatio, rectSizeWithRatio);
         graphics.buttonMode = true;
-
-
 
         graphics.on('pointerover', (event) => {
           graphics.tint = 0x666666
@@ -367,17 +305,13 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
     graphics.lineTo(1010, 650);
     graphics.lineTo(1010, 740);
     viewport.addChild(graphics);
-
   }
 
 
   useMemo(() => {
-
     if (!preset) return;
     // process data for map winner
     const { districts } = electionData;
-
-    console.log(districts)
     // find highest eligible vote
     let highestEligible = districts.reduce((maxResult: District, res: District) => maxResult.voting.eligiblePopulation > res.voting.eligiblePopulation ? maxResult : res)
     if (highestEligible) highestEligiblePopulation = highestEligible.voting.eligiblePopulation;
@@ -420,13 +354,9 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
       antialias: false
     });
 
-
-    PIXI.Loader.registerPlugin(AnimatedGIFLoader);
-
     app.loader.add('stripe', '/map/images/strip-black.gif');
     app.loader.load((loader, resources) => {
-      // const anim = resources.stripe.animation;
-      const anim = app.loader.resources.stripe.animation;
+      const anim = resources.stripe.animation;
       if (anim) {
         anim.x = -anim.width;
         anim.y = -anim.height;
@@ -441,7 +371,6 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
 
       // add the viewport to the stage
       app.stage.addChild(viewport)
-      viewport.interactive = true
       // activate plugins
       viewport.on("pointermove", (e) => {
         if (parentRef.current) {
@@ -468,32 +397,39 @@ const MapPixi: React.FC<DistrictMapProps> = ({ styles, type, options }: District
         maxHeight: 4000,                // maximum height
 
       })
+      viewport.zoom(WORLD_WIDTH)
+      setApp(app)
+      setViewport(viewport)
+      setAppLoaded(true)
+    });
 
+    ref.current?.appendChild(app.view);
+    app.start();
+
+    return () => {
+      // On unload completely destroy the application and all of it's children
+      app.destroy(true);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (app && viewport && appLoaded) {
+      viewport.removeChildren()
       switch (type) {
         case Visualization.GRID_RATIO: drawRatioMap(app, viewport); break;
         case Visualization.GRID_WINNER: drawRectMap(app, viewport); break;
         case Visualization.MAP_WINNER: drawPolygonMap(app, viewport); break;
         default: break;
       }
-      viewport.zoom(WORLD_WIDTH)
-    });
+      // border(viewport)
+      // function border(viewport: Viewport) {
+      //   const line = viewport.addChild(new Graphics())
+      //   line.lineStyle(10, 0xff0000).drawRect(0, 0, viewport.worldWidth, viewport.worldHeight)
+      // }
 
-    // Add app to DOM
-    ref.current?.appendChild(app.view);
-    // Start the MapPixiJS app
-    app.start();
+    }
+  }, [appLoaded, type, electionDistrictData])
 
-    // border(viewport)
-    // function border(viewport: Viewport) {
-    //   const line = viewport.addChild(new Graphics())
-    //   line.lineStyle(10, 0xff0000).drawRect(0, 0, viewport.worldWidth, viewport.worldHeight)
-    // }
-
-    return () => {
-      // On unload completely destroy the application and all of it's children
-      app.destroy(true);
-    };
-  }, [ref, electionDistrictData, type]);
 
   return (
     <div className='relative h-full' class='overflow-hidden' ref={parentRef} >
