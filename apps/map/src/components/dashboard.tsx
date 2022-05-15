@@ -32,7 +32,7 @@ const Dashboard: FunctionComponent<DashboardProps> = ({ activePresetIndex, onPre
 			<div class="flex-1 hidden lg:flex flex-row space-x-12 overflow-hidden">
 				<div className="flex flex-col flex-1 space-y-6 h-full">
 					<h2 className="typo-h4">คะแนนรวมทั้ง กทม.</h2>
-					<CandidateOverviewList />
+					<CandidateOverviewList votingData={preset.electionData.total} enableTopHighlight={true} />
 				</div>
 				<DistrictVisualization
 					activeViz={activeViz}
@@ -44,7 +44,10 @@ const Dashboard: FunctionComponent<DashboardProps> = ({ activePresetIndex, onPre
 			<TabsView
 				className="lg:hidden"
 				tabs={[
-					{ name: 'คะแนนรวมทั้ง กทม.', component: <CandidateOverviewList /> },
+					{
+						name: 'คะแนนรวมทั้ง กทม.',
+						component: <CandidateOverviewList votingData={preset.electionData.total} enableTopHighlight={true} />
+					},
 					{
 						name: 'คะแนนรายเขต',
 						component: <DistrictVisualization activeViz={activeViz} setActiveViz={setActiveViz} />

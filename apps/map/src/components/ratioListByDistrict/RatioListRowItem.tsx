@@ -9,13 +9,15 @@ interface RatioListRowItemProps {
 	district: District;
 	isInProgress: boolean;
 	isLive: boolean;
+	onClick: () => void;
 }
 
 const STACKED_BAR_DISPLAY_MAX = 6;
 export default function RatioListRowItem({
 	district,
 	isInProgress,
-	isLive
+	isLive,
+	onClick
 }: RatioListRowItemProps) {
 	const preset = useContext(presetContext);
 	const rowRef = useRef<HTMLDivElement>(null);
@@ -80,12 +82,12 @@ export default function RatioListRowItem({
 
 	return (
 		<div
-			class={`grid ${
-				isInProgress ? 'grid-cols-3 md:grid-cols-6' : 'grid-cols-2 md:grid-cols-5'
-			} typo-u4 gap-x-4 gap-y-1 md:gap-8 hover:bg-white/20 items-center py-1`}
+			class={`grid ${isInProgress ? 'grid-cols-3 md:grid-cols-6' : 'grid-cols-2 md:grid-cols-5'
+				} typo-u4 gap-x-4 gap-y-1 md:gap-8 hover:bg-white/20 items-center py-1`}
 			onMouseOver={() => setIsTooltipOpen(true)}
 			onMouseLeave={() => setIsTooltipOpen(false)}
 			ref={rowRef}
+			onClick={onClick}
 		>
 			<div class="font-semibold">{district.name}</div>
 			<div class={isInProgress ? 'text-left' : 'text-right md:text-left'}>

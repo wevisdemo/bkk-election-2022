@@ -1,7 +1,7 @@
 import { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { PARTY_UNDEFINED_STRING, TOP_CANDIDATE_DISPLAY } from '../../constants/candidate';
 import { presetContext } from '../../contexts/preset';
-import { Result } from '../../models/election';
+import { Result, Voting } from '../../models/election';
 import SortableListHeader from '../SortableListHeader';
 import CandidateOverviewListRowItem from './CandidateOverviewListRowItem';
 
@@ -13,7 +13,12 @@ enum CandidateOverviewSortType {
 	PARTY = 'party'
 }
 
-export default function CandidateOverviewList() {
+interface CandidateOverviewListProps {
+	votingData: Voting;
+	enableTopHighlight: boolean;
+}
+
+export default function CandidateOverviewList({votingData, enableTopHighlight = true}: CandidateOverviewListProps) {
 	const preset = useContext(presetContext);
 	const [isBottom, setIsBottom] = useState<boolean>(false);
 	const [descending, setDescending] = useState<boolean>(true);
@@ -22,7 +27,7 @@ export default function CandidateOverviewList() {
 	);
 	const containerRef = useRef<null | HTMLDivElement>(null);
 
-	if (!preset) {
+	if (!preset || !votingData) {
 		return <></>;
 	}
 
@@ -34,24 +39,24 @@ export default function CandidateOverviewList() {
 	}
 
 	const results = useMemo(() => {
-		const _res = preset.electionData.total.result;
+		const _res = votingData.result;
 		switch (sortType) {
 			case CandidateOverviewSortType.PARTY:
 				return _res.sort((a, b) => {
-					return (preset.candidateMap[a.candidateId].party || PARTY_UNDEFINED_STRING).localeCompare(
-						preset.candidateMap[b.candidateId].party || PARTY_UNDEFINED_STRING
+					return (preset?.candidateMap[a.candidateId].party || PARTY_UNDEFINED_STRING).localeCompare(
+						preset?.candidateMap[b.candidateId].party || PARTY_UNDEFINED_STRING
 					) * sortDirection;
 				});
 			case CandidateOverviewSortType.NAME:
 				return _res.sort((a, b) =>
-					preset.candidateMap[a.candidateId].fullname.localeCompare(
-						preset.candidateMap[b.candidateId].fullname
+					(preset?.candidateMap[a.candidateId].fullname || '').localeCompare(
+						(preset?.candidateMap[b.candidateId].fullname || '')
 					) * sortDirection // FIXME: sorting by name shouldn't include titles?
 				);
 			case CandidateOverviewSortType.NUMBER:
 				return _res.sort((a, b) => {
-					return ((preset.candidateMap[a.candidateId].number || 0) - (
-						preset.candidateMap[b.candidateId].number || 0
+					return ((preset?.candidateMap[a.candidateId].number || 0) - (
+						preset?.candidateMap[b.candidateId].number || 0
 					)) * sortDirection;
 				});
 			case CandidateOverviewSortType.PERCENT:
@@ -109,7 +114,7 @@ export default function CandidateOverviewList() {
 	};
 
 	return (
-		<div class="flex flex-col felx-1 h-full overflow-y-auto relative typo-u4">
+		<div class="flex flex-col flex-1 h-full overflow-y-auto relative typo-u4">
 			<div class="flex flex-row font-normal border-b border-white/40 pb-1">
 				{headers.map((v) => (
 					<SortableListHeader
@@ -136,10 +141,12 @@ export default function CandidateOverviewList() {
 							index={index}
 							topVoteCount={topVoteCount}
 							isInTop={
+								enableTopHighlight &&
 								(sortType === CandidateOverviewSortType.COUNT || sortType === CandidateOverviewSortType.PERCENT) &&
 								descending &&
 								index < TOP_CANDIDATE_DISPLAY
 							}
+							votingData={votingData}
 						/>
 					);
 				})}

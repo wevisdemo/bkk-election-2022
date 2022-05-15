@@ -20,6 +20,7 @@ const MAX_DISPLAY_RANK = 5;
 
 interface DistrictMapProps {
   type: Visualization
+  onDistrictClick: (district: District) => void
 }
 
 interface RectColorWithCandidateRatio {
@@ -62,7 +63,7 @@ class DistrictRect {
 
 PIXI.Loader.registerPlugin(AnimatedGIFLoader);
 
-const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
+const MapPixi: React.FC<DistrictMapProps> = ({ type, onDistrictClick }: DistrictMapProps) => {
   const preset = useContext(presetContext)! as Preset;
   const parentRef = useRef<HTMLDivElement>(null);
   const ref = useRef<HTMLDivElement>(null);
@@ -147,6 +148,8 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
       }
       graphics.interactive = true;
       graphics.buttonMode = true;
+      graphics.on('click', (event) => onDistrictClick(district));
+      graphics.on('tap', (event) => onDistrictClick(district));
       graphics.on('pointerover', (event) => {
         graphics.tint = 0x666666
         setTooltips((prev) => ({
@@ -189,6 +192,8 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
         graphics.endFill();
         graphics.interactive = true;
         graphics.buttonMode = true;
+        graphics.on('click', (event) => onDistrictClick(district));
+        graphics.on('tap', (event) => onDistrictClick(district));
         graphics.on('pointerover', (event) => {
           graphics.tint = 0x666666
           setTooltips((prev) => ({
@@ -246,6 +251,8 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
         graphics.interactive = true;
         graphics.buttonMode = true;
 
+        graphics.on('click', (event) => onDistrictClick(district));
+        graphics.on('tap', (event) => onDistrictClick(district));
         graphics.on('pointerover', (event) => {
           graphics.tint = 0x666666
           setTooltips((prev) => ({

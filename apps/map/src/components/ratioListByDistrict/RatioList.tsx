@@ -17,7 +17,11 @@ const RESULT_ARROW_DOWN = (
 	</svg>
 );
 
-export default function RatioListTable() {
+interface RatioListTableProps {
+	onDistrictClick: (districtId: District) => void;
+}
+
+export default function RatioListTable({ onDistrictClick }: RatioListTableProps) {
 	const preset = useContext(presetContext);
 	const [isBottom, setIsBottom] = useState<boolean>(false);
 
@@ -128,6 +132,7 @@ export default function RatioListTable() {
 							district={district}
 							isInProgress={preset.electionData.total.progress !== undefined}
 							isLive={preset.electionData.type == ElectionDataType.Live}
+							onClick={() => onDistrictClick(district)}
 						/>
 					))}
 				</div>

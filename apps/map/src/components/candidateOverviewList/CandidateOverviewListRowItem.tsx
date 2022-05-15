@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { PARTY_UNDEFINED_STRING } from '../../constants/candidate';
 import { presetContext } from '../../contexts/preset';
-import { ElectionDataType } from '../../models/election';
+import { ElectionDataType, Voting } from '../../models/election';
 import Progress, { ProgressItem } from '../Progress';
 
 interface Props {
@@ -9,14 +9,15 @@ interface Props {
 	index: number;
 	topVoteCount: number;
 	isInTop: boolean;
+	votingData: Voting;
 }
 
-export default function CandidateOverviewListRowItem({ candidateId, topVoteCount, index, isInTop }: Props) {
+export default function CandidateOverviewListRowItem({ votingData, candidateId, topVoteCount, index, isInTop }: Props) {
 	const preset = useContext(presetContext);
 
 	if (!preset) return <tr></tr>;
 
-	const result = preset.electionData.total.result.find((v) => v.candidateId === candidateId);
+	const result = votingData.result.find((v) => v.candidateId === candidateId);
 	if (!result) return <tr></tr>;
 
 	const candidate = preset.candidateMap[candidateId];
@@ -38,7 +39,7 @@ export default function CandidateOverviewListRowItem({ candidateId, topVoteCount
 					{result.count.toLocaleString()}
 				</span>
 				<span class="text-right basis-2/12">
-					{(result.count / preset.electionData.total.totalVotes).toLocaleString(
+					{(result.count / votingData.totalVotes).toLocaleString(
 						undefined, {style: 'percent', minimumFractionDigits: 1})
 					}
 				</span>
