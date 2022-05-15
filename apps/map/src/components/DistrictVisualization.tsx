@@ -80,7 +80,7 @@ const DistrictVisualization: FunctionComponent<DistrictVisualizationProps> = ({
 						votingData={preset.electionData.districts[activeDistrictIndex].voting}
 						enableTopHighlight={false} />
 					{preset.electionData.districts[activeDistrictIndex].voting.progress !== undefined && (
-						<div class="flex flex-row border-t border-gray py-3 pb-0 lg:py-6 typo-u4">
+						<div class="flex flex-row border-t border-gray py-3 pb-0 typo-u4">
 							<div className="flex-1 flex flex-row lg:flex-col space-y-1">
 								<div>นับคะแนนโดย<br className='lg:hidden' />อาสาฯ แล้ว {(preset.electionData.districts[activeDistrictIndex].voting.progress || 0).toFixed(1)}%</div>
 								<div className="lg:h-2 lg:w-full lg:w-48 bg-white bg-opacity-30 w-1 h-7 order-first lg:order-none relative mr-2 counting-progress-xs">
