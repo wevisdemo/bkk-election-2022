@@ -8,6 +8,7 @@
 	import { onMount } from 'svelte';
 
 	const THE_STANDARD_GUIDE_TAG = 'bkk-election-101';
+	const HERO_VIDEO_ID = 'dbbJSrBnqkc';
 
 	const fetchTheStandardElectionGuides = () =>
 		fetchTheStandardElectionPosts({ tag: THE_STANDARD_GUIDE_TAG });
@@ -83,9 +84,9 @@
 				</Counter>
 			</div>
 			<div class="-md:hidden flex-1">
-				<lite-youtube videoid="KqaFyTtv3PU" />
+				<lite-youtube videoid={HERO_VIDEO_ID} />
 			</div>
-			<lite-youtube class="md:hidden" videoid="KqaFyTtv3PU" />
+			<lite-youtube class="md:hidden" videoid={HERO_VIDEO_ID} />
 		</div>
 	</div>
 	<div class="-mt-12 h-12 to-black from-transparent bg-gradient-to-b " />
