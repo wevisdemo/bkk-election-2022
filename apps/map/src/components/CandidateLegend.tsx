@@ -37,7 +37,7 @@ export default function CandidateLegend({
 	return (
 		<div class="flex md:flex-col gap-2 md:w-full typo-u4 relative ml-auto mr-auto">
 			<div class="flex gap-2 md:gap-4 w-full md:w-1/2 ml-auto mr-auto md:mr-0">
-				<div class="ml-auto overflow-auto overflow-y-hidden">
+				<div class="ml-auto overflow-auto overflow-y-hidden hide-scrollbar">
 					<div class="flex flex-row gap-2">
 						{candidateLabels.map((candidate: Candidate) => (
 							<div class="flex shrink-0 gap-1 items-center">

@@ -239,7 +239,9 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
         y += marginTop;
 
         const graphics = new Graphics();
+        graphics.beginFill(0x222222);
         graphics.drawRect(x, y, rectSizeWithRatio, rectSizeWithRatio);
+        graphics.endFill();
         graphics.interactive = true;
         graphics.buttonMode = true;
 

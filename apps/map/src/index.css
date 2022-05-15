@@ -15,6 +15,7 @@
 
 .hide-scrollbar:hover::-webkit-scrollbar {
   width: 4px;
+  height: 4px;
   background: #0000;
   opacity: 1;
 }
