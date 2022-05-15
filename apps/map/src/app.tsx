@@ -5,7 +5,7 @@ import Dashboard from './components/dashboard';
 import Footer from './components/Footer';
 import { Preset, presetContext } from './contexts/preset';
 import { electionIndexes } from './data/presets';
-import { ElectionData } from './models/election';
+import { District, ElectionData, Result } from './models/election';
 import { fetchPreset, getJson } from './utils/fetch';
 
 const DEFAULT_PRESET_INDEX = 0;
@@ -30,7 +30,14 @@ const App: FunctionComponent = () => {
 
 		console.log('!!!!', presetIndex)
 
-		fetchPreset(presetIndex).then(setPreset);
+		fetchPreset(presetIndex).then((p: Preset) => {
+			p.electionData.districts.forEach(
+				(x: District) => x.voting.result.sort(
+					(a: Result, b: Result) => b.count - a.count
+				)
+			)
+			setPreset(p);
+		});
 
 		if (refreshIntervalMs) {
 			setRefreshInterval(

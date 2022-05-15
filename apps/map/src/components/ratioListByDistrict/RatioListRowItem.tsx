@@ -37,7 +37,7 @@ export default function RatioListRowItem({
 
 	const progressItems: ProgressItem[] = useMemo(() => {
 		const prog: ProgressItem[] = district.voting.result
-			.sort((a: Result, b: Result) => b.count - a.count)
+			// .sort((a: Result, b: Result) => b.count - a.count)
 			.reduce((prev: ProgressItem[], curr: Result) => {
 				if (!curr.count || !district.voting.totalVotes) return prev
 				const percent = curr.count / district.voting.totalVotes;
