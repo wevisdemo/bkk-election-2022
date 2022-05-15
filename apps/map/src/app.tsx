@@ -42,18 +42,25 @@ const App: FunctionComponent = () => {
 		if (refreshIntervalMs) {
 			setRefreshInterval(
 				setInterval(
-					async () =>
+					async () => {
+						let electionData = await getJson<ElectionData>(electionDataUrl);
+						electionData.districts.forEach(
+							(x: District) => x.voting.result.sort(
+								(a: Result, b: Result) => b.count - a.count
+							)
+						)
 						setPreset(
 							preset
 								? {
-										fullname,
-										subtitle,
-										shortname,
-										candidateMap: preset.candidateMap,
-										electionData: await getJson<ElectionData>(electionDataUrl)
-								  }
+									fullname,
+									subtitle,
+									shortname,
+									candidateMap: preset.candidateMap,
+									electionData: electionData
+								}
 								: null
-						),
+						)
+					},
 					refreshIntervalMs
 				)
 			);
