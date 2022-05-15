@@ -28,9 +28,9 @@ export default function CandidateOverviewListRowItem({ candidateId, topVoteCount
 					{candidate.number || '-'}
 					{/* {index + 1} */}
 				</span>
-				<span class="text-left font-semibold flex-1">
+				<a href={`/candidate/${candidate.number}`} target="_blank" class="text-left font-semibold flex-1 hover:underline">
 					{candidate.fullname}
-				</span>
+				</a>
 				<span class="text-right basis-3/12 hidden 2xl:block">
 					{candidate.party || PARTY_UNDEFINED_STRING}
 				</span>
