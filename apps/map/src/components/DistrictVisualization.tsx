@@ -53,7 +53,7 @@ const DistrictVisualization: FunctionComponent<DistrictVisualizationProps> = ({
 			className={`flex flex-col md:flex-row w-full h-full gap-3 md:gap-8 overflow-hidden ${className}`}
 		>
 			<div className="flex flex-1 h-full w-full flex-col overflow-y-hidden">
-				<h2 className={`typo-h4 mb-2 md:mb-6 hidden lg:block z-[1] ${activeViz === Visualization.LIST_RATIO ? '' : 'md:mb-[-40px]'}`}>คะแนนรายเขต</h2>
+				<h2 className={`typo-h4 mb-2 md:mb-6 hidden lg:block z-[1] pointer-events-none ${activeViz === Visualization.LIST_RATIO ? '' : 'md:mb-[-40px]'}`}>คะแนนรายเขต</h2>
 				<div className={`${activeViz === Visualization.LIST_RATIO ? 'flex' : ''} flex-col flex-auto h-full overflow-hidden relative`}>
 					{activeViz === Visualization.LIST_RATIO ? <RatioList /> : <Pixi type={activeViz} />}
 				</div>

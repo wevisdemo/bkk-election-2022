@@ -16,6 +16,7 @@ import { getDistrictCoordinate, Table2D, Vector2D } from './helper';
 
 const WORLD_WIDTH = 1450
 const WORLD_HEIGHT = 960;
+const MAX_DISPLAY_RANK = 5;
 
 interface DistrictMapProps {
   type: Visualization
@@ -239,7 +240,7 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
         y += marginTop;
 
         const graphics = new Graphics();
-        graphics.beginFill(0x222222);
+        graphics.beginFill(0x444444);
         graphics.drawRect(x, y, rectSizeWithRatio, rectSizeWithRatio);
         graphics.endFill();
         graphics.interactive = true;
@@ -262,7 +263,10 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
         });
 
         let offSetY = 0;
-        districtVoteRatio.forEach(({ percentage, color }) => {
+        districtVoteRatio.forEach(({ percentage, color }, index) => {
+          
+          if (index > MAX_DISPLAY_RANK - 1) return
+
           const voteRectHeight = rectSizeWithRatio * percentage / 100
           graphics.lineStyle(1, 0x000000, 1);
           graphics.beginFill(+color.replace("#", "0x"), 1, true);
@@ -397,11 +401,10 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
         .wheel()
 
       viewport.clampZoom({
-        minWidth: 600,                 // minimum width
-        minHeight: 600,                // minimum height
-        maxWidth: 4000,                 // maximum width
-        maxHeight: 4000,                // maximum height
-
+        minWidth: 300,                 // minimum width
+        minHeight: 300,                // minimum height
+        maxWidth: 2000,                 // maximum width
+        maxHeight: 2000,                // maximum height
       })
       
       // viewport.zoom(WORLD_WIDTH)
@@ -436,9 +439,15 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
       //   const line = viewport.addChild(new Graphics())
       //   line.lineStyle(10, 0xff0000).drawRect(0, 0, viewport.worldWidth, viewport.worldHeight)
       // }
-
     }
   }, [appLoaded, type, electionDistrictData])
+
+  useEffect(() => {
+    if (app && viewport && appLoaded) {
+      viewport.fit()
+      viewport.moveCenter(WORLD_WIDTH / 2, WORLD_HEIGHT / 2)
+    }
+  }, [appLoaded, type])
 
 
   return (
@@ -449,6 +458,7 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
         district={tooltips.district}
         style={{ left: tooltips.left, top: tooltips.top, bottom: tooltips.bottom }}
         pointUp={tooltips.pointUp}
+        topCandidateDisplay={MAX_DISPLAY_RANK}
       />
     </div>
   );
