@@ -115,6 +115,22 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
     textBaseline: "bottom",
   })
 
+  const handlePointerDownEvent = (e: any, district: District) => {
+    if (parentRef.current) {
+      const clientHeight = parentRef.current?.clientHeight
+      const pointUp: boolean = !(e.data.global.y > clientHeight * .33)
+      setTooltips((prev) => ({
+        ...prev,
+        district: district,
+        show: true,
+        left: e.data.global.x - 15,
+        top: pointUp ? e.data.global.y + 20 : "unset",
+        bottom: !pointUp ? clientHeight - e.data.global.y + 10 : "unset",
+        pointUp: pointUp
+      }))
+    }
+  }
+
   const drawPolygonMap = (app: PIXI.Application, viewport: Viewport) => {
     const anim = app.loader.resources.stripe.animation;
 
@@ -146,7 +162,7 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
 
         graphics.interactive = true;
         graphics.buttonMode = true;
-        graphics.on('pointerover', (event) => {
+        graphics.on('pointerover', (_) => {
           graphics.tint = 0x666666
           setTooltips((prev) => ({
             ...prev,
@@ -154,12 +170,16 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
             show: true
           }))
         })
-        graphics.on('pointerout', (event) => {
+        graphics.on('pointerout', (_) => {
           graphics.tint = 0xFFFFFF
           setTooltips((prev) => ({
             ...prev,
             show: false
           }))
+        });
+        graphics.on('pointerdown', (e) => {
+          graphics.tint = 0xFFFFFF
+          handlePointerDownEvent(e, district)
         });
 
         viewport.addChild(graphics)
@@ -205,7 +225,7 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
         graphics.endFill();
         graphics.interactive = true;
         graphics.buttonMode = true;
-        graphics.on('pointerover', (event) => {
+        graphics.on('pointerover', (_) => {
           graphics.tint = 0x666666
           setTooltips((prev) => ({
             ...prev,
@@ -213,12 +233,17 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
             show: true
           }))
         })
-        graphics.on('pointerout', (event) => {
+        graphics.on('pointerout', (_) => {
           graphics.tint = 0xFFFFFF
           setTooltips((prev) => ({
             ...prev,
             show: false
           }))
+        });
+
+        graphics.on('pointerdown', (e) => {
+          graphics.tint = 0xFFFFFF
+          handlePointerDownEvent(e, district)
         });
 
         if (typeof district.voting.progress !== "undefined" && district.voting.progress < 100) {
@@ -240,7 +265,6 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
   }
 
   const drawRatioMap = (app: PIXI.Application, viewport: Viewport) => {
-
     if (electionDistrictData.length > 0) {
       drawRiver(viewport)
       const anim = app.loader.resources.stripe.animation;
@@ -263,20 +287,26 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
         graphics.interactive = true;
         graphics.buttonMode = true;
 
-        graphics.on('pointerover', (event) => {
+        graphics.on('pointerover', (_) => {
           graphics.tint = 0x666666
+          console.log('over')
           setTooltips((prev) => ({
             ...prev,
             district: district,
             show: true
           }))
         })
-        graphics.on('pointerout', (event) => {
+        graphics.on('pointerout', (_) => {
           graphics.tint = 0xFFFFFF
+          console.log('out')
           setTooltips((prev) => ({
             ...prev,
             show: false
           }))
+        });
+        graphics.on('pointerdown', (e) => {
+          graphics.tint = 0xFFFFFF
+          handlePointerDownEvent(e, district)
         });
 
         let offSetY = 0;
@@ -299,7 +329,6 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
           graphics.drawRect(x, y, rectSizeWithRatio, rectSizeWithRatio);
           graphics.endFill();
         }
-
 
         viewport.addChild(graphics)
 
@@ -402,7 +431,7 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
       viewport.on("pointermove", (e) => {
         if (parentRef.current) {
           const clientHeight = parentRef.current?.clientHeight
-          const pointUp: boolean = !(e.data.global.y > clientHeight * .25)
+          const pointUp: boolean = !(e.data.global.y > clientHeight * .33)
           setTooltips((prev) => ({
             ...prev,
             left: e.data.global.x - 15,
@@ -412,6 +441,16 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
           }))
         }
       })
+
+      viewport.on('pointerdown', (e) => {
+        if (e.target.cursor !== "pointer") {
+          setTooltips((prev) => ({
+            ...prev,
+            show: false,
+          }))
+        }
+      })
+
       viewport
         .drag()
         .pinch()
@@ -451,7 +490,12 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
         case Visualization.MAP_WINNER: drawPolygonMap(app, viewport); break;
         default: break;
       }
-
+      setTooltips((prev) => ({
+        ...prev,
+        show: false
+      }))
+      viewport.fit()
+      viewport.moveCenter(WORLD_WIDTH / 2, WORLD_HEIGHT / 2)
       // border(viewport)
       // function border(viewport: Viewport) {
       //   const line = viewport.addChild(new Graphics())
@@ -459,13 +503,6 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
       // }
     }
   }, [appLoaded, type, electionDistrictData])
-
-  useEffect(() => {
-    if (app && viewport && appLoaded) {
-      viewport.fit()
-      viewport.moveCenter(WORLD_WIDTH / 2, WORLD_HEIGHT / 2)
-    }
-  }, [appLoaded, type])
 
 
   return (
