@@ -17,6 +17,7 @@ import { getDistrictCoordinate, Table2D, Vector2D } from './helper';
 const WORLD_WIDTH = 1450
 const WORLD_HEIGHT = 960;
 const MAX_DISPLAY_RANK = 5;
+const CLICK_TIMEOUT = 200;
 
 interface DistrictMapProps {
   type: Visualization
@@ -70,6 +71,7 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type, onDistrictClick }: District
   const [app, setApp] = useState<PIXI.Application | undefined>()
   const [viewport, setViewport] = useState<Viewport | undefined>()
   const [appLoaded, setAppLoaded] = useState(false)
+  const pointerDownTime = useRef<number>(0)
 
   // tooltip
   const [tooltips, setTooltips] = useState<{
@@ -116,6 +118,13 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type, onDistrictClick }: District
     textBaseline: "bottom",
   })
 
+  const registerOnclick = (graphics: Graphics, onClick: () => void) => {
+    graphics.on('pointerdown', (event) => { pointerDownTime.current = Date.now() });
+    graphics.on('pointerup', (event) => {
+      if (Date.now() - pointerDownTime.current < CLICK_TIMEOUT) onClick();
+    });
+  }
+
   const drawPolygonMap = (app: PIXI.Application, viewport: Viewport) => {
     const anim = app.loader.resources.stripe.animation;
     electionDistrictData.forEach((data) => {
@@ -148,8 +157,7 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type, onDistrictClick }: District
       }
       graphics.interactive = true;
       graphics.buttonMode = true;
-      graphics.on('click', (event) => onDistrictClick(district));
-      graphics.on('tap', (event) => onDistrictClick(district));
+      registerOnclick(graphics, () => onDistrictClick(district));
       graphics.on('pointerover', (event) => {
         graphics.tint = 0x666666
         setTooltips((prev) => ({
@@ -192,8 +200,7 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type, onDistrictClick }: District
         graphics.endFill();
         graphics.interactive = true;
         graphics.buttonMode = true;
-        graphics.on('click', (event) => onDistrictClick(district));
-        graphics.on('tap', (event) => onDistrictClick(district));
+        registerOnclick(graphics, () => onDistrictClick(district));
         graphics.on('pointerover', (event) => {
           graphics.tint = 0x666666
           setTooltips((prev) => ({
@@ -251,8 +258,7 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type, onDistrictClick }: District
         graphics.interactive = true;
         graphics.buttonMode = true;
 
-        graphics.on('click', (event) => onDistrictClick(district));
-        graphics.on('tap', (event) => onDistrictClick(district));
+        registerOnclick(graphics, () => onDistrictClick(district));
         graphics.on('pointerover', (event) => {
           graphics.tint = 0x666666
           setTooltips((prev) => ({
