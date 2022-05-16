@@ -117,55 +117,72 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
 
   const drawPolygonMap = (app: PIXI.Application, viewport: Viewport) => {
     const anim = app.loader.resources.stripe.animation;
-    electionDistrictData.forEach((data) => {
-      const { highestScoreCandidate, district } = data
-      const mapPolygon: MapPolygon | undefined = BKKMapPolygonData.find((value: MapPolygon) => {
-        if (district.name === "ป้อมปราบฯ")
-          return value.name === "ป้อมปราบศัตรูพ่าย"
-        else
-          return value.name === district.name
-      });
 
-      const graphics = new Graphics();
-      graphics.lineStyle({
-        width: 1,
-        color: 0x000000,
-        // native: true,
-        join: PIXI.LINE_JOIN.ROUND
-      });
-      graphics.beginFill(
-        highestScoreCandidate ? +highestScoreCandidate.color.replace("#", "0x") : +DEFAULT_CANDIDATE_COLOR.replace("#", "0x"), 1, true);
-      graphics.drawPolygon(mapPolygon?.polygon || []);
-      graphics.scale.x = 7
-      graphics.scale.y = 7;
-      graphics.endFill();
+    if (anim) {
 
-      if (typeof district.voting.progress !== "undefined" && district.voting.progress < 100) {
-        graphics.beginTextureFill({ alpha: 0.2, texture: anim?.texture, matrix: new PIXI.Matrix(.25, 0, 0, .25, 0, 0) })
+      electionDistrictData.forEach((data) => {
+        const { highestScoreCandidate, district } = data
+        const mapPolygon: MapPolygon | undefined = BKKMapPolygonData.find((value: MapPolygon) => {
+          if (district.name === "ป้อมปราบฯ")
+            return value.name === "ป้อมปราบศัตรูพ่าย"
+          else
+            return value.name === district.name
+        });
+
+        const graphics = new Graphics();
+        graphics.lineStyle({
+          width: 1,
+          color: 0x000000,
+          // native: true,
+          join: PIXI.LINE_JOIN.ROUND
+        });
+        graphics.beginFill(
+          highestScoreCandidate ? +highestScoreCandidate.color.replace("#", "0x") : +DEFAULT_CANDIDATE_COLOR.replace("#", "0x"), 1, true);
         graphics.drawPolygon(mapPolygon?.polygon || []);
+        graphics.scale.x = 7
+        graphics.scale.y = 7;
         graphics.endFill();
-      }
-      graphics.interactive = true;
-      graphics.buttonMode = true;
-      graphics.on('pointerover', (event) => {
-        graphics.tint = 0x666666
-        setTooltips((prev) => ({
-          ...prev,
-          district: district,
-          show: true
-        }))
-      })
-      graphics.on('pointerout', (event) => {
-        graphics.tint = 0xFFFFFF
-        setTooltips((prev) => ({
-          ...prev,
-          show: false
-        }))
+
+
+        graphics.interactive = true;
+        graphics.buttonMode = true;
+        graphics.on('pointerover', (event) => {
+          graphics.tint = 0x666666
+          setTooltips((prev) => ({
+            ...prev,
+            district: district,
+            show: true
+          }))
+        })
+        graphics.on('pointerout', (event) => {
+          graphics.tint = 0xFFFFFF
+          setTooltips((prev) => ({
+            ...prev,
+            show: false
+          }))
+        });
+
+        viewport.addChild(graphics)
+
+        if (typeof district.voting.progress !== "undefined" && district.voting.progress < 100) {
+          const maskGraphic = new PIXI.Graphics();
+          maskGraphic.beginFill();
+          maskGraphic.drawPolygon(mapPolygon?.polygon || []);
+          maskGraphic.scale.x = 7;
+          maskGraphic.scale.y = 7;
+          maskGraphic.endFill();
+          const maskBound = maskGraphic.getBounds()
+
+          const tileStripe = new PIXI.TilingSprite(anim?.texture, maskBound.width, maskBound.height)
+          tileStripe.x = maskBound.x;
+          tileStripe.y = maskBound.y;
+          tileStripe.mask = maskGraphic
+          tileStripe.alpha = .2
+          viewport.addChild(maskGraphic)
+          viewport.addChild(tileStripe)
+        }
       });
-
-      viewport.addChild(graphics)
-    });
-
+    }
   }
 
   const drawRectMap = (app: PIXI.Application, viewport: Viewport) => {
@@ -183,7 +200,6 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
 
         if (highestScoreCandidate) {
           graphics.beginFill(+highestScoreCandidate.color.replace("#", "0x"), 1, true);
-
         }
         graphics.drawRoundedRect(x, y, rectSize, rectSize, 2);
         graphics.endFill();
@@ -206,7 +222,8 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
         });
 
         if (typeof district.voting.progress !== "undefined" && district.voting.progress < 100) {
-          graphics.beginTextureFill({ alpha: 0.2, texture: anim?.texture, matrix: new PIXI.Matrix(1.5, 0, 0, 1.5, 0, 0) })
+          const scale = (rectSize / 30)
+          graphics.beginTextureFill({ alpha: 0.2, texture: anim?.texture, matrix: new PIXI.Matrix(scale, 0, 0, scale, x, y) })
           graphics.drawRect(x, y, rectSize, rectSize,);
           graphics.endFill();
         }
@@ -264,9 +281,7 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
 
         let offSetY = 0;
         districtVoteRatio.forEach(({ percentage, color }, index) => {
-          
           if (index > MAX_DISPLAY_RANK - 1) return
-
           const voteRectHeight = rectSizeWithRatio * percentage / 100
           graphics.lineStyle(1, 0x000000, 1);
           graphics.beginFill(+color.replace("#", "0x"), 1, true);
@@ -279,10 +294,12 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
         })
 
         if (typeof district.voting.progress !== "undefined" && district.voting.progress < 100) {
-          graphics.beginTextureFill({ alpha: 0.2, texture: anim?.texture, matrix: new PIXI.Matrix(1.5, 0, 0, 1.5, 0, 0) })
+          const scale = (rectSize / 30)
+          graphics.beginTextureFill({ alpha: 0.2, texture: anim?.texture, matrix: new PIXI.Matrix(scale, 0, 0, scale, x, y) })
           graphics.drawRect(x, y, rectSizeWithRatio, rectSizeWithRatio);
           graphics.endFill();
         }
+
 
         viewport.addChild(graphics)
 
@@ -355,7 +372,7 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
     // On first render create our application
     const app = new PIXI.Application({
       width: ref.current.parentElement?.clientWidth || window.innerWidth,
-      height: ref.current.parentElement?.clientHeight || 500,
+      height: ref.current.parentElement?.clientHeight || window.innerWidth,
       backgroundColor: 0x000000,
       antialias: true,
       resolution: 2,
@@ -406,11 +423,11 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
         maxWidth: 2000,                 // maximum width
         maxHeight: 2000,                // maximum height
       })
-      
+
       // viewport.zoom(WORLD_WIDTH)
       viewport.fit()
       viewport.moveCenter(WORLD_WIDTH / 2, WORLD_HEIGHT / 2)
-      
+
       setApp(app)
       setViewport(viewport)
       setAppLoaded(true)
@@ -434,6 +451,7 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
         case Visualization.MAP_WINNER: drawPolygonMap(app, viewport); break;
         default: break;
       }
+
       // border(viewport)
       // function border(viewport: Viewport) {
       //   const line = viewport.addChild(new Graphics())
