@@ -69,7 +69,7 @@ const DistrictVisualization: FunctionComponent<DistrictVisualizationProps> = ({
 			{isShowDistrictModal &&
 				<Modal
 					containerClassName="lg:absolute lg:z-10 lg:top-0 lg:left-0 lg:right-0 lg:bottom-0"
-					className="max-h-full max-w-[calc(100vw-2rem)] h-full lg:absolute lg:z-10 lg:top-0 lg:left-0 lg:right-0 lg:bottom-0 max-w-none"
+					className="max-h-full max-w-[calc(100vw-2rem)] h-full w-full lg:absolute lg:z-10 lg:top-0 lg:left-0 lg:right-0 lg:bottom-0 !max-w-none"
 					title={`เขต${activeDistrict?.name}`}
 					subtitle={`ผู้มีสิทธิ์เลือกตั้ง ${activeDistrict?.voting.eligiblePopulation.toLocaleString()} คน`}
 					imageUrl={`https://picsum.photos/500`}
