@@ -5,7 +5,7 @@ import Dashboard from './components/dashboard';
 import Footer from './components/Footer';
 import { Preset, presetContext } from './contexts/preset';
 import { electionIndexes } from './data/presets';
-import { District, ElectionData, Result } from './models/election';
+import { ElectionData } from './models/election';
 import { fetchPreset, getJson } from './utils/fetch';
 
 const DEFAULT_PRESET_INDEX = 0;
@@ -26,43 +26,23 @@ const App: FunctionComponent = () => {
 		}
 
 		const presetIndex = electionIndexes[activePresetIndex];
-		const { refreshIntervalMs, electionDataUrl, fullname, shortname, subtitle } = presetIndex;
+		const { refreshIntervalMs, electionDataUrl, candidateDataUrl, ...rest } = presetIndex;
 
-		console.log('!!!!', presetIndex)
-
-		fetchPreset(presetIndex).then((p: Preset) => {
-			p.electionData.districts.forEach(
-				(x: District) => x.voting.result.sort(
-					(a: Result, b: Result) => b.count - a.count
-				)
-			)
-			setPreset(p);
-		});
+		fetchPreset(presetIndex).then(setPreset);
 
 		if (refreshIntervalMs) {
 			setRefreshInterval(
-				setInterval(
-					async () => {
-						let electionData = await getJson<ElectionData>(electionDataUrl);
-						electionData.districts.forEach(
-							(x: District) => x.voting.result.sort(
-								(a: Result, b: Result) => b.count - a.count
-							)
-						)
-						setPreset(
-							preset
-								? {
-									fullname,
-									subtitle,
-									shortname,
-									candidateMap: preset.candidateMap,
+				setInterval(async () => {
+					let electionData = await getJson<ElectionData>(electionDataUrl);
+					setPreset(
+						preset
+							? {
+									...preset,
 									electionData: electionData
-								}
-								: null
-						)
-					},
-					refreshIntervalMs
-				)
+							  }
+							: null
+					);
+				}, refreshIntervalMs)
 			);
 		}
 

@@ -6,6 +6,7 @@ export async function fetchPreset({
 	shortname,
 	fullname,
 	subtitle,
+	descriptionModal,
 	electionDataUrl,
 	candidateDataUrl
 }: ElectionIndex): Promise<Preset> {
@@ -14,11 +15,14 @@ export async function fetchPreset({
 		getJson<CandidateMap>(candidateDataUrl)
 	]);
 
+	electionData.districts.forEach(({ voting }) => voting.result.sort((a, z) => z.count - a.count));
+
 	return {
 		shortname,
 		fullname,
 		subtitle,
 		electionData,
+		descriptionModal,
 		candidateMap
 	};
 }

@@ -1,11 +1,9 @@
 import { createContext } from 'react';
 import { CandidateMap } from '../models/candidate';
-import { ElectionData } from '../models/election';
+import { ElectionData, ElectionIndex } from '../models/election';
 
-export interface Preset {
-	shortname: string;
-	fullname: string;
-	subtitle?: string;
+export interface Preset
+	extends Omit<ElectionIndex, 'electionDataUrl' | 'candidateDataUrl' | 'refreshIntervalMs'> {
 	electionData: ElectionData;
 	candidateMap: CandidateMap;
 }
