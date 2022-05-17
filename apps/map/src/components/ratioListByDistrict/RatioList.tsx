@@ -45,7 +45,7 @@ export default function RatioListTable({ onDistrictClick }: RatioListTableProps)
 		{
 			text: 'ผลการเลือกตั้ง',
 			className: 'col-span-3 grow hidden md:flex',
-			// children: RESULT_ARROW_DOWN
+			children: '' //RESULT_ARROW_DOWN
 		},
 		{
 			text: 'นับคะแนนแล้ว',
