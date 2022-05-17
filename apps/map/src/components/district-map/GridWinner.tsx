@@ -11,15 +11,22 @@ import {
   DistrictGridWinnerData, MAX_DISPLAY_RANK, WORLD_HEIGHT, WORLD_WIDTH
 } from './MapHelper';
 
+const CLICK_TIMEOUT = 200;
+
+interface GridWinnerProps {
+  onDistrictClick?: (district: District) => void
+}
+
 PIXI.Loader.registerPlugin(AnimatedGIFLoader);
 
-const GridWinner: React.FC = () => {
+const GridWinner: React.FC<GridWinnerProps> = ({ onDistrictClick }: GridWinnerProps) => {
   const preset = useContext(presetContext)! as Preset;
   const parentRef = useRef<HTMLDivElement>(null);
   const ref = useRef<HTMLDivElement>(null);
   const [app, setApp] = useState<PIXI.Application | undefined>()
   const [viewport, setViewport] = useState<Viewport | undefined>()
   const [appLoaded, setAppLoaded] = useState(false)
+  const pointerDownTime = useRef<number>(0)
 
   // tooltip
   const [tooltips, setTooltips] = useState<{
@@ -59,6 +66,13 @@ const GridWinner: React.FC = () => {
     textBaseline: "bottom",
   })
 
+  const registerOnclick = (graphics: Graphics, onClick: () => void) => {
+    graphics.on('pointerdown', (_) => { pointerDownTime.current = Date.now() });
+    graphics.on('pointerup', (_) => {
+      if (Date.now() - pointerDownTime.current < CLICK_TIMEOUT) onClick();
+    });
+  }
+
   const handlePointerDownEvent = (e: any, district: District) => {
     if (parentRef.current) {
       const { clientWidth, clientHeight } = parentRef.current
@@ -96,6 +110,7 @@ const GridWinner: React.FC = () => {
         graphics.endFill();
         graphics.interactive = true;
         graphics.buttonMode = true;
+        registerOnclick(graphics, () => onDistrictClick?.(district));
         graphics.on('pointerover', (_) => {
           graphics.tint = 0x666666
           setTooltips((prev) => ({

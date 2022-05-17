@@ -10,18 +10,19 @@ import { District } from '../../models/election';
 import DistrictTooltip from '../DistrictTooltip';
 import { BKKMapPolygonData, MapPolygon } from './MapPolygonData';
 import {
-  DistrictMapWinnerData, MAX_DISPLAY_RANK, WORLD_HEIGHT, WORLD_WIDTH
+  CLICK_TIMEOUT, DistrictMapWinnerData, MapProps, MAX_DISPLAY_RANK, WORLD_HEIGHT, WORLD_WIDTH
 } from './MapHelper';
 
 PIXI.Loader.registerPlugin(AnimatedGIFLoader);
 
-const MapWinner: React.FC = () => {
+const MapWinner: React.FC<MapProps> = ({ onDistrictClick }: MapProps) => {
   const preset = useContext(presetContext)! as Preset;
   const parentRef = useRef<HTMLDivElement>(null);
   const ref = useRef<HTMLDivElement>(null);
   const [app, setApp] = useState<PIXI.Application | undefined>()
   const [viewport, setViewport] = useState<Viewport | undefined>()
   const [appLoaded, setAppLoaded] = useState(false)
+  const pointerDownTime = useRef<number>(0)
 
   // tooltip
   const [tooltips, setTooltips] = useState<{
@@ -46,6 +47,13 @@ const MapWinner: React.FC = () => {
 
   const { electionData, candidateMap } = preset
   const [electionDistrictData, setElectionDistrictData] = useState<DistrictMapWinnerData[]>([]);
+
+  const registerOnclick = (graphics: Graphics, onClick: () => void) => {
+    graphics.on('pointerdown', (_) => { pointerDownTime.current = Date.now() });
+    graphics.on('pointerup', (_) => {
+      if (Date.now() - pointerDownTime.current < CLICK_TIMEOUT) onClick();
+    });
+  }
 
   const handlePointerDownEvent = (e: any, district: District) => {
     if (parentRef.current) {
@@ -91,6 +99,7 @@ const MapWinner: React.FC = () => {
 
         graphics.interactive = true;
         graphics.buttonMode = true;
+        registerOnclick(graphics, () => onDistrictClick?.(district));
         graphics.on('pointerover', (e) => {
           graphics.tint = 0x666666
           setTooltips((prev) => ({

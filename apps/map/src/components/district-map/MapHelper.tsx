@@ -131,3 +131,9 @@ export class DistrictGridRatioData {
     this.districtCandidateVoteRatio = dV
   }
 }
+
+export const CLICK_TIMEOUT = 200;
+
+export interface MapProps {
+  onDistrictClick?: (district: District) => void
+}
