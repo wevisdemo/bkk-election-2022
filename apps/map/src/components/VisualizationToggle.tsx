@@ -15,7 +15,7 @@ interface VisualizationToggleProps {
 
 const VisualizationToggle: FunctionComponent<VisualizationToggleProps> = ({ onChange, value }) => {
 	return (
-		<div className="flex flex-row md:flex-col justify-center md:items-center gap-4 w-full md:w-auto">
+		<div className="flex flex-row md:flex-col justify-center md:items-center gap-4 gap-2-xxs w-full md:w-auto overflow-visible">
 			{visualizationButtons.map(({ value: v, label }) => (
 				<button
 					className="group md:flex-1 md:flex-none flex flex-col space-y-1 items-center"

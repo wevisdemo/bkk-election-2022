@@ -9,6 +9,7 @@ interface DistrictTooltipProps {
 	topCandidateDisplay?: number;
 	className?: string;
 	pointUp?: boolean;
+	anchorRight?: boolean;
 	style?: string | JSX.CSSProperties;
 }
 
@@ -18,6 +19,7 @@ const DistrictTooltip: FunctionComponent<DistrictTooltipProps> = ({
 	district,
 	topCandidateDisplay = TOP_CANDIDATE_DISPLAY,
 	className = '',
+	anchorRight,
 	style
 }) => {
 	const preset = useContext(presetContext);
@@ -35,7 +37,7 @@ const DistrictTooltip: FunctionComponent<DistrictTooltipProps> = ({
 	return (
 		<div
 			id="district-tooltip"
-			className={`absolute z-10 min-w-[10rem] shadow pointer-events-none ${className}`}
+			className={`absolute z-10 min-w-[10rem] pointer-events-none ${className}`}
 			style={style}
 		>
 			{pointUp && <div>
@@ -43,7 +45,10 @@ const DistrictTooltip: FunctionComponent<DistrictTooltipProps> = ({
 					<path fill-rule="evenodd" clip-rule="evenodd" d="M6 0L12 6H0L6 0Z" fill="#393939" />
 				</svg>
 			</div>}
-			<div className="bg-[#393939] py-2 px-3 typo-u4 space-y-2 rounded-sm">
+			<div className={`bg-[#393939] py-2 px-3 typo-u4 space-y-2 rounded-sm shadow`}
+				// style={anchorRight ? { position: "relative", left: "-80%" } : { left: "unset" }}
+				style={anchorRight ? { position: "relative", left: "-80%" } : { position: "relative", left: "unset" }}
+			>
 				<div>{district?.name}</div>
 				<div className="space-y-1">
 					{displayCandidate.map(({ shortname, number, color, percentage }, index) => (
@@ -57,12 +62,14 @@ const DistrictTooltip: FunctionComponent<DistrictTooltipProps> = ({
 					))}
 				</div>
 			</div>
-			{!pointUp && <div>
-				<svg width="12" height="6" viewBox="0 0 12 6" fill="none" className="ml-2" transform="scale(1,-1)">
-					<path fill-rule="evenodd" clip-rule="evenodd" d="M6 0L12 6H0L6 0Z" fill="#393939" />
-				</svg>
-			</div>}
-		</div>
+			{
+				!pointUp && <div>
+					<svg width="12" height="6" viewBox="0 0 12 6" fill="none" className="ml-2" transform="scale(1,-1)">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M6 0L12 6H0L6 0Z" fill="#393939" />
+					</svg>
+				</div>
+			}
+		</div >
 	);
 };
 

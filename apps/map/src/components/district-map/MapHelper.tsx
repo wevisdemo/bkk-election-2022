@@ -1,3 +1,6 @@
+import { Candidate, CandidateMap } from '../../models/candidate';
+import { District, Result } from '../../models/election';
+
 export type Vector2D = {
   x: number;
   y: number;
@@ -62,9 +65,69 @@ export const getDistrictCoordinate = (districtName: string): Table2D => {
     case "บางกะปิ": return { row: 3, col: 9 };
     case "ทุ่งครุ": return { row: 6, col: 2 };
     default: {
-      console.log(districtName)
       return { row: -1, col: -1 }
     }
   }
 }
 
+export interface RectColorWithCandidateRatio {
+  percentage: number,
+  color: string,
+}
+
+export const WORLD_WIDTH = 1450
+export const WORLD_HEIGHT = 960;
+export const MAX_DISPLAY_RANK = 5;
+
+// MAP_WINNER - POLYGON MAP
+export class DistrictMapWinnerData {
+  district: District;
+  highestScoreResult?: Result;
+  highestScoreCandidate?: Candidate;
+
+  constructor(d: District, c: CandidateMap) {
+    this.district = d;
+    if (this.district) {
+      const { voting } = this.district
+      const { result } = voting
+      this.highestScoreResult = result.reduce((maxResult: Result, res: Result) => maxResult.count > res.count ? maxResult : res)
+    }
+    if (this.highestScoreResult && c) {
+      this.highestScoreCandidate = c[this.highestScoreResult.candidateId];
+    }
+  }
+}
+
+export class DistrictGridWinnerData {
+  coordinate: Table2D;
+  district: District;
+  highestScoreCandidate?: Candidate;
+  highestScoreResult?: Result;
+
+  constructor(d: District, c: CandidateMap) {
+    this.coordinate = getDistrictCoordinate(d.name)
+    this.district = d;
+    if (this.district) {
+      const { voting } = this.district
+      const { result } = voting
+      this.highestScoreResult = result.reduce((maxResult: Result, res: Result) => maxResult.count > res.count ? maxResult : res)
+    }
+    if (this.highestScoreResult && c) {
+      this.highestScoreCandidate = c[this.highestScoreResult.candidateId];
+    }
+  }
+}
+
+export class DistrictGridRatioData {
+  coordinate: Table2D;
+  district: District;
+  ratio: number;
+  districtCandidateVoteRatio: RectColorWithCandidateRatio[] = [];
+
+  constructor(d: District, c: CandidateMap, r: number, dV: RectColorWithCandidateRatio[]) {
+    this.coordinate = getDistrictCoordinate(d.name)
+    this.district = d;
+    this.ratio = r;
+    this.districtCandidateVoteRatio = dV
+  }
+}

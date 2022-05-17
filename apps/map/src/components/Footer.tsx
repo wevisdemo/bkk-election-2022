@@ -12,7 +12,7 @@ const Footer: FunctionComponent = () => {
 		<div className="bg-black text-white px-4 lg:px-12 fixed bottom-0 left-0 right-0 z-10 lg:relative">
 			<div class="flex flex-row justify-end border-t border-gray py-3 lg:py-6">
 				{preset?.electionData.type === ElectionDataType.Live && (
-					<div className="flex-1 flex flex-row typo-u4 typo-footer-xs space-x-4 lg:space-x-8">
+					<div className="flex-1 flex flex-row font-body typo-footer space-x-4 lg:space-x-8">
 						{preset?.electionData.total.progress !== undefined && (
 							<div className="flex flex-row lg:flex-col space-y-1">
 								<div>นับคะแนนโดย<br className='lg:hidden'/>อาสาฯ แล้ว {preset?.electionData.total.progress.toFixed(1)}%</div>

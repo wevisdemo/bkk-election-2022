@@ -3,13 +3,13 @@ import RatioList from './ratioListByDistrict/RatioList';
 import { Visualization } from '../models/visualization';
 import { presetContext } from '../contexts/preset';
 import VisualizationToggle from './VisualizationToggle';
-// import DistrictMap from './district-map/district-map-canvas';
-import Pixi from './district-map/MapPixi';
 import CandidateLegend from './CandidateLegend';
-import { TOP_CANDIDATE_DISPLAY } from '../constants/candidate';
 import Modal from './Modal';
 import CandidateOverviewList from './candidateOverviewList/CandidateOverviewList';
 import { District, ElectionDataType } from '../models/election';
+import MapWinner from './district-map/MapWinner';
+import GridWinner from './district-map/GridWinner';
+import GridRatio from './district-map/GridRatio';
 
 interface DistrictVisualizationProps {
 	activeViz: Visualization;
@@ -45,10 +45,12 @@ const DistrictVisualization: FunctionComponent<DistrictVisualizationProps> = ({
 							<span className="font-bold">สัดส่วนสี</span> ในแต่ละกล่องตามสัดส่วนคะแนนของผู้สมัคร
 						</p>
 					</div>
-				) : (activeViz === Visualization.GRID_WINNER || activeViz === Visualization.MAP_WINNER) && (
-					<p>
-						<span className="font-bold">สี</span> ของแต่ละเขตแสดงผู้ได้คะแนนสูงสุดในเขตนั้นๆ
-					</p>
+				) : (
+					(activeViz === Visualization.GRID_WINNER || activeViz === Visualization.MAP_WINNER) && (
+						<p>
+							<span className="font-bold">สี</span> ของแต่ละเขตแสดงผู้ได้คะแนนสูงสุดในเขตนั้นๆ
+						</p>
+					)
 				)}
 			</CandidateLegend>
 		);
@@ -64,7 +66,7 @@ const DistrictVisualization: FunctionComponent<DistrictVisualizationProps> = ({
 
 	return (
 		<div
-			className={`relative flex flex-col md:flex-row w-full h-full gap-3 md:gap-8 overflow-hidden ${className}`}
+			className={`min-h-[320px] relative flex flex-col md:flex-row w-full h-full gap-3 md:gap-8 overflow-hidden ${className}`}
 		>
 			{isShowDistrictModal &&
 				<Modal
@@ -112,14 +114,30 @@ const DistrictVisualization: FunctionComponent<DistrictVisualizationProps> = ({
 				</Modal>
 			}
 			<div className="flex flex-1 h-full w-full flex-col overflow-y-hidden">
-				<h2 className={`typo-h4 mb-2 md:mb-6 hidden lg:block z-[1] pointer-events-none ${activeViz === Visualization.LIST_RATIO ? '' : 'md:mb-[-40px]'}`}>คะแนนรายเขต</h2>
-				<div className={`${activeViz === Visualization.LIST_RATIO ? 'flex' : ''} flex-col flex-auto h-full overflow-hidden relative`}>
-					{activeViz === Visualization.LIST_RATIO ?
-						<RatioList onDistrictClick={openDistrictModal} /> :
-						<Pixi onDistrictClick={openDistrictModal} type={activeViz} />
-					}
+				<h2
+					className={`typo-h4 mb-2 md:mb-6 hidden lg:block z-[1] pointer-events-none ${
+						activeViz === Visualization.LIST_RATIO ? '' : 'md:mb-[-40px]'
+					}`}
+				>
+					คะแนนรายเขต
+				</h2>
+				<div
+					className={`${
+						activeViz === Visualization.LIST_RATIO ? 'flex' : ''
+					} flex-col flex-auto h-full overflow-hidden relative`}
+				>
+					{activeViz === Visualization.GRID_WINNER && <GridWinner onDistrictClick={openDistrictModal} />}
+					{activeViz === Visualization.GRID_RATIO && <GridRatio onDistrictClick={openDistrictModal} />}
+					{activeViz === Visualization.MAP_WINNER && <MapWinner onDistrictClick={openDistrictModal} />}
+					{activeViz === Visualization.LIST_RATIO && <RatioList onDistrictClick={openDistrictModal} />}
 				</div>
-				<div class={`md:flex hidden mt-2 ${activeViz === Visualization.LIST_RATIO ? '' : 'md:mt-[-60px]'}`}>{candidateLegend}</div>
+				<div
+					class={`md:flex hidden mt-2 ${
+						activeViz === Visualization.LIST_RATIO ? '' : 'md:mt-[-60px]'
+					}`}
+				>
+					{candidateLegend}
+				</div>
 			</div>
 			<div class="flex md:hidden">{candidateLegend}</div>
 			<div className="flex justify-center items-center">

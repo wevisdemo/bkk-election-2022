@@ -6,13 +6,13 @@ import Progress, { ProgressItem } from '../Progress';
 
 interface Props {
 	candidateId: string;
-	index: number;
+	count: number;
 	topVoteCount: number;
 	isInTop: boolean;
 	votingData: Voting;
 }
 
-export default function CandidateOverviewListRowItem({ votingData, candidateId, topVoteCount, index, isInTop }: Props) {
+export default function CandidateOverviewListRowItem({ votingData, candidateId, topVoteCount, count, isInTop }: Props) {
 	const preset = useContext(presetContext);
 
 	if (!preset) return <tr></tr>;
@@ -27,7 +27,6 @@ export default function CandidateOverviewListRowItem({ votingData, candidateId, 
 			<div class="flex flex-row mt-4">
 				<span class="basis-10">
 					{candidate.number || '-'}
-					{/* {index + 1} */}
 				</span>
 				<a href={`/candidate/${candidate.number}`} target="_blank" class="text-left font-semibold flex-1 hover:underline">
 					{candidate.fullname}
@@ -36,10 +35,11 @@ export default function CandidateOverviewListRowItem({ votingData, candidateId, 
 					{candidate.party || PARTY_UNDEFINED_STRING}
 				</span>
 				<span class="text-right basis-3/12 2xl:basis-2/12">
-					{result.count.toLocaleString()}
+					{count.toLocaleString()}
 				</span>
 				<span class="text-right basis-2/12">
-					{(result.count / votingData.totalVotes).toLocaleString(
+					{/* {(result.count / votingData.totalVotes).toLocaleString( */}
+					{(count / votingData.totalVotes).toLocaleString(
 						undefined, {style: 'percent', minimumFractionDigits: 1})
 					}
 				</span>
@@ -55,7 +55,7 @@ export default function CandidateOverviewListRowItem({ votingData, candidateId, 
 									preset.electionData.type === ElectionDataType.Poll
 										? candidate.color + '71'
 										: candidate.color,
-								percent: result.count / topVoteCount,
+								percent: count / topVoteCount,
 								strip: preset.electionData.type === ElectionDataType.Live
 							}
 						] as ProgressItem[]
