@@ -35,7 +35,7 @@ const DistrictTooltip: FunctionComponent<DistrictTooltipProps> = ({
 	return (
 		<div
 			id="district-tooltip"
-			className={`absolute z-10 min-w-[10rem] shadow pointer-events-none ${className}`}
+			className={`absolute z-10 min-w-[10rem] pointer-events-none ${className}`}
 			style={style}
 		>
 			{pointUp && <div>
@@ -43,7 +43,7 @@ const DistrictTooltip: FunctionComponent<DistrictTooltipProps> = ({
 					<path fill-rule="evenodd" clip-rule="evenodd" d="M6 0L12 6H0L6 0Z" fill="#393939" />
 				</svg>
 			</div>}
-			<div className="bg-[#393939] py-2 px-3 typo-u4 space-y-2 rounded-sm">
+			<div className="bg-[#393939] py-2 px-3 typo-u4 space-y-2 rounded-sm shadow">
 				<div>{district?.name}</div>
 				<div className="space-y-1">
 					{displayCandidate.map(({ shortname, number, color, percentage }, index) => (

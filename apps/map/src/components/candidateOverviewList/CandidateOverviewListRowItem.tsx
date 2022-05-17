@@ -6,18 +6,15 @@ import Progress, { ProgressItem } from '../Progress';
 
 interface Props {
 	candidateId: string;
-	index: number;
+	count: number;
 	topVoteCount: number;
 	isInTop: boolean;
 }
 
-export default function CandidateOverviewListRowItem({ candidateId, topVoteCount, index, isInTop }: Props) {
+export default function CandidateOverviewListRowItem({ candidateId, topVoteCount, count, isInTop }: Props) {
 	const preset = useContext(presetContext);
 
 	if (!preset) return <tr></tr>;
-
-	const result = preset.electionData.total.result.find((v) => v.candidateId === candidateId);
-	if (!result) return <tr></tr>;
 
 	const candidate = preset.candidateMap[candidateId];
 
@@ -26,7 +23,6 @@ export default function CandidateOverviewListRowItem({ candidateId, topVoteCount
 			<div class="flex flex-row mt-4">
 				<span class="basis-10">
 					{candidate.number || '-'}
-					{/* {index + 1} */}
 				</span>
 				<a href={`/candidate/${candidate.number}`} target="_blank" class="text-left font-semibold flex-1 hover:underline">
 					{candidate.fullname}
@@ -35,10 +31,10 @@ export default function CandidateOverviewListRowItem({ candidateId, topVoteCount
 					{candidate.party || PARTY_UNDEFINED_STRING}
 				</span>
 				<span class="text-right basis-3/12 2xl:basis-2/12">
-					{result.count.toLocaleString()}
+					{count.toLocaleString()}
 				</span>
 				<span class="text-right basis-2/12">
-					{(result.count / preset.electionData.total.totalVotes).toLocaleString(
+					{(count / preset.electionData.total.totalVotes).toLocaleString(
 						undefined, {style: 'percent', minimumFractionDigits: 1})
 					}
 				</span>
@@ -54,7 +50,7 @@ export default function CandidateOverviewListRowItem({ candidateId, topVoteCount
 									preset.electionData.type === ElectionDataType.Poll
 										? candidate.color + '71'
 										: candidate.color,
-								percent: result.count / topVoteCount,
+								percent: count / topVoteCount,
 								strip: preset.electionData.type === ElectionDataType.Live
 							}
 						] as ProgressItem[]

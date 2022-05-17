@@ -5,6 +5,10 @@ import { Result } from '../../models/election';
 import SortableListHeader from '../SortableListHeader';
 import CandidateOverviewListRowItem from './CandidateOverviewListRowItem';
 
+interface CandidateOverviewListProps {
+	district?: string;
+}
+
 enum CandidateOverviewSortType {
 	COUNT = 'count',
 	NUMBER = 'number',
@@ -13,7 +17,9 @@ enum CandidateOverviewSortType {
 	PARTY = 'party'
 }
 
-export default function CandidateOverviewList() {
+const NAME_TITLE_REGEX = /(นาย|นาง(สาว)?|((น|พล|พ)\.(ต\.|อ\.)?(อ|ท|ต)\.)(หญิง)?|ม\.ร\.ว\.)/i
+
+export default function CandidateOverviewList({ district }: CandidateOverviewListProps) {
 	const preset = useContext(presetContext);
 	const [isBottom, setIsBottom] = useState<boolean>(false);
 	const [descending, setDescending] = useState<boolean>(true);
@@ -26,46 +32,64 @@ export default function CandidateOverviewList() {
 		return <></>;
 	}
 
-	const sortDirection = useMemo(() => descending ? -1 : 1, [descending]);
+	const sortDirection = useMemo(() => (descending ? -1 : 1), [descending]);
 
 	const getDefaultSortDescending = (newSortType: CandidateOverviewSortType) => {
-		return newSortType === CandidateOverviewSortType.COUNT ||
-			newSortType === CandidateOverviewSortType.PERCENT;
-	}
+		return (
+			newSortType === CandidateOverviewSortType.COUNT ||
+			newSortType === CandidateOverviewSortType.PERCENT
+		);
+	};
 
 	const results = useMemo(() => {
-		const _res = preset.electionData.total.result;
+		let newResults;
+		const districtFromDistricts = preset.electionData.districts.find((d) => d.name == district);
+		if (district && districtFromDistricts) {
+			newResults = districtFromDistricts.voting.result;
+		} else {
+			newResults = preset.electionData.total.result;
+		}
 		switch (sortType) {
 			case CandidateOverviewSortType.PARTY:
-				return _res.sort((a, b) => {
-					return (preset.candidateMap[a.candidateId].party || PARTY_UNDEFINED_STRING).localeCompare(
-						preset.candidateMap[b.candidateId].party || PARTY_UNDEFINED_STRING
-					) * sortDirection;
+				return newResults.sort((a, b) => {
+					return (
+						(preset.candidateMap[a.candidateId].party || PARTY_UNDEFINED_STRING).localeCompare(
+							preset.candidateMap[b.candidateId].party || PARTY_UNDEFINED_STRING
+						) * sortDirection
+					);
 				});
 			case CandidateOverviewSortType.NAME:
-				return _res.sort((a, b) =>
-					preset.candidateMap[a.candidateId].fullname.localeCompare(
-						preset.candidateMap[b.candidateId].fullname
-					) * sortDirection // FIXME: sorting by name shouldn't include titles?
+				return newResults.sort(
+					(a, b) =>
+						preset.candidateMap[a.candidateId].fullname.replace(NAME_TITLE_REGEX, '').localeCompare(
+							preset.candidateMap[b.candidateId].fullname.replace(NAME_TITLE_REGEX, '')
+						) * sortDirection
 				);
 			case CandidateOverviewSortType.NUMBER:
-				return _res.sort((a, b) => {
-					return ((preset.candidateMap[a.candidateId].number || 0) - (
-						preset.candidateMap[b.candidateId].number || 0
-					)) * sortDirection;
+				return newResults.sort((a, b) => {
+					return (
+						((preset.candidateMap[a.candidateId].number || 0) -
+							(preset.candidateMap[b.candidateId].number || 0)) *
+						sortDirection
+					);
 				});
 			case CandidateOverviewSortType.PERCENT:
 			case CandidateOverviewSortType.COUNT:
 			default:
-				return _res.sort((a, b) => (a.count - b.count) * sortDirection);
+				return newResults.sort((a, b) => (a.count - b.count) * sortDirection);
 		}
 	}, [preset, sortType, sortDirection]);
 
 	useEffect(() => {
 		if (containerRef.current) {
-			setIsBottom(containerRef.current.scrollHeight - containerRef.current.scrollTop - containerRef.current.clientHeight < 1)
+			setIsBottom(
+				containerRef.current.scrollHeight -
+					containerRef.current.scrollTop -
+					containerRef.current.clientHeight <
+					1
+			);
 		}
-	})
+	});
 
 	const topVoteCount: number = Math.max(...results.map((v: Result) => v.count));
 	const headers = [
@@ -89,7 +113,7 @@ export default function CandidateOverviewList() {
 			className: 'text-right basis-3/12 2xl:basis-2/12',
 			sortType: CandidateOverviewSortType.COUNT
 		},
-		{ 
+		{
 			text: '%',
 			className: 'text-right basis-2/12',
 			sortType: CandidateOverviewSortType.PERCENT
@@ -100,7 +124,6 @@ export default function CandidateOverviewList() {
 		if (headerSortType) {
 			if (headerSortType === sortType) {
 				setDescending(!descending);
-				// results.reverse();
 			} else {
 				setSortType(headerSortType);
 				setDescending(getDefaultSortDescending(headerSortType));
@@ -121,23 +144,28 @@ export default function CandidateOverviewList() {
 					/>
 				))}
 			</div>
-			<div class="overflow-y-auto hide-scrollbar" ref={containerRef} onScroll={(event) => {
-				const target = event.target as HTMLElement;
-				setIsBottom(target.scrollHeight - target.scrollTop - target.clientHeight < 1);
-			}}>
+			<div
+				class="overflow-y-auto hide-scrollbar"
+				ref={containerRef}
+				onScroll={(event) => {
+					const target = event.target as HTMLElement;
+					setIsBottom(target.scrollHeight - target.scrollTop - target.clientHeight < 1);
+				}}
+			>
 				<div
-					class={`absolute z-10 w-full h-11 bg-gradient-to-t from-black to-black/0 bottom-0 pointer-events-none ${isBottom && 'hidden'
-						}`}
+					class={`absolute z-10 w-full h-11 bg-gradient-to-t from-black to-black/0 bottom-0 pointer-events-none ${
+						isBottom && 'hidden'
+					}`}
 				/>
-				{results.map((_res: Result, index: number) => {
+				{results.map((res: Result, index: number) => {
 					return (
 						<CandidateOverviewListRowItem
-							candidateId={_res.candidateId}
-							index={index}
+							candidateId={res.candidateId}
+							count={res.count}
 							topVoteCount={topVoteCount}
 							isInTop={
 								(sortType === CandidateOverviewSortType.COUNT || sortType === CandidateOverviewSortType.PERCENT) &&
-								descending &&
+								descending && !district &&
 								index < TOP_CANDIDATE_DISPLAY
 							}
 						/>
