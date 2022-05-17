@@ -1,13 +1,9 @@
-import React, { FunctionComponent, useContext, useMemo, useState } from 'react';
-import RatioList from './ratioListByDistrict/RatioList';
+import React, { FunctionComponent, useContext, useMemo, useState, lazy, Suspense } from 'react';
 import { Visualization } from '../models/visualization';
 import { presetContext } from '../contexts/preset';
 import VisualizationToggle from './VisualizationToggle';
 import CandidateLegend from './CandidateLegend';
 import { District, ElectionDataType } from '../models/election';
-import MapWinner from './district-map/MapWinner';
-import GridWinner from './district-map/GridWinner';
-import GridRatio from './district-map/GridRatio';
 import DistrictModal from './DistrictModal';
 
 interface DistrictVisualizationProps {
@@ -55,6 +51,8 @@ const DistrictVisualization: FunctionComponent<DistrictVisualizationProps> = ({
 
 	const openDistrictModal = (district: District) => setActiveDistrict(district);
 
+	const VisComponent = getVisComponent(activeViz);
+
 	return (
 		<div
 			className={`min-h-[320px] relative flex flex-col md:flex-row w-full h-full gap-3 md:gap-8 overflow-hidden ${className}`}
@@ -84,18 +82,13 @@ const DistrictVisualization: FunctionComponent<DistrictVisualizationProps> = ({
 						activeViz === Visualization.LIST_RATIO ? 'flex' : ''
 					} flex-col flex-auto h-full overflow-hidden relative`}
 				>
-					{activeViz === Visualization.GRID_WINNER && (
-						<GridWinner onDistrictClick={openDistrictModal} />
-					)}
-					{activeViz === Visualization.GRID_RATIO && (
-						<GridRatio onDistrictClick={openDistrictModal} />
-					)}
-					{activeViz === Visualization.MAP_WINNER && (
-						<MapWinner onDistrictClick={openDistrictModal} />
-					)}
-					{activeViz === Visualization.LIST_RATIO && (
-						<RatioList onDistrictClick={openDistrictModal} />
-					)}
+					<Suspense
+						fallback={
+							<div class="w-full h-full flex items-center justify-center typo-u5">Loading...</div>
+						}
+					>
+						<VisComponent onDistrictClick={openDistrictModal} />
+					</Suspense>
 				</div>
 				<div
 					class={`md:flex hidden mt-2 ${
@@ -111,6 +104,20 @@ const DistrictVisualization: FunctionComponent<DistrictVisualizationProps> = ({
 			</div>
 		</div>
 	);
+};
+
+const getVisComponent = (activeViz: Visualization) => {
+	switch (activeViz) {
+		case Visualization.GRID_WINNER:
+			return lazy(() => import('./district-map/GridWinner'));
+		case Visualization.GRID_RATIO:
+			return lazy(() => import('./district-map/GridRatio'));
+		case Visualization.MAP_WINNER:
+			return lazy(() => import('./district-map/MapWinner'));
+		case Visualization.LIST_RATIO:
+		default:
+			return lazy(() => import('./ratioListByDistrict/RatioList'));
+	}
 };
 
 export default DistrictVisualization;
