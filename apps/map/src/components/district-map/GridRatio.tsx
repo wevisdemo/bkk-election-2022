@@ -6,63 +6,13 @@ import * as PIXI from "pixi.js";
 import React, { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { DEFAULT_CANDIDATE_COLOR } from '../../constants/candidate';
 import { Preset, presetContext } from '../../contexts/preset';
-import { Candidate, CandidateMap } from '../../models/candidate';
-import { District, Result } from '../../models/election';
-import { Visualization } from '../../models/visualization';
+import { District } from '../../models/election';
 import DistrictTooltip from '../DistrictTooltip';
-import { BKKMapPolygonData, MapPolygon } from './bkk-district-map-polygon';
-import { getDistrictCoordinate, Table2D, Vector2D } from './helper';
-// import { LineStyle } from 'pixi.js';
-
-const WORLD_WIDTH = 1450
-const WORLD_HEIGHT = 960;
-const MAX_DISPLAY_RANK = 5;
-
-interface DistrictMapProps {
-  type: Visualization
-}
-
-interface RectColorWithCandidateRatio {
-  percentage: number,
-  color: string,
-}
-
-class DistrictRect {
-  coordinate: Table2D;
-  district: District;
-  highestScoreCandidate?: Candidate;
-  ratio: number;
-
-  highestScoreResult?: Result;
-  districtVoteRatio: RectColorWithCandidateRatio[] = [];
-
-  // polygon
-  polygon: Vector2D[] = [];
-
-  // rect map
-  rectSize: number = 100;
-  constructor(d: District, c: CandidateMap, r: number, dV: RectColorWithCandidateRatio[]) {
-    this.coordinate = getDistrictCoordinate(d.name)
-    this.district = d;
-    this.ratio = r;
-    this.districtVoteRatio = dV
-
-    if (this.district) {
-      const { voting } = this.district
-      const { result } = voting
-
-      this.highestScoreResult = result.reduce((maxResult: Result, res: Result) => maxResult.count > res.count ? maxResult : res)
-    }
-    if (this.highestScoreResult && c) {
-      this.highestScoreCandidate = c[this.highestScoreResult.candidateId];
-    }
-
-  }
-}
+import { DistrictGridRatioData, MAX_DISPLAY_RANK, RectColorWithCandidateRatio, WORLD_HEIGHT, WORLD_WIDTH } from './MapHelper';
 
 PIXI.Loader.registerPlugin(AnimatedGIFLoader);
 
-const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
+const GridRatio: React.FC = () => {
   const preset = useContext(presetContext)! as Preset;
   const parentRef = useRef<HTMLDivElement>(null);
   const ref = useRef<HTMLDivElement>(null);
@@ -91,7 +41,7 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
   const { electionData, candidateMap } = preset
 
   // data
-  const [electionDistrictData, setElectionDistrictData] = useState<DistrictRect[]>([]);
+  const [electionDistrictData, setElectionDistrictData] = useState<DistrictGridRatioData[]>([]);
   let highestEligiblePopulation: number = 50000;
 
   const getCandidateColor = (id: string) => {
@@ -131,140 +81,7 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
     }
   }
 
-  const drawPolygonMap = (app: PIXI.Application, viewport: Viewport) => {
-    const anim = app.loader.resources.stripe.animation;
-
-    if (anim) {
-
-      electionDistrictData.forEach((data) => {
-        const { highestScoreCandidate, district } = data
-        const mapPolygon: MapPolygon | undefined = BKKMapPolygonData.find((value: MapPolygon) => {
-          if (district.name === "ป้อมปราบฯ")
-            return value.name === "ป้อมปราบศัตรูพ่าย"
-          else
-            return value.name === district.name
-        });
-
-        const graphics = new Graphics();
-        graphics.lineStyle({
-          width: 1,
-          color: 0x000000,
-          // native: true,
-          join: PIXI.LINE_JOIN.ROUND
-        });
-        graphics.beginFill(
-          highestScoreCandidate ? +highestScoreCandidate.color.replace("#", "0x") : +DEFAULT_CANDIDATE_COLOR.replace("#", "0x"), 1, true);
-        graphics.drawPolygon(mapPolygon?.polygon || []);
-        graphics.scale.x = 7
-        graphics.scale.y = 7;
-        graphics.endFill();
-
-
-        graphics.interactive = true;
-        graphics.buttonMode = true;
-        graphics.on('pointerover', (_) => {
-          graphics.tint = 0x666666
-          setTooltips((prev) => ({
-            ...prev,
-            district: district,
-            show: true
-          }))
-        })
-        graphics.on('pointerout', (_) => {
-          graphics.tint = 0xFFFFFF
-          setTooltips((prev) => ({
-            ...prev,
-            show: false
-          }))
-        });
-        graphics.on('pointerdown', (e) => {
-          graphics.tint = 0xFFFFFF
-          handlePointerDownEvent(e, district)
-        });
-
-        viewport.addChild(graphics)
-
-        if (typeof district.voting.progress !== "undefined" && district.voting.progress < 100) {
-          const maskGraphic = new PIXI.Graphics();
-          maskGraphic.beginFill();
-          maskGraphic.drawPolygon(mapPolygon?.polygon || []);
-          maskGraphic.scale.x = 7;
-          maskGraphic.scale.y = 7;
-          maskGraphic.endFill();
-          const maskBound = maskGraphic.getBounds()
-
-          const tileStripe = new PIXI.TilingSprite(anim?.texture, maskBound.width, maskBound.height)
-          tileStripe.x = maskBound.x;
-          tileStripe.y = maskBound.y;
-          tileStripe.mask = maskGraphic
-          tileStripe.alpha = .2
-          viewport.addChild(maskGraphic)
-          viewport.addChild(tileStripe)
-        }
-      });
-    }
-  }
-
-  const drawRectMap = (app: PIXI.Application, viewport: Viewport) => {
-    if (electionDistrictData.length > 0) {
-      drawRiver(viewport)
-      const anim = app.loader.resources.stripe.animation;
-      const rectSize = 100;
-      const padding = 20;
-      electionDistrictData.forEach((data) => {
-        const { coordinate, district, highestScoreCandidate } = data
-        const x = coordinate.col * rectSize + coordinate.col * padding;
-        const y = coordinate.row * rectSize + coordinate.row * padding;
-
-        const graphics = new Graphics();
-
-        if (highestScoreCandidate) {
-          graphics.beginFill(+highestScoreCandidate.color.replace("#", "0x"), 1, true);
-        }
-        graphics.drawRoundedRect(x, y, rectSize, rectSize, 2);
-        graphics.endFill();
-        graphics.interactive = true;
-        graphics.buttonMode = true;
-        graphics.on('pointerover', (_) => {
-          graphics.tint = 0x666666
-          setTooltips((prev) => ({
-            ...prev,
-            district: district,
-            show: true
-          }))
-        })
-        graphics.on('pointerout', (_) => {
-          graphics.tint = 0xFFFFFF
-          setTooltips((prev) => ({
-            ...prev,
-            show: false
-          }))
-        });
-
-        graphics.on('pointerdown', (e) => {
-          graphics.tint = 0xFFFFFF
-          handlePointerDownEvent(e, district)
-        });
-
-        if (typeof district.voting.progress !== "undefined" && district.voting.progress < 100) {
-          const scale = (rectSize / 30)
-          graphics.beginTextureFill({ alpha: 0.2, texture: anim?.texture, matrix: new PIXI.Matrix(scale, 0, 0, scale, x, y) })
-          graphics.drawRect(x, y, rectSize, rectSize,);
-          graphics.endFill();
-        }
-        viewport.addChild(graphics)
-
-        const basicText = new PIXI.Text(district.name, textStyle);
-        basicText.x = x + rectSize * .5;
-        basicText.y = y + rectSize * .5;
-        basicText.anchor.set(0.5);
-
-        viewport.addChild(basicText);
-      })
-    }
-  }
-
-  const drawRatioMap = (app: PIXI.Application, viewport: Viewport) => {
+  const draw = (app: PIXI.Application, viewport: Viewport) => {
     if (electionDistrictData.length > 0) {
       drawRiver(viewport)
       const anim = app.loader.resources.stripe.animation;
@@ -274,7 +91,7 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
       const marginTop = 23;
 
       electionDistrictData.forEach((data) => {
-        const { coordinate, district, ratio, districtVoteRatio, } = data
+        const { coordinate, district, ratio, districtCandidateVoteRatio } = data
         const rectSizeWithRatio = Math.sqrt(rectSize * rectSize * ratio);
         const x = coordinate.col * rectSize + rectSize * .5 - rectSizeWithRatio * .5 + coordinate.col * padding;
         let y = coordinate.row * rectSize + rectSize * .5 - rectSizeWithRatio * .5 + coordinate.row * padding;
@@ -310,7 +127,7 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
         });
 
         let offSetY = 0;
-        districtVoteRatio.forEach(({ percentage, color }, index) => {
+        districtCandidateVoteRatio.forEach(({ percentage, color }, index) => {
           if (index > MAX_DISPLAY_RANK - 1) return
           const voteRectHeight = rectSizeWithRatio * percentage / 100
           graphics.lineStyle(1, 0x000000, 1);
@@ -367,7 +184,7 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
     // find highest eligible vote
     let highestEligible = districts.reduce((maxResult: District, res: District) => maxResult.voting.eligiblePopulation > res.voting.eligiblePopulation ? maxResult : res)
     if (highestEligible) highestEligiblePopulation = highestEligible.voting.eligiblePopulation;
-    let electionDistrictDataSet: DistrictRect[] = [];
+    let electionDistrictDataSet: DistrictGridRatioData[] = [];
     districts.forEach((district) => {
       const { voting } = district
       let ratio = voting.eligiblePopulation / highestEligiblePopulation;
@@ -387,14 +204,11 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
           })
           percentageIncrementor += result.count / voting.totalVotes * 100
         }
-
       })
-      electionDistrictDataSet.push(new DistrictRect(district, candidateMap, ratio, districtVoteRatio))
+      electionDistrictDataSet.push(new DistrictGridRatioData(district, candidateMap, ratio, districtVoteRatio))
     })
-
     setElectionDistrictData(electionDistrictDataSet)
   }, [preset])
-
 
   useEffect(() => {
     if (!ref.current) return;
@@ -427,7 +241,6 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
 
       // add the viewport to the stage
       app.stage.addChild(viewport)
-      // activate plugins
       viewport.on("pointermove", (e) => {
         if (parentRef.current) {
           const clientHeight = parentRef.current?.clientHeight
@@ -463,7 +276,6 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
         maxHeight: 2000,                // maximum height
       })
 
-      // viewport.zoom(WORLD_WIDTH)
       viewport.fit()
       viewport.moveCenter(WORLD_WIDTH / 2, WORLD_HEIGHT / 2)
 
@@ -484,25 +296,15 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
   useEffect(() => {
     if (app && viewport && appLoaded) {
       viewport.removeChildren()
-      switch (type) {
-        case Visualization.GRID_RATIO: drawRatioMap(app, viewport); break;
-        case Visualization.GRID_WINNER: drawRectMap(app, viewport); break;
-        case Visualization.MAP_WINNER: drawPolygonMap(app, viewport); break;
-        default: break;
-      }
+      draw(app, viewport);
       setTooltips((prev) => ({
         ...prev,
         show: false
       }))
       viewport.fit()
       viewport.moveCenter(WORLD_WIDTH / 2, WORLD_HEIGHT / 2)
-      // border(viewport)
-      // function border(viewport: Viewport) {
-      //   const line = viewport.addChild(new Graphics())
-      //   line.lineStyle(10, 0xff0000).drawRect(0, 0, viewport.worldWidth, viewport.worldHeight)
-      // }
     }
-  }, [appLoaded, type, electionDistrictData])
+  }, [appLoaded, electionDistrictData])
 
 
   return (
@@ -519,4 +321,4 @@ const MapPixi: React.FC<DistrictMapProps> = ({ type }: DistrictMapProps) => {
   );
 }
 
-export default MapPixi
+export default GridRatio

@@ -4,9 +4,12 @@ import { Visualization } from '../models/visualization';
 import { presetContext } from '../contexts/preset';
 import VisualizationToggle from './VisualizationToggle';
 // import DistrictMap from './district-map/district-map-canvas';
-import Pixi from './district-map/MapPixi';
+import Pixi from './district-map/GridRatio';
 import CandidateLegend from './CandidateLegend';
 import { TOP_CANDIDATE_DISPLAY } from '../constants/candidate';
+import MapWinner from './district-map/MapWInner';
+import GridWinner from './district-map/GridWinner';
+import GridRatio from './district-map/GridRatio';
 
 interface DistrictVisualizationProps {
 	activeViz: Visualization;
@@ -55,7 +58,11 @@ const DistrictVisualization: FunctionComponent<DistrictVisualizationProps> = ({
 			<div className="flex flex-1 h-full w-full flex-col overflow-y-hidden">
 				<h2 className={`typo-h4 mb-2 md:mb-6 hidden lg:block z-[1] pointer-events-none ${activeViz === Visualization.LIST_RATIO ? '' : 'md:mb-[-40px]'}`}>คะแนนรายเขต</h2>
 				<div className={`${activeViz === Visualization.LIST_RATIO ? 'flex' : ''} flex-col flex-auto h-full overflow-hidden relative`}>
-					{activeViz === Visualization.LIST_RATIO ? <RatioList /> : <Pixi type={activeViz} />}
+					{activeViz === Visualization.GRID_WINNER && <GridWinner />}
+					{activeViz === Visualization.GRID_RATIO && <GridRatio />}
+					{activeViz === Visualization.MAP_WINNER && <MapWinner />}
+					{activeViz === Visualization.LIST_RATIO && <RatioList />}
+
 				</div>
 				<div class={`md:flex hidden mt-2 ${activeViz === Visualization.LIST_RATIO ? '' : 'md:mt-[-60px]'}`}>{candidateLegend}</div>
 			</div>
