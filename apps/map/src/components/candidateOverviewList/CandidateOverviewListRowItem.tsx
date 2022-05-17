@@ -96,7 +96,7 @@ export default function CandidateOverviewListRowItem({
 					}`}
 				>
 					{isInTop && candidate.image && (
-						<img src={candidate.image} class="h-12 absolute right-2 bottom-0" />
+						<img src={candidate.image} class="h-12 absolute right-2 bottom-0 object-cover" />
 					)}
 				</Progress>
 			</div>
