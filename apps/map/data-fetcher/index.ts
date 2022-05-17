@@ -3,6 +3,7 @@ import { fetchElectionData } from "./ers";
 import { ElectionDataFetcherType } from "./fetcher";
 import dotenv from 'dotenv';
 import { scheduleJob } from 'node-schedule';
+import { ElectionData } from '../src/models/election';
 
 dotenv.config();
 
@@ -11,17 +12,17 @@ const outputPath = './output';
 const outputFilename = 'election-data';
 
 scheduleJob(cron, async () => {
-  console.log('===================');
-  console.log('Attempt to fetch at ', new Date().toISOString());
+  console.info('===================');
+  console.info('Attempt to fetch at ', new Date().toISOString());
   try {
     const filename = await writeElectionData();
-    console.log(`Succeed! File has been written at ${filename}`);
+    console.info(`[SUCCEED] File has been written at ${filename}`);
   } catch (e) {
-    console.error('Error: ', e);
+    console.error('[ERROR] ', e);
   }
 });
 
-console.log('data-fetch has been scheduled with ', cron);
+console.info('data-fetch has been scheduled with ', cron);
 
 async function writeElectionData() {
   const data = await fetchElectionData(ElectionDataFetcherType.Governor);
@@ -31,22 +32,35 @@ async function writeElectionData() {
   const newFilename = `${outputFilename}-${now}.json`;
   const newFilePath = `${outputPath}/${newFilename}`;
   const publicPath = `${outputPath}/${outputFilename}.json`;
+  
+  if (!isLiveInProgress(data)) {
+    console.info(`[NOT LIVE] progress = ${data.total.progress}. Writing directly to ${publicPath}`);
+    return writeFile(publicPath, JSON.stringify(data, null, 2));
+  }
 
+  console.info(`[LIVE] progress = ${data.total.progress}`);
   await writeFile(newFilePath, JSON.stringify(data, null, 2));
   await rmIfExists(publicPath);
 
   try {
     await symlink(`./${newFilename}`, publicPath);
   } catch (e) {
-    console.log(`Fail to create a symlink at ${publicPath}: ${e}`);
+    console.error(`[ERROR] Fail to create a symlink at ${publicPath}: ${e}`);
   }
   return newFilePath;
+}
+
+function isLiveInProgress(data: ElectionData): boolean {
+  if (data.total.progress === undefined) {
+    return false;
+  }
+  return data.total.progress >= 1 && data.total.progress < 95;
 }
 
 async function rmIfExists(path: string): Promise<void> {
   try {
     await rm(path);
   } catch (e) {
-    console.log(`${path} does not exist`);
+    console.info(`[INFO] ${path} does not exist`);
   }
 }
