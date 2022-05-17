@@ -59,8 +59,8 @@ export default function CandidateOverviewList({ district, votingData, enableTopH
 				});
 			case CandidateOverviewSortType.NAME:
 				return _res.sort((a, b) => {
-					return preset.candidateMap[a.candidateId].fullname.replace(NAME_TITLE_REGEX, '').localeCompare(
-						preset.candidateMap[b.candidateId].fullname.replace(NAME_TITLE_REGEX, '')
+					return preset.candidateMap[a.candidateId].fullname.replace(NAME_TITLE_REGEX, '').trim().localeCompare(
+						preset.candidateMap[b.candidateId].fullname.replace(NAME_TITLE_REGEX, '').trim()
 					) * sortDirection
 				});
 			case CandidateOverviewSortType.NUMBER:

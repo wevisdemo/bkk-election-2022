@@ -31,11 +31,11 @@ const DistrictVisualization: FunctionComponent<DistrictVisualizationProps> = ({
 			>
 				{activeViz === Visualization.GRID_RATIO ? (
 					<div>
-						<p>
-							<span className="font-bold">ขนาดกล่อง</span> ตามจำนวนผู้มีสิทธิ์เลือกตั้งในเขตนั้น
+						<p className="mb-4 md:mb-0">
+							<span className="font-bold">ขนาดกล่อง</span> <br className="md:hidden"/>ตามจำนวนผู้มีสิทธิ์เลือกตั้งในเขตนั้น
 						</p>
 						<p>
-							<span className="font-bold">สัดส่วนสี</span> ในแต่ละกล่องตามสัดส่วนคะแนนของผู้สมัคร
+							<span className="font-bold">สัดส่วนสี</span> <br className="md:hidden" />ในแต่ละกล่องตามสัดส่วนคะแนนของผู้สมัคร
 						</p>
 					</div>
 				) : (

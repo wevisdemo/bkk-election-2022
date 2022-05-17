@@ -39,17 +39,17 @@ export default function RatioListTable({ onDistrictClick }: RatioListTableProps)
 		{
 			text: 'ผู้มีสิทธิ์เลือกตั้ง',
 			className:
-				'cursor-pointer' + (preset.electionData.total.progress ? '' : ' text-right md:text-left'),
+				'cursor-pointer whitespace-nowrap' + (preset.electionData.total.progress ? '' : ' text-right md:text-left'),
 			sortType: DistrictRatioSortType.ELIGIBLE
 		},
 		{
 			text: 'ผลการเลือกตั้ง',
 			className: 'col-span-3 grow hidden md:flex',
-			children: RESULT_ARROW_DOWN
+			// children: RESULT_ARROW_DOWN
 		},
 		{
 			text: 'นับคะแนนแล้ว',
-			className: 'cursor-pointer',
+			className: 'cursor-pointer whitespace-nowrap text-right',
 			sortType: DistrictRatioSortType.PROGRESS
 		}
 	];

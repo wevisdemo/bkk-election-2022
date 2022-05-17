@@ -133,7 +133,7 @@ const GridWinner: React.FC<GridWinnerProps> = ({ onDistrictClick }: GridWinnerPr
         });
 
         if (typeof district.voting.progress !== "undefined" && district.voting.progress < 100) {
-          const scale = (rectSize / 30)
+          const scale = (rectSize / 50)
           graphics.beginTextureFill({ alpha: 0.2, texture: anim?.texture, matrix: new PIXI.Matrix(scale, 0, 0, scale, x, y) })
           graphics.drawRect(x, y, rectSize, rectSize,);
           graphics.endFill();

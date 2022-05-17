@@ -24,7 +24,7 @@ const Modal: FunctionComponent<ModalProps> = ({
 			onClick={onClose}
 		>
 			<div
-				className={`bg-black border-white border rounded-lg w-full max-w-md flex flex-col lg:flex-row relative text-left overflow-hidden ${className}`}
+				className={`max-h-full bg-black border-white border rounded-lg w-full max-w-md flex flex-col lg:flex-row relative text-left overflow-hidden ${className}`}
 				onClick={(e) => e.stopPropagation()}
 			>
 				<button
