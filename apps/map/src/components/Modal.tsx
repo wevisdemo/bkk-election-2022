@@ -4,8 +4,8 @@ interface ModalProps {
 	title: string;
 	subtitle?: string;
 	imageUrl?: string;
-	containerClassName: string;
-	className: string;
+	containerClassName?: string;
+	className?: string;
 	onClose: () => void;
 }
 
