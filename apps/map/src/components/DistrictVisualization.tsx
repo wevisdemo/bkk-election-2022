@@ -52,7 +52,7 @@ const DistrictVisualization: FunctionComponent<DistrictVisualizationProps> = ({
 
 	return (
 		<div
-			className={`flex flex-col md:flex-row w-full h-full gap-3 md:gap-8 overflow-hidden ${className}`}
+			className={`min-h-[320px] flex flex-col md:flex-row w-full h-full gap-3 md:gap-8 overflow-hidden ${className}`}
 		>
 			<div className="flex flex-1 h-full w-full flex-col overflow-y-hidden">
 				<h2

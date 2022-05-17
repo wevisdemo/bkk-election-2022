@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  background-color: black;
+}
+
 .hide-scrollbar {
   overflow: overlay;
   /* transition: all 0.3s; */
@@ -41,7 +45,42 @@
   .counting-progress-xs {
     height: 1.5rem;
   }
-  .typo-footer-xs {
+  .typo-footer {
     font-size: 12px;
+  }
+}
+
+.typo-footer {
+  font-size: 14px;
+}
+
+@media screen and (max-width: 374px) {
+  .typo-footer {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 374px) {
+  .typo-title {
+    font-size: 20px !important;
+  }
+  
+  .gap-2-xxs {
+    gap: 0.5rem;
+  }
+}
+
+@media screen and (max-height: 640px) {
+
+  .overflow-none-shortscreen {
+    overflow-y: none;
+  }
+
+  .overflow-auto-shortscreen {
+    overflow-y: auto !important;
+  }
+
+  .overflow-visible-shortscreen {
+    overflow: visible !important;
   }
 }

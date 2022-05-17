@@ -14,7 +14,7 @@ const TabsView: FunctionComponent<TabsViewProps> = ({ tabs, className = '' }) =>
 	const [activeTabIndex, setActiceTabIndex] = useState<number>(0);
 
 	return (
-		<div className={`flex flex-col ${className} overflow-hidden`}>
+		<div className={`flex flex-col ${className} overflow-hidden overflow-visible-shortscreen flex-1 pb-2`}>
 			<div className="flex flex-row">
 				{tabs.map(({ name }, index) => (
 					<button

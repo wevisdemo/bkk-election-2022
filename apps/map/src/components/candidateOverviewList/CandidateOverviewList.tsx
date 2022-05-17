@@ -110,7 +110,7 @@ export default function CandidateOverviewList({ district }: CandidateOverviewLis
 		},
 		{
 			text: 'คะแนนเสียง',
-			className: 'text-right basis-3/12 2xl:basis-2/12',
+			className: 'text-right basis-3/12 2xl:basis-2/12 whitespace-nowrap',
 			sortType: CandidateOverviewSortType.COUNT
 		},
 		{

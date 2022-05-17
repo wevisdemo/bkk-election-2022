@@ -15,8 +15,8 @@ const HeaderPresetToggle: FunctionComponent<PresetToggleProps> = ({ activeIndex,
 	return (
 		<div className="w-full lg:w-full flex flex-col relative">
 			<div className="flex-1 text-center">
-				<h1 className=" typo-h2 text-[24px] lg:text-[36px] xl:text-[48px]">{preset?.electionData?.type === ElectionDataType.Live && <LiveBadge />} {preset?.fullname}</h1>
-				<p className="typo-u4 lg:text-[16px] mt-2 lg:mt-1">
+				<h1 className="font-heading typo-title text-[24px] lg:text-[36px] xl:text-[48px]">{preset?.electionData?.type === ElectionDataType.Live && <LiveBadge />} {preset?.fullname}</h1>
+				<p className="font-body text-[14px] lg:text-[16px] mt-2 lg:mt-1">
 					{preset?.subtitle}
 					<button className='px-1 bg-[#ccc] m-1 text-black rounded typo-u4 font-[600]' onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
 						เปลี่ยนชุดข้อมูล

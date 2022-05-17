@@ -72,7 +72,7 @@ const App: FunctionComponent = () => {
 	}, [activePresetIndex]);
 
 	return (
-		<div class="absolute inset-0">
+		<div class="absolute inset-0 bg-black">
 			<div class="flex flex-col h-full">
 				<ui-navbar></ui-navbar>
 				<presetContext.Provider value={preset}>
