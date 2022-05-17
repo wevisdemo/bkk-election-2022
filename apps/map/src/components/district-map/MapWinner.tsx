@@ -8,7 +8,7 @@ import { DEFAULT_CANDIDATE_COLOR } from '../../constants/candidate';
 import { Preset, presetContext } from '../../contexts/preset';
 import { District } from '../../models/election';
 import DistrictTooltip from '../DistrictTooltip';
-import { BKKMapPolygonData, MapPolygon } from './MapPolygon';
+import { BKKMapPolygonData, MapPolygon } from './MapPolygonData';
 import {
   DistrictMapWinnerData, MAX_DISPLAY_RANK, WORLD_HEIGHT, WORLD_WIDTH
 } from './MapHelper';
@@ -30,7 +30,8 @@ const MapWinner: React.FC = () => {
     left: string | number,
     top: string | number,
     bottom: string | number,
-    pointUp: boolean
+    pointUp: boolean,
+    anchorRight: boolean,
   }>({
     show: false,
     district: undefined,
@@ -38,6 +39,7 @@ const MapWinner: React.FC = () => {
     top: "unset",
     bottom: "unset",
     pointUp: true,
+    anchorRight: false,
   })
 
   if (!preset) return <></>
@@ -47,7 +49,7 @@ const MapWinner: React.FC = () => {
 
   const handlePointerDownEvent = (e: any, district: District) => {
     if (parentRef.current) {
-      const clientHeight = parentRef.current?.clientHeight
+      const { clientWidth, clientHeight } = parentRef.current
       const pointUp: boolean = !(e.data.global.y > clientHeight * .33)
       setTooltips((prev) => ({
         ...prev,
@@ -56,7 +58,8 @@ const MapWinner: React.FC = () => {
         left: e.data.global.x - 15,
         top: pointUp ? e.data.global.y + 20 : "unset",
         bottom: !pointUp ? clientHeight - e.data.global.y + 10 : "unset",
-        pointUp: pointUp
+        pointUp: pointUp,
+        anchorRight: e.data.global.x > (clientWidth * .66)
       }))
     }
   }
@@ -88,14 +91,15 @@ const MapWinner: React.FC = () => {
 
         graphics.interactive = true;
         graphics.buttonMode = true;
-        graphics.on('pointerover', (_) => {
+        graphics.on('pointerover', (e) => {
           graphics.tint = 0x666666
           setTooltips((prev) => ({
             ...prev,
             district: district,
-            show: true
+            show: true,
           }))
         })
+
         graphics.on('pointerout', (_) => {
           graphics.tint = 0xFFFFFF
           setTooltips((prev) => ({
@@ -177,14 +181,15 @@ const MapWinner: React.FC = () => {
       // activate plugins
       viewport.on("pointermove", (e) => {
         if (parentRef.current) {
-          const clientHeight = parentRef.current?.clientHeight
+          const { clientWidth, clientHeight } = parentRef.current
           const pointUp: boolean = !(e.data.global.y > clientHeight * .33)
           setTooltips((prev) => ({
             ...prev,
             left: e.data.global.x - 15,
             top: pointUp ? e.data.global.y + 20 : "unset",
             bottom: !pointUp ? clientHeight - e.data.global.y + 10 : "unset",
-            pointUp: pointUp
+            pointUp: pointUp,
+            anchorRight: e.data.global.x > (clientWidth * .66)
           }))
         }
       })
@@ -249,6 +254,7 @@ const MapWinner: React.FC = () => {
         style={{ left: tooltips.left, top: tooltips.top, bottom: tooltips.bottom }}
         pointUp={tooltips.pointUp}
         topCandidateDisplay={MAX_DISPLAY_RANK}
+        anchorRight={tooltips.anchorRight}
       />
     </div>
   );

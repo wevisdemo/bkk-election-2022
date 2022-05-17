@@ -65,7 +65,6 @@ export const getDistrictCoordinate = (districtName: string): Table2D => {
     case "บางกะปิ": return { row: 3, col: 9 };
     case "ทุ่งครุ": return { row: 6, col: 2 };
     default: {
-      console.log(districtName)
       return { row: -1, col: -1 }
     }
   }

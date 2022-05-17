@@ -28,7 +28,8 @@ const GridWinner: React.FC = () => {
     left: string | number,
     top: string | number,
     bottom: string | number,
-    pointUp: boolean
+    pointUp: boolean,
+    anchorRight: boolean,
   }>({
     show: false,
     district: undefined,
@@ -36,6 +37,7 @@ const GridWinner: React.FC = () => {
     top: "unset",
     bottom: "unset",
     pointUp: true,
+    anchorRight: false,
   })
 
   if (!preset) return <></>
@@ -59,7 +61,7 @@ const GridWinner: React.FC = () => {
 
   const handlePointerDownEvent = (e: any, district: District) => {
     if (parentRef.current) {
-      const clientHeight = parentRef.current?.clientHeight
+      const { clientWidth, clientHeight } = parentRef.current
       const pointUp: boolean = !(e.data.global.y > clientHeight * .33)
       setTooltips((prev) => ({
         ...prev,
@@ -68,7 +70,8 @@ const GridWinner: React.FC = () => {
         left: e.data.global.x - 15,
         top: pointUp ? e.data.global.y + 20 : "unset",
         bottom: !pointUp ? clientHeight - e.data.global.y + 10 : "unset",
-        pointUp: pointUp
+        pointUp: pointUp,
+        anchorRight: e.data.global.x > (clientWidth * .66)
       }))
     }
   }
@@ -198,14 +201,15 @@ const GridWinner: React.FC = () => {
       // activate plugins
       viewport.on("pointermove", (e) => {
         if (parentRef.current) {
-          const clientHeight = parentRef.current?.clientHeight
+          const { clientWidth, clientHeight } = parentRef.current
           const pointUp: boolean = !(e.data.global.y > clientHeight * .33)
           setTooltips((prev) => ({
             ...prev,
             left: e.data.global.x - 15,
             top: pointUp ? e.data.global.y + 20 : "unset",
             bottom: !pointUp ? clientHeight - e.data.global.y + 10 : "unset",
-            pointUp: pointUp
+            pointUp: pointUp,
+            anchorRight: e.data.global.x > (clientWidth * .66)
           }))
         }
       })
@@ -270,6 +274,7 @@ const GridWinner: React.FC = () => {
         style={{ left: tooltips.left, top: tooltips.top, bottom: tooltips.bottom }}
         pointUp={tooltips.pointUp}
         topCandidateDisplay={MAX_DISPLAY_RANK}
+        anchorRight={tooltips.anchorRight}
       />
     </div>
   );

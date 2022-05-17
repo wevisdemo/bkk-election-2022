@@ -27,7 +27,8 @@ const GridRatio: React.FC = () => {
     left: string | number,
     top: string | number,
     bottom: string | number,
-    pointUp: boolean
+    pointUp: boolean,
+    anchorRight: boolean,
   }>({
     show: false,
     district: undefined,
@@ -35,6 +36,7 @@ const GridRatio: React.FC = () => {
     top: "unset",
     bottom: "unset",
     pointUp: true,
+    anchorRight: false,
   })
 
   if (!preset) return <></>
@@ -65,9 +67,9 @@ const GridRatio: React.FC = () => {
     textBaseline: "bottom",
   })
 
-  const handlePointerDownEvent = (e: any, district: District) => {
+  const handlePointerShowEvent = (e: any, district: District) => {
     if (parentRef.current) {
-      const clientHeight = parentRef.current?.clientHeight
+      const { clientHeight, clientWidth } = parentRef.current
       const pointUp: boolean = !(e.data.global.y > clientHeight * .33)
       setTooltips((prev) => ({
         ...prev,
@@ -76,7 +78,8 @@ const GridRatio: React.FC = () => {
         left: e.data.global.x - 15,
         top: pointUp ? e.data.global.y + 20 : "unset",
         bottom: !pointUp ? clientHeight - e.data.global.y + 10 : "unset",
-        pointUp: pointUp
+        pointUp: pointUp,
+        anchorRight: e.data.global.x > (clientWidth * .66)
       }))
     }
   }
@@ -106,7 +109,6 @@ const GridRatio: React.FC = () => {
 
         graphics.on('pointerover', (_) => {
           graphics.tint = 0x666666
-          console.log('over')
           setTooltips((prev) => ({
             ...prev,
             district: district,
@@ -115,7 +117,6 @@ const GridRatio: React.FC = () => {
         })
         graphics.on('pointerout', (_) => {
           graphics.tint = 0xFFFFFF
-          console.log('out')
           setTooltips((prev) => ({
             ...prev,
             show: false
@@ -123,7 +124,7 @@ const GridRatio: React.FC = () => {
         });
         graphics.on('pointerdown', (e) => {
           graphics.tint = 0xFFFFFF
-          handlePointerDownEvent(e, district)
+          handlePointerShowEvent(e, district)
         });
 
         let offSetY = 0;
@@ -176,7 +177,6 @@ const GridRatio: React.FC = () => {
     viewport.addChild(graphics);
   }
 
-
   useMemo(() => {
     if (!preset) return;
     // process data for map winner
@@ -188,7 +188,6 @@ const GridRatio: React.FC = () => {
     districts.forEach((district) => {
       const { voting } = district
       let ratio = voting.eligiblePopulation / highestEligiblePopulation;
-
       let districtVoteRatio: RectColorWithCandidateRatio[] = []
       let percentageIncrementor = 0
       voting.result.forEach((result, index) => {
@@ -243,14 +242,15 @@ const GridRatio: React.FC = () => {
       app.stage.addChild(viewport)
       viewport.on("pointermove", (e) => {
         if (parentRef.current) {
-          const clientHeight = parentRef.current?.clientHeight
+          const { clientHeight, clientWidth } = parentRef.current
           const pointUp: boolean = !(e.data.global.y > clientHeight * .33)
           setTooltips((prev) => ({
             ...prev,
             left: e.data.global.x - 15,
             top: pointUp ? e.data.global.y + 20 : "unset",
             bottom: !pointUp ? clientHeight - e.data.global.y + 10 : "unset",
-            pointUp: pointUp
+            pointUp: pointUp,
+            anchorRight: e.data.global.x > (clientWidth * .66)
           }))
         }
       })
@@ -316,6 +316,7 @@ const GridRatio: React.FC = () => {
         style={{ left: tooltips.left, top: tooltips.top, bottom: tooltips.bottom }}
         pointUp={tooltips.pointUp}
         topCandidateDisplay={MAX_DISPLAY_RANK}
+        anchorRight={tooltips.anchorRight}
       />
     </div>
   );
