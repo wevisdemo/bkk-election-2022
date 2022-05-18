@@ -1,4 +1,4 @@
-import React, { useState, lazy } from 'react';
+import React, { useState, lazy, useMemo } from 'react';
 import { useContext } from 'react';
 import { FunctionComponent } from 'react';
 import { presetContext } from '../contexts/preset';
@@ -18,7 +18,10 @@ const Dashboard: FunctionComponent<DashboardProps> = ({ activePresetIndex, onPre
 
 	if (!preset) return <></>;
 
-	const CandidateOverviewList = lazy(() => import('./candidateOverviewList/CandidateOverviewList'));
+	const CandidateOverviewList = useMemo(
+		() => lazy(() => import('./candidateOverviewList/CandidateOverviewList')),
+		[]
+	);
 
 	return (
 		<div className="flex-1 flex flex-col bg-black text-white px-5 pt-4 pb-2 lg:px-12 lg:py-8 space-y-1 overflow-hidden overflow-auto-shortscreen lg:space-y-6 pb-12 xs:pb-16 lg:pb-8">
