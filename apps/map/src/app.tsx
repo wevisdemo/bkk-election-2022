@@ -3,30 +3,35 @@ import { FunctionComponent, useEffect } from 'react';
 import { loadUIComponents } from 'ui';
 import Dashboard from './components/dashboard';
 import Footer from './components/Footer';
+import { Config, configContext } from './contexts/config';
 import { Preset, presetContext } from './contexts/preset';
-import { electionIndexes } from './data/presets';
 import { ElectionData } from './models/election';
-import { fetchPreset, getJson } from './utils/fetch';
+import { fetchConfig, fetchPreset, getJson } from './utils/fetch';
 
 const DEFAULT_PRESET_INDEX = 0;
 
 const App: FunctionComponent = () => {
+	const [config, setConfig] = useState<Config | null>(null);
 	const [activePresetIndex, setActivePresetIndex] = useState<number>(DEFAULT_PRESET_INDEX);
 	const [preset, setPreset] = useState<Preset | null>(null);
 	const [refreshInterval, setRefreshInterval] = useState<NodeJS.Timer | null>(null);
 
+	useEffect(loadUIComponents, []);
+
 	useEffect(() => {
-		loadUIComponents();
+		fetchConfig().then(setConfig);
 	}, []);
 
 	useEffect(() => {
+		if (!config) return;
+
 		if (refreshInterval) {
 			clearInterval(refreshInterval);
 			setRefreshInterval(null);
 		}
 
-		const presetIndex = electionIndexes[activePresetIndex];
-		const { refreshIntervalMs, electionDataUrl, candidateDataUrl, ...rest } = presetIndex;
+		const presetIndex = config.presetIndexes[activePresetIndex];
+		const { refreshIntervalMs, electionDataUrl } = presetIndex;
 
 		fetchPreset(presetIndex).then(setPreset);
 
@@ -49,16 +54,23 @@ const App: FunctionComponent = () => {
 		return () => {
 			if (refreshInterval) clearInterval(refreshInterval);
 		};
-	}, [activePresetIndex]);
+	}, [config, activePresetIndex]);
 
 	return (
 		<div class="absolute inset-0 bg-black">
 			<div class="flex flex-col h-full">
 				<ui-navbar></ui-navbar>
-				<presetContext.Provider value={preset}>
-					<Dashboard activePresetIndex={activePresetIndex} onPresetChange={setActivePresetIndex} />
-					<Footer />
-				</presetContext.Provider>
+				<configContext.Provider value={config}>
+					{preset && (
+						<presetContext.Provider value={preset}>
+							<Dashboard
+								activePresetIndex={activePresetIndex}
+								onPresetChange={setActivePresetIndex}
+							/>
+							<Footer />
+						</presetContext.Provider>
+					)}
+				</configContext.Provider>
 			</div>
 		</div>
 	);

@@ -1,6 +1,11 @@
+import { Config } from '../contexts/config';
 import { Preset } from '../contexts/preset';
 import { CandidateMap } from '../models/candidate';
-import { ElectionData, ElectionIndex } from '../models/election';
+import { ElectionData, PresetIndex } from '../models/election';
+
+export async function fetchConfig(): Promise<Config> {
+	return getJson<Config>('/map/data/dev.config.json');
+}
 
 export async function fetchPreset({
 	shortname,
@@ -9,7 +14,7 @@ export async function fetchPreset({
 	descriptionModal,
 	electionDataUrl,
 	candidateDataUrl
-}: ElectionIndex): Promise<Preset> {
+}: PresetIndex): Promise<Preset> {
 	const [electionData, candidateMap] = await Promise.all([
 		getJson<ElectionData>(electionDataUrl),
 		getJson<CandidateMap>(candidateDataUrl)

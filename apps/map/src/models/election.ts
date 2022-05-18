@@ -1,4 +1,4 @@
-export interface ElectionIndex {
+export interface PresetIndex {
 	shortname: string;
 	fullname: string;
 	subtitle?: string;
@@ -6,6 +6,7 @@ export interface ElectionIndex {
 	electionDataUrl: string;
 	candidateDataUrl: string;
 	refreshIntervalMs?: number;
+	isLive?: boolean;
 }
 
 export interface ElectionData {

@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useContext, useState } from 'react';
+import { configContext } from '../contexts/config';
 import { presetContext } from '../contexts/preset';
-import { electionIndexes } from '../data/presets';
 import { ElectionDataType } from '../models/election';
 
 interface PresetToggleProps {
@@ -10,7 +10,10 @@ interface PresetToggleProps {
 
 const PresetToggle: FunctionComponent<PresetToggleProps> = ({ activeIndex, onChange }) => {
 	const preset = useContext(presetContext);
+	const config = useContext(configContext);
 	const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
+
+	if (!config || !preset) return <></>;
 
 	return (
 		<div className="w-full lg:w-full lg:max-w-[360px] flex flex-col relative">
@@ -19,9 +22,8 @@ const PresetToggle: FunctionComponent<PresetToggleProps> = ({ activeIndex, onCha
 				onClick={() => setIsDropdownOpen(!isDropdownOpen)}
 			>
 				<div className="flex-1 text-left flex flex-row">
-					{/* <span className='mr-2 inline-block typo-u5 font-[400]'>ชุดข้อมูล:</span> */}
-					{preset?.electionData.type === ElectionDataType.Live && <LiveBadge />}
-					{electionIndexes[activeIndex].shortname}
+					{preset.electionData.type === ElectionDataType.Live && <LiveBadge />}
+					{config.presetIndexes[activeIndex].shortname}
 				</div>
 				<svg
 					width="14"
@@ -40,13 +42,13 @@ const PresetToggle: FunctionComponent<PresetToggleProps> = ({ activeIndex, onCha
 					isDropdownOpen ? 'flex' : 'hidden'
 				}`}
 			>
-				{electionIndexes.map(({ shortname, electionDataUrl }, index) => (
+				{config.presetIndexes.map(({ shortname, electionDataUrl }, index) => (
 					<button
 						key={shortname}
 						disabled={!electionDataUrl}
 						onClick={() => {
-							setIsDropdownOpen(false)
-							if (electionDataUrl) onChange(index)
+							setIsDropdownOpen(false);
+							if (electionDataUrl) onChange(index);
 						}}
 						className={`typo-u5 px-3 py-2 rounded-sm h-fit m-[2px] flex flex-row ${
 							index === activeIndex

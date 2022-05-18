@@ -1,9 +1,9 @@
 import { createContext } from 'react';
 import { CandidateMap } from '../models/candidate';
-import { ElectionData, ElectionIndex } from '../models/election';
+import { ElectionData, PresetIndex } from '../models/election';
 
 export interface Preset
-	extends Omit<ElectionIndex, 'electionDataUrl' | 'candidateDataUrl' | 'refreshIntervalMs'> {
+	extends Omit<PresetIndex, 'electionDataUrl' | 'candidateDataUrl' | 'refreshIntervalMs'> {
 	electionData: ElectionData;
 	candidateMap: CandidateMap;
 }

@@ -1,7 +1,6 @@
 import React, { FunctionComponent, useContext, useState } from 'react';
+import { configContext } from '../contexts/config';
 import { presetContext } from '../contexts/preset';
-import { electionIndexes } from '../data/presets';
-import { ElectionDataType } from '../models/election';
 import Modal from './Modal';
 
 interface PresetToggleProps {
@@ -11,22 +10,24 @@ interface PresetToggleProps {
 
 const HeaderPresetToggle: FunctionComponent<PresetToggleProps> = ({ activeIndex, onChange }) => {
 	const preset = useContext(presetContext);
+	const config = useContext(configContext);
 	const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
 	const [isDescriptionModalOpen, setIsDescriptionModalOpen] = useState<boolean>(false);
 
-	if (!preset) return <></>;
+	if (!config || !preset) return <></>;
 
 	return (
 		<div className="w-full lg:w-full flex flex-col relative">
 			<div className="flex-1 text-center">
 				<h1 className="font-heading typo-title text-[24px] lg:text-[36px] xl:text-[48px] leading-tight">
-					{preset.electionData.type === ElectionDataType.Live && <LiveBadge />} {preset.fullname}
+					{config.presetIndexes[activeIndex].isLive && <LiveBadge />} {preset.fullname}
 				</h1>
 				<p className="font-body text-[12px] xs:text-[14px] lg:text-[16px] mt-2 lg:mt-1">
 					{preset.subtitle}{' '}
 					{preset.descriptionModal && (
 						<>
-							<a href="#"
+							<a
+								href="#"
 								className="opacity-70 hover:underline"
 								onClick={() => setIsDescriptionModalOpen(true)}
 							>
@@ -64,7 +65,7 @@ const HeaderPresetToggle: FunctionComponent<PresetToggleProps> = ({ activeIndex,
 					isDropdownOpen ? 'flex' : 'hidden'
 				}`}
 			>
-				{electionIndexes.map(({ shortname, electionDataUrl }, index) => (
+				{config.presetIndexes.map(({ shortname, electionDataUrl }, index) => (
 					<button
 						key={shortname}
 						disabled={!electionDataUrl}
@@ -80,8 +81,7 @@ const HeaderPresetToggle: FunctionComponent<PresetToggleProps> = ({ activeIndex,
 								: 'opacity-40'
 						}`}
 					>
-						{preset.electionData.type === ElectionDataType.Live &&
-							preset.shortname === shortname && <LiveBadge />}
+						{config.presetIndexes[index].isLive && <LiveBadge />}
 						{shortname}
 					</button>
 				))}
