@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { FunctionComponent, useEffect } from 'react';
 import { loadUIComponents } from 'ui';
+import { dequal } from 'dequal';
 import Dashboard from './components/dashboard';
 import Footer from './components/Footer';
 import { Config, configContext } from './contexts/config';
@@ -9,25 +10,35 @@ import { ElectionData } from './models/election';
 import { fetchConfig, fetchPreset, getJson } from './utils/fetch';
 
 const DEFAULT_PRESET_INDEX = 0;
+const CONFIG_REFRESH_INTERVAL = 5000;
 
 const App: FunctionComponent = () => {
 	const [config, setConfig] = useState<Config | null>(null);
 	const [activePresetIndex, setActivePresetIndex] = useState<number>(DEFAULT_PRESET_INDEX);
 	const [preset, setPreset] = useState<Preset | null>(null);
-	const [refreshInterval, setRefreshInterval] = useState<NodeJS.Timer | null>(null);
+	const [presetRefreshTimer, setPresetRefreshTimer] = useState<NodeJS.Timer | null>(null);
 
 	useEffect(loadUIComponents, []);
 
 	useEffect(() => {
-		fetchConfig().then(setConfig);
-	}, []);
+		const loadConfig = () =>
+			fetchConfig().then((newConfig) => {
+				if (!dequal(config, newConfig)) {
+					setConfig(newConfig);
+				}
+			});
+
+		loadConfig();
+		const timer = setInterval(loadConfig, CONFIG_REFRESH_INTERVAL);
+		return () => clearInterval(timer);
+	}, [config]);
 
 	useEffect(() => {
 		if (!config) return;
 
-		if (refreshInterval) {
-			clearInterval(refreshInterval);
-			setRefreshInterval(null);
+		if (presetRefreshTimer) {
+			clearInterval(presetRefreshTimer);
+			setPresetRefreshTimer(null);
 		}
 
 		const presetIndex = config.presetIndexes[activePresetIndex];
@@ -36,7 +47,7 @@ const App: FunctionComponent = () => {
 		fetchPreset(presetIndex).then(setPreset);
 
 		if (refreshIntervalMs) {
-			setRefreshInterval(
+			setPresetRefreshTimer(
 				setInterval(async () => {
 					let electionData = await getJson<ElectionData>(electionDataUrl);
 					setPreset(
@@ -52,7 +63,7 @@ const App: FunctionComponent = () => {
 		}
 
 		return () => {
-			if (refreshInterval) clearInterval(refreshInterval);
+			if (presetRefreshTimer) clearInterval(presetRefreshTimer);
 		};
 	}, [config, activePresetIndex]);
 
