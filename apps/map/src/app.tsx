@@ -10,11 +10,13 @@ import { ElectionData } from './models/election';
 import { fetchConfig, fetchPreset, getJson } from './utils/fetch';
 
 const DEFAULT_PRESET_INDEX = 0;
-const CONFIG_REFRESH_INTERVAL = 5000;
+const CONFIG_REFRESH_INTERVAL = 60000;
 
 const App: FunctionComponent = () => {
 	const [config, setConfig] = useState<Config | null>(null);
 	const [activePresetIndex, setActivePresetIndex] = useState<number>(DEFAULT_PRESET_INDEX);
+	const [configDefaultPresetIndex, setConfigDefaultPresetIndex] =
+		useState<number>(DEFAULT_PRESET_INDEX);
 	const [preset, setPreset] = useState<Preset | null>(null);
 	const [presetRefreshTimer, setPresetRefreshTimer] = useState<NodeJS.Timer | null>(null);
 
@@ -25,13 +27,18 @@ const App: FunctionComponent = () => {
 			fetchConfig().then((newConfig) => {
 				if (!dequal(config, newConfig)) {
 					setConfig(newConfig);
+
+					if (newConfig.defaultPresetIndex !== configDefaultPresetIndex) {
+						setConfigDefaultPresetIndex(newConfig.defaultPresetIndex);
+						setActivePresetIndex(newConfig.defaultPresetIndex);
+					}
 				}
 			});
 
 		loadConfig();
 		const timer = setInterval(loadConfig, CONFIG_REFRESH_INTERVAL);
 		return () => clearInterval(timer);
-	}, [config]);
+	}, [config, configDefaultPresetIndex]);
 
 	useEffect(() => {
 		if (!config) return;
