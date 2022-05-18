@@ -6,8 +6,7 @@ import Dashboard from './components/dashboard';
 import Footer from './components/Footer';
 import { Config, configContext } from './contexts/config';
 import { Preset, presetContext } from './contexts/preset';
-import { ElectionData } from './models/election';
-import { fetchConfig, fetchPreset, getJson } from './utils/fetch';
+import { fetchConfig, fetchPreset } from './utils/fetch';
 
 const DEFAULT_PRESET_INDEX = 0;
 const CONFIG_REFRESH_INTERVAL = 60000;
@@ -50,7 +49,7 @@ const App: FunctionComponent = () => {
 		}
 
 		const presetIndex = config.presetIndexes[activePresetIndex];
-		const { refreshIntervalMs, electionDataUrl } = presetIndex;
+		const { refreshIntervalMs } = presetIndex;
 
 		setIsNewPresetLoading(true);
 
@@ -61,17 +60,7 @@ const App: FunctionComponent = () => {
 
 		if (refreshIntervalMs) {
 			setPresetRefreshTimer(
-				setInterval(async () => {
-					let electionData = await getJson<ElectionData>(electionDataUrl);
-					setPreset(
-						preset
-							? {
-									...preset,
-									electionData: electionData
-							  }
-							: null
-					);
-				}, refreshIntervalMs)
+				setInterval(() => fetchPreset(presetIndex).then(setPreset), refreshIntervalMs)
 			);
 		}
 
