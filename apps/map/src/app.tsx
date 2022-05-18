@@ -19,6 +19,7 @@ const App: FunctionComponent = () => {
 		useState<number>(DEFAULT_PRESET_INDEX);
 	const [preset, setPreset] = useState<Preset | null>(null);
 	const [presetRefreshTimer, setPresetRefreshTimer] = useState<NodeJS.Timer | null>(null);
+	const [isNewPresetLoading, setIsNewPresetLoading] = useState(true);
 
 	useEffect(loadUIComponents, []);
 
@@ -51,7 +52,12 @@ const App: FunctionComponent = () => {
 		const presetIndex = config.presetIndexes[activePresetIndex];
 		const { refreshIntervalMs, electionDataUrl } = presetIndex;
 
-		fetchPreset(presetIndex).then(setPreset);
+		setIsNewPresetLoading(true);
+
+		fetchPreset(presetIndex).then((newPreset) => {
+			setPreset(newPreset);
+			setIsNewPresetLoading(false);
+		});
 
 		if (refreshIntervalMs) {
 			setPresetRefreshTimer(
@@ -87,6 +93,13 @@ const App: FunctionComponent = () => {
 							/>
 							<Footer />
 						</presetContext.Provider>
+					)}
+					{isNewPresetLoading && (
+						<div class="absolute inset-0 top-12 md:top-14 flex items-center justify-center bg-black bg-opacity-50 z-50">
+							<div className="scale-50">
+								<div className="loader-spinner" />
+							</div>
+						</div>
 					)}
 				</configContext.Provider>
 			</div>
