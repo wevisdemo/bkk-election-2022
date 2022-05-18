@@ -19,13 +19,15 @@ const DistrictModal: FunctionComponent<DistrictModalProps> = ({
 }) => {
 	const preset = useContext(presetContext);
 
+	if (!preset) return <></>;
+
 	return (
 		<Modal
 			containerClassName="lg:absolute lg:z-10 lg:top-0 lg:left-0 lg:right-0 lg:bottom-0"
 			className="max-h-full max-w-[calc(100vw-2rem)] h-full w-full lg:absolute lg:z-10 lg:top-0 lg:left-0 lg:right-0 lg:bottom-0 !max-w-none"
-			title={`เขต${activeDistrict?.name}`}
-			subtitle={`ผู้มีสิทธิ์เลือกตั้ง ${activeDistrict?.voting.eligiblePopulation.toLocaleString()} คน`}
-			imageUrl={`https://picsum.photos/500`}
+			title={`เขต${activeDistrict.name}`}
+			subtitle={`ผู้มีสิทธิ์เลือกตั้ง ${activeDistrict.voting.eligiblePopulation.toLocaleString()} คน`}
+			imageUrl={`/map/images/districts-attraction/${activeDistrict.name}.webp`}
 			onClose={onClose}
 		>
 			<CandidateOverviewList votingData={votingData} enableTopHighlight={false} />
@@ -66,11 +68,11 @@ const DistrictModal: FunctionComponent<DistrictModalProps> = ({
 							</div>
 						</div>
 					</div>
-					{preset?.electionData.lastUpdatedAt && (
+					{preset.electionData.lastUpdatedAt && (
 						<div className="text-right">
 							<p>อัปเดตล่าสุด</p>
 							<p>
-								{new Date(preset?.electionData.lastUpdatedAt).toLocaleString('th-TH', {
+								{new Date(preset.electionData.lastUpdatedAt).toLocaleString('th-TH', {
 									dateStyle: 'short',
 									timeStyle: 'short'
 								})}
