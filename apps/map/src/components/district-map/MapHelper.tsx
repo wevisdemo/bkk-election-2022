@@ -27,7 +27,6 @@ export const getDistrictCoordinate = (districtName: string): Table2D => {
     case "ราชเทวี": return { row: 2, col: 5 };
     case "พระนคร": return { row: 3, col: 4 };
     case "ป้อมปราบศัตรูพ่าย": return { row: 3, col: 5 };
-    case "ป้อมปราบฯ": return { row: 3, col: 5 };
     case "ปทุมวัน": return { row: 3, col: 7 };
     case "บางแค": return { row: 4, col: 0 };
     case "สวนหลวง": return { row: 4, col: 10 };

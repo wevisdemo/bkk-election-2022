@@ -77,12 +77,7 @@ const MapWinner: React.FC<MapProps> = ({ onDistrictClick }: MapProps) => {
     if (anim) {
       electionDistrictData.forEach((data) => {
         const { highestScoreCandidate, district } = data
-        const mapPolygon: MapPolygon | undefined = BKKMapPolygonData.find((value: MapPolygon) => {
-          if (district.name === "ป้อมปราบฯ")
-            return value.name === "ป้อมปราบศัตรูพ่าย"
-          else
-            return value.name === district.name
-        });
+        const mapPolygon: MapPolygon | undefined = BKKMapPolygonData.find((value: MapPolygon) =>  value.name === district.name);
 
         const graphics = new Graphics();
         graphics.lineStyle({
