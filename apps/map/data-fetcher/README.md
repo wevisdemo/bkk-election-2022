@@ -21,7 +21,7 @@ docker build -t <IMAGE_NAME>:<IMAGE_TAG> -f Dockerfile.data-fetcher .
 
 ### Run Image
 ```
-docker run -m $PWD/output:/app/output -e ERS_API_KEY=<VALUE> <IMAGE_NAME>:<IMAGE_TAG>
+docker run -m $PWD/output:/app/output -e ERS_API_KEY=<VALUE> -e ERS_API_URL=<VALUE> <IMAGE_NAME>:<IMAGE_TAG>
 ```
 ### Output
 - WORKDIR is at `/app`.
@@ -31,6 +31,7 @@ Environment key-values can be provided using:
 - Docker env
 - Mounting `.env` file at WORKDIR (`/app`)
 
-|Key        |Description                                   |
-|-----------|----------------------------------------------|
-|ERS_API_KEY|API key to fetch dat from ERS provided by VIVE|
+|Key        |Description                                              |Example                       |
+|-----------|---------------------------------------------------------|------------------------------|
+|ERS_API_KEY|API key to fetch dat from ERS provided by VIVE           |DFJio48470934rjklDKFLM        |
+|ERS_API_URL|API path without ending slash (/) of ERS provided by VIVE|https://api.ers.uat.vive.co.th|

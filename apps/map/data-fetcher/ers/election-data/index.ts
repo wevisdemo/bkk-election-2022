@@ -3,7 +3,7 @@ import { Candidate } from "./models/candidate";
 import { Election } from "./models/election";
 import { ElectionArea } from "./models/election-area";
 
-const ELECTION_DATA_API_PATH = 'https://api.ers.vive.co.th/elections';
+const ELECTION_DATA_API_PATH = `/elections`;
 
 export async function getElection(electionId: number): Promise<Election> {
   const res = await fetch(`${ELECTION_DATA_API_PATH}/${electionId}`);
