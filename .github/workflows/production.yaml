@@ -1,4 +1,4 @@
-name: Deploy to Production
+name: Build for Production
 
 on:
   workflow_dispatch:
@@ -26,11 +26,9 @@ jobs:
           BUILD_ENV: PRODUCTION
           NOCO_API_URL: ${{ secrets.NOCO_API_URL }}
           NOCO_AUTH_TOKEN: ${{ secrets.NOCO_AUTH_TOKEN }}
-      - name: Deploy to Server
-        uses: appleboy/scp-action@master
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v3
         with:
-          host: ${{ secrets.REMOTE_HOST }}
-          username: ${{ secrets.REMOTE_USER }}
-          password: ${{ secrets.REMOTE_PASSWORD }}
-          source: "build/*"
-          target: ${{ secrets.REMOTE_TARGET }}
+          name: build-artifact
+          path: build
+          retention-days: 1
