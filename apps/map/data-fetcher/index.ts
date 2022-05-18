@@ -1,4 +1,4 @@
-import { writeFile, rm, symlink } from 'fs/promises';
+import { writeFile, rm, symlink, mkdir } from 'fs/promises';
 import { fetchElectionData } from "./ers";
 import { ElectionDataFetcherType } from "./fetcher";
 import dotenv from 'dotenv';
@@ -30,7 +30,7 @@ async function writeElectionData() {
   data.lastUpdatedAt = now;
 
   const newFilename = `${outputFilename}-${now}.json`;
-  const newFilePath = `${outputPath}/${newFilename}`;
+  const newFilePath = `${outputPath}/all/${newFilename}`;
   const publicPath = `${outputPath}/${outputFilename}.json`;
   
   if (!isLiveInProgress(data)) {
@@ -39,11 +39,12 @@ async function writeElectionData() {
   }
 
   console.info(`[LIVE] progress = ${data.total.progress}`);
+  await mkdirIfNotExists(`${outputPath}/all`);
   await writeFile(newFilePath, JSON.stringify(data, null, 2));
   await rmIfExists(publicPath);
 
   try {
-    await symlink(`./${newFilename}`, publicPath);
+    await symlink(`./all/${newFilename}`, publicPath);
   } catch (e) {
     console.error(`[ERROR] Fail to create a symlink at ${publicPath}: ${e}`);
   }
@@ -63,4 +64,11 @@ async function rmIfExists(path: string): Promise<void> {
   } catch (e) {
     console.info(`[INFO] ${path} does not exist`);
   }
+}
+
+async function mkdirIfNotExists(path: string): Promise<void> {
+  try {
+    await mkdir(path);
+    console.log(`[INFO] ${path} is created.`);
+  } catch (e) {}
 }
