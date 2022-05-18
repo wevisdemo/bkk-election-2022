@@ -3,6 +3,10 @@ name: Deploy to Staging
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - "**/README.md"
+      - ".github/workflows/production.yaml"
+      - ".github/workflows/data-fetcher.yaml"
   workflow_dispatch:
     inputs:
       build_params:
@@ -10,8 +14,8 @@ on:
         required: false
         type: string
         default: ""
-        
-concurrency: 
+
+concurrency:
   group: staging_environment
   cancel-in-progress: true
 
