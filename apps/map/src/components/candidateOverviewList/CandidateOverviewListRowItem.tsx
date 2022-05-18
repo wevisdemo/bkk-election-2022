@@ -66,7 +66,7 @@ export default function CandidateOverviewListRowItem({
 				<span class="text-right basis-3/12 2xl:basis-2/12">{count.toLocaleString()}</span>
 				<span class="text-right basis-2/12">
 					{/* {(result.count / votingData.totalVotes).toLocaleString( */}
-					{(count / votingData.totalVotes).toLocaleString(undefined, {
+					{(count > 0 ? count / votingData.totalVotes : 0).toLocaleString(undefined, {
 						style: 'percent',
 						minimumFractionDigits: 1
 					})}
