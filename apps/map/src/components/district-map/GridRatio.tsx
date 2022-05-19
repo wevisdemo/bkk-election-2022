@@ -75,23 +75,6 @@ const GridRatio: React.FC<MapProps> = ({ onDistrictClick }: MapProps) => {
     });
   }
 
-  const handlePointerShowEvent = (e: any, district: District) => {
-    if (parentRef.current) {
-      const { clientHeight, clientWidth } = parentRef.current
-      const pointUp: boolean = !(e.data.global.y > clientHeight * .33)
-      setTooltips((prev) => ({
-        ...prev,
-        district: district,
-        show: true,
-        left: e.data.global.x - 15,
-        top: pointUp ? e.data.global.y + 20 : "unset",
-        bottom: !pointUp ? clientHeight - e.data.global.y + 10 : "unset",
-        pointUp: pointUp,
-        anchorRight: e.data.global.x > (clientWidth * .66)
-      }))
-    }
-  }
-
   const draw = (app: PIXI.Application, viewport: Viewport) => {
     if (electionDistrictData.length > 0) {
       drawRiver(viewport)
@@ -130,10 +113,6 @@ const GridRatio: React.FC<MapProps> = ({ onDistrictClick }: MapProps) => {
             ...prev,
             show: false
           }))
-        });
-        graphics.on('pointerdown', (e) => {
-          graphics.tint = 0xFFFFFF
-          handlePointerShowEvent(e, district)
         });
 
         let offSetY = 0;

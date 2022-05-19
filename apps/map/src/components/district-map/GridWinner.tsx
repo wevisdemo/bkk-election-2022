@@ -73,23 +73,6 @@ const GridWinner: React.FC<GridWinnerProps> = ({ onDistrictClick }: GridWinnerPr
     });
   }
 
-  const handlePointerDownEvent = (e: any, district: District) => {
-    if (parentRef.current) {
-      const { clientWidth, clientHeight } = parentRef.current
-      const pointUp: boolean = !(e.data.global.y > clientHeight * .33)
-      setTooltips((prev) => ({
-        ...prev,
-        district: district,
-        show: true,
-        left: e.data.global.x - 15,
-        top: pointUp ? e.data.global.y + 20 : "unset",
-        bottom: !pointUp ? clientHeight - e.data.global.y + 10 : "unset",
-        pointUp: pointUp,
-        anchorRight: e.data.global.x > (clientWidth * .66)
-      }))
-    }
-  }
-
   const draw = (app: PIXI.Application, viewport: Viewport) => {
     if (electionDistrictData.length > 0) {
       drawRiver(viewport)
@@ -125,11 +108,6 @@ const GridWinner: React.FC<GridWinnerProps> = ({ onDistrictClick }: GridWinnerPr
             ...prev,
             show: false
           }))
-        });
-
-        graphics.on('pointerdown', (e) => {
-          graphics.tint = 0xFFFFFF
-          handlePointerDownEvent(e, district)
         });
 
         if (typeof district.voting.progress !== "undefined" && district.voting.progress < 100) {
