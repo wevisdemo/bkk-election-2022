@@ -51,7 +51,8 @@ export default function RatioListRowItem({
 					...prev,
 					{
 						percent: percent || 0,
-						color: preset.candidateMap[curr.candidateId].color
+						color: preset.candidateMap[curr.candidateId].color,
+						strip: isLive
 					}
 				];
 			}, []);
@@ -61,7 +62,8 @@ export default function RatioListRowItem({
 				return [
 					{
 						percent: 100,
-						color: DEFAULT_CANDIDATE_COLOR
+						color: DEFAULT_CANDIDATE_COLOR,
+						strip: isLive
 					}
 				] as ProgressItem[];
 			}
