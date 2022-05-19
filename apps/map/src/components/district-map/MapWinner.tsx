@@ -77,7 +77,7 @@ const MapWinner: React.FC<MapProps> = ({ onDistrictClick }: MapProps) => {
     if (anim) {
       electionDistrictData.forEach((data) => {
         const { highestScoreCandidate, district } = data
-        const mapPolygon: MapPolygon | undefined = BKKMapPolygonData.find((value: MapPolygon) =>  value.name === district.name);
+        const mapPolygon: MapPolygon | undefined = BKKMapPolygonData.find((value: MapPolygon) => value.name === district.name);
 
         const graphics = new Graphics();
         graphics.lineStyle({
@@ -177,6 +177,8 @@ const MapWinner: React.FC<MapProps> = ({ onDistrictClick }: MapProps) => {
         screenHeight: ref.current?.clientHeight,
         worldWidth: WORLD_WIDTH,
         worldHeight: WORLD_HEIGHT,
+        passiveWheel: false,
+        stopPropagation: true,
         interaction: app.renderer.plugins.interaction // the interaction module is important for wheel to work properly when renderer.view is placed or scaled
       })
 

@@ -244,6 +244,8 @@ const GridRatio: React.FC<MapProps> = ({ onDistrictClick }: MapProps) => {
         screenHeight: ref.current?.clientHeight,
         worldWidth: WORLD_WIDTH,
         worldHeight: WORLD_HEIGHT,
+        passiveWheel: false,
+        stopPropagation: true,
         interaction: app.renderer.plugins.interaction // the interaction module is important for wheel to work properly when renderer.view is placed or scaled
       })
 
