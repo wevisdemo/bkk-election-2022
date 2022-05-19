@@ -118,7 +118,7 @@ const GridWinner: React.FC<GridWinnerProps> = ({ onDistrictClick }: GridWinnerPr
         }
         viewport.addChild(graphics)
 
-        const basicText = new PIXI.Text(district.name, textStyle);
+        const basicText = new PIXI.Text(district.name === "ป้อมปราบศัตรูพ่าย" ? "ป้อมปราบฯ" : district.name, textStyle);
         basicText.x = x + rectSize * .5;
         basicText.y = y + rectSize * .5;
         basicText.anchor.set(0.5);

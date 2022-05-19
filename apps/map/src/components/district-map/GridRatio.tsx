@@ -138,7 +138,7 @@ const GridRatio: React.FC<MapProps> = ({ onDistrictClick }: MapProps) => {
 
         viewport.addChild(graphics)
 
-        const basicText = new PIXI.Text(district.name, textStyle);
+        const basicText = new PIXI.Text(district.name === "ป้อมปราบศัตรูพ่าย" ? "ป้อมปราบฯ" : district.name, textStyle);
         // basicText.tint = 0xFFFFFF
         basicText.x = x + rectSizeWithRatio * .5;
         basicText.y = y - 10;
