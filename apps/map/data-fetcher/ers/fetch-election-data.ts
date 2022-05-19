@@ -27,6 +27,8 @@ async function fetchLiveGovernorElectionData(): Promise<ElectionData> {
     total: {
       eligiblePopulation: election.eligible,
       totalVotes: election.totalVotes,
+      badVotes: election.badVotes,
+      noVotes: election.noVotes,
       progress: election.progress,
       result: candidates.map(c => ({
         candidateId: getIdForGovernor(c),
@@ -38,6 +40,8 @@ async function fetchLiveGovernorElectionData(): Promise<ElectionData> {
       voting: {
         eligiblePopulation: a.eligible,
         totalVotes: a.totalVotes,
+        badVotes: a.badVotes,
+        noVotes: a.noVotes,
         progress: a.progress,
         result: a.candidates.map(c => ({
           candidateId: getIdForGovernor(c),
@@ -58,6 +62,8 @@ async function fetchCouncilMemberElectionData(): Promise<ElectionData> {
     total: {
       eligiblePopulation: election.eligible,
       totalVotes: election.totalVotes,
+      badVotes: election.badVotes,
+      noVotes: election.noVotes,
       progress: 100,
       result: candidates.map(c => ({
         candidateId: getIdForCouncilMember(c),
@@ -69,6 +75,8 @@ async function fetchCouncilMemberElectionData(): Promise<ElectionData> {
       voting: {
         eligiblePopulation: a.eligible,
         totalVotes: a.totalVotes,
+        badVotes: a.badVotes,
+        noVotes: a.noVotes,
         progress: 100,
         result: a.candidates.map(c => ({
           candidateId: getIdForCouncilMember(c),
