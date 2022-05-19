@@ -1,4 +1,5 @@
 import React, { useContext, useMemo, useState } from 'react';
+import { DEFAULT_CANDIDATE_COLOR } from '../constants/candidate';
 import { presetContext } from '../contexts/preset';
 import { Candidate } from '../models/candidate';
 import Modal from './Modal';
@@ -8,8 +9,14 @@ interface CandidateLegendProps {
 	children?: React.ReactNode;
 }
 
+interface Label {
+	text: string;
+	color: string;
+}
+
 const INSTRUCTION_SHORT_STRING = 'วิธีอ่าน';
 const INSTRUCTION_STRING = 'วิธีอ่านแผนภาพ';
+const OTHER_CANDIDATES_TEXT = 'อื่นๆ';
 
 export default function CandidateLegend({
 	topCandidatePerDistrict,
@@ -20,18 +27,24 @@ export default function CandidateLegend({
 
 	if (!preset) return <></>;
 
-	const candidateLabels: Candidate[] = useMemo(() => {
-		let tempCandidates: Candidate[] = [];
+	const candidateLabels: Label[] = useMemo(() => {
+		let tempLabels: Label[] = [];
+		let hasDefualtCandidateColor = false; 
 		for (const district of preset.electionData.districts) {
 			const sorted = district.voting.result.sort((a, b) => b.count - a.count);
 			for (let i = 0; i < topCandidatePerDistrict && i < sorted.length; i++) {
 				const candidate = preset.candidateMap[sorted[i].candidateId];
-				if (tempCandidates.indexOf(candidate) == -1 && sorted[i].count > 0) {
-					tempCandidates.push(candidate);
+				if (candidate.color.localeCompare(DEFAULT_CANDIDATE_COLOR) === 0){
+					hasDefualtCandidateColor = true;
+				} else if (!tempLabels.find((l) => l.color == candidate.color) && candidate && sorted[i].count > 0) {
+					tempLabels.push({ text: candidate.shortname, color: candidate.color });
 				}
 			}
 		}
-		return tempCandidates.filter((candidate) => candidate);
+		if (hasDefualtCandidateColor) {
+			tempLabels.push({ text: OTHER_CANDIDATES_TEXT, color: DEFAULT_CANDIDATE_COLOR })
+		}
+		return tempLabels.filter((candidate) => candidate);
 	}, [preset, topCandidatePerDistrict]);
 
 	return (
@@ -39,13 +52,10 @@ export default function CandidateLegend({
 			<div class="flex gap-2 md:gap-4 w-full md:w-1/2 ml-auto mr-auto md:mr-0">
 				<div class="ml-auto overflow-auto overflow-y-hidden hide-scrollbar">
 					<div class="flex flex-row gap-2">
-						{candidateLabels.map((candidate: Candidate) => (
+						{candidateLabels.map((label: Label) => (
 							<div class="flex shrink-0 gap-1 items-center">
-								<span
-									class="w-2 md:w-3 h-2 md:h-3"
-									style={{ backgroundColor: candidate.color }}
-								></span>
-								{candidate.shortname}
+								<span class="w-2 md:w-3 h-2 md:h-3" style={{ backgroundColor: label.color }}></span>
+								{label.text}
 							</div>
 						))}
 					</div>
