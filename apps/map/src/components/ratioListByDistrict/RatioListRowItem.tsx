@@ -27,7 +27,7 @@ export default function RatioListRowItem({
 
 	const [isTooltipOpen, setIsTooltipOpen] = useState<boolean>(false);
 
-	const countingProgress: number = district.voting.progress || 0;
+	const countingProgress: number = district.voting.progress || 100;
 	const countingProgressItems: ProgressItem[] = [
 		{
 			percent: countingProgress / 100,
@@ -39,12 +39,12 @@ export default function RatioListRowItem({
 
 	const progressItems: ProgressItem[] = useMemo(() => {
 		const prog: ProgressItem[] = district.voting.result
+			// .sort((a: Result, b: Result) => b.count - a.count)
 			.reduce((prev: ProgressItem[], curr: Result) => {
 				if (!curr.count || !district.voting.totalVotes) return prev
 				const percent = curr.count / district.voting.totalVotes;
 				if (prev.length == STACKED_BAR_DISPLAY_MAX) {
 					prev[prev.length - 1].percent += percent;
-					prog[prog.length - 1].color = DEFAULT_CANDIDATE_COLOR
 					return prev
 				}
 				return [
@@ -67,6 +67,7 @@ export default function RatioListRowItem({
 				] as ProgressItem[];
 			}
 
+			prog[prog.length - 1].color = DEFAULT_CANDIDATE_COLOR
 			return prog;
 	}, [district]);
 
