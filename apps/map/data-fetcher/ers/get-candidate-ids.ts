@@ -8,3 +8,5 @@ export function getIdForGovernor(c: Candidate | RealtimeCandidate): string {
 export function getIdForCouncilMember(c: Candidate): string {
   return `${c.electionArea.name}-${c.no}`;
 }
+
+export type IdGetter = (c: Candidate) => string;
