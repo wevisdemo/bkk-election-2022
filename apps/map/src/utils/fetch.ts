@@ -4,7 +4,18 @@ import { CandidateMap } from '../models/candidate';
 import { ElectionData, PresetIndex } from '../models/election';
 
 export async function fetchConfig(): Promise<Config> {
-	return getJson<Config>('/map/data/dev.config.json');
+	return getJson<Config>(
+		(() => {
+			switch (import.meta.env.BUILD_ENV) {
+				case 'PRODUCTION':
+					return 'https://bkkelection2022live.wevis.info/configs/production.json';
+				case 'STAGING':
+					return 'https://bkkelection2022live.wevis.info/configs/staging.json';
+				default:
+					return '/map/data/dev.config.json';
+			}
+		})()
+	);
 }
 
 export async function fetchPreset({
