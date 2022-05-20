@@ -16,7 +16,8 @@
     "name": "map",
     "path": "/map",
     "port": 3004,
-    "output": "/dist"
+    "output": "/dist",
+    "excludeFromProduction": false
   },
   { "name": "landing", "path": "/", "port": 3001, "output": "/build" }
 ]
