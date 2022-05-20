@@ -24,6 +24,7 @@
 		"@types/node-fetch": "^2.6.1",
 		"@types/node-schedule": "^2.1.0",
 		"autoprefixer": "^10.4.4",
+		"commander": "^9.2.0",
 		"dotenv": "^16.0.0",
 		"node-fetch": "^2.6.7",
 		"node-schedule": "^2.1.0",

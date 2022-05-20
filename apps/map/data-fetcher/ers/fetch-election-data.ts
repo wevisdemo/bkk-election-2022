@@ -1,10 +1,10 @@
 import { District, ElectionData, ElectionDataType, Voting } from "../../src/models/election";
 import { ElectionDataFetcher, ElectionDataFetcherType } from "../fetcher";
-import { getCandidates, getElection, getElectionAreas } from "./election-data";
+import { getCandidates, getElection, getElectionAreaById, getElectionAreas } from "./election-data";
 import { Candidate, Election, ElectionArea } from "./election-data/models";
 import { BKK_COUNCIL_MEMBER_ELECTION_ID, BKK_GOVERNOR_ELECTION_ID } from "./election-ids";
 import { getIdForCouncilMember, getIdForGovernor, IdGetter } from "./get-candidate-ids";
-import { getCandidates as getRealtimeCandidates, getElection as getRealtimeElection, getElectionAreaById, getElectionAreas as getRealtimeElectionAreas } from "./realtime";
+import { getCandidates as getRealtimeCandidates, getElection as getRealtimeElection, getElectionAreaById as getRealtimeElectionAreaById, getElectionAreas as getRealtimeElectionAreas } from "./realtime";
 import { stripDistrictPrefix } from "./utils";
 
 export const fetchElectionData: ElectionDataFetcher = (type: ElectionDataFetcherType): Promise<ElectionData> => {
@@ -23,7 +23,7 @@ async function fetchLiveGovernorElectionData(): Promise<ElectionData> {
   const candidates = await getRealtimeCandidates(BKK_GOVERNOR_ELECTION_ID);
   const areaIds = (await getRealtimeElectionAreas(BKK_GOVERNOR_ELECTION_ID)).map(a => a.id);
   const areas = await Promise.all(
-    areaIds.map(id => getElectionAreaById(BKK_GOVERNOR_ELECTION_ID, id))
+    areaIds.map(id => getRealtimeElectionAreaById(BKK_GOVERNOR_ELECTION_ID, id))
   );
 
   return {
@@ -79,7 +79,10 @@ async function fetchGovernorElectionData(): Promise<ElectionData> {
 async function fetchRemoteForElectionData(electionId: number): Promise<{ election: Election, candidates: Candidate[], areas: ElectionArea[] }> {
   const election = await getElection(electionId);
   const candidates = await getCandidates(electionId);
-  const areas = await getElectionAreas(electionId);
+  const areaIds = (await getElectionAreas(electionId)).map(a => a.id);
+  const areas = await Promise.all(
+    areaIds.map(id => getElectionAreaById(electionId, id))
+  );
   return {
     election,
     candidates,

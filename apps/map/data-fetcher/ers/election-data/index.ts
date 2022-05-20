@@ -19,3 +19,8 @@ export async function getElectionAreas(electionId: number): Promise<ElectionArea
   const res = await fetch(`${ELECTION_DATA_API_PATH}/${electionId}/electionAreas`);
   return (await res.json()) as ElectionArea[];
 }
+
+export async function getElectionAreaById(electionId: number, electionAreaId: number): Promise<ElectionArea> {
+  const res = await fetch(`/electionAreas/${electionAreaId}`);
+  return (await res.json()) as ElectionArea;
+}

@@ -1,74 +1,51 @@
-import { writeFile, rm, symlink, mkdir } from 'fs/promises';
-import { fetchElectionData } from "./ers";
-import { ElectionDataFetcherType } from "./fetcher";
 import dotenv from 'dotenv';
-import { scheduleJob } from 'node-schedule';
+import { writeFile } from 'fs/promises';
+import { program, Argument } from 'commander';
+import { live } from './live';
+import { fetchCandidates, fetchElectionData } from './ers';
+import { ElectionDataFetcherType } from './fetcher';
+import { CandidateMap } from '../src/models/candidate';
 import { ElectionData } from '../src/models/election';
+import { fillCouncilMemberColor, fillGovernorColorAndImage } from './candidate-info-filler';
 
 dotenv.config();
 
-const cron = '*/30 * * * * *';
-const outputPath = './output';
-const outputFilename = 'election-data';
+program
+  .option('-d', 'Live mode, fetch with cron and generate output files into ./output', true)
+  .action(() => {
+    live();
+  });
 
-scheduleJob(cron, async () => {
-  console.info('===================');
-  console.info('Attempt to fetch at ', new Date().toISOString());
-  try {
-    const filename = await writeElectionData();
-    console.info(`[SUCCEED] File has been written at ${filename}`);
-  } catch (e) {
-    console.error('[ERROR] ', e);
-  }
-});
+program
+  .command('generate')
+  .description('One-time generate specific file')
+  .addArgument(new Argument('<filetype>', 'type of file').choices(['candidates', 'election-data']))
+  .addArgument(new Argument('<electiontype>', 'type of election').choices(['governor', 'council-member']))
+  .option('--live', 'Generate from live APIs', false)
+  .option('-o', 'Output path', 'result.json')
+  .action(async (fileType, electionType, options) => {
+    let type = ElectionDataFetcherType.Governor;
+    if (electionType === 'council-member') {
+      type = ElectionDataFetcherType.CouncilMember;
+    } else if (electionType === 'governor' && options.live) {
+      type = ElectionDataFetcherType.LiveGovernor;
+    }
 
-console.info('data-fetch has been scheduled with ', cron);
+    let data: CandidateMap | ElectionData;
+    if (fileType === 'candidates') {
+      data = await fetchCandidates(type);
+      if (type === ElectionDataFetcherType.Governor) {
+        fillGovernorColorAndImage(data);
+      } else if (type === ElectionDataFetcherType.CouncilMember) {
+        fillCouncilMemberColor(data);
+      }
+    } else {
+      data = await fetchElectionData(type);
+      const now = new Date().toISOString();
+      data.lastUpdatedAt = now;
+    }
 
-async function writeElectionData() {
-  const data = await fetchElectionData(ElectionDataFetcherType.Governor);
-  const now = new Date().toISOString();
-  data.lastUpdatedAt = now;
+    writeFile(options.o, JSON.stringify(data, null, 2));
+  });
 
-  const newFilename = `${outputFilename}-${now}.json`;
-  const newFilePath = `${outputPath}/all/${newFilename}`;
-  const publicPath = `${outputPath}/${outputFilename}.json`;
-  
-  if (!isLiveInProgress(data)) {
-    console.info(`[NOT LIVE] progress = ${data.total.progress}. Writing directly to ${publicPath}`);
-    return writeFile(publicPath, JSON.stringify(data, null, 2));
-  }
-
-  console.info(`[LIVE] progress = ${data.total.progress}`);
-  await mkdirIfNotExists(`${outputPath}/all`);
-  await writeFile(newFilePath, JSON.stringify(data, null, 2));
-  await rmIfExists(publicPath);
-
-  try {
-    await symlink(`./all/${newFilename}`, publicPath);
-  } catch (e) {
-    console.error(`[ERROR] Fail to create a symlink at ${publicPath}: ${e}`);
-  }
-  return newFilePath;
-}
-
-function isLiveInProgress(data: ElectionData): boolean {
-  if (data.total.progress === undefined) {
-    return false;
-  }
-  return data.total.progress >= 1 && data.total.progress < 95;
-}
-
-async function rmIfExists(path: string): Promise<void> {
-  try {
-    await rm(path);
-  } catch (e) {
-    console.info(`[INFO] ${path} does not exist`);
-  }
-}
-
-async function mkdirIfNotExists(path: string): Promise<void> {
-  try {
-    await mkdir(path);
-    console.log(`[INFO] ${path} is created.`);
-  } catch (e) {}
-}
+program.parse();

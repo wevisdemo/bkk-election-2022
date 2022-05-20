@@ -7,7 +7,7 @@ import { BKK_COUNCIL_MEMBER_ELECTION_ID, BKK_GOVERNOR_ELECTION_ID } from "./elec
 import { getIdForCouncilMember, getIdForGovernor, IdGetter } from "./get-candidate-ids";
 
 export const fetchCandidates: CandidatesFetcher = (type: ElectionDataFetcherType): Promise<CandidateMap> => {
-  if (type === ElectionDataFetcherType.LiveGovernor) {
+  if (type === ElectionDataFetcherType.Governor) {
     return fetchGovernorCandidates();
   } else if (type === ElectionDataFetcherType.CouncilMember) {
     return fetchCouncilMemberCandidates();

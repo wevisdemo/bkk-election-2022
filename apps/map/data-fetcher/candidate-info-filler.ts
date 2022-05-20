@@ -1,6 +1,6 @@
 import { CandidateMap } from "../src/models/candidate";
 
-const PartyColors = {
+const PartyColors: {[number: string]: string} = {
   'พรรคก้าวไกล': '#F66C03',
   'พรรคพลังประชารัฐ': '',
   'พรรคเพื่อไทย': '',
@@ -23,22 +23,26 @@ function getColorForGovernor(no: string): string {
 }
 
 const GovernorPredefinedColors: {[number: string]: string} = {
-  '1': PartyColors.พรรคก้าวไกล,
+  '1': PartyColors['พรรคก้าวไกล'],
   '3': '#008989',
-  '4': PartyColors.พรรคประชาธิปัตย์,
+  '4': PartyColors['พรรคประชาธิปัตย์'],
   '6': '#EDDF95',
   '7': '#95633B',
   '8': '#82E016',
   '11': '#476FFF',
 }
 
-export function fillGovernorColor(map: CandidateMap): void {
+export function fillCouncilMemberColor(map: CandidateMap): void {
   for (let [id, candidate] of Object.entries(map)) {
     candidate.color = getColorForCouncilMember(candidate.party);
   }
 }
 
-function getColorForCouncilMember(partyName: string): string {
+function getColorForCouncilMember(partyName?: string): string {
+  if (!partyName) {
+    return '#666666';
+  }
+
   const color = PartyColors[partyName];
   if (color) {
     return color;
