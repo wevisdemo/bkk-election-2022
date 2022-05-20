@@ -77,6 +77,9 @@ const MapWinner: React.FC<MapProps> = ({ onDistrictClick }: MapProps) => {
 
         graphics.interactive = true;
         graphics.buttonMode = true;
+        graphics.cacheAsBitmap = true;
+        graphics.cacheAsBitmapResolution = 43;
+
         registerOnclick(graphics, () => onDistrictClick?.(district));
         graphics.on('pointerover', (e) => {
           graphics.tint = 0x666666
@@ -104,6 +107,7 @@ const MapWinner: React.FC<MapProps> = ({ onDistrictClick }: MapProps) => {
           maskGraphic.scale.x = 7;
           maskGraphic.scale.y = 7;
           maskGraphic.endFill();
+          maskGraphic.interactive = false;
 
           const maskBound = maskGraphic.getBounds()
           const tileStripe = new PIXI.TilingSprite(anim?.texture, maskBound.width, maskBound.height)
