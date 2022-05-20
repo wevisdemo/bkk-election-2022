@@ -19,12 +19,10 @@ export async function fetchConfig(): Promise<Config> {
 }
 
 export async function fetchPreset({
-	shortname,
-	fullname,
-	subtitle,
-	descriptionModal,
 	electionDataUrl,
-	candidateDataUrl
+	candidateDataUrl,
+	refreshIntervalMs,
+	...rest
 }: PresetIndex): Promise<Preset> {
 	const [electionData, candidateMap] = await Promise.all([
 		getJson<ElectionData>(electionDataUrl),
@@ -34,11 +32,8 @@ export async function fetchPreset({
 	electionData.districts.forEach(({ voting }) => voting.result.sort((a, z) => z.count - a.count));
 
 	return {
-		shortname,
-		fullname,
-		subtitle,
+		...rest,
 		electionData,
-		descriptionModal,
 		candidateMap
 	};
 }
