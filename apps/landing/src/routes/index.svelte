@@ -22,18 +22,12 @@
 			href: '/candidate',
 			image: '/static/images/cover/tn_candidate.webp'
 		},
-		import.meta.env.VITE_BUILD_ENV === 'PRODUCTION'
-			? {
-					th: 'เช็กผลเลือกตั้งผู้ว่าฯ กทม. แบบเรียลไทม์',
-					en: 'Bkk Election Real-time Results',
-					image: '/static/images/cover/tn_result.webp'
-			  }
-			: {
-					th: 'เตรียมติดตามผลเลือกตั้งผู้ว่าฯ กทม. ได้ที่นี่',
-					en: 'BKK Election Result',
-					href: '/map',
-					image: '/static/images/cover/tn_result.webp'
-			  },
+		{
+			th: 'เตรียมติดตามผลเลือกตั้งผู้ว่าฯ กทม. ได้ที่นี่',
+			en: 'BKK Election Result',
+			href: '/map',
+			image: '/static/images/cover/tn_result.webp'
+		},
 		{
 			th: 'กติกาการเลือกตั้งผู้ว่าฯ กทม. บัตร 2 ใบ กาอย่างไร',
 			en: 'How to vote?',
@@ -97,7 +91,7 @@
 		>
 			<div class="flex-1 flex flex-col space-y-8">
 				<PartnersLogo />
-				<h1 class="mx-auto">
+				<!-- <h1 class="mx-auto">
 					<img
 						src="/static/images/bkkelection-white-big.svg"
 						alt="เลือกตั้งผู้ว่าฯ กทม. 2565 - Bangkok Election 2022"
@@ -109,7 +103,8 @@
 				</p>
 				<Counter until={new Date('2022/05/22 8:00 GMT+7')}>
 					นับถอยหลังเปิดหีบเลือกตั้ง<br />วันอาทิตย์ที่ 22 พฤษภาคม พ.ศ. 2565 เวลา 08.00 - 17.00 น.
-				</Counter>
+				</Counter> -->
+				<h2 class="typo-h1">ติดตามผลการนับคะแนนผู้ว่าฯ กทม. สด ได้ที่นี่</h2>
 			</div>
 			<div class="-md:hidden flex-1">
 				<lite-youtube videoid={HERO_VIDEO_ID} />
