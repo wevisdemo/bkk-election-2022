@@ -6,7 +6,7 @@ import { ElectionData, PresetIndex } from '../models/election';
 export async function fetchConfig(): Promise<Config> {
 	return getJson<Config>(
 		(() => {
-			switch (import.meta.env.BUILD_ENV) {
+			switch (import.meta.env.VITE_BUILD_ENV) {
 				case 'PRODUCTION':
 					return 'https://bkkelection2022live.wevis.info/configs/production.json';
 				case 'STAGING':
