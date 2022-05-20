@@ -98,13 +98,14 @@ const MapWinner: React.FC<MapProps> = ({ onDistrictClick }: MapProps) => {
         viewport.addChild(graphics)
         if (typeof district.voting.progress !== "undefined" && district.voting.progress < 100) {
           const maskGraphic = new PIXI.Graphics();
+          maskGraphic.isMask = true;
           maskGraphic.beginFill();
           maskGraphic.drawPolygon(mapPolygon?.polygon || []);
           maskGraphic.scale.x = 7;
           maskGraphic.scale.y = 7;
           maskGraphic.endFill();
-          const maskBound = maskGraphic.getBounds()
 
+          const maskBound = maskGraphic.getBounds()
           const tileStripe = new PIXI.TilingSprite(anim?.texture, maskBound.width, maskBound.height)
           tileStripe.x = maskBound.x;
           tileStripe.y = maskBound.y;
