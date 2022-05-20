@@ -175,7 +175,8 @@ const GridRatio: React.FC<MapProps> = ({ onDistrictClick }: MapProps) => {
     let electionDistrictDataSet: DistrictGridRatioData[] = [];
     districts.forEach((district) => {
       const { voting } = district
-      let ratio = voting.eligiblePopulation / highestEligiblePopulation;
+      let ratio: number = voting.eligiblePopulation / highestEligiblePopulation;
+      ratio = isNaN(ratio) ? 0 : ratio;
       let districtVoteRatio: RectColorWithCandidateRatio[] = []
       let percentageIncrementor = 0
       voting.result.forEach((result, index) => {
