@@ -53,6 +53,27 @@
 			href: 'https://bangkokbudgeting.wevis.info',
 			external: true,
 			image: '/static/images/cover/tn_bangkokbudget.webp'
+		},
+		{
+			th: 'ตรวจสอบสิทธิและสถานที่เลือกตั้ง',
+			en: 'Where to Vote',
+			href: 'https://stat.bora.dopa.go.th/Election/enqelectloc',
+			external: true,
+			image: '/static/images/cover/tn_check.webp'
+		},
+		{
+			th: 'ร่วมรายงานการนับคะแนน',
+			en: 'Monitor Our Votes',
+			href: 'https://vote62.com',
+			external: true,
+			image: '/static/images/cover/tn_vote62.webp'
+		},
+		{
+			th: '(ไม่ใช่) คน กทม. ขอเลือกด้วย',
+			en: 'We Vote BKK',
+			href: 'https://wevotebkk.wevis.info',
+			external: true,
+			image: '/static/images/cover/tn_wevote.webp'
 		}
 	];
 </script>
