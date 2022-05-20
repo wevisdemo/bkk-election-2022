@@ -1,10 +1,10 @@
 {
   ".svelte-kit/runtime/client/start.js": {
-    "file": "start-ed3799a6.js",
+    "file": "start-b26a8bcf.js",
     "src": ".svelte-kit/runtime/client/start.js",
     "isEntry": true,
     "imports": [
-      "_index-edab1562.js",
+      "_index-942db8c5.js",
       "_preload-helper-e4860ae8.js"
     ],
     "dynamicImports": [
@@ -15,48 +15,48 @@
     ]
   },
   "src/routes/__layout.svelte": {
-    "file": "pages/__layout.svelte-14b06916.js",
+    "file": "pages/__layout.svelte-518d6c19.js",
     "src": "src/routes/__layout.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_index-edab1562.js"
+      "_index-942db8c5.js"
     ],
     "css": [
       "assets/pages/__layout.svelte-118d6c50.css"
     ]
   },
   ".svelte-kit/runtime/components/error.svelte": {
-    "file": "error.svelte-413f3fa2.js",
+    "file": "error.svelte-dd197f61.js",
     "src": ".svelte-kit/runtime/components/error.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_index-edab1562.js"
+      "_index-942db8c5.js"
     ]
   },
   "src/routes/about.svelte": {
-    "file": "pages/about.svelte-d59e7f58.js",
+    "file": "pages/about.svelte-0631c21f.js",
     "src": "src/routes/about.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_index-edab1562.js",
-      "_partners-logo-9202be21.js"
+      "_index-942db8c5.js",
+      "_partners-logo-8cbba6e2.js"
     ],
     "css": [
       "assets/pages/about.svelte-2d006818.css"
     ]
   },
   "src/routes/index.svelte": {
-    "file": "pages/index.svelte-66ecda87.js",
+    "file": "pages/index.svelte-70455c40.js",
     "src": "src/routes/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_preload-helper-e4860ae8.js",
-      "_index-edab1562.js",
-      "_partners-logo-9202be21.js"
+      "_index-942db8c5.js",
+      "_partners-logo-8cbba6e2.js"
     ],
     "dynamicImports": [
       "../../node_modules/@justinribeiro/lite-youtube/lite-youtube.js"
@@ -65,16 +65,16 @@
       "assets/pages/index.svelte-4ac22bdc.css"
     ]
   },
-  "_index-edab1562.js": {
-    "file": "chunks/index-edab1562.js"
+  "_index-942db8c5.js": {
+    "file": "chunks/index-942db8c5.js"
   },
   "_preload-helper-e4860ae8.js": {
     "file": "chunks/preload-helper-e4860ae8.js"
   },
-  "_partners-logo-9202be21.js": {
-    "file": "chunks/partners-logo-9202be21.js",
+  "_partners-logo-8cbba6e2.js": {
+    "file": "chunks/partners-logo-8cbba6e2.js",
     "imports": [
-      "_index-edab1562.js"
+      "_index-942db8c5.js"
     ]
   },
   "../../node_modules/@justinribeiro/lite-youtube/lite-youtube.js": {
