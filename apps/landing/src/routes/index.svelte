@@ -22,11 +22,18 @@
 			href: '/candidate',
 			image: '/static/images/cover/tn_candidate.webp'
 		},
-		{
-			th: 'เช็กผลเลือกตั้งผู้ว่าฯ กทม. แบบเรียลไทม์',
-			en: 'Bkk Election Real-time Results',
-			image: '/static/images/cover/tn_result.webp'
-		},
+		import.meta.env.VITE_BUILD_ENV === 'PRODUCTION'
+			? {
+					th: 'เช็กผลเลือกตั้งผู้ว่าฯ กทม. แบบเรียลไทม์',
+					en: 'Bkk Election Real-time Results',
+					image: '/static/images/cover/tn_result.webp'
+			  }
+			: {
+					th: 'เตรียมติดตามผลเลือกตั้งผู้ว่าฯ กทม. ได้ที่นี่',
+					en: 'BKK Election Result',
+					href: '/map',
+					image: '/static/images/cover/tn_result.webp'
+			  },
 		{
 			th: 'กติกาการเลือกตั้งผู้ว่าฯ กทม. บัตร 2 ใบ กาอย่างไร',
 			en: 'How to vote?',
