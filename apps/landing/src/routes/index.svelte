@@ -91,7 +91,7 @@
 		>
 			<div class="flex-1 flex flex-col space-y-8">
 				<PartnersLogo />
-				<!-- <h1 class="mx-auto">
+				<h1 class="mx-auto">
 					<img
 						src="/static/images/bkkelection-white-big.svg"
 						alt="เลือกตั้งผู้ว่าฯ กทม. 2565 - Bangkok Election 2022"
@@ -103,8 +103,7 @@
 				</p>
 				<Counter until={new Date('2022/05/22 8:00 GMT+7')}>
 					นับถอยหลังเปิดหีบเลือกตั้ง<br />วันอาทิตย์ที่ 22 พฤษภาคม พ.ศ. 2565 เวลา 08.00 - 17.00 น.
-				</Counter> -->
-				<h2 class="typo-h1">ติดตามผลการนับคะแนนผู้ว่าฯ กทม. สด ได้ที่นี่</h2>
+				</Counter>
 			</div>
 			<div class="-md:hidden flex-1">
 				<lite-youtube videoid={HERO_VIDEO_ID} />
