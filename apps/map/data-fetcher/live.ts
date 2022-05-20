@@ -34,12 +34,12 @@ async function writeElectionData() {
 
   if (!isLiveInProgress(data)) {
     console.info(`[NOT LIVE] progress = ${data.total.progress}. Writing directly to ${publicPath}`);
-    return writeFile(publicPath, JSON.stringify(data, null, 2));
+    return writeFile(publicPath, JSON.stringify(data));
   }
 
   console.info(`[LIVE] progress = ${data.total.progress}`);
   await mkdirIfNotExists(`${outputPath}/all`);
-  await writeFile(newFilePath, JSON.stringify(data, null, 2));
+  await writeFile(newFilePath, JSON.stringify(data));
   await rmIfExists(publicPath);
 
   try {
