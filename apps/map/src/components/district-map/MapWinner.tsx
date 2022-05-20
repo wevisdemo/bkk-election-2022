@@ -99,26 +99,17 @@ const MapWinner: React.FC<MapProps> = ({ onDistrictClick }: MapProps) => {
         });
 
         viewport.addChild(graphics)
-        if (typeof district.voting.progress !== "undefined" && district.voting.progress < 100) {
-          const maskGraphic = new PIXI.Graphics();
-          maskGraphic.isMask = true;
-          maskGraphic.beginFill();
-          maskGraphic.drawPolygon(mapPolygon?.polygon || []);
-          maskGraphic.scale.x = 7;
-          maskGraphic.scale.y = 7;
-          maskGraphic.endFill();
-          maskGraphic.interactive = false;
-
-          const maskBound = maskGraphic.getBounds()
-          const tileStripe = new PIXI.TilingSprite(anim?.texture, maskBound.width, maskBound.height)
-          tileStripe.x = maskBound.x;
-          tileStripe.y = maskBound.y;
-          tileStripe.mask = maskGraphic
-          tileStripe.alpha = .2
-          viewport.addChild(maskGraphic)
-          viewport.addChild(tileStripe)
-        }
       });
+
+      const { total } = electionData
+      if (typeof total.progress !== "undefined" && total.progress < 100) {
+        const tileStripe = new PIXI.TilingSprite(anim?.texture, viewport.worldWidth, viewport.worldHeight)
+        tileStripe.x = 0;
+        tileStripe.y = 0;
+        tileStripe.alpha = .2
+        tileStripe.blendMode = PIXI.BLEND_MODES.DST_OUT
+        viewport.addChild(tileStripe)
+      }
     }
   }
 
