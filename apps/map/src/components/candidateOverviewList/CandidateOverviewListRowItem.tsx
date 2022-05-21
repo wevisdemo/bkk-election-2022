@@ -13,6 +13,8 @@ interface Props {
 	votingData: Voting;
 }
 
+const MIN_PROGRESS = 0.01;
+
 export default function CandidateOverviewListRowItem({
 	candidateId,
 	topVoteCount,
@@ -89,7 +91,7 @@ export default function CandidateOverviewListRowItem({
 									preset.electionData.type === ElectionDataType.Poll
 										? candidate.color + '71'
 										: candidate.color,
-								percent: count / topVoteCount,
+								percent: count > 0 ? count / topVoteCount : MIN_PROGRESS,
 								strip: preset.electionData.type === ElectionDataType.Live
 							}
 						] as ProgressItem[]
