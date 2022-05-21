@@ -104,6 +104,25 @@
 				<Counter until={new Date('2022/05/22 8:00 GMT+7')}>
 					นับถอยหลังเปิดหีบเลือกตั้ง<br />วันอาทิตย์ที่ 22 พฤษภาคม พ.ศ. 2565 เวลา 08.00 - 17.00 น.
 				</Counter>
+				<!-- <h2 class="typo-h2 text-center">ติดตามผลการนับคะแนน<br />ผู้ว่าฯ กทม. สด ได้ที่นี่</h2>
+				<a
+					href="/map"
+					class="typo-h6 flex flex-row live-button mx-auto p-4 items-center space-x-4 shadow-sm hover:brightness-125"
+					style="background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 100%), #b90202;"
+				>
+					<div class="bg-white text-[#D02525] px-2 py-1 font-bold typo-u5">LIVE</div>
+					<div class="pr-4">ดูผลการนับคะแนน</div>
+					<svg
+						width="17"
+						height="18"
+						viewBox="0 0 17 18"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path d="M8 1L15.5789 9L8 17" stroke="white" stroke-width="2" />
+						<path d="M0 9L16 9" stroke="white" stroke-width="2" />
+					</svg>
+				</a> -->
 			</div>
 			<div class="-md:hidden flex-1">
 				<lite-youtube videoid={HERO_VIDEO_ID} />
