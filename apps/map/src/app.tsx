@@ -20,7 +20,18 @@ const App: FunctionComponent = () => {
 	const [presetRefreshTimer, setPresetRefreshTimer] = useState<NodeJS.Timer | null>(null);
 	const [isNewPresetLoading, setIsNewPresetLoading] = useState(true);
 
-	useEffect(loadUIComponents, []);
+	useEffect(() => {
+		loadUIComponents();
+
+		if (import.meta.env.VITE_BUILD_ENV == 'PRODUCTION') {
+			const script = document.createElement('script');
+			script.async = true;
+			script.defer = true;
+			script.src = 'https://analytics.punchup.world/js/plausible.js';
+			script.setAttribute('data-domain', 'bkkelection2022.wevis.info');
+			document.head.appendChild(script);
+		}
+	}, []);
 
 	useEffect(() => {
 		const loadConfig = () =>
