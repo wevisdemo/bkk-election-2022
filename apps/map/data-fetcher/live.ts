@@ -34,7 +34,9 @@ async function writeElectionData() {
 
   if (!isLiveInProgress(data)) {
     console.info(`[NOT LIVE] progress = ${data.total.progress}. Writing directly to ${publicPath}`);
-    return writeFile(publicPath, JSON.stringify(data));
+    await rmIfExists(publicPath);
+    await writeFile(publicPath, JSON.stringify(data));
+    return publicPath;
   }
 
   console.info(`[LIVE] progress = ${data.total.progress}`);
