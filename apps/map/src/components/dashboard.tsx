@@ -54,27 +54,26 @@ const Dashboard: FunctionComponent<DashboardProps> = ({ activePresetIndex, onPre
 			<TabsView
 				className="lg:hidden"
 				tabs={[
-					{
-						name: 'คะแนนรวมทั้ง กทม.',
-						component: (
-							<LazyloadContainer>
-								<CandidateOverviewList
-									votingData={preset.electionData.total}
-									enableTopHighlight={true}
-								/>
-							</LazyloadContainer>
-						)
-					},
 					...(haveTotalResult
 						? [
 								{
-									name: 'คะแนนรายเขต',
+									name: 'คะแนนรวมทั้ง กทม.',
 									component: (
-										<DistrictVisualization activeViz={activeViz} setActiveViz={setActiveViz} />
+										<LazyloadContainer>
+											<CandidateOverviewList
+												votingData={preset.electionData.total}
+												enableTopHighlight={true}
+											/>
+										</LazyloadContainer>
 									)
 								}
 						  ]
-						: [])
+						: []),
+
+					{
+						name: 'คะแนนรายเขต',
+						component: <DistrictVisualization activeViz={activeViz} setActiveViz={setActiveViz} />
+					}
 				]}
 			/>
 		</div>
