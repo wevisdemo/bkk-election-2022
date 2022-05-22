@@ -270,8 +270,8 @@ const GridRatio: React.FC<MapProps> = ({ onDistrictClick }: MapProps) => {
       viewport.clampZoom({
         minWidth: 300,                 // minimum width
         minHeight: 300,                // minimum height
-        maxWidth: 2000,                 // maximum width
-        maxHeight: 2000,                // maximum height
+        maxWidth: 3500,                 // maximum width
+        maxHeight: 3500,                // maximum height
       })
 
       viewport.fit()
