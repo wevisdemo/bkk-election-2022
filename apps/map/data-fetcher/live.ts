@@ -4,35 +4,49 @@ import { ElectionData } from '../src/models/election';
 import { fetchElectionData } from "./ers";
 import { ElectionDataFetcherType } from "./fetcher";
 
-const cron = '*/20 * * * * *';
+const cron = '*/15 * * * * *';
 const outputPath = './output';
 const outputFilename = 'election-data';
+const ectOutputFilename = 'election-data-ect';
 const councilOutputFilename = 'election-data-council';
 
 export function live() {
-  scheduleJob(cron, async () => {
-    console.info('===================');
-    console.info('=== Attempt to fetch at ', new Date().toISOString());
-    try {
-      const filename = await writeElectionData();
-      console.info(`=== [SUCCEED] File has been written at ${filename}`);
-    } catch (e) {
-      console.error('=== [ERROR] ', e);
-    } finally {
-      console.info('===================');
-    }
-  });
+  // scheduleJob(cron, async () => {
+  //   console.info('===================');
+  //   console.info('=== Attempt to fetch at ', new Date().toISOString());
+  //   try {
+  //     const filename = await writeElectionData();
+  //     console.info(`=== [SUCCEED] File has been written at ${filename}`);
+  //   } catch (e) {
+  //     console.error('=== [ERROR] ', e);
+  //   } finally {
+  //     console.info('===================');
+  //   }
+  // });
+
+  // scheduleJob(cron, async () => {
+  //   console.info('>>>>>>>>>>>>>>>>>>>');
+  //   console.info('>>> Attempt to fetch at ', new Date().toISOString());
+  //   try {
+  //     const filename = await writeCouncilMemberElectionData();
+  //     console.info(`>>> [SUCCEED] File has been written at ${filename}`);
+  //   } catch (e) {
+  //     console.error('>>> [ERROR] ', e);
+  //   } finally {
+  //     console.info('>>>>>>>>>>>>>>>>>>>');
+  //   }
+  // });
 
   scheduleJob(cron, async () => {
-    console.info('>>>>>>>>>>>>>>>>>>>');
-    console.info('>>> Attempt to fetch at ', new Date().toISOString());
+    console.info('^^^^^^^^^^^^^^^^^^^^');
+    console.info('^^^ Attempt to fetch at ', new Date().toISOString());
     try {
-      const filename = await writeCouncilMemberElectionData();
-      console.info(`>>> [SUCCEED] File has been written at ${filename}`);
+      const filename = await writeECTElectionData();
+      console.info(`^^^ [SUCCEED] File has been written at ${filename}`);
     } catch (e) {
-      console.error('>>> [ERROR] ', e);
+      console.error('^^^ [ERROR] ', e);
     } finally {
-      console.info('>>>>>>>>>>>>>>>>>>>');
+      console.info('^^^^^^^^^^^^^^^^^^^^');
     }
   });
 
@@ -45,6 +59,16 @@ async function writeCouncilMemberElectionData() {
   data.lastUpdatedAt = now;
 
   const publicPath = `${outputPath}/${councilOutputFilename}.json`;
+  await writeFile(publicPath, JSON.stringify(data));
+  return publicPath;
+}
+
+async function writeECTElectionData() {
+  const data = await fetchElectionData(ElectionDataFetcherType.LiveECTGovernor);
+  const now = new Date().toISOString();
+  data.lastUpdatedAt = now;
+
+  const publicPath = `${outputPath}/${ectOutputFilename}.json`;
   await writeFile(publicPath, JSON.stringify(data));
   return publicPath;
 }
