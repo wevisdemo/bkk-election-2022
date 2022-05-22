@@ -124,7 +124,7 @@ const GridRatio: React.FC<MapProps> = ({ onDistrictClick }: MapProps) => {
           graphics.drawRect(x,
             y + offSetY,
             rectSizeWithRatio,
-            voteRectHeight);
+            voteRectHeight || 0);
           graphics.endFill();
           offSetY += voteRectHeight
         })
