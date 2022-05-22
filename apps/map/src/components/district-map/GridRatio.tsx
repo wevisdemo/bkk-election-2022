@@ -207,7 +207,8 @@ const GridRatio: React.FC<MapProps> = ({ onDistrictClick }: MapProps) => {
       backgroundColor: 0x000000,
       antialias: true,
       resolution: 2,
-      autoDensity: true
+      autoDensity: true,
+      resizeTo: ref.current.parentElement || undefined,
     });
 
     app.loader.add('stripe', '/map/images/strip-black.gif');
@@ -226,7 +227,7 @@ const GridRatio: React.FC<MapProps> = ({ onDistrictClick }: MapProps) => {
         worldHeight: WORLD_HEIGHT,
         passiveWheel: false,
         stopPropagation: true,
-        interaction: app.renderer.plugins.interaction // the interaction module is important for wheel to work properly when renderer.view is placed or scaled
+        interaction: app.renderer.plugins.interaction, // the interaction module is important for wheel to work properly when renderer.view is placed or scaled
       })
 
       // add the viewport to the stage
@@ -302,6 +303,23 @@ const GridRatio: React.FC<MapProps> = ({ onDistrictClick }: MapProps) => {
     }
   }, [appLoaded, electionDistrictData])
 
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const onResize = () => {
+      if (!viewport || !ref.current) return;
+  
+      viewport.fit();
+      viewport.resize(
+        ref.current.parentElement?.clientWidth || window.innerWidth,
+        ref.current.parentElement?.clientHeight || window.innerHeight,
+      );
+    };
+
+    window.addEventListener('resize', onResize);
+
+    return () => window.removeEventListener('resize', onResize);
+  }, [window, viewport]);
 
   return (
     <div className='relative h-full' class='overflow-hidden' ref={parentRef} >
