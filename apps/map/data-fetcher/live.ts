@@ -4,7 +4,7 @@ import { ElectionData } from '../src/models/election';
 import { fetchElectionData } from "./ers";
 import { ElectionDataFetcherType } from "./fetcher";
 
-const cron = '*/15 * * * * *';
+const cron = '*/20 * * * * *';
 const outputPath = './output';
 const outputFilename = 'election-data';
 const councilOutputFilename = 'election-data-council';
@@ -15,20 +15,24 @@ export function live() {
     console.info('=== Attempt to fetch at ', new Date().toISOString());
     try {
       const filename = await writeElectionData();
-      console.info(`('=== [SUCCEED] File has been written at ${filename}`);
+      console.info(`=== [SUCCEED] File has been written at ${filename}`);
     } catch (e) {
       console.error('=== [ERROR] ', e);
+    } finally {
+      console.info('===================');
     }
   });
 
   scheduleJob(cron, async () => {
     console.info('>>>>>>>>>>>>>>>>>>>');
-    console.info('>>> Council: Attempt to fetch at ', new Date().toISOString());
+    console.info('>>> Attempt to fetch at ', new Date().toISOString());
     try {
       const filename = await writeCouncilMemberElectionData();
-      console.info(`>>> Council: [SUCCEED] File has been written at ${filename}`);
+      console.info(`>>> [SUCCEED] File has been written at ${filename}`);
     } catch (e) {
-      console.error('>>> Council: [ERROR] ', e);
+      console.error('>>> [ERROR] ', e);
+    } finally {
+      console.info('>>>>>>>>>>>>>>>>>>>');
     }
   });
 
