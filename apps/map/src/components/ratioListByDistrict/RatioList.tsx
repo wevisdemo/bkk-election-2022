@@ -123,7 +123,7 @@ export default function RatioListTable({ onDistrictClick }: RatioListTableProps)
 					}}
 				>
 					<div
-						class={`absolute w-full h-11 bg-gradient-to-t z-10 from-black to-black/0 bottom-0 pointer-events-none ${
+						class={`absolute w-full h-11 bg-gradient-to-t z-[5] from-black to-black/0 bottom-0 pointer-events-none ${
 							isBottom && 'hidden'
 						}`}
 					/>
