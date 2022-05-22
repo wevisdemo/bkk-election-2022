@@ -24,8 +24,10 @@ export function Council(props: PropsType) {
   return (
     <div className="relative w-full max-w-[288px] md:max-w-[1024px]  mb-[40px]">
       {council.disqualified && (
-        <div className="absolute bg-[#ffffffb3] w-full h-full absolute typo-u4 flex justify-center items-center z-[5] p-[10px]">
-          {council.disqualified}
+        <div className="absolute bg-white bg-opacity-80 w-full h-full typo-b4 flex justify-center items-center z-[5] p-[10px]">
+          <p className="bg-white rounded p-1 max-w-lg">
+            {council.disqualified}
+          </p>
         </div>
       )}
       <div className="flex border-t border-[#9d9d9d] w-full max-w-[288px] md:max-w-[1024px]">
