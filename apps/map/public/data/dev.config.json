@@ -22,6 +22,15 @@
 			"enableCandidateLink": true
 		},
 		{
+			"shortname": "คะแนน ส.ก. '65 (ไม่เป็นทางการ)",
+			"fullname": "คะแนน ส.ก. '65 (ไม่เป็นทางการ)",
+			"electionDataUrl": "https://bkkelection2022live.wevis.info/election-data-council.json",
+			"candidateDataUrl": "/map/data/65-bmc-candidates.json",
+			"refreshIntervalMs": 16000,
+			"isLive": true,
+			"enableCandidateLink": false
+		},
+		{
 			"shortname": "NIDA Poll (22 พ.ค. 65)",
 			"fullname": "NIDA Poll คนกรุงเทพฯ เลือกใครเป็นผู้ว่าฯ กทม",
 			"subtitle": "สํารวจระหว่าง วันที่ 18-21 พ.ค. 65 จากประชาชนผู้มีสิทธิเลือกตั้ง 2,500 คน",
@@ -34,12 +43,6 @@
 			"subtitle": "สำรวจระหว่าง วันที่ 17-20 พ.ค. 65 จากประชาชนผู้มีสิทธิเลือกตั้ง 806 คน",
 			"electionDataUrl": "/map/data/ppk-electiondata.json",
 			"candidateDataUrl": "/map/data/poll-candidates.json"
-		},
-		{
-			"shortname": "คะแนน ส.ก. '65 (ไม่เป็นทางการ) - เร็วๆ นี้",
-			"fullname": "คะแนน ส.ก. '65 (ไม่เป็นทางการ)",
-			"electionDataUrl": "",
-			"candidateDataUrl": ""
 		},
 		{
 			"shortname": "คะแนนเลือกตั้งครั้งก่อน (2556)",
