@@ -17,7 +17,7 @@ Monorepo for Bangkok Election 2022 projects managed by [Turborepo](https://turbo
   - `/landing` Landing page ([SvelteKit](https://kit.svelte.dev/))
   - `/socialtrend` Social trend analysis ([NuxtJS](https://nuxtjs.org/))
   - `/candidate` Candidates information ([NextJS](https://nextjs.org/))
-  - `/map` Election map of results in the past and realtime ([Preact](https://preactjs.ir/)) [**unreleased**]
+  - `/map` Election map of results in the past and realtime ([Preact](https://preactjs.ir/))
 
 - **`/moderator`**
   - Development server using [Express](https://expressjs.com/) with reverse proxy and static assets serving.
