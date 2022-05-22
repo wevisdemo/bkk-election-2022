@@ -61,11 +61,25 @@ export default function RatioListRowItem({
 			if (prog.length == 0) {
 				return [
 					{
-						percent: 100,
+						percent: 1,
 						color: DEFAULT_CANDIDATE_COLOR,
 						strip: isLive
 					}
 				] as ProgressItem[];
+			}
+			const sum: number = prog.reduce((prev, curr) => prev + curr.percent, 0)
+			console.log(sum)
+			if (sum != 1) {
+				const diff = 1 - sum;
+				if (prog[prog.length - 1].color.localeCompare(DEFAULT_CANDIDATE_COLOR) === 0) {
+					prog[prog.length - 1].percent += diff;
+				} else {
+					prog.push({
+						percent: diff,
+						color: DEFAULT_CANDIDATE_COLOR,
+						strip: isLive
+					} as ProgressItem)
+				}
 			}
 
 			return prog;
