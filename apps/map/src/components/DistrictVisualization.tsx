@@ -102,7 +102,7 @@ const DistrictVisualization: FunctionComponent<DistrictVisualizationProps> = ({
 					</LazyloadContainer>
 				</div>
 				<div
-					class={`md:flex hidden mt-2 ${
+					class={`md:flex hidden mt-2 pointer-events-none ${
 						activeViz === Visualization.LIST_RATIO ? '' : 'md:mt-[-60px]'
 					}`}
 				>
