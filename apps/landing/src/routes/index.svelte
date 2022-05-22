@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { fetchTheStandardElectionPosts, fetchWeVisElectionPosts } from 'wordpress-api';
 	import PostGrid from '../components/post-grid.svelte';
-	import Counter from '../components/counter.svelte';
+	// import Counter from '../components/counter.svelte';
 	import ProjectCard from '../components/project-card.svelte';
 	import Metadata from '../components/metadata.svelte';
 	import PartnersLogo from '../components/partners-logo.svelte';
@@ -78,16 +78,16 @@
 		}
 	];
 
-	const checkpoints = [
-		{
-			date: new Date('2022/05/22 8:00 GMT+7'),
-			text: 'นับถอยหลังเปิดหีบเลือกตั้ง<br />วันอาทิตย์ที่ 22 พฤษภาคม พ.ศ. 2565 เวลา 08.00 - 17.00 น.'
-		},
-		{
-			date: new Date('2022/05/22 17:00 GMT+7'),
-			text: 'นับถอยหลังปิดหีบเลือกตั้ง เวลา 17:00 น.'
-		}
-	];
+	// const checkpoints = [
+	// 	{
+	// 		date: new Date('2022/05/22 8:00 GMT+7'),
+	// 		text: 'นับถอยหลังเปิดหีบเลือกตั้ง<br />วันอาทิตย์ที่ 22 พฤษภาคม พ.ศ. 2565 เวลา 08.00 - 17.00 น.'
+	// 	},
+	// 	{
+	// 		date: new Date('2022/05/22 17:00 GMT+7'),
+	// 		text: 'นับถอยหลังปิดหีบเลือกตั้ง เวลา 17:00 น.'
+	// 	}
+	// ];
 </script>
 
 <Metadata title="Bangkok Election 2022 : เกาะติด 'เลือกตั้งผู้ว่าฯ กทม. 2565" />
@@ -102,18 +102,18 @@
 		>
 			<div class="flex-1 flex flex-col space-y-8">
 				<PartnersLogo />
-				<h1 class="mx-auto">
+				<h1 class="mx-auto hidden">
 					<img
 						src="/static/images/bkkelection-white-big.svg"
 						alt="เลือกตั้งผู้ว่าฯ กทม. 2565 - Bangkok Election 2022"
 					/>
 				</h1>
-				<p class="typo-b4 text-center">
+				<!-- <p class="typo-b4 text-center">
 					ติดตามข้อมูลเกี่ยวกับการเลือกตั้งผู้ว่าฯ <br class="md:hidden" />และสมาชิกสภา กทม.
 					ได้ที่นี่
 				</p>
-				<Counter {checkpoints} />
-				<!-- <h2 class="typo-h2 text-center">ติดตามผลการนับคะแนน<br />ผู้ว่าฯ กทม. สด ได้ที่นี่</h2>
+				<Counter {checkpoints} /> -->
+				<h2 class="typo-h2 text-center">ติดตามผลการนับคะแนน<br />ผู้ว่าฯ กทม. สด ได้ที่นี่</h2>
 				<a
 					href="/map"
 					class="typo-h6 flex flex-row live-button mx-auto p-4 items-center space-x-4 shadow-sm hover:brightness-125"
@@ -131,7 +131,7 @@
 						<path d="M8 1L15.5789 9L8 17" stroke="white" stroke-width="2" />
 						<path d="M0 9L16 9" stroke="white" stroke-width="2" />
 					</svg>
-				</a> -->
+				</a>
 			</div>
 			<div class="-md:hidden flex-1">
 				<lite-youtube videoid={HERO_VIDEO_ID} />
