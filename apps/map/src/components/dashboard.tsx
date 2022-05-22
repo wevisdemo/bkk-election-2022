@@ -69,11 +69,16 @@ const Dashboard: FunctionComponent<DashboardProps> = ({ activePresetIndex, onPre
 								}
 						  ]
 						: []),
-
-					{
-						name: 'คะแนนรายเขต',
-						component: <DistrictVisualization activeViz={activeViz} setActiveViz={setActiveViz} />
-					}
+					...(preset.electionData.districts.length > 0
+						? [
+								{
+									name: 'คะแนนรายเขต',
+									component: (
+										<DistrictVisualization activeViz={activeViz} setActiveViz={setActiveViz} />
+									)
+								}
+						  ]
+						: [])
 				]}
 			/>
 		</div>
