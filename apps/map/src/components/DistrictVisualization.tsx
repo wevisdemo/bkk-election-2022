@@ -24,41 +24,32 @@ const DistrictVisualization: FunctionComponent<DistrictVisualizationProps> = ({
 	if (!preset || preset.electionData.districts.length === 0) return <></>;
 
 	const candidateLegend = useMemo(() => {
-		const LegendDescription = () =>
-			activeViz === Visualization.GRID_RATIO ? (
-				<div>
-					<p className="mb-4 md:mb-0">
-						<span className="font-bold">ขนาดกล่อง</span> <br className="md:hidden" />
-						ตามจำนวนผู้มีสิทธิ์เลือกตั้งในเขตนั้น
-					</p>
-					<p>
-						<span className="font-bold">สัดส่วนสี</span> <br className="md:hidden" />
-						ในแต่ละกล่องตามสัดส่วนคะแนนของผู้สมัคร
-					</p>
-				</div>
-			) : activeViz === Visualization.GRID_WINNER || activeViz === Visualization.MAP_WINNER ? (
-				<p>
-					<span className="font-bold">สี</span> ของแต่ละเขตแสดงผู้ได้คะแนนสูงสุดในเขตนั้นๆ
-				</p>
-			) : (
-				<></>
-			);
-
-		if (preset.electionData.total.result.length > 0) {
-			return (
-				<CandidateLegend
-					topCandidatePerDistrict={
-						activeViz === Visualization.GRID_WINNER || activeViz === Visualization.MAP_WINNER
-							? 1
-							: 3
-					}
-				>
-					<LegendDescription />
-				</CandidateLegend>
-			);
-		} else {
-			return <LegendDescription />;
-		}
+		return (
+			<CandidateLegend
+				topCandidatePerDistrict={
+					activeViz === Visualization.GRID_WINNER || activeViz === Visualization.MAP_WINNER ? 1 : 3
+				}
+			>
+				{activeViz === Visualization.GRID_RATIO ? (
+					<div>
+						<p className="mb-4 md:mb-0">
+							<span className="font-bold">ขนาดกล่อง</span> <br className="md:hidden" />
+							ตามจำนวนผู้มีสิทธิ์เลือกตั้งในเขตนั้น
+						</p>
+						<p>
+							<span className="font-bold">สัดส่วนสี</span> <br className="md:hidden" />
+							ในแต่ละกล่องตามสัดส่วนคะแนนของผู้สมัคร
+						</p>
+					</div>
+				) : (
+					(activeViz === Visualization.GRID_WINNER || activeViz === Visualization.MAP_WINNER) && (
+						<p>
+							<span className="font-bold">สี</span> ของแต่ละเขตแสดงผู้ได้คะแนนสูงสุดในเขตนั้นๆ
+						</p>
+					)
+				)}
+			</CandidateLegend>
+		);
 	}, [preset, activeViz]);
 
 	const openDistrictModal = (district: District) => setActiveDistrict(district);
