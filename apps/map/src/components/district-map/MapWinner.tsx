@@ -198,8 +198,8 @@ const MapWinner: React.FC<MapProps> = ({ onDistrictClick }: MapProps) => {
       viewport.clampZoom({
         minWidth: 300,                 // minimum width
         minHeight: 300,                // minimum height
-        maxWidth: 3500,                 // maximum width
-        maxHeight: 3500,                // maximum height
+        maxWidth: 5000,                 // maximum width
+        maxHeight: 5000,                // maximum height
       })
 
       viewport.fit()
