@@ -260,6 +260,13 @@ const GridRatio: React.FC<MapProps> = ({ onDistrictClick }: MapProps) => {
         .pinch()
         .wheel()
 
+			viewport.clamp({
+				top: 0,
+				bottom: WORLD_HEIGHT,
+				left: 0,
+				right: WORLD_WIDTH
+			});
+
       viewport.clampZoom({
         minWidth: 300,                 // minimum width
         minHeight: 300,                // minimum height
@@ -292,8 +299,6 @@ const GridRatio: React.FC<MapProps> = ({ onDistrictClick }: MapProps) => {
         ...prev,
         show: false
       }))
-      viewport.fit()
-      viewport.moveCenter(WORLD_WIDTH / 2, WORLD_HEIGHT / 2)
     }
   }, [appLoaded, electionDistrictData])
 

@@ -223,6 +223,13 @@ const GridWinner: React.FC<GridWinnerProps> = ({ onDistrictClick }: GridWinnerPr
         .pinch()
         .wheel()
 
+      viewport.clamp({
+        top: 0,
+        bottom: WORLD_HEIGHT,
+        left: 0,
+        right: WORLD_WIDTH
+      });
+
       viewport.clampZoom({
         minWidth: 300,                 // minimum width
         minHeight: 300,                // minimum height
@@ -255,8 +262,6 @@ const GridWinner: React.FC<GridWinnerProps> = ({ onDistrictClick }: GridWinnerPr
         ...prev,
         show: false
       }))
-      viewport.fit()
-      viewport.moveCenter(WORLD_WIDTH / 2, WORLD_HEIGHT / 2)
     }
   }, [appLoaded, electionDistrictData])
 
