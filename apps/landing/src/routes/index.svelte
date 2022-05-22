@@ -8,7 +8,7 @@
 	import { onMount } from 'svelte';
 
 	const THE_STANDARD_GUIDE_TAG = 'bkk-election-101';
-	const HERO_VIDEO_ID = 'dbbJSrBnqkc';
+	const HERO_VIDEO_ID = 'AFDIEkVIJsw';
 
 	const fetchTheStandardElectionGuides = () =>
 		fetchTheStandardElectionPosts({ tag: THE_STANDARD_GUIDE_TAG });
