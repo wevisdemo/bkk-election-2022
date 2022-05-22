@@ -35,9 +35,9 @@ const DistrictModal: FunctionComponent<DistrictModalProps> = ({
 				<div class="flex flex-row border-t border-gray py-3 pb-0 typo-u4">
 					<div className="flex-1 flex flex-row lg:flex-col space-y-1">
 						<div>
-							นับคะแนนโดย
+							จำนวนหน่วยที่อาสาฯ
 							<br className="lg:hidden" />
-							อาสาฯ แล้ว {(votingData.progress || 0).toFixed(1)}%
+							เริ่มนับแล้ว {(votingData.progress || 0).toFixed(1)}%
 						</div>
 						<div className="lg:h-2 lg:w-full lg:w-48 bg-white bg-opacity-30 w-1 h-7 order-first lg:order-none relative mr-2 counting-progress-xs">
 							<div

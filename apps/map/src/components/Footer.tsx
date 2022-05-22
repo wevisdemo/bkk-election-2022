@@ -15,7 +15,7 @@ const Footer: FunctionComponent = () => {
 					<div className="flex-1 flex flex-row font-body typo-footer space-x-4 lg:space-x-8">
 						{preset?.electionData.total.progress !== undefined && (
 							<div className="flex flex-row lg:flex-col space-y-1">
-								<div>นับคะแนนโดย<br className='lg:hidden'/>อาสาฯ แล้ว {preset?.electionData.total.progress.toFixed(1)}%</div>
+								<div>จำนวนหน่วยที่อาสาฯ <br className='lg:hidden' />เริ่มนับแล้ว {preset?.electionData.total.progress.toFixed(1)}%</div>
 								<div className="lg:h-2 lg:w-full lg:w-48 bg-white bg-opacity-30 w-1 h-7 order-first lg:order-none relative mr-2 counting-progress-xs">
 									<div className="absolute bg-white w-full bottom-0 lg:hidden" style={{height: `${preset?.electionData.total.progress}%`}}>
 										{preset.electionData.type === ElectionDataType.Live && (
