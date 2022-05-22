@@ -1,0 +1,16 @@
+{
+	"type": "COMPLETED",
+	"total": {
+		"eligiblePopulation": 806,
+		"totalVotes": 806,
+		"result": [
+			{ "candidateId": "8", "count": 329 },
+			{ "candidateId": "1", "count": 79 },
+			{ "candidateId": "6", "count": 69 },
+			{ "candidateId": "4", "count": 65 },
+			{ "candidateId": "3", "count": 35 },
+			{ "candidateId": "not-decided", "count": 100 }
+		]
+	},
+	"districts": []
+}
