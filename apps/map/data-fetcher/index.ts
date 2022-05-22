@@ -26,9 +26,17 @@ program
   .action(async (fileType, electionType, options) => {
     let type = ElectionDataFetcherType.Governor;
     if (electionType === 'council-member') {
-      type = ElectionDataFetcherType.CouncilMember;
+      if (options.live) {
+        type = ElectionDataFetcherType.LiveCouncilMember;
+      } else {
+        type = ElectionDataFetcherType.CouncilMember;
+      }
     } else if (electionType === 'governor' && options.live) {
-      type = ElectionDataFetcherType.LiveGovernor;
+      if (options.live) {
+        type = ElectionDataFetcherType.LiveGovernor;
+      } else {
+        type = ElectionDataFetcherType.Governor;
+      }
     }
 
     let data: CandidateMap | ElectionData;

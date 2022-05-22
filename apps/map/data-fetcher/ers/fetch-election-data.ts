@@ -3,14 +3,17 @@ import { ElectionDataFetcher, ElectionDataFetcherType } from "../fetcher";
 import { getCandidates, getElection, getElectionAreaById, getElectionAreas } from "./election-data";
 import { Candidate, Election, ElectionArea } from "./election-data/models";
 import { BKK_COUNCIL_MEMBER_ELECTION_ID, BKK_GOVERNOR_ELECTION_ID } from "./election-ids";
-import { getIdForCouncilMember, getIdForGovernor, IdGetter } from "./get-candidate-ids";
+import { getIdForCouncilMember, getIdForGovernor, getIdForRealtimeCouncilMember, IdGetter } from "./get-candidate-ids";
 import { getCandidates as getRealtimeCandidates, getElection as getRealtimeElection, getElectionAreaById as getRealtimeElectionAreaById, getElectionAreas as getRealtimeElectionAreas } from "./realtime";
 import { stripDistrictPrefix } from "./utils";
 
 export const fetchElectionData: ElectionDataFetcher = (type: ElectionDataFetcherType): Promise<ElectionData> => {
   if (type === ElectionDataFetcherType.LiveGovernor) {
     return fetchLiveGovernorElectionData();
-  } else if (type === ElectionDataFetcherType.Governor) {
+  } else if (type === ElectionDataFetcherType.LiveCouncilMember) {
+    return fetchLiveCouncilMemberElectionData();
+  }
+   else if (type === ElectionDataFetcherType.Governor) {
     return fetchGovernorElectionData();
   } else if (type === ElectionDataFetcherType.CouncilMember) {
     return fetchCouncilMemberElectionData();
@@ -49,6 +52,40 @@ async function fetchLiveGovernorElectionData(): Promise<ElectionData> {
         progress: a.progress,
         result: a.candidates.map(c => ({
           candidateId: getIdForGovernor(c),
+          count: c.totalVotes,
+        }))
+      }
+    })),
+  }
+}
+
+async function fetchLiveCouncilMemberElectionData(): Promise<ElectionData> {
+  const election = await getRealtimeElection(BKK_COUNCIL_MEMBER_ELECTION_ID);
+  const areaIds = (await getRealtimeElectionAreas(BKK_COUNCIL_MEMBER_ELECTION_ID)).map(a => a.id);
+  const areas = await Promise.all(
+    areaIds.map(id => getRealtimeElectionAreaById(BKK_COUNCIL_MEMBER_ELECTION_ID, id))
+  );
+
+  return {
+    type: ElectionDataType.Live,
+    total: {
+      eligiblePopulation: election.eligible,
+      totalVotes: election.totalVotes,
+      badVotes: election.badVotes,
+      noVotes: election.noVotes,
+      progress: election.progress,
+      result: [],
+    },
+    districts: areas.map(a => ({
+      name: stripDistrictPrefix(a.name),
+      voting: {
+        eligiblePopulation: a.eligible,
+        totalVotes: a.totalVotes,
+        badVotes: a.badVotes,
+        noVotes: a.noVotes,
+        progress: a.progress,
+        result: a.candidates.map(c => ({
+          candidateId: getIdForRealtimeCouncilMember(c, a),
           count: c.totalVotes,
         }))
       }

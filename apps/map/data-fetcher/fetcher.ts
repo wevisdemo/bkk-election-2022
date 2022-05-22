@@ -6,6 +6,7 @@ export type CandidatesFetcher = (type: ElectionDataFetcherType) => Promise<Candi
 
 export enum ElectionDataFetcherType {
   LiveGovernor,
+  LiveCouncilMember,
   Governor,
   CouncilMember,
 }
