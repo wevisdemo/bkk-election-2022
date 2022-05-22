@@ -21,7 +21,7 @@ const DistrictVisualization: FunctionComponent<DistrictVisualizationProps> = ({
 	const preset = useContext(presetContext);
 	const [activeDistrict, setActiveDistrict] = useState<District | null>(null);
 
-	if (!preset) return <></>;
+	if (!preset || preset.electionData.districts.length === 0) return <></>;
 
 	const candidateLegend = useMemo(() => {
 		return (

@@ -22,10 +22,18 @@
 			"enableCandidateLink": true
 		},
 		{
-			"shortname": "Exit Poll ผู้ว่าฯ กทม. '65",
-			"fullname": "Exit Poll ผู้ว่าฯ กทม. '65",
-			"electionDataUrl": "",
-			"candidateDataUrl": ""
+			"shortname": "NIDA Poll (22 พ.ค. 65)",
+			"fullname": "NIDA Poll คนกรุงเทพฯ เลือกใครเป็นผู้ว่าฯ กทม",
+			"subtitle": "สํารวจระหว่าง วันที่ 18-21 พ.ค. 65 จากประชาชนผู้มีสิทธิเลือกตั้ง 2,500 คน",
+			"electionDataUrl": "/map/data/nidapoll-electiondata.json",
+			"candidateDataUrl": "/map/data/poll-candidates.json"
+		},
+		{
+			"shortname": "โพลสถาบันพระปกเกล้า",
+			"fullname": "ความคิดเห็นของประชาชนก่อนการเลือกตั้ง กทม. โดย สถาบันพระปกเกล้า",
+			"subtitle": "สำรวจระหว่าง วันที่ 17-20 พ.ค. 65 จากประชาชนผู้มีสิทธิเลือกตั้ง 806 คน",
+			"electionDataUrl": "/map/data/ppk-electiondata.json",
+			"candidateDataUrl": "/map/data/poll-candidates.json"
 		},
 		{
 			"shortname": "คะแนน ส.ก. '65 (ไม่เป็นทางการ) - เร็วๆ นี้",
