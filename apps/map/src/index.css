@@ -47,6 +47,10 @@ body {
 	}
 }
 
+.typo-footer {
+	font-size: 14px;
+}
+
 @media screen and (max-width: 410px) {
 	.counting-progress-xs {
 		height: 1.5rem;
@@ -54,10 +58,6 @@ body {
 	.typo-footer {
 		font-size: 12px;
 	}
-}
-
-.typo-footer {
-	font-size: 14px;
 }
 
 @media screen and (max-width: 374px) {
