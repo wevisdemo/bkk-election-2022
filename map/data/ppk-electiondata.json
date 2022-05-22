@@ -1,5 +1,5 @@
 {
-	"type": "COMPLETED",
+	"type": "POLL",
 	"total": {
 		"eligiblePopulation": 806,
 		"totalVotes": 806,
