@@ -23,7 +23,7 @@
 			image: '/static/images/cover/tn_candidate.webp'
 		},
 		{
-			th: 'เตรียมติดตามผลเลือกตั้งผู้ว่าฯ กทม. ได้ที่นี่',
+			th: 'ดูผลการนับคะแนนผู้ว่าฯ กทม. และ ส.ก.',
 			en: 'BKK Election Result',
 			href: '/map',
 			image: '/static/images/cover/tn_result.webp'
@@ -102,24 +102,22 @@
 		>
 			<div class="flex-1 flex flex-col space-y-8">
 				<PartnersLogo />
-				<h1 class="mx-auto hidden">
+				<h1 class="mx-auto">
 					<img
 						src="/static/images/bkkelection-white-big.svg"
 						alt="เลือกตั้งผู้ว่าฯ กทม. 2565 - Bangkok Election 2022"
 					/>
 				</h1>
-				<!-- <p class="typo-b4 text-center">
+				<p class="typo-b4 text-center">
 					ติดตามข้อมูลเกี่ยวกับการเลือกตั้งผู้ว่าฯ <br class="md:hidden" />และสมาชิกสภา กทม.
 					ได้ที่นี่
 				</p>
-				<Counter {checkpoints} /> -->
-				<h2 class="typo-h2 text-center">ติดตามผลการนับคะแนน<br />ผู้ว่าฯ กทม. สด ได้ที่นี่</h2>
+				<!-- <Counter {checkpoints} /> -->
 				<a
 					href="/map"
-					class="typo-h6 flex flex-row live-button mx-auto p-4 items-center space-x-4 shadow-sm hover:brightness-125"
+					class="typo-h6 flex flex-row live-button mx-auto p-4 items-center space-x-1 shadow-sm hover:brightness-125"
 					style="background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 100%), #b90202;"
 				>
-					<div class="bg-white text-[#D02525] px-2 py-1 font-bold typo-u5">LIVE</div>
 					<div class="pr-4">ดูผลการนับคะแนน</div>
 					<svg
 						width="17"
