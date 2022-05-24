@@ -9,7 +9,7 @@ import { Preset, presetContext } from './contexts/preset';
 import { fetchConfig, fetchPreset } from './utils/fetch';
 
 const DEFAULT_PRESET_INDEX = 0;
-const CONFIG_REFRESH_INTERVAL = 60000;
+// const CONFIG_REFRESH_INTERVAL = 60000;
 
 const App: FunctionComponent = () => {
 	const [config, setConfig] = useState<Config | null>(null);
@@ -47,8 +47,8 @@ const App: FunctionComponent = () => {
 			});
 
 		loadConfig();
-		const timer = setInterval(loadConfig, CONFIG_REFRESH_INTERVAL);
-		return () => clearInterval(timer);
+		// const timer = setInterval(loadConfig, CONFIG_REFRESH_INTERVAL);
+		// return () => clearInterval(timer);
 	}, [config, configDefaultPresetIndex]);
 
 	useEffect(() => {
