@@ -6,7 +6,7 @@ import * as PIXI from "pixi.js";
 import React, { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { DEFAULT_CANDIDATE_COLOR } from '../../constants/candidate';
 import { Preset, presetContext } from '../../contexts/preset';
-import { District } from '../../models/election';
+import { District, ElectionDataType } from '../../models/election';
 import DistrictTooltip from '../DistrictTooltip';
 import { BKKMapPolygonData, MapPolygon } from './MapPolygonData';
 import {
@@ -102,7 +102,7 @@ const MapWinner: React.FC<MapProps> = ({ onDistrictClick }: MapProps) => {
       });
 
       const { total } = electionData
-      if (typeof total.progress !== "undefined" && total.progress < 100) {
+      if (electionData.type === ElectionDataType.Live) {
         const tileStripe = new PIXI.TilingSprite(anim?.texture, viewport.worldWidth, viewport.worldHeight)
         tileStripe.x = 0;
         tileStripe.y = 0;
