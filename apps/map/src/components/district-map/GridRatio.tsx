@@ -7,7 +7,7 @@ import { IGLUniformData } from 'pixi.js';
 import React, { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { DEFAULT_CANDIDATE_COLOR } from '../../constants/candidate';
 import { Preset, presetContext } from '../../contexts/preset';
-import { District } from '../../models/election';
+import { District, ElectionDataType } from '../../models/election';
 import DistrictTooltip from '../DistrictTooltip';
 import { CLICK_TIMEOUT, MapProps, DistrictGridRatioData, MAX_DISPLAY_RANK, RectColorWithCandidateRatio, WORLD_HEIGHT, WORLD_WIDTH } from './MapHelper';
 
@@ -147,32 +147,32 @@ const GridRatio: React.FC<MapProps> = ({ onDistrictClick }: MapProps) => {
           hAspect = hAspect < 1 ? 1 / hAspect : hAspect;
           vAspect = vAspect < 1 ? 1 / vAspect : vAspect;
 
-          let shouldDrawHorizontal = hAspect / vAspect > 1.05
+          let shouldDrawVertical = startY > 0.1 && hAspect / vAspect > 1
             
           // const voteRectHeight = rectSizeWithRatio * percentage / 100
-          // graphics.lineStyle(1, 0x000000, 1);
+          graphics.lineStyle(1, 0x000000, 1);
           
           graphics.beginFill(+color.replace("#", "0x"), 1, true);
 
           graphics.drawRect(
             x + startX,
             y + startY,
-            (shouldDrawHorizontal ? maxW * p : maxW),
-            (shouldDrawHorizontal ? maxH : maxH * p)
+            (shouldDrawVertical ? maxW * p : maxW),
+            (shouldDrawVertical ? maxH : maxH * p)
           );
           graphics.endFill();
           // offSetY += voteRectHeight
 
           return [
-            startX + (shouldDrawHorizontal ? maxW * p : 0),
-            startY + (shouldDrawHorizontal ? 0 : maxH * p),
+            startX + (shouldDrawVertical ? maxW * p : 0),
+            startY + (shouldDrawVertical ? 0 : maxH * p),
             remainingRatio - percentage / 100
           ];
         },
           [0, 0, 1] // startX, startY, remaining %
         )
 
-        if (typeof district.voting.progress !== "undefined" && district.voting.progress < 100) {
+        if (preset.electionData.type === ElectionDataType.Live && typeof district.voting.progress !== "undefined" && district.voting.progress < 100) {
           const bound = graphics.getBounds()
           graphics.beginTextureFill({ alpha: 0.2, texture: anim?.texture, matrix: new PIXI.Matrix(bound.width / 30, 0, 0, bound.height / 30, bound.x, bound.y) })
           graphics.drawRect(x, y, rectSizeWithRatio, rectSizeWithRatio);
