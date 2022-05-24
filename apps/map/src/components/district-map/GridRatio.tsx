@@ -3,6 +3,7 @@ import { AnimatedGIFLoader } from '@pixi/gif';
 import { SmoothGraphics as Graphics } from '@pixi/graphics-smooth';
 import { Viewport } from 'pixi-viewport';
 import * as PIXI from "pixi.js";
+import { IGLUniformData } from 'pixi.js';
 import React, { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { DEFAULT_CANDIDATE_COLOR } from '../../constants/candidate';
 import { Preset, presetContext } from '../../contexts/preset';
@@ -116,18 +117,60 @@ const GridRatio: React.FC<MapProps> = ({ onDistrictClick }: MapProps) => {
         });
 
         let offSetY = 0;
-        districtCandidateVoteRatio.forEach(({ percentage, color }, index) => {
+        // districtCandidateVoteRatio.forEach(({ percentage, color }, index) => {
+        //   if (index > MAX_DISPLAY_RANK - 1) return
+        //   const voteRectHeight = rectSizeWithRatio * percentage / 100
+        //   graphics.lineStyle(1, 0x000000, 1);
+        //   graphics.beginFill(+color.replace("#", "0x"), 1, true);
+        //   graphics.drawRect(x,
+        //     y + offSetY,
+        //     rectSizeWithRatio,
+        //     voteRectHeight || 0);
+        //   graphics.endFill();
+        //   offSetY += voteRectHeight
+        // })
+
+        districtCandidateVoteRatio.reduce((remainingSpace: any, { percentage, color }, index) => {
           if (index > MAX_DISPLAY_RANK - 1) return
-          const voteRectHeight = rectSizeWithRatio * percentage / 100
-          graphics.lineStyle(1, 0x000000, 1);
+
+          let startX = remainingSpace[0];
+          let startY = remainingSpace[1];
+          let remainingRatio = remainingSpace[2];
+          let maxW = rectSizeWithRatio - startX;
+          let maxH = rectSizeWithRatio - startY;
+          
+          let p = (percentage || 0) / 100 / remainingRatio
+
+          let hAspect = maxW / (maxH * p);
+          let vAspect = (maxW * p) / maxH;
+
+          hAspect = hAspect < 1 ? 1 / hAspect : hAspect;
+          vAspect = vAspect < 1 ? 1 / vAspect : vAspect;
+
+          let shouldDrawHorizontal = hAspect / vAspect > 1.05
+            
+          // const voteRectHeight = rectSizeWithRatio * percentage / 100
+          // graphics.lineStyle(1, 0x000000, 1);
+          
           graphics.beginFill(+color.replace("#", "0x"), 1, true);
-          graphics.drawRect(x,
-            y + offSetY,
-            rectSizeWithRatio,
-            voteRectHeight || 0);
+
+          graphics.drawRect(
+            x + startX,
+            y + startY,
+            (shouldDrawHorizontal ? maxW * p : maxW),
+            (shouldDrawHorizontal ? maxH : maxH * p)
+          );
           graphics.endFill();
-          offSetY += voteRectHeight
-        })
+          // offSetY += voteRectHeight
+
+          return [
+            startX + (shouldDrawHorizontal ? maxW * p : 0),
+            startY + (shouldDrawHorizontal ? 0 : maxH * p),
+            remainingRatio - percentage / 100
+          ];
+        },
+          [0, 0, 1] // startX, startY, remaining %
+        )
 
         if (typeof district.voting.progress !== "undefined" && district.voting.progress < 100) {
           const bound = graphics.getBounds()
