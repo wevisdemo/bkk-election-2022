@@ -8,6 +8,7 @@ export enum ElectionDataFetcherType {
   LiveGovernor,
   LiveCouncilMember,
   LiveECTGovernor,
+  LiveECTCouncilMember,
   Governor,
   CouncilMember,
 }

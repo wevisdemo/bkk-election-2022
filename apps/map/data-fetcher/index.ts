@@ -20,7 +20,7 @@ program
   .command('generate')
   .description('One-time generate specific file')
   .addArgument(new Argument('<filetype>', 'type of file').choices(['candidates', 'election-data']))
-  .addArgument(new Argument('<electiontype>', 'type of election').choices(['governor', 'council-member']))
+  .addArgument(new Argument('<electiontype>', 'type of election').choices(['governor', 'council-member', 'ect-governor', 'ect-council-member']))
   .option('--live', 'Generate from live APIs', false)
   .option('-o', 'Output path', 'result.json')
   .action(async (fileType, electionType, options) => {
@@ -31,12 +31,16 @@ program
       } else {
         type = ElectionDataFetcherType.CouncilMember;
       }
-    } else if (electionType === 'governor' && options.live) {
+    } else if (electionType === 'governor') {
       if (options.live) {
         type = ElectionDataFetcherType.LiveGovernor;
       } else {
         type = ElectionDataFetcherType.Governor;
       }
+    } else if (electionType === 'ect-governor') {
+      type = ElectionDataFetcherType.LiveECTGovernor;
+    } else if (electionType === 'ect-council-member') {
+      type = ElectionDataFetcherType.LiveECTCouncilMember;
     }
 
     let data: CandidateMap | ElectionData;
@@ -53,7 +57,7 @@ program
       data.lastUpdatedAt = now;
     }
 
-    writeFile(options.o, JSON.stringify(data, null, 2));
+    writeFile(options.o, JSON.stringify(data));
   });
 
 program.parse();

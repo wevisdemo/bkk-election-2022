@@ -1,8 +1,9 @@
 import { District, ElectionData, ElectionDataType, Voting } from "../../src/models/election";
 import { ElectionDataFetcher, ElectionDataFetcherType } from "../fetcher";
 import { getCandidates, getElection, getElectionAreaById, getElectionAreas } from "./election-data";
-import { getCandidates as getECTCandidate, getElection as getECTElection } from "./realtime/final";
+import { getCandidates as getECTCandidate, getElection as getECTElection, getElectionAreaById as getECTElectionAreaById, getElectionAreas as getECTElectionAreas } from "./realtime/final";
 import { Candidate, Election, ElectionArea } from "./election-data/models";
+import { Election as RealtimeElection, Candidate as RealtimeCandidate, ElectionAreaWithCandidates } from './realtime/models';
 import { BKK_COUNCIL_MEMBER_ELECTION_ID, BKK_GOVERNOR_ELECTION_ID } from "./election-ids";
 import { getIdForCouncilMember, getIdForGovernor, getIdForRealtimeCouncilMember, IdGetter } from "./get-candidate-ids";
 import { getCandidates as getRealtimeCandidates, getElection as getRealtimeElection, getElectionAreaById as getRealtimeElectionAreaById, getElectionAreas as getRealtimeElectionAreas } from "./realtime";
@@ -15,6 +16,8 @@ export const fetchElectionData: ElectionDataFetcher = (type: ElectionDataFetcher
     return fetchLiveCouncilMemberElectionData();
   } else if (type === ElectionDataFetcherType.LiveECTGovernor) {
     return fetchLiveECTElectionData();
+  } else if (type === ElectionDataFetcherType.LiveECTCouncilMember) {
+    return fetchLiveECTCouncilMemberElectionData();
   } else if (type === ElectionDataFetcherType.Governor) {
     return fetchGovernorElectionData();
   } else if (type === ElectionDataFetcherType.CouncilMember) {
@@ -31,34 +34,7 @@ async function fetchLiveGovernorElectionData(): Promise<ElectionData> {
     areaIds.map(id => getRealtimeElectionAreaById(BKK_GOVERNOR_ELECTION_ID, id))
   );
 
-  return {
-    type: ElectionDataType.Live,
-    total: {
-      eligiblePopulation: election.eligible,
-      totalVotes: election.totalVotes,
-      badVotes: election.badVotes,
-      noVotes: election.noVotes,
-      progress: election.progress,
-      result: candidates.map(c => ({
-        candidateId: getIdForGovernor(c),
-        count: c.totalVotes,
-      })),
-    },
-    districts: areas.map(a => ({
-      name: stripDistrictPrefix(a.name),
-      voting: {
-        eligiblePopulation: a.eligible,
-        totalVotes: a.totalVotes,
-        badVotes: a.badVotes,
-        noVotes: a.noVotes,
-        progress: a.progress,
-        result: a.candidates.map(c => ({
-          candidateId: getIdForGovernor(c),
-          count: c.totalVotes,
-        }))
-      }
-    })),
-  }
+  return mapLiveElectionData(election, candidates, areas);
 }
 
 async function fetchLiveCouncilMemberElectionData(): Promise<ElectionData> {
@@ -68,58 +44,33 @@ async function fetchLiveCouncilMemberElectionData(): Promise<ElectionData> {
     areaIds.map(id => getRealtimeElectionAreaById(BKK_COUNCIL_MEMBER_ELECTION_ID, id))
   );
 
-  return {
-    type: ElectionDataType.Live,
-    total: {
-      eligiblePopulation: election.eligible,
-      totalVotes: election.totalVotes,
-      badVotes: election.badVotes,
-      noVotes: election.noVotes,
-      progress: election.progress,
-      result: [],
-    },
-    districts: areas.map(a => ({
-      name: stripDistrictPrefix(a.name),
-      voting: {
-        eligiblePopulation: a.eligible,
-        totalVotes: a.totalVotes,
-        badVotes: a.badVotes,
-        noVotes: a.noVotes,
-        progress: a.progress,
-        result: a.candidates.map(c => ({
-          candidateId: getIdForRealtimeCouncilMember(c, a),
-          count: c.totalVotes,
-        }))
-      }
-    })),
-  }
+  return mapLiveCouncilMemberElectionData(election, areas);
 }
 
 async function fetchLiveECTElectionData(): Promise<ElectionData> {
   const election = await getECTElection(BKK_GOVERNOR_ELECTION_ID);
   const candidates = await getECTCandidate(BKK_GOVERNOR_ELECTION_ID);
-  return {
-    type: ElectionDataType.Live,
-    total: {
-      eligiblePopulation: election.eligible,
-      totalVotes: election.totalVotes,
-      badVotes: election.badVotes,
-      noVotes: election.noVotes,
-      progress: election.progress,
-      result: candidates.map(c => {
-        return {
-          candidateId: getIdForGovernor(c),
-          count: c.totalVotes,
-        };
-      }),
-    },
-    districts: [],
-  }
+  const areaIds = (await getECTElectionAreas(BKK_GOVERNOR_ELECTION_ID)).map(a => a.id);
+  const areas = await Promise.all(
+    areaIds.map(id => getECTElectionAreaById(BKK_GOVERNOR_ELECTION_ID, id))
+  );
+
+  return mapLiveElectionData(election, candidates, areas);
+}
+
+async function fetchLiveECTCouncilMemberElectionData(): Promise<ElectionData> {
+  const election = await getECTElection(BKK_COUNCIL_MEMBER_ELECTION_ID);
+  const areaIds = (await getECTElectionAreas(BKK_COUNCIL_MEMBER_ELECTION_ID)).map(a => a.id);
+  const areas = await Promise.all(
+    areaIds.map(id => getECTElectionAreaById(BKK_COUNCIL_MEMBER_ELECTION_ID, id))
+  );
+
+  return mapLiveCouncilMemberElectionData(election, areas);
 }
 
 async function fetchCouncilMemberElectionData(): Promise<ElectionData> {
   const { election, candidates, areas } = await fetchRemoteForElectionData(BKK_COUNCIL_MEMBER_ELECTION_ID);
-  
+
   return {
     type: ElectionDataType.Completed,
     total: mapTotal(election, candidates, getIdForCouncilMember),
@@ -186,4 +137,63 @@ function mapDistrict(
       }))
     },
   };
+}
+
+function mapLiveElectionData(election: RealtimeElection, candidates: RealtimeCandidate[], areas: ElectionAreaWithCandidates[]) {
+  return {
+    type: ElectionDataType.Live,
+    total: {
+      eligiblePopulation: election.eligible,
+      totalVotes: election.totalVotes,
+      badVotes: election.badVotes,
+      noVotes: election.noVotes,
+      progress: election.progress,
+      result: candidates.map(c => ({
+        candidateId: getIdForGovernor(c),
+        count: c.totalVotes,
+      })),
+    },
+    districts: areas.map(a => ({
+      name: stripDistrictPrefix(a.name),
+      voting: {
+        eligiblePopulation: a.eligible,
+        totalVotes: a.totalVotes,
+        badVotes: a.badVotes,
+        noVotes: a.noVotes,
+        progress: a.progress,
+        result: a.candidates.map(c => ({
+          candidateId: getIdForGovernor(c),
+          count: c.totalVotes,
+        }))
+      }
+    })),
+  }
+}
+
+function mapLiveCouncilMemberElectionData(election: RealtimeElection, areas: ElectionAreaWithCandidates[]) {
+  return {
+    type: ElectionDataType.Live,
+    total: {
+      eligiblePopulation: election.eligible,
+      totalVotes: election.totalVotes,
+      badVotes: election.badVotes,
+      noVotes: election.noVotes,
+      progress: election.progress,
+      result: [],
+    },
+    districts: areas.map(a => ({
+      name: stripDistrictPrefix(a.name),
+      voting: {
+        eligiblePopulation: a.eligible,
+        totalVotes: a.totalVotes,
+        badVotes: a.badVotes,
+        noVotes: a.noVotes,
+        progress: a.progress,
+        result: a.candidates.map(c => ({
+          candidateId: getIdForRealtimeCouncilMember(c, a),
+          count: c.totalVotes,
+        }))
+      }
+    })),
+  }
 }
