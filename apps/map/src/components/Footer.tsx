@@ -11,44 +11,62 @@ const Footer: FunctionComponent = () => {
 	return (
 		<div className="bg-black text-white px-4 lg:px-12 fixed bottom-0 left-0 right-0 z-10 lg:relative">
 			<div class="flex flex-row justify-end border-t border-gray py-3 lg:py-6">
-				{preset?.electionData.type === ElectionDataType.Live && (
-					<div className="flex-1 flex flex-row font-body typo-footer space-x-4 lg:space-x-8">
-						{preset?.electionData.total.progress !== undefined && (
+				<div className="flex-1 flex flex-row font-body typo-footer space-x-4 lg:space-x-8">
+					{preset?.electionData.type === ElectionDataType.Live &&
+						preset?.electionData.total.progress !== undefined && (
 							<div className="flex flex-row lg:flex-col space-y-1">
-								<div>จำนวนหน่วย ที่อาสาฯ <br className="lg:hidden" />เริ่มนับแล้ว {preset?.electionData.total.progress.toFixed(1)}%</div>
+								<div>
+									จำนวนหน่วย ที่อาสาฯ <br className="lg:hidden" />
+									เริ่มนับแล้ว {preset?.electionData.total.progress.toFixed(1)}%
+								</div>
 								<div className="lg:h-2 lg:w-56 bg-white bg-opacity-30 w-1 h-7 order-first lg:order-none relative mr-2 counting-progress-xs">
-									<div className="absolute bg-white w-full bottom-0 lg:hidden" style={{height: `${preset?.electionData.total.progress}%`}}>
+									<div
+										className="absolute bg-white w-full bottom-0 lg:hidden"
+										style={{ height: `${preset?.electionData.total.progress}%` }}
+									>
 										{preset.electionData.type === ElectionDataType.Live && (
-											<div className="absolute inset-0 opacity-20" style={{ backgroundImage: `url(/map/images/strip-black.gif)` }}/>
+											<div
+												className="absolute inset-0 opacity-20"
+												style={{ backgroundImage: `url(/map/images/strip-black.gif)` }}
+											/>
 										)}
 									</div>
-									<div className="absolute bg-white h-full left-0 hidden lg:block" style={{ width: `${preset?.electionData.total.progress}%` }}>
+									<div
+										className="absolute bg-white h-full left-0 hidden lg:block"
+										style={{ width: `${preset?.electionData.total.progress}%` }}
+									>
 										{preset.electionData.type === ElectionDataType.Live && (
-											<div className="absolute inset-0 opacity-20" style={{ backgroundImage: `url(/map/images/strip-black.gif)` }} />
+											<div
+												className="absolute inset-0 opacity-20"
+												style={{ backgroundImage: `url(/map/images/strip-black.gif)` }}
+											/>
 										)}
 									</div>
 								</div>
 							</div>
 						)}
-						{preset?.electionData.lastUpdatedAt && (
-							<div>
-								<p>อัปเดตล่าสุด</p>
-								<p>
-									{new Date(preset?.electionData.lastUpdatedAt).toLocaleString('th-TH', {
-										dateStyle: 'short',
-										timeStyle: 'short'
-									})}
-								</p>
-							</div>
-						)}
-						<div className=''>
-							<p>Powered by</p>
+					{preset?.electionData.lastUpdatedAt && (
+						<div>
+							<p>อัปเดตล่าสุด</p>
 							<p>
-								<a href="https://vive.co.th/#" target="_blank" className='underline'>Vive Digital</a>
+								{new Date(preset?.electionData.lastUpdatedAt).toLocaleString('th-TH', {
+									dateStyle: 'short',
+									timeStyle: 'short'
+								})}
 							</p>
 						</div>
-					</div>
-				)}
+					)}
+					{preset?.electionData.type === ElectionDataType.Live && (
+						<div>
+							<p>Powered by</p>
+							<p>
+								<a href="https://vive.co.th/#" target="_blank" className="underline">
+									Vive Digital
+								</a>
+							</p>
+						</div>
+					)}
+				</div>
 
 				<button className="lg:hidden" onClick={() => setIsShareModalOpen(true)}>
 					<svg width="29" height="28" viewBox="0 0 29 28" fill="none">
@@ -91,9 +109,9 @@ const Footer: FunctionComponent = () => {
 					<div className="flex justify-center pb-4">
 						<ui-sharer hide-label />
 					</div>
-					<hr className='my-4'/>
+					<hr className="my-4" />
 					<div className="flex flex-col text-center justify-center py-4">
-						<p className='typo-u4 mb-4'>Created by</p>
+						<p className="typo-u4 mb-4">Created by</p>
 						<div className="flex flex-row items-center space-x-4">
 							{partners.map(({ name, logo, href }) => (
 								<a href={href}>
