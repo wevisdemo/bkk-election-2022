@@ -54,7 +54,7 @@ export default function RatioListTable({ onDistrictClick }: RatioListTableProps)
 		}
 	];
 
-	if (!preset.electionData.total.progress) headers.pop();
+	if (preset.electionData.type !== ElectionDataType.Live) headers.pop();
 
 	const sortDirection = useMemo(() => descending ? -1 : 1, [descending]);
 
@@ -94,11 +94,10 @@ export default function RatioListTable({ onDistrictClick }: RatioListTableProps)
 	};
 
 	return (
-		// <div class='flex flex-col flex-1 overflow-y-hidden gap-4'>
 			<div class="flex flex-col flex-1 relative overflow-y-hidden">
 				<div
 					class={`grid ${
-						preset.electionData.total.progress
+						preset.electionData.type === ElectionDataType.Live
 							? 'grid-cols-3 md:grid-cols-6'
 							: 'grid-cols-2 md:grid-cols-5'
 					} typo-u4 gap-4 gap-y-1 md:gap-8 border-b border-white/40 pb-1`}
@@ -131,7 +130,7 @@ export default function RatioListTable({ onDistrictClick }: RatioListTableProps)
 						<RatioListRowItem
 							district={district}
 							isInProgress={preset.electionData.total.progress !== undefined}
-							isLive={preset.electionData.type == ElectionDataType.Live}
+							isLive={preset.electionData.type === ElectionDataType.Live}
 							onClick={() => onDistrictClick(district)}
 						/>
 					))}

@@ -96,7 +96,7 @@ export default function RatioListRowItem({
 
 	return (
 		<div
-			class={`grid ${isInProgress ? 'grid-cols-3 md:grid-cols-6' : 'grid-cols-2 md:grid-cols-5'
+			class={`grid ${isLive ? 'grid-cols-3 md:grid-cols-6' : 'grid-cols-2 md:grid-cols-5'
 				} typo-u4 gap-x-4 gap-y-1 md:gap-8 hover:bg-white/20 items-center py-1`}
 			onMouseOver={() => setIsTooltipOpen(true)}
 			onMouseLeave={() => setIsTooltipOpen(false)}
@@ -104,7 +104,7 @@ export default function RatioListRowItem({
 			onClick={onClick}
 		>
 			<div class="font-semibold">{district.name}</div>
-			<div class={isInProgress ? 'text-left' : 'text-right md:text-left'}>
+			<div class={isLive ? 'text-left' : 'text-right md:text-left'}>
 				{district.voting.eligiblePopulation.toLocaleString()}&nbsp;(
 				{(
 					district.voting.eligiblePopulation / preset.electionData.total.eligiblePopulation
@@ -113,7 +113,7 @@ export default function RatioListRowItem({
 			</div>
 			<div
 				class={`${
-					isInProgress ? 'col-span-3' : 'col-span-2 md:col-span-3'
+					isLive ? 'col-span-3' : 'col-span-2 md:col-span-3'
 				} relative flex h-full items-center order-last md:order-3`}
 			>
 				<div className="flex grow order-last md:order-3">
