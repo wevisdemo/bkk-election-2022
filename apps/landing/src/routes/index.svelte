@@ -72,7 +72,7 @@
 		{
 			th: '(ไม่ใช่) คน กทม. ขอเลือกด้วย',
 			en: 'We Vote BKK',
-			href: 'https://wevotebkk.wevis.info',
+			href: 'https://weviswevote.webflow.io',
 			external: true,
 			image: '/static/images/cover/tn_wevote.webp'
 		}
