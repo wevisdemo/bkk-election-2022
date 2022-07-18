@@ -31,7 +31,7 @@
       "cache": false
     },
     "build": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["^build", "$BUILD_ENV"],
       "outputs": ["dist/**", "build/**", "out/**"]
     },
     "lint": {
