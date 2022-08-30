@@ -1,0 +1,8528 @@
+[
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-01-13",
+    "value": 3
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-01-13",
+    "value": 413
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-01-13",
+    "value": 5380
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-01-13",
+    "value": 78
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-01-13",
+    "value": 159
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-01-13",
+    "value": 55
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-01-13",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-03-28",
+    "value": 26496
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-03-28",
+    "value": 43643
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-03-28",
+    "value": 10729
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-03-28",
+    "value": 24360
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-03-28",
+    "value": 32175
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-03-28",
+    "value": 103373
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-03-28",
+    "value": 17781
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-03-19",
+    "value": 12986
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-03-19",
+    "value": 7083
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-03-19",
+    "value": 5503
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-03-19",
+    "value": 7004
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-03-19",
+    "value": 2881
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-03-19",
+    "value": 11275
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-03-19",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-01-12",
+    "value": 120
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-01-12",
+    "value": 153
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-01-12",
+    "value": 121
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-01-12",
+    "value": 10166
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-01-12",
+    "value": 2069
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-01-12",
+    "value": 8126
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-01-12",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-11-11",
+    "value": 4254
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-11-11",
+    "value": 9
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-11-11",
+    "value": 8
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-11-11",
+    "value": 148
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-11-11",
+    "value": 136
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-11-11",
+    "value": 160
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-11-11",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-11-07",
+    "value": 20866
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-11-07",
+    "value": 284
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-11-07",
+    "value": 56176
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-11-07",
+    "value": 20401
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-11-07",
+    "value": 25264
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-11-07",
+    "value": 72992
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-11-07",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-04-21",
+    "value": 23873
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-04-21",
+    "value": 113884
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-04-21",
+    "value": 31038
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-04-21",
+    "value": 39252
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-04-21",
+    "value": 50350
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-04-21",
+    "value": 15502
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-04-21",
+    "value": 5780
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-05-20",
+    "value": 190655
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-05-20",
+    "value": 393711
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-05-20",
+    "value": 1179764
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-05-20",
+    "value": 292940
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-05-20",
+    "value": 245587
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-05-20",
+    "value": 358822
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-05-20",
+    "value": 267792
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-04-22",
+    "value": 14615
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-04-22",
+    "value": 100585
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-04-22",
+    "value": 67218
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-04-22",
+    "value": 79084
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-04-22",
+    "value": 113608
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-04-22",
+    "value": 14271
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-04-22",
+    "value": 39394
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-11-04",
+    "value": 1415
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-11-04",
+    "value": 14404
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-11-04",
+    "value": 1387
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-11-04",
+    "value": 4
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-11-04",
+    "value": 6686
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-11-04",
+    "value": 59
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-11-04",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-12-06",
+    "value": 12419
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-12-06",
+    "value": 29081
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-12-06",
+    "value": 3712
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-12-06",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-12-06",
+    "value": 6771
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-12-06",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-12-06",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-11-02",
+    "value": 265
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-11-02",
+    "value": 1455
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-11-02",
+    "value": 47649
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-11-02",
+    "value": 2783
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-11-02",
+    "value": 3502
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-11-02",
+    "value": 12838
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-11-02",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-02-27",
+    "value": 170
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-02-27",
+    "value": 2
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-02-27",
+    "value": 145
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-02-27",
+    "value": 558
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-02-27",
+    "value": 5767
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-02-27",
+    "value": 10793
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-02-27",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-02-24",
+    "value": 2119
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-02-24",
+    "value": 7
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-02-24",
+    "value": 14007
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-02-24",
+    "value": 12525
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-02-24",
+    "value": 10561
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-02-24",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-02-24",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-04-18",
+    "value": 45260
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-04-18",
+    "value": 29309
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-04-18",
+    "value": 5096
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-04-18",
+    "value": 13008
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-04-18",
+    "value": 36553
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-04-18",
+    "value": 52632
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-04-18",
+    "value": 63602
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-03-17",
+    "value": 4743
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-03-17",
+    "value": 285
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-03-17",
+    "value": 2150
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-03-17",
+    "value": 17988
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-03-17",
+    "value": 16631
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-03-17",
+    "value": 670
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-03-17",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-04-29",
+    "value": 21470
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-04-29",
+    "value": 6523
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-04-29",
+    "value": 38908
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-04-29",
+    "value": 53830
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-04-29",
+    "value": 130580
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-04-29",
+    "value": 51830
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-04-29",
+    "value": 24424
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-03-06",
+    "value": 19905
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-03-06",
+    "value": 18544
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-03-06",
+    "value": 14863
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-03-06",
+    "value": 21088
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-03-06",
+    "value": 13975
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-03-06",
+    "value": 16548
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-03-06",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-03-25",
+    "value": 37871
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-03-25",
+    "value": 27795
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-03-25",
+    "value": 25228
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-03-25",
+    "value": 62421
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-03-25",
+    "value": 41403
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-03-25",
+    "value": 3674
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-03-25",
+    "value": 2704
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-05-04",
+    "value": 10760
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-05-04",
+    "value": 35943
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-05-04",
+    "value": 30055
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-05-04",
+    "value": 5304
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-05-04",
+    "value": 69822
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-05-04",
+    "value": 89067
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-05-04",
+    "value": 14793
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-05-14",
+    "value": 51591
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-05-14",
+    "value": 67930
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-05-14",
+    "value": 6672
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-05-14",
+    "value": 260766
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-05-14",
+    "value": 141427
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-05-14",
+    "value": 12544
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-05-14",
+    "value": 61239
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-12-25",
+    "value": 12859
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-12-25",
+    "value": 2825
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-12-25",
+    "value": 10222
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-12-25",
+    "value": 1853
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-12-25",
+    "value": 47
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-12-25",
+    "value": 6628
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-12-25",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-01-23",
+    "value": 10681
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-01-23",
+    "value": 338719
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-01-23",
+    "value": 7050
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-01-23",
+    "value": 18
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-01-23",
+    "value": 91068
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-01-23",
+    "value": 43525
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-01-23",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-04-28",
+    "value": 168114
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-04-28",
+    "value": 292884
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-04-28",
+    "value": 450226
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-04-28",
+    "value": 11151
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-04-28",
+    "value": 298609
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-04-28",
+    "value": 37768
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-04-28",
+    "value": 5974
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-02-28",
+    "value": 11466
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-02-28",
+    "value": 43710
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-02-28",
+    "value": 2964
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-02-28",
+    "value": 6
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-02-28",
+    "value": 702
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-02-28",
+    "value": 926
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-02-28",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-04-08",
+    "value": 36985
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-04-08",
+    "value": 21147
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-04-08",
+    "value": 6432
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-04-08",
+    "value": 16118
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-04-08",
+    "value": 24331
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-04-08",
+    "value": 56877
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-04-08",
+    "value": 282718
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-04-07",
+    "value": 33085
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-04-07",
+    "value": 53339
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-04-07",
+    "value": 26820
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-04-07",
+    "value": 199945
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-04-07",
+    "value": 49666
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-04-07",
+    "value": 10011
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-04-07",
+    "value": 8447
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-01-29",
+    "value": 59
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-01-29",
+    "value": 284
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-01-29",
+    "value": 757
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-01-29",
+    "value": 2835
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-01-29",
+    "value": 9045
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-01-29",
+    "value": 4151
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-01-29",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-11-30",
+    "value": 89
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-11-30",
+    "value": 9
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-11-30",
+    "value": 340
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-11-30",
+    "value": 167
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-11-30",
+    "value": 67
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-11-30",
+    "value": 4055
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-11-30",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-03-23",
+    "value": 18086
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-03-23",
+    "value": 45316
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-03-23",
+    "value": 25684
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-03-23",
+    "value": 36803
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-03-23",
+    "value": 16364
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-03-23",
+    "value": 5174
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-03-23",
+    "value": 48345
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-11-28",
+    "value": 1053
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-11-28",
+    "value": 571
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-11-28",
+    "value": 89
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-11-28",
+    "value": 1031
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-11-28",
+    "value": 5
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-11-28",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-11-28",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-11-23",
+    "value": 10933
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-11-23",
+    "value": 4
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-11-23",
+    "value": 89
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-11-23",
+    "value": 1094
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-11-23",
+    "value": 762
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-11-23",
+    "value": 45
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-11-23",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-11-12",
+    "value": 514
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-11-12",
+    "value": 459
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-11-12",
+    "value": 10
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-11-12",
+    "value": 24467
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-11-12",
+    "value": 28
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-11-12",
+    "value": 175
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-11-12",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-04-19",
+    "value": 19028
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-04-19",
+    "value": 43087
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-04-19",
+    "value": 22627
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-04-19",
+    "value": 11255
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-04-19",
+    "value": 3949
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-04-19",
+    "value": 32653
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-04-19",
+    "value": 10058
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-04-04",
+    "value": 184655
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-04-04",
+    "value": 19714
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-04-04",
+    "value": 34147
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-04-04",
+    "value": 40359
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-04-04",
+    "value": 72539
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-04-04",
+    "value": 56331
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-04-04",
+    "value": 24422
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-05-01",
+    "value": 24234
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-05-01",
+    "value": 33175
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-05-01",
+    "value": 53493
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-05-01",
+    "value": 38016
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-05-01",
+    "value": 26132
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-05-01",
+    "value": 36888
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-05-01",
+    "value": 15989
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-02-05",
+    "value": 21103
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-02-05",
+    "value": 31962
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-02-05",
+    "value": 28231
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-02-05",
+    "value": 983
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-02-05",
+    "value": 488
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-02-05",
+    "value": 41
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-02-05",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-05-13",
+    "value": 154186
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-05-13",
+    "value": 291803
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-05-13",
+    "value": 73633
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-05-13",
+    "value": 234555
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-05-13",
+    "value": 99844
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-05-13",
+    "value": 53417
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-05-13",
+    "value": 51486
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-11-06",
+    "value": 385
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-11-06",
+    "value": 2064
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-11-06",
+    "value": 5241
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-11-06",
+    "value": 92
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-11-06",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-11-06",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-11-06",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-03-22",
+    "value": 15852
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-03-22",
+    "value": 9660
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-03-22",
+    "value": 17891
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-03-22",
+    "value": 37899
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-03-22",
+    "value": 5131
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-03-22",
+    "value": 27367
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-03-22",
+    "value": 17986
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-04-30",
+    "value": 18312
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-04-30",
+    "value": 7399
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-04-30",
+    "value": 75049
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-04-30",
+    "value": 35833
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-04-30",
+    "value": 41656
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-04-30",
+    "value": 28104
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-04-30",
+    "value": 6568
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-02-14",
+    "value": 16304
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-02-14",
+    "value": 5
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-02-14",
+    "value": 5908
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-02-14",
+    "value": 3980
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-02-14",
+    "value": 11536
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-02-14",
+    "value": 10627
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-02-14",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-01-24",
+    "value": 14981
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-01-24",
+    "value": 35927
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-01-24",
+    "value": 33573
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-01-24",
+    "value": 121643
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-01-24",
+    "value": 173
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-01-24",
+    "value": 4
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-01-24",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-03-11",
+    "value": 8177
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-03-11",
+    "value": 2412
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-03-11",
+    "value": 5048
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-03-11",
+    "value": 3765
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-03-11",
+    "value": 32838
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-03-11",
+    "value": 16903
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-03-11",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-12-13",
+    "value": 321381
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-12-13",
+    "value": 14026
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-12-13",
+    "value": 140769
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-12-13",
+    "value": 17025
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-12-13",
+    "value": 92903
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-12-13",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-12-13",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-02-12",
+    "value": 4261
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-02-12",
+    "value": 2799
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-02-12",
+    "value": 1196
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-02-12",
+    "value": 47414
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-02-12",
+    "value": 2398
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-02-12",
+    "value": 12863
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-02-12",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-03-31",
+    "value": 238966
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-03-31",
+    "value": 172543
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-03-31",
+    "value": 189892
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-03-31",
+    "value": 328305
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-03-31",
+    "value": 907929
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-03-31",
+    "value": 317525
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-03-31",
+    "value": 422983
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-02-15",
+    "value": 4186
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-02-15",
+    "value": 4078
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-02-15",
+    "value": 834
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-02-15",
+    "value": 832
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-02-15",
+    "value": 7550
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-02-15",
+    "value": 5391
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-02-15",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-12-20",
+    "value": 3008
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-12-20",
+    "value": 12559
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-12-20",
+    "value": 223268
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-12-20",
+    "value": 7282
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-12-20",
+    "value": 21659
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-12-20",
+    "value": 91099
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-12-20",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-11-08",
+    "value": 3240
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-11-08",
+    "value": 190240
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-11-08",
+    "value": 23658
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-11-08",
+    "value": 1120
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-11-08",
+    "value": 12983
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-11-08",
+    "value": 1011
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-11-08",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-02-19",
+    "value": 706
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-02-19",
+    "value": 4251
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-02-19",
+    "value": 1328
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-02-19",
+    "value": 7441
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-02-19",
+    "value": 9378
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-02-19",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-02-19",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-11-29",
+    "value": 6671
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-11-29",
+    "value": 421
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-11-29",
+    "value": 13286
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-11-29",
+    "value": 1449
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-11-29",
+    "value": 6
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-11-29",
+    "value": 204
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-11-29",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-04-23",
+    "value": 73479
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-04-23",
+    "value": 23084
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-04-23",
+    "value": 46416
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-04-23",
+    "value": 82222
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-04-23",
+    "value": 34454
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-04-23",
+    "value": 29227
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-04-23",
+    "value": 18663
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-04-27",
+    "value": 13541
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-04-27",
+    "value": 66832
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-04-27",
+    "value": 53969
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-04-27",
+    "value": 39073
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-04-27",
+    "value": 4311
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-04-27",
+    "value": 19887
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-04-27",
+    "value": 32405
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-02-09",
+    "value": 13283
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-02-09",
+    "value": 2360
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-02-09",
+    "value": 16316
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-02-09",
+    "value": 327
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-02-09",
+    "value": 574
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-02-09",
+    "value": 26241
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-02-09",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-01-17",
+    "value": 7939
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-01-17",
+    "value": 5048
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-01-17",
+    "value": 11255
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-01-17",
+    "value": 1555
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-01-17",
+    "value": 2409
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-01-17",
+    "value": 1305
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-01-17",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-04-15",
+    "value": 46043
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-04-15",
+    "value": 20770
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-04-15",
+    "value": 40179
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-04-15",
+    "value": 19137
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-04-15",
+    "value": 16360
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-04-15",
+    "value": 18664
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-04-15",
+    "value": 11157
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-05-17",
+    "value": 109332
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-05-17",
+    "value": 152363
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-05-17",
+    "value": 51101
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-05-17",
+    "value": 63947
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-05-17",
+    "value": 153418
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-05-17",
+    "value": 35486
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-05-17",
+    "value": 9193
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-01-20",
+    "value": 3898
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-01-20",
+    "value": 14
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-01-20",
+    "value": 471
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-01-20",
+    "value": 11877
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-01-20",
+    "value": 60
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-01-20",
+    "value": 118
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-01-20",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-02-18",
+    "value": 2195
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-02-18",
+    "value": 3121
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-02-18",
+    "value": 3307
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-02-18",
+    "value": 3725
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-02-18",
+    "value": 5047
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-02-18",
+    "value": 4
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-02-18",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-12-21",
+    "value": 10579
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-12-21",
+    "value": 2134
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-12-21",
+    "value": 19348
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-12-21",
+    "value": 37473
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-12-21",
+    "value": 162
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-12-21",
+    "value": 75
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-12-21",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-04-11",
+    "value": 25985
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-04-11",
+    "value": 10141
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-04-11",
+    "value": 25289
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-04-11",
+    "value": 22264
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-04-11",
+    "value": 97997
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-04-11",
+    "value": 122025
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-04-11",
+    "value": 66147
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-05-09",
+    "value": 65681
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-05-09",
+    "value": 33530
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-05-09",
+    "value": 20031
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-05-09",
+    "value": 11188
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-05-09",
+    "value": 20401
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-05-09",
+    "value": 22254
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-05-09",
+    "value": 7162
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-05-18",
+    "value": 26680
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-05-18",
+    "value": 95500
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-05-18",
+    "value": 115211
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-05-18",
+    "value": 222068
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-05-18",
+    "value": 359497
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-05-18",
+    "value": 380922
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-05-18",
+    "value": 60214
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-12-08",
+    "value": 1881
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-12-08",
+    "value": 4048
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-12-08",
+    "value": 5090
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-12-08",
+    "value": 132
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-12-08",
+    "value": 14
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-12-08",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-12-08",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-02-06",
+    "value": 30543
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-02-06",
+    "value": 21203
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-02-06",
+    "value": 67340
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-02-06",
+    "value": 35856
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-02-06",
+    "value": 20893
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-02-06",
+    "value": 60379
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-02-06",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-01-11",
+    "value": 1379
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-01-11",
+    "value": 4572
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-01-11",
+    "value": 47
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-01-11",
+    "value": 628
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-01-11",
+    "value": 208
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-01-11",
+    "value": 752
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-01-11",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-12-22",
+    "value": 20131
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-12-22",
+    "value": 34192
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-12-22",
+    "value": 7526
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-12-22",
+    "value": 1041
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-12-22",
+    "value": 3285
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-12-22",
+    "value": 2048
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-12-22",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-03-30",
+    "value": 61842
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-03-30",
+    "value": 57371
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-03-30",
+    "value": 13625
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-03-30",
+    "value": 5882
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-03-30",
+    "value": 11834
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-03-30",
+    "value": 38322
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-03-30",
+    "value": 8286
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-02-07",
+    "value": 34789
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-02-07",
+    "value": 10922
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-02-07",
+    "value": 9144
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-02-07",
+    "value": 14848
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-02-07",
+    "value": 20153
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-02-07",
+    "value": 536
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-02-07",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-12-18",
+    "value": 22442
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-12-18",
+    "value": 5233
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-12-18",
+    "value": 29795
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-12-18",
+    "value": 55
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-12-18",
+    "value": 2338
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-12-18",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-12-18",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-12-16",
+    "value": 79398
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-12-16",
+    "value": 33934
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-12-16",
+    "value": 103776
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-12-16",
+    "value": 31270
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-12-16",
+    "value": 346
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-12-16",
+    "value": 542
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-12-16",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-02-01",
+    "value": 15681
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-02-01",
+    "value": 2976
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-02-01",
+    "value": 931
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-02-01",
+    "value": 2154
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-02-01",
+    "value": 367
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-02-01",
+    "value": 7975
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-02-01",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-11-09",
+    "value": 4640
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-11-09",
+    "value": 502
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-11-09",
+    "value": 39482
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-11-09",
+    "value": 5509
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-11-09",
+    "value": 993
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-11-09",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-11-09",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-04-17",
+    "value": 59588
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-04-17",
+    "value": 21983
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-04-17",
+    "value": 29193
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-04-17",
+    "value": 29051
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-04-17",
+    "value": 16399
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-04-17",
+    "value": 38267
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-04-17",
+    "value": 32445
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-12-31",
+    "value": 1018
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-12-31",
+    "value": 125
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-12-31",
+    "value": 5816
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-12-31",
+    "value": 19614
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-12-31",
+    "value": 2227
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-12-31",
+    "value": 84
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-12-31",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-02-13",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-02-13",
+    "value": 14600
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-02-13",
+    "value": 1113
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-02-13",
+    "value": 6560
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-02-13",
+    "value": 7488
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-02-13",
+    "value": 35
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-02-13",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-11-22",
+    "value": 1
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-11-22",
+    "value": 6004
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-11-22",
+    "value": 232
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-11-22",
+    "value": 14031
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-11-22",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-11-22",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-11-22",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-03-12",
+    "value": 1513
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-03-12",
+    "value": 14922
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-03-12",
+    "value": 125
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-03-12",
+    "value": 38153
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-03-12",
+    "value": 6847
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-03-12",
+    "value": 1088
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-03-12",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-03-16",
+    "value": 5447
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-03-16",
+    "value": 4681
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-03-16",
+    "value": 12288
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-03-16",
+    "value": 23802
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-03-16",
+    "value": 4506
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-03-16",
+    "value": 1003
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-03-16",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-11-19",
+    "value": 135
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-11-19",
+    "value": 29077
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-11-19",
+    "value": 32
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-11-19",
+    "value": 382
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-11-19",
+    "value": 3
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-11-19",
+    "value": 290
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-11-19",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-01-26",
+    "value": 26
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-01-26",
+    "value": 18038
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-01-26",
+    "value": 8983
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-01-26",
+    "value": 56
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-01-26",
+    "value": 9136
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-01-26",
+    "value": 12315
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-01-26",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-04-26",
+    "value": 27163
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-04-26",
+    "value": 64519
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-04-26",
+    "value": 21047
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-04-26",
+    "value": 30032
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-04-26",
+    "value": 9048
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-04-26",
+    "value": 14377
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-04-26",
+    "value": 41514
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-12-19",
+    "value": 333720
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-12-19",
+    "value": 4
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-12-19",
+    "value": 34478
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-12-19",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-12-19",
+    "value": 65651
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-12-19",
+    "value": 123287
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-12-19",
+    "value": 4
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-03-29",
+    "value": 11301
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-03-29",
+    "value": 3558
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-03-29",
+    "value": 8292
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-03-29",
+    "value": 8268
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-03-29",
+    "value": 1056
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-03-29",
+    "value": 111976
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-03-29",
+    "value": 11288
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-03-15",
+    "value": 20107
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-03-15",
+    "value": 19994
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-03-15",
+    "value": 6773
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-03-15",
+    "value": 2220
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-03-15",
+    "value": 18768
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-03-15",
+    "value": 2536
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-03-15",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-04-20",
+    "value": 57469
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-04-20",
+    "value": 99918
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-04-20",
+    "value": 96258
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-04-20",
+    "value": 14206
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-04-20",
+    "value": 78620
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-04-20",
+    "value": 30773
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-04-20",
+    "value": 14047
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-05-11",
+    "value": 21089
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-05-11",
+    "value": 31409
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-05-11",
+    "value": 55215
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-05-11",
+    "value": 26520
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-05-11",
+    "value": 48535
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-05-11",
+    "value": 44940
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-05-11",
+    "value": 83185
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-03-20",
+    "value": 19748
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-03-20",
+    "value": 5247
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-03-20",
+    "value": 8220
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-03-20",
+    "value": 4631
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-03-20",
+    "value": 2826
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-03-20",
+    "value": 246
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-03-20",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-02-04",
+    "value": 109668
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-02-04",
+    "value": 9809
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-02-04",
+    "value": 21913
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-02-04",
+    "value": 3355
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-02-04",
+    "value": 6873
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-02-04",
+    "value": 268
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-02-04",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-11-14",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-11-14",
+    "value": 300
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-11-14",
+    "value": 5232
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-11-14",
+    "value": 219
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-11-14",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-11-14",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-11-14",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-12-27",
+    "value": 128
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-12-27",
+    "value": 8565
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-12-27",
+    "value": 9885
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-12-27",
+    "value": 3242
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-12-27",
+    "value": 957
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-12-27",
+    "value": 1
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-12-27",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-12-26",
+    "value": 8754
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-12-26",
+    "value": 10505
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-12-26",
+    "value": 30538
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-12-26",
+    "value": 3376
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-12-26",
+    "value": 6135
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-12-26",
+    "value": 5946
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-12-26",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-05-16",
+    "value": 67003
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-05-16",
+    "value": 57979
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-05-16",
+    "value": 210745
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-05-16",
+    "value": 155381
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-05-16",
+    "value": 16684
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-05-16",
+    "value": 258341
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-05-16",
+    "value": 71927
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-11-13",
+    "value": 397
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-11-13",
+    "value": 567
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-11-13",
+    "value": 355
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-11-13",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-11-13",
+    "value": 2
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-11-13",
+    "value": 2
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-11-13",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-05-02",
+    "value": 5067
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-05-02",
+    "value": 21480
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-05-02",
+    "value": 6256
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-05-02",
+    "value": 53649
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-05-02",
+    "value": 37729
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-05-02",
+    "value": 24676
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-05-02",
+    "value": 29336
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-05-21",
+    "value": 93791
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-05-21",
+    "value": 88243
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-05-21",
+    "value": 107683
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-05-21",
+    "value": 121228
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-05-21",
+    "value": 86462
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-05-21",
+    "value": 237553
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-05-21",
+    "value": 1078972
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-04-03",
+    "value": 67288
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-04-03",
+    "value": 27850
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-04-03",
+    "value": 42566
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-04-03",
+    "value": 35192
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-04-03",
+    "value": 14133
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-04-03",
+    "value": 405480
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-04-03",
+    "value": 26949
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-04-14",
+    "value": 17341
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-04-14",
+    "value": 4537
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-04-14",
+    "value": 61464
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-04-14",
+    "value": 33881
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-04-14",
+    "value": 17623
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-04-14",
+    "value": 6008
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-04-14",
+    "value": 10618
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-04-25",
+    "value": 25411
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-04-25",
+    "value": 16067
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-04-25",
+    "value": 30395
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-04-25",
+    "value": 65119
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-04-25",
+    "value": 8848
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-04-25",
+    "value": 11360
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-04-25",
+    "value": 24504
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-01-16",
+    "value": 707
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-01-16",
+    "value": 1316
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-01-16",
+    "value": 3533
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-01-16",
+    "value": 284
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-01-16",
+    "value": 50604
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-01-16",
+    "value": 6
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-01-16",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-11-20",
+    "value": 33036
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-11-20",
+    "value": 3
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-11-20",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-11-20",
+    "value": 209
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-11-20",
+    "value": 176
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-11-20",
+    "value": 18346
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-11-20",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-03-07",
+    "value": 54024
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-03-07",
+    "value": 20781
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-03-07",
+    "value": 4056
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-03-07",
+    "value": 2354
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-03-07",
+    "value": 2800
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-03-07",
+    "value": 27536
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-03-07",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-03-05",
+    "value": 381
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-03-05",
+    "value": 7898
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-03-05",
+    "value": 5181
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-03-05",
+    "value": 5
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-03-05",
+    "value": 1365
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-03-05",
+    "value": 2
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-03-05",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-05-15",
+    "value": 371487
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-05-15",
+    "value": 402639
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-05-15",
+    "value": 382018
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-05-15",
+    "value": 95071
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-05-15",
+    "value": 95203
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-05-15",
+    "value": 90690
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-05-15",
+    "value": 23482
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-02-22",
+    "value": 2
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-02-22",
+    "value": 16308
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-02-22",
+    "value": 72
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-02-22",
+    "value": 10740
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-02-22",
+    "value": 1385
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-02-22",
+    "value": 1980
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-02-22",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-12-17",
+    "value": 49329
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-12-17",
+    "value": 1545
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-12-17",
+    "value": 95
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-12-17",
+    "value": 6047
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-12-17",
+    "value": 20963
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-12-17",
+    "value": 61293
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-12-17",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-04-24",
+    "value": 14920
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-04-24",
+    "value": 7662
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-04-24",
+    "value": 12496
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-04-24",
+    "value": 17656
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-04-24",
+    "value": 37316
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-04-24",
+    "value": 33828
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-04-24",
+    "value": 22641
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-02-26",
+    "value": 14726
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-02-26",
+    "value": 15640
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-02-26",
+    "value": 12965
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-02-26",
+    "value": 81
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-02-26",
+    "value": 2847
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-02-26",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-02-26",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-11-10",
+    "value": 776
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-11-10",
+    "value": 8488
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-11-10",
+    "value": 512
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-11-10",
+    "value": 881
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-11-10",
+    "value": 6037
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-11-10",
+    "value": 2273
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-11-10",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-12-11",
+    "value": 1809
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-12-11",
+    "value": 53706
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-12-11",
+    "value": 445
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-12-11",
+    "value": 65181
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-12-11",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-12-11",
+    "value": 1247
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-12-11",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-11-17",
+    "value": 4318
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-11-17",
+    "value": 1942
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-11-17",
+    "value": 250
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-11-17",
+    "value": 7184
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-11-17",
+    "value": 1818
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-11-17",
+    "value": 4553
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-11-17",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-01-19",
+    "value": 2343
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-01-19",
+    "value": 9671
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-01-19",
+    "value": 1519
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-01-19",
+    "value": 14311
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-01-19",
+    "value": 85
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-01-19",
+    "value": 354
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-01-19",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-04-13",
+    "value": 10193
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-04-13",
+    "value": 10551
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-04-13",
+    "value": 12121
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-04-13",
+    "value": 14230
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-04-13",
+    "value": 51144
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-04-13",
+    "value": 61197
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-04-13",
+    "value": 4856
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-03-21",
+    "value": 231
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-03-21",
+    "value": 11666
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-03-21",
+    "value": 9056
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-03-21",
+    "value": 26107
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-03-21",
+    "value": 64189
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-03-21",
+    "value": 3294
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-03-21",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-03-08",
+    "value": 13206
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-03-08",
+    "value": 7846
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-03-08",
+    "value": 10387
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-03-08",
+    "value": 2483
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-03-08",
+    "value": 6183
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-03-08",
+    "value": 3612
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-03-08",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-04-05",
+    "value": 11478
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-04-05",
+    "value": 59481
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-04-05",
+    "value": 197457
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-04-05",
+    "value": 56713
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-04-05",
+    "value": 16380
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-04-05",
+    "value": 60968
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-04-05",
+    "value": 72370
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-01-27",
+    "value": 1890
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-01-27",
+    "value": 4768
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-01-27",
+    "value": 3063
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-01-27",
+    "value": 2804
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-01-27",
+    "value": 106
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-01-27",
+    "value": 42
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-01-27",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-11-05",
+    "value": 305
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-11-05",
+    "value": 505
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-11-05",
+    "value": 376
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-11-05",
+    "value": 94
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-11-05",
+    "value": 1834
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-11-05",
+    "value": 213
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-11-05",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-02-16",
+    "value": 182
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-02-16",
+    "value": 9590
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-02-16",
+    "value": 5195
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-02-16",
+    "value": 8379
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-02-16",
+    "value": 9279
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-02-16",
+    "value": 234
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-02-16",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-03-13",
+    "value": 29093
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-03-13",
+    "value": 927
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-03-13",
+    "value": 225
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-03-13",
+    "value": 6000
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-03-13",
+    "value": 6990
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-03-13",
+    "value": 6433
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-03-13",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-05-22",
+    "value": 9496996
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-05-22",
+    "value": 845399
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-05-22",
+    "value": 495243
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-05-22",
+    "value": 1289450
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-05-22",
+    "value": 1211760
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-05-22",
+    "value": 263641
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-05-22",
+    "value": 1925352
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-04-09",
+    "value": 152454
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-04-09",
+    "value": 100201
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-04-09",
+    "value": 67377
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-04-09",
+    "value": 40921
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-04-09",
+    "value": 40096
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-04-09",
+    "value": 28004
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-04-09",
+    "value": 19241
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-03-18",
+    "value": 5135
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-03-18",
+    "value": 4697
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-03-18",
+    "value": 3492
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-03-18",
+    "value": 7926
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-03-18",
+    "value": 9525
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-03-18",
+    "value": 2154
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-03-18",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-01-09",
+    "value": 7393
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-01-09",
+    "value": 4660
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-01-09",
+    "value": 11457
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-01-09",
+    "value": 148
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-01-09",
+    "value": 2750
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-01-09",
+    "value": 2870
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-01-09",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-01-18",
+    "value": 9232
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-01-18",
+    "value": 9331
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-01-18",
+    "value": 3927
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-01-18",
+    "value": 1286
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-01-18",
+    "value": 124
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-01-18",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-01-18",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-01-04",
+    "value": 3043
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-01-04",
+    "value": 4641
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-01-04",
+    "value": 2525
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-01-04",
+    "value": 13991
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-01-04",
+    "value": 1048
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-01-04",
+    "value": 2890
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-01-04",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-01-06",
+    "value": 1701
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-01-06",
+    "value": 235
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-01-06",
+    "value": 12906
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-01-06",
+    "value": 5492
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-01-06",
+    "value": 1160
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-01-06",
+    "value": 26
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-01-06",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-05-10",
+    "value": 49939
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-05-10",
+    "value": 25725
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-05-10",
+    "value": 6685
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-05-10",
+    "value": 13850
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-05-10",
+    "value": 63530
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-05-10",
+    "value": 43272
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-05-10",
+    "value": 135584
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-05-06",
+    "value": 19256
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-05-06",
+    "value": 1827
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-05-06",
+    "value": 36190
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-05-06",
+    "value": 49304
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-05-06",
+    "value": 35240
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-05-06",
+    "value": 12520
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-05-06",
+    "value": 69493
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-11-18",
+    "value": 17873
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-11-18",
+    "value": 1056
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-11-18",
+    "value": 15
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-11-18",
+    "value": 140
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-11-18",
+    "value": 78
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-11-18",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-11-18",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-01-21",
+    "value": 6035
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-01-21",
+    "value": 2249
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-01-21",
+    "value": 39
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-01-21",
+    "value": 36792
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-01-21",
+    "value": 340
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-01-21",
+    "value": 33
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-01-21",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-02-02",
+    "value": 44451
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-02-02",
+    "value": 7066
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-02-02",
+    "value": 74416
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-02-02",
+    "value": 296
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-02-02",
+    "value": 6236
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-02-02",
+    "value": 86
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-02-02",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-02-23",
+    "value": 1927
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-02-23",
+    "value": 14198
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-02-23",
+    "value": 22104
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-02-23",
+    "value": 394
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-02-23",
+    "value": 6759
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-02-23",
+    "value": 4578
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-02-23",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-02-08",
+    "value": 1175
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-02-08",
+    "value": 9384
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-02-08",
+    "value": 399
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-02-08",
+    "value": 15249
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-02-08",
+    "value": 12946
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-02-08",
+    "value": 15144
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-02-08",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-12-15",
+    "value": 46039
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-12-15",
+    "value": 385430
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-12-15",
+    "value": 473207
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-12-15",
+    "value": 1229
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-12-15",
+    "value": 76456
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-12-15",
+    "value": 94
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-12-15",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-12-30",
+    "value": 1208
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-12-30",
+    "value": 7629
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-12-30",
+    "value": 9057
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-12-30",
+    "value": 29994
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-12-30",
+    "value": 185
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-12-30",
+    "value": 350
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-12-30",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-12-29",
+    "value": 1810
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-12-29",
+    "value": 15760
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-12-29",
+    "value": 4945
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-12-29",
+    "value": 1911
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-12-29",
+    "value": 1491
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-12-29",
+    "value": 4670
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-12-29",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-03-03",
+    "value": 10544
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-03-03",
+    "value": 14148
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-03-03",
+    "value": 13537
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-03-03",
+    "value": 1
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-03-03",
+    "value": 9000
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-03-03",
+    "value": 3846
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-03-03",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-11-25",
+    "value": 8
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-11-25",
+    "value": 13038
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-11-25",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-11-25",
+    "value": 15
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-11-25",
+    "value": 28
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-11-25",
+    "value": 23
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-11-25",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-04-01",
+    "value": 37795
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-04-01",
+    "value": 56078
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-04-01",
+    "value": 179687
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-04-01",
+    "value": 88347
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-04-01",
+    "value": 26266
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-04-01",
+    "value": 59519
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-04-01",
+    "value": 67422
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-04-02",
+    "value": 53930
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-04-02",
+    "value": 151030
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-04-02",
+    "value": 85965
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-04-02",
+    "value": 21814
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-04-02",
+    "value": 47924
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-04-02",
+    "value": 39419
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-04-02",
+    "value": 47922
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-01-08",
+    "value": 3366
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-01-08",
+    "value": 4400
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-01-08",
+    "value": 29762
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-01-08",
+    "value": 12645
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-01-08",
+    "value": 41
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-01-08",
+    "value": 306
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-01-08",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-05-03",
+    "value": 18972
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-05-03",
+    "value": 48409
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-05-03",
+    "value": 24190
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-05-03",
+    "value": 31101
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-05-03",
+    "value": 1951
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-05-03",
+    "value": 27469
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-05-03",
+    "value": 81768
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-04-10",
+    "value": 78035
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-04-10",
+    "value": 64679
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-04-10",
+    "value": 145196
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-04-10",
+    "value": 72014
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-04-10",
+    "value": 42608
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-04-10",
+    "value": 174665
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-04-10",
+    "value": 96633
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-03-26",
+    "value": 8243
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-03-26",
+    "value": 20887
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-03-26",
+    "value": 3027
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-03-26",
+    "value": 53
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-03-26",
+    "value": 21363
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-03-26",
+    "value": 19499
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-03-26",
+    "value": 153
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-02-11",
+    "value": 4820
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-02-11",
+    "value": 12303
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-02-11",
+    "value": 17633
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-02-11",
+    "value": 61635
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-02-11",
+    "value": 16302
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-02-11",
+    "value": 578
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-02-11",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-05-07",
+    "value": 22239
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-05-07",
+    "value": 56085
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-05-07",
+    "value": 3940
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-05-07",
+    "value": 11937
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-05-07",
+    "value": 36219
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-05-07",
+    "value": 24861
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-05-07",
+    "value": 43564
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-05-12",
+    "value": 128244
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-05-12",
+    "value": 103191
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-05-12",
+    "value": 202379
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-05-12",
+    "value": 46293
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-05-12",
+    "value": 10808
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-05-12",
+    "value": 62373
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-05-12",
+    "value": 43806
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-03-14",
+    "value": 11229
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-03-14",
+    "value": 15756
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-03-14",
+    "value": 11247
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-03-14",
+    "value": 4322
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-03-14",
+    "value": 5344
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-03-14",
+    "value": 1947
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-03-14",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-02-21",
+    "value": 8443
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-02-21",
+    "value": 6288
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-02-21",
+    "value": 910
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-02-21",
+    "value": 4425
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-02-21",
+    "value": 6517
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-02-21",
+    "value": 3817
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-02-21",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-01-28",
+    "value": 2745
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-01-28",
+    "value": 2232
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-01-28",
+    "value": 7312
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-01-28",
+    "value": 18
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-01-28",
+    "value": 5792
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-01-28",
+    "value": 373
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-01-28",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-01-14",
+    "value": 4320
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-01-14",
+    "value": 18
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-01-14",
+    "value": 8729
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-01-14",
+    "value": 389
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-01-14",
+    "value": 29
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-01-14",
+    "value": 14
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-01-14",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-05-19",
+    "value": 133820
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-05-19",
+    "value": 151895
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-05-19",
+    "value": 285811
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-05-19",
+    "value": 128084
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-05-19",
+    "value": 110509
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-05-19",
+    "value": 45365
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-05-19",
+    "value": 229726
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-12-09",
+    "value": 58276
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-12-09",
+    "value": 748
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-12-09",
+    "value": 28420
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-12-09",
+    "value": 69942
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-12-09",
+    "value": 100
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-12-09",
+    "value": 80
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-12-09",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-05-08",
+    "value": 29198
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-05-08",
+    "value": 26780
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-05-08",
+    "value": 37327
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-05-08",
+    "value": 17565
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-05-08",
+    "value": 6500
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-05-08",
+    "value": 68349
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-05-08",
+    "value": 13867
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-12-12",
+    "value": 3991
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-12-12",
+    "value": 122674
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-12-12",
+    "value": 41572
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-12-12",
+    "value": 3171
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-12-12",
+    "value": 546
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-12-12",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-12-12",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-12-02",
+    "value": 25
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-12-02",
+    "value": 891
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-12-02",
+    "value": 1350
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-12-02",
+    "value": 3077
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-12-02",
+    "value": 2
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-12-02",
+    "value": 20
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-12-02",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-03-01",
+    "value": 647
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-03-01",
+    "value": 13939
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-03-01",
+    "value": 29091
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-03-01",
+    "value": 8615
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-03-01",
+    "value": 430
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-03-01",
+    "value": 4289
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-03-01",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-01-22",
+    "value": 5451
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-01-22",
+    "value": 55500
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-01-22",
+    "value": 19292
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-01-22",
+    "value": 3534
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-01-22",
+    "value": 2185
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-01-22",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-01-22",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-04-12",
+    "value": 11617
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-04-12",
+    "value": 63049
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-04-12",
+    "value": 33077
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-04-12",
+    "value": 5844
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-04-12",
+    "value": 21329
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-04-12",
+    "value": 32073
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-04-12",
+    "value": 18426
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-03-09",
+    "value": 4971
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-03-09",
+    "value": 4567
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-03-09",
+    "value": 17231
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-03-09",
+    "value": 2997
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-03-09",
+    "value": 7430
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-03-09",
+    "value": 7558
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-03-09",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-12-23",
+    "value": 607
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-12-23",
+    "value": 18907
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-12-23",
+    "value": 13
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-12-23",
+    "value": 30836
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-12-23",
+    "value": 104750
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-12-23",
+    "value": 3796
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-12-23",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-11-01",
+    "value": 155387
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-11-01",
+    "value": 26
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-11-01",
+    "value": 26
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-11-01",
+    "value": 511
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-11-01",
+    "value": 1924
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-11-01",
+    "value": 642
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-11-01",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-12-01",
+    "value": 1611
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-12-01",
+    "value": 2409
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-12-01",
+    "value": 9168
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-12-01",
+    "value": 1160
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-12-01",
+    "value": 2418
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-12-01",
+    "value": 27
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-12-01",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-04-16",
+    "value": 82172
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-04-16",
+    "value": 4586
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-04-16",
+    "value": 17686
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-04-16",
+    "value": 1927
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-04-16",
+    "value": 13518
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-04-16",
+    "value": 16706
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-04-16",
+    "value": 28946
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-03-24",
+    "value": 117980
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-03-24",
+    "value": 41649
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-03-24",
+    "value": 46229
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-03-24",
+    "value": 9512
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-03-24",
+    "value": 158130
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-03-24",
+    "value": 80838
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-03-24",
+    "value": 6851
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-02-25",
+    "value": 10070
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-02-25",
+    "value": 3857
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-02-25",
+    "value": 1949
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-02-25",
+    "value": 1947
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-02-25",
+    "value": 1673
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-02-25",
+    "value": 1361
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-02-25",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-01-30",
+    "value": 7154
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-01-30",
+    "value": 2041
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-01-30",
+    "value": 358
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-01-30",
+    "value": 8456
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-01-30",
+    "value": 1939
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-01-30",
+    "value": 19
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-01-30",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-12-03",
+    "value": 2991
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-12-03",
+    "value": 5796
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-12-03",
+    "value": 6316
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-12-03",
+    "value": 5988
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-12-03",
+    "value": 33
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-12-03",
+    "value": 441
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-12-03",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-04-06",
+    "value": 26511
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-04-06",
+    "value": 142773
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-04-06",
+    "value": 22526
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-04-06",
+    "value": 15659
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-04-06",
+    "value": 209868
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-04-06",
+    "value": 92927
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-04-06",
+    "value": 22350
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-05-05",
+    "value": 32104
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-05-05",
+    "value": 72192
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-05-05",
+    "value": 17958
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-05-05",
+    "value": 10833
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-05-05",
+    "value": 80121
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-05-05",
+    "value": 34478
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-05-05",
+    "value": 89815
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-01-02",
+    "value": 13370
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-01-02",
+    "value": 67906
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-01-02",
+    "value": 5831
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-01-02",
+    "value": 13372
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-01-02",
+    "value": 103975
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-01-02",
+    "value": 15224
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-01-02",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-11-27",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-11-27",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-11-27",
+    "value": 47
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-11-27",
+    "value": 1456
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-11-27",
+    "value": 581
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-11-27",
+    "value": 675
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-11-27",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-03-27",
+    "value": 1801
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-03-27",
+    "value": 24267
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-03-27",
+    "value": 30652
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-03-27",
+    "value": 675
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-03-27",
+    "value": 75595
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-03-27",
+    "value": 270
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-03-27",
+    "value": 9707
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-02-03",
+    "value": 117254
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-02-03",
+    "value": 128384
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-02-03",
+    "value": 1761
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-02-03",
+    "value": 1
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-02-03",
+    "value": 52066
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-02-03",
+    "value": 23695
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-02-03",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-12-07",
+    "value": 7420
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-12-07",
+    "value": 17060
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-12-07",
+    "value": 4392
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-12-07",
+    "value": 5885
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-12-07",
+    "value": 6
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-12-07",
+    "value": 2634
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-12-07",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-12-05",
+    "value": 30734
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-12-05",
+    "value": 57004
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-12-05",
+    "value": 22282
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-12-05",
+    "value": 64815
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-12-05",
+    "value": 16488
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-12-05",
+    "value": 320
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-12-05",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-12-28",
+    "value": 444
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-12-28",
+    "value": 4801
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-12-28",
+    "value": 1635
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-12-28",
+    "value": 17303
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-12-28",
+    "value": 35
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-12-28",
+    "value": 1157
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-12-28",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-11-03",
+    "value": 9827
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-11-03",
+    "value": 229
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-11-03",
+    "value": 1362
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-11-03",
+    "value": 44444
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-11-03",
+    "value": 5741
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-11-03",
+    "value": 1065
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-11-03",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-01-25",
+    "value": 40194
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-01-25",
+    "value": 696
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-01-25",
+    "value": 10578
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-01-25",
+    "value": 8921
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-01-25",
+    "value": 3
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-01-25",
+    "value": 35961
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-01-25",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-03-10",
+    "value": 13680
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-03-10",
+    "value": 1470
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-03-10",
+    "value": 1138
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-03-10",
+    "value": 37366
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-03-10",
+    "value": 3873
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-03-10",
+    "value": 11540
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-03-10",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-12-10",
+    "value": 166304
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-12-10",
+    "value": 103234
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-12-10",
+    "value": 18707
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-12-10",
+    "value": 579
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-12-10",
+    "value": 6922
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-12-10",
+    "value": 795
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-12-10",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-12-24",
+    "value": 26870
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-12-24",
+    "value": 76181
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-12-24",
+    "value": 3686
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-12-24",
+    "value": 24228
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-12-24",
+    "value": 19366
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-12-24",
+    "value": 1176
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-12-24",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-11-24",
+    "value": 29
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-11-24",
+    "value": 1826
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-11-24",
+    "value": 4221
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-11-24",
+    "value": 29774
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-11-24",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-11-24",
+    "value": 6
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-11-24",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-02-20",
+    "value": 13020
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-02-20",
+    "value": 5575
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-02-20",
+    "value": 23447
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-02-20",
+    "value": 144
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-02-20",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-02-20",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-02-20",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-02-17",
+    "value": 6473
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-02-17",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-02-17",
+    "value": 283
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-02-17",
+    "value": 4637
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-02-17",
+    "value": 22
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-02-17",
+    "value": 6319
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-02-17",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-01-01",
+    "value": 4063
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-01-01",
+    "value": 2025
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-01-01",
+    "value": 10410
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-01-01",
+    "value": 36901
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-01-01",
+    "value": 2715
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-01-01",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-01-01",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-03-02",
+    "value": 12012
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-03-02",
+    "value": 14138
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-03-02",
+    "value": 49
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-03-02",
+    "value": 4074
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-03-02",
+    "value": 5530
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-03-02",
+    "value": 3537
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-03-02",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-03-04",
+    "value": 8591
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-03-04",
+    "value": 5433
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-03-04",
+    "value": 1600
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-03-04",
+    "value": 7938
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-03-04",
+    "value": 5459
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-03-04",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-03-04",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-11-26",
+    "value": 10533
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-11-26",
+    "value": 570
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-11-26",
+    "value": 220
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-11-26",
+    "value": 14
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-11-26",
+    "value": 35
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-11-26",
+    "value": 3181
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-11-26",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-01-03",
+    "value": 881
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-01-03",
+    "value": 15893
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-01-03",
+    "value": 55
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-01-03",
+    "value": 4
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-01-03",
+    "value": 677
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-01-03",
+    "value": 139
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-01-03",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-11-21",
+    "value": 2278
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-11-21",
+    "value": 960
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-11-21",
+    "value": 2328
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-11-21",
+    "value": 903
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-11-21",
+    "value": 495
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-11-21",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-11-21",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-12-14",
+    "value": 369436
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-12-14",
+    "value": 68718
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-12-14",
+    "value": 29289
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-12-14",
+    "value": 1025
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-12-14",
+    "value": 279
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-12-14",
+    "value": 189770
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-12-14",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-11-15",
+    "value": 9234
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-11-15",
+    "value": 321
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-11-15",
+    "value": 6047
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-11-15",
+    "value": 1657
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-11-15",
+    "value": 1494
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-11-15",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-11-15",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-02-10",
+    "value": 8985
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-02-10",
+    "value": 16289
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-02-10",
+    "value": 6209
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-02-10",
+    "value": 3043
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-02-10",
+    "value": 37
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-02-10",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-02-10",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-11-16",
+    "value": 2273
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-11-16",
+    "value": 14
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-11-16",
+    "value": 60
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-11-16",
+    "value": 135
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-11-16",
+    "value": 1172
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-11-16",
+    "value": 88
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-11-16",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-01-10",
+    "value": 3
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-01-10",
+    "value": 601
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-01-10",
+    "value": 5877
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-01-10",
+    "value": 1953
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-01-10",
+    "value": 1932
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-01-10",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-01-10",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-01-31",
+    "value": 8969
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-01-31",
+    "value": 257
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-01-31",
+    "value": 5274
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-01-31",
+    "value": 1208
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-01-31",
+    "value": 12849
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-01-31",
+    "value": 20
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-01-31",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-01-05",
+    "value": 16199
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-01-05",
+    "value": 8169
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-01-05",
+    "value": 417
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-01-05",
+    "value": 1823
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-01-05",
+    "value": 1164
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-01-05",
+    "value": 6453
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-01-05",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2021-12-04",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2021-12-04",
+    "value": 102
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2021-12-04",
+    "value": 100
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2021-12-04",
+    "value": 9066
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2021-12-04",
+    "value": 519
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2021-12-04",
+    "value": 4
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2021-12-04",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-01-07",
+    "value": 6523
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-01-07",
+    "value": 1314
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-01-07",
+    "value": 27
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-01-07",
+    "value": 35396
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-01-07",
+    "value": 268
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-01-07",
+    "value": 41
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-01-07",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "all",
+    "date": "2022-01-15",
+    "value": 10156
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "all",
+    "date": "2022-01-15",
+    "value": 329
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "all",
+    "date": "2022-01-15",
+    "value": 39581
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "all",
+    "date": "2022-01-15",
+    "value": 6547
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "all",
+    "date": "2022-01-15",
+    "value": 496
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "all",
+    "date": "2022-01-15",
+    "value": 198
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "all",
+    "date": "2022-01-15",
+    "value": 0
+  }
+]

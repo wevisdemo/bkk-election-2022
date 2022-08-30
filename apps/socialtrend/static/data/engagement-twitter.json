@@ -1,0 +1,8528 @@
+[
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-04-21",
+    "value": 421
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-12-06",
+    "value": 370
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-03-17",
+    "value": 1035
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-04-29",
+    "value": 679
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-05-04",
+    "value": 306
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-12-25",
+    "value": 60
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-04-28",
+    "value": 93317
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-04-07",
+    "value": 4039
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-01-29",
+    "value": 42
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-11-23",
+    "value": 227
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-04-18",
+    "value": 911
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-05-13",
+    "value": 3886
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-11-06",
+    "value": 10
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-11-23",
+    "value": 4
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-04-15",
+    "value": 650
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-03-25",
+    "value": 3245
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-02-18",
+    "value": 967
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-03-12",
+    "value": 38
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-03-16",
+    "value": 180
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-01-26",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-04-26",
+    "value": 9584
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-02-06",
+    "value": 1237
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-04-21",
+    "value": 590
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-05-11",
+    "value": 24
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-05-21",
+    "value": 2010
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-02-09",
+    "value": 161
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-11-20",
+    "value": 19
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-05-02",
+    "value": 1626
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-05-11",
+    "value": 13182
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-05-13",
+    "value": 9420
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-05-13",
+    "value": 9757
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-01-17",
+    "value": 53
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-02-07",
+    "value": 73
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-12-11",
+    "value": 26
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-01-19",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-01-24",
+    "value": 2289
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-11-08",
+    "value": 2658
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-03-13",
+    "value": 182
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-05-09",
+    "value": 38
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-01-09",
+    "value": 15
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-04-18",
+    "value": 171
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-04-17",
+    "value": 1563
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-04-11",
+    "value": 1464
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-02-09",
+    "value": 39
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-04-04",
+    "value": 723
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-12-30",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-04-27",
+    "value": 7576
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-04-01",
+    "value": 705
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-02-01",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-04-02",
+    "value": 230
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-01-08",
+    "value": 101
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-01-06",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-04-10",
+    "value": 25145
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-05-03",
+    "value": 1709
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-11-29",
+    "value": 421
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-03-26",
+    "value": 41
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-04-30",
+    "value": 18782
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-02-11",
+    "value": 197
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-05-08",
+    "value": 1123
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-04-29",
+    "value": 2983
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-03-18",
+    "value": 33
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-01-21",
+    "value": 1109
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-04-02",
+    "value": 25892
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-03-31",
+    "value": 9942
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-05-01",
+    "value": 575
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-04-08",
+    "value": 40
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-02-24",
+    "value": 5
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-03-09",
+    "value": 8
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-11-07",
+    "value": 1957
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-12-13",
+    "value": 13911
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-03-16",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-04-30",
+    "value": 480
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-04-28",
+    "value": 197226
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-11-25",
+    "value": 1
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-01-04",
+    "value": 20
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-02-12",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-01-24",
+    "value": 1372
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-01-22",
+    "value": 61
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-02-09",
+    "value": 13
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-11-18",
+    "value": 304
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-04-16",
+    "value": 105
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-12-18",
+    "value": 19
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-03-11",
+    "value": 687
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-03-31",
+    "value": 11921
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-03-07",
+    "value": 2213
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-01-12",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-05-12",
+    "value": 636
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-04-05",
+    "value": 25895
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-02-01",
+    "value": 398
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-11-14",
+    "value": 46
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-02-24",
+    "value": 7
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-03-28",
+    "value": 40
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-04-20",
+    "value": 4605
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-04-07",
+    "value": 163
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-11-04",
+    "value": 208
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-01-27",
+    "value": 47
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-04-14",
+    "value": 3086
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-12-28",
+    "value": 73
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-04-15",
+    "value": 317
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-11-01",
+    "value": 3
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-04-19",
+    "value": 3100
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-04-03",
+    "value": 390
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-05-12",
+    "value": 2347
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-01-27",
+    "value": 94
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-03-01",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-02-06",
+    "value": 677
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-01-25",
+    "value": 10924
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-05-01",
+    "value": 370
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-03-15",
+    "value": 81
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-11-12",
+    "value": 6
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-04-08",
+    "value": 692
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-04-11",
+    "value": 27992
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-04-02",
+    "value": 7412
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-04-19",
+    "value": 718
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-02-28",
+    "value": 782
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-04-02",
+    "value": 185
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-12-08",
+    "value": 500
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-05-21",
+    "value": 3451
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-03-28",
+    "value": 82
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-04-24",
+    "value": 2894
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-01-23",
+    "value": 71
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-05-16",
+    "value": 70580
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-12-20",
+    "value": 53565
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-01-25",
+    "value": 297
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-04-02",
+    "value": 11768
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-03-13",
+    "value": 1
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-03-28",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-03-18",
+    "value": 88
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-11-08",
+    "value": 8
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-11-09",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-12-31",
+    "value": 539
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-12-15",
+    "value": 11
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-12-16",
+    "value": 173
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-02-13",
+    "value": 56
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-01-28",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-12-08",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-02-28",
+    "value": 8
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-12-28",
+    "value": 43
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-02-28",
+    "value": 4
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-02-19",
+    "value": 584
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-05-04",
+    "value": 10337
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-05-14",
+    "value": 284
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-03-10",
+    "value": 113
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-02-22",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-02-07",
+    "value": 46
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-04-30",
+    "value": 66
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-12-23",
+    "value": 159
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-03-28",
+    "value": 38
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-03-08",
+    "value": 255
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-05-06",
+    "value": 2896
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-02-23",
+    "value": 3
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-01-09",
+    "value": 289
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-04-17",
+    "value": 189
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-12-08",
+    "value": 299
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-12-14",
+    "value": 103772
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-05-11",
+    "value": 45
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-12-05",
+    "value": 1953
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-03-04",
+    "value": 3
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-05-02",
+    "value": 7902
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-04-22",
+    "value": 4485
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-05-03",
+    "value": 54
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-04-21",
+    "value": 1082
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-04-25",
+    "value": 52
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-05-07",
+    "value": 57
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-04-28",
+    "value": 2714
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-04-30",
+    "value": 1462
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-04-08",
+    "value": 155
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-03-26",
+    "value": 4020
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-02-02",
+    "value": 1100
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-02-20",
+    "value": 17
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-01-26",
+    "value": 4424
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-05-17",
+    "value": 425
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-12-01",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-03-29",
+    "value": 73
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-02-02",
+    "value": 274
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-05-15",
+    "value": 56881
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-03-14",
+    "value": 368
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-05-18",
+    "value": 71007
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-12-25",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-02-25",
+    "value": 2
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-02-10",
+    "value": 1748
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-04-10",
+    "value": 346
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-11-30",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-01-24",
+    "value": 192
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-04-07",
+    "value": 302
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-03-16",
+    "value": 40
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-03-22",
+    "value": 17
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-02-09",
+    "value": 1
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-03-24",
+    "value": 12279
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-11-16",
+    "value": 14
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-05-20",
+    "value": 97905
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-01-05",
+    "value": 800
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-03-06",
+    "value": 280
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-05-08",
+    "value": 6370
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-01-01",
+    "value": 15
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-02-03",
+    "value": 14328
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-03-04",
+    "value": 736
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-03-20",
+    "value": 405
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-04-30",
+    "value": 3002
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-02-15",
+    "value": 5
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-01-13",
+    "value": 10
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-02-24",
+    "value": 196
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-05-04",
+    "value": 1
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-04-13",
+    "value": 4122
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-01-26",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-04-17",
+    "value": 145
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-03-29",
+    "value": 1517
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-02-03",
+    "value": 13869
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-04-03",
+    "value": 19520
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-04-27",
+    "value": 8
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-03-19",
+    "value": 1648
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-02-20",
+    "value": 77
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-04-02",
+    "value": 148
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-05-16",
+    "value": 75221
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-02-05",
+    "value": 1676
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-03-21",
+    "value": 85
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-01-03",
+    "value": 2382
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-11-09",
+    "value": 903
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-02-24",
+    "value": 64
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-04-03",
+    "value": 38
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-02-21",
+    "value": 550
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-05-05",
+    "value": 1358
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-03-02",
+    "value": 253
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-05-18",
+    "value": 34460
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-02-15",
+    "value": 137
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-11-29",
+    "value": 2713
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-12-21",
+    "value": 345
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-02-15",
+    "value": 42
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-05-22",
+    "value": 325511
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-02-25",
+    "value": 3035
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-04-22",
+    "value": 269
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-04-08",
+    "value": 90
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-04-23",
+    "value": 25
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-02-19",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-03-10",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-02-04",
+    "value": 41
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-01-31",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-03-20",
+    "value": 1
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-11-11",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-12-05",
+    "value": 76
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-03-24",
+    "value": 715
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-04-10",
+    "value": 15215
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-05-18",
+    "value": 13790
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-12-29",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-05-04",
+    "value": 757
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-12-19",
+    "value": 28
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-02-23",
+    "value": 368
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-05-20",
+    "value": 7582
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-11-27",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-01-10",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-01-04",
+    "value": 81
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-04-15",
+    "value": 16
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-02-19",
+    "value": 201
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-02-12",
+    "value": 387
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-11-27",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-03-23",
+    "value": 77
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-04-01",
+    "value": 34462
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-02-01",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-01-23",
+    "value": 80292
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-01-23",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-04-21",
+    "value": 3196
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-03-12",
+    "value": 42
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-03-21",
+    "value": 78
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-03-17",
+    "value": 497
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-01-30",
+    "value": 2
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-11-17",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-01-18",
+    "value": 180
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-04-26",
+    "value": 86
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-01-06",
+    "value": 2
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-12-27",
+    "value": 9
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-04-24",
+    "value": 963
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-05-05",
+    "value": 1078
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-01-10",
+    "value": 12
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-12-29",
+    "value": 18
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-01-29",
+    "value": 603
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-12-29",
+    "value": 111
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-03-02",
+    "value": 537
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-11-03",
+    "value": 900
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-02-26",
+    "value": 43
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-11-11",
+    "value": 8
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-03-26",
+    "value": 1299
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-01-18",
+    "value": 248
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-03-20",
+    "value": 1177
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-04-14",
+    "value": 239
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-12-27",
+    "value": 199
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-04-28",
+    "value": 240815
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-02-18",
+    "value": 77
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-12-03",
+    "value": 25
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-11-19",
+    "value": 262
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-03-21",
+    "value": 1
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-11-05",
+    "value": 2
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-04-10",
+    "value": 27066
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-03-28",
+    "value": 21
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-02-09",
+    "value": 74
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-04-09",
+    "value": 17158
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-02-17",
+    "value": 34
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-12-18",
+    "value": 15809
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-12-13",
+    "value": 36
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-03-16",
+    "value": 521
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-03-14",
+    "value": 184
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-12-14",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-05-17",
+    "value": 19427
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-04-04",
+    "value": 7512
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-04-15",
+    "value": 1579
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-12-12",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-05-19",
+    "value": 31608
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-05-09",
+    "value": 3101
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-04-06",
+    "value": 31
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-12-31",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-02-05",
+    "value": 563
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-03-14",
+    "value": 844
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-12-31",
+    "value": 207
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-03-16",
+    "value": 140
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-05-05",
+    "value": 1959
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-04-22",
+    "value": 2695
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-01-19",
+    "value": 4681
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-03-18",
+    "value": 31
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-01-11",
+    "value": 2
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-04-07",
+    "value": 1321
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-03-05",
+    "value": 665
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-12-15",
+    "value": 127001
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-01-20",
+    "value": 8
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-03-26",
+    "value": 16
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-12-28",
+    "value": 822
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-01-07",
+    "value": 5
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-04-29",
+    "value": 100
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-12-14",
+    "value": 4167
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-04-13",
+    "value": 296
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-01-06",
+    "value": 12
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-02-13",
+    "value": 1494
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-03-08",
+    "value": 311
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-02-18",
+    "value": 6
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-05-05",
+    "value": 395
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-01-27",
+    "value": 438
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-04-06",
+    "value": 3585
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-02-07",
+    "value": 819
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-04-25",
+    "value": 965
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-04-20",
+    "value": 7857
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-12-11",
+    "value": 3753
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-12-13",
+    "value": 41016
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-05-08",
+    "value": 3553
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-11-15",
+    "value": 21
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-04-20",
+    "value": 45
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-04-12",
+    "value": 3011
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-12-18",
+    "value": 58
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-04-14",
+    "value": 64
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-04-09",
+    "value": 8017
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-05-10",
+    "value": 1822
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-05-12",
+    "value": 462
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-01-30",
+    "value": 894
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-01-06",
+    "value": 37
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-01-17",
+    "value": 2705
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-12-26",
+    "value": 259
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-12-17",
+    "value": 2306
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-01-09",
+    "value": 14
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-04-29",
+    "value": 352
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-12-16",
+    "value": 72189
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-04-04",
+    "value": 3358
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-03-03",
+    "value": 187
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-03-21",
+    "value": 17
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-12-24",
+    "value": 3257
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-03-01",
+    "value": 62
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-04-05",
+    "value": 24497
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-01-22",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-01-12",
+    "value": 32
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-11-22",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-03-10",
+    "value": 91
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-03-27",
+    "value": 10721
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-12-16",
+    "value": 1013
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-12-23",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-03-04",
+    "value": 178
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-01-28",
+    "value": 5642
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-12-24",
+    "value": 232
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-04-27",
+    "value": 77
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-05-21",
+    "value": 434173
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-01-26",
+    "value": 3717
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-05-22",
+    "value": 64175
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-04-03",
+    "value": 1822
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-11-04",
+    "value": 278
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-11-12",
+    "value": 174
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-04-29",
+    "value": 860
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-04-05",
+    "value": 36
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-02-07",
+    "value": 2872
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-04-18",
+    "value": 1427
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-11-01",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-03-24",
+    "value": 561
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-05-15",
+    "value": 115629
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-02-14",
+    "value": 300
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-05-09",
+    "value": 5410
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-04-23",
+    "value": 505
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-11-06",
+    "value": 20
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-12-22",
+    "value": 6566
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-03-08",
+    "value": 2006
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-03-02",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-01-20",
+    "value": 84
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-02-26",
+    "value": 3
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-01-21",
+    "value": 2147
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-04-13",
+    "value": 382
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-01-16",
+    "value": 242
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-12-17",
+    "value": 1427
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-03-18",
+    "value": 163
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-04-01",
+    "value": 725
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-03-12",
+    "value": 470
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-04-29",
+    "value": 4298
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-01-17",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-12-27",
+    "value": 640
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-12-19",
+    "value": 67185
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-03-10",
+    "value": 640
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-12-02",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-11-14",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-12-23",
+    "value": 325
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-01-24",
+    "value": 2
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-11-25",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-04-26",
+    "value": 228
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-05-19",
+    "value": 14847
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-01-09",
+    "value": 5
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-04-16",
+    "value": 2143
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-01-29",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-03-11",
+    "value": 154
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-03-25",
+    "value": 1024
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-02-08",
+    "value": 195
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-04-05",
+    "value": 200
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-05-16",
+    "value": 188
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-02-15",
+    "value": 254
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-03-23",
+    "value": 3070
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-12-10",
+    "value": 104
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-04-09",
+    "value": 24736
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-05-03",
+    "value": 47
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-03-19",
+    "value": 125
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-03-01",
+    "value": 1627
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-04-12",
+    "value": 3549
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-02-26",
+    "value": 208
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-05-19",
+    "value": 6902
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-11-01",
+    "value": 2243
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-12-25",
+    "value": 260
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-11-07",
+    "value": 1609
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-03-24",
+    "value": 9427
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-02-14",
+    "value": 2446
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-04-04",
+    "value": 943
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-02-07",
+    "value": 669
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-12-07",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-04-16",
+    "value": 46
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-03-06",
+    "value": 165
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-04-24",
+    "value": 921
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-01-19",
+    "value": 17
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-03-07",
+    "value": 1410
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-12-12",
+    "value": 2403
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-04-19",
+    "value": 1484
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-11-02",
+    "value": 1101
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-11-16",
+    "value": 16
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-01-02",
+    "value": 66403
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-12-04",
+    "value": 22
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-02-04",
+    "value": 2009
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-02-03",
+    "value": 33
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-01-28",
+    "value": 544
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-12-05",
+    "value": 1522
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-03-04",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-03-31",
+    "value": 61339
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-03-17",
+    "value": 119
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-12-09",
+    "value": 3596
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-04-12",
+    "value": 124
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-11-26",
+    "value": 1
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-05-10",
+    "value": 120
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-03-16",
+    "value": 2
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-02-21",
+    "value": 473
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-11-22",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-03-31",
+    "value": 89555
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-01-01",
+    "value": 2212
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-02-21",
+    "value": 73
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-03-20",
+    "value": 63
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-04-14",
+    "value": 827
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-05-09",
+    "value": 271
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-11-01",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-05-16",
+    "value": 1785
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-04-11",
+    "value": 89
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-12-06",
+    "value": 1
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-12-21",
+    "value": 29451
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-11-24",
+    "value": 57
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-04-18",
+    "value": 635
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-12-20",
+    "value": 195
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-11-21",
+    "value": 11
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-05-07",
+    "value": 3238
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-01-18",
+    "value": 50
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-04-04",
+    "value": 997
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-05-14",
+    "value": 742
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-02-12",
+    "value": 425
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-05-03",
+    "value": 11401
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-02-02",
+    "value": 4263
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-04-14",
+    "value": 195
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-01-03",
+    "value": 470
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-05-12",
+    "value": 899
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-01-02",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-05-02",
+    "value": 3251
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-02-08",
+    "value": 61
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-01-31",
+    "value": 125
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-04-25",
+    "value": 11
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-02-08",
+    "value": 93
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-04-01",
+    "value": 24089
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-12-10",
+    "value": 8
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-01-08",
+    "value": 19138
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-04-04",
+    "value": 975
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-03-09",
+    "value": 1
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-03-06",
+    "value": 330
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-05-13",
+    "value": 2519
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-12-10",
+    "value": 5452
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-02-01",
+    "value": 1124
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-12-22",
+    "value": 159
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-04-21",
+    "value": 78
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-05-05",
+    "value": 21
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-04-26",
+    "value": 34
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-11-09",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-05-02",
+    "value": 4542
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-03-06",
+    "value": 105
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-03-24",
+    "value": 2
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-04-21",
+    "value": 114
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-04-16",
+    "value": 196
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-12-13",
+    "value": 119386
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-12-23",
+    "value": 166
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-03-14",
+    "value": 140
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-01-26",
+    "value": 3318
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-03-28",
+    "value": 2203
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-05-03",
+    "value": 88
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-02-22",
+    "value": 519
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-12-24",
+    "value": 923
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-01-22",
+    "value": 3467
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-03-22",
+    "value": 15
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-12-03",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-05-08",
+    "value": 25
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-04-15",
+    "value": 177
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-05-21",
+    "value": 6657
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-05-20",
+    "value": 390724
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-05-19",
+    "value": 2892
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-04-25",
+    "value": 138
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-03-27",
+    "value": 13
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-04-26",
+    "value": 8412
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-01-15",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-03-13",
+    "value": 111
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-02-24",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-05-18",
+    "value": 118808
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-05-15",
+    "value": 473
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-02-15",
+    "value": 5
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-02-25",
+    "value": 315
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-02-04",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-12-21",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-04-30",
+    "value": 352
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-05-17",
+    "value": 5436
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-01-07",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-03-27",
+    "value": 316
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-04-06",
+    "value": 341
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-02-27",
+    "value": 284
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-05-12",
+    "value": 327
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-03-30",
+    "value": 11514
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-03-17",
+    "value": 20
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-01-01",
+    "value": 78
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-11-22",
+    "value": 29
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-04-13",
+    "value": 326
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-05-20",
+    "value": 139847
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-04-02",
+    "value": 1098
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-02-11",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-02-10",
+    "value": 14
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-04-20",
+    "value": 5738
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-05-07",
+    "value": 3802
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-04-08",
+    "value": 5036
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-11-05",
+    "value": 151
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-04-30",
+    "value": 9163
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-04-06",
+    "value": 25504
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-02-11",
+    "value": 48
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-03-26",
+    "value": 2219
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-04-09",
+    "value": 14265
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-02-17",
+    "value": 17
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-12-26",
+    "value": 29
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-11-23",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-05-04",
+    "value": 558
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-01-03",
+    "value": 258
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-01-07",
+    "value": 1239
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-04-23",
+    "value": 1807
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-03-03",
+    "value": 23
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-04-23",
+    "value": 3
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-02-25",
+    "value": 23
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-01-21",
+    "value": 4069
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-01-17",
+    "value": 1045
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-01-10",
+    "value": 331
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-11-18",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-04-28",
+    "value": 739
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-04-15",
+    "value": 187
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-03-07",
+    "value": 1544
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-04-27",
+    "value": 17392
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-01-05",
+    "value": 114
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-05-10",
+    "value": 46383
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-02-27",
+    "value": 1
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-03-18",
+    "value": 68
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-05-05",
+    "value": 203
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-01-08",
+    "value": 1
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-01-31",
+    "value": 946
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-05-10",
+    "value": 83
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-05-10",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-01-12",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-01-23",
+    "value": 32716
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-11-10",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-11-21",
+    "value": 11
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-04-23",
+    "value": 1222
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-02-10",
+    "value": 114
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-11-05",
+    "value": 10
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-02-21",
+    "value": 168
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-05-15",
+    "value": 51452
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-03-25",
+    "value": 35
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-05-06",
+    "value": 186
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-05-22",
+    "value": 193966
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-03-28",
+    "value": 2969
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-04-24",
+    "value": 329
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-01-11",
+    "value": 1
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-02-06",
+    "value": 678
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-03-30",
+    "value": 1107
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-05-01",
+    "value": 7589
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-05-14",
+    "value": 37939
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-04-19",
+    "value": 118
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-12-30",
+    "value": 23
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-05-13",
+    "value": 34985
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-05-15",
+    "value": 15444
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-11-13",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-02-03",
+    "value": 44
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-04-27",
+    "value": 221
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-04-09",
+    "value": 6115
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-02-02",
+    "value": 960
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-12-29",
+    "value": 92
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-02-11",
+    "value": 1308
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-03-07",
+    "value": 7
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-04-22",
+    "value": 4627
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-05-22",
+    "value": 334746
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-02-23",
+    "value": 3
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-03-03",
+    "value": 313
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-12-11",
+    "value": 5370
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-04-25",
+    "value": 25705
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-04-11",
+    "value": 9742
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-12-16",
+    "value": 1931
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-02-04",
+    "value": 5434
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-12-25",
+    "value": 182
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-05-16",
+    "value": 46509
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-01-30",
+    "value": 731
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-11-14",
+    "value": 2
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-04-19",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-11-04",
+    "value": 88
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-03-09",
+    "value": 208
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-04-06",
+    "value": 6420
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-05-13",
+    "value": 813
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-05-21",
+    "value": 104810
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-03-31",
+    "value": 67643
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-04-07",
+    "value": 169
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-01-31",
+    "value": 223
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-02-15",
+    "value": 4
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-01-10",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-12-14",
+    "value": 105684
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-02-04",
+    "value": 830
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-12-19",
+    "value": 11704
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-12-24",
+    "value": 689
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-03-30",
+    "value": 6483
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-04-22",
+    "value": 142
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-04-11",
+    "value": 1857
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-05-19",
+    "value": 2109
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-12-02",
+    "value": 2
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-11-15",
+    "value": 52
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-02-02",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-12-05",
+    "value": 5
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-04-20",
+    "value": 552
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-03-07",
+    "value": 4
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-02-22",
+    "value": 370
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-05-06",
+    "value": 747
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-01-05",
+    "value": 20
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-03-21",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-03-08",
+    "value": 631
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-02-17",
+    "value": 44
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-11-03",
+    "value": 127
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-01-31",
+    "value": 33
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-04-07",
+    "value": 78998
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-01-04",
+    "value": 161
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-04-25",
+    "value": 63
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-04-17",
+    "value": 151
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-05-08",
+    "value": 1083
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-01-24",
+    "value": 11821
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-03-03",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-02-11",
+    "value": 5995
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-05-10",
+    "value": 61
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-12-15",
+    "value": 5116
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-02-27",
+    "value": 146
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-03-17",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-02-23",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-12-02",
+    "value": 153
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-03-20",
+    "value": 40
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-03-26",
+    "value": 13
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-01-19",
+    "value": 990
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-01-30",
+    "value": 310
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-03-05",
+    "value": 9
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-11-10",
+    "value": 4
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-04-18",
+    "value": 2383
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-03-30",
+    "value": 3504
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-05-03",
+    "value": 50
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-05-06",
+    "value": 145
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-03-29",
+    "value": 528
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-12-14",
+    "value": 371
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-04-05",
+    "value": 82
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-12-19",
+    "value": 1073
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-04-11",
+    "value": 77
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-04-19",
+    "value": 177
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-11-27",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-01-28",
+    "value": 123
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-04-03",
+    "value": 45333
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-02-16",
+    "value": 16
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-11-21",
+    "value": 3
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-05-06",
+    "value": 96
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-05-20",
+    "value": 171367
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-04-10",
+    "value": 53327
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-03-01",
+    "value": 195
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-11-11",
+    "value": 52
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-04-08",
+    "value": 21
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-04-27",
+    "value": 74
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-02-06",
+    "value": 1644
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-01-07",
+    "value": 136
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-12-07",
+    "value": 29
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-01-16",
+    "value": 38406
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-04-12",
+    "value": 1380
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-02-17",
+    "value": 740
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-02-03",
+    "value": 652
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-04-26",
+    "value": 12150
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-02-11",
+    "value": 90
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-12-07",
+    "value": 15
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-04-16",
+    "value": 747
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-02-20",
+    "value": 3
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-05-11",
+    "value": 567
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-04-03",
+    "value": 1060
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-02-14",
+    "value": 44
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-02-16",
+    "value": 1409
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-05-17",
+    "value": 11232
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-02-17",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-05-02",
+    "value": 488
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-04-21",
+    "value": 18
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-01-17",
+    "value": 4
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-11-21",
+    "value": 298
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-02-16",
+    "value": 177
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-01-25",
+    "value": 1599
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-11-26",
+    "value": 23
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-12-26",
+    "value": 2
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-01-20",
+    "value": 7
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-12-11",
+    "value": 178
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-04-03",
+    "value": 824
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-04-29",
+    "value": 8212
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-02-09",
+    "value": 1865
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-03-24",
+    "value": 163
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-04-13",
+    "value": 1433
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-03-11",
+    "value": 7880
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-03-12",
+    "value": 2
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-01-30",
+    "value": 602
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-03-24",
+    "value": 117
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-04-20",
+    "value": 162
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-04-23",
+    "value": 72
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-04-13",
+    "value": 365
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-02-01",
+    "value": 13
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-03-30",
+    "value": 237
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-12-25",
+    "value": 420
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-03-12",
+    "value": 4
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-04-25",
+    "value": 94
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-12-23",
+    "value": 732
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-05-02",
+    "value": 92
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-12-31",
+    "value": 220
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-03-22",
+    "value": 8
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-03-21",
+    "value": 284
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-03-15",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-04-12",
+    "value": 1168
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-04-17",
+    "value": 642
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-04-13",
+    "value": 646
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-04-20",
+    "value": 325
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-05-21",
+    "value": 50412
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-02-14",
+    "value": 47
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-04-22",
+    "value": 4492
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-05-01",
+    "value": 1
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-01-18",
+    "value": 5
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-05-16",
+    "value": 7321
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-02-08",
+    "value": 1492
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-04-23",
+    "value": 866
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-02-28",
+    "value": 550
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-01-04",
+    "value": 127
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-04-22",
+    "value": 2
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-05-06",
+    "value": 61
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-04-17",
+    "value": 33
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-11-28",
+    "value": 15
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-04-10",
+    "value": 15971
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-03-31",
+    "value": 15038
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-03-19",
+    "value": 725
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-02-19",
+    "value": 9
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-12-22",
+    "value": 202
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-03-19",
+    "value": 139
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-03-15",
+    "value": 22
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-01-15",
+    "value": 39231
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-05-14",
+    "value": 43
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-02-22",
+    "value": 43
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-04-11",
+    "value": 77
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-02-16",
+    "value": 223
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-03-29",
+    "value": 48
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-12-03",
+    "value": 12
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-03-09",
+    "value": 13
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-01-20",
+    "value": 141
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-03-27",
+    "value": 530
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-05-11",
+    "value": 8710
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-05-11",
+    "value": 25
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-01-28",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-03-15",
+    "value": 6
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-04-06",
+    "value": 76517
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-05-18",
+    "value": 27152
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-02-18",
+    "value": 23
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-05-17",
+    "value": 739
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-05-12",
+    "value": 4098
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-05-08",
+    "value": 510
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-04-28",
+    "value": 1472
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-05-17",
+    "value": 6981
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-05-07",
+    "value": 6835
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-11-02",
+    "value": 103
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-05-10",
+    "value": 2201
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-05-14",
+    "value": 6845
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-02-26",
+    "value": 7
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-11-17",
+    "value": 13
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-12-09",
+    "value": 9
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-11-06",
+    "value": 24
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-03-12",
+    "value": 2
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-02-12",
+    "value": 227
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-03-09",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-03-13",
+    "value": 51
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-05-04",
+    "value": 1719
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-02-08",
+    "value": 28
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-11-18",
+    "value": 8
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-04-19",
+    "value": 58
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-04-27",
+    "value": 1547
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-05-07",
+    "value": 108
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-12-10",
+    "value": 1439
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-12-29",
+    "value": 11
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-11-13",
+    "value": 1
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-04-01",
+    "value": 15014
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-03-30",
+    "value": 231
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-01-26",
+    "value": 66
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-05-19",
+    "value": 27840
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-04-26",
+    "value": 191
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-01-14",
+    "value": 19
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-05-05",
+    "value": 951
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-12-27",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-05-09",
+    "value": 348
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-04-16",
+    "value": 2222
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-03-22",
+    "value": 299
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-03-25",
+    "value": 1580
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-03-11",
+    "value": 138
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-05-08",
+    "value": 471
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-05-14",
+    "value": 1139
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-12-15",
+    "value": 302547
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-03-09",
+    "value": 22
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-05-20",
+    "value": 54321
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-04-09",
+    "value": 23687
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-02-23",
+    "value": 76
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-12-18",
+    "value": 1869
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-04-12",
+    "value": 4191
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-11-08",
+    "value": 592
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-04-12",
+    "value": 164
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-03-27",
+    "value": 2
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-12-09",
+    "value": 773
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-03-22",
+    "value": 16
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-04-18",
+    "value": 889
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-01-25",
+    "value": 87
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-05-22",
+    "value": 341871
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-03-29",
+    "value": 4
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-03-23",
+    "value": 1174
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-05-01",
+    "value": 1730
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-05-01",
+    "value": 1027
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-04-06",
+    "value": 2755
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-03-22",
+    "value": 5590
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-01-02",
+    "value": 29
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-02-26",
+    "value": 480
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-03-15",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-12-26",
+    "value": 652
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-03-07",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-04-15",
+    "value": 162
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-04-16",
+    "value": 127
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-04-17",
+    "value": 537
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-04-28",
+    "value": 332463
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-05-11",
+    "value": 4255
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-05-20",
+    "value": 192359
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-03-19",
+    "value": 232
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-12-04",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-02-05",
+    "value": 62
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-03-03",
+    "value": 1
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-01-24",
+    "value": 17
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-11-29",
+    "value": 13023
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-04-14",
+    "value": 815
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-04-09",
+    "value": 8207
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-11-03",
+    "value": 290
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-05-06",
+    "value": 2712
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-12-21",
+    "value": 303
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-03-08",
+    "value": 18
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-04-24",
+    "value": 3303
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-05-21",
+    "value": 1526
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-03-22",
+    "value": 56
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-11-15",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-03-29",
+    "value": 6280
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-03-23",
+    "value": 26364
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-01-06",
+    "value": 141
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-01-22",
+    "value": 3338
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-04-10",
+    "value": 38482
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-03-29",
+    "value": 1896
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-02-05",
+    "value": 76
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-04-24",
+    "value": 31
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-05-22",
+    "value": 571844
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-05-18",
+    "value": 943
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-03-23",
+    "value": 65
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-12-22",
+    "value": 132
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-02-05",
+    "value": 40
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-01-14",
+    "value": 2
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-02-14",
+    "value": 65
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-02-08",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-05-09",
+    "value": 899
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-02-16",
+    "value": 6
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-02-13",
+    "value": 252
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-11-02",
+    "value": 287
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-01-02",
+    "value": 52156
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-01-27",
+    "value": 199
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-12-27",
+    "value": 19
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-11-10",
+    "value": 5
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-12-26",
+    "value": 71
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-01-29",
+    "value": 3
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-11-30",
+    "value": 2
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-12-06",
+    "value": 22222
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-04-05",
+    "value": 30173
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-03-27",
+    "value": 484
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-04-04",
+    "value": 3879
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-04-08",
+    "value": 22378
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-12-20",
+    "value": 1173
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-02-12",
+    "value": 66
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-03-31",
+    "value": 10737
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-05-14",
+    "value": 2381
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-03-25",
+    "value": 1057
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-05-02",
+    "value": 871
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-01-25",
+    "value": 2153
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-03-18",
+    "value": 38
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-03-13",
+    "value": 39
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-12-17",
+    "value": 68
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-03-30",
+    "value": 2871
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-05-12",
+    "value": 16578
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-12-12",
+    "value": 55146
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-01-13",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-05-03",
+    "value": 7675
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-01-12",
+    "value": 64
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-02-10",
+    "value": 254
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-02-06",
+    "value": 142
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-03-14",
+    "value": 114
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-12-24",
+    "value": 173
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-11-07",
+    "value": 33
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-05-22",
+    "value": 4052960
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-01-21",
+    "value": 15
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-05-15",
+    "value": 81417
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-05-18",
+    "value": 24652
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-04-01",
+    "value": 23475
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-11-22",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-12-09",
+    "value": 3006
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-04-24",
+    "value": 66
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-05-07",
+    "value": 7844
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-05-13",
+    "value": 2195
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-03-10",
+    "value": 603
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-02-17",
+    "value": 11
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-05-17",
+    "value": 31
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-12-10",
+    "value": 5760
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-03-02",
+    "value": 512
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-04-07",
+    "value": 198
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-04-05",
+    "value": 58564
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-12-30",
+    "value": 62
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-01-23",
+    "value": 13185
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-03-23",
+    "value": 5188
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-04-18",
+    "value": 6
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-02-20",
+    "value": 120
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-01-23",
+    "value": 313
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-03-23",
+    "value": 10
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-02-28",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-11-16",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-11-30",
+    "value": 157
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-02-25",
+    "value": 94
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-05-01",
+    "value": 252
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-03-19",
+    "value": 122
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-12-30",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-11-24",
+    "value": 2
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-11-12",
+    "value": 202
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-03-10",
+    "value": 187
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-03-05",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-05-04",
+    "value": 4441
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-12-12",
+    "value": 98
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-12-17",
+    "value": 3452
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-04-01",
+    "value": 21086
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-03-05",
+    "value": 221
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-05-15",
+    "value": 49434
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-11-03",
+    "value": 2
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-05-19",
+    "value": 25217
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-05-16",
+    "value": 99900
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-03-25",
+    "value": 8343
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-11-10",
+    "value": 5
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-02-27",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-11-01",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-11-01",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-11-01",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-11-02",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-11-02",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-11-02",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-11-02",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-11-03",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-11-03",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-11-03",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-11-04",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-11-04",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-11-04",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-11-04",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-11-05",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-11-05",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-11-05",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-11-05",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-11-06",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-11-06",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-11-06",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-11-06",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-11-07",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-11-07",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-11-07",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-11-07",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-11-08",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-11-08",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-11-08",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-11-08",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-11-09",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-11-09",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-11-09",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-11-09",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-11-10",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-11-10",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-11-10",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-11-11",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-11-11",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-11-11",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-11-11",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-11-12",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-11-12",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-11-12",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-11-12",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-11-13",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-11-13",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-11-13",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-11-13",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-11-13",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-11-14",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-11-14",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-11-14",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-11-14",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-11-15",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-11-15",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-11-15",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-11-15",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-11-16",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-11-16",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-11-16",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-11-16",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-11-17",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-11-17",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-11-17",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-11-17",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-11-17",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-11-18",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-11-18",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-11-18",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-11-18",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-11-19",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-11-19",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-11-19",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-11-19",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-11-19",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-11-19",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-11-20",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-11-20",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-11-20",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-11-20",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-11-20",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-11-20",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-11-21",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-11-21",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-11-21",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-11-22",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-11-22",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-11-22",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-11-23",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-11-23",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-11-23",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-11-23",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-11-24",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-11-24",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-11-24",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-11-24",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-11-24",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-11-25",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-11-25",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-11-25",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-11-25",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-11-25",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-11-26",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-11-26",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-11-26",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-11-26",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-11-26",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-11-27",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-11-27",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-11-27",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-11-27",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-11-28",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-11-28",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-11-28",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-11-28",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-11-28",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-11-28",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-11-29",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-11-29",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-11-29",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-11-29",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-11-30",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-11-30",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-11-30",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-11-30",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-12-01",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-12-01",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-12-01",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-12-01",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-12-01",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-12-01",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-12-02",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-12-02",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-12-02",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-12-02",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2021-12-03",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-12-03",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-12-03",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-12-03",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-12-04",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2021-12-04",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-12-04",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-12-04",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-12-04",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-12-05",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-12-05",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-12-05",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-12-06",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-12-06",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-12-06",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-12-06",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-12-07",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-12-07",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-12-07",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-12-07",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-12-08",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-12-08",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-12-08",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-12-08",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-12-09",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-12-09",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-12-09",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-12-10",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-12-10",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-12-11",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-12-11",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-12-11",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-12-12",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-12-12",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-12-12",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-12-13",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-12-13",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-12-13",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-12-14",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-12-14",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-12-15",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-12-15",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-12-15",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-12-16",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-12-16",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-12-16",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-12-17",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-12-17",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-12-17",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-12-18",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-12-18",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-12-18",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-12-19",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-12-19",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-12-19",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-12-20",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-12-20",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-12-20",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-12-20",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2021-12-21",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-12-21",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-12-21",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-12-22",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-12-22",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-12-22",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-12-23",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-12-23",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-12-24",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-12-24",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-12-25",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-12-25",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-12-26",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-12-26",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-12-27",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-12-27",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2021-12-28",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-12-28",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-12-28",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-12-28",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-12-29",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-12-29",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-12-30",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-12-30",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-12-30",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2021-12-31",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2021-12-31",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2021-12-31",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-01-01",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-01-01",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-01-01",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-01-01",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-01-02",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-01-02",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-01-02",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-01-03",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-01-03",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-01-03",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-01-03",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-01-04",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-01-04",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-01-04",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-01-05",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-01-05",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-01-05",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-01-05",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-01-06",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-01-06",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-01-07",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-01-07",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-01-07",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-01-08",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-01-08",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-01-08",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-01-08",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-01-09",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-01-09",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-01-09",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-01-10",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-01-10",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-01-10",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-01-11",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-01-11",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-01-11",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-01-11",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-01-11",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-01-12",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-01-12",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-01-12",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-01-13",
+    "value": 0
+  },
+  {
+    "candidate": "ชัชชาติ",
+    "channel": "twitter",
+    "date": "2022-01-13",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-01-13",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-01-13",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-01-13",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-01-14",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-01-14",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-01-14",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-01-14",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-01-14",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-01-15",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-01-15",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-01-15",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-01-15",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-01-15",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-01-16",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-01-16",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-01-16",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-01-16",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-01-16",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-01-17",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-01-17",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-01-18",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-01-18",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-01-18",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-01-19",
+    "value": 0
+  },
+  {
+    "candidate": "วิโรจน์",
+    "channel": "twitter",
+    "date": "2022-01-19",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-01-19",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-01-20",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-01-20",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-01-20",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-01-21",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-01-21",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-01-21",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-01-22",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-01-22",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-01-22",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-01-23",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-01-24",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-01-25",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-01-25",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-01-26",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-01-27",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-01-27",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-01-27",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-01-28",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-01-28",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-01-29",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-01-29",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-01-29",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-01-30",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-01-30",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-01-31",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-01-31",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-02-01",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-02-01",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-02-02",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-02-02",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-02-03",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-02-03",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-02-04",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-02-04",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-02-05",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-02-05",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-02-06",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-02-06",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-02-07",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-02-07",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-02-08",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-02-09",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-02-10",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-02-10",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-02-10",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-02-11",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-02-12",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-02-12",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-02-13",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-02-13",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-02-13",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-02-13",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-02-14",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-02-14",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-02-15",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-02-16",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-02-16",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-02-17",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-02-18",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-02-18",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-02-18",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-02-19",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-02-19",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-02-19",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-02-20",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-02-20",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-02-20",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-02-21",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-02-21",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-02-21",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-02-22",
+    "value": 0
+  },
+  {
+    "candidate": "สุชัชวีร์",
+    "channel": "twitter",
+    "date": "2022-02-22",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-02-22",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-02-23",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-02-23",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-02-24",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-02-24",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-02-25",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-02-25",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-02-26",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-02-26",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-02-27",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-02-27",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-02-27",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-02-28",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-02-28",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-03-01",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-03-01",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-03-01",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-03-02",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-03-02",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-03-02",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-03-03",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-03-03",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-03-04",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-03-04",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-03-04",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-03-05",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-03-05",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-03-05",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-03-06",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-03-06",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-03-06",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-03-07",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-03-08",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-03-08",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-03-09",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-03-10",
+    "value": 0
+  },
+  {
+    "candidate": "อัศวิน",
+    "channel": "twitter",
+    "date": "2022-03-11",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-03-11",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-03-11",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-03-12",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-03-13",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-03-13",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-03-14",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-03-14",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-03-15",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-03-15",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-03-16",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-03-17",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-03-17",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-03-18",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-03-19",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-03-20",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-03-20",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-03-21",
+    "value": 0
+  },
+  {
+    "candidate": "ศิธา",
+    "channel": "twitter",
+    "date": "2022-03-25",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-03-26",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-03-27",
+    "value": 0
+  },
+  {
+    "candidate": "สกลธี",
+    "channel": "twitter",
+    "date": "2022-04-14",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-05-07",
+    "value": 0
+  },
+  {
+    "candidate": "รสนา",
+    "channel": "twitter",
+    "date": "2022-05-09",
+    "value": 0
+  }
+]

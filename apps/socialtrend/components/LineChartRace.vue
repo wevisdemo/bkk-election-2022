@@ -6,7 +6,7 @@
         <div class="description typo-b6"></div>
 
         <div
-          v-for="(item, index) in candidates"
+          v-for="(item, index) in engagement_candidates"
           :key="`${(item || {}).candidate}-${index}`"
           :class="`data-list content-${index}`"
         >
@@ -36,17 +36,17 @@
         ></rect>
       </g>
 
-      <g v-if="candidates != 0" class="g-lines">
+      <g v-if="engagement_candidates != 0" class="g-lines">
         <g
-          v-for="item in candidates"
-          :key="`line-${item.candidate || ''}`"
+          v-for="item in engagement_candidates"
+          :key="`line-${item.name || ''}`"
           class="line-group"
         >
           <g class="circle">
             <circle
               :fill="item.color"
               :cx="margin.left"
-              :cy="yScale(item.data[0].value)"
+              :cy="yScale(item.data[0].count)"
               r="4"
             />
             <circle
@@ -54,7 +54,7 @@
               :key="index"
               :fill="item.color"
               :cx="xScale(d.date)"
-              :cy="yScale(d.value)"
+              :cy="yScale(d.count)"
               r="4"
               :class="[
                 `dots-${d.date}`,
@@ -75,7 +75,7 @@
             ></path>
 
             <path
-              :id="`line-seg-${item.candidate}`"
+              :id="`line-seg-${item.name}`"
               class="line-seg"
               :d="line(item.data)"
               fill="none"
@@ -90,20 +90,20 @@
 
       <g class="g-marker">
         <g
-          v-for="item in candidates"
-          :key="`marker-${item.candidate}`"
+          v-for="item in engagement_candidates"
+          :key="`marker-${item.name}`"
           :transform="`translate(${xScale((item.data || {})[0].date)},${yScale(
-            (item.data || {})[0].value
+            (item.data || {})[0].count
           )})`"
           class="marker-group"
         >
           <g class="marker" :transform="`scale(1)`">
-            <clipPath :id="`clip-${item.candidate}`">
-              <use :xlink:href="`#circle-${item.candidate}`" />
+            <clipPath :id="`clip-${item.name}`">
+              <use :xlink:href="`#circle-${item.name}`" />
             </clipPath>
 
             <circle
-              :id="`circle-${item.candidate}`"
+              :id="`circle-${item.name}`"
               class="circle"
               :r="$mq === 'mobile' ? 6.5 : 12"
               :fill="item.color"
@@ -117,7 +117,7 @@
               :width="$mq === 'mobile' ? 13 : 24"
               :x="$mq === 'mobile' ? -6.5 : -12"
               :y="$mq === 'mobile' ? -6.5 : -12"
-              :clip-path="`url(#clip-${item.candidate})`"
+              :clip-path="`url(#clip-${item.name})`"
             ></image>
           </g>
         </g>
@@ -156,9 +156,13 @@ export default {
       type: Number,
       default: 500,
     },
-    dataSet: {
-      type: Object,
-      default: () => {},
+    engagement_raw_data: {
+      type: Array,
+      default: () => [],
+    },
+    engagement_candidates: {
+      type: Array,
+      default: () => [],
     },
     color: {
       type: Function,
@@ -230,40 +234,29 @@ export default {
     formatThousands() {
       return d3.format(',')
     },
-    raw_data() {
-      return _.get(this.dataSet, 'raw_data', [])
-    },
-    candidates() {
-      return _.get(this.dataSet, 'candidates', [])
-    },
-    group_date() {
-      return _.get(this.dataSet, 'group_date', {})
-    },
-    check_width() {
-      const { length } = this.group_date
-      const contentWidth = this.width - this.margin.left - this.margin.right
-      return contentWidth / (length - 1)
+    date_list() {
+      return _.map(this.engagement_raw_data, 'date')
     },
     line() {
       return d3
         .line()
         .x((d) => this.xScale(d.date))
-        .y((d) => this.yScale(d.value))
+        .y((d) => this.yScale(d.count))
     },
     xScaleActiveDate() {
       return d3
         .scaleQuantize()
         .domain([this.margin.left, this.width - this.margin.right])
-        .range(this.group_date.keys_data)
+        .range(this.date_list)
     },
     xScale() {
       return d3
         .scalePoint()
-        .domain(this.group_date.keys_data)
+        .domain(this.date_list)
         .range([this.margin.left, this.width - this.margin.right])
     },
     xAxis() {
-      const { length } = this.group_date
+      const { length } = this.engagement_raw_data
 
       let axis = d3
         .axisBottom(this.xScale)
@@ -279,13 +272,15 @@ export default {
         .tickPadding(12)
 
       if (this.type === 'engagement') {
-        axis = axis.tickValues(d3.extent(this.raw_data, (d) => d.date))
+        axis = axis.tickValues(
+          d3.extent(this.engagement_raw_data, (d) => d.date)
+        )
       }
 
       return axis
     },
     yScale() {
-      const maximum = d3.max(this.raw_data, (d) => d.value)
+      const maximum = d3.max(this.engagement_raw_data, (d) => d.maximum.count)
 
       return d3
         .scaleLinear()
@@ -297,7 +292,7 @@ export default {
       let ticks = 9
       let tickFormat = (d) => this.formatkilo(d)
       if (this.type === 'rank') {
-        const { length } = this.candidates
+        const { length } = this.engagement_candidates
         ticks = length
         tickFormat = (d) => {
           return d === 0 ? '' : length + 1 - d
@@ -438,20 +433,32 @@ export default {
     handleTooltip: _.debounce(function (date) {
       let title = this.dateDisplay(date)
       let description = ''
-      const curr = _.get(this.group_date, `data[${date}]`, [])
+      const curr = this.engagement_raw_data.find((d) => d.date === date) || {}
       if (this.type === 'rank') {
-        const ob = _.get(curr, '[0]', {})
-        title = `สัปดาห์ที่ ${ob.date}`
-        description = `${this.dateDisplay(ob.date_from)} - ${this.dateDisplay(
-          ob.date_to
+        title = `สัปดาห์ที่ ${curr.date}`
+        description = `${this.dateDisplay(curr.date_from)} - ${this.dateDisplay(
+          curr.date_to
         )}`
       }
       const candidates = _.chain(curr)
-        .map((d) => ({
-          ...d,
-          value_str: this.type === 'rank' ? d.rank : this.formatkilo(d.value),
-        }))
-        .orderBy('value', 'desc')
+        .get('engagements', [])
+        .map((d) => {
+          let count = ''
+          if (this.type === 'rank') {
+            count =
+              d.count === 0
+                ? 'ไม่มีข้อมูล'
+                : this.engagement_candidates.length + 1 - d.count
+          } else {
+            count = this.formatkilo(d.count)
+          }
+
+          return {
+            ...d,
+            count_str: count,
+          }
+        })
+        .orderBy('count', 'desc')
         .value()
 
       const tooltip = d3.select('.tooltip')
@@ -461,8 +468,8 @@ export default {
 
       candidates.forEach((d, i) => {
         const dataList = d3.select(`.content-${i}`)
-        dataList.select('.name').html(d.candidate)
-        dataList.select('.value').html(d.value_str).style('color', d.color)
+        dataList.select('.name').html(d.name)
+        dataList.select('.value').html(d.count_str).style('color', d.color)
       })
 
       // Position left
@@ -494,59 +501,6 @@ export default {
     setShowDotsEnd() {
       d3.selectAll(`dots-${this.xAxisEnd}`).style('opacity', 1)
     },
-    setAnimatePathLabel() {
-      const _self = this
-      const marker = d3.selectAll('.marker-group')
-
-      const animate = () => {
-        marker.each(function (g, i) {
-          d3.select(this).call(() => {
-            let index = 0
-            const data = _.get(g, 'data', [])
-            const { length } = data
-            const animate = () => {
-              const d = _.get(data, `[${index}]`, {})
-              const time = d.time
-
-              d3.select(this)
-                .select('.marker')
-                .transition()
-                .delay(time)
-                .duration(400)
-                .ease(d3.easeCircleIn)
-                .attr(
-                  'transform',
-                  `scale(${
-                    d.highest_per_date && index === length - 1 ? 1.7 : 1
-                  })`
-                )
-
-              d3.select(this)
-                .transition()
-                .duration(time)
-                .ease(d3.easeLinear)
-                .attr(
-                  'transform',
-                  `translate(${_self.xScale(d.date)},${_self.yScale(d.value)})`
-                )
-                .on('end', () => {
-                  if (index < length) animate()
-                  else _self.animate_finish = true
-                })
-              index++
-            }
-
-            animate()
-          })
-        })
-      }
-
-      this.animate_finish = false
-
-      setTimeout(() => {
-        marker.call(() => animate())
-      }, 1000)
-    },
     updateAnimatePathLabel(val, duration) {
       const _self = this
       const diff = moment(val).diff(this.xAxisStart, 'days')
@@ -556,7 +510,7 @@ export default {
       const line = d3
         .line()
         .x((d) => this.xScale(d.date))
-        .y((d) => this.yScale(d.value))
+        .y((d) => this.yScale(d.count))
         .defined(
           (d, i) =>
             (i <= nextPoint && i >= this.point) ||
@@ -564,21 +518,17 @@ export default {
         )
       // Update path.
       d3.selectAll('.line-path .line-seg')
-        .data(this.candidates)
+        .data(this.engagement_candidates)
         .each(function (d) {
           d3.select(this).attr('d', line(d.data))
         })
 
       // Transition marker from point to nextPoint.
       const updateMarkerSize = (select, d) => {
-        const date =
-          this.type === 'rank'
-            ? moment(val).diff(this.start_date, 'week') + 1
-            : val
-        const curr = _.get(this.group_date, `data[${date}]`, {}).find(
-          (curr) => curr.candidate === d.candidate
-        )
-        const highest = _.get(curr, 'highest_per_date')
+        const highest = _.get(d, 'data', [])
+          .filter((d) => d.date === val)
+          .find((d) => d.maximum.name === d.name)
+        // const highest = _.get(curr, 'highest_per_date')
         select
           .select('.marker')
           .transition()
@@ -587,9 +537,9 @@ export default {
       }
 
       d3.selectAll('.marker-group')
-        .data(this.candidates)
+        .data(this.engagement_candidates)
         .each(function (d, i) {
-          const lineSeg = d3.select(`#line-seg-${d.candidate}`)
+          const lineSeg = d3.select(`#line-seg-${d.name}`)
 
           d3.select(this)
             .transition()
@@ -632,62 +582,6 @@ export default {
     handleHover(el) {
       d3.select(el).moveToFront()
     },
-    calDistance(data, index, direction = 'forward') {
-      const start = direction === 'forward' ? -1 : +1
-      const d1 = _.get(data, `[${index + start}]`, {})
-      const d2 = _.get(data, `[${index}]`, {})
-
-      if (_.isEmpty(d1)) return 0
-      const x = this.xScale(d1.date) - this.xScale(d2.date)
-      const y = this.yScale(d1.value) - this.yScale(d2.value)
-      return Math.hypot(x, y) || 0
-    },
-    setDataGroupCandidate() {
-      const setFormatData = (data) => {
-        const dataset = data.map((d, index) => {
-          const distance = this.calDistance(data, index, 'forward')
-          const distanceBk = this.calDistance(data, index, 'black')
-          return {
-            ...d,
-            distance,
-            distanceBk,
-          }
-        })
-
-        const pathLength = dataset.reduce((acc, curr) => acc + curr.distance, 0)
-
-        const res = dataset.map((d) => {
-          const time = (this.duration * d.distance) / pathLength
-          const timeBk = (this.duration * d.distanceBk) / pathLength
-          return {
-            ...d,
-            time,
-            timeBk,
-            pathLength,
-          }
-        })
-
-        return res
-      }
-
-      const candidates = []
-      const groups = _.groupBy(this.raw_data, 'candidate')
-
-      for (const key in groups) {
-        const arr = _.get(groups, key, [])
-        const data = setFormatData(arr)
-
-        candidates.push({
-          candidate: key,
-          min: d3.min(arr, (d) => d.value),
-          max: d3.max(arr, (d) => d.value),
-          highest_per_date: _.get(data, '[0].highest_per_date'),
-          color: this.color(key),
-          data: arr,
-        })
-      }
-      this.candidates = candidates
-    },
     checksEvent: _.throttle(function (val) {
       this.hover = val
     }, 150),
@@ -697,29 +591,6 @@ export default {
         .reduce((acc, curr) => {
           return (acc += curr.time)
         }, 0)
-    },
-    handleSetActiveChart(date) {
-      this.active = date
-
-      const markerGroup = d3.selectAll('.marker-group').data(this.candidates)
-
-      markerGroup
-        .transition()
-        .duration(600)
-        .attr('transform', (group) => {
-          const d = group.data.find((d) => d.date === date) || {}
-          return `translate(${this.xScale(d.date)},${this.yScale(d.value)})`
-        })
-
-      markerGroup
-        .select('.marker')
-        .transition()
-        .duration(400)
-        .ease(d3.easeCircleIn)
-        .attr('transform', (group) => {
-          const d = group.data.find((d) => d.date === date) || {}
-          return `scale(${d.highest_per_date ? 1.7 : 1})`
-        })
     },
   },
 }

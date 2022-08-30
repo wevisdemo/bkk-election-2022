@@ -73,7 +73,7 @@
             </div>
             <div v-if="socialtrend_current.total_mention">
               <span class="font-bold"
-                >{{ format(socialtrend_current.total_mention) }} ข้อความ
+                >{{ numFormat(socialtrend_current.total_mention) }} ข้อความ
                 โดยมีคำว่า</span
               >
 
@@ -87,7 +87,8 @@
                   class="font-bold transition duration-200"
                   :style="`color: ${socialtrend_current.color}`"
                 >
-                  {{ item.keyword }}<sup>{{ `(${item.count})` }}</sup>
+                  {{ item.keyword
+                  }}<sup>{{ `(${numFormat(item.count)})` }}</sup>
                 </span>
                 <template
                   v-if="index < socialtrend_current.top_keywords.length - 1"
@@ -103,7 +104,10 @@
               </span>
               ประกบคู่มากที่สุดตามลำดับ สร้างการมีส่วนร่วมได้ทั้งหมด<br />
               <span class="font-bold"
-                >{{ format(socialtrend_current.total_engagement) }} ครั้ง</span
+                >{{
+                  numFormat(socialtrend_current.total_engagement)
+                }}
+                ครั้ง</span
               >
               เกิดขึ้นบน
               <span class="font-bold capitalize">{{
@@ -193,7 +197,7 @@
             <img src="~/assets/images/refresh.svg" alt="" />
           </div>
         </div>
-        <div
+        <!-- <div
           class="flex items-center text-center text-white mt-6 sm:flex-col sm:items-end"
         >
           <div>
@@ -221,7 +225,7 @@
               </el-option>
             </el-select>
           </div>
-          <div class="ml-5 sm:ml-0 sm:mt-3">
+          <div class="sm:mt-3">
             <span class="mr-3">จาก</span>
             <el-select
               v-model="platform"
@@ -250,7 +254,7 @@
               </el-option>
             </el-select>
           </div>
-        </div>
+        </div> -->
         <el-checkbox-group
           v-model="candidate_filter"
           size="small"
@@ -307,10 +311,11 @@
         >
           <div ref="chart" class="chart overflow-hidden">
             <LineChartRace
-              v-if="render_chart && line_chart_data.raw_data != 0"
+              v-if="render_chart && engagement_raw_data != 0"
               :width="chart_width"
               :height="chart_height"
-              :dataSet="line_chart_data"
+              :engagement_raw_data="engagement_raw_data"
+              :engagement_candidates="engagement_candidates"
               :activeChart="active_date"
               :start_date="start_calendar_date"
               :type="data_type"
@@ -466,7 +471,7 @@
                         style="border-top: 1px solid #cfcfcf"
                       >
                         <span class="font-bold"
-                          >{{ format(item.engagement_count) }}
+                          >{{ numFormat(item.engagement_count) }}
                         </span>
                         Engagement
                       </div>
@@ -598,7 +603,8 @@ export default {
       render_chart: true,
       socialtrend_current: {},
       socialtrend: [],
-      engagement: {},
+      engagement_json: [],
+      engagement_raw_data: [],
       rank: {},
       avgTime: 0,
       posts: [],
@@ -612,7 +618,7 @@ export default {
       current_chart_active: {},
       start_input_date: '2021-11-01',
       start_calendar_date: '2021-10-31',
-      end_input_date: moment().format('yyyy-MM-DD'),
+      end_input_date: '2022-05-22',
       active_date: '',
       keyword: '',
       curr_date_active: '',
@@ -720,18 +726,41 @@ export default {
     }
   },
   computed: {
-    format() {
+    numFormat() {
       return d3.format(',')
     },
-    duration() {
-      const { length } = _.get(this.line_chart_data, 'group_date', {})
+    candidate_filter_sort() {
+      return this.candidate_options.filter((d) =>
+        this.candidate_filter.includes(d)
+      )
+    },
+    engagement_candidates() {
+      const res = this.candidate_filter_sort.map((d) => {
+        const data = this.engagement_raw_data.map((en) => {
+          const findCandidate = en.engagements.find((o) => o.name === d)
 
-      const time = length * 300
+          return { date: en.date, maximum: en.maximum, ...findCandidate }
+        })
+
+        return {
+          name: d,
+          color: this.color_palettes(d),
+          image: this.photo(d),
+          data,
+        }
+      })
+
+      return res
+    },
+    duration() {
+      const { length } = this.engagement_raw_data
+
+      const time = length * 200
       const duration = this.data_type === 'rank' ? time * 3 : time
       return duration < 20000 ? 20000 : duration
     },
     last_day() {
-      return moment().diff(this.start_input_date, 'days')
+      return moment(this.end_input_date).diff(this.start_input_date, 'days') + 1
     },
     color_palettes() {
       return d3
@@ -836,7 +865,7 @@ export default {
       return (
         this.chart_inview &&
         this.play_animation &&
-        _.get(this.line_chart_data, 'raw_data', []).length !== 0
+        this.engagement_raw_data.length !== 0
       )
     },
     candidates() {
@@ -880,27 +909,29 @@ export default {
   },
   async created() {
     this.candidate_filter = _.clone(this.candidate_options)
+
+    // this.RegisterServiceWorker()
     this.getKeywords()
     this.setDaterange()
     this.handleCandidateStat()
-    this.line_chart_data = await this.getEngagement()
+    await this.getEngagement()
+    this.handleFetchEngagement()
     this.loading_full = false
-  },
-  destroyed() {
-    window.removeEventListener('resize')
   },
   beforeMount() {
     // disable scroll
     document.body.classList.add('stop-scrolling')
 
     window.scrollTo(0, 0)
-    if (this.deviceDevice() === 'desktop') {
+    if (this.deviceDetector() === 'desktop') {
       window.addEventListener('resize', _.debounce(this.reRenderChart, 200))
     }
   },
+  beforeDestroy() {
+    window.removeEventListener('resize', _.debounce(this.reRenderChart, 200))
+  },
   mounted() {
     loadUIComponents()
-
     // window.registerUICustomElements()
     this.chart_width = _.get(this.$refs, 'chart.clientWidth')
     this.chart_height = _.get(this.$refs, 'chart.clientHeight')
@@ -942,14 +973,10 @@ export default {
         this.setAnimateStackedBarChart()
       } else {
         d3.selectAll('.stacked-bar-chart .candidate').transition()
-        const { length } = _.get(
-          this.line_chart_data,
-          'group_date.keys_data',
-          []
-        )
+        const { length } = this.engagement_raw_data
         setTimeout(() => {
           this.setDefaultStackedBarChart(length - 1)
-        }, 20)
+        }, 50)
       }
     },
     truncate(str = '') {
@@ -1011,22 +1038,21 @@ export default {
     async getPosts() {
       let data = []
       try {
-        const res = await this.$api.get('top-engagement-message', {
-          params: {
-            date: this.active_date,
-            candidates: this.candidate_filter.toString(),
-            keywords: this.keyword ? this.keyword : undefined,
-            channels: this.platform ? this.platform : undefined,
-          },
-        })
-        data = _.get(res, 'data.data', [])
+        // data = await fetch(
+        //   `http://localhost:3002/socialtrend/data/daily-top-posts/top-posts-${this.active_date}.json`
+        // )
+        data = await import(
+          `~/static/data/daily-top-posts/top-posts-${this.active_date}.json`
+        )
+        // data = (await data.json()) || []
       } catch (error) {
         console.error(error)
       }
 
       this.posts = _.chain(data)
-        .filter((d) => d.text)
-        .orderBy('total_engagement', 'desc')
+        .get('posts', [])
+        .filter((d) => this.candidate_options.includes(d.candidate))
+        .orderBy('engagement_count', 'desc')
         .map((d) => {
           const platform =
             this.platform_options.find((p) => p.value === d.channel) || {}
@@ -1041,18 +1067,8 @@ export default {
         .value()
     },
     async getCandidateStat() {
-      let data = []
-      try {
-        const res = await this.$api.get('candidate-stat', {
-          params: {
-            candidates: this.candidate_options.toString(),
-          },
-        })
-        data = _.get(res, 'data.data', [])
-      } catch (error) {
-        console.error(error)
-      }
-
+      const res = (await import('~/static/data/candidate-stat.json')) || {}
+      const data = res.data
       const socialtrend = []
       this.candidate_options.forEach((c) => {
         const arrData = data.map((d) => {
@@ -1065,171 +1081,169 @@ export default {
 
       this.socialtrend = socialtrend
     },
-    async getEngagement() {
-      let data = []
-      const dateTo =
-        _.get(this.daterange, '[1]') || moment().format('yyyy-MM-DD')
-      const dateFrom = _.get(this.daterange, '[0]') || this.start_input_date
-      try {
-        const res = await this.$api.get('sum-engagement-per-date', {
-          params: {
-            date_from: dateFrom,
-            date_to: dateTo,
-            candidates: this.candidate_filter.toString(),
-            keywords: this.keyword ? this.keyword : undefined,
-            channels: this.platform ? this.platform : undefined,
-          },
+    handleFetchEngagement() {
+      const data = _.cloneDeep(this.engagement_json)
+
+      const dataSet = data
+        .filter((d) => {
+          const start = _.get(this.daterange, '[0]')
+          const end = _.get(this.daterange, '[1]')
+          return (
+            moment(d.date).isSameOrBefore(end) &&
+            moment(d.date).isSameOrAfter(start)
+          )
+        })
+        .map((d) => {
+          const engagements = d.engagements.filter((en) =>
+            this.candidate_filter.includes(en.name)
+          )
+
+          return { ...d, engagements }
         })
 
-        data = _.get(res, 'data.data', [])
-      } catch (error) {
-        console.error(error)
-      }
-
-      const groupDate = _.groupBy(data, 'date')
-      const rawData = _.orderBy(data, 'date', 'asc').map((d) => {
-        const isBefore = []
-        for (const key in groupDate) {
-          if (moment(key).isSameOrBefore(d.date)) {
-            isBefore.push(...groupDate[key])
-          }
-        }
-
-        const total = _.sumBy(isBefore, 'value')
-        const increase = _.chain(isBefore)
-          .filter((o) => o.candidate === d.candidate)
-          .sumBy('value')
-          .value()
-        const highest = _.chain(groupDate)
-          .get(d.date, {})
-          .maxBy('value')
-          .value()
-
-        return {
-          ...d,
-          increase,
-          increase_total: total,
-          ratio: (increase / total) * 100,
-          highest: _.get(highest, 'value', 0),
-          highest_per_date: highest.candidate === d.candidate,
-          image: this.photo(d.candidate),
-          color: this.color_palettes(d.candidate),
-        }
-      })
-      const arrDate = _.groupBy(rawData, 'date')
-      const arrCandidate = _.groupBy(rawData, 'candidate')
-      const candidates = []
-
-      for (const key in arrCandidate) {
-        candidates.push({
-          candidate: key,
-          color: this.color_palettes(key),
-          image: this.photo(key),
-          data: arrCandidate[key],
-        })
-      }
-      const orderCandidate = this.candidate_filter.map((c) =>
-        candidates.find((d) => d.candidate === c)
-      )
-
-      this.engagement = {
-        raw_data: rawData,
-        candidates: orderCandidate,
-        group_date: {
-          data: arrDate,
-          keys_data: Object.keys(arrDate),
-          length: Object.keys(arrDate).length,
-        },
-      }
-
-      return await _.clone(this.engagement)
+      this.engagement_raw_data = this.setFormatData(dataSet)
     },
-    async getRank() {
-      let data = []
-      const dateTo =
-        _.get(this.daterange, '[1]') || moment().format('yyyy-MM-DD')
-      const dateFrom = _.get(this.daterange, '[0]') || this.start_input_date
-      try {
-        const res = await this.$api.get('rank-per-week', {
-          params: {
+    async getEngagement() {
+      // let res = await fetch(
+      //   `http://localhost:3002/socialtrend/data/engagements.json`
+      // )
+
+      // res = (await res.json()) || []
+      const res = await import('~/static/data/engagements.json')
+
+      this.engagement_json = _.get(res, 'default', res)
+    },
+    setFormatData(data = []) {
+      let dataSet = []
+
+      const isBefore = (array, i1, i2) => {
+        return _.chain(array)
+          .slice(i1, i2 + 1)
+          .map('engagements')
+          .flatten()
+          .value()
+      }
+
+      const egmtIncreaseCalc = (array, curr, i1, i2, keyVal = 'count') => {
+        const dataSet = isBefore(array, i1, i2)
+        return _.chain(dataSet)
+          .filter((o) => o.name === curr.name)
+          .sumBy(keyVal)
+          .value()
+      }
+
+      const egmtIncreaseTotalCalc = (array, i1, i2, keyVal = 'count') => {
+        const dataSet = isBefore(array, i1, i2)
+        return _.chain(dataSet).sumBy(keyVal).value()
+      }
+
+      if (this.data_type === 'engagement') {
+        dataSet = data.map((d, index) => {
+          const findMaximum = _.maxBy(d.engagements, 'count') || {}
+
+          // const total = _.sumBy(d.engagements, 'count')
+          const engagements = d.engagements.map((o) => {
+            const increaseCurrEngagement = egmtIncreaseCalc(data, o, 0, index)
+            const increaseTotalEngagement = egmtIncreaseTotalCalc(
+              data,
+              0,
+              index
+            )
+
+            return {
+              ...o,
+              ratio: (increaseCurrEngagement / increaseTotalEngagement) * 100,
+              image: this.photo(o.name),
+              color: this.color_palettes(o.name),
+            }
+          })
+          return {
+            ...d,
+            maximum: findMaximum,
+            engagements,
+          }
+        })
+      } else {
+        const getWeek = (date) =>
+          moment(date).diff(this.start_calendar_date, 'week') + 1
+
+        const groupByWeek = _.chain(data)
+          .map((d) => ({ ...d, week: getWeek(d.date) }))
+          .groupBy('week')
+          .value()
+
+        const dataPerWeek = []
+        for (const key in groupByWeek) {
+          let engagements = this.candidate_filter_sort.map((candi) => {
+            const groupCandidate = []
+            groupByWeek[key].forEach((d) => {
+              const find = d.engagements.find((en) => en.name === candi)
+              groupCandidate.push(find)
+            })
+            const totalEngagement = _.sumBy(groupCandidate, 'count')
+
+            return {
+              name: candi,
+              engagement: totalEngagement,
+              count: this.candidate_filter.length,
+            }
+          })
+          const dateFrom = _.chain(groupByWeek[key]).head().get('date').value()
+          const dateTo = _.chain(groupByWeek[key]).last().get('date').value()
+
+          const findMaximum = _.maxBy(engagements, 'engagement') || {}
+
+          engagements = _.chain(engagements)
+            .orderBy('engagement', 'asc')
+            .map((d, index) => {
+              return {
+                ...d,
+                count: d.engagement === 0 ? 0 : index + 1,
+                image: this.photo(d.name),
+                color: this.color_palettes(d.name),
+              }
+            })
+            .value()
+
+          dataPerWeek.push({
+            date: key,
             date_from: dateFrom,
             date_to: dateTo,
-            candidates: this.candidate_filter.toString(),
-            keywords: this.keyword ? this.keyword : undefined,
-            channels: this.platform ? this.platform : undefined,
-          },
-        })
+            engagements,
+            maximum: findMaximum,
+          })
+        }
 
-        data = _.get(res, 'data.data', [])
-      } catch (error) {
-        console.error(error)
-      }
+        dataSet = dataPerWeek.map((d, index) => {
+          const engagements = d.engagements.map((eng) => {
+            const increaseCurrEngagement = egmtIncreaseCalc(
+              dataPerWeek,
+              eng,
+              0,
+              index,
+              'engagement'
+            )
 
-      const groupDate = _.groupBy(data, 'date_from')
+            const increaseTotalEngagement = egmtIncreaseTotalCalc(
+              dataPerWeek,
+              0,
+              index,
+              'engagement'
+            )
 
-      const rawData = _.orderBy(data, 'date_from', 'asc').map((d) => {
-        const { length } = this.candidate_filter
-        const value = d.value === 0 ? 0 : length + 1 - d.value
-        const isBefore = []
-        for (const key in groupDate) {
-          if (moment(key).isSameOrBefore(d.date_from)) {
-            isBefore.push(...groupDate[key])
+            return {
+              ...eng,
+              ratio: (increaseCurrEngagement / increaseTotalEngagement) * 100,
+            }
+          })
+          return {
+            ...d,
+            engagements,
           }
-        }
-
-        const total = _.sumBy(isBefore, 'total_engagement')
-        const increase = _.chain(isBefore)
-          .filter((o) => o.candidate === d.candidate)
-          .sumBy('total_engagement')
-          .value()
-        const highest = _.chain(groupDate)
-          .get(d.date_from, {})
-          .maxBy('total_engagement')
-          .value()
-
-        const date = moment(d.date_from).diff(this.start_calendar_date, 'week')
-
-        return {
-          ...d,
-          value,
-          date: `${date + 1}`,
-          rank: d.value,
-          increase,
-          increase_total: total,
-          ratio: (increase / total) * 100,
-          highest: _.get(highest, 'total_engagement', 0),
-          highest_per_date: highest.candidate === d.candidate,
-          image: this.photo(d.candidate),
-          color: this.color_palettes(d.candidate),
-        }
-      })
-
-      const arrDate = _.groupBy(rawData, 'date')
-      const arrCandidate = _.groupBy(rawData, 'candidate')
-      const candidates = []
-
-      for (const key in arrCandidate) {
-        candidates.push({
-          candidate: key,
-          color: this.color_palettes(key),
-          image: this.photo(key),
-          data: arrCandidate[key],
         })
       }
 
-      const orderCandidate = this.candidate_filter.map((c) =>
-        candidates.find((d) => d.candidate === c)
-      )
-
-      this.rank = {
-        raw_data: rawData,
-        candidates: orderCandidate,
-        group_date: {
-          data: arrDate,
-          keys_data: Object.keys(arrDate),
-          length: Object.keys(arrDate).length,
-        },
-      }
+      return dataSet
     },
     resetDateFitler() {
       const start = this.start_input_date
@@ -1245,7 +1259,7 @@ export default {
       this.handleUpdateChart()
     },
     changeCandidateFilter: _.debounce(function () {
-      this.setDefaultStackedBarChart()
+      // this.setDefaultStackedBarChart()
       this.onUpdateChart()
     }, 500),
     onChangeTypeChart() {
@@ -1254,23 +1268,18 @@ export default {
       }
       this.handleUpdateChart()
     },
-    async handleUpdateChart() {
+    handleUpdateChart() {
       this.loading_chart = true
       this.active_date = ''
 
-      if (this.data_type === 'engagement' && _.isEmpty(this.engagement)) {
-        await this.getEngagement()
-      } else if (_.isEmpty(this.rank)) {
+      if (this.data_type === 'rank') {
         this.validateCalendarOnWeek()
-        await this.getRank()
       }
+      this.handleFetchEngagement()
 
-      if (this.data_type === 'engagement') {
-        this.line_chart_data = this.engagement
-      } else {
-        this.line_chart_data = this.rank
-      }
-      this.reRenderChart()
+      setTimeout(() => {
+        this.reRenderChart()
+      }, 50)
 
       this.loading_chart = false
     },
@@ -1291,20 +1300,7 @@ export default {
         this.chart_inview = true
       }
     },
-    updateStackedBarChart(date) {
-      d3.selectAll('.stacked-bar-chart .candidate')
-        .data(this.line_chart_data.candidates)
-        .call((el) => {
-          el.transition()
-            .duration(600)
-            .ease(d3.easeLinear)
-            .style(this.$mq !== 'desktop' ? 'height' : 'width', (curr) => {
-              const data = curr.data.find((d) => d.date === date)
-              return `${_.get(data, 'ratio')}%`
-            })
-        })
-    },
-    deviceDevice() {
+    deviceDetector() {
       const ua = navigator.userAgent
       if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
         return 'tablet'
@@ -1344,7 +1340,7 @@ export default {
         candidates.call((el) => el.style('height', '100%'))
       }
 
-      candidates.data(this.line_chart_data.candidates).call((el) => {
+      candidates.data(this.engagement_candidates).call((el) => {
         el.transition()
           .duration(300)
           .ease(d3.easeLinear)
@@ -1363,15 +1359,12 @@ export default {
       const _self = this
       const candidates = d3
         .selectAll('.stacked-bar-chart .candidate')
-        .data(this.line_chart_data.candidates)
+        .data(this.engagement_candidates)
 
-      if (this.$mq !== 'desktop') {
-        candidates.call((el) => el.style('width', '100%'))
-      } else {
-        candidates.call((el) => el.style('height', '100%'))
-      }
+      const style = this.$mq === 'desktop' ? 'height' : 'width'
+      candidates.call((el) => el.style(style, '100%'))
 
-      const { length } = _.get(this.line_chart_data, 'group_date', {})
+      const { length } = this.engagement_raw_data
       const time = this.duration / length
       const firstTime = 800
       const avgTime = time + (time - firstTime) / (length - 1)
