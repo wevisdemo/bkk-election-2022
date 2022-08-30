@@ -14,11 +14,13 @@ const Metadata: FunctionComponent<MetadataProps> = ({
   imageSrc,
   description = DEFAULT_DESCRIPTION,
 }) => {
+  const fullTitle = `${title} - Bangkok Election 2022`;
+
   return (
     <Head>
-      <title>{title}</title>
+      <title>{fullTitle}</title>
       <meta name="description" content={description} />
-      <meta property="og:title" content={title} />
+      <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={imageSrc || ''} />
       <meta name="twitter:card" content="summary_large_image" />

@@ -6,6 +6,7 @@ export interface Candidate {
 	color: string;
 	party?: string;
 	image?: string;
+	descriptionModal?: string;
 }
 
 export type CandidateMap = {

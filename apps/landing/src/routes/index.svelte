@@ -1,13 +1,14 @@
 <script lang="ts">
 	import { fetchTheStandardElectionPosts, fetchWeVisElectionPosts } from 'wordpress-api';
 	import PostGrid from '../components/post-grid.svelte';
-	import Counter from '../components/counter.svelte';
+	// import Counter from '../components/counter.svelte';
 	import ProjectCard from '../components/project-card.svelte';
 	import Metadata from '../components/metadata.svelte';
 	import PartnersLogo from '../components/partners-logo.svelte';
 	import { onMount } from 'svelte';
 
 	const THE_STANDARD_GUIDE_TAG = 'bkk-election-101';
+	const HERO_VIDEO_ID = 'AFDIEkVIJsw';
 
 	const fetchTheStandardElectionGuides = () =>
 		fetchTheStandardElectionPosts({ tag: THE_STANDARD_GUIDE_TAG });
@@ -22,8 +23,9 @@
 			image: '/static/images/cover/tn_candidate.webp'
 		},
 		{
-			th: 'เช็กผลเลือกตั้งผู้ว่าฯ กทม. แบบเรียลไทม์',
-			en: 'Bkk Election Real-time Results',
+			th: 'ดูผลการนับคะแนนผู้ว่าฯ กทม. และ ส.ก.',
+			en: 'BKK Election Result',
+			href: '/map',
 			image: '/static/images/cover/tn_result.webp'
 		},
 		{
@@ -52,11 +54,43 @@
 			href: 'https://bangkokbudgeting.wevis.info',
 			external: true,
 			image: '/static/images/cover/tn_bangkokbudget.webp'
+		},
+		{
+			th: 'ตรวจสอบสิทธิและสถานที่เลือกตั้ง',
+			en: 'Where to Vote',
+			href: 'https://stat.bora.dopa.go.th/Election/enqelectloc',
+			external: true,
+			image: '/static/images/cover/tn_check.webp'
+		},
+		{
+			th: 'ร่วมรายงานการนับคะแนน',
+			en: 'Monitor Our Votes',
+			href: 'https://vote62.com',
+			external: true,
+			image: '/static/images/cover/tn_vote62.webp'
+		},
+		{
+			th: '(ไม่ใช่) คน กทม. ขอเลือกด้วย',
+			en: 'We Vote BKK',
+			href: 'https://weviswevote.webflow.io',
+			external: true,
+			image: '/static/images/cover/tn_wevote.webp'
 		}
 	];
+
+	// const checkpoints = [
+	// 	{
+	// 		date: new Date('2022/05/22 8:00 GMT+7'),
+	// 		text: 'นับถอยหลังเปิดหีบเลือกตั้ง<br />วันอาทิตย์ที่ 22 พฤษภาคม พ.ศ. 2565 เวลา 08.00 - 17.00 น.'
+	// 	},
+	// 	{
+	// 		date: new Date('2022/05/22 17:00 GMT+7'),
+	// 		text: 'นับถอยหลังปิดหีบเลือกตั้ง เวลา 17:00 น.'
+	// 	}
+	// ];
 </script>
 
-<Metadata />
+<Metadata title="Bangkok Election 2022 : เกาะติด 'เลือกตั้งผู้ว่าฯ กทม. 2565" />
 
 <div class="bg-black text-white">
 	<div
@@ -78,14 +112,29 @@
 					ติดตามข้อมูลเกี่ยวกับการเลือกตั้งผู้ว่าฯ <br class="md:hidden" />และสมาชิกสภา กทม.
 					ได้ที่นี่
 				</p>
-				<Counter until={new Date('2022/05/22 8:00 GMT+7')}>
-					นับถอยหลังเปิดหีบเลือกตั้ง<br />วันอาทิตย์ที่ 22 พฤษภาคม พ.ศ. 2565 เวลา 08.00 - 17.00 น.
-				</Counter>
+				<!-- <Counter {checkpoints} /> -->
+				<a
+					href="/map"
+					class="typo-h6 flex flex-row live-button mx-auto p-4 items-center space-x-1 shadow-sm hover:brightness-125"
+					style="background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 100%), #b90202;"
+				>
+					<div class="pr-4">ดูผลการนับคะแนน</div>
+					<svg
+						width="17"
+						height="18"
+						viewBox="0 0 17 18"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path d="M8 1L15.5789 9L8 17" stroke="white" stroke-width="2" />
+						<path d="M0 9L16 9" stroke="white" stroke-width="2" />
+					</svg>
+				</a>
 			</div>
 			<div class="-md:hidden flex-1">
-				<lite-youtube videoid="KqaFyTtv3PU" />
+				<lite-youtube videoid={HERO_VIDEO_ID} />
 			</div>
-			<lite-youtube class="md:hidden" videoid="KqaFyTtv3PU" />
+			<lite-youtube class="md:hidden" videoid={HERO_VIDEO_ID} />
 		</div>
 	</div>
 	<div class="-mt-12 h-12 to-black from-transparent bg-gradient-to-b " />

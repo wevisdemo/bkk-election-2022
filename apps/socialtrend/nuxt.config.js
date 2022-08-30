@@ -1,4 +1,5 @@
-const webTitle = 'Social Listening เลือกตั้งผู้ว่าฯ กทม. บนโลกออนไลน์'
+const webTitle =
+  'Social Listening: เลือกตั้งผู้ว่าฯ กทม. บนโลกออนไลน์ - Bangkok Election 2022'
 const webDescription = `สรุปครบ 'เลือกตั้งผู้ว่าฯ กทม. 2565' และ 'เลือกตั้ง ส.ก.' เช็กประวัติ นโยบาย หมายเลขแคนดิเดต พร้อมคู่มือเลือกตั้ง และเช็กผลเลือกตั้ง กทม. แบบเรียลไทม์`
 const ogImage = '/socialtrend/sociallistening_og.png'
 

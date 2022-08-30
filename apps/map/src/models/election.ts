@@ -1,15 +1,20 @@
-export interface ElectionIndex {
+export interface PresetIndex {
 	shortname: string;
 	fullname: string;
+	subtitle?: string;
+	descriptionModal?: string;
 	electionDataUrl: string;
 	candidateDataUrl: string;
+	refreshIntervalMs?: number;
+	isLive?: boolean;
+	enableCandidateLink?: boolean;
 }
 
 export interface ElectionData {
 	type: ElectionDataType;
 	total: Voting;
 	districts: District[];
-	lastUpdatedAt?: Date;
+	lastUpdatedAt?: string;
 }
 
 export interface District {
@@ -20,6 +25,8 @@ export interface District {
 export interface Voting {
 	eligiblePopulation: number;
 	totalVotes: number;
+	badVotes?: number;
+	noVotes?: number;
 	progress?: number;
 	result: Result[];
 }

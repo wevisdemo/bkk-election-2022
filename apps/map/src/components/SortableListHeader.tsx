@@ -2,7 +2,7 @@ interface SortableListHeaderProps {
 	headerText: string;
 	isActive: boolean;
 	descending: boolean;
-	sClass: string;
+	className: string;
 	headerOnClick: () => void;
 	children?: React.ReactNode;
 }
@@ -12,16 +12,16 @@ const ARROW_UP = '↑';
 
 export default function SortableListHeader({
 	headerText,
-	sClass,
+	className,
 	isActive,
 	descending,
 	headerOnClick,
 	children
 }: SortableListHeaderProps) {
 	return (
-		<span class={`opacity-50 ${sClass} items-center gap-1`} onClick={headerOnClick}>
+		<span class={`opacity-50 ${className} items-center gap-1 lg:whitespace-nowrap`} onClick={headerOnClick}>
 			{headerText}
-			{isActive && (descending ? ARROW_DOWN : ARROW_UP)}
+			{isActive && (descending ? ARROW_UP : ARROW_DOWN)}
 			{children}
 		</span>
 	);

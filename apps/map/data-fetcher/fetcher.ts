@@ -5,6 +5,10 @@ export type ElectionDataFetcher = (type: ElectionDataFetcherType) => Promise<Ele
 export type CandidatesFetcher = (type: ElectionDataFetcherType) => Promise<CandidateMap>;
 
 export enum ElectionDataFetcherType {
+  LiveGovernor,
+  LiveCouncilMember,
+  LiveECTGovernor,
+  LiveECTCouncilMember,
   Governor,
   CouncilMember,
 }

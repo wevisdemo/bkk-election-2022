@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useContext, useState } from 'react';
+import { configContext } from '../contexts/config';
 import { presetContext } from '../contexts/preset';
-import { electionIndexes } from '../data/presets';
 import { ElectionDataType } from '../models/election';
 
 interface PresetToggleProps {
@@ -10,15 +10,21 @@ interface PresetToggleProps {
 
 const PresetToggle: FunctionComponent<PresetToggleProps> = ({ activeIndex, onChange }) => {
 	const preset = useContext(presetContext);
+	const config = useContext(configContext);
 	const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
 
+	if (!config || !preset) return <></>;
+
 	return (
-		<div className="w-full md:w-auto flex flex-col relative">
+		<div className="w-full lg:w-full lg:max-w-[360px] flex flex-col relative">
 			<button
-				class="flex flex-row items-center md:hidden rounded-sm border border-white py-2 px-4 mb-1 typo-u5 font-bold"
+				class="flex flex-row items-center rounded-sm border border-white py-2 px-4 mb-1 typo-u5 font-bold"
 				onClick={() => setIsDropdownOpen(!isDropdownOpen)}
 			>
-				<span className="flex-1 text-left">{electionIndexes[activeIndex].shortname}</span>
+				<div className="flex-1 text-left flex flex-row">
+					{preset.electionData.type === ElectionDataType.Live && <LiveBadge />}
+					{config.presetIndexes[activeIndex].shortname}
+				</div>
 				<svg
 					width="14"
 					height="9"
@@ -32,15 +38,18 @@ const PresetToggle: FunctionComponent<PresetToggleProps> = ({ activeIndex, onCha
 				</svg>
 			</button>
 			<div
-				className={`absolute inset-x-0 top-full md:relative flex-col md:flex-row rounded-sm border border-white bg-black z-10 overflow-hidden ${
-					isDropdownOpen ? 'flex' : 'hidden md:flex'
+				className={`absolute inset-x-0 top-full flex-col rounded-sm border border-white bg-black z-10 overflow-hidden ${
+					isDropdownOpen ? 'flex' : 'hidden'
 				}`}
 			>
-				{electionIndexes.map(({ shortname, electionDataUrl }, index) => (
+				{config.presetIndexes.map(({ shortname, electionDataUrl }, index) => (
 					<button
 						key={shortname}
 						disabled={!electionDataUrl}
-						onClick={() => electionDataUrl && onChange(index)}
+						onClick={() => {
+							setIsDropdownOpen(false);
+							if (electionDataUrl) onChange(index);
+						}}
 						className={`typo-u5 px-3 py-2 rounded-sm h-fit m-[2px] flex flex-row ${
 							index === activeIndex
 								? 'bg-white text-black font-semibold'
@@ -50,9 +59,7 @@ const PresetToggle: FunctionComponent<PresetToggleProps> = ({ activeIndex, onCha
 						}`}
 					>
 						{preset?.electionData.type === ElectionDataType.Live &&
-							preset?.shortname === shortname && (
-								<div class="bg-[#D02525] text-white mr-1 px-1 font-semibold">LIVE</div>
-							)}
+							preset?.shortname === shortname && <LiveBadge />}
 						{shortname}
 					</button>
 				))}
@@ -60,5 +67,7 @@ const PresetToggle: FunctionComponent<PresetToggleProps> = ({ activeIndex, onCha
 		</div>
 	);
 };
+
+const LiveBadge = () => <div class="bg-[#D02525] text-white mr-1 px-1 font-semibold">LIVE</div>;
 
 export default PresetToggle;

@@ -4,7 +4,7 @@ import { getCandidates } from "./election-data";
 import { Candidate } from "./election-data/models/candidate";
 import { Candidate as OutputCandidate } from '../../src/models/candidate';
 import { BKK_COUNCIL_MEMBER_ELECTION_ID, BKK_GOVERNOR_ELECTION_ID } from "./election-ids";
-import { getIdForCouncilMember, getIdForGovernor } from "./get-candidate-ids";
+import { getIdForCouncilMember, getIdForGovernor, IdGetter } from "./get-candidate-ids";
 
 export const fetchCandidates: CandidatesFetcher = (type: ElectionDataFetcherType): Promise<CandidateMap> => {
   if (type === ElectionDataFetcherType.Governor) {
@@ -25,7 +25,7 @@ async function fetchCouncilMemberCandidates(): Promise<CandidateMap> {
   return mapCandidates(candidates, getIdForCouncilMember);
 }
 
-function mapCandidates(candidates: Candidate[], idGetter: (c: Candidate) => string): CandidateMap {
+function mapCandidates(candidates: Candidate[], idGetter: IdGetter): CandidateMap {
   return candidates
     .map(c => {
       const candidate = mapCandidate(c);

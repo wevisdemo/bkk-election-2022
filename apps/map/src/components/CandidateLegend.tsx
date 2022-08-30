@@ -1,4 +1,5 @@
 import React, { useContext, useMemo, useState } from 'react';
+import { DEFAULT_CANDIDATE_COLOR } from '../constants/candidate';
 import { presetContext } from '../contexts/preset';
 import { Candidate } from '../models/candidate';
 import Modal from './Modal';
@@ -8,44 +9,69 @@ interface CandidateLegendProps {
 	children?: React.ReactNode;
 }
 
+interface Label {
+	text: string;
+	color: string;
+}
+
 const INSTRUCTION_SHORT_STRING = 'วิธีอ่าน';
 const INSTRUCTION_STRING = 'วิธีอ่านแผนภาพ';
+const OTHER_CANDIDATES_TEXT = 'อื่นๆ';
 
-export default function CandidateLegend({topCandidatePerDistrict, children }: CandidateLegendProps) {
+export default function CandidateLegend({
+	topCandidatePerDistrict,
+	children
+}: CandidateLegendProps) {
 	const [showModal, setShowModal] = useState<boolean>(false);
 	const preset = useContext(presetContext);
 
 	if (!preset) return <></>;
 
-	const candidateLabels: Candidate[] = useMemo(() => {
-		let tempCandidates: Candidate[] = [];
+	const candidateLabels: Label[] = useMemo(() => {
+		let tempLabels: Label[] = [];
+		let hasDefualtCandidateColor = false;
 		for (const district of preset.electionData.districts) {
 			const sorted = district.voting.result.sort((a, b) => b.count - a.count);
 			for (let i = 0; i < topCandidatePerDistrict && i < sorted.length; i++) {
 				const candidate = preset.candidateMap[sorted[i].candidateId];
-				if (tempCandidates.indexOf(candidate) == -1) {
-					tempCandidates.push(candidate);
+				if (candidate.color.localeCompare(DEFAULT_CANDIDATE_COLOR) === 0) {
+					hasDefualtCandidateColor = true;
+				} else if (
+					!tempLabels.find((l) => l.color == candidate.color) &&
+					candidate &&
+					sorted[i].count > 0
+				) {
+					if (preset.electionData.total.result.length > 0) {
+						tempLabels.push({ text: candidate.shortname, color: candidate.color });
+					} else if (candidate.party) {
+						tempLabels.push({ text: candidate.party, color: candidate.color });
+					}
 				}
 			}
 		}
-		return tempCandidates;
-	}, [preset]);
+		if (hasDefualtCandidateColor) {
+			tempLabels.push({ text: OTHER_CANDIDATES_TEXT, color: DEFAULT_CANDIDATE_COLOR });
+		}
+		return tempLabels.filter((candidate) => candidate);
+	}, [preset, topCandidatePerDistrict]);
 
 	return (
-		<div class="flex md:flex-col gap-2 typo-u4 relative ml-auto mr-auto lg:mr-0">
-			<div class="flex gap-2 md:gap-4 ml-auto">
-				<div class='flex flex-row flex-1 overflow-x-auto gap-2'>
-					{candidateLabels.map((candidate: Candidate) => (
-						<div class="flex shrink-0 gap-1 items-center">
-							<span
-								class="w-2 md:w-3 h-2 md:h-3"
-								style={{ backgroundColor: candidate.color }}
-							></span>
-							{candidate.shortname}
-						</div>
-					))}
+		<div class="flex md:flex-col gap-2 md:w-full typo-u4 relative ml-auto mr-auto">
+			<div class="flex gap-2 md:gap-4 w-full md:w-1/2 ml-auto mr-auto md:mr-0">
+				<div class="ml-auto overflow-auto overflow-y-hidden hide-scrollbar pointer-events-auto">
+					<div class="flex flex-row gap-2">
+						{candidateLabels.map((label: Label) => (
+							<div class="flex shrink-0 gap-1 items-center">
+								<span class="w-2 md:w-3 h-2 md:h-3" style={{ backgroundColor: label.color }}></span>
+								{label.text}
+							</div>
+						))}
+					</div>
 				</div>
-				<div class={`flex flex-row gap-2 md:hidden ${children || 'hidden'}`} onClick={() => setShowModal(true)}>
+				<div
+					class={`flex flex-row shrink-0 gap-2 md:hidden ${children || 'hidden'}`}
+					onClick={() => setShowModal(true)}
+				>
 					<div class="border opacity-30" />
 					<svg
 						width="16"

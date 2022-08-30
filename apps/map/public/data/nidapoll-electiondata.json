@@ -1,0 +1,19 @@
+{
+	"type": "POLL",
+	"total": {
+		"eligiblePopulation": 2500,
+		"totalVotes": 2500,
+		"result": [
+			{ "candidateId": "8", "count": 1268 },
+			{ "candidateId": "6", "count": 271 },
+			{ "candidateId": "4", "count": 259 },
+			{ "candidateId": "1", "count": 257 },
+			{ "candidateId": "3", "count": 170 },
+			{ "candidateId": "no", "count": 102 },
+			{ "candidateId": "7", "count": 87 },
+			{ "candidateId": "11", "count": 69 },
+			{ "candidateId": "other", "count": 11 }
+		]
+	},
+	"districts": []
+}

@@ -1,4 +1,5 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useContext, useEffect, useState } from 'react';
+import { presetContext } from '../contexts/preset';
 
 interface Tab {
 	name: string;
@@ -11,16 +12,23 @@ interface TabsViewProps {
 }
 
 const TabsView: FunctionComponent<TabsViewProps> = ({ tabs, className = '' }) => {
+	const preset = useContext(presetContext);
 	const [activeTabIndex, setActiceTabIndex] = useState<number>(0);
 
+	if (!preset?.electionData.total.result.length) {
+		setActiceTabIndex(0);
+	}
+
 	return (
-		<div className={`flex flex-col ${className} overflow-hidden`}>
+		<div
+			className={`flex flex-col ${className} overflow-hidden overflow-visible-shortscreen flex-1 pb-2`}
+		>
 			<div className="flex flex-row">
 				{tabs.map(({ name }, index) => (
 					<button
 						key={index}
-						class={`flex-1 border-b-4 text-white p-1 typo-u4 ${
-							activeTabIndex === index ? 'border-white font-bold' : 'border-transparent'
+						class={`flex-1 text-white p-1 typo-u4 border-white ${
+							activeTabIndex === index ? 'border-b-4 font-bold' : 'border-b'
 						}`}
 						onClick={() => setActiceTabIndex(index)}
 					>
@@ -28,7 +36,9 @@ const TabsView: FunctionComponent<TabsViewProps> = ({ tabs, className = '' }) =>
 					</button>
 				))}
 			</div>
-			<div className="flex flex-col flex-1 mt-4 overflow-hidden">{tabs[activeTabIndex].component}</div>
+			<div className="flex flex-col flex-1 mt-2 md:mt-4 overflow-hidden">
+				{tabs[activeTabIndex]?.component}
+			</div>
 		</div>
 	);
 };

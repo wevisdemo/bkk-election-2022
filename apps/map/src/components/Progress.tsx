@@ -1,7 +1,7 @@
 interface ProgressProps {
 	progressItems: ProgressItem[];
 	border?: string;
-	sClass: string;
+	className: string;
 	children?: React.ReactNode;
 }
 
@@ -13,19 +13,19 @@ export interface ProgressItem {
 
 const STRIP_GIF_PATH = '/map/images/strip-black.gif';
 
-export default function Progress({ progressItems, border, sClass, children }: ProgressProps) {
+export default function Progress({ progressItems, border, className, children }: ProgressProps) {
 	return (
 		<div class="inline-flex w-full h-full my-auto">
-			{progressItems.map((pi: ProgressItem) => (
+			{progressItems.map((progressItem: ProgressItem, index: number) => (
 				<span
-					class={`h-full ${sClass}`}
+					class={`h-full duration-200 ${className}`}
 					style={{
-						width: `${pi.percent * 100}%`,
-						backgroundColor: pi.color,
+						width: `${progressItem.percent * 100}%`,
+						backgroundColor: progressItem.color,
 						border: border
 					}}
 				>
-					{pi.strip && (
+					{progressItem.strip && (
 						<div
 							class="opacity-20 h-full left-0 top-0"
 							style={{ backgroundImage: `url('${STRIP_GIF_PATH}')` }}

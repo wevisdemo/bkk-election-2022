@@ -1,0 +1,93 @@
+{
+	"1": {
+		"id": "1",
+		"number": 1,
+		"fullname": "นายวิโรจน์ ลักขณาอดิศร",
+		"shortname": "วิโรจน์",
+		"color": "#CA5300",
+		"party": "พรรคก้าวไกล",
+		"image": "/map/images/65-governor-candidates/1.png"
+	},
+	"3": {
+		"id": "3",
+		"number": 3,
+		"fullname": "นายสกลธี ภัททิยกุล",
+		"shortname": "สกลธี",
+		"color": "#336060",
+		"party": "อิสระ",
+		"image": "/map/images/65-governor-candidates/3.png"
+	},
+	"4": {
+		"id": "4",
+		"number": 4,
+		"fullname": "นายสุชัชวีร์ สุวรรณสวัสดิ์",
+		"shortname": "สุชัชวีร์",
+		"color": "#1B80B6",
+		"party": "พรรคประชาธิปัตย์",
+		"image": "/map/images/65-governor-candidates/4.png"
+	},
+	"6": {
+		"id": "6",
+		"number": 6,
+		"fullname": "พล.ต.อ.อัศวิน ขวัญเมือง",
+		"shortname": "พล.ต.อ.อัศวิน",
+		"color": "#FAEDA9",
+		"party": "อิสระ (กลุ่มรักษ์กรุงเทพ)",
+		"image": "/map/images/65-governor-candidates/6.png"
+	},
+	"7": {
+		"id": "7",
+		"number": 7,
+		"fullname": "นางสาวรสนา โตสิตระกูล",
+		"shortname": "รสนา",
+		"color": "#543F2D",
+		"party": "อิสระ",
+		"image": "/map/images/65-governor-candidates/7.png"
+	},
+	"8": {
+		"id": "8",
+		"number": 8,
+		"fullname": "นายชัชชาติ สิทธิพันธุ์",
+		"shortname": "ชัชชาติ",
+		"color": "#97FF1F",
+		"party": "อิสระ",
+		"image": "/map/images/65-governor-candidates/8.png"
+	},
+	"11": {
+		"id": "11",
+		"number": 11,
+		"fullname": "น.ต.ศิธา ทิวารี",
+		"shortname": "น.ต.ศิธา",
+		"color": "#0022FF",
+		"party": "พรรคไทยสร้างไทย",
+		"image": "/map/images/65-governor-candidates/11.png"
+	},
+	"31": {
+		"id": "31",
+		"number": 31,
+		"fullname": "นายวิทยา จังกอบพัฒนา",
+		"shortname": "วิทยา",
+		"color": "#666666",
+		"party": "อิสระ",
+		"image": "/map/images/65-governor-candidates/31.png"
+	},
+	"other": {
+		"id": "other",
+		"fullname": "อื่นๆ",
+		"shortname": "อื่นๆ",
+		"color": "#666666",
+		"descriptionModal": "ได้แก่ นายวีรชัย เหล่าเรืองวัฒนะ (อิสระ) พันโทหญิง ฐิฏา รังสิตพล มานิตกุล (อิสระ) น.ส.วัชรี วรรณศรี (อิสระ) นายธเนตร วงษา (อิสระ) นายวรัญชัย โชคชนะ (อิสระ) และนายโฆสิต สุวินิจจิต (อิสระ)"
+	},
+	"no": {
+		"id": "no",
+		"fullname": "ไม่เลือกใคร (Vote NO)",
+		"shortname": "Vote NO",
+		"color": "#666666"
+	},
+	"not-decided": {
+		"id": "not-decided",
+		"fullname": "ยังไม่ตัดสินใจ",
+		"shortname": "ยังไม่ตัดสินใจ",
+		"color": "#666666"
+	}
+}

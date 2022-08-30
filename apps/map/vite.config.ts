@@ -2,6 +2,8 @@ import { defineConfig } from 'vite';
 import preact from '@preact/preset-vite';
 import htmlPlugin from 'vite-plugin-html-config';
 
+process.env.VITE_BUILD_ENV = process.env.BUILD_ENV;
+
 // https://vitejs.dev/config/
 export default defineConfig({
 	resolve: {
