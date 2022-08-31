@@ -197,64 +197,6 @@
             <img src="~/assets/images/refresh.svg" alt="" />
           </div>
         </div>
-        <!-- <div
-          class="flex items-center text-center text-white mt-6 sm:flex-col sm:items-end"
-        >
-          <div>
-            <span class="mr-3">ดู</span>
-            <el-select
-              v-model="keyword"
-              placeholder="Select"
-              class="select-outline"
-              @change="onUpdateChart"
-            >
-              <el-option
-                v-for="(item, index) in keyword_options"
-                :key="index"
-                :label="item.label"
-                :value="item.value"
-              >
-                <div class="label typo-u3">
-                  <div class="title">{{ item.label }}</div>
-                  <div
-                    class="description typo-u5 overflow-ellipsis overflow-hidden"
-                  >
-                    {{ item.description }}
-                  </div>
-                </div>
-              </el-option>
-            </el-select>
-          </div>
-          <div class="sm:mt-3">
-            <span class="mr-3">จาก</span>
-            <el-select
-              v-model="platform"
-              placeholder="Select"
-              class="select-outline"
-              @change="onUpdateChart"
-            >
-              <el-option
-                v-for="item in platform_options"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              >
-                <div
-                  class="label typo-u3 items-center"
-                  style="flex-direction: row; justify-content: flex-start"
-                >
-                  <img
-                    v-if="item.icon"
-                    :src="item.icon"
-                    alt=""
-                    class="w-5 mr-3"
-                  />
-                  <div class="title">{{ item.label }}</div>
-                </div>
-              </el-option>
-            </el-select>
-          </div>
-        </div> -->
         <el-checkbox-group
           v-model="candidate_filter"
           size="small"
@@ -622,7 +564,6 @@ export default {
       active_date: '',
       keyword: '',
       curr_date_active: '',
-      keyword_options: [],
       platform: '',
       platform_options: [
         {
@@ -910,8 +851,6 @@ export default {
   async created() {
     this.candidate_filter = _.clone(this.candidate_options)
 
-    // this.RegisterServiceWorker()
-    this.getKeywords()
     this.setDaterange()
     this.handleCandidateStat()
     await this.getEngagement()
@@ -1007,33 +946,6 @@ export default {
     async handleCandidateStat() {
       await this.getCandidateStat()
       this.animateKeywords()
-    },
-    async getKeywords() {
-      let data = []
-      try {
-        const res = await this.$api.get('top-keywords')
-        data = _.get(res, 'data.data', [])
-      } catch (error) {
-        console.error(error)
-      }
-
-      const options = data.map((d) => {
-        const description = d.top_keywords.map((k) => k.keyword).join(', ')
-
-        return {
-          label: d.issue,
-          value: d.issue,
-          description: `เช่น ${description}`,
-        }
-      })
-      this.keyword_options = [
-        {
-          label: 'ทุก keyword',
-          value: '',
-          description: '',
-        },
-        ...options,
-      ]
     },
     async getPosts() {
       let data = []
