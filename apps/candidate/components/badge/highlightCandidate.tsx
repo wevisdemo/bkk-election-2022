@@ -17,7 +17,7 @@ export function HighlightCandidateBadge({ candidate, isComingSoon }: PropType) {
     return `/${candidate.id}#hc-${candidate.id}`;
   };
 
-  const showVideo = !isComingSoon && candidate.answersList.length > 0;
+  const showVideo = !isComingSoon && candidate.answers.length > 0;
 
   return (
     <Link href={getHref()}>

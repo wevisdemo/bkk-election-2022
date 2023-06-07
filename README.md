@@ -59,7 +59,7 @@ While **moderator** will run at http://localhost:3000 and
 
 - Forward `/` request to **Landing** dev server
 - Forward `/socialtrend` request to **Social trend** dev server
-- Forward `/`candidate request to **Candidate** dev server
+- Forward `/candidate` request to **Candidate** dev server
 - Forward `/map` request to **Map** dev server
 - Serve files in `/static` at `/static`
 - Serve UI package built output at `/ui`

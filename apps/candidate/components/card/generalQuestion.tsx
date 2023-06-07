@@ -17,14 +17,14 @@ export function GeneralQuestionCard({ answer, disabledLink }: PropsType) {
             }}
             className={`typo-h6 ${disabledLink ? '' : 'hover:underline'}`}
           >
-            <h2>{answer.questionsRead.question}</h2>
+            <h2>{answer.question.question}</h2>
           </a>
         </Link>
         <p className="typo-b5 mt-[20px]">{answer.text}</p>
       </div>
       <YoutubePlayer
         url={answer.url}
-        title={answer.questionsRead.question}
+        title={answer.question.question}
         className="w-[250px] md:w-[450px] h-[250px] md:h-[450px] mt-[20px]"
         aspectHeight={1}
         aspectWidth={1}

@@ -19,11 +19,14 @@ export function QuestionListCard(props: Propstype) {
       .filter((question) => question.type === 'special')
       .reduce((result, curr) => {
         if (
-          result.find((q) => q.governorsRead?.name === curr.governorsRead?.name)
+          result.find(
+            (q) =>
+              q.special_for_governor?.name === curr.special_for_governor?.name
+          )
         ) {
           return result;
         } else {
-          if (curr.governorsRead) {
+          if (curr.special_for_governor) {
             return [...result, curr];
           }
         }
@@ -110,7 +113,7 @@ export function QuestionListCard(props: Propstype) {
                     />
                   </div>
                   <div className="typo-b4 ml-[10px]">
-                    {question.governorsRead?.name}
+                    {question.special_for_governor?.name}
                   </div>
                 </a>
               </Link>

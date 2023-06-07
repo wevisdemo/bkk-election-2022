@@ -86,7 +86,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const [res, errMsg] = await getNocoApi('governors');
   if (!errMsg) {
   }
-  const data = res.data as IGovernor[];
+  const data = res.data.list as IGovernor[];
 
   const govList = data.filter((gov) => !gov.disqualified);
 
@@ -137,11 +137,11 @@ export const getStaticProps: GetStaticProps<PropsType> = async (context) => {
         };
       }
 
-      hlCandidateList = hlCandidateRes.data as IGovernor[];
+      hlCandidateList = hlCandidateRes.data.list as IGovernor[];
     }
 
-    if (candidate.answersList.length > 0) {
-      const answerIds = candidate.answersList.map((answer) => answer.id);
+    if (candidate.answers.length > 0) {
+      const answerIds = candidate.answers.map((answer) => answer.id);
       const query = answerIds.reduce((result, id, index) => {
         if (index === answerIds.length - 1) {
           return result + id.toString() + ')';
@@ -160,9 +160,9 @@ export const getStaticProps: GetStaticProps<PropsType> = async (context) => {
           },
         };
       }
-      answerList = AnswerRes.data as IAnswer[];
+      answerList = AnswerRes.data.list as IAnswer[];
 
-      const questionIds = answerList.map((ans) => ans.questionsRead.id);
+      const questionIds = answerList.map((ans) => ans.question.id);
       const questionQuery = questionIds.reduce((result, id, index) => {
         if (index === answerIds.length - 1) {
           return result + id.toString() + ')';
@@ -181,7 +181,7 @@ export const getStaticProps: GetStaticProps<PropsType> = async (context) => {
           },
         };
       }
-      questionList = questinoRes.data as IQuestion[];
+      questionList = questinoRes.data.list as IQuestion[];
     }
   }
   return {

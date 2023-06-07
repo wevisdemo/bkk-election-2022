@@ -96,9 +96,7 @@ export function CandidateQuestionWrapper({
     const sortedQuestionList = sortQuestionByNumber(questionList);
     let ansGroupByType: IAnswer[] = [];
     for (const question of sortedQuestionList) {
-      const answer = answerList.find(
-        (ans) => ans.questionsRead.id === question.id
-      );
+      const answer = answerList.find((ans) => ans.question.id === question.id);
       if (!answer) {
         continue;
       }
@@ -123,7 +121,7 @@ export function CandidateQuestionWrapper({
                 href={`/question/${answerCategory.exclusive[0].nc_xeff__questions_id}`}
               >
                 <a className="typo-h3 text-white md:text-center w-full max-w-[250px] md:max-w-[1500px] mt-[10px] m-auto hover:cursor-pointer hover:underline">
-                  <h2>{answerCategory.exclusive[0].questionsRead.question}</h2>
+                  <h2>{answerCategory.exclusive[0].question.question}</h2>
                 </a>
               </Link>
             </div>

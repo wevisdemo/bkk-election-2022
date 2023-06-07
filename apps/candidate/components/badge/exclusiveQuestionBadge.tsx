@@ -11,7 +11,7 @@ export function ExclusiveQuestionBadge({ answer, ignoreGovernor }: PropsType) {
     <div className="max-w-[1500px] w-[90vw] pt-[40px] md:pt-[50px] pb-[28px] md:pb-[100px] mx-auto text-center">
       <YoutubePlayer
         url={answer.url}
-        title={answer.governorsRead.name}
+        title={answer.governor.name}
         className="max-w-[1500px] max-h-[843.75px] w-[90vw] h-[50.625vw] mb-[40px] typo-h3 text-white"
         poster="maxresdefault"
       />
@@ -19,7 +19,7 @@ export function ExclusiveQuestionBadge({ answer, ignoreGovernor }: PropsType) {
         <Link href={`/${answer.nc_xeff__candidates_id}`}>
           <a>
             <h6 className="typo-h6 text-white mb-[20px] hover:cursor-pointer hover:underline">
-              {answer.governorsRead.name}
+              {answer.governor.name}
             </h6>
           </a>
         </Link>

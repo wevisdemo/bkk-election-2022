@@ -15,7 +15,7 @@ export function AnswerStandardCard(props: PropsType) {
         <Link href={`/${answer.nc_xeff__candidates_id}`}>
           <a>
             <h6 className="typo-h6 hover:cursor-pointer hover:underline">
-              {answer.governorsRead.name}
+              {answer.governor.name}
             </h6>
           </a>
         </Link>
@@ -23,7 +23,7 @@ export function AnswerStandardCard(props: PropsType) {
       </div>
       <YoutubePlayer
         url={answer.url}
-        title={answer.governorsRead.name}
+        title={answer.governor.name}
         className="w-[250px] md:w-[450px] h-[250px] md:h-[450px] md:ml-[30px]"
         aspectHeight={1}
         aspectWidth={1}

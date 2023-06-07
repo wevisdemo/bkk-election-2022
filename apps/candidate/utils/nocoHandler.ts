@@ -4,7 +4,7 @@ export const getNocoApi = async (
   url: string
 ): Promise<[AxiosResponse<any, any>, string]> => {
   const headers = {
-    'xc-auth': process.env.NOCO_AUTH_TOKEN || '',
+    'xc-token': process.env.NOCO_AUTH_TOKEN || '',
   };
   const reqOptions: AxiosRequestConfig = {
     method: 'GET',

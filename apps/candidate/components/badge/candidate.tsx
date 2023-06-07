@@ -27,7 +27,7 @@ export function CandidateBadge({
     }
   };
 
-  const showVideo = showPlayButton && candidate.answersList.length > 0;
+  const showVideo = showPlayButton && candidate.answers.length > 0;
 
   return (
     <div className="h-full max-w-[250px] w-[43vw] md:w-[15vw] relative">

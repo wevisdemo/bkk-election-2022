@@ -34,8 +34,7 @@ export interface ICouncil {
 
 interface IQuestionAnswerList {
   id: number;
-  nc_xeff__candidates_id: number;
-  nc_xeff__questions_id: number;
+  text: string;
 }
 export interface IQuestion {
   id: number;
@@ -44,8 +43,8 @@ export interface IQuestion {
   question: string;
   description: string;
   nc_xeff__candidates_id: number;
-  answersList: IQuestionAnswerList[];
-  governorsRead?: {
+  answers: IQuestionAnswerList[];
+  special_for_governor: {
     id: number;
     name: string;
   };
@@ -57,11 +56,11 @@ export interface IAnswer {
   nc_xeff__questions_id: number;
   text: string;
   url: string;
-  governorsRead: {
+  governor: {
     id: number;
     name: string;
   };
-  questionsRead: {
+  question: {
     id: number;
     question: string;
   };
@@ -96,11 +95,11 @@ export interface IGovernor {
   contact_email: null | string;
   contact_instagram: null | string;
   contact_line: null | string;
-  answersList: IGovernorAnswer[];
+  answers: IGovernorAnswer[];
   disqualified: string;
 }
 
 interface IGovernorAnswer {
   id: number;
-  nc_xeff__candidates_id: number;
+  text: string;
 }

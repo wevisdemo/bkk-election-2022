@@ -238,7 +238,7 @@ export const getStaticProps: GetStaticProps<PropsType> = async (context) => {
       },
     };
   }
-  candidateList = candidateRes.data as IGovernor[];
+  candidateList = candidateRes.data.list as IGovernor[];
 
   const [councilRes, errMsg2] = await getNocoApi('councils?limit=1000');
   if (errMsg2) {
@@ -248,26 +248,26 @@ export const getStaticProps: GetStaticProps<PropsType> = async (context) => {
         councilList,
         questionList,
         isComingSoon,
-        errMsg: errMsg1,
+        errMsg: errMsg2,
       },
     };
   }
-  councilList = councilRes.data as ICouncil[];
+  councilList = councilRes.data.list as ICouncil[];
   councilList.sort((a, b) => (a.number > b.number ? 1 : -1));
 
   const [questionRes, errMsg3] = await getNocoApi('questions');
-  if (errMsg2) {
+  if (errMsg3) {
     return {
       props: {
         candidateList,
         councilList,
         questionList,
         isComingSoon,
-        errMsg: errMsg1,
+        errMsg: errMsg3,
       },
     };
   }
-  questionList = questionRes.data as IQuestion[];
+  questionList = questionRes.data.list as IQuestion[];
 
   return {
     props: {

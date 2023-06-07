@@ -35,7 +35,7 @@ export function HighLightCandidatePage({
     return hlCandidateList.filter((candidate) => candidate.id !== governor.id);
   };
 
-  const showContent = !isComingSoon && governor.answersList.length > 0;
+  const showContent = !isComingSoon && governor.answers.length > 0;
 
   useEffect(() => {
     if (window.matchMedia('(min-width: 768px)').matches) {

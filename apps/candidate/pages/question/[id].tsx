@@ -62,7 +62,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const [res, errMsg] = await getNocoApi('questions');
   if (!errMsg) {
   }
-  const data = res.data as IQuestion[];
+  const data = res.data.list as IQuestion[];
 
   const validData = data.filter((q) => q.type !== 'special');
   const paths = validData.map((question) => {
@@ -99,8 +99,8 @@ export const getStaticProps: GetStaticProps<PropsType> = async (context) => {
   }
 
   question = questionRes.data as IQuestion;
-  questionList = questionListRes.data as IQuestion[];
-  const answerIds = question.answersList.map((ans) => ans.id);
+  questionList = questionListRes.data.list as IQuestion[];
+  const answerIds = question.answers.map((ans) => ans.id);
   answerList = await Promise.all(
     answerIds.map(async (id) => {
       const [answerRes, errMsg3] = await getNocoApi(`answers/${id}`);
